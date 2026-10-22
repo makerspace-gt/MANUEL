@@ -11,3 +11,6 @@
 	path = ollama
 	url = https://github.com/ollama/ollama.git
 	shallow = true
+[submodule "it-infrastructure"]
+	path = it-infrastructure
+	url = https://github.com/makerspace-gt/it-infrastructure.git

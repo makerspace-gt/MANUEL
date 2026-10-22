@@ -197,6 +197,7 @@ git push
 - [ ] Öffentliche SSH-Schlüssel der Admins in butane/manuel.bu eintragen
 - [ ] Fedora CoreOS mit der daraus erzeugten Ignition-Datei installieren, siehe butane/README.md
 - [ ] Mit rpm-ostree status prüfen, dass das System auf dem signierten Image läuft
+- [ ] SSD verschlüsseln, weil der Mini-PC in der offenen Werkstatt steht. Fedora CoreOS kann das bei der Installation über die Butane-Datei mit LUKS und dem Schlüssel im TPM einrichten, siehe [Fedora-CoreOS-Doku zu Storage](https://docs.fedoraproject.org/en-US/fedora-coreos/storage/). Testen, ob das mit dem Wechsel auf unser Image zusammenspielt
 - [ ] Automatische Updates und Neustartfenster festlegen, zum Beispiel nachts um 02:00 wie bei unseren anderen Servern
 - [x] Prüfen, ob Python für Ansible vorhanden ist, und es sonst per rpm-ostree nachinstallieren
 - [ ] Host in docker-compose-server aufnehmen und watchtower über die vorhandene Rolle ausrollen

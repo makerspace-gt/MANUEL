@@ -7,3 +7,7 @@
 [submodule "docker-compose-server"]
 	path = docker-compose-server
 	url = https://github.com/makerspace-gt/docker-compose-server.git
+[submodule "ollama"]
+	path = ollama
+	url = https://github.com/ollama/ollama.git
+	shallow = true

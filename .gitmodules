@@ -1,0 +1,3 @@
+[submodule "mapped-repair-events"]
+	path = mapped-repair-events
+	url = https://github.com/anstiftung/mapped-repair-events.git

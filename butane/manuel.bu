@@ -1,0 +1,70 @@
+# Butane-Konfiguration für die Installation von MANUEL auf dem Mini-PC
+#
+# Installiert wird Fedora CoreOS. Beim ersten Start wechselt das System
+# zuerst unsigniert auf unser Image, weil Fedora CoreOS unseren Schlüssel
+# noch nicht kennt. Unser Image bringt den Schlüssel mit. Danach wechselt
+# es auf das signierte Image und prüft ab dann jedes Update.
+#
+# Die SSH-Schlüssel der Admins bringt unser Image mit, siehe
+# build_files/github-users. Vor dem Wechsel auf unser Image ist deshalb
+# keine Anmeldung per SSH möglich, nur an der Konsole.
+#
+# Diese Datei ist öffentlich. Hier gehören keine Passwörter, Token oder
+# Setup-Keys hinein.
+#
+# Erzeugen der Ignition-Datei siehe butane/README.md
+
+variant: fcos
+version: 1.6.0
+
+storage:
+  files:
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: manuel
+  links:
+    - path: /etc/localtime
+      target: ../usr/share/zoneinfo/Europe/Berlin
+  directories:
+    - path: /etc/manuel-autorebase
+      mode: 0754
+
+systemd:
+  units:
+    - name: manuel-unsigned-autorebase.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=MANUEL autorebase to unsigned OCI and reboot
+        ConditionPathExists=!/etc/manuel-autorebase/unverified
+        ConditionPathExists=!/etc/manuel-autorebase/signed
+        After=network-online.target
+        Wants=network-online.target
+        [Service]
+        Type=oneshot
+        StandardOutput=journal+console
+        ExecStart=/usr/bin/rpm-ostree rebase --bypass-driver ostree-unverified-registry:ghcr.io/makerspace-gt/manuel:latest
+        ExecStart=/usr/bin/touch /etc/manuel-autorebase/unverified
+        ExecStart=/usr/bin/systemctl disable manuel-unsigned-autorebase.service
+        ExecStart=/usr/bin/systemctl reboot
+        [Install]
+        WantedBy=multi-user.target
+    - name: manuel-signed-autorebase.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=MANUEL autorebase to signed OCI and reboot
+        ConditionPathExists=/etc/manuel-autorebase/unverified
+        ConditionPathExists=!/etc/manuel-autorebase/signed
+        After=network-online.target
+        Wants=network-online.target
+        [Service]
+        Type=oneshot
+        StandardOutput=journal+console
+        ExecStart=/usr/bin/rpm-ostree rebase --bypass-driver ostree-image-signed:docker://ghcr.io/makerspace-gt/manuel:latest
+        ExecStart=/usr/bin/touch /etc/manuel-autorebase/signed
+        ExecStart=/usr/bin/systemctl disable manuel-signed-autorebase.service
+        ExecStart=/usr/bin/systemctl reboot
+        [Install]
+        WantedBy=multi-user.target

@@ -38,7 +38,7 @@ Die gesamte Infrastruktur wird neu aufgesetzt, bestehende VMs übernehmen wir ni
 Grundsätze für den Betrieb:
 
 - **Ein Mensch entscheidet.** MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. Das ist zugleich die Qualitätskontrolle, die die Datenpotenzialanalyse empfiehlt. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
-- **Weboberflächen nur über NetBird.** Ollama, Open WebUI und alle übrigen Weboberflächen sind nur über NetBird erreichbar, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
+- **Ollama nur per VPN, Open WebUI über den NetBird-Proxy.** Ollama ist nur über NetBird für die Helpdesk-VM und Open WebUI erreichbar. Open WebUI ist über den Reverse Proxy von NetBird mit Anmeldung über authentik erreichbar, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
 - **Datenschutz von Anfang an.** Löschfristen, Datenschutzhinweis und Verzeichnis von Verarbeitungstätigkeiten entstehen zusammen mit den Feldern in Zammad, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
 - **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Echte Ticketdaten landen nie in diesem öffentlichen Repo.
 - **Code rechnet, das Modell formuliert.** Zählen, Zuordnen, Termine planen und Daten übertragen erledigen Zammad-Trigger und n8n-Workflows nach festen Regeln. Das Sprachmodell liest aus Freitext heraus, schreibt Texte und fasst zusammen.
@@ -174,7 +174,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Feld für die Einwilligung in den Newsletter anlegen
 - [ ] Über [Core Workflows](https://admin-docs.zammad.org/en/latest/system/core-workflows.html) nur die Felder zeigen, die beim Repair Café gerade gebraucht werden, zum Beispiel Lösung und Ergebnis erst nach der Reparatur
 - [ ] [Übersichten](https://admin-docs.zammad.org/en/latest/manage/overviews.html) für das Repair Café anlegen, etwa Termine des nächsten Repair Cafés und offene Reparaturen
-- [ ] Löschfristen für Gästedaten in Zammad festlegen, solange die Felder neu entstehen, siehe Abschnitt Datenschutz im [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md)
+- [ ] Löschfristen in Zammad umsetzen, Tickets des Repair Cafés 3 Jahre nach Abschluss, Anfragen ohne Erscheinen nach 3 Monaten, siehe Abschnitt Datenschutz im [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md)
 - [ ] Kurzen Datenschutzhinweis für Gäste schreiben, der auch die Unterstützung durch ein lokales Sprachmodell nennt
 - [ ] MANUEL in das Verzeichnis von Verarbeitungstätigkeiten aufnehmen, mit Zweck, verarbeiteten Feldern, lokaler Verarbeitung auf dem Mini-PC und Speicherdauer der Prompts in Ollama und Open WebUI
 - [ ] Standort, Stromversorgung und LAN-Anschluss im Makerspace klären

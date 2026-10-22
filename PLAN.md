@@ -30,7 +30,7 @@ Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf unseven.makerspace
 │  │ Open WebUI   │  Prompt-Tests, später Chat │      │  └───────────────────┘  │
 │  └──────────────┘                            │      │  Wissensdatenbank     │
 │                                              │      └─────────────────────────┘
-│  watchtower · resticker · Uptime-Kuma-Push   │       Nuudel, Newsletter und
+│  Arcane-Agent · resticker · Uptime-Kuma-Push │       Nuudel, Newsletter und
 └──────────────────────────────────────────────┘       reparatur-initiativen.org
 ```
 
@@ -57,6 +57,7 @@ Grundsätze für den Betrieb:
 | Zugang zu Open WebUI | [Open WebUI](https://docs.openwebui.com/) über NetBird für Engagierte mit Konto | Über Traefik auf unseven, das Open WebUI per NetBird erreicht |
 | Betrieb von NetBird | Eigene VM nur für Management, Signal und Relay von NetBird nach der [Anleitung zum Selbsthosten](https://docs.netbird.io/selfhosted/selfhosted-quickstart), eingerichtet als neuer Host in docker-compose-server. Der Mini-PC und unseven bekommen nur den Client | NetBird Cloud im kostenlosen Tarif |
 | Startmodell | [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) mit festem Tag statt latest. Als Mixture-of-Experts-Modell sind pro Token nur etwa 3B Parameter aktiv, was bei begrenzter Speicherbandbreite zählt. Mit 23 bis 24 GB passt es in den Speicher, und es versteht auch Bilder wie Fotos von Typenschildern | Varianten mit MTP oder q8_0 und das dichte qwen3.6:27b als Vergleich im Benchmark |
+| Updates der Container | [Arcane](https://getarcane.app) statt watchtower auf allen Hosts. Ein zentraler Arcane-Server verwaltet die Docker-Hosts über Agenten, die sich [ausgehend verbinden](https://github.com/getarcaneapp/arcane/tree/main/docker/examples) und keine offenen Ports brauchen. Arcane erkennt neue Images, aktualisiert nach Zeitplan, meldet per Signal und kann sich an authentik anmelden. Es steht unter BSD-3-Clause. Der Arcane-Server steuert Docker auf allen Hosts und gehört deshalb auf eine gehärtete VM, erreichbar nur über NetBird. Die Compose-Dateien bleiben in Ansible, die GitOps-Funktion von Arcane nutzen wir nicht, damit nicht zwei Werkzeuge dieselben Dateien schreiben. Zammad aktualisieren wir nicht automatisch, sondern nach Hinweis von Arcane von Hand, weil Datenbankmigrationen und unsere Anpassungen geprüft werden müssen | watchtower wie bisher |
 | Hostname | Neuer Eintrag in der Inventardatei hosts von docker-compose-server | |
 | Testinstanz für Zammad | Host unstable aus docker-compose-server | Direkt im Echtsystem mit eigener Testgruppe |
 
@@ -246,7 +247,7 @@ git push
 - [ ] SSD verschlüsseln, weil der Mini-PC in der offenen Werkstatt steht. Fedora CoreOS kann das bei der Installation über die Butane-Datei mit LUKS und dem Schlüssel im TPM einrichten, siehe [Fedora-CoreOS-Doku zu Storage](https://docs.fedoraproject.org/en-US/fedora-coreos/storage/). Testen, ob das mit dem Wechsel auf unser Image zusammenspielt
 - [ ] Automatische Updates und Neustartfenster festlegen, zum Beispiel nachts um 02:00 wie bei unseren anderen Servern
 - [x] Prüfen, ob Python für Ansible vorhanden ist, und es sonst per rpm-ostree nachinstallieren
-- [ ] Host in docker-compose-server aufnehmen und watchtower über die vorhandene Rolle ausrollen
+- [ ] Host in docker-compose-server aufnehmen und den Arcane-Agenten ausrollen, für Ollama und Open WebUI mit automatischen Updates
 - [ ] resticker einrichten und das Volume mit den Modellen vom Backup ausschließen, weil sich Modelle jederzeit neu laden lassen
 - [ ] Push-Monitor in Uptime Kuma anlegen
 - [ ] NetBird-Client auf dem Mini-PC einrichten, auf uCore per rpm-ostree oder als Container mit Host-Netzwerk
@@ -370,9 +371,10 @@ MANUEL/
 ├── signal-cli-rest-api/   Submodul für den Ausblick, MIT
 ├── discourse/             Submodul für den Ausblick, GPL-2.0
 ├── vikunja/               Submodul für den Ausblick, AGPL-3.0
-└── authentik/             Submodul für die zentrale Nutzerverwaltung, MIT
+├── authentik/             Submodul für die zentrale Nutzerverwaltung, MIT
+└── arcane/                Submodul mit der Verwaltung der Docker-Hosts als Ersatz für watchtower, BSD-3-Clause
 ```
 
-Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja, Signal und authentik sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
+Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja, Signal, authentik und Arcane sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
 
 Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von docker-compose-server.

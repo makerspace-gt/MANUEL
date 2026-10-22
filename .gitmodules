@@ -1,3 +1,6 @@
 [submodule "mapped-repair-events"]
 	path = mapped-repair-events
 	url = https://github.com/anstiftung/mapped-repair-events.git
+[submodule "datenpotenzialanalyse-repairc-cafe-gt"]
+	path = datenpotenzialanalyse-repairc-cafe-gt
+	url = https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt.git

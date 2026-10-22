@@ -13,7 +13,7 @@ Dieser Plan beschreibt, wie wir MANUEL vom Kauf der Hardware bis zum Verwendungs
 
 ## Architektur
 
-Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf unseven.makerspace-gt.de. Beide sind über NetBird verbunden, sodass wir im Makerspace keine Ports öffnen müssen. Zammad nutzt Ollama über seine eingebauten KI-Funktionen als Anbieter. Alles, was Zammad nicht abdeckt, erledigen Workflows in n8n auf dem Mini-PC. n8n holt Daten aus Zammad, Nuudel und dem Wiki, ruft bei Bedarf Ollama auf und schreibt die Ergebnisse zurück.
+Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf unseven.makerspace-gt.de. Beide sind über NetBird verbunden, sodass wir im Makerspace keine Ports öffnen müssen. Zammad nutzt Ollama über seine eingebauten KI-Funktionen als Anbieter. Alles, was Zammad nicht abdeckt, erledigen Workflows in n8n auf unseven. n8n holt Daten aus Zammad, Nuudel und dem Wiki, ruft bei Bedarf Ollama über NetBird auf und schreibt die Ergebnisse zurück. Der Mini-PC bleibt damit ein reiner Rechenknecht für Ollama und Open WebUI.
 
 ```
                  Makerspace (LAN)                              Internet
@@ -23,16 +23,15 @@ Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf unseven.makerspace
 │  ┌──────────────┐        NetBird             │      │  ┌───────────────────┐  │
 │  │ Ollama       │◄───────────────────────────┼──────┼──┤ Zammad            │  │
 │  │ Sprachmodell │  nur für unseven erlaubt   │      │  │ KI-Funktionen     │  │
-│  │ Embeddings   │                            │      │  └─────────▲─────────┘  │
-│  └──▲───────▲───┘                            │      │            │            │
-│     │       │      ┌───────────────────┐     │ HTTPS│  ┌─────────┴─────────┐  │
-│     │       └──────┤ n8n               ├─────┼──────┼─►│ Zammad API        │  │
-│     │              │ Workflows         │     │      │  │ Wiki.js API       │  │
-│  ┌──┴───────────┐  └───────────────────┘     │      │  └───────────────────┘  │
-│  │ Open WebUI   │  Prompt-Tests, später Chat │      └─────────────────────────┘
-│  └──────────────┘                            │       Nuudel, Newsletter, ORA
-│  watchtower · resticker · Uptime-Kuma-Push   │
-└──────────────────────────────────────────────┘
+│  │ Embeddings   │◄───────────────────────────┼──────┼─┐└─────────▲─────────┘  │
+│  └──────▲───────┘                            │      │ │          │ Webhooks   │
+│         │                                    │      │ │┌─────────┴─────────┐  │
+│  ┌──────┴───────┐                            │      │ └┤ n8n Workflows     │  │
+│  │ Open WebUI   │  Prompt-Tests, später Chat │      │  └───────────────────┘  │
+│  └──────────────┘                            │      │  Wiki.js              │
+│                                              │      └─────────────────────────┘
+│  watchtower · resticker · Uptime-Kuma-Push   │       Nuudel, Newsletter und
+└──────────────────────────────────────────────┘       reparatur-initiativen.org
 ```
 
 Grundsätze für den Betrieb:
@@ -49,7 +48,7 @@ Grundsätze für den Betrieb:
 | Betriebssystem | uCore Minimal von Universal Blue auf Basis von Fedora CoreOS, weil es den neuesten Kernel mitbringt, sich atomar mit Rollback aktualisiert und zu Bluefin auf unseren Notebooks passt | Fedora Server mit gleichem Kernel, klassischer Paketverwaltung und einfacherer Anbindung an Ansible |
 | Inferenz-Server | Ollama im Container mit Vulkan-Backend | llama.cpp mit llama-swap, falls Ollama die GPU schlecht nutzt |
 | Anbindung an Zammad | KI-Funktionen von Zammad selbst mit [Ollama als Anbieter](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama), das Zammad über NetBird erreicht, ergänzt um n8n-Workflows für alles, was Zammad nicht abdeckt | Eigener Worker in Python statt n8n |
-| Automatisierung | n8n selbst gehostet auf dem Mini-PC, nah an Ollama und ohne zusätzliche Last für unseven. n8n steht unter der Sustainable Use License, die den Betrieb für eigene Zwecke erlaubt, aber keine Open-Source-Lizenz ist | n8n auf unseven neben Zammad |
+| Automatisierung | [n8n selbst gehostet](https://docs.n8n.io/hosting/) auf unseven neben Zammad. Dort liegen die Zugangsdaten im Rechenzentrum statt in der offenen Werkstatt, Workflows ohne Sprachmodell laufen auch bei Neustart oder Ausfall des Mini-PCs, und Traefik, resticker und Uptime Kuma sind schon eingerichtet. n8n steht unter der [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md), die den Betrieb für eigene Zwecke erlaubt, aber keine Open-Source-Lizenz ist | n8n auf dem Mini-PC direkt neben Ollama |
 | Anzahl der Modelle | Ein Sprachmodell für alle Aufgaben mit einem eigenen Prompt pro Aufgabe, dazu ein kleines Embedding-Modell. Zwei große Modelle passen kaum gleichzeitig in den Speicher der GPU, und jeder Wechsel kostet Ladezeit | Zusätzlich ein kleines Sprachmodell, falls der Benchmark zeigt, dass einfache Aufgaben zu lange dauern |
 | Embedding-Modell | Ein mehrsprachiges Modell wie bge-m3 oder qwen3-embedding für die semantische Suche in Zammad und das Finden ähnlicher Tickets | |
 | Vernetzung und Fernzugriff | NetBird mit Regeln, die nur unseven den Zugriff auf Ollama und nur Admins den Zugriff per SSH erlauben | Tailscale, das in uCore schon enthalten ist |
@@ -237,7 +236,8 @@ git push
 - [ ] In der Testinstanz unter AI und Providers Ollama mit der NetBird-Adresse des Mini-PCs und qwen3.6:35b-a3b als Modell eintragen, siehe [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama)
 - [ ] Prüfen, dass der Status des Anbieters nach der ersten Anfrage grün ist
 - [ ] KI-Funktionen von Zammad mit Repair-Café-Tickets testen
-- [ ] Rolle n8n in docker-compose-server anlegen, n8n nur über NetBird erreichbar machen und seine Daten per resticker sichern
+- [ ] Prüfen, ob unseven genug Arbeitsspeicher für n8n frei hat
+- [ ] Rolle n8n in docker-compose-server für unseven anlegen, siehe [n8n-Doku zum Selbsthosten](https://docs.n8n.io/hosting/), hinter Traefik mit Anmeldung und mit Sicherung per resticker
 - [ ] Workflow zum Füllen der Felder bauen, der Vorschläge als interne Notiz schreibt und erst nach Bestätigung in die Felder überträgt
 - [ ] Workflow für den Reparaturansatz bauen, der ähnliche Tickets und Wiki-Anleitungen per Embedding mitgibt
 - [ ] Workflow für Gästedaten bauen, der Kontaktdaten nur als Vorschlag zur Bestätigung anzeigt

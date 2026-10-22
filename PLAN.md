@@ -312,7 +312,7 @@ git push
 - [ ] In der Testinstanz unter AI und Providers Ollama mit der NetBird-Adresse des Mini-PCs und qwen3.6:35b-a3b als Modell eintragen, siehe [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama)
 - [ ] Prüfen, dass der Status des Anbieters nach der ersten Anfrage grün ist
 - [ ] bge-m3 als Embedding-Modell beim Anbieter eintragen
-- [ ] Speichergrenze von Elasticsearch in der Zammad-Rolle anheben, weil dort auch die Vektoren der semantischen Suche liegen. Bisher ist sie auf 1 GB begrenzt
+- [ ] Speicherverbrauch von Elasticsearch in Beszel beobachten, weil dort auch die Vektoren der semantischen Suche liegen. Die Zammad-Rolle erlaubt bisher 4 GB
 - [ ] Agenten Ticket Categorizer für die Art des Geräts und Ticket Text Extractor für die übrigen Felder anlegen
 - [ ] Custom AI Agent für den Reparaturansatz und einen für erkannte Kontaktdaten anlegen, beide schreiben nur interne Notizen
 - [ ] Trigger anlegen, die die Agenten bei neuen Tickets der Gruppe Repair Café auslösen
@@ -356,6 +356,28 @@ Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verf
 Alle drei Dienste würden denselben Ollama-Server über NetBird nutzen. Dafür müssen die NetBird-Regeln um die jeweiligen Hosts erweitert werden.
 
 Unabhängig von MANUEL fehlt uns eine zentrale Nutzerverwaltung. [authentik](https://github.com/goauthentik/authentik) liegt dafür als Submodul in diesem Repo. Es steht weitgehend unter MIT, ein Unternehmensteil unter eigener Lizenz. Laut [Doku zu Integrationen](https://docs.goauthentik.io/integrations/) lassen sich viele unserer Dienste per OpenID Connect oder SAML anbinden. Für MANUEL betrifft das vor allem NetBird, n8n, Open WebUI und Zammad. NetBird kann authentik [als Identity Provider nutzen](https://docs.netbird.io/selfhosted/identity-providers/authentik). Kommt authentik bald, richten wir NetBird gleich damit ein statt mit dem eingebauten Dex.
+
+## Aufteilung und Größe der VMs
+
+Die Aufteilung folgt drei Regeln. Sensible Dienste liegen getrennt von Inhalten der Gäste, was zusammen ausfällt, darf zusammen liegen, und Abhängigkeiten zeigen nur von Fachanwendungen zu Zugang und Monitoring. Die Größen sind Schätzungen für den laufenden Betrieb, nicht die Summe aller Speichergrenzen. Pro VM rechnen wir etwa 1 GB für Betriebssystem, Docker, Traefik, CrowdSec, resticker und die Agenten von Arcane und Beszel ein.
+
+| VM | Dienste | RAM | vCPU | Lokale Platte | Grundlage |
+|---|---|---|---|---|---|
+| Zugang, neu | authentik, NetBird, Vaultwarden | 4 GB | 2 | 30 GB | authentik braucht laut [Installationsanleitung](https://github.com/goauthentik/authentik/blob/main/website/docs/install-config/install/docker-compose.mdx) mindestens 2 GB, NetBird und Vaultwarden sind klein |
+| Verwaltung, neu | Forgejo, Runner, Arcane-Server | 6 GB | 4 | 60 GB | Der Runner braucht Platz für Jobs mit Ansible, OpenTofu und Docker |
+| unseven | Zammad, n8n | 16 GB | 4 | 80 GB | Die [Zammad-Rolle](https://github.com/makerspace-gt/docker-compose-server/blob/main/roles/zammad/templates/.env.j2) erlaubt zusammen rund 13 GB, davon 4 GB für Elasticsearch. Dazu kommt n8n mit 1 bis 2 GB. Zammad speichert Anhänge in der Datenbank, und Elasticsearch hält künftig auch die Vektoren der semantischen Suche |
+| Kollaboration, statt wasber | Nextcloud, Wiki.js, Vikunja | 6 GB | 3 | 40 GB | Die Dateien von Nextcloud liegen auf der Storagebox, lokal liegen nur Programme und Datenbanken |
+| Immich, neu | Immich | 6 GB | 4 | 30 GB plus Vorschaubilder | Laut [Anforderungen](https://github.com/immich-app/immich/blob/main/docs/docs/install/requirements.md) mindestens 6 GB und 2 Kerne. Die Datenbank muss auf lokaler SSD liegen und nie auf einem Netzlaufwerk, die Originale können auf die Storagebox |
+| discourse | Discourse | 4 GB | 2 | 40 GB | Laut [Installationsanleitung](https://github.com/discourse/discourse/blob/main/docs/INSTALL-cloud.md) mindestens 1 GB mit Swap, empfohlen 2 GB und mehr. Mit discourse-ai und Embeddings eher 4 GB |
+| koorax | Uptime Kuma, Beszel-Hub, signal-cli-rest-api | 2 GB | 2 | 20 GB | Alle drei sind klein, signal-cli braucht als Java-Programm etwa 0,5 GB |
+| unstable | Testinstanz von Zammad | 8 GB | 2 | 40 GB | Nur bei Bedarf per OpenTofu anlegen und danach wieder löschen |
+| Mini-PC | Ollama, Open WebUI, optional Machine Learning für Immich | 64 GB | 12 Kerne | 1 TB | Sprachmodell mit 24 GB, Embedding-Modell, Varianten für den Benchmark |
+
+Zusammen brauchen die dauerhaften VMs etwa 44 GB Arbeitsspeicher und 21 vCPU, mit der Testinstanz 52 GB.
+
+- **Immich kann den Mini-PC mitnutzen.** Immich trennt das Machine Learning für Gesichter und Suche vom Server und kann es [auf einem anderen Rechner](https://github.com/immich-app/immich/blob/main/docs/docs/guides/remote-machine-learning.md) laufen lassen. Mit ROCm nutzt es auch AMD-GPUs, das Image dafür braucht laut [Doku](https://github.com/immich-app/immich/blob/main/docs/docs/features/ml-hardware-acceleration.md) aber 35 GB Platz. Dann bleibt die Immich-VM schlanker, und die Fotos werden trotzdem ausgewertet.
+- **Die Storagebox ist ein Netzlaufwerk.** Für die Dateien von Nextcloud und die Originale von Immich ist das in Ordnung. Datenbanken und die Vorschaubilder von Immich gehören auf die lokale Platte. Die Vorschaubilder belegen erfahrungsgemäß einen Bruchteil der Originale, die genaue Größe hängt von der Bibliothek ab.
+- **Die Zahlen prüfen wir mit Beszel.** Nach einigen Wochen Betrieb passen wir die Größen an den tatsächlichen Verbrauch an. Mit OpenTofu ist das eine Änderung in Git.
 
 ## Infrastruktur als Code
 
@@ -419,9 +441,10 @@ MANUEL/
 ├── arcane/                Submodul mit der Verwaltung der Docker-Hosts als Ersatz für watchtower, BSD-3-Clause
 ├── beszel/                Submodul mit der Überwachung der Ressourcen, MIT
 ├── opentofu/              Submodul für das Anlegen der VMs, MPL-2.0
-└── forgejo/               Submodul für die eigene Git-Instanz, GPL-3.0
+├── forgejo/               Submodul für die eigene Git-Instanz, GPL-3.0
+└── immich/                Submodul für die Verwaltung von Bildern, AGPL-3.0
 ```
 
-Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja, Signal, authentik, Arcane, Beszel, OpenTofu und Forgejo sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
+Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja, Signal, authentik, Arcane, Beszel, OpenTofu, Forgejo und Immich sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
 
 Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von docker-compose-server.

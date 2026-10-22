@@ -63,6 +63,7 @@ Grundsätze für den Betrieb:
 | Überwachung der Ressourcen | [Beszel](https://beszel.dev) mit einem Hub neben Uptime Kuma auf der Monitoring-VM und einem Agenten auf jedem Host. Uptime Kuma meldet, ob Dienste erreichbar sind, Beszel meldet volle Platten, knappen Speicher, hohe Last, Temperaturen und SMART-Werte. Die Agenten können sich per WebSocket ausgehend mit dem Hub verbinden. Auf dem Mini-PC liest Beszel auch die [AMD-GPU](https://beszel.dev/guide/gpu) aus. Benachrichtigungen gehen über Shoutrrr, also auch per Signal, und die Anmeldung kann über [OAuth mit authentik](https://beszel.dev/guide/oauth) laufen. Beszel steht unter MIT | Nur Uptime Kuma wie bisher |
 | Hostname | Neuer Eintrag in der Inventardatei hosts von docker-compose-server | |
 | Testinstanz für Zammad | Test-VM, die OpenTofu nur bei Bedarf anlegt | Direkt im Echtsystem mit eigener Testgruppe |
+| Wiki | Wiki.js nicht neu aufsetzen. Reparaturanleitungen kommen in die Wissensdatenbank von Zammad, Vereinswissen wie Maschinen, Kenntnisse und Abläufe in [Wiki-Beiträge in Discourse](https://meta.discourse.org/t/what-is-a-wiki-post/30801), wo der KI-Bot sie für Antworten nutzt. Doku zur IT liegt als Markdown in den Repos in Forgejo neben dem Code. Für den Umzug exportiert Wiki.js alle Seiten per [Git-Speicher](https://docs.requarks.io/storage/git) als Markdown. [Wiki.js](https://github.com/Requarks/wiki) wird aktiv entwickelt, Version 3 ist aber seit Jahren im Beta-Stadium | Wiki.js 2 neu aufsetzen und später auf Version 3 umsteigen |
 
 Laut [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama) lässt sich Ollama direkt als KI-Anbieter mit URL und Modell eintragen. Zammad verbindet sich dabei selbst mit Ollama. Die Doku nennt keine Anmeldung oder TLS für Ollama, deshalb schützen wir den Zugang über NetBird.
 
@@ -353,6 +354,7 @@ Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verf
 - **Discourse als Wissensbasis und Chatbot.** Für das Forum gibt es die Rolle [discourse](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/discourse). Das mitgelieferte Plugin [discourse-ai](https://github.com/discourse/discourse/tree/main/plugins/discourse-ai) kann Ollama [direkt ansprechen](https://github.com/discourse/discourse/blob/main/plugins/discourse-ai/lib/completions/endpoints/ollama.rb). Es bringt einen KI-Bot mit eigenen Rollen und hinterlegten Dokumenten, Zusammenfassungen, semantische Suche und ähnliche Themen per Embedding mit. Ein Bot im Forum könnte Fragen zu Kenntnissen der Mitglieder und zu Werkzeugen beantworten, gestützt auf Beiträge und Dokumente des Vereins.
 - **Signal als Kanal für Benachrichtigungen.** Für [signal-cli-rest-api](https://github.com/bbernhard/signal-cli-rest-api) auf Basis von [signal-cli](https://github.com/AsamK/signal-cli) gibt es die Rolle [signal-cli-rest-api](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/signal-cli-rest-api). n8n könnte darüber Engagierte an Termine erinnern oder über neue Anmeldungen informieren. Später wäre auch ein Signal-Bot denkbar, der Fragen an MANUEL weiterleitet. Gäste schreiben wir nur mit ihrer Einwilligung an.
 - **Vikunja für Aufgaben aus dem Repair Café.** Für [Vikunja](https://vikunja.io/docs/) gibt es die Rolle [vikunja](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/vikunja). n8n könnte aus vertagten Reparaturen Aufgaben anlegen, etwa für die Besorgung von Ersatzteilen, und fehlendes Werkzeug aus der Statistik als Wunschliste für Anschaffungen sammeln.
+- **LanguageTool für Rechtschreibung und Grammatik.** Ein eigener [LanguageTool-Server](https://dev.languagetool.org/http-server) prüft Texte, ohne dass sie an einen fremden Dienst gehen. Engagierte binden ihn in die Browser-Erweiterung ein und nutzen ihn dann in Zammad, Discourse, Nextcloud und Forgejo. [LanguageTool](https://github.com/languagetool-org/languagetool) steht unter LGPL-2.1 und läuft auf der Kollaborations-VM. Als Java-Programm braucht es 1 bis 2 GB Arbeitsspeicher, die optionalen [N-Gramm-Daten](https://dev.languagetool.org/finding-errors-using-n-gram-data) für bessere Ergebnisse brauchen zusätzlich mehrere GB Platte. Ein Teil davon überschneidet sich mit den Textwerkzeugen von Zammad, LanguageTool funktioniert aber in allen Diensten und ohne Sprachmodell.
 
 Alle drei Dienste würden denselben Ollama-Server über NetBird nutzen. Dafür müssen die NetBird-Regeln um die jeweiligen Hosts erweitert werden.
 
@@ -367,7 +369,7 @@ Die Aufteilung folgt drei Regeln. Sensible Dienste liegen getrennt von Inhalten 
 | Zugang, neu | authentik, NetBird, Vaultwarden | 4 GB | 2 | 30 GB | authentik braucht laut [Installationsanleitung](https://github.com/goauthentik/authentik/blob/main/website/docs/install-config/install/docker-compose.mdx) mindestens 2 GB, NetBird und Vaultwarden sind klein |
 | Verwaltung, neu | Forgejo, Runner, Arcane-Server | 6 GB | 4 | 60 GB | Der Runner braucht Platz für Jobs mit Ansible, OpenTofu und Docker |
 | Helpdesk, neu | Zammad, n8n | 16 GB | 4 | 80 GB | Die [Zammad-Rolle](https://github.com/makerspace-gt/docker-compose-server/blob/main/roles/zammad/templates/.env.j2) erlaubt zusammen rund 13 GB, davon 4 GB für Elasticsearch. Dazu kommt n8n mit 1 bis 2 GB. Zammad speichert Anhänge in der Datenbank, und Elasticsearch hält künftig auch die Vektoren der semantischen Suche |
-| Kollaboration, neu | Nextcloud, Wiki.js, Vikunja | 6 GB | 3 | 40 GB | Die Dateien von Nextcloud liegen auf der Storagebox, lokal liegen nur Programme und Datenbanken |
+| Kollaboration, neu | Nextcloud, Vikunja, LanguageTool | 6 GB | 3 | 40 GB | Die Dateien von Nextcloud liegen auf der Storagebox, lokal liegen nur Programme und Datenbanken. Wiki.js entfällt, dafür kommt LanguageTool dazu |
 | Fotos, neu | Immich | 6 GB | 4 | 30 GB plus Vorschaubilder | Laut [Anforderungen](https://github.com/immich-app/immich/blob/main/docs/docs/install/requirements.md) mindestens 6 GB und 2 Kerne. Die Datenbank muss auf lokaler SSD liegen und nie auf einem Netzlaufwerk, die Originale können auf die Storagebox |
 | Forum, neu | Discourse | 4 GB | 2 | 40 GB | Laut [Installationsanleitung](https://github.com/discourse/discourse/blob/main/docs/INSTALL-cloud.md) mindestens 1 GB mit Swap, empfohlen 2 GB und mehr. Mit discourse-ai und Embeddings eher 4 GB |
 | Monitoring, neu | Uptime Kuma, Beszel-Hub, signal-cli-rest-api | 2 GB | 2 | 20 GB | Alle drei sind klein, signal-cli braucht als Java-Programm etwa 0,5 GB |
@@ -382,7 +384,7 @@ Zusammen brauchen die dauerhaften VMs etwa 44 GB Arbeitsspeicher und 21 vCPU, mi
 
 ### Neuaufbau
 
-Alle VMs entstehen neu, die Namen der Hosts legen wir beim Anlegen per OpenTofu fest. Die Daten der bestehenden Dienste ziehen trotzdem um, vor allem Tickets aus Zammad, Passwörter aus Vaultwarden, Dateien und Kalender aus Nextcloud, Seiten aus Wiki.js, Aufgaben aus Vikunja und Beiträge aus Discourse. Dafür nutzen wir die Backups von resticker und die Aufgaben zur Wiederherstellung, die die Rollen für Zammad, Vaultwarden und Discourse schon mitbringen. Jeder Umzug ist zugleich ein Test der Wiederherstellung. Die alten VMs bleiben bis zur erfolgreichen Prüfung der neuen Dienste stehen.
+Alle VMs entstehen neu, die Namen der Hosts legen wir beim Anlegen per OpenTofu fest. Die Daten der bestehenden Dienste ziehen trotzdem um, vor allem Tickets aus Zammad, Passwörter aus Vaultwarden, Dateien und Kalender aus Nextcloud, Seiten aus Wiki.js, die je nach Inhalt in Discourse, die Wissensdatenbank von Zammad oder Forgejo wandern, Aufgaben aus Vikunja und Beiträge aus Discourse. Dafür nutzen wir die Backups von resticker und die Aufgaben zur Wiederherstellung, die die Rollen für Zammad, Vaultwarden und Discourse schon mitbringen. Jeder Umzug ist zugleich ein Test der Wiederherstellung. Die alten VMs bleiben bis zur erfolgreichen Prüfung der neuen Dienste stehen.
 
 ## Infrastruktur als Code
 
@@ -447,9 +449,11 @@ MANUEL/
 ├── beszel/                Submodul mit der Überwachung der Ressourcen, MIT
 ├── opentofu/              Submodul für das Anlegen der VMs, MPL-2.0
 ├── forgejo/               Submodul für die eigene Git-Instanz, GPL-3.0
-└── immich/                Submodul für die Verwaltung von Bildern, AGPL-3.0
+├── immich/                Submodul für die Verwaltung von Bildern, AGPL-3.0
+├── languagetool/          Submodul für Rechtschreibung und Grammatik, LGPL-2.1
+└── vaultwarden/           Submodul mit dem Passwortmanager, AGPL-3.0
 ```
 
-Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja, Signal, authentik, Arcane, Beszel, OpenTofu, Forgejo und Immich sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
+Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja, Signal, authentik, Arcane, Beszel, OpenTofu, Forgejo, Immich, LanguageTool und Vaultwarden sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
 
 Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von docker-compose-server.

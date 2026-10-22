@@ -318,6 +318,16 @@ git push
 - [ ] Belege der Veröffentlichung für den Sachbericht sammeln
 - [ ] Verwendungsnachweis bis 31.03.2027 im Förderportal einreichen
 
+## Ausblick
+
+Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verfügt über welche Kenntnisse?« und »Welche Werkzeuge und Maschinen stehen im Verein zur Verfügung?« einzusetzen. Dafür bieten sich Dienste an, für die es in docker-compose-server schon Rollen gibt. Sie liegen als Submodule in diesem Repo.
+
+- **Discourse als Wissensbasis und Chatbot.** Für das Forum gibt es die Rolle [discourse](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/discourse). Das mitgelieferte Plugin [discourse-ai](https://github.com/discourse/discourse/tree/main/plugins/discourse-ai) kann Ollama [direkt ansprechen](https://github.com/discourse/discourse/blob/main/plugins/discourse-ai/lib/completions/endpoints/ollama.rb). Es bringt einen KI-Bot mit eigenen Rollen und hinterlegten Dokumenten, Zusammenfassungen, semantische Suche und ähnliche Themen per Embedding mit. Ein Bot im Forum könnte Fragen zu Kenntnissen der Mitglieder und zu Werkzeugen beantworten, gestützt auf Beiträge und Dokumente des Vereins.
+- **Signal als Kanal für Benachrichtigungen.** Für [signal-cli-rest-api](https://github.com/bbernhard/signal-cli-rest-api) auf Basis von [signal-cli](https://github.com/AsamK/signal-cli) gibt es die Rolle [signal-cli-rest-api](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/signal-cli-rest-api). n8n könnte darüber Engagierte an Termine erinnern oder über neue Anmeldungen informieren. Später wäre auch ein Signal-Bot denkbar, der Fragen an MANUEL weiterleitet. Gäste schreiben wir nur mit ihrer Einwilligung an.
+- **Vikunja für Aufgaben aus dem Repair Café.** Für [Vikunja](https://vikunja.io/docs/) gibt es die Rolle [vikunja](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/vikunja). n8n könnte aus vertagten Reparaturen Aufgaben anlegen, etwa für die Besorgung von Ersatzteilen, und fehlendes Werkzeug aus der Statistik als Wunschliste für Anschaffungen sammeln.
+
+Alle drei Dienste würden denselben Ollama-Server über NetBird nutzen. Dafür müssen die NetBird-Regeln um die jeweiligen Hosts erweitert werden.
+
 ## Zeitplan
 
 | Zeitraum | Phase |
@@ -353,9 +363,13 @@ MANUEL/
 ├── zammad-docker-compose/ Submodul mit dem Docker-Compose-Stack von Zammad, AGPL-3.0
 ├── n8n/                   Submodul mit dem Quellcode von n8n, Sustainable Use License
 ├── netbird/               Submodul mit dem Quellcode von NetBird, BSD-3-Clause, Server-Teile AGPL-3.0
-└── ollama/                Submodul mit dem Quellcode von Ollama, MIT
+├── ollama/                Submodul mit dem Quellcode von Ollama, MIT
+├── signal-cli/            Submodul für den Ausblick, GPL-3.0
+├── signal-cli-rest-api/   Submodul für den Ausblick, MIT
+├── discourse/             Submodul für den Ausblick, GPL-2.0
+└── vikunja/               Submodul für den Ausblick, AGPL-3.0
 ```
 
-Die Submodule von Zammad, n8n, NetBird und Ollama sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
+Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja und Signal sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
 
 Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von docker-compose-server.

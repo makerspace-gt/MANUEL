@@ -286,7 +286,7 @@ git push
 - [ ] Endpunkte in mapped-repair-events umsetzen und als Pull Request einreichen
 - [ ] Workflow bauen, der nach dem Repair Café die Laufzettel auf reparatur-initiativen.org anlegt, bis dahin Laufzettel von Hand übertragen
 - [ ] Workflow für Terminvorschläge bauen, der Anmeldungen in Nuudel auswertet
-- [ ] Workflow für den Newsletter bauen, der nur Gäste mit Einwilligung für die Neuigkeiten unserer Initiative auf reparatur-initiativen.org anmeldet
+- [ ] Workflow für den Newsletter bauen, der nur Gäste anmeldet, für die Engagierte den Wunsch im Feld zur Einwilligung vermerkt haben. Die KI-Agenten dürfen dieses Feld nie setzen. Übermittelt wird nur die E-Mail-Adresse, der Endpunkt löst die Bestätigungsmail aus, jede Übermittlung erscheint einmalig als interne Notiz im Ticket und Fehler werden gemeldet
 
 ### Phase 6 Abschluss und Veröffentlichung
 

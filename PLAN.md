@@ -357,6 +357,24 @@ Alle drei Dienste würden denselben Ollama-Server über NetBird nutzen. Dafür m
 
 Unabhängig von MANUEL fehlt uns eine zentrale Nutzerverwaltung. [authentik](https://github.com/goauthentik/authentik) liegt dafür als Submodul in diesem Repo. Es steht weitgehend unter MIT, ein Unternehmensteil unter eigener Lizenz. Laut [Doku zu Integrationen](https://docs.goauthentik.io/integrations/) lassen sich viele unserer Dienste per OpenID Connect oder SAML anbinden. Für MANUEL betrifft das vor allem NetBird, n8n, Open WebUI und Zammad. NetBird kann authentik [als Identity Provider nutzen](https://docs.netbird.io/selfhosted/identity-providers/authentik). Kommt authentik bald, richten wir NetBird gleich damit ein statt mit dem eingebauten Dex.
 
+## Infrastruktur als Code
+
+Langfristig soll die gesamte Infrastruktur aus Git entstehen, von der VM bis zum Dienst. Die Bausteine dafür greifen in drei Schichten ineinander.
+
+| Schicht | Werkzeug | Aufgabe |
+|---|---|---|
+| VMs | [OpenTofu](https://github.com/opentofu/opentofu) mit dem [Provider für OpenNebula](https://search.opentofu.org/provider/opennebula/opennebula/latest) | VMs mit CPU, Arbeitsspeicher, Platten, Netz und SSH-Schlüsseln in [OpenNebula](https://docs.opennebula.io/stable/) anlegen |
+| Hosts und Dienste | Ansible in docker-compose-server | Grundsystem, NetBird-Client, Agenten von Arcane und Beszel und die Compose-Stacks der Dienste |
+| Updates im Betrieb | Arcane | Neue Images erkennen und nach Regeln aktualisieren |
+
+- **Ein Repo für VMs und Dienste.** Der Code für OpenTofu kommt als Ordner tofu/ nach docker-compose-server. So ändert ein Commit eine VM und die Dienste darauf gemeinsam. OpenTofu schreibt die Inventardatei für Ansible, alternativ liest Ansible die VMs direkt über das [Inventory-Plugin für OpenNebula](https://github.com/ansible-collections/community.general/blob/main/plugins/inventory/opennebula.py).
+- **Der Zustand von OpenTofu enthält Geheimnisse.** Wir verschlüsseln ihn mit der eingebauten [Verschlüsselung des State](https://opentofu.org/docs/language/state/encryption/) und legen den Schlüssel im Ansible Vault ab.
+- **Ansible läuft bei jedem Commit.** Ein Runner von [Forgejo Actions](https://forgejo.org/docs/latest/user/actions/overview/) führt die Playbooks aus. Bei einem Pull Request laufen ansible-lint, `ansible-playbook --check --diff` und `tofu plan`. Nach dem Merge auf main laufen nur die Playbooks, deren Rollen sich geändert haben. `tofu apply` und das Playbook für Zammad starten wir von Hand, weil sie VMs löschen oder Datenbanken migrieren können. Bis Forgejo steht, geht dasselbe mit einem [eigenen Runner für GitHub Actions](https://docs.github.com/en/actions/hosting-your-own-runners).
+- **Der Runner läuft bei uns, nicht in der Cloud.** Er braucht den SSH-Schlüssel für alle Hosts, das Passwort für den Ansible Vault und den Zugang zu OpenNebula. Diese Geheimnisse gehören nicht zu einem fremden Anbieter. Der [selbst gehostete Runner](https://forgejo.org/docs/latest/admin/actions/runner-installation/) erreicht die Hosts über NetBird.
+- **Eigene Forgejo-Instanz.** [Forgejo](https://codeberg.org/forgejo/forgejo) steht unter GPL-3.0 und ist nur über NetBird erreichbar. Die Anmeldung läuft über [authentik](https://docs.goauthentik.io/integrations/services/forgejo/). Öffentliche Repos wie MANUEL spiegeln wir per [Push-Mirror](https://forgejo.org/docs/latest/user/repo-mirror/) weiter nach GitHub oder Codeberg, damit andere Initiativen sie finden.
+- **Eine Verwaltungs-VM für Forgejo, Runner und Arcane-Server.** Alle drei steuern die übrigen Hosts. Sie liegen getrennt von der Zugangs-VM mit authentik, NetBird und Vaultwarden, weil der Runner fremden Code aus Repos ausführt.
+- **Henne und Ei.** Die Verwaltungs-VM und Forgejo richten wir einmalig von einem Admin-Rechner aus mit OpenTofu und Ansible ein. Danach übernimmt die CI alle übrigen Hosts. Änderungen an der Verwaltungs-VM selbst laufen weiter von Hand.
+
 ## Zeitplan
 
 | Zeitraum | Phase |
@@ -399,9 +417,11 @@ MANUEL/
 ├── vikunja/               Submodul für den Ausblick, AGPL-3.0
 ├── authentik/             Submodul für die zentrale Nutzerverwaltung, MIT
 ├── arcane/                Submodul mit der Verwaltung der Docker-Hosts als Ersatz für watchtower, BSD-3-Clause
-└── beszel/                Submodul mit der Überwachung der Ressourcen, MIT
+├── beszel/                Submodul mit der Überwachung der Ressourcen, MIT
+├── opentofu/              Submodul für das Anlegen der VMs, MPL-2.0
+└── forgejo/               Submodul für die eigene Git-Instanz, GPL-3.0
 ```
 
-Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja, Signal, authentik, Arcane und Beszel sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
+Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja, Signal, authentik, Arcane, Beszel, OpenTofu und Forgejo sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
 
 Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von docker-compose-server.

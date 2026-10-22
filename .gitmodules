@@ -4,9 +4,6 @@
 [submodule "datenpotenzialanalyse-repairc-cafe-gt"]
 	path = datenpotenzialanalyse-repairc-cafe-gt
 	url = https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt.git
-[submodule "docker-compose-server"]
-	path = docker-compose-server
-	url = https://github.com/makerspace-gt/docker-compose-server.git
 [submodule "ollama"]
 	path = ollama
 	url = https://github.com/ollama/ollama.git

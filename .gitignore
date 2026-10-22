@@ -5,3 +5,6 @@ _build-*/**
 *_chunkah_*
 *_rpm-ostree_*
 *.ign
+
+# Open Repair Data, download from https://openrepair.org/open-data/
+OpenRepairData_*

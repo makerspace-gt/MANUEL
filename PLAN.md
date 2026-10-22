@@ -38,7 +38,7 @@ Die gesamte Infrastruktur wird neu aufgesetzt, bestehende VMs übernehmen wir ni
 Grundsätze für den Betrieb:
 
 - **Ein Mensch entscheidet.** MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. Das ist zugleich die Qualitätskontrolle, die die Datenpotenzialanalyse empfiehlt. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
-- **Weboberflächen nur über NetBird.** Alle Weboberflächen sind am Ende nur über NetBird erreichbar. SSH mit Schlüssel bleibt direkt möglich und ist damit auch der Notzugang, falls NetBird ausfällt. Ausnahmen stehen im Abschnitt zur Erreichbarkeit.
+- **Weboberflächen nur über NetBird.** Ollama, Open WebUI und alle übrigen Weboberflächen sind nur über NetBird erreichbar, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md).
 - **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Echte Ticketdaten landen nie in diesem öffentlichen Repo.
 - **Code rechnet, das Modell formuliert.** Zählen, Zuordnen, Termine planen und Daten übertragen erledigen Zammad-Trigger und n8n-Workflows nach festen Regeln. Das Sprachmodell liest aus Freitext heraus, schreibt Texte und fasst zusammen.
 - **Alles ist Code.** Die Einrichtung des Hosts liegt als Ansible-Rollen in docker-compose-server. Prompts, exportierte n8n-Workflows, Testsatz-Werkzeuge und Doku liegen hier. Die Konfiguration der KI-Agenten in Zammad, also Regeln und Beschreibungen der Auswahlwerte, legen wir als Kopie in prompts/ ab.
@@ -54,63 +54,20 @@ Grundsätze für den Betrieb:
 | Anzahl der Modelle | Ein Sprachmodell für alle Aufgaben mit einem eigenen Prompt pro Aufgabe, dazu ein kleines Embedding-Modell. Zwei große Modelle passen kaum gleichzeitig in den Speicher der GPU, und jeder Wechsel kostet Ladezeit | Zusätzlich ein kleines Sprachmodell, falls der Benchmark zeigt, dass einfache Aufgaben zu lange dauern |
 | Embedding-Modell | [bge-m3](https://ollama.com/library/bge-m3), das Zammad für Ollama [selbst empfiehlt](https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb). Es ist mehrsprachig und dient der semantischen Suche in der Wissensdatenbank | [qwen3-embedding](https://ollama.com/library/qwen3-embedding) |
 | Reparaturanleitungen | [Wissensdatenbank von Zammad](https://admin-docs.zammad.org/en/latest/manage/knowledge-base.html). Zammad erzeugt Artikel aus einem Ticket und zeigt per Embedding [passende Artikel am Ticket](https://github.com/zammad/zammad/blob/develop/app/services/service/ticket/ai/related_knowledge_base_answers.rb) an | Wiki.js mit eigenem Embedding-Workflow in n8n |
-| Termin im Ticket | Eigenes Datumsfeld Termin über die [Objektverwaltung von Zammad](https://admin-docs.zammad.org/en/latest/system/objects.html) statt der Wartezeit des Tickets. Dann entfällt unsere angepasste Kopie der ticket.rb, siehe Abschnitt dazu unten | Kleiner Patch als Initializer statt Kopie der ganzen Datei |
+| Termin im Ticket | Eigenes Datumsfeld Termin über die [Objektverwaltung von Zammad](https://admin-docs.zammad.org/en/latest/system/objects.html) statt der Wartezeit des Tickets. Dann entfällt unsere angepasste Kopie der ticket.rb, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md) | Kleiner Patch als Initializer statt Kopie der ganzen Datei |
 | Vernetzung und Fernzugriff | [NetBird](https://docs.netbird.io/) mit Regeln, die nur der Helpdesk-VM den Zugriff auf Ollama und nur Admins den Zugriff per SSH erlauben | Tailscale, das in uCore schon enthalten ist |
 | Zugang zu Open WebUI | [Open WebUI](https://docs.openwebui.com/) über NetBird für Engagierte mit Konto | Über Traefik auf der Helpdesk-VM, die Open WebUI per NetBird erreicht |
-| Betrieb von NetBird | Management, Signal und Relay von NetBird auf der Zugangs-VM nach der [Anleitung zum Selbsthosten](https://docs.netbird.io/selfhosted/selfhosted-quickstart). Alle übrigen VMs und der Mini-PC bekommen nur den Client | NetBird Cloud im kostenlosen Tarif |
 | Startmodell | [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) mit festem Tag statt latest. Als Mixture-of-Experts-Modell sind pro Token nur etwa 3B Parameter aktiv, was bei begrenzter Speicherbandbreite zählt. Mit 23 bis 24 GB passt es in den Speicher, und es versteht auch Bilder wie Fotos von Typenschildern | Varianten mit MTP oder q8_0 und das dichte qwen3.6:27b als Vergleich im Benchmark |
-| Updates der Container | [Arcane](https://getarcane.app) statt watchtower auf allen Hosts. Ein zentraler Arcane-Server verwaltet die Docker-Hosts über Agenten, die sich [ausgehend verbinden](https://github.com/getarcaneapp/arcane/tree/main/docker/examples) und keine offenen Ports brauchen. Arcane erkennt neue Images, aktualisiert nach Zeitplan, meldet per Signal und kann sich an authentik anmelden. Es steht unter BSD-3-Clause. Der Arcane-Server steuert Docker auf allen Hosts und gehört deshalb auf eine gehärtete VM, erreichbar nur über NetBird. Die Compose-Dateien bleiben in Ansible, die GitOps-Funktion von Arcane nutzen wir nicht, damit nicht zwei Werkzeuge dieselben Dateien schreiben. Zammad aktualisieren wir nicht automatisch, sondern nach Hinweis von Arcane von Hand, weil Datenbankmigrationen und unsere Anpassungen geprüft werden müssen | watchtower wie bisher |
-| Überwachung der Ressourcen | [Beszel](https://beszel.dev) mit einem Hub neben Uptime Kuma auf der Monitoring-VM und einem Agenten auf jedem Host. Uptime Kuma meldet, ob Dienste erreichbar sind, Beszel meldet volle Platten, knappen Speicher, hohe Last, Temperaturen und SMART-Werte. Die Agenten können sich per WebSocket ausgehend mit dem Hub verbinden. Auf dem Mini-PC liest Beszel auch die [AMD-GPU](https://beszel.dev/guide/gpu) aus. Benachrichtigungen gehen über Shoutrrr, also auch per Signal, und die Anmeldung kann über [OAuth mit authentik](https://beszel.dev/guide/oauth) laufen. Beszel steht unter MIT | Nur Uptime Kuma wie bisher |
 | Hostname | Neuer Eintrag in der Inventardatei hosts von docker-compose-server | |
 | Testinstanz für Zammad | Test-VM, die OpenTofu nur bei Bedarf anlegt | Direkt im Echtsystem mit eigener Testgruppe |
-| Wiki | Wiki.js nicht neu aufsetzen. Reparaturanleitungen kommen in die Wissensdatenbank von Zammad, Vereinswissen wie Maschinen, Kenntnisse und Abläufe in [Wiki-Beiträge in Discourse](https://meta.discourse.org/t/what-is-a-wiki-post/30801), wo der KI-Bot sie für Antworten nutzt. Doku zur IT liegt als Markdown in den Repos in Forgejo neben dem Code. Für den Umzug exportiert Wiki.js alle Seiten per [Git-Speicher](https://docs.requarks.io/storage/git) als Markdown. [Wiki.js](https://github.com/Requarks/wiki) wird aktiv entwickelt, Version 3 ist aber seit Jahren im Beta-Stadium | Wiki.js 2 neu aufsetzen und später auf Version 3 umsteigen |
 
 Laut [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama) lässt sich Ollama direkt als KI-Anbieter mit URL und Modell eintragen. Zammad verbindet sich dabei selbst mit Ollama. Die Doku nennt keine Anmeldung oder TLS für Ollama, deshalb schützen wir den Zugang über NetBird.
 
 Laut [Quellcode des Ollama-Anbieters](https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb) ruft Zammad Ollama über /api/generate auf, schaltet das Nachdenken ab, setzt die Temperatur auf 0 und verlangt bei Bedarf JSON. Eine Kontextlänge schickt Zammad nicht mit, die muss Ollama selbst vorgeben. Die [Agententypen](https://github.com/zammad/zammad/tree/develop/app/models/ai/agent/type) umfassen unter anderem Ticket Categorizer für Auswahlfelder auch als Baum, Ticket Text Extractor für Text, Zahlen und Auswahlwerte, Ticket Tagger und Custom AI Agent. Ein Agent wird über einen normalen Trigger ausgelöst und wendet sein Ergebnis mit denselben Aktionen wie ein Trigger an, also Feldänderungen, interne Notizen oder Webhooks. Ob unsere Zammad-Version all das schon bietet, prüfen wir in Phase 0.
 
-## Erreichbarkeit
+## Infrastruktur
 
-Am Ende sind alle Weboberflächen nur über NetBird erreichbar. Das verkleinert die Angriffsfläche deutlich, weil Zammad, n8n, Arcane, Vaultwarden und die übrigen Dienste nicht mehr aus dem Internet ansprechbar sind. SSH mit Schlüssel bleibt direkt erreichbar.
-
-Einige Dienste müssen trotzdem öffentlich bleiben, weil sie vor oder außerhalb von NetBird gebraucht werden:
-
-- **NetBird selbst.** Management, Signal und Relay müssen erreichbar sein, damit sich Clients überhaupt verbinden können.
-- **authentik.** Die Anmeldung bei NetBird läuft über authentik, bevor der Tunnel steht. Nur die Seiten für Anmeldung und OpenID Connect müssen öffentlich sein, die Verwaltung kann hinter NetBird.
-- **Was Gäste nutzen.** Gäste haben kein NetBird. Zu klären ist, ob wir ein Webformular von Zammad auf der Webseite, das Kundenportal oder eine öffentliche Wissensdatenbank mit Reparaturanleitungen anbieten. Das Forum auf Discourse und der Kalender aus Nextcloud, der auf der Webseite erscheint, sind ebenfalls öffentlich. Für diese Teile veröffentlichen wir nur die nötigen Pfade.
-
-Damit das funktioniert, braucht es drei Änderungen:
-
-- **Zertifikate per DNS-Challenge.** Traefik holt Zertifikate bisher über HTTP und braucht dafür öffentliche Erreichbarkeit. Mit der [DNS-Challenge](https://doc.traefik.io/traefik/https/acme/) geht das auch für interne Dienste. Unser DNS-Anbieter lima-city wird vom zugrunde liegenden ACME-Werkzeug lego [unterstützt](https://go-acme.github.io/lego/dns/limacity/). Dafür brauchen wir einen API-Schlüssel von lima-city im Ansible Vault.
-- **Namen auflösen.** Die Namen der Dienste zeigen auf die NetBird-Adressen der Hosts. Das geht über die [DNS-Verwaltung von NetBird](https://docs.netbird.io/manage/dns) oder über öffentliche Einträge mit den NetBird-Adressen.
-- **Zugriff nach Gruppen.** Die [Zugriffsregeln von NetBird](https://docs.netbird.io/manage/access-control) legen fest, welche Gruppe welchen Dienst erreicht, zum Beispiel Admins alles und Engagierte des Repair Cafés nur Zammad und Open WebUI. Die Gruppen kommen aus authentik.
-
-Engagierte brauchen dafür den NetBird-Client auf ihrem Gerät. Für das Repair Café in der Stadtbibliothek planen wir deshalb eine kurze Anleitung und Zeit zum Einrichten ein. Für einen Ausfall von NetBird bleibt der Weg über SSH mit Portweiterleitung, damit Admins weiter an Vaultwarden und die übrigen Dienste kommen.
-
-## Angepasste ticket.rb
-
-Die bisherige Rolle zammad in docker-compose-server ersetzt die komplette [ticket.rb](https://github.com/makerspace-gt/docker-compose-server/blob/main/roles/zammad/files/app/models/ticket.rb) von Zammad. Die Datei ist eine Kopie aus Zammad 7.1.0 bis 7.1.2 mit rund 770 Zeilen. Gegenüber der [Originaldatei](https://github.com/zammad/zammad/blob/7.1.2/app/models/ticket.rb) ist nur eine Zeile geändert. In der Methode reset_pending_time ist `self.pending_time = nil` auskommentiert. Damit bleibt die Wartezeit eines Tickets erhalten, wenn es den Status warten verlässt. Vermutlich nutzen wir sie als Termin im Repair Café.
-
-Das Problem ist die Kopie, nicht die Änderung. Bei jedem Update von Zammad muss die ganze Datei neu abgeglichen werden. Die [aktuelle ticket.rb](https://github.com/zammad/zammad/blob/develop/app/models/ticket.rb) weicht schon an mehreren Stellen ab, zum Beispiel bei Rechten, Live-Nutzern und dem Zusammenführen von Tickets. Eine veraltete Kopie kann neue Funktionen wie die KI-Agenten still stören.
-
-Beim Neuaufbau übernehmen wir die Kopie nicht. Es gibt zwei bessere Lösungen:
-
-1. **Eigenes Datumsfeld Termin.** Ein Feld vom Typ Datum und Uhrzeit über die [Objektverwaltung](https://admin-docs.zammad.org/en/latest/system/objects.html) braucht gar keinen Patch. Übersichten, Trigger und n8n können es nutzen, und die Terminvorschläge schreiben direkt hinein. Die Wartezeit funktioniert dann wieder wie vorgesehen. Beim Umzug der Daten übernehmen wir bestehende Wartezeiten einmalig per Rails-Konsole in das neue Feld. Das empfehlen wir.
-2. **Nur die eine Methode überschreiben.** Statt der ganzen Datei binden wir einen kleinen Initializer in die Container zammad-railsserver und zammad-scheduler ein. Er muss nur angepasst werden, wenn Zammad die Methode umbenennt.
-
-```ruby
-# config/initializers/zz_keep_pending_time.rb
-# Keep the pending time when a ticket leaves a pending state
-Rails.application.config.to_prepare do
-  Ticket.class_eval do
-    private
-
-    def reset_pending_time
-      true
-    end
-  end
-end
-```
+MANUEL läuft auf der neu aufgebauten IT des Vereins. Zugangs-VM mit authentik und NetBird, Helpdesk-VM mit Zammad und n8n, Erreichbarkeit nur über NetBird, Updates mit Arcane und Überwachung mit Beszel beschreibt der [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md) in docker-compose-server. Für MANUEL muss davon bis zum 31.12.2026 nur Stufe 1 stehen.
 
 ## Aufgaben
 
@@ -206,7 +163,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Gerät bestellen und Rechnung vor dem 31.12.2026 bezahlen
 - [ ] Offene Entscheidungen oben treffen
 - [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren
-- [ ] Termin als eigenes Datumsfeld anlegen und beim Umzug bestehende Wartezeiten übernehmen, die angepasste ticket.rb kommt nicht mit, siehe Abschnitt zur ticket.rb
+- [ ] Termin als eigenes Datumsfeld anlegen und beim Umzug bestehende Wartezeiten übernehmen, die angepasste ticket.rb kommt nicht mit, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md)
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
 - [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl, die Marke als Textfeld
@@ -217,22 +174,9 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Standort, Stromversorgung und LAN-Anschluss im Makerspace klären
 - [ ] Zuständige Engagierte für Betrieb, Prompts und Auswertung finden
 
-### Phase 0b Zugangs-VM
+### Phase 0b Voraussetzungen aus dem IT-Plan
 
-- [ ] Zugangs-VM mit öffentlicher IP anlegen, später per OpenTofu, und DNS-Eintrag setzen
-- [ ] Grundsystem per Ansible einrichten
-- [ ] authentik einrichten, nach der [Installationsanleitung](https://github.com/goauthentik/authentik/blob/main/website/docs/install-config/install/docker-compose.mdx) mit PostgreSQL, Server und Worker
-- [ ] Vaultwarden auf die Zugangs-VM umziehen, ohne Anmeldung über authentik, damit es auch bei einem Ausfall von authentik erreichbar bleibt
-- [ ] Rolle netbird mit Management, Signal, Relay und Dashboard anlegen, Traefik übernimmt TLS. Als Vorlage dienen [getting-started.sh](https://github.com/netbirdio/netbird/blob/main/infrastructure_files/getting-started.sh) und die Compose-Vorlage für Traefik im Submodul netbird
-- [ ] Firewall für HTTPS und die UDP-Ports von STUN und Relay öffnen
-- [ ] Anmeldung für das Dashboard [an authentik anbinden](https://docs.netbird.io/selfhosted/identity-providers/authentik)
-- [ ] Datenbank des Management-Servers per resticker sichern, weil ohne sie alle Peers und Regeln neu angelegt werden müssen
-- [ ] Monitor in Uptime Kuma anlegen, weil ohne Management und Relay keine neuen Verbindungen zustande kommen
-- [ ] Client auf der Helpdesk-VM installieren und testen, dass die Zammad-Container das NetBird-Netz über den Host erreichen
-- [ ] Traefik auf DNS-Challenge mit lima-city umstellen und den API-Schlüssel im Ansible Vault ablegen
-- [ ] Festlegen, welche Teile von Zammad, Discourse und Nextcloud für Gäste öffentlich bleiben
-- [ ] Weboberflächen Dienst für Dienst nur noch über NetBird erreichbar machen und Zugriffsregeln nach Gruppen aus authentik anlegen
-- [ ] Anleitung für Engagierte zum Einrichten des NetBird-Clients schreiben
+- [ ] Stufe 1 aus dem [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md) umsetzen, also Zugangs-VM mit authentik, NetBird und Vaultwarden und Helpdesk-VM mit Zammad
 
 ### Phase 0c Eigenes Image
 
@@ -349,66 +293,18 @@ git push
 
 ## Ausblick
 
-Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verfügt über welche Kenntnisse?« und »Welche Werkzeuge und Maschinen stehen im Verein zur Verfügung?« einzusetzen. Dafür bieten sich Dienste an, für die es in docker-compose-server schon Rollen gibt. Sie liegen als Submodule in diesem Repo.
+Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verfügt über welche Kenntnisse?« und »Welche Werkzeuge und Maschinen stehen im Verein zur Verfügung?« einzusetzen.
 
 - **Discourse als Wissensbasis und Chatbot.** Für das Forum gibt es die Rolle [discourse](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/discourse). Das mitgelieferte Plugin [discourse-ai](https://github.com/discourse/discourse/tree/main/plugins/discourse-ai) kann Ollama [direkt ansprechen](https://github.com/discourse/discourse/blob/main/plugins/discourse-ai/lib/completions/endpoints/ollama.rb). Es bringt einen KI-Bot mit eigenen Rollen und hinterlegten Dokumenten, Zusammenfassungen, semantische Suche und ähnliche Themen per Embedding mit. Ein Bot im Forum könnte Fragen zu Kenntnissen der Mitglieder und zu Werkzeugen beantworten, gestützt auf Beiträge und Dokumente des Vereins.
 - **Signal als Kanal für Benachrichtigungen.** Für [signal-cli-rest-api](https://github.com/bbernhard/signal-cli-rest-api) auf Basis von [signal-cli](https://github.com/AsamK/signal-cli) gibt es die Rolle [signal-cli-rest-api](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/signal-cli-rest-api). n8n könnte darüber Engagierte an Termine erinnern oder über neue Anmeldungen informieren. Später wäre auch ein Signal-Bot denkbar, der Fragen an MANUEL weiterleitet. Gäste schreiben wir nur mit ihrer Einwilligung an.
-- **Vikunja für Aufgaben aus dem Repair Café.** Für [Vikunja](https://vikunja.io/docs/) gibt es die Rolle [vikunja](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/vikunja). n8n könnte aus vertagten Reparaturen Aufgaben anlegen, etwa für die Besorgung von Ersatzteilen, und fehlendes Werkzeug aus der Statistik als Wunschliste für Anschaffungen sammeln.
-- **LanguageTool für Rechtschreibung und Grammatik.** Ein eigener [LanguageTool-Server](https://dev.languagetool.org/http-server) prüft Texte, ohne dass sie an einen fremden Dienst gehen. Engagierte binden ihn in die Browser-Erweiterung ein und nutzen ihn dann in Zammad, Discourse, Nextcloud und Forgejo. [LanguageTool](https://github.com/languagetool-org/languagetool) steht unter LGPL-2.1 und läuft auf der Kollaborations-VM. Als Java-Programm braucht es 1 bis 2 GB Arbeitsspeicher, die optionalen [N-Gramm-Daten](https://dev.languagetool.org/finding-errors-using-n-gram-data) für bessere Ergebnisse brauchen zusätzlich mehrere GB Platte. Ein Teil davon überschneidet sich mit den Textwerkzeugen von Zammad, LanguageTool funktioniert aber in allen Diensten und ohne Sprachmodell.
 
-Alle drei Dienste würden denselben Ollama-Server über NetBird nutzen. Dafür müssen die NetBird-Regeln um die jeweiligen Hosts erweitert werden.
-
-Unabhängig von MANUEL fehlt uns eine zentrale Nutzerverwaltung. [authentik](https://github.com/goauthentik/authentik) liegt dafür als Submodul in diesem Repo. Es steht weitgehend unter MIT, ein Unternehmensteil unter eigener Lizenz. Laut [Doku zu Integrationen](https://docs.goauthentik.io/integrations/) lassen sich viele unserer Dienste per OpenID Connect oder SAML anbinden. Für MANUEL betrifft das vor allem NetBird, n8n, Open WebUI und Zammad. NetBird kann authentik [als Identity Provider nutzen](https://docs.netbird.io/selfhosted/identity-providers/authentik). Kommt authentik bald, richten wir NetBird gleich damit ein statt mit dem eingebauten Dex.
-
-## Aufteilung und Größe der VMs
-
-Die Aufteilung folgt drei Regeln. Sensible Dienste liegen getrennt von Inhalten der Gäste, was zusammen ausfällt, darf zusammen liegen, und Abhängigkeiten zeigen nur von Fachanwendungen zu Zugang und Monitoring. Die Größen sind Schätzungen für den laufenden Betrieb, nicht die Summe aller Speichergrenzen. Pro VM rechnen wir etwa 1 GB für Betriebssystem, Docker, Traefik, CrowdSec, resticker und die Agenten von Arcane und Beszel ein.
-
-| VM | Dienste | RAM | vCPU | Lokale Platte | Grundlage |
-|---|---|---|---|---|---|
-| Zugang, neu | authentik, NetBird, Vaultwarden | 4 GB | 2 | 30 GB | authentik braucht laut [Installationsanleitung](https://github.com/goauthentik/authentik/blob/main/website/docs/install-config/install/docker-compose.mdx) mindestens 2 GB, NetBird und Vaultwarden sind klein |
-| Verwaltung, neu | Forgejo, Runner, Arcane-Server | 6 GB | 4 | 60 GB | Der Runner braucht Platz für Jobs mit Ansible, OpenTofu und Docker |
-| Helpdesk, neu | Zammad, n8n | 16 GB | 4 | 80 GB | Die [Zammad-Rolle](https://github.com/makerspace-gt/docker-compose-server/blob/main/roles/zammad/templates/.env.j2) erlaubt zusammen rund 13 GB, davon 4 GB für Elasticsearch. Dazu kommt n8n mit 1 bis 2 GB. Zammad speichert Anhänge in der Datenbank, und Elasticsearch hält künftig auch die Vektoren der semantischen Suche |
-| Kollaboration, neu | Nextcloud, Vikunja, LanguageTool | 6 GB | 3 | 40 GB | Die Dateien von Nextcloud liegen auf der Storagebox, lokal liegen nur Programme und Datenbanken. Wiki.js entfällt, dafür kommt LanguageTool dazu |
-| Fotos, neu | Immich | 6 GB | 4 | 30 GB plus Vorschaubilder | Laut [Anforderungen](https://github.com/immich-app/immich/blob/main/docs/docs/install/requirements.md) mindestens 6 GB und 2 Kerne. Die Datenbank muss auf lokaler SSD liegen und nie auf einem Netzlaufwerk, die Originale können auf die Storagebox |
-| Forum, neu | Discourse | 4 GB | 2 | 40 GB | Laut [Installationsanleitung](https://github.com/discourse/discourse/blob/main/docs/INSTALL-cloud.md) mindestens 1 GB mit Swap, empfohlen 2 GB und mehr. Mit discourse-ai und Embeddings eher 4 GB |
-| Monitoring, neu | Uptime Kuma, Beszel-Hub, signal-cli-rest-api | 2 GB | 2 | 20 GB | Alle drei sind klein, signal-cli braucht als Java-Programm etwa 0,5 GB |
-| Test, bei Bedarf | Testinstanz von Zammad | 8 GB | 2 | 40 GB | Nur bei Bedarf per OpenTofu anlegen und danach wieder löschen |
-| Mini-PC | Ollama, Open WebUI, optional Machine Learning für Immich | 64 GB | 12 Kerne | 1 TB | Sprachmodell mit 24 GB, Embedding-Modell, Varianten für den Benchmark |
-
-Zusammen brauchen die dauerhaften VMs etwa 44 GB Arbeitsspeicher und 21 vCPU, mit der Testinstanz 52 GB.
-
-- **Immich kann den Mini-PC mitnutzen.** Immich trennt das Machine Learning für Gesichter und Suche vom Server und kann es [auf einem anderen Rechner](https://github.com/immich-app/immich/blob/main/docs/docs/guides/remote-machine-learning.md) laufen lassen. Mit ROCm nutzt es auch AMD-GPUs, das Image dafür braucht laut [Doku](https://github.com/immich-app/immich/blob/main/docs/docs/features/ml-hardware-acceleration.md) aber 35 GB Platz. Dann bleibt die Immich-VM schlanker, und die Fotos werden trotzdem ausgewertet.
-- **Die Storagebox ist ein Netzlaufwerk.** Für die Dateien von Nextcloud und die Originale von Immich ist das in Ordnung. Datenbanken und die Vorschaubilder von Immich gehören auf die lokale Platte. Die Vorschaubilder belegen erfahrungsgemäß einen Bruchteil der Originale, die genaue Größe hängt von der Bibliothek ab.
-- **Die Zahlen prüfen wir mit Beszel.** Nach einigen Wochen Betrieb passen wir die Größen an den tatsächlichen Verbrauch an. Mit OpenTofu ist das eine Änderung in Git.
-
-### Neuaufbau
-
-Alle VMs entstehen neu, die Namen der Hosts legen wir beim Anlegen per OpenTofu fest. Die Daten der bestehenden Dienste ziehen trotzdem um, vor allem Tickets aus Zammad, Passwörter aus Vaultwarden, Dateien und Kalender aus Nextcloud, Seiten aus Wiki.js, die je nach Inhalt in Discourse, die Wissensdatenbank von Zammad oder Forgejo wandern, Aufgaben aus Vikunja und Beiträge aus Discourse. Dafür nutzen wir die Backups von resticker und die Aufgaben zur Wiederherstellung, die die Rollen für Zammad, Vaultwarden und Discourse schon mitbringen. Jeder Umzug ist zugleich ein Test der Wiederherstellung. Die alten VMs bleiben bis zur erfolgreichen Prüfung der neuen Dienste stehen.
-
-## Infrastruktur als Code
-
-Langfristig soll die gesamte Infrastruktur aus Git entstehen, von der VM bis zum Dienst. Die Bausteine dafür greifen in drei Schichten ineinander.
-
-| Schicht | Werkzeug | Aufgabe |
-|---|---|---|
-| VMs | [OpenTofu](https://github.com/opentofu/opentofu) mit dem [Provider für OpenNebula](https://search.opentofu.org/provider/opennebula/opennebula/latest) | VMs mit CPU, Arbeitsspeicher, Platten, Netz und SSH-Schlüsseln in [OpenNebula](https://docs.opennebula.io/stable/) anlegen |
-| Hosts und Dienste | Ansible in docker-compose-server | Grundsystem, NetBird-Client, Agenten von Arcane und Beszel und die Compose-Stacks der Dienste |
-| Updates im Betrieb | Arcane | Neue Images erkennen und nach Regeln aktualisieren |
-
-- **Ein Repo für VMs und Dienste.** Der Code für OpenTofu kommt als Ordner tofu/ nach docker-compose-server. So ändert ein Commit eine VM und die Dienste darauf gemeinsam. OpenTofu schreibt die Inventardatei für Ansible, alternativ liest Ansible die VMs direkt über das [Inventory-Plugin für OpenNebula](https://github.com/ansible-collections/community.general/blob/main/plugins/inventory/opennebula.py).
-- **Der Zustand von OpenTofu enthält Geheimnisse.** Wir verschlüsseln ihn mit der eingebauten [Verschlüsselung des State](https://opentofu.org/docs/language/state/encryption/) und legen den Schlüssel im Ansible Vault ab.
-- **Ansible läuft bei jedem Commit.** Ein Runner von [Forgejo Actions](https://forgejo.org/docs/latest/user/actions/overview/) führt die Playbooks aus. Bei einem Pull Request laufen ansible-lint, `ansible-playbook --check --diff` und `tofu plan`. Nach dem Merge auf main laufen nur die Playbooks, deren Rollen sich geändert haben. `tofu apply` und das Playbook für Zammad starten wir von Hand, weil sie VMs löschen oder Datenbanken migrieren können. Bis Forgejo steht, geht dasselbe mit einem [eigenen Runner für GitHub Actions](https://docs.github.com/en/actions/hosting-your-own-runners).
-- **Der Runner läuft bei uns, nicht in der Cloud.** Er braucht den SSH-Schlüssel für alle Hosts, das Passwort für den Ansible Vault und den Zugang zu OpenNebula. Diese Geheimnisse gehören nicht zu einem fremden Anbieter. Der [selbst gehostete Runner](https://forgejo.org/docs/latest/admin/actions/runner-installation/) erreicht die Hosts über NetBird.
-- **Eigene Forgejo-Instanz.** [Forgejo](https://codeberg.org/forgejo/forgejo) steht unter GPL-3.0 und ist nur über NetBird erreichbar. Die Anmeldung läuft über [authentik](https://docs.goauthentik.io/integrations/services/forgejo/). Öffentliche Repos wie MANUEL spiegeln wir per [Push-Mirror](https://forgejo.org/docs/latest/user/repo-mirror/) weiter nach GitHub oder Codeberg, damit andere Initiativen sie finden.
-- **Eine Verwaltungs-VM für Forgejo, Runner und Arcane-Server.** Alle drei steuern die übrigen Hosts. Sie liegen getrennt von der Zugangs-VM mit authentik, NetBird und Vaultwarden, weil der Runner fremden Code aus Repos ausführt.
-- **Henne und Ei.** Die Verwaltungs-VM und Forgejo richten wir einmalig von einem Admin-Rechner aus mit OpenTofu und Ansible ein. Danach übernimmt die CI alle übrigen Hosts. Änderungen an der Verwaltungs-VM selbst laufen weiter von Hand.
+Beide Dienste würden denselben Ollama-Server über NetBird nutzen. Weitere Dienste wie Vikunja und LanguageTool beschreibt der [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md).
 
 ## Zeitplan
 
 | Zeitraum | Phase |
 |---|---|
-| bis Lieferung | Phase 0, 0b und 0c |
+| bis Lieferung | Phase 0, 0b mit Stufe 1 des IT-Plans und 0c |
 | November 2026, erste Hälfte | Phase 1 und 2 |
 | November 2026 | Phase 3 mit Test beim Repair Café |
 | Dezember 2026 | Phase 4 mit Echtbetrieb beim Repair Café |
@@ -435,25 +331,9 @@ MANUEL/
 ├── mapped-repair-events/  Submodul mit der Plattform der anstiftung, GPL-3.0
 ├── datenpotenzialanalyse-repairc-cafe-gt/  Submodul mit der Hausarbeit zu unseren Laufzetteln, CC BY 4.0
 ├── docker-compose-server/  Submodul mit unserer IT-Infrastruktur als Ansible-Rollen
-├── zammad/                Submodul mit dem Quellcode von Zammad, AGPL-3.0
-├── zammad-docker-compose/ Submodul mit dem Docker-Compose-Stack von Zammad, AGPL-3.0
-├── n8n/                   Submodul mit dem Quellcode von n8n, Sustainable Use License
-├── netbird/               Submodul mit dem Quellcode von NetBird, BSD-3-Clause, Server-Teile AGPL-3.0
-├── ollama/                Submodul mit dem Quellcode von Ollama, MIT
-├── signal-cli/            Submodul für den Ausblick, GPL-3.0
-├── signal-cli-rest-api/   Submodul für den Ausblick, MIT
-├── discourse/             Submodul für den Ausblick, GPL-2.0
-├── vikunja/               Submodul für den Ausblick, AGPL-3.0
-├── authentik/             Submodul für die zentrale Nutzerverwaltung, MIT
-├── arcane/                Submodul mit der Verwaltung der Docker-Hosts als Ersatz für watchtower, BSD-3-Clause
-├── beszel/                Submodul mit der Überwachung der Ressourcen, MIT
-├── opentofu/              Submodul für das Anlegen der VMs, MPL-2.0
-├── forgejo/               Submodul für die eigene Git-Instanz, GPL-3.0
-├── immich/                Submodul für die Verwaltung von Bildern, AGPL-3.0
-├── languagetool/          Submodul für Rechtschreibung und Grammatik, LGPL-2.1
-└── vaultwarden/           Submodul mit dem Passwortmanager, AGPL-3.0
+└── ollama/                Submodul mit dem Quellcode von Ollama, MIT
 ```
 
-Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja, Signal, authentik, Arcane, Beszel, OpenTofu, Forgejo, Immich, LanguageTool und Vaultwarden sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
+Das Submodul von Ollama ist groß und deshalb in `.gitmodules` als shallow markiert. Die Quellen der übrigen Dienste liegen in docker-compose-server unter `upstream/`. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, getrennt vom Submodul `upstream/n8n` in docker-compose-server.
 
 Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von docker-compose-server.

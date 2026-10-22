@@ -1,6 +1,6 @@
 # Plan
 
-Dieser Plan beschreibt, wie wir MANUEL vom Kauf der Hardware bis zum Verwendungsnachweis umsetzen. Er knüpft an unsere bestehende Infrastruktur in [docker-compose-server](https://github.com/makerspace-gt/docker-compose-server) an.
+Dieser Plan beschreibt, wie wir MANUEL vom Kauf der Hardware bis zum Verwendungsnachweis umsetzen. Die Infrastruktur dafür entsteht im Repo [it-infrastructure](https://github.com/makerspace-gt/it-infrastructure).
 
 ## Rahmenbedingungen
 
@@ -38,11 +38,11 @@ Die gesamte Infrastruktur wird neu aufgesetzt, bestehende VMs übernehmen wir ni
 Grundsätze für den Betrieb:
 
 - **Ein Mensch entscheidet.** MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. Das ist zugleich die Qualitätskontrolle, die die Datenpotenzialanalyse empfiehlt. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
-- **Weboberflächen nur über NetBird.** Ollama, Open WebUI und alle übrigen Weboberflächen sind nur über NetBird erreichbar, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md).
-- **Datenschutz von Anfang an.** Löschfristen, Datenschutzhinweis und Verzeichnis von Verarbeitungstätigkeiten entstehen zusammen mit den Feldern in Zammad, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md).
+- **Weboberflächen nur über NetBird.** Ollama, Open WebUI und alle übrigen Weboberflächen sind nur über NetBird erreichbar, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
+- **Datenschutz von Anfang an.** Löschfristen, Datenschutzhinweis und Verzeichnis von Verarbeitungstätigkeiten entstehen zusammen mit den Feldern in Zammad, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
 - **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Echte Ticketdaten landen nie in diesem öffentlichen Repo.
 - **Code rechnet, das Modell formuliert.** Zählen, Zuordnen, Termine planen und Daten übertragen erledigen Zammad-Trigger und n8n-Workflows nach festen Regeln. Das Sprachmodell liest aus Freitext heraus, schreibt Texte und fasst zusammen.
-- **Alles ist Code.** Die Einrichtung des Hosts liegt als Ansible-Rollen in docker-compose-server. Prompts, exportierte n8n-Workflows, Testsatz-Werkzeuge und Doku liegen hier. Die Konfiguration der KI-Agenten in Zammad, also Regeln und Beschreibungen der Auswahlwerte, legen wir als Kopie in prompts/ ab.
+- **Alles ist Code.** Die Einrichtung des Hosts liegt als Ansible-Rollen in it-infrastructure. Prompts, exportierte n8n-Workflows, Testsatz-Werkzeuge und Doku liegen hier. Die Konfiguration der KI-Agenten in Zammad, also Regeln und Beschreibungen der Auswahlwerte, legen wir als Kopie in prompts/ ab.
 
 ## Offene Entscheidungen
 
@@ -55,11 +55,11 @@ Grundsätze für den Betrieb:
 | Anzahl der Modelle | Ein Sprachmodell für alle Aufgaben mit einem eigenen Prompt pro Aufgabe, dazu ein kleines Embedding-Modell. Zwei große Modelle passen kaum gleichzeitig in den Speicher der GPU, und jeder Wechsel kostet Ladezeit | Zusätzlich ein kleines Sprachmodell, falls der Benchmark zeigt, dass einfache Aufgaben zu lange dauern |
 | Embedding-Modell | [bge-m3](https://ollama.com/library/bge-m3), das Zammad für Ollama [selbst empfiehlt](https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb). Es ist mehrsprachig und dient der semantischen Suche in der Wissensdatenbank | [qwen3-embedding](https://ollama.com/library/qwen3-embedding) |
 | Reparaturanleitungen | [Wissensdatenbank von Zammad](https://admin-docs.zammad.org/en/latest/manage/knowledge-base.html). Zammad erzeugt Artikel aus einem Ticket und zeigt per Embedding [passende Artikel am Ticket](https://github.com/zammad/zammad/blob/develop/app/services/service/ticket/ai/related_knowledge_base_answers.rb) an | Wiki.js mit eigenem Embedding-Workflow in n8n |
-| Termin im Ticket | Eigenes Datumsfeld Termin über die [Objektverwaltung von Zammad](https://admin-docs.zammad.org/en/latest/system/objects.html) statt der Wartezeit des Tickets. Dann entfällt unsere angepasste Kopie der ticket.rb, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md) | Kleiner Patch als Initializer statt Kopie der ganzen Datei |
+| Termin im Ticket | Eigenes Datumsfeld Termin über die [Objektverwaltung von Zammad](https://admin-docs.zammad.org/en/latest/system/objects.html) statt der Wartezeit des Tickets. Dann entfällt unsere angepasste Kopie der ticket.rb, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md) | Kleiner Patch als Initializer statt Kopie der ganzen Datei |
 | Vernetzung und Fernzugriff | [NetBird](https://docs.netbird.io/) mit Regeln, die nur der Helpdesk-VM den Zugriff auf Ollama und nur Admins den Zugriff per SSH erlauben | Tailscale, das in uCore schon enthalten ist |
 | Zugang zu Open WebUI | [Open WebUI](https://docs.openwebui.com/) über NetBird für Engagierte mit Konto | Über Traefik auf der Helpdesk-VM, die Open WebUI per NetBird erreicht |
 | Startmodell | [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) mit festem Tag statt latest. Als Mixture-of-Experts-Modell sind pro Token nur etwa 3B Parameter aktiv, was bei begrenzter Speicherbandbreite zählt. Mit 23 bis 24 GB passt es in den Speicher, und es versteht auch Bilder wie Fotos von Typenschildern | Varianten mit MTP oder q8_0 und das dichte qwen3.6:27b als Vergleich im Benchmark |
-| Hostname | Neuer Eintrag in der Inventardatei hosts von docker-compose-server | |
+| Hostname | Neuer Eintrag in der Inventardatei von it-infrastructure | |
 | Testinstanz für Zammad | Test-VM, die OpenTofu nur bei Bedarf anlegt | Direkt im Echtsystem mit eigener Testgruppe |
 
 Laut [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama) lässt sich Ollama direkt als KI-Anbieter mit URL und Modell eintragen. Zammad verbindet sich dabei selbst mit Ollama. Die Doku nennt keine Anmeldung oder TLS für Ollama, deshalb schützen wir den Zugang über NetBird.
@@ -68,7 +68,7 @@ Laut [Quellcode des Ollama-Anbieters](https://github.com/zammad/zammad/blob/deve
 
 ## Infrastruktur
 
-MANUEL läuft auf der neu aufgebauten IT des Vereins. Zugangs-VM mit authentik und NetBird, Helpdesk-VM mit Zammad und n8n, Erreichbarkeit nur über NetBird, Updates mit Arcane und Überwachung mit Beszel beschreibt der [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md) in docker-compose-server. Für MANUEL muss davon bis zum 31.12.2026 nur Stufe 1 stehen.
+MANUEL läuft auf der neu aufgebauten IT des Vereins. Zugangs-VM mit authentik und NetBird, Helpdesk-VM mit Zammad und n8n, Erreichbarkeit nur über NetBird, Updates mit Arcane und Überwachung mit Beszel beschreibt der [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md) in it-infrastructure. Für MANUEL muss davon bis zum 31.12.2026 nur Stufe 1 stehen.
 
 ## Aufgaben
 
@@ -164,7 +164,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Gerät bestellen und Rechnung vor dem 31.12.2026 bezahlen
 - [ ] Offene Entscheidungen oben treffen
 - [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren
-- [ ] Termin als eigenes Datumsfeld anlegen und beim Umzug bestehende Wartezeiten übernehmen, die angepasste ticket.rb kommt nicht mit, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md)
+- [ ] Termin als eigenes Datumsfeld anlegen und beim Umzug bestehende Wartezeiten übernehmen, die angepasste ticket.rb kommt nicht mit, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md)
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
 - [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl, die Marke als Textfeld
@@ -172,7 +172,9 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Zusätzliche Felder aus der Datenpotenzialanalyse anlegen, also wer repariert hat, Dauer der Reparatur, wieder aufgenommen und Werbung durch
 - [ ] Mit der anstiftung klären, ob database.sql dem aktuellen Stand der Kategorien und Marken auf reparatur-initiativen.org entspricht
 - [ ] Feld für die Einwilligung in den Newsletter anlegen
-- [ ] Löschfristen für Gästedaten in Zammad festlegen, solange die Felder neu entstehen, siehe Abschnitt Datenschutz im [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md)
+- [ ] Über [Core Workflows](https://admin-docs.zammad.org/en/latest/system/core-workflows.html) nur die Felder zeigen, die beim Repair Café gerade gebraucht werden, zum Beispiel Lösung und Ergebnis erst nach der Reparatur
+- [ ] [Übersichten](https://admin-docs.zammad.org/en/latest/manage/overviews.html) für das Repair Café anlegen, etwa Termine des nächsten Repair Cafés und offene Reparaturen
+- [ ] Löschfristen für Gästedaten in Zammad festlegen, solange die Felder neu entstehen, siehe Abschnitt Datenschutz im [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md)
 - [ ] Kurzen Datenschutzhinweis für Gäste schreiben, der auch die Unterstützung durch ein lokales Sprachmodell nennt
 - [ ] MANUEL in das Verzeichnis von Verarbeitungstätigkeiten aufnehmen, mit Zweck, verarbeiteten Feldern, lokaler Verarbeitung auf dem Mini-PC und Speicherdauer der Prompts in Ollama und Open WebUI
 - [ ] Standort, Stromversorgung und LAN-Anschluss im Makerspace klären
@@ -180,7 +182,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 
 ### Phase 0b Voraussetzungen aus dem IT-Plan
 
-- [ ] Stufe 1 aus dem [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md) umsetzen, also Zugangs-VM mit authentik, NetBird und Vaultwarden und Helpdesk-VM mit Zammad
+- [ ] Stufe 1 aus dem [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md) umsetzen, also Zugangs-VM mit authentik, NetBird und Vaultwarden und Helpdesk-VM mit Zammad
 
 ### Phase 0c Eigenes Image
 
@@ -223,7 +225,7 @@ git push
 - [ ] SSD verschlüsseln, weil der Mini-PC in der offenen Werkstatt steht. Fedora CoreOS kann das bei der Installation über die Butane-Datei mit LUKS und dem Schlüssel im TPM einrichten, siehe [Fedora-CoreOS-Doku zu Storage](https://docs.fedoraproject.org/en-US/fedora-coreos/storage/). Testen, ob das mit dem Wechsel auf unser Image zusammenspielt
 - [ ] Automatische Updates und Neustartfenster festlegen, zum Beispiel nachts um 02:00 wie bei unseren anderen Servern
 - [x] Prüfen, ob Python für Ansible vorhanden ist, und es sonst per rpm-ostree nachinstallieren
-- [ ] Host in docker-compose-server aufnehmen und den Arcane-Agenten ausrollen, für Ollama und Open WebUI mit automatischen Updates
+- [ ] Host in it-infrastructure aufnehmen und den Arcane-Agenten ausrollen, für Ollama und Open WebUI mit automatischen Updates
 - [ ] resticker einrichten und das Volume mit den Modellen vom Backup ausschließen, weil sich Modelle jederzeit neu laden lassen
 - [ ] Push-Monitor in Uptime Kuma anlegen
 - [ ] Beszel-Agenten ausrollen und Alarme für Plattenplatz, Arbeitsspeicher und Temperatur anlegen
@@ -235,7 +237,7 @@ git push
 
 - [ ] GPU-Stack prüfen mit vulkaninfo und Zugriff auf /dev/dri im Container
 - [ ] Speicherzuteilung für die GPU über UMA und GTT-Limit testen und dokumentieren
-- [ ] Rolle ollama in docker-compose-server anlegen und den Port nur an die NetBird-Adresse binden, weil Ollama keine Anmeldung kennt und Docker die Firewall des Hosts umgeht
+- [ ] Rolle ollama in it-infrastructure anlegen und den Port nur an die NetBird-Adresse binden, weil Ollama keine Anmeldung kennt und Docker die Firewall des Hosts umgeht
 - [ ] Prüfen, dass Ollama aus dem LAN und dem Gäste-WLAN des Makerspace nicht erreichbar ist
 - [ ] Kontrollieren, dass Modelle wirklich auf der GPU laufen und nicht auf der CPU, zum Beispiel an der GPU-Auslastung in Beszel
 - [ ] Leistungsprofil und TDP im BIOS auf Dauerbetrieb einstellen und den Einfluss auf die Geschwindigkeit messen
@@ -270,12 +272,13 @@ git push
 - [ ] Prüfen, dass kein Agent und kein Trigger E-Mails oder SMS an Gäste verschickt
 - [ ] Gegen die Testinstanz auf der Test-VM testen
 - [ ] Ollama in Zammad auf der Helpdesk-VM als Anbieter eintragen und Agenten und Trigger ins Echtsystem übernehmen
+- [ ] Prüfen, dass Vorschläge von MANUEL im Ticket gut erkennbar sind und Engagierte sie mit wenigen Klicks übernehmen oder korrigieren können, auch auf Tablet und Smartphone
 - [ ] Beim Repair Café im Dezember im Echtbetrieb einsetzen und Rückmeldungen zu den Notizen sammeln
 
 ### Phase 5 Wissensdatenbank und n8n
 
 - [ ] Wissensdatenbank in Zammad für Reparaturanleitungen einrichten und aus erfolgreichen Reparaturen Artikel erzeugen, die Engagierte vor der Veröffentlichung prüfen
-- [ ] Rolle n8n in docker-compose-server für die Helpdesk-VM anlegen, siehe [n8n-Doku zum Selbsthosten](https://docs.n8n.io/hosting/), hinter Traefik mit Anmeldung und mit Sicherung per resticker
+- [ ] Rolle n8n in it-infrastructure für die Helpdesk-VM anlegen, siehe [n8n-Doku zum Selbsthosten](https://docs.n8n.io/hosting/), hinter Traefik mit Anmeldung und mit Sicherung per resticker
 - [ ] Workflow für Statistik bauen, der Ergebnisse zählt und Freitexte zu fehlendem Werkzeug und Highlights zusammenfasst
 - [ ] Workflows als JSON nach n8n-workflows/ exportieren
 - [ ] Mit der anstiftung per Issue in mapped-repair-events klären, ob sie schreibende Endpunkte für Laufzettel und Neuigkeiten annehmen würde
@@ -301,10 +304,10 @@ git push
 
 Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verfügt über welche Kenntnisse?« und »Welche Werkzeuge und Maschinen stehen im Verein zur Verfügung?« einzusetzen.
 
-- **Discourse als Wissensbasis und Chatbot.** Für das Forum gibt es die Rolle [discourse](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/discourse). Das mitgelieferte Plugin [discourse-ai](https://github.com/discourse/discourse/tree/main/plugins/discourse-ai) kann Ollama [direkt ansprechen](https://github.com/discourse/discourse/blob/main/plugins/discourse-ai/lib/completions/endpoints/ollama.rb). Es bringt einen KI-Bot mit eigenen Rollen und hinterlegten Dokumenten, Zusammenfassungen, semantische Suche und ähnliche Themen per Embedding mit. Ein Bot im Forum könnte Fragen zu Kenntnissen der Mitglieder und zu Werkzeugen beantworten, gestützt auf Beiträge und Dokumente des Vereins.
-- **Signal als Kanal für Benachrichtigungen.** Für [signal-cli-rest-api](https://github.com/bbernhard/signal-cli-rest-api) auf Basis von [signal-cli](https://github.com/AsamK/signal-cli) gibt es die Rolle [signal-cli-rest-api](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/signal-cli-rest-api). n8n könnte darüber Engagierte an Termine erinnern oder über neue Anmeldungen informieren. Später wäre auch ein Signal-Bot denkbar, der Fragen an MANUEL weiterleitet. Gäste schreiben wir nur mit ihrer Einwilligung an.
+- **Discourse als Wissensbasis und Chatbot.** Für das Forum gibt es im alten Repo die Rolle [discourse](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/discourse). Das mitgelieferte Plugin [discourse-ai](https://github.com/discourse/discourse/tree/main/plugins/discourse-ai) kann Ollama [direkt ansprechen](https://github.com/discourse/discourse/blob/main/plugins/discourse-ai/lib/completions/endpoints/ollama.rb). Es bringt einen KI-Bot mit eigenen Rollen und hinterlegten Dokumenten, Zusammenfassungen, semantische Suche und ähnliche Themen per Embedding mit. Ein Bot im Forum könnte Fragen zu Kenntnissen der Mitglieder und zu Werkzeugen beantworten, gestützt auf Beiträge und Dokumente des Vereins.
+- **Signal als Kanal für Benachrichtigungen.** Für [signal-cli-rest-api](https://github.com/bbernhard/signal-cli-rest-api) auf Basis von [signal-cli](https://github.com/AsamK/signal-cli) gibt es im alten Repo die Rolle [signal-cli-rest-api](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/signal-cli-rest-api). n8n könnte darüber Engagierte an Termine erinnern oder über neue Anmeldungen informieren. Später wäre auch ein Signal-Bot denkbar, der Fragen an MANUEL weiterleitet. Gäste schreiben wir nur mit ihrer Einwilligung an.
 
-Beide Dienste würden denselben Ollama-Server über NetBird nutzen. Weitere Dienste wie Vikunja und LanguageTool beschreibt der [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/docker-compose-server/blob/main/PLAN.md).
+Beide Dienste würden denselben Ollama-Server über NetBird nutzen. Weitere Dienste wie Vikunja und LanguageTool beschreibt der [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
 
 ## Zeitplan
 
@@ -336,10 +339,10 @@ MANUEL/
 ├── n8n-workflows/   exportierte n8n-Workflows
 ├── mapped-repair-events/  Submodul mit der Plattform der anstiftung, GPL-3.0
 ├── datenpotenzialanalyse-repairc-cafe-gt/  Submodul mit der Hausarbeit zu unseren Laufzetteln, CC BY 4.0
-├── docker-compose-server/  Submodul mit unserer IT-Infrastruktur als Ansible-Rollen
+├── it-infrastructure/      Submodul mit der IT-Infrastruktur des Vereins als Code
 └── ollama/                Submodul mit dem Quellcode von Ollama, MIT
 ```
 
-Das Submodul von Ollama ist groß und deshalb in `.gitmodules` als shallow markiert. Die Quellen der übrigen Dienste liegen in docker-compose-server unter `upstream/`. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, getrennt vom Submodul `upstream/n8n` in docker-compose-server.
+Das Submodul von Ollama ist groß und deshalb in `.gitmodules` als shallow markiert. Die Quellen der übrigen Dienste liegen in it-infrastructure unter `upstream/`. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, getrennt vom Submodul `upstream/n8n` in it-infrastructure.
 
-Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von docker-compose-server.
+Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von it-infrastructure.

@@ -13,7 +13,7 @@ Dieser Plan beschreibt, wie wir MANUEL vom Kauf der Hardware bis zum Verwendungs
 
 ## Architektur
 
-Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf unseven.makerspace-gt.de. Beide sind über NetBird verbunden, sodass wir im Makerspace keine Ports öffnen müssen. Zammad nutzt Ollama über seine eingebauten KI-Funktionen als Anbieter. Alles, was Zammad nicht abdeckt, erledigen Workflows in n8n auf unseven. n8n holt Daten aus Zammad, Nuudel und dem Wiki, ruft bei Bedarf Ollama über NetBird auf und schreibt die Ergebnisse zurück. Der Mini-PC bleibt damit ein reiner Rechenknecht für Ollama und Open WebUI.
+Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf unseven.makerspace-gt.de. Beide sind über NetBird verbunden, sodass wir im Makerspace keine Ports öffnen müssen. Zammad nutzt Ollama als Anbieter für seine eingebauten KI-Funktionen. KI-Agenten in Zammad füllen die Felder im Ticket und schreiben interne Notizen. Die Wissensdatenbank von Zammad sammelt Reparaturanleitungen und zeigt passende Artikel direkt am Ticket an. n8n auf unseven übernimmt nur, was außerhalb von Zammad liegt, also Nuudel, reparatur-initiativen.org und die Statistik. Der Mini-PC bleibt damit ein reiner Rechenknecht für Ollama und Open WebUI.
 
 ```
                  Makerspace (LAN)                              Internet
@@ -22,13 +22,13 @@ Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf unseven.makerspace
 │                                              │      │                         │
 │  ┌──────────────┐        NetBird             │      │  ┌───────────────────┐  │
 │  │ Ollama       │◄───────────────────────────┼──────┼──┤ Zammad            │  │
-│  │ Sprachmodell │  nur für unseven erlaubt   │      │  │ KI-Funktionen     │  │
+│  │ Sprachmodell │  nur für unseven erlaubt   │      │  │ KI-Agenten        │  │
 │  │ Embeddings   │◄───────────────────────────┼──────┼─┐└─────────▲─────────┘  │
 │  └──────▲───────┘                            │      │ │          │ Webhooks   │
 │         │                                    │      │ │┌─────────┴─────────┐  │
 │  ┌──────┴───────┐                            │      │ └┤ n8n Workflows     │  │
 │  │ Open WebUI   │  Prompt-Tests, später Chat │      │  └───────────────────┘  │
-│  └──────────────┘                            │      │  Wiki.js              │
+│  └──────────────┘                            │      │  Wissensdatenbank     │
 │                                              │      └─────────────────────────┘
 │  watchtower · resticker · Uptime-Kuma-Push   │       Nuudel, Newsletter und
 └──────────────────────────────────────────────┘       reparatur-initiativen.org
@@ -36,21 +36,23 @@ Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf unseven.makerspace
 
 Grundsätze für den Betrieb:
 
-- **Ein Mensch entscheidet.** MANUEL schreibt nur interne Notizen und Tags. Er antwortet nie selbst an Gäste.
+- **Ein Mensch entscheidet.** MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. Das ist zugleich die Qualitätskontrolle, die die Datenpotenzialanalyse empfiehlt. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
 - **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Echte Ticketdaten landen nie in diesem öffentlichen Repo.
-- **Code rechnet, das Modell formuliert.** Zählen, Zuordnen, Termine planen und Daten übertragen erledigen n8n-Workflows nach festen Regeln. Das Sprachmodell liest aus Freitext heraus, schreibt Texte und fasst zusammen.
-- **Alles ist Code.** Die Einrichtung des Hosts liegt als Ansible-Rollen in docker-compose-server. Prompts, exportierte n8n-Workflows, Testsatz-Werkzeuge und Doku liegen hier.
+- **Code rechnet, das Modell formuliert.** Zählen, Zuordnen, Termine planen und Daten übertragen erledigen Zammad-Trigger und n8n-Workflows nach festen Regeln. Das Sprachmodell liest aus Freitext heraus, schreibt Texte und fasst zusammen.
+- **Alles ist Code.** Die Einrichtung des Hosts liegt als Ansible-Rollen in docker-compose-server. Prompts, exportierte n8n-Workflows, Testsatz-Werkzeuge und Doku liegen hier. Die Konfiguration der KI-Agenten in Zammad, also Regeln und Beschreibungen der Auswahlwerte, legen wir als Kopie in prompts/ ab.
 
 ## Offene Entscheidungen
 
 | Frage | Empfehlung | Alternative |
 |---|---|---|
 | Betriebssystem | [uCore Minimal](https://github.com/ublue-os/ucore) von Universal Blue auf Basis von [Fedora CoreOS](https://docs.fedoraproject.org/en-US/fedora-coreos/), weil es den neuesten Kernel mitbringt, der laut [Phoronix](https://www.phoronix.com/review/amd-perfopt/3) die LLM-Leistung von Radeon-iGPUs deutlich verbessert, sich atomar mit Rollback aktualisiert und zu Bluefin auf unseren Notebooks passt | Fedora Server mit gleichem Kernel, klassischer Paketverwaltung und einfacherer Anbindung an Ansible |
-| Inferenz-Server | [Ollama](https://docs.ollama.com/) im Container mit Vulkan-Backend | [llama.cpp](https://github.com/ggml-org/llama.cpp) mit [llama-swap](https://github.com/mostlygeek/llama-swap), falls Ollama die GPU schlecht nutzt |
-| Anbindung an Zammad | KI-Funktionen von Zammad selbst mit [Ollama als Anbieter](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama), das Zammad über NetBird erreicht, ergänzt um n8n-Workflows für alles, was Zammad nicht abdeckt | Eigener Worker in Python statt n8n |
+| Inferenz-Server | [Ollama](https://docs.ollama.com/) im Container. Vulkan und ROCm vergleichen wir im Benchmark, denn die [Ollama-Doku zu GPUs](https://github.com/ollama/ollama/blob/main/docs/gpu.mdx) führt den gfx1150 des HX 370 inzwischen auch für ROCm v7 | [llama.cpp](https://github.com/ggml-org/llama.cpp) mit [llama-swap](https://github.com/mostlygeek/llama-swap), falls Ollama die GPU schlecht nutzt |
+| Anbindung an Zammad | [KI-Agenten](https://admin-docs.zammad.org/en/latest/ai/ai-agents.html) und KI-Funktionen von Zammad mit [Ollama als Anbieter](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama), das Zammad über NetBird erreicht. Zammad füllt die Felder selbst, n8n übernimmt nur Aufgaben außerhalb von Zammad | n8n-Workflows auch für die Felder, falls die Agenten nicht reichen |
 | Automatisierung | [n8n selbst gehostet](https://docs.n8n.io/hosting/) auf unseven neben Zammad. Dort liegen die Zugangsdaten im Rechenzentrum statt in der offenen Werkstatt, Workflows ohne Sprachmodell laufen auch bei Neustart oder Ausfall des Mini-PCs, und Traefik, resticker und Uptime Kuma sind schon eingerichtet. n8n steht unter der [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md), die den Betrieb für eigene Zwecke erlaubt, aber keine Open-Source-Lizenz ist | n8n auf dem Mini-PC direkt neben Ollama |
 | Anzahl der Modelle | Ein Sprachmodell für alle Aufgaben mit einem eigenen Prompt pro Aufgabe, dazu ein kleines Embedding-Modell. Zwei große Modelle passen kaum gleichzeitig in den Speicher der GPU, und jeder Wechsel kostet Ladezeit | Zusätzlich ein kleines Sprachmodell, falls der Benchmark zeigt, dass einfache Aufgaben zu lange dauern |
-| Embedding-Modell | Ein mehrsprachiges Modell wie [bge-m3](https://ollama.com/library/bge-m3) oder [qwen3-embedding](https://ollama.com/library/qwen3-embedding) für die semantische Suche in Zammad und das Finden ähnlicher Tickets | |
+| Embedding-Modell | [bge-m3](https://ollama.com/library/bge-m3), das Zammad für Ollama [selbst empfiehlt](https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb). Es ist mehrsprachig und dient der semantischen Suche in der Wissensdatenbank | [qwen3-embedding](https://ollama.com/library/qwen3-embedding) |
+| Reparaturanleitungen | [Wissensdatenbank von Zammad](https://admin-docs.zammad.org/en/latest/manage/knowledge-base.html). Zammad erzeugt Artikel aus einem Ticket und zeigt per Embedding [passende Artikel am Ticket](https://github.com/zammad/zammad/blob/develop/app/services/service/ticket/ai/related_knowledge_base_answers.rb) an | Wiki.js mit eigenem Embedding-Workflow in n8n |
+| Termin im Ticket | Eigenes Datumsfeld Termin über die [Objektverwaltung von Zammad](https://admin-docs.zammad.org/en/latest/system/objects.html) statt der Wartezeit des Tickets. Dann entfällt unsere angepasste Kopie der ticket.rb, siehe Abschnitt dazu unten | Kleiner Patch als Initializer statt Kopie der ganzen Datei |
 | Vernetzung und Fernzugriff | [NetBird](https://docs.netbird.io/) mit Regeln, die nur unseven den Zugriff auf Ollama und nur Admins den Zugriff per SSH erlauben | Tailscale, das in uCore schon enthalten ist |
 | Zugang zu Open WebUI | [Open WebUI](https://docs.openwebui.com/) über NetBird für Engagierte mit Konto | Über Traefik auf unseven, das Open WebUI per NetBird erreicht |
 | Betrieb von NetBird | Eigene VM nur für Management, Signal und Relay von NetBird nach der [Anleitung zum Selbsthosten](https://docs.netbird.io/selfhosted/selfhosted-quickstart), eingerichtet als neuer Host in docker-compose-server. Der Mini-PC und unseven bekommen nur den Client | NetBird Cloud im kostenlosen Tarif |
@@ -58,22 +60,52 @@ Grundsätze für den Betrieb:
 | Hostname | Neuer Eintrag in der Inventardatei hosts von docker-compose-server | |
 | Testinstanz für Zammad | Host unstable aus docker-compose-server | Direkt im Echtsystem mit eigener Testgruppe |
 
-Laut [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama) lässt sich Ollama direkt als KI-Anbieter mit URL und Modell eintragen. Zammad verbindet sich dabei selbst mit Ollama. Die Doku nennt keine Anmeldung oder TLS für Ollama, deshalb schützen wir den Zugang über NetBird. Noch zu prüfen ist, welche KI-Funktionen unsere Zammad-Version bietet und ob sie Kategorisierung, Erstdiagnose und Lösungsvorschläge abdecken.
+Laut [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama) lässt sich Ollama direkt als KI-Anbieter mit URL und Modell eintragen. Zammad verbindet sich dabei selbst mit Ollama. Die Doku nennt keine Anmeldung oder TLS für Ollama, deshalb schützen wir den Zugang über NetBird.
+
+Laut [Quellcode des Ollama-Anbieters](https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb) ruft Zammad Ollama über /api/generate auf, schaltet das Nachdenken ab, setzt die Temperatur auf 0 und verlangt bei Bedarf JSON. Eine Kontextlänge schickt Zammad nicht mit, die muss Ollama selbst vorgeben. Die [Agententypen](https://github.com/zammad/zammad/tree/develop/app/models/ai/agent/type) umfassen unter anderem Ticket Categorizer für Auswahlfelder auch als Baum, Ticket Text Extractor für Text, Zahlen und Auswahlwerte, Ticket Tagger und Custom AI Agent. Ein Agent wird über einen normalen Trigger ausgelöst und wendet sein Ergebnis mit denselben Aktionen wie ein Trigger an, also Feldänderungen, interne Notizen oder Webhooks. Ob unsere Zammad-Version all das schon bietet, prüfen wir in Phase 0.
+
+## Angepasste ticket.rb
+
+Unsere Rolle zammad in docker-compose-server ersetzt die komplette [ticket.rb](https://github.com/makerspace-gt/docker-compose-server/blob/main/roles/zammad/files/app/models/ticket.rb) von Zammad. Die Datei ist eine Kopie aus Zammad 7.1.0 bis 7.1.2 mit rund 770 Zeilen. Gegenüber der [Originaldatei](https://github.com/zammad/zammad/blob/7.1.2/app/models/ticket.rb) ist nur eine Zeile geändert. In der Methode reset_pending_time ist `self.pending_time = nil` auskommentiert. Damit bleibt die Wartezeit eines Tickets erhalten, wenn es den Status warten verlässt. Vermutlich nutzen wir sie als Termin im Repair Café.
+
+Das Problem ist die Kopie, nicht die Änderung. Bei jedem Update von Zammad muss die ganze Datei neu abgeglichen werden. Die [aktuelle ticket.rb](https://github.com/zammad/zammad/blob/develop/app/models/ticket.rb) weicht schon an mehreren Stellen ab, zum Beispiel bei Rechten, Live-Nutzern und dem Zusammenführen von Tickets. Eine veraltete Kopie kann neue Funktionen wie die KI-Agenten still stören.
+
+Es gibt zwei bessere Lösungen:
+
+1. **Eigenes Datumsfeld Termin.** Ein Feld vom Typ Datum und Uhrzeit über die [Objektverwaltung](https://admin-docs.zammad.org/en/latest/system/objects.html) braucht gar keinen Patch. Übersichten, Trigger und n8n können es nutzen, und die Terminvorschläge schreiben direkt hinein. Die Wartezeit funktioniert dann wieder wie vorgesehen. Bestehende Wartezeiten übernehmen wir einmalig per Rails-Konsole in das neue Feld. Das empfehlen wir.
+2. **Nur die eine Methode überschreiben.** Statt der ganzen Datei binden wir einen kleinen Initializer in die Container zammad-railsserver und zammad-scheduler ein. Er muss nur angepasst werden, wenn Zammad die Methode umbenennt.
+
+```ruby
+# config/initializers/zz_keep_pending_time.rb
+# Keep the pending time when a ticket leaves a pending state
+Rails.application.config.to_prepare do
+  Ticket.class_eval do
+    private
+
+    def reset_pending_time
+      true
+    end
+  end
+end
+```
 
 ## Aufgaben
 
-| Aufgabe | Sprachmodell | n8n |
+| Aufgabe | Zammad | n8n |
 |---|---|---|
-| Terminvorschläge | Vorschlagstext formulieren | Anmeldungen der Helfenden in [Nuudel](https://nuudel.digitalcourage.de/) lesen, daraus die Zahl paralleler Reparaturen ableiten, regelmäßige Zeitslots von Gästen beibehalten, gleiche Geräte zur gleichen Zeit einplanen |
-| Felder in Zammad füllen | Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung und Baujahr aus Freitext und Fotos vom Typenschild herauslesen, nach der Reparatur Lösung und Ergebnis | Vorschläge gegen die erlaubten Werte prüfen und eintragen |
-| Reparaturansatz schreiben | Aus Defekt und ähnlichen früheren Fällen einen Ansatz zum Mitmachen schreiben | Ähnliche Tickets und Wiki-Anleitungen per Embedding suchen und mitgeben |
-| Lösung schreiben | Aus Stichworten der Engagierten einen vollständigen Text schreiben | |
-| Statistik | Freitexte zusammenfassen, zum Beispiel welches Werkzeug fehlte und was richtig cool war | Ergebnisse zählen, also erfolgreich, teilweise, vertagt, nicht gelungen und nicht erschienen |
-| Newsletter | | Gäste mit dokumentierter Einwilligung für die Neuigkeiten unserer Initiative auf reparatur-initiativen.org anmelden, die Plattform verschickt dann die Bestätigungsmail |
-| Open Repair Alliance | Geräte den Kategorien von reparatur-initiativen.org zuordnen | Laufzettel auf reparatur-initiativen.org anlegen, die anstiftung meldet sie an die Open Repair Alliance weiter |
-| Tickets zusammenfassen | Zusammenfassung schreiben, eventuell über die KI-Funktionen von Zammad | |
-| Tickets verknüpfen | Bestätigen, dass zwei Tickets denselben Fall betreffen | Kandidaten per Embedding suchen und nach Bestätigung verknüpfen |
-| Gästedaten eintragen | Vorname, Nachname, E-Mail, Telefon und Mobilnummer aus Mails und Signaturen herauslesen | Vorschlag anzeigen und erst nach Bestätigung durch einen Menschen speichern |
+| Felder füllen | Ticket Categorizer für die Art des Geräts, Ticket Text Extractor für Defekt, Stromversorgung, Marke, Bezeichnung und Baujahr, Texterkennung für Fotos vom Typenschild | |
+| Reparaturansatz schreiben | Custom AI Agent schreibt eine interne Notiz, passende Artikel aus der Wissensdatenbank zeigt Zammad am Ticket an | |
+| Lösung schreiben | Textwerkzeug macht aus Stichworten der Engagierten einen vollständigen Text | |
+| Reparaturanleitungen | Artikel in der Wissensdatenbank aus einem erfolgreichen Ticket erzeugen und von Engagierten prüfen lassen | |
+| Tickets zusammenfassen | Eingebaute Zusammenfassung | |
+| Tickets verknüpfen | Verknüpfen von Hand, unterstützt durch passende Artikel und Zusammenfassung | Nur falls das nicht reicht, Kandidaten per Embedding suchen |
+| Gästedaten eintragen | Custom AI Agent schreibt erkannte Kontaktdaten als interne Notiz, ein Mensch übernimmt sie | |
+| Terminvorschläge | Datumsfeld Termin im Ticket | Anmeldungen der Helfenden in [Nuudel](https://nuudel.digitalcourage.de/) lesen, daraus die Zahl paralleler Reparaturen ableiten, regelmäßige Zeitslots von Gästen beibehalten, gleiche Geräte zur gleichen Zeit einplanen und den Vorschlagstext von Ollama formulieren lassen |
+| Statistik | Ergebnisfelder und Berichte | Ergebnisse zählen, also erfolgreich, teilweise, vertagt, nicht gelungen und nicht erschienen, und Freitexte zu fehlendem Werkzeug und Highlights von Ollama zusammenfassen lassen |
+| Open Repair Alliance | Felder mit den Werten der Laufzettel | Laufzettel auf reparatur-initiativen.org anlegen, die anstiftung meldet sie an die Open Repair Alliance weiter |
+| Newsletter | Feld für die Einwilligung | Gäste mit dokumentierter Einwilligung für die Neuigkeiten unserer Initiative auf reparatur-initiativen.org anmelden, die Plattform verschickt dann die Bestätigungsmail |
+
+Zammad löst n8n über die Trigger-Aktion Webhook aus, zum Beispiel wenn ein Ticket nach dem Termin geschlossen wird.
 
 ## Anbindung an reparatur-initiativen.org
 
@@ -114,7 +146,7 @@ Die Tabelle form_field_options_extra_infos ordnet jedem Ergebnis den Status und 
 
 Für unsere eigene Statistik braucht Zammad zusätzlich den Wert nicht erschienen. Den gibt es im Laufzettel nicht, solche Tickets werden nicht übertragen.
 
-Weil die Marken- und Kategorienlisten lang sind, bekommt das Sprachmodell sie nicht vollständig in den Prompt. Es liest Marke und Gerät als Text heraus, und n8n sucht den passenden Eintrag in der Liste. Bei Kategorien hilft das Embedding-Modell, die nächstliegende zu finden.
+Die Kategorien legen wir in Zammad als Baumauswahl an, die der Ticket Categorizer direkt füllt. Mit 407 Kategorien wird sein Prompt lang, deshalb muss die Kontextlänge in Ollama groß genug sein. Reicht das nicht, beschränken wir den Agenten auf die Kategorien, die im Repair Café tatsächlich vorkommen. Die 1.328 Marken passen nicht sinnvoll in eine Auswahl. Die Marke bleibt deshalb ein Textfeld, das der Ticket Text Extractor füllt. Beim Anlegen des Laufzettels sucht n8n den passenden Eintrag in der Markenliste.
 
 Die Datei ist ein Stand zur Installation der Plattform. Ob sie mit den Listen auf reparatur-initiativen.org übereinstimmt, klären wir mit der anstiftung. Ein lesender API-Endpunkt für Kategorien und Marken würde den Abgleich vereinfachen.
 
@@ -126,22 +158,22 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - **Werbung durch.** Ein Feld, wie Gäste vom Repair Café erfahren haben, zeigt, welche Werbung wirkt.
 - **Datensparsamkeit.** Eine Adresse der Gäste ist nie nötig. Eine Kontaktmöglichkeit per E-Mail oder Telefon reicht, wenn ein neuer Termin nötig ist oder ein Newsletter gewünscht wird. Falls das Geschlecht abgefragt wird, dann mit mehr als zwei Möglichkeiten.
 - **Qualitätskontrolle.** Die Laufzettel wurden oft unvollständig oder falsch ausgefüllt. Wenn die Daten schon während des Termins erfasst werden, lassen sich Lücken sofort nachfragen. Genau dabei kann MANUEL mit Vorschlägen für die Felder helfen.
-- **Wiederkehrende Fehler.** Die Zahl unterschiedlicher Fehler ließ sich stark eingrenzen. Für häufige Fehler lohnen sich Reparaturanleitungen im Wiki, damit Gäste selbst reparieren können.
+- **Wiederkehrende Fehler.** Die Zahl unterschiedlicher Fehler ließ sich stark eingrenzen. Für häufige Fehler lohnen sich Reparaturanleitungen in der Wissensdatenbank, damit Gäste selbst reparieren können.
 - **Austausch mit dem Netzwerk.** Die Hausarbeit empfiehlt, die Erkenntnisse zur Kategorisierung der Fehler mit dem Netzwerk Reparatur-Initiativen zu besprechen. Das passt zu den geplanten Endpunkten in mapped-repair-events.
 
 ## Gedanken für die Prompts
 
-- **Ein Prompt pro Aufgabe.** Jede Aufgabe aus der Tabelle bekommt einen eigenen Prompt in prompts/. Er wird in Git versioniert und vor jeder Änderung gegen den Testsatz gemessen.
+- **Ein Prompt pro Aufgabe.** Jede Aufgabe aus der Tabelle bekommt einen eigenen Prompt. Bei den Agenten in Zammad sind das Rolle, Anweisung, Extraktionsregeln und Beschreibungen der Auswahlwerte. Eine Kopie liegt in prompts/, wird in Git versioniert und vor jeder Änderung gegen den Testsatz gemessen.
 - **Rolle und Leserschaft klar benennen.** Das Modell unterstützt Ehrenamtliche im Repair Café des Makerspace Gütersloh auf Einstiegs-Level. Die Leser haben wenig Vorkenntnisse. Die Texte sind auf Deutsch, in einfacher Sprache und mit einer festgelegten Anrede.
 - **Hilfe zur Selbsthilfe.** Wir machen keine Auftragsarbeit. Ein Reparaturansatz beschreibt deshalb Schritte zum Mitmachen und nennt das nötige Werkzeug und mögliche Ersatzteile. Das liefert nebenbei Daten dazu, welches Werkzeug fehlt.
 - **Sicherheit zuerst.** Bei Netzspannung, Akkus, großen Kondensatoren wie in Mikrowellen oder Netzteilen und bei Gasgeräten gehört immer ein Sicherheitshinweis dazu. Im Zweifel verweist das Modell an eine Fachperson.
 - **Nichts erfinden.** Weiß das Modell etwas nicht, schreibt es unbekannt statt zu raten. Marke, Bezeichnung und Baujahr übernimmt es nur, wenn sie im Text oder auf einem Foto stehen.
-- **Feste Wertelisten und JSON.** Beim Füllen von Feldern antwortet das Modell als JSON nach einem festen Schema. Die erlaubten Werte entsprechen den Auswahlfeldern in Zammad, die Geräteart orientiert sich an den Kategorien von reparatur-initiativen.org, die die anstiftung auf den Open Repair Data Standard abbildet. Ollama kann ein solches Schema als [strukturierte Ausgabe](https://ollama.com/blog/structured-outputs) erzwingen. n8n prüft die Antwort trotzdem, bevor etwas gespeichert wird.
-- **Ticketinhalte sind Daten, keine Anweisungen.** Gäste schreiben frei, und ein Text kann wie eine Anweisung an das Modell aussehen. Der Prompt grenzt den Ticketinhalt klar ab. Das Modell löst selbst keine Aktionen aus, das entscheidet allein n8n nach festen Regeln.
+- **Feste Wertelisten.** Die erlaubten Werte entsprechen den Auswahlfeldern in Zammad, die Geräteart orientiert sich an den Kategorien von reparatur-initiativen.org, die die anstiftung auf den Open Repair Data Standard abbildet. Die Agenten in Zammad bekommen die Werte samt Beschreibungen aus den Feldern. Gute Beschreibungen der Werte sind deshalb Teil des Prompts. Ruft n8n Ollama selbst auf, erzwingt es das Format als [strukturierte Ausgabe](https://ollama.com/blog/structured-outputs) und prüft die Antwort, bevor etwas gespeichert wird.
+- **Ticketinhalte sind Daten, keine Anweisungen.** Gäste schreiben frei, und ein Text kann wie eine Anweisung an das Modell aussehen. Der Prompt grenzt den Ticketinhalt klar ab. Das Modell löst selbst keine Aktionen aus. Welche Aktionen ein Agent ausführen darf, legen wir in Zammad fest, bei n8n entscheiden feste Regeln.
 - **Datensparsamkeit.** Jeder Prompt bekommt nur die Teile eines Tickets, die er braucht. Kontaktdaten sieht nur der Prompt zum Eintragen von Gästedaten.
 - **Kurz und intern.** Vorschläge sind interne Notizen für Engagierte, knapp und in Stichpunkten. Sie enthalten keine Zusagen an Gäste.
-- **Beispiele und Kontext mitgeben.** Gute Beispiele aus dem pseudonymisierten Testsatz zeigen dem Modell, was erwartet wird. Ähnliche frühere Tickets und passende Wiki-Anleitungen, gefunden per Embedding, verbessern Diagnose und Reparaturansatz.
-- **Denkmodus und Temperatur je Aufgabe testen.** qwen3.6 kann vor der Antwort nachdenken. Für das Füllen von Feldern ist das meist unnötig und kostet Zeit, für die Diagnose kann es helfen. Für Felder und Statistik gilt eine niedrige Temperatur, für Texte eine etwas höhere.
+- **Beispiele und Kontext mitgeben.** Gute Beispiele aus dem pseudonymisierten Testsatz zeigen dem Modell, was erwartet wird. Passende Artikel aus der Wissensdatenbank, gefunden per Embedding, verbessern Diagnose und Reparaturansatz.
+- **Denkmodus und Temperatur.** Zammad schaltet das Nachdenken ab und setzt die Temperatur auf 0. Das passt zum Füllen von Feldern. Nur bei Aufrufen aus n8n können wir beides je Aufgabe wählen, für Texte zum Beispiel eine etwas höhere Temperatur.
 
 ## Phasen
 
@@ -150,10 +182,12 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] DSEE über die Variante mit 1 TB statt 2 TB informieren
 - [ ] Gerät bestellen und Rechnung vor dem 31.12.2026 bezahlen
 - [ ] Offene Entscheidungen oben treffen
-- [ ] Zammad-Version und vorhandene KI-Funktionen prüfen
+- [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren
+- [ ] Termin als eigenes Datumsfeld anlegen, bestehende Wartezeiten übernehmen und die angepasste ticket.rb aus docker-compose-server entfernen, siehe Abschnitt zur ticket.rb
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
-- [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl
+- [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl, die Marke als Textfeld
+- [ ] Für jeden Auswahlwert eine kurze Beschreibung hinterlegen, weil die Agenten sie als Kontext nutzen
 - [ ] Zusätzliche Felder aus der Datenpotenzialanalyse anlegen, also wer repariert hat, Dauer der Reparatur, wieder aufgenommen und Werbung durch
 - [ ] Mit der anstiftung klären, ob database.sql dem aktuellen Stand der Kategorien und Marken auf reparatur-initiativen.org entspricht
 - [ ] Feld für die Einwilligung in den Newsletter anlegen
@@ -164,9 +198,9 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 
 - [ ] VM mit öffentlicher IP anlegen und DNS-Eintrag setzen
 - [ ] VM in die Inventardatei hosts von docker-compose-server aufnehmen und mit prepare_hosts.yaml vorbereiten
-- [ ] Rolle netbird mit Management, Signal, Relay und Dashboard anlegen, Traefik übernimmt TLS
+- [ ] Rolle netbird mit Management, Signal, Relay und Dashboard anlegen, Traefik übernimmt TLS. Als Vorlage dienen [getting-started.sh](https://github.com/netbirdio/netbird/blob/main/infrastructure_files/getting-started.sh) und die Compose-Vorlage für Traefik im Submodul netbird
 - [ ] Firewall für HTTPS und die UDP-Ports von STUN und Relay öffnen
-- [ ] Anmeldung für das Dashboard festlegen, mit dem eingebauten Identity Provider oder einem vorhandenen
+- [ ] Anmeldung für das Dashboard mit dem eingebauten Identity Provider Dex einrichten, der im Management-Server steckt und keinen eigenen Container braucht
 - [ ] Datenbank des Management-Servers per resticker sichern, weil ohne sie alle Peers und Regeln neu angelegt werden müssen
 - [ ] Monitor in Uptime Kuma anlegen, weil ohne Management und Relay keine neuen Verbindungen zustande kommen
 - [ ] Client auf unseven installieren und testen, dass die Zammad-Container das NetBird-Netz über den Host erreichen
@@ -227,10 +261,13 @@ git push
 - [ ] Prüfen, dass Ollama aus dem LAN und dem Gäste-WLAN des Makerspace nicht erreichbar ist
 - [ ] Kontrollieren, dass Modelle wirklich auf der GPU laufen und nicht auf der CPU
 - [ ] Leistungsprofil und TDP im BIOS auf Dauerbetrieb einstellen und den Einfluss auf die Geschwindigkeit messen
-- [ ] Vulkan und ROCm mit llama-bench vergleichen, weil ROCm die Radeon 890M nur eingeschränkt unterstützt, siehe [Erfahrungen im Framework-Forum](https://community.frame.work/t/amd-rocm-does-not-support-the-amd-ryzen-ai-300-series-gpus/68767)
-- [ ] Startmodell [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) laden und die Kontextlänge num_ctx auf 16K bis 32K begrenzen
+- [ ] Vulkan und ROCm mit llama-bench vergleichen. Die [Ollama-Doku zu GPUs](https://github.com/ollama/ollama/blob/main/docs/gpu.mdx) führt gfx1150 für ROCm v7, ältere [Erfahrungen im Framework-Forum](https://community.frame.work/t/amd-rocm-does-not-support-the-amd-ryzen-ai-300-series-gpus/68767) waren gemischt. Für Vulkan braucht der Container die Gruppe render und für Angaben zum Grafikspeicher die Capability cap_perfmon
+- [ ] `OLLAMA_IGPU_ENABLE=1` setzen. Ollama verwirft integrierte AMD-GPUs standardmäßig und lässt nur gfx1151 zu, siehe [discover/runner.go](https://github.com/ollama/ollama/blob/main/discover/runner.go). Ohne die Variable läuft auf dem HX 370 mit gfx1150 alles unbemerkt auf der CPU
+- [ ] `OLLAMA_CONTEXT_LENGTH` fest auf etwa 32768 setzen. Zammad schickt keine Kontextlänge mit, und Ollama wählt sonst je nach erkanntem Grafikspeicher 4K, 32K oder 256K, siehe [envconfig/config.go](https://github.com/ollama/ollama/blob/main/envconfig/config.go). Bei 4K würden lange Prompts wie der des Ticket Categorizer still abgeschnitten
+- [ ] `OLLAMA_KEEP_ALIVE` hoch setzen, damit das Modell beim Repair Café nicht nach 5 Minuten Pause entladen wird, und `OLLAMA_MAX_LOADED_MODELS` so wählen, dass Sprach- und Embedding-Modell gleichzeitig geladen bleiben
+- [ ] Startmodell [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) laden
 - [ ] UMA und GTT-Limit so einstellen, dass die GPU deutlich mehr als 24 GB nutzen darf
-- [ ] Embedding-Modell laden und prüfen, dass es zusammen mit dem Sprachmodell in den Speicher passt
+- [ ] Embedding-Modell [bge-m3](https://ollama.com/library/bge-m3) laden und prüfen, dass es zusammen mit dem Sprachmodell in den Speicher passt
 - [ ] Geschwindigkeit messen und mit qwen3.6:35b-a3b-mtp-q4_K_M, qwen3.6:35b-a3b-q8_0 und qwen3.6:27b vergleichen, Ergebnisse in docs/benchmarks.md festhalten
 - [ ] Optional die NPU mit [AMD Lemonade](https://github.com/lemonade-sdk/lemonade) ausprobieren
 
@@ -238,8 +275,7 @@ git push
 
 - [ ] Rolle open-webui anlegen und Konten für die beteiligten Engagierten einrichten
 - [ ] Testsatz aus abgeschlossenen Repair-Café-Tickets exportieren und pseudonymisieren, nur lokal speichern
-- [ ] Prompts für das Füllen der Felder, den Reparaturansatz und die Lösung aus Stichworten nach den Gedanken oben in prompts/ ablegen
-- [ ] JSON-Schema für die Felder mit den erlaubten Werten aus Zammad festlegen
+- [ ] Extraktionsregeln und Anweisungen für die Agenten sowie die Textwerkzeuge nach den Gedanken oben in prompts/ ablegen
 - [ ] Skript in eval/ schreiben, das Modelle und Prompts gegen den Testsatz laufen lässt
 - [ ] Bewertungskriterien festlegen, zum Beispiel richtige Kategorie und Nützlichkeit des Vorschlags aus Sicht der Engagierten
 - [ ] Beim Repair Café im November Vorschläge live in Open WebUI testen und Rückmeldungen sammeln
@@ -248,27 +284,28 @@ git push
 
 - [ ] In der Testinstanz unter AI und Providers Ollama mit der NetBird-Adresse des Mini-PCs und qwen3.6:35b-a3b als Modell eintragen, siehe [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama)
 - [ ] Prüfen, dass der Status des Anbieters nach der ersten Anfrage grün ist
-- [ ] KI-Funktionen von Zammad mit Repair-Café-Tickets testen
-- [ ] Prüfen, ob unseven genug Arbeitsspeicher für n8n frei hat
-- [ ] Rolle n8n in docker-compose-server für unseven anlegen, siehe [n8n-Doku zum Selbsthosten](https://docs.n8n.io/hosting/), hinter Traefik mit Anmeldung und mit Sicherung per resticker
-- [ ] Workflow zum Füllen der Felder bauen, der Vorschläge als interne Notiz schreibt und erst nach Bestätigung in die Felder überträgt
-- [ ] Workflow für den Reparaturansatz bauen, der ähnliche Tickets und Wiki-Anleitungen per Embedding mitgibt
-- [ ] Workflow für Gästedaten bauen, der Kontaktdaten nur als Vorschlag zur Bestätigung anzeigt
-- [ ] Workflows als JSON nach n8n-workflows/ exportieren
+- [ ] bge-m3 als Embedding-Modell beim Anbieter eintragen
+- [ ] Speichergrenze von Elasticsearch in der Zammad-Rolle anheben, weil dort auch die Vektoren der semantischen Suche liegen. Bisher ist sie auf 1 GB begrenzt
+- [ ] Agenten Ticket Categorizer für die Art des Geräts und Ticket Text Extractor für die übrigen Felder anlegen
+- [ ] Custom AI Agent für den Reparaturansatz und einen für erkannte Kontaktdaten anlegen, beide schreiben nur interne Notizen
+- [ ] Trigger anlegen, die die Agenten bei neuen Tickets der Gruppe Repair Café auslösen
+- [ ] Prüfen, dass kein Agent und kein Trigger E-Mails oder SMS an Gäste verschickt
 - [ ] Gegen die Testinstanz auf unstable testen
-- [ ] Ollama in Zammad auf unseven als Anbieter eintragen und die Workflows auf das Echtsystem umstellen
+- [ ] Ollama in Zammad auf unseven als Anbieter eintragen und Agenten und Trigger ins Echtsystem übernehmen
 - [ ] Beim Repair Café im Dezember im Echtbetrieb einsetzen und Rückmeldungen zu den Notizen sammeln
 
-### Phase 5 Weitere Workflows
+### Phase 5 Wissensdatenbank und n8n
 
+- [ ] Wissensdatenbank in Zammad für Reparaturanleitungen einrichten und aus erfolgreichen Reparaturen Artikel erzeugen, die Engagierte vor der Veröffentlichung prüfen
+- [ ] Prüfen, ob unseven genug Arbeitsspeicher für n8n frei hat
+- [ ] Rolle n8n in docker-compose-server für unseven anlegen, siehe [n8n-Doku zum Selbsthosten](https://docs.n8n.io/hosting/), hinter Traefik mit Anmeldung und mit Sicherung per resticker
 - [ ] Workflow für Statistik bauen, der Ergebnisse zählt und Freitexte zu fehlendem Werkzeug und Highlights zusammenfasst
-- [ ] Aus erfolgreichen Reparaturen Entwürfe für Reparaturanleitungen erzeugen und als unveröffentlichte Seiten über die Wiki.js-API anlegen
+- [ ] Workflows als JSON nach n8n-workflows/ exportieren
 - [ ] Mit der anstiftung per Issue in mapped-repair-events klären, ob sie schreibende Endpunkte für Laufzettel und Neuigkeiten annehmen würde
 - [ ] Felder in Zammad auf die Felder der Laufzettel abbilden, damit die Daten ohne Nacharbeit übertragbar sind
 - [ ] Endpunkte in mapped-repair-events umsetzen und als Pull Request einreichen
 - [ ] Workflow bauen, der nach dem Repair Café die Laufzettel auf reparatur-initiativen.org anlegt, bis dahin Laufzettel von Hand übertragen
 - [ ] Workflow für Terminvorschläge bauen, der Anmeldungen in Nuudel auswertet
-- [ ] Workflow zum Zusammenfassen und Verknüpfen von Tickets bauen, falls die KI-Funktionen von Zammad das nicht abdecken
 - [ ] Workflow für den Newsletter bauen, der nur Gäste mit Einwilligung für die Neuigkeiten unserer Initiative auf reparatur-initiativen.org anmeldet
 
 ### Phase 6 Abschluss und Veröffentlichung
@@ -306,7 +343,7 @@ MANUEL/
 ├── butane/          Butane-Datei für die Installation und den Wechsel auf das Image
 ├── compose.yaml     Beispiel-Stack für Nachnutzende
 ├── docs/            Einrichtung, Betrieb, Datenschutz, Benchmarks
-├── prompts/         Systemprompts für Kategorisierung, Diagnose und Wiki-Entwürfe
+├── prompts/         Kopien der Agenten-Konfiguration aus Zammad und Prompts für n8n
 ├── eval/            Skripte zum Testen, ohne echte Ticketdaten
 ├── n8n-workflows/   exportierte n8n-Workflows
 ├── mapped-repair-events/  Submodul mit der Plattform der anstiftung, GPL-3.0

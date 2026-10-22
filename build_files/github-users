@@ -1,0 +1,7 @@
+# GitHub-Benutzer, deren öffentliche SSH-Schlüssel beim Build ins Image kommen.
+# Sie dürfen sich als Benutzer core anmelden. Ein Benutzer pro Zeile.
+# Abgeglichen mit deploy_keys.yaml in docker-compose-server.
+igami         # Michael Prange
+nielsfechtel  # Niels Fechtel
+C0RD          # Cord Beermann 
+ulno          # Ulrich Norbisrath 

@@ -35,3 +35,16 @@ jq '.transports.docker["ghcr.io/makerspace-gt/manuel"] = [{
     }]' /etc/containers/policy.json > /tmp/policy.json
 install -Dpm 0644 /tmp/policy.json /etc/containers/policy.json
 
+### SSH keys of the admins, fetched from GitHub at build time
+# The list of users is in build_files/github-users
+# sshd reads this file via /etc/ssh/sshd_config.d/10-manuel-authorized-keys.conf
+keys=/usr/share/manuel/authorized_keys/core
+install -d -m 0755 "$(dirname "$keys")"
+: > "$keys"
+while read -r user _; do
+    [[ -z "$user" || "$user" == \#* ]] && continue
+    curl -fsSL --retry 3 "https://github.com/${user}.keys" | sed "s|\$| ${user}@github|" >> "$keys"
+done < /ctx/github-users
+chmod 0644 "$keys"
+# Refuse to build an image nobody can log into
+test -s "$keys"

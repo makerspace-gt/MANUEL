@@ -200,7 +200,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] VM in die Inventardatei hosts von docker-compose-server aufnehmen und mit prepare_hosts.yaml vorbereiten
 - [ ] Rolle netbird mit Management, Signal, Relay und Dashboard anlegen, Traefik übernimmt TLS. Als Vorlage dienen [getting-started.sh](https://github.com/netbirdio/netbird/blob/main/infrastructure_files/getting-started.sh) und die Compose-Vorlage für Traefik im Submodul netbird
 - [ ] Firewall für HTTPS und die UDP-Ports von STUN und Relay öffnen
-- [ ] Anmeldung für das Dashboard mit dem eingebauten Identity Provider Dex einrichten, der im Management-Server steckt und keinen eigenen Container braucht
+- [ ] Anmeldung für das Dashboard mit dem eingebauten Identity Provider Dex einrichten, der im Management-Server steckt und keinen eigenen Container braucht. Steht authentik als zentrale Nutzerverwaltung bald bereit, NetBird stattdessen [an authentik anbinden](https://docs.netbird.io/selfhosted/identity-providers/authentik)
 - [ ] Datenbank des Management-Servers per resticker sichern, weil ohne sie alle Peers und Regeln neu angelegt werden müssen
 - [ ] Monitor in Uptime Kuma anlegen, weil ohne Management und Relay keine neuen Verbindungen zustande kommen
 - [ ] Client auf unseven installieren und testen, dass die Zammad-Container das NetBird-Netz über den Host erreichen
@@ -328,6 +328,8 @@ Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verf
 
 Alle drei Dienste würden denselben Ollama-Server über NetBird nutzen. Dafür müssen die NetBird-Regeln um die jeweiligen Hosts erweitert werden.
 
+Unabhängig von MANUEL fehlt uns eine zentrale Nutzerverwaltung. [authentik](https://github.com/goauthentik/authentik) liegt dafür als Submodul in diesem Repo. Es steht weitgehend unter MIT, ein Unternehmensteil unter eigener Lizenz. Laut [Doku zu Integrationen](https://docs.goauthentik.io/integrations/) lassen sich viele unserer Dienste per OpenID Connect oder SAML anbinden. Für MANUEL betrifft das vor allem NetBird, n8n, Open WebUI und Zammad. NetBird kann authentik [als Identity Provider nutzen](https://docs.netbird.io/selfhosted/identity-providers/authentik). Kommt authentik bald, richten wir NetBird gleich damit ein statt mit dem eingebauten Dex.
+
 ## Zeitplan
 
 | Zeitraum | Phase |
@@ -367,9 +369,10 @@ MANUEL/
 ├── signal-cli/            Submodul für den Ausblick, GPL-3.0
 ├── signal-cli-rest-api/   Submodul für den Ausblick, MIT
 ├── discourse/             Submodul für den Ausblick, GPL-2.0
-└── vikunja/               Submodul für den Ausblick, AGPL-3.0
+├── vikunja/               Submodul für den Ausblick, AGPL-3.0
+└── authentik/             Submodul für die zentrale Nutzerverwaltung, MIT
 ```
 
-Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja und Signal sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
+Die Submodule von Zammad, n8n, NetBird, Ollama, Discourse, Vikunja, Signal und authentik sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
 
 Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von docker-compose-server.

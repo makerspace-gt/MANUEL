@@ -37,6 +37,7 @@ Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf unseven.makerspace
 Grundsätze für den Betrieb:
 
 - **Ein Mensch entscheidet.** MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. Das ist zugleich die Qualitätskontrolle, die die Datenpotenzialanalyse empfiehlt. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
+- **Weboberflächen nur über NetBird.** Alle Weboberflächen sind am Ende nur über NetBird erreichbar. SSH mit Schlüssel bleibt direkt möglich und ist damit auch der Notzugang, falls NetBird ausfällt. Ausnahmen stehen im Abschnitt zur Erreichbarkeit.
 - **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Echte Ticketdaten landen nie in diesem öffentlichen Repo.
 - **Code rechnet, das Modell formuliert.** Zählen, Zuordnen, Termine planen und Daten übertragen erledigen Zammad-Trigger und n8n-Workflows nach festen Regeln. Das Sprachmodell liest aus Freitext heraus, schreibt Texte und fasst zusammen.
 - **Alles ist Code.** Die Einrichtung des Hosts liegt als Ansible-Rollen in docker-compose-server. Prompts, exportierte n8n-Workflows, Testsatz-Werkzeuge und Doku liegen hier. Die Konfiguration der KI-Agenten in Zammad, also Regeln und Beschreibungen der Auswahlwerte, legen wir als Kopie in prompts/ ab.
@@ -64,6 +65,24 @@ Grundsätze für den Betrieb:
 Laut [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama) lässt sich Ollama direkt als KI-Anbieter mit URL und Modell eintragen. Zammad verbindet sich dabei selbst mit Ollama. Die Doku nennt keine Anmeldung oder TLS für Ollama, deshalb schützen wir den Zugang über NetBird.
 
 Laut [Quellcode des Ollama-Anbieters](https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb) ruft Zammad Ollama über /api/generate auf, schaltet das Nachdenken ab, setzt die Temperatur auf 0 und verlangt bei Bedarf JSON. Eine Kontextlänge schickt Zammad nicht mit, die muss Ollama selbst vorgeben. Die [Agententypen](https://github.com/zammad/zammad/tree/develop/app/models/ai/agent/type) umfassen unter anderem Ticket Categorizer für Auswahlfelder auch als Baum, Ticket Text Extractor für Text, Zahlen und Auswahlwerte, Ticket Tagger und Custom AI Agent. Ein Agent wird über einen normalen Trigger ausgelöst und wendet sein Ergebnis mit denselben Aktionen wie ein Trigger an, also Feldänderungen, interne Notizen oder Webhooks. Ob unsere Zammad-Version all das schon bietet, prüfen wir in Phase 0.
+
+## Erreichbarkeit
+
+Am Ende sind alle Weboberflächen nur über NetBird erreichbar. Das verkleinert die Angriffsfläche deutlich, weil Zammad, n8n, Arcane, Vaultwarden und die übrigen Dienste nicht mehr aus dem Internet ansprechbar sind. SSH mit Schlüssel bleibt direkt erreichbar.
+
+Einige Dienste müssen trotzdem öffentlich bleiben, weil sie vor oder außerhalb von NetBird gebraucht werden:
+
+- **NetBird selbst.** Management, Signal und Relay müssen erreichbar sein, damit sich Clients überhaupt verbinden können.
+- **authentik.** Die Anmeldung bei NetBird läuft über authentik, bevor der Tunnel steht. Nur die Seiten für Anmeldung und OpenID Connect müssen öffentlich sein, die Verwaltung kann hinter NetBird.
+- **Was Gäste nutzen.** Gäste haben kein NetBird. Zu klären ist, ob wir ein Webformular von Zammad auf der Webseite, das Kundenportal oder eine öffentliche Wissensdatenbank mit Reparaturanleitungen anbieten. Das Forum auf Discourse und der Kalender aus Nextcloud, der auf der Webseite erscheint, sind ebenfalls öffentlich. Für diese Teile veröffentlichen wir nur die nötigen Pfade.
+
+Damit das funktioniert, braucht es drei Änderungen:
+
+- **Zertifikate per DNS-Challenge.** Traefik holt Zertifikate bisher über HTTP und braucht dafür öffentliche Erreichbarkeit. Mit der [DNS-Challenge](https://doc.traefik.io/traefik/https/acme/) geht das auch für interne Dienste. Unser DNS-Anbieter lima-city wird vom zugrunde liegenden ACME-Werkzeug lego [unterstützt](https://go-acme.github.io/lego/dns/limacity/). Dafür brauchen wir einen API-Schlüssel von lima-city im Ansible Vault.
+- **Namen auflösen.** Die Namen der Dienste zeigen auf die NetBird-Adressen der Hosts. Das geht über die [DNS-Verwaltung von NetBird](https://docs.netbird.io/manage/dns) oder über öffentliche Einträge mit den NetBird-Adressen.
+- **Zugriff nach Gruppen.** Die [Zugriffsregeln von NetBird](https://docs.netbird.io/manage/access-control) legen fest, welche Gruppe welchen Dienst erreicht, zum Beispiel Admins alles und Engagierte des Repair Cafés nur Zammad und Open WebUI. Die Gruppen kommen aus authentik.
+
+Engagierte brauchen dafür den NetBird-Client auf ihrem Gerät. Für das Repair Café in der Stadtbibliothek planen wir deshalb eine kurze Anleitung und Zeit zum Einrichten ein. Für einen Ausfall von NetBird bleibt der Weg über SSH mit Portweiterleitung, damit Admins weiter an Vaultwarden und die übrigen Dienste kommen.
 
 ## Angepasste ticket.rb
 
@@ -205,6 +224,10 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Datenbank des Management-Servers per resticker sichern, weil ohne sie alle Peers und Regeln neu angelegt werden müssen
 - [ ] Monitor in Uptime Kuma anlegen, weil ohne Management und Relay keine neuen Verbindungen zustande kommen
 - [ ] Client auf unseven installieren und testen, dass die Zammad-Container das NetBird-Netz über den Host erreichen
+- [ ] Traefik auf DNS-Challenge mit lima-city umstellen und den API-Schlüssel im Ansible Vault ablegen
+- [ ] Festlegen, welche Teile von Zammad, Discourse und Nextcloud für Gäste öffentlich bleiben
+- [ ] Weboberflächen Dienst für Dienst nur noch über NetBird erreichbar machen und Zugriffsregeln nach Gruppen aus authentik anlegen
+- [ ] Anleitung für Engagierte zum Einrichten des NetBird-Clients schreiben
 
 ### Phase 0c Eigenes Image
 

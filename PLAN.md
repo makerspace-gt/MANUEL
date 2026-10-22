@@ -254,7 +254,7 @@ git push
 - [ ] Workflow zum Füllen der Felder bauen, der Vorschläge als interne Notiz schreibt und erst nach Bestätigung in die Felder überträgt
 - [ ] Workflow für den Reparaturansatz bauen, der ähnliche Tickets und Wiki-Anleitungen per Embedding mitgibt
 - [ ] Workflow für Gästedaten bauen, der Kontaktdaten nur als Vorschlag zur Bestätigung anzeigt
-- [ ] Workflows als JSON nach n8n/ exportieren
+- [ ] Workflows als JSON nach n8n-workflows/ exportieren
 - [ ] Gegen die Testinstanz auf unstable testen
 - [ ] Ollama in Zammad auf unseven als Anbieter eintragen und die Workflows auf das Echtsystem umstellen
 - [ ] Beim Repair Café im Dezember im Echtbetrieb einsetzen und Rückmeldungen zu den Notizen sammeln
@@ -308,10 +308,17 @@ MANUEL/
 ├── docs/            Einrichtung, Betrieb, Datenschutz, Benchmarks
 ├── prompts/         Systemprompts für Kategorisierung, Diagnose und Wiki-Entwürfe
 ├── eval/            Skripte zum Testen, ohne echte Ticketdaten
-├── n8n/             exportierte n8n-Workflows
+├── n8n-workflows/   exportierte n8n-Workflows
 ├── mapped-repair-events/  Submodul mit der Plattform der anstiftung, GPL-3.0
 ├── datenpotenzialanalyse-repairc-cafe-gt/  Submodul mit der Hausarbeit zu unseren Laufzetteln, CC BY 4.0
-└── docker-compose-server/  Submodul mit unserer IT-Infrastruktur als Ansible-Rollen
+├── docker-compose-server/  Submodul mit unserer IT-Infrastruktur als Ansible-Rollen
+├── zammad/                Submodul mit dem Quellcode von Zammad, AGPL-3.0
+├── zammad-docker-compose/ Submodul mit dem Docker-Compose-Stack von Zammad, AGPL-3.0
+├── n8n/                   Submodul mit dem Quellcode von n8n, Sustainable Use License
+├── netbird/               Submodul mit dem Quellcode von NetBird, BSD-3-Clause, Server-Teile AGPL-3.0
+└── ollama/                Submodul mit dem Quellcode von Ollama, MIT
 ```
+
+Die Submodule von Zammad, n8n, NetBird und Ollama sind groß und deshalb in `.gitmodules` als shallow markiert. Sie dienen als Nachschlagewerk für Schnittstellen und Konfiguration. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, damit sie nicht mit dem Submodul `n8n/` kollidieren.
 
 Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von docker-compose-server.

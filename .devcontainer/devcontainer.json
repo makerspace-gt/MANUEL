@@ -1,0 +1,14 @@
+{
+  "name": "MANUEL",
+  "image": "ghcr.io/ublue-os/devcontainer:latest",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "github.vscode-github-actions",
+        "hangxingliu.vscode-systemd-support",
+        "mads-hartmann.bash-ide-vscode",
+        "nefrob.vscode-just-syntax"
+      ]
+    }
+  }
+}

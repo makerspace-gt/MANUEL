@@ -118,6 +118,17 @@ Weil die Marken- und Kategorienlisten lang sind, bekommt das Sprachmodell sie ni
 
 Die Datei ist ein Stand zur Installation der Plattform. Ob sie mit den Listen auf reparatur-initiativen.org übereinstimmt, klären wir mit der anstiftung. Ein lesender API-Endpunkt für Kategorien und Marken würde den Abgleich vereinfachen.
 
+### Erkenntnisse aus der Datenpotenzialanalyse
+
+Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt) aus dem Wintersemester 2021/22 hat unsere Laufzettel ausgewertet. Sie liegt als Submodul in diesem Repo und steht unter CC BY 4.0. Für MANUEL sind vor allem diese Punkte aus Kapitel 4.2 und 5 wichtig:
+
+- **Zusätzliche Felder.** Bisher wird nicht erfasst, wer repariert hat, also der Gast selbst oder mit Hilfe, ob eine Reparatur wieder aufgenommen wurde und wie lange sie gedauert hat. Wer repariert hat, brauchen wir für die Erfolgskennzahl aus dem Antrag zu Reparaturen durch Gäste und neue Engagierte.
+- **Werbung durch.** Ein Feld, wie Gäste vom Repair Café erfahren haben, zeigt, welche Werbung wirkt.
+- **Datensparsamkeit.** Eine Adresse der Gäste ist nie nötig. Eine Kontaktmöglichkeit per E-Mail oder Telefon reicht, wenn ein neuer Termin nötig ist oder ein Newsletter gewünscht wird. Falls das Geschlecht abgefragt wird, dann mit mehr als zwei Möglichkeiten.
+- **Qualitätskontrolle.** Die Laufzettel wurden oft unvollständig oder falsch ausgefüllt. Wenn die Daten schon während des Termins erfasst werden, lassen sich Lücken sofort nachfragen. Genau dabei kann MANUEL mit Vorschlägen für die Felder helfen.
+- **Wiederkehrende Fehler.** Die Zahl unterschiedlicher Fehler ließ sich stark eingrenzen. Für häufige Fehler lohnen sich Reparaturanleitungen im Wiki, damit Gäste selbst reparieren können.
+- **Austausch mit dem Netzwerk.** Die Hausarbeit empfiehlt, die Erkenntnisse zur Kategorisierung der Fehler mit dem Netzwerk Reparatur-Initiativen zu besprechen. Das passt zu den geplanten Endpunkten in mapped-repair-events.
+
 ## Gedanken für die Prompts
 
 - **Ein Prompt pro Aufgabe.** Jede Aufgabe aus der Tabelle bekommt einen eigenen Prompt in prompts/. Er wird in Git versioniert und vor jeder Änderung gegen den Testsatz gemessen.
@@ -143,6 +154,7 @@ Die Datei ist ein Stand zur Installation der Plattform. Ob sie mit den Listen au
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
 - [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl
+- [ ] Zusätzliche Felder aus der Datenpotenzialanalyse anlegen, also wer repariert hat, Dauer der Reparatur, wieder aufgenommen und Werbung durch
 - [ ] Mit der anstiftung klären, ob database.sql dem aktuellen Stand der Kategorien und Marken auf reparatur-initiativen.org entspricht
 - [ ] Feld für die Einwilligung in den Newsletter anlegen
 - [ ] Standort, Stromversorgung und LAN-Anschluss im Makerspace klären
@@ -297,7 +309,9 @@ MANUEL/
 ├── prompts/         Systemprompts für Kategorisierung, Diagnose und Wiki-Entwürfe
 ├── eval/            Skripte zum Testen, ohne echte Ticketdaten
 ├── n8n/             exportierte n8n-Workflows
-└── mapped-repair-events/  Submodul mit der Plattform der anstiftung, GPL-3.0
+├── mapped-repair-events/  Submodul mit der Plattform der anstiftung, GPL-3.0
+├── datenpotenzialanalyse-repairc-cafe-gt/  Submodul mit der Hausarbeit zu unseren Laufzetteln, CC BY 4.0
+└── docker-compose-server/  Submodul mit unserer IT-Infrastruktur als Ansible-Rollen
 ```
 
 Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von docker-compose-server.

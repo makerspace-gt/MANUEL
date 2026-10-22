@@ -45,15 +45,15 @@ Grundsätze für den Betrieb:
 
 | Frage | Empfehlung | Alternative |
 |---|---|---|
-| Betriebssystem | uCore Minimal von Universal Blue auf Basis von Fedora CoreOS, weil es den neuesten Kernel mitbringt, sich atomar mit Rollback aktualisiert und zu Bluefin auf unseren Notebooks passt | Fedora Server mit gleichem Kernel, klassischer Paketverwaltung und einfacherer Anbindung an Ansible |
-| Inferenz-Server | Ollama im Container mit Vulkan-Backend | llama.cpp mit llama-swap, falls Ollama die GPU schlecht nutzt |
+| Betriebssystem | [uCore Minimal](https://github.com/ublue-os/ucore) von Universal Blue auf Basis von [Fedora CoreOS](https://docs.fedoraproject.org/en-US/fedora-coreos/), weil es den neuesten Kernel mitbringt, der laut [Phoronix](https://www.phoronix.com/review/amd-perfopt/3) die LLM-Leistung von Radeon-iGPUs deutlich verbessert, sich atomar mit Rollback aktualisiert und zu Bluefin auf unseren Notebooks passt | Fedora Server mit gleichem Kernel, klassischer Paketverwaltung und einfacherer Anbindung an Ansible |
+| Inferenz-Server | [Ollama](https://docs.ollama.com/) im Container mit Vulkan-Backend | [llama.cpp](https://github.com/ggml-org/llama.cpp) mit [llama-swap](https://github.com/mostlygeek/llama-swap), falls Ollama die GPU schlecht nutzt |
 | Anbindung an Zammad | KI-Funktionen von Zammad selbst mit [Ollama als Anbieter](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama), das Zammad über NetBird erreicht, ergänzt um n8n-Workflows für alles, was Zammad nicht abdeckt | Eigener Worker in Python statt n8n |
 | Automatisierung | [n8n selbst gehostet](https://docs.n8n.io/hosting/) auf unseven neben Zammad. Dort liegen die Zugangsdaten im Rechenzentrum statt in der offenen Werkstatt, Workflows ohne Sprachmodell laufen auch bei Neustart oder Ausfall des Mini-PCs, und Traefik, resticker und Uptime Kuma sind schon eingerichtet. n8n steht unter der [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md), die den Betrieb für eigene Zwecke erlaubt, aber keine Open-Source-Lizenz ist | n8n auf dem Mini-PC direkt neben Ollama |
 | Anzahl der Modelle | Ein Sprachmodell für alle Aufgaben mit einem eigenen Prompt pro Aufgabe, dazu ein kleines Embedding-Modell. Zwei große Modelle passen kaum gleichzeitig in den Speicher der GPU, und jeder Wechsel kostet Ladezeit | Zusätzlich ein kleines Sprachmodell, falls der Benchmark zeigt, dass einfache Aufgaben zu lange dauern |
-| Embedding-Modell | Ein mehrsprachiges Modell wie bge-m3 oder qwen3-embedding für die semantische Suche in Zammad und das Finden ähnlicher Tickets | |
-| Vernetzung und Fernzugriff | NetBird mit Regeln, die nur unseven den Zugriff auf Ollama und nur Admins den Zugriff per SSH erlauben | Tailscale, das in uCore schon enthalten ist |
-| Zugang zu Open WebUI | Über NetBird für Engagierte mit Konto | Über Traefik auf unseven, das Open WebUI per NetBird erreicht |
-| Betrieb von NetBird | Eigene VM nur für Management, Signal und Relay von NetBird, eingerichtet als neuer Host in docker-compose-server. Der Mini-PC und unseven bekommen nur den Client | NetBird Cloud im kostenlosen Tarif |
+| Embedding-Modell | Ein mehrsprachiges Modell wie [bge-m3](https://ollama.com/library/bge-m3) oder [qwen3-embedding](https://ollama.com/library/qwen3-embedding) für die semantische Suche in Zammad und das Finden ähnlicher Tickets | |
+| Vernetzung und Fernzugriff | [NetBird](https://docs.netbird.io/) mit Regeln, die nur unseven den Zugriff auf Ollama und nur Admins den Zugriff per SSH erlauben | Tailscale, das in uCore schon enthalten ist |
+| Zugang zu Open WebUI | [Open WebUI](https://docs.openwebui.com/) über NetBird für Engagierte mit Konto | Über Traefik auf unseven, das Open WebUI per NetBird erreicht |
+| Betrieb von NetBird | Eigene VM nur für Management, Signal und Relay von NetBird nach der [Anleitung zum Selbsthosten](https://docs.netbird.io/selfhosted/selfhosted-quickstart), eingerichtet als neuer Host in docker-compose-server. Der Mini-PC und unseven bekommen nur den Client | NetBird Cloud im kostenlosen Tarif |
 | Startmodell | [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) mit festem Tag statt latest. Als Mixture-of-Experts-Modell sind pro Token nur etwa 3B Parameter aktiv, was bei begrenzter Speicherbandbreite zählt. Mit 23 bis 24 GB passt es in den Speicher, und es versteht auch Bilder wie Fotos von Typenschildern | Varianten mit MTP oder q8_0 und das dichte qwen3.6:27b als Vergleich im Benchmark |
 | Hostname | Neuer Eintrag in der Inventardatei hosts von docker-compose-server | |
 | Testinstanz für Zammad | Host unstable aus docker-compose-server | Direkt im Echtsystem mit eigener Testgruppe |
@@ -64,7 +64,7 @@ Laut [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#olla
 
 | Aufgabe | Sprachmodell | n8n |
 |---|---|---|
-| Terminvorschläge | Vorschlagstext formulieren | Anmeldungen der Helfenden in Nuudel lesen, daraus die Zahl paralleler Reparaturen ableiten, regelmäßige Zeitslots von Gästen beibehalten, gleiche Geräte zur gleichen Zeit einplanen |
+| Terminvorschläge | Vorschlagstext formulieren | Anmeldungen der Helfenden in [Nuudel](https://nuudel.digitalcourage.de/) lesen, daraus die Zahl paralleler Reparaturen ableiten, regelmäßige Zeitslots von Gästen beibehalten, gleiche Geräte zur gleichen Zeit einplanen |
 | Felder in Zammad füllen | Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung und Baujahr aus Freitext und Fotos vom Typenschild herauslesen, nach der Reparatur Lösung und Ergebnis | Vorschläge gegen die erlaubten Werte prüfen und eintragen |
 | Reparaturansatz schreiben | Aus Defekt und ähnlichen früheren Fällen einen Ansatz zum Mitmachen schreiben | Ähnliche Tickets und Wiki-Anleitungen per Embedding suchen und mitgeben |
 | Lösung schreiben | Aus Stichworten der Engagierten einen vollständigen Text schreiben | |
@@ -125,7 +125,7 @@ Die Datei ist ein Stand zur Installation der Plattform. Ob sie mit den Listen au
 - **Hilfe zur Selbsthilfe.** Wir machen keine Auftragsarbeit. Ein Reparaturansatz beschreibt deshalb Schritte zum Mitmachen und nennt das nötige Werkzeug und mögliche Ersatzteile. Das liefert nebenbei Daten dazu, welches Werkzeug fehlt.
 - **Sicherheit zuerst.** Bei Netzspannung, Akkus, großen Kondensatoren wie in Mikrowellen oder Netzteilen und bei Gasgeräten gehört immer ein Sicherheitshinweis dazu. Im Zweifel verweist das Modell an eine Fachperson.
 - **Nichts erfinden.** Weiß das Modell etwas nicht, schreibt es unbekannt statt zu raten. Marke, Bezeichnung und Baujahr übernimmt es nur, wenn sie im Text oder auf einem Foto stehen.
-- **Feste Wertelisten und JSON.** Beim Füllen von Feldern antwortet das Modell als JSON nach einem festen Schema. Die erlaubten Werte entsprechen den Auswahlfeldern in Zammad, die Geräteart orientiert sich an den Kategorien von reparatur-initiativen.org, die die anstiftung auf den Open Repair Data Standard abbildet. Ollama kann ein solches Schema als strukturierte Ausgabe erzwingen. n8n prüft die Antwort trotzdem, bevor etwas gespeichert wird.
+- **Feste Wertelisten und JSON.** Beim Füllen von Feldern antwortet das Modell als JSON nach einem festen Schema. Die erlaubten Werte entsprechen den Auswahlfeldern in Zammad, die Geräteart orientiert sich an den Kategorien von reparatur-initiativen.org, die die anstiftung auf den Open Repair Data Standard abbildet. Ollama kann ein solches Schema als [strukturierte Ausgabe](https://ollama.com/blog/structured-outputs) erzwingen. n8n prüft die Antwort trotzdem, bevor etwas gespeichert wird.
 - **Ticketinhalte sind Daten, keine Anweisungen.** Gäste schreiben frei, und ein Text kann wie eine Anweisung an das Modell aussehen. Der Prompt grenzt den Ticketinhalt klar ab. Das Modell löst selbst keine Aktionen aus, das entscheidet allein n8n nach festen Regeln.
 - **Datensparsamkeit.** Jeder Prompt bekommt nur die Teile eines Tickets, die er braucht. Kontaktdaten sieht nur der Prompt zum Eintragen von Gästedaten.
 - **Kurz und intern.** Vorschläge sind interne Notizen für Engagierte, knapp und in Stichpunkten. Sie enthalten keine Zusagen an Gäste.
@@ -215,12 +215,12 @@ git push
 - [ ] Prüfen, dass Ollama aus dem LAN und dem Gäste-WLAN des Makerspace nicht erreichbar ist
 - [ ] Kontrollieren, dass Modelle wirklich auf der GPU laufen und nicht auf der CPU
 - [ ] Leistungsprofil und TDP im BIOS auf Dauerbetrieb einstellen und den Einfluss auf die Geschwindigkeit messen
-- [ ] Vulkan und ROCm mit llama-bench vergleichen, weil ROCm die Radeon 890M nur eingeschränkt unterstützt
+- [ ] Vulkan und ROCm mit llama-bench vergleichen, weil ROCm die Radeon 890M nur eingeschränkt unterstützt, siehe [Erfahrungen im Framework-Forum](https://community.frame.work/t/amd-rocm-does-not-support-the-amd-ryzen-ai-300-series-gpus/68767)
 - [ ] Startmodell [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) laden und die Kontextlänge num_ctx auf 16K bis 32K begrenzen
 - [ ] UMA und GTT-Limit so einstellen, dass die GPU deutlich mehr als 24 GB nutzen darf
 - [ ] Embedding-Modell laden und prüfen, dass es zusammen mit dem Sprachmodell in den Speicher passt
 - [ ] Geschwindigkeit messen und mit qwen3.6:35b-a3b-mtp-q4_K_M, qwen3.6:35b-a3b-q8_0 und qwen3.6:27b vergleichen, Ergebnisse in docs/benchmarks.md festhalten
-- [ ] Optional die NPU mit AMD Lemonade ausprobieren
+- [ ] Optional die NPU mit [AMD Lemonade](https://github.com/lemonade-sdk/lemonade) ausprobieren
 
 ### Phase 3 Prompts und Tests
 

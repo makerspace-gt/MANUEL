@@ -10,6 +10,7 @@ on:
       - 'image-template.env'
       - 'build_files/**'
       - 'system_files/**'
+      - 'cosign.pub'
       - '.github/workflows/build.yml'
   schedule:
     - cron: '05 10 * * *'  # 10:05am UTC everyday
@@ -22,6 +23,7 @@ on:
       - 'image-template.env'
       - 'build_files/**'
       - 'system_files/**'
+      - 'cosign.pub'
       - '.github/workflows/build.yml'
   workflow_dispatch:
 

@@ -2,6 +2,8 @@
 FROM scratch AS ctx
 COPY build_files /
 COPY system_files /system_files
+# Public signing key, so the image can verify its own updates
+COPY cosign.pub /system_files/etc/pki/containers/makerspace-gt.pub
 
 # Base Image
 FROM ghcr.io/ublue-os/ucore-minimal:stable

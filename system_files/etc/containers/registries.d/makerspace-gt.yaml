@@ -1,0 +1,3 @@
+docker:
+  ghcr.io/makerspace-gt:
+    use-sigstore-attachments: true

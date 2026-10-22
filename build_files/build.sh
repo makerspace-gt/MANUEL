@@ -25,3 +25,13 @@ dnf5 install -y tmux
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+
+### Trust our own signing key for updates of this image
+# The key is copied to /etc/pki/containers/makerspace-gt.pub by the Containerfile
+jq '.transports.docker["ghcr.io/makerspace-gt/manuel"] = [{
+      "type": "sigstoreSigned",
+      "keyPath": "/etc/pki/containers/makerspace-gt.pub",
+      "signedIdentity": {"type": "matchRepository"}
+    }]' /etc/containers/policy.json > /tmp/policy.json
+install -Dpm 0644 /tmp/policy.json /etc/containers/policy.json
+

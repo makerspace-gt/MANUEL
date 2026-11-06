@@ -82,12 +82,41 @@ MANUEL läuft auf der neu aufgebauten IT des Vereins. Zugangs-VM mit authentik u
 | Tickets zusammenfassen | Eingebaute Zusammenfassung | |
 | Tickets verknüpfen | Verknüpfen von Hand, unterstützt durch passende Artikel und Zusammenfassung | Nur falls das nicht reicht, Kandidaten per Embedding suchen |
 | Gästedaten eintragen | Custom AI Agent schreibt erkannte Kontaktdaten als interne Notiz, ein Mensch übernimmt sie | |
-| Terminvorschläge | Datumsfeld Termin im Ticket | Anmeldungen der Helfenden in [Nuudel](https://nuudel.digitalcourage.de/) lesen, daraus die Zahl paralleler Reparaturen ableiten, regelmäßige Zeitslots von Gästen beibehalten, gleiche Geräte zur gleichen Zeit einplanen und den Vorschlagstext von Ollama formulieren lassen |
+| Terminvorschläge | Datumsfeld Termin im Ticket | Anmeldungen der Helfenden in [Nuudel](https://nuudel.digitalcourage.de/) lesen, daraus die Zahl paralleler Reparaturen ableiten, regelmäßige Zeitslots von Gästen beibehalten, ähnliche Geräte höchstens einen Slot auseinander einplanen und den Vorschlagstext von Ollama formulieren lassen, siehe [Terminvergabe](#terminvergabe) |
 | Statistik | Ergebnisfelder und Berichte | Ergebnisse zählen, also erfolgreich, teilweise, vertagt, nicht gelungen und nicht erschienen, und Freitexte zu fehlendem Werkzeug und Highlights von Ollama zusammenfassen lassen |
 | Open Repair Alliance | Felder mit den Werten der Laufzettel | Laufzettel auf reparatur-initiativen.org anlegen, die anstiftung meldet sie an die Open Repair Alliance weiter |
 | Newsletter | Feld für die Einwilligung | Gäste mit dokumentierter Einwilligung für die Neuigkeiten unserer Initiative auf reparatur-initiativen.org anmelden, die Plattform verschickt dann die Bestätigungsmail |
 
 Zammad löst n8n über die Trigger-Aktion Webhook aus, zum Beispiel wenn ein Ticket nach dem Termin geschlossen wird.
+
+### Terminvergabe
+
+Das Repair Café findet in der Regel am ersten und dritten Samstag im Monat statt. Wegen Feiertagen fallen Termine auch aus, die Daten kommen deshalb aus einer gepflegten Liste und werden nicht nur berechnet. Termine laufen von 11:00 bis 14:00 Uhr im Halbstundentakt. Das sind 6 Slots, dazu kommt 14:00 Uhr nur für Kleinigkeiten wie einen Lampenschalter tauschen, erstmal nur schauen oder klären, welches Ersatzteil bestellt werden muss.
+
+Wie viele Termine parallel möglich sind, folgt aus den Anmeldungen der Helfenden. Der Empfang schafft 6 Personen parallel, pro 3 Reparierende gibt es 1 Person als Reserve.
+
+| Wert | Rechnung |
+|---|---|
+| Empfang | Parallel durch 6, aufgerundet |
+| Unterstützung | Parallel durch 3, aufgerundet |
+| Personen | Parallel plus Empfang plus Unterstützung |
+| Termine | Parallel mal 6, mit 14:00 Uhr mal 7 |
+
+Bei einer gegebenen Zahl an Helfenden gilt der größte Wert für Parallel, der damit auskommt.
+
+Tickets werden 1 bis 2 Tage gesammelt und dann gemeinsam abgearbeitet. So kann der Workflow alle offenen Tickets zusammen planen, statt sie nach Eingang zu verteilen. Fälle mit Wunschzeit kommen zuerst, die übrigen folgen. Angerufen wird meist erst in der Woche vor dem Repair Café, die Zeit kann sich dabei noch ändern. Der Plan bleibt deshalb ein Vorschlag, den Menschen bestätigen.
+
+Feste Regeln sind die Plätze pro Slot und dass 14:00 Uhr nur Kleinigkeiten bekommt. Unter den übrigen Slots gilt diese Reihenfolge:
+
+1. Die Wunschzeit des Gastes. Bei vertagten Geräten gilt ohne neuen Wunsch die bisherige Uhrzeit, damit sich die Gäste nicht umgewöhnen müssen
+2. Ähnliche Geräte liegen höchstens einen Slot auseinander, damit Gäste mitarbeiten und ihre neuen Erkenntnisse direkt weitergeben. Gleiche Geräte gehen dabei vor gleicher Oberkategorie
+3. Die Termine verteilen sich über den Tag, statt den Tag von Anfang an aufzufüllen
+
+Das System läuft mit 16 GiB UMA. Damit passen `qwen3.6:35b-a3b`, `d3:9b` und `bge-m3` zusammen auf die GPU, ein Wechsel würde sonst 13 bis 26 Sekunden kosten. Ob alle Modelle dauerhaft geladen bleiben, entscheiden wir im Betrieb.
+
+Am Ende soll es für alle so bequem wie möglich sein. Im Zweifel bekommt ein Gast die Zeit, die ihm am wenigsten Umstände macht, und bestätigte Termine bleiben unverändert, wenn neu geplant wird.
+
+Die Rechnung und die Verteilung übernimmt n8n. Vertagte Geräte bleiben im selben Ticket, jeder Termin bekommt dort ein Tag wie `2026-10-17`. Ein Gerät gilt als vertagt, wenn das Ergebnis `vertagt` oder ein Wert darunter ist und das Ticket offen ist. Sagt ein Gast ab und will sich später wieder melden, wird der Platz frei und MANUEL plant nichts Neues ein. Dazu schlägt MANUEL die übliche Antwort vor. Sie dankt fürs Bescheid geben und nennt, dass das Repair Café am ersten und dritten Samstag im Monat stattfindet. Das Ticket wird geschlossen und bekommt das Tag `abgelehnt`, eine Regel in Zammad löscht geschlossene Tickets mit diesem Tag nach drei Monaten. Meldet sich der Gast vorher wieder und das Ticket geht auf, greift die Löschung nicht. Wer nicht erschienen ist, muss sich neu melden. MANUEL schlägt für diese Tickets nichts vor und erinnert nicht daran. Die bisherige Uhrzeit liest der Workflow aus dem Termin im Ticket, bevor er ihn überschreibt. Das Modell braucht er dafür nicht. Das Modell liefert nur die Angaben pro Ticket, also Wunschzeit, Gerät und ob es eine Kleinigkeit ist. Eine Kleinigkeit kann trotzdem sicherheitsrelevant sein, ein Lampenschalter hängt zum Beispiel an Netzspannung.
 
 ## Anbindung an reparatur-initiativen.org
 

@@ -1,0 +1,2 @@
+ERROR: cannot measure prompt tokens with model 'mistral-small3.2:24b': request failed: Post "http://127.0.0.1:8080/v1/chat/completions": dial tcp 127.0.0.1:8080: connect: connection refused
+ERROR: cannot measure prompt tokens with model 'mistral-small3.2:24b': request failed: Post "http://127.0.0.1:8080/v1/chat/completions": dial tcp 127.0.0.1:8080: connect: connection refused

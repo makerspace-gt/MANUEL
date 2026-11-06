@@ -1,0 +1,8 @@
+7.2.11-200.fc44.x86_64
+BootedDeployment:
+● ostree-image-signed:docker://ghcr.io/makerspace-gt/manuel:latest
+                   Digest: sha256:ab78a35a6f7382629a999a32a141477ac9ab0c7d2f5b32456cbe019a899cb064
+image ghcr.io/ggml-org/llama.cpp:server-vulkan sha256:b5f99c093094d54c51e5bb9d79a87f7da28ca7021a7995ce62f769d7e47cc4b9
+2147483648
+32443871232
+7920867

@@ -1,0 +1,8 @@
+7.2.11-200.fc44.x86_64
+BootedDeployment:
+● ostree-image-signed:docker://ghcr.io/makerspace-gt/manuel:latest
+                   Digest: sha256:ab78a35a6f7382629a999a32a141477ac9ab0c7d2f5b32456cbe019a899cb064
+image docker.io/ollama/ollama:0.40.15 sha256:0e59999e0e8f9fd4e704bd788a89b7e4cad399367fb1365f8c102ac662288761
+17179869184
+25045123072
+6114532

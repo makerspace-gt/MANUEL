@@ -1,0 +1,2 @@
+Nov 06 14:02:25 manuel kernel: oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=container,mems_allowed=0,global_oom,task_memcg=/machine.slice/libpod-1094cd6657928fc309064004bed77cc6487e6420cb68bff53d93adc0687ebd32.scope/container,task=llama-server,pid=299992,uid=0
+Nov 06 14:02:25 manuel kernel: Out of memory: Killed process 299992 (llama-server) total-vm:66584220kB, anon-rss:27819288kB, file-rss:16kB, shmem-rss:0kB, UID:0 pgtables:57664kB oom_score_adj:0

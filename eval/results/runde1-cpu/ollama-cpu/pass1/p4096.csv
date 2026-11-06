@@ -1,0 +1,17 @@
+NAME,STEP,COUNT,NS_PER_COUNT,TOKEN_PER_SEC,CACHED_PROMPT_COUNT
+# Model: qwen3.6:35b-a3b | Params: 35.5B | Quant: Q4_K_M | Family: qwen35moe | NumCtx: 32768
+qwen3.6:35b-a3b,prefill,4096,6606679.44,151.36,0
+qwen3.6:35b-a3b,generate,200,44777995.00,22.33,
+qwen3.6:35b-a3b,ttft,1,42478369119,0,
+qwen3.6:35b-a3b,load,1,15399193253,0,
+qwen3.6:35b-a3b,total,1,51433015707,0,
+qwen3.6:35b-a3b,prefill,4096,6132438.72,163.07,0
+qwen3.6:35b-a3b,generate,200,46751070.00,21.39,
+qwen3.6:35b-a3b,ttft,1,41282346266,0,
+qwen3.6:35b-a3b,load,1,16146103727,0,
+qwen3.6:35b-a3b,total,1,50631775218,0,
+qwen3.6:35b-a3b,prefill,4096,6559969.48,152.44,0
+qwen3.6:35b-a3b,generate,200,43487980.00,22.99,
+qwen3.6:35b-a3b,ttft,1,48309266801,0,
+qwen3.6:35b-a3b,load,1,21421560451,0,
+qwen3.6:35b-a3b,total,1,57005794930,0,

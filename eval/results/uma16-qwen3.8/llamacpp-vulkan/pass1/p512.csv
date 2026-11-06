@@ -1,0 +1,27 @@
+NAME,STEP,COUNT,NS_PER_COUNT,TOKEN_PER_SEC,CACHED_PROMPT_COUNT
+# Model: qwen3.8:27b | Params: unknown | Quant: unknown | Family: unknown
+qwen3.8:27b,generate,200,111933718.58,8.93,
+qwen3.8:27b,prefill,470,8664442.55,115.41,42
+qwen3.8:27b,generate_server,200,111932980.00,8.93,
+qwen3.8:27b,ttft,1,4205500010,0,
+qwen3.8:27b,total,1,26592243726,0,
+qwen3.8:27b,generate,200,114738089.05,8.72,
+qwen3.8:27b,prefill,470,8634627.66,115.81,42
+qwen3.8:27b,generate_server,200,114737005.00,8.72,
+qwen3.8:27b,ttft,1,4206418368,0,
+qwen3.8:27b,total,1,27154036178,0,
+qwen3.8:27b,generate,200,125470599.88,7.97,
+qwen3.8:27b,prefill,470,8621806.38,115.98,42
+qwen3.8:27b,generate_server,200,125473010.00,7.97,
+qwen3.8:27b,ttft,1,4183160278,0,
+qwen3.8:27b,total,1,29277280253,0,
+qwen3.8:27b,generate,200,116574645.53,8.58,
+qwen3.8:27b,prefill,470,8654553.19,115.55,42
+qwen3.8:27b,generate_server,200,116574125.00,8.58,
+qwen3.8:27b,ttft,1,4202109218,0,
+qwen3.8:27b,total,1,27517038325,0,
+qwen3.8:27b,generate,200,128117031.40,7.81,
+qwen3.8:27b,prefill,470,8670548.94,115.33,42
+qwen3.8:27b,generate_server,200,128117935.00,7.81,
+qwen3.8:27b,ttft,1,4206006858,0,
+qwen3.8:27b,total,1,29829413138,0,

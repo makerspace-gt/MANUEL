@@ -1,0 +1,1 @@
+WARNING: 4/10 epochs for 'mistral-small3.2:24b' had short responses (<200 tokens). Generation metrics may be unreliable.

@@ -1,0 +1,17 @@
+warn: LLAMA_ARG_HOST environment variable is set, but will be overwritten by command line argument --host
+warn: LLAMA_ARG_PORT environment variable is set, but will be overwritten by command line argument --port
+0.00.049.310 I srv  llama_server: initializing ...
+0.00.049.326 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.049.667 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.051.375 I srv    load_model: loading model '/models/sha256-a8bdd07a49b895083bb1420bb895ad9ab3e3b8f7d5cc42c7582ca0fa765eede2'
+0.00.727.839 W operator(): failed to measure the memory of the extra model, fitting without it: failed to create llama_context from model
+0.00.907.056 W load: control-looking token:    212 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.00.907.091 W load: control-looking token:     50 '<|tool_response>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.00.910.866 W load: '</s>' is a normal token here, removing it from EOG list
+0.09.214.626 I cmn          init: llama threadpool init, n_threads = 12
+0.10.386.667 I common_speculative_init_result: creating MTP draft context against the target model '/models/sha256-a8bdd07a49b895083bb1420bb895ad9ab3e3b8f7d5cc42c7582ca0fa765eede2'
+0.10.386.673 W llama_init_from_model: context type MTP requested but model doesn't contain MTP layers
+0.10.386.674 E common_speculative_init_result: failed to create MTP context
+0.10.386.679 E srv    load_model: failed to create MTP context
+0.10.386.683 I srv    operator(): operator(): cleaning up before exit...
+0.10.387.826 E srv  server_run_i: exiting due to model loading error

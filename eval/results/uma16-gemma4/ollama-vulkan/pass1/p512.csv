@@ -1,0 +1,27 @@
+NAME,STEP,COUNT,NS_PER_COUNT,TOKEN_PER_SEC,CACHED_PROMPT_COUNT
+# Model: gemma4:31b | Params: 30.7B | Quant: Q4_K_M | Family: gemma4 | Size: 2780288776 | VRAM: 2780288776 | NumCtx: 32768
+gemma4:31b,prefill,512,10995236.33,90.95,0
+gemma4:31b,generate,200,83469975.00,11.98,
+gemma4:31b,ttft,1,6216777757,0,
+gemma4:31b,load,1,556815,0,
+gemma4:31b,total,1,22600622389,0,
+gemma4:31b,prefill,512,10982226.56,91.06,0
+gemma4:31b,generate,200,83490765.00,11.98,
+gemma4:31b,ttft,1,6233439794,0,
+gemma4:31b,load,1,923381,0,
+gemma4:31b,total,1,22622019665,0,
+gemma4:31b,prefill,512,10993394.53,90.96,0
+gemma4:31b,generate,200,91162875.00,10.97,
+gemma4:31b,ttft,1,6244473206,0,
+gemma4:31b,load,1,1489383,0,
+gemma4:31b,total,1,24164852731,0,
+gemma4:31b,prefill,512,10964322.27,91.20,0
+gemma4:31b,generate,200,86568205.00,11.55,
+gemma4:31b,ttft,1,6239038363,0,
+gemma4:31b,load,1,921097,0,
+gemma4:31b,total,1,23243022405,0,
+gemma4:31b,prefill,512,10984472.66,91.04,0
+gemma4:31b,generate,200,80454080.00,12.43,
+gemma4:31b,ttft,1,6230036915,0,
+gemma4:31b,load,1,514565,0,
+gemma4:31b,total,1,22011667027,0,

@@ -1,0 +1,27 @@
+NAME,STEP,COUNT,NS_PER_COUNT,TOKEN_PER_SEC,CACHED_PROMPT_COUNT
+# Model: qwen3.8:27b | Params: 27.3B | Quant: Q4_K_M | Family: qwen35 | Size: 17649306172 | VRAM: 17649306172 | NumCtx: 32768
+qwen3.8:27b,prefill,4096,10658601.81,93.82,0
+qwen3.8:27b,generate,200,86577595.00,11.55,
+qwen3.8:27b,ttft,1,43870703530,0,
+qwen3.8:27b,load,1,910457,0,
+qwen3.8:27b,total,1,61185671753,0,
+qwen3.8:27b,prefill,4096,10657146.73,93.83,0
+qwen3.8:27b,generate,200,84472080.00,11.84,
+qwen3.8:27b,ttft,1,43863357943,0,
+qwen3.8:27b,load,1,1432236,0,
+qwen3.8:27b,total,1,60756964224,0,
+qwen3.8:27b,prefill,4096,10662734.86,93.78,0
+qwen3.8:27b,generate,200,87869600.00,11.38,
+qwen3.8:27b,ttft,1,43884911648,0,
+qwen3.8:27b,load,1,1298335,0,
+qwen3.8:27b,total,1,61458118771,0,
+qwen3.8:27b,prefill,4096,10661525.88,93.80,0
+qwen3.8:27b,generate,200,90083915.00,11.10,
+qwen3.8:27b,ttft,1,43882005096,0,
+qwen3.8:27b,load,1,1555297,0,
+qwen3.8:27b,total,1,61897797758,0,
+qwen3.8:27b,prefill,4096,10665209.96,93.76,0
+qwen3.8:27b,generate,200,89648880.00,11.15,
+qwen3.8:27b,ttft,1,43906338343,0,
+qwen3.8:27b,load,1,1170325,0,
+qwen3.8:27b,total,1,61835394409,0,

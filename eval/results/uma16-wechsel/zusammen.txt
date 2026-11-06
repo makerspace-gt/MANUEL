@@ -1,0 +1,31 @@
+chat 30.543302
+NAME               ID              SIZE     PROCESSOR    CONTEXT    RUNNER      UNTIL              
+qwen3.6:35b-a3b    a7eb95c53bcf    22 GB    100% GPU     32768      llamacpp    9 minutes from now    
+17114763264
+7455870976
+MemAvailable: 39243888
+decision 3.521906
+NAME               ID              SIZE     PROCESSOR    CONTEXT    RUNNER      UNTIL              
+d3:9b              0f459473f035    10 GB    100% GPU     4096       llamacpp    9 minutes from now    
+qwen3.6:35b-a3b    a7eb95c53bcf    22 GB    100% GPU     32768      llamacpp    9 minutes from now    
+17125224448
+20447698944
+MemAvailable: 26186788
+embedding 1.630461
+NAME               ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL              
+bge-m3:latest      790764642607    689 MB    100% GPU     8192       llamacpp    9 minutes from now    
+d3:9b              0f459473f035    10 GB     100% GPU     4096       llamacpp    9 minutes from now    
+qwen3.6:35b-a3b    a7eb95c53bcf    22 GB     100% GPU     32768      llamacpp    9 minutes from now    
+17126883328
+21735481344
+MemAvailable: 24758496
+chat warm 0.272041
+decision warm 0.396287
+embedding warm 0.038712
+NAME               ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL              
+qwen3.6:35b-a3b    a7eb95c53bcf    22 GB     100% GPU     32768      llamacpp    9 minutes from now    
+d3:9b              0f459473f035    10 GB     100% GPU     4096       llamacpp    9 minutes from now    
+bge-m3:latest      790764642607    689 MB    100% GPU     8192       llamacpp    9 minutes from now    
+17126883328
+21735481344
+MemAvailable: 24731480

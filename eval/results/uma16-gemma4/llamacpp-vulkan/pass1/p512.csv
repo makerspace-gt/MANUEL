@@ -1,0 +1,27 @@
+NAME,STEP,COUNT,NS_PER_COUNT,TOKEN_PER_SEC,CACHED_PROMPT_COUNT
+# Model: gemma4:31b | Params: unknown | Quant: unknown | Family: unknown
+gemma4:31b,generate,200,77804742.36,12.85,
+gemma4:31b,prefill,505,9231910.89,108.32,7
+gemma4:31b,generate_server,200,79333225.00,12.61,
+gemma4:31b,ttft,1,5227880077,0,
+gemma4:31b,total,1,20788828549,0,
+gemma4:31b,generate,200,82353813.82,12.14,
+gemma4:31b,prefill,505,9253415.84,108.07,7
+gemma4:31b,generate_server,200,83877835.00,11.92,
+gemma4:31b,ttft,1,5270591315,0,
+gemma4:31b,total,1,21741354079,0,
+gemma4:31b,generate,200,90070165.00,11.10,
+gemma4:31b,prefill,505,9266895.05,107.91,7
+gemma4:31b,generate_server,200,91597570.00,10.92,
+gemma4:31b,ttft,1,5265626032,0,
+gemma4:31b,total,1,23279659031,0,
+gemma4:31b,generate,200,83829917.01,11.93,
+gemma4:31b,prefill,505,9247958.42,108.13,7
+gemma4:31b,generate_server,200,85362430.00,11.71,
+gemma4:31b,ttft,1,5272913780,0,
+gemma4:31b,total,1,22038897182,0,
+gemma4:31b,generate,200,77853668.03,12.84,
+gemma4:31b,prefill,505,9259148.51,108.00,7
+gemma4:31b,generate_server,200,79387325.00,12.60,
+gemma4:31b,ttft,1,5270636740,0,
+gemma4:31b,total,1,20841370346,0,

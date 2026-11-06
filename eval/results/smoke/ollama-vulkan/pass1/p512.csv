@@ -1,0 +1,12 @@
+NAME,STEP,COUNT,NS_PER_COUNT,TOKEN_PER_SEC,CACHED_PROMPT_COUNT
+# Model: gemma3:4b | Params: 3.9B | Quant: Q4_K_M | Family: gemma3 | NumCtx: 32768
+gemma3:4b,prefill,512,1373195.31,728.23,0
+gemma3:4b,generate,200,37307655.00,26.80,
+gemma3:4b,ttft,1,2422429238,0,
+gemma3:4b,load,1,1713683301,0,
+gemma3:4b,total,1,9883293452,0,
+gemma3:4b,prefill,512,1363699.22,733.30,0
+gemma3:4b,generate,200,37312080.00,26.80,
+gemma3:4b,ttft,1,2467899439,0,
+gemma3:4b,load,1,1764369028,0,
+gemma3:4b,total,1,9929884616,0,

@@ -1,0 +1,2 @@
+ERROR: prompt target 512 tokens is below the minimum coding prompt size ~581 tokens for model "mistral-small3.2:24b"; use -p for smaller prompts
+ERROR: prompt target 512 tokens is below the minimum coding prompt size ~581 tokens for model "mistral-small3.2:24b"; use -p for smaller prompts

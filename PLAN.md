@@ -157,6 +157,17 @@ Die Tabelle form_field_options_extra_infos ordnet jedem Ergebnis den Status und 
 
 Für unsere eigene Statistik braucht Zammad zusätzlich den Wert nicht erschienen. Den gibt es im Laufzettel nicht, solche Tickets werden nicht übertragen.
 
+Das Ergebnis in Zammad ist ein Baum und weicht von database.sql ab, Stand 06.11.2026. Für die Übertragung brauchen wir deshalb eine feste Zuordnung.
+
+| Stufe | Nur in Zammad | Nur in database.sql |
+|---|---|---|
+| Ergebnis | `No-Show`, `gelungen`, `teilweise gelungen` | `erfolgreich abgeschlossen` |
+| Vertagt weil | `Ersatzteilbesorgung durch Gast`, `Ersatzteilbesorgung durch Repair Café`, `Gerät nicht komplett`, `zu lange Wartezeit` | `Ersatzteilbesorgung durch Besucher`, `Ersatzteilbesorgung durch Reparateur` |
+| Nicht erfolgt weil | `Fehler nicht gefunden` | `Sonstiges` |
+| Abbruch weil | keine Unterwerte | `technisch nicht möglich`, `nicht betriebssicher` |
+
+Die Ersatzteilwerte sind nur anders benannt und lassen sich direkt zuordnen, ebenso `gelungen` und `erfolgreich abgeschlossen`. Offen sind `teilweise gelungen`, die beiden zusätzlichen Gründe für die Vertagung, `Fehler nicht gefunden`, das in database.sql vermutlich dem Feld defect_found entspricht, und die Gründe für den Abbruch.
+
 Die Kategorien legen wir in Zammad als Baumauswahl an, die der Ticket Categorizer direkt füllt. Mit 407 Kategorien wird sein Prompt lang, deshalb muss die Kontextlänge in Ollama groß genug sein. Reicht das nicht, beschränken wir den Agenten auf die Kategorien, die im Repair Café tatsächlich vorkommen. Die 1.328 Marken passen nicht sinnvoll in eine Auswahl. Die Marke bleibt deshalb ein Textfeld, das der Ticket Text Extractor füllt. Beim Anlegen des Laufzettels sucht n8n den passenden Eintrag in der Markenliste.
 
 Die Datei ist ein Stand zur Installation der Plattform. Ob sie mit den Listen auf reparatur-initiativen.org übereinstimmt, klären wir mit der anstiftung. Ein lesender API-Endpunkt für Kategorien und Marken würde den Abgleich vereinfachen.
@@ -278,6 +289,7 @@ git push
 - [ ] Startmodell [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) laden
 - [x] UMA und GTT-Limit so einstellen, dass die GPU deutlich mehr als 24 GB nutzen darf
 - [ ] Embedding-Modell [bge-m3](https://ollama.com/library/bge-m3) laden und prüfen, dass es zusammen mit dem Sprachmodell in den Speicher passt
+- [ ] Wechselzeit zwischen schnellem und großem Modell messen, mit Modell im Zwischenspeicher und nach einem Neustart
 - [ ] Geschwindigkeit messen und mit qwen3.6:35b-a3b-mtp-q4_K_M, qwen3.6:35b-a3b-q8_0 und qwen3.6:27b vergleichen, Ergebnisse in docs/benchmarks.md festhalten
 - [ ] Optional die NPU mit [AMD Lemonade](https://github.com/lemonade-sdk/lemonade) ausprobieren
 
@@ -288,6 +300,8 @@ git push
 - [ ] Extraktionsregeln und Anweisungen für die Agenten sowie die Textwerkzeuge nach den Gedanken oben in prompts/ ablegen
 - [ ] Skript in eval/ schreiben, das Modelle und Prompts gegen den Testsatz laufen lässt
 - [ ] Bewertungskriterien festlegen, zum Beispiel richtige Kategorie und Nützlichkeit des Vorschlags aus Sicht der Engagierten
+- [ ] Decision-Modell d3 an deutschen Beispiel-Tickets prüfen, vor allem das Kriterium sicherheitsrelevant. Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt
+- [ ] Schnelles und großes Modell am Testsatz vergleichen und entscheiden, ob sich die Eskalation lohnt
 - [ ] Beim Repair Café im November Vorschläge live in Open WebUI testen und Rückmeldungen sammeln
 
 ### Phase 4 Anbindung an Zammad
@@ -304,6 +318,7 @@ git push
 - [ ] Ollama in Zammad auf der Helpdesk-VM als Anbieter eintragen und Agenten und Trigger ins Echtsystem übernehmen
 - [ ] Prüfen, dass Vorschläge von MANUEL im Ticket gut erkennbar sind und Engagierte sie mit wenigen Klicks übernehmen oder korrigieren können, auch auf Tablet und Smartphone
 - [ ] Beim Repair Café im Dezember im Echtbetrieb einsetzen und Rückmeldungen zu den Notizen sammeln
+- [ ] Falls sich die Eskalation lohnt, Auslöser in Zammad anlegen und Anfragen in n8n in eine Warteschlange stellen, weil immer nur eine Anfrage gleichzeitig läuft
 
 ### Phase 5 Wissensdatenbank und n8n
 
@@ -318,25 +333,24 @@ git push
 - [ ] Workflow für Terminvorschläge bauen, der Anmeldungen in Nuudel auswertet
 - [ ] Workflow für den Newsletter bauen, der nur Gäste anmeldet, für die Engagierte den Wunsch im Feld zur Einwilligung vermerkt haben. Die KI-Agenten dürfen dieses Feld nie setzen. Übermittelt wird nur die E-Mail-Adresse, der Endpunkt löst die Bestätigungsmail aus, jede Übermittlung erscheint einmalig als interne Notiz im Ticket und Fehler werden gemeldet
 
-- [ ] Wechselzeit zwischen schnellem und großem Modell messen, mit Modell im Zwischenspeicher und nach einem Neustart
 ### Phase 6 Abschluss und Veröffentlichung
 
 - [ ] Kennzahlen aus dem Antrag erheben, also Reparaturquote, Reparaturen durch Gäste und neue Engagierte, Rückmeldungen zu Vorschlägen und gemeldete Reparaturen
 - [ ] Dokumentation in docs/ vervollständigen, sodass andere Reparaturinitiativen MANUEL nachbauen können
+- [ ] MANUEL in einer Art Hausarbeit dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](datenpotenzialanalyse-repairc-cafe-gt/README.md)
 - [ ] Eigenständige compose.yaml als Beispiel für Nachnutzende bereitstellen
 - [ ] Im Build-Workflow mit [syft](https://github.com/anchore/syft) eine SBOM des Images erzeugen und sie mit cosign als [Attestation](https://docs.sigstore.dev/cosign/verifying/attestation/) an das Image hängen, damit Nachnutzende Bibliotheken und Lizenzen prüfen können
 - [ ] Dateien nach [REUSE](https://reuse.software/) mit SPDX-Angaben zu Lizenz und Urheber kennzeichnen, weil das Repo CC0 und Apache 2.0 mischt
 - [ ] DSEE-Logo mit »Gefördert durch« in die README aufnehmen
 - [ ] Ergebnisse veröffentlichen, zum Beispiel auf unserer Website, im Netzwerk Reparatur-Initiativen der anstiftung und in den sozialen Medien
 - [ ] Belege der Veröffentlichung für den Sachbericht sammeln
-- [ ] Decision-Modell d3 an deutschen Beispiel-Tickets prüfen, vor allem das Kriterium sicherheitsrelevant. Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt
-- [ ] Schnelles und großes Modell am Testsatz vergleichen und entscheiden, ob sich die Eskalation lohnt
 - [ ] Verwendungsnachweis bis 31.03.2027 im Förderportal einreichen
 
 ## Ausblick
 
 Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verfügt über welche Kenntnisse?« und »Welche Werkzeuge und Maschinen stehen im Verein zur Verfügung?« einzusetzen.
 
+- **Tags für Techniken.** Vorrang hat die Wissensdatenbank. Tickets werden nach drei Jahren gelöscht, Artikel bleiben und wachsen weiter, deshalb verlinkt MANUEL zuerst passende Artikel. Tags wie löten oder 3d-druck dienen danach vor allem als Ordnung für die Artikel. An Tickets bleiben sie optional, zum Beispiel um zu sehen, wie viele Tickets eines Termins Löten brauchen.
 - **Discourse als Wissensbasis und Chatbot.** Für das Forum gibt es im alten Repo die Rolle [discourse](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/discourse). Das mitgelieferte Plugin [discourse-ai](https://github.com/discourse/discourse/tree/main/plugins/discourse-ai) kann Ollama [direkt ansprechen](https://github.com/discourse/discourse/blob/main/plugins/discourse-ai/lib/completions/endpoints/ollama.rb). Es bringt einen KI-Bot mit eigenen Rollen und hinterlegten Dokumenten, Zusammenfassungen, semantische Suche und ähnliche Themen per Embedding mit. Ein Bot im Forum könnte Fragen zu Kenntnissen der Mitglieder und zu Werkzeugen beantworten, gestützt auf Beiträge und Dokumente des Vereins.
 - **Signal als Kanal für Benachrichtigungen.** Für [signal-cli-rest-api](https://github.com/bbernhard/signal-cli-rest-api) auf Basis von [signal-cli](https://github.com/AsamK/signal-cli) gibt es im alten Repo die Rolle [signal-cli-rest-api](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/signal-cli-rest-api). n8n könnte darüber Engagierte an Termine erinnern oder über neue Anmeldungen informieren. Später wäre auch ein Signal-Bot denkbar, der Fragen an MANUEL weiterleitet. Gäste schreiben wir nur mit ihrer Einwilligung an.
 
@@ -347,7 +361,6 @@ Beide Dienste würden denselben Ollama-Server über NetBird nutzen. Weitere Dien
 | Zeitraum | Phase |
 |---|---|
 | bis Lieferung | Phase 0, 0b mit Stufe 1 des IT-Plans und 0c |
-- [ ] Falls sich die Eskalation lohnt, Auslöser in Zammad anlegen und Anfragen in n8n in eine Warteschlange stellen, weil immer nur eine Anfrage gleichzeitig läuft
 | November 2026, erste Hälfte | Phase 1 und 2 |
 | November 2026 | Phase 3 mit Test beim Repair Café |
 | Dezember 2026 | Phase 4 mit Echtbetrieb beim Repair Café |
@@ -366,7 +379,6 @@ MANUEL/
 ├── build_files/     Skript für Pakete und Dienste im Image
 ├── system_files/    Dateien, die ins Image kopiert werden
 ├── butane/          Butane-Datei für die Installation und den Wechsel auf das Image
-- [ ] MANUEL in einer Art Hausarbeit dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](datenpotenzialanalyse-repairc-cafe-gt/README.md)
 ├── compose.yaml     Beispiel-Stack für Nachnutzende
 ├── docs/            Einrichtung, Betrieb, Datenschutz, Benchmarks
 ├── prompts/         Kopien der Agenten-Konfiguration aus Zammad und Prompts für n8n

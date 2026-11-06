@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" role="img" aria-label="Generierung pro Modell">
+<title>Generierung pro Modell</title>
+<style>
+.bg { fill: #fcfcfb; } .primary { fill: #0b0b0b; } .secondary { fill: #52514e; }
+.grid { stroke: #e4e3df; } .axis { stroke: #b5b4ae; } .err { stroke: #0b0b0b; }
+.s0 { fill: #9a9992; } .s1 { fill: #2a78d6; } .s2 { fill: #eb6834; } .s3 { fill: #1baf7a; }
+.s4 { fill: #eda100; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #1a1a19; } .primary { fill: #f0efec; } .secondary { fill: #c3c2b7; }
+  .grid { stroke: #3a3a37; } .axis { stroke: #5c5b55; } .err { stroke: #f0efec; }
+  .s0 { fill: #75746e; } .s1 { fill: #3987e5; } .s2 { fill: #d95926; } .s3 { fill: #199e70; }
+  .s4 { fill: #c98500; }
+}
+text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+</style>
+<rect class="bg" width="720" height="560"/>
+<text class="primary" x="16" y="28" font-size="18" font-weight="600">Generierung pro Modell</text>
+<text class="secondary" x="16" y="48" font-size="13">Mittelwert mit Standardabweichung, Token pro Sekunde bei 4096 Tokens Prompt</text>
+<rect class="s2" x="16" y="58" width="12" height="12" rx="2"/>
+<text class="secondary" x="34" y="69" font-size="13">Ollama</text>
+<rect class="s1" x="93.2" y="58" width="12" height="12" rx="2"/>
+<text class="secondary" x="111.2" y="69" font-size="13">llama.cpp</text>
+<line class="axis" x1="196.0" x2="196.0" y1="78" y2="524"/>
+<text class="secondary" x="196.0" y="542" font-size="12" text-anchor="middle">0</text>
+<line class="grid" x1="311.0" x2="311.0" y1="78" y2="524"/>
+<text class="secondary" x="311.0" y="542" font-size="12" text-anchor="middle">20</text>
+<line class="grid" x1="426.0" x2="426.0" y1="78" y2="524"/>
+<text class="secondary" x="426.0" y="542" font-size="12" text-anchor="middle">40</text>
+<line class="grid" x1="541.0" x2="541.0" y1="78" y2="524"/>
+<text class="secondary" x="541.0" y="542" font-size="12" text-anchor="middle">60</text>
+<line class="grid" x1="656.0" x2="656.0" y1="78" y2="524"/>
+<text class="secondary" x="656.0" y="542" font-size="12" text-anchor="middle">80</text>
+<text class="primary" x="186" y="102.0" font-size="12" text-anchor="end">lfm3:1.7b</text>
+<path class="s2" d="M196,84.0 H536.5 Q540.5,84.0 540.5,88.0 V93.0 Q540.5,97.0 536.5,97.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M539.6,90.5 H541.3 M539.6,86.5 V94.5 M541.3,86.5 V94.5"/>
+<text class="primary" x="548.3" y="94.5" font-size="12">59,9</text>
+<path class="s1" d="M196,99.0 H537.9 Q541.9,99.0 541.9,103.0 V108.0 Q541.9,112.0 537.9,112.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M538.6,105.5 H545.1 M538.6,101.5 V109.5 M545.1,101.5 V109.5"/>
+<text class="primary" x="552.1" y="109.5" font-size="12">60,2</text>
+<text class="primary" x="186" y="142.0" font-size="12" text-anchor="end">qwen3.6:35b-a3b</text>
+<path class="s2" d="M196,124.0 H350.9 Q354.9,124.0 354.9,128.0 V133.0 Q354.9,137.0 350.9,137.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M345.9,130.5 H364.0 M345.9,126.5 V134.5 M364.0,126.5 V134.5"/>
+<text class="primary" x="371.0" y="134.5" font-size="12">27,6</text>
+<path class="s1" d="M196,139.0 H362.5 Q366.5,139.0 366.5,143.0 V148.0 Q366.5,152.0 362.5,152.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M355.2,145.5 H377.8 M355.2,141.5 V149.5 M377.8,141.5 V149.5"/>
+<text class="primary" x="384.8" y="149.5" font-size="12">29,7</text>
+<text class="primary" x="186" y="182.0" font-size="12" text-anchor="end">gemma4:26b</text>
+<path class="s2" d="M196,164.0 H337.2 Q341.2,164.0 341.2,168.0 V173.0 Q341.2,177.0 337.2,177.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M333.1,170.5 H349.4 M333.1,166.5 V174.5 M349.4,166.5 V174.5"/>
+<text class="primary" x="356.4" y="174.5" font-size="12">25,3</text>
+<path class="s1" d="M196,179.0 H336.9 Q340.9,179.0 340.9,183.0 V188.0 Q340.9,192.0 336.9,192.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M332.2,185.5 H349.5 M332.2,181.5 V189.5 M349.5,181.5 V189.5"/>
+<text class="primary" x="356.5" y="189.5" font-size="12">25,2</text>
+<text class="primary" x="186" y="222.0" font-size="12" text-anchor="end">nemotron-3-nano:30b-a3b</text>
+<path class="s2" d="M196,204.0 H325.9 Q329.9,204.0 329.9,208.0 V213.0 Q329.9,217.0 325.9,217.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M329.8,210.5 H330.1 M329.8,206.5 V214.5 M330.1,206.5 V214.5"/>
+<text class="primary" x="337.1" y="214.5" font-size="12">23,3</text>
+<path class="s1" d="M196,219.0 H325.2 Q329.2,219.0 329.2,223.0 V228.0 Q329.2,232.0 325.2,232.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M328.7,225.5 H329.7 M328.7,221.5 V229.5 M329.7,221.5 V229.5"/>
+<text class="primary" x="336.7" y="229.5" font-size="12">23,2</text>
+<text class="primary" x="186" y="262.0" font-size="12" text-anchor="end">gpt-oss:20b</text>
+<path class="s2" d="M196,244.0 H299.2 Q303.2,244.0 303.2,248.0 V253.0 Q303.2,257.0 299.2,257.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M303.0,250.5 H303.3 M303.0,246.5 V254.5 M303.3,246.5 V254.5"/>
+<text class="primary" x="310.3" y="254.5" font-size="12">18,6</text>
+<path class="s1" d="M196,259.0 H299.0 Q303.0,259.0 303.0,263.0 V268.0 Q303.0,272.0 299.0,272.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M302.7,265.5 H303.2 M302.7,261.5 V269.5 M303.2,261.5 V269.5"/>
+<text class="primary" x="310.2" y="269.5" font-size="12">18,6</text>
+<text class="primary" x="186" y="302.0" font-size="12" text-anchor="end">mimo-v2.6:9b</text>
+<path class="s2" d="M196,284.0 H266.3 Q270.3,284.0 270.3,288.0 V293.0 Q270.3,297.0 266.3,297.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M270.2,290.5 H270.3 M270.2,286.5 V294.5 M270.3,286.5 V294.5"/>
+<text class="primary" x="277.3" y="294.5" font-size="12">12,9</text>
+<path class="s1" d="M196,299.0 H267.6 Q271.6,299.0 271.6,303.0 V308.0 Q271.6,312.0 267.6,312.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M271.5,305.5 H271.7 M271.5,301.5 V309.5 M271.7,301.5 V309.5"/>
+<text class="primary" x="278.7" y="309.5" font-size="12">13,1</text>
+<text class="primary" x="186" y="342.0" font-size="12" text-anchor="end">qwen3.8:27b</text>
+<path class="s2" d="M196,324.0 H252.6 Q256.6,324.0 256.6,328.0 V333.0 Q256.6,337.0 252.6,337.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M253.9,330.5 H259.3 M253.9,326.5 V334.5 M259.3,326.5 V334.5"/>
+<text class="primary" x="266.3" y="334.5" font-size="12">10,5</text>
+<path class="s1" d="M196,339.0 H238.0 Q242.0,339.0 242.0,343.0 V348.0 Q242.0,352.0 238.0,352.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M237.6,345.5 H246.4 M237.6,341.5 V349.5 M246.4,341.5 V349.5"/>
+<text class="primary" x="253.4" y="349.5" font-size="12">8,0</text>
+<text class="primary" x="186" y="382.0" font-size="12" text-anchor="end">qwen3.6:27b</text>
+<path class="s2" d="M196,364.0 H250.4 Q254.4,364.0 254.4,368.0 V373.0 Q254.4,377.0 250.4,377.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M251.0,370.5 H257.8 M251.0,366.5 V374.5 M257.8,366.5 V374.5"/>
+<text class="primary" x="264.8" y="374.5" font-size="12">10,2</text>
+<path class="s1" d="M196,379.0 H252.3 Q256.3,379.0 256.3,383.0 V388.0 Q256.3,392.0 252.3,392.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M252.3,385.5 H260.4 M252.3,381.5 V389.5 M260.4,381.5 V389.5"/>
+<text class="primary" x="267.4" y="389.5" font-size="12">10,5</text>
+<text class="primary" x="186" y="422.0" font-size="12" text-anchor="end">gemma4:31b</text>
+<path class="s2" d="M196,404.0 H251.0 Q255.0,404.0 255.0,408.0 V413.0 Q255.0,417.0 251.0,417.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M252.9,410.5 H257.0 M252.9,406.5 V414.5 M257.0,406.5 V414.5"/>
+<text class="primary" x="264.0" y="414.5" font-size="12">10,3</text>
+<path class="s1" d="M196,419.0 H251.2 Q255.2,419.0 255.2,423.0 V428.0 Q255.2,432.0 251.2,432.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M252.6,425.5 H257.8 M252.6,421.5 V429.5 M257.8,421.5 V429.5"/>
+<text class="primary" x="264.8" y="429.5" font-size="12">10,3</text>
+<text class="primary" x="186" y="462.0" font-size="12" text-anchor="end">Unsloth Qwen3.8 UD-Q4_K_XL</text>
+<path class="s1" d="M196,459.0 H236.0 Q240.0,459.0 240.0,463.0 V468.0 Q240.0,472.0 236.0,472.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M237.2,465.5 H242.9 M237.2,461.5 V469.5 M242.9,461.5 V469.5"/>
+<text class="primary" x="249.9" y="469.5" font-size="12">7,7</text>
+<text class="primary" x="186" y="502.0" font-size="12" text-anchor="end">mistral-small3.2:24b</text>
+<path class="s2" d="M196,484.0 H222.5 Q226.5,484.0 226.5,488.0 V493.0 Q226.5,497.0 222.5,497.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M226.2,490.5 H226.7 M226.2,486.5 V494.5 M226.7,486.5 V494.5"/>
+<text class="primary" x="233.7" y="494.5" font-size="12">5,3</text>
+</svg>

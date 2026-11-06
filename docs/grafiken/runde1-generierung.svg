@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="Generierung mit qwen3.6:35b-a3b">
+<title>Generierung mit qwen3.6:35b-a3b</title>
+<style>
+.bg { fill: #fcfcfb; } .primary { fill: #0b0b0b; } .secondary { fill: #52514e; }
+.grid { stroke: #e4e3df; } .axis { stroke: #b5b4ae; } .err { stroke: #0b0b0b; }
+.s0 { fill: #9a9992; } .s1 { fill: #2a78d6; } .s2 { fill: #eb6834; } .s3 { fill: #1baf7a; }
+.s4 { fill: #eda100; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #1a1a19; } .primary { fill: #f0efec; } .secondary { fill: #c3c2b7; }
+  .grid { stroke: #3a3a37; } .axis { stroke: #5c5b55; } .err { stroke: #f0efec; }
+  .s0 { fill: #75746e; } .s1 { fill: #3987e5; } .s2 { fill: #d95926; } .s3 { fill: #199e70; }
+  .s4 { fill: #c98500; }
+}
+text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+</style>
+<rect class="bg" width="720" height="400"/>
+<text class="primary" x="64" y="28" font-size="18" font-weight="600">Generierung mit qwen3.6:35b-a3b</text>
+<text class="secondary" x="64" y="48" font-size="13">Mittelwert mit Standardabweichung, Token pro Sekunde</text>
+<rect class="s1" x="64" y="62" width="12" height="12" rx="2"/>
+<text class="secondary" x="82" y="73" font-size="13">llama.cpp GPU (n=20)</text>
+<rect class="s2" x="234.0" y="62" width="12" height="12" rx="2"/>
+<text class="secondary" x="252.0" y="73" font-size="13">Ollama GPU (n=20)</text>
+<rect class="s3" x="382.4" y="62" width="12" height="12" rx="2"/>
+<text class="secondary" x="400.4" y="73" font-size="13">Ollama CPU (n=3)</text>
+<line class="axis" x1="64" x2="696" y1="352.0" y2="352.0"/>
+<text class="secondary" x="56" y="356.0" font-size="12" text-anchor="end">0</text>
+<line class="grid" x1="64" x2="696" y1="288.0" y2="288.0"/>
+<text class="secondary" x="56" y="292.0" font-size="12" text-anchor="end">10</text>
+<line class="grid" x1="64" x2="696" y1="224.0" y2="224.0"/>
+<text class="secondary" x="56" y="228.0" font-size="12" text-anchor="end">20</text>
+<line class="grid" x1="64" x2="696" y1="160.0" y2="160.0"/>
+<text class="secondary" x="56" y="164.0" font-size="12" text-anchor="end">30</text>
+<line class="grid" x1="64" x2="696" y1="96.0" y2="96.0"/>
+<text class="secondary" x="56" y="100.0" font-size="12" text-anchor="end">40</text>
+<path class="s1" d="M112.0,352.0 V204.9 Q112.0,200.9 116.0,200.9 H180.0 Q184.0,200.9 184.0,204.9 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M148.0,201.6 V200.1 M142.0,201.6 H154.0 M142.0,200.1 H154.0"/>
+<text class="primary" x="148.0" y="193.1" font-size="13" text-anchor="middle">23,6</text>
+<path class="s2" d="M186.0,352.0 V171.2 Q186.0,167.2 190.0,167.2 H254.0 Q258.0,167.2 258.0,171.2 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M222.0,170.7 V163.6 M216.0,170.7 H228.0 M216.0,163.6 H228.0"/>
+<text class="primary" x="222.0" y="156.6" font-size="13" text-anchor="middle">28,9</text>
+<path class="s3" d="M260.0,352.0 V182.6 Q260.0,178.6 264.0,178.6 H328.0 Q332.0,178.6 332.0,182.6 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M296.0,179.9 V177.3 M290.0,179.9 H302.0 M290.0,177.3 H302.0"/>
+<text class="primary" x="296.0" y="170.3" font-size="13" text-anchor="middle">27,1</text>
+<text class="secondary" x="222.0" y="376" font-size="13" text-anchor="middle">Prompt mit 512 Tokens</text>
+<path class="s1" d="M428.0,352.0 V208.8 Q428.0,204.8 432.0,204.8 H496.0 Q500.0,204.8 500.0,208.8 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M464.0,205.3 V204.3 M458.0,205.3 H470.0 M458.0,204.3 H470.0"/>
+<text class="primary" x="464.0" y="197.3" font-size="13" text-anchor="middle">23,0</text>
+<path class="s2" d="M502.0,352.0 V181.1 Q502.0,177.1 506.0,177.1 H570.0 Q574.0,177.1 574.0,181.1 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M538.0,186.7 V167.5 M532.0,186.7 H544.0 M532.0,167.5 H544.0"/>
+<text class="primary" x="538.0" y="160.5" font-size="13" text-anchor="middle">27,3</text>
+<path class="s3" d="M576.0,352.0 V213.7 Q576.0,209.7 580.0,209.7 H644.0 Q648.0,209.7 648.0,213.7 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M612.0,214.8 V204.5 M606.0,214.8 H618.0 M606.0,204.5 H618.0"/>
+<text class="primary" x="612.0" y="197.5" font-size="13" text-anchor="middle">22,2</text>
+<text class="secondary" x="538.0" y="376" font-size="13" text-anchor="middle">Prompt mit 4096 Tokens</text>
+</svg>

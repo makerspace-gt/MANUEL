@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="Lange Antworten mit und ohne MTP">
+<title>Lange Antworten mit und ohne MTP</title>
+<style>
+.bg { fill: #fcfcfb; } .primary { fill: #0b0b0b; } .secondary { fill: #52514e; }
+.grid { stroke: #e4e3df; } .axis { stroke: #b5b4ae; } .err { stroke: #0b0b0b; }
+.s0 { fill: #9a9992; } .s1 { fill: #2a78d6; } .s2 { fill: #eb6834; } .s3 { fill: #1baf7a; }
+.s4 { fill: #eda100; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #1a1a19; } .primary { fill: #f0efec; } .secondary { fill: #c3c2b7; }
+  .grid { stroke: #3a3a37; } .axis { stroke: #5c5b55; } .err { stroke: #f0efec; }
+  .s0 { fill: #75746e; } .s1 { fill: #3987e5; } .s2 { fill: #d95926; } .s3 { fill: #199e70; }
+  .s4 { fill: #c98500; }
+}
+text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+</style>
+<rect class="bg" width="720" height="200"/>
+<text class="primary" x="16" y="28" font-size="18" font-weight="600">Lange Antworten mit und ohne MTP</text>
+<text class="secondary" x="16" y="48" font-size="13">Mittelwert mit Standardabweichung, Sekunden für 800 Tokens Antwort, weniger ist besser</text>
+<rect class="s0" x="16" y="58" width="12" height="12" rx="2"/>
+<text class="secondary" x="34" y="69" font-size="13">ohne MTP</text>
+<rect class="s1" x="107.6" y="58" width="12" height="12" rx="2"/>
+<text class="secondary" x="125.6" y="69" font-size="13">mit MTP</text>
+<line class="axis" x1="196.0" x2="196.0" y1="78" y2="164"/>
+<text class="secondary" x="196.0" y="182" font-size="12" text-anchor="middle">0</text>
+<line class="grid" x1="311.0" x2="311.0" y1="78" y2="164"/>
+<text class="secondary" x="311.0" y="182" font-size="12" text-anchor="middle">50</text>
+<line class="grid" x1="426.0" x2="426.0" y1="78" y2="164"/>
+<text class="secondary" x="426.0" y="182" font-size="12" text-anchor="middle">100</text>
+<line class="grid" x1="541.0" x2="541.0" y1="78" y2="164"/>
+<text class="secondary" x="541.0" y="182" font-size="12" text-anchor="middle">150</text>
+<line class="grid" x1="656.0" x2="656.0" y1="78" y2="164"/>
+<text class="secondary" x="656.0" y="182" font-size="12" text-anchor="middle">200</text>
+<text class="primary" x="186" y="102.0" font-size="12" text-anchor="end">qwen3.6:35b-a3b</text>
+<path class="s0" d="M196,84.0 H273.3 Q277.3,84.0 277.3,88.0 V93.0 Q277.3,97.0 273.3,97.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M277.1,90.5 H277.5 M277.1,86.5 V94.5 M277.5,86.5 V94.5"/>
+<text class="primary" x="284.5" y="94.5" font-size="12">35,4</text>
+<path class="s1" d="M196,99.0 H254.9 Q258.9,99.0 258.9,103.0 V108.0 Q258.9,112.0 254.9,112.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M257.6,105.5 H260.3 M257.6,101.5 V109.5 M260.3,101.5 V109.5"/>
+<text class="primary" x="267.3" y="109.5" font-size="12">27,4</text>
+<text class="primary" x="186" y="142.0" font-size="12" text-anchor="end">Unsloth Qwen3.8 UD-Q4_K_XL</text>
+<path class="s0" d="M196,124.0 H628.2 Q632.2,124.0 632.2,128.0 V133.0 Q632.2,137.0 628.2,137.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M632.1,130.5 H632.3 M632.1,126.5 V134.5 M632.3,126.5 V134.5"/>
+<text class="primary" x="639.3" y="134.5" font-size="12">189,7</text>
+<path class="s1" d="M196,139.0 H420.4 Q424.4,139.0 424.4,143.0 V148.0 Q424.4,152.0 420.4,152.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M415.9,145.5 H433.0 M415.9,141.5 V149.5 M433.0,141.5 V149.5"/>
+<text class="primary" x="440.0" y="149.5" font-size="12">99,3</text>
+</svg>

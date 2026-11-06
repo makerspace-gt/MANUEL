@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" role="img" aria-label="Prompt-Verarbeitung pro Modell">
+<title>Prompt-Verarbeitung pro Modell</title>
+<style>
+.bg { fill: #fcfcfb; } .primary { fill: #0b0b0b; } .secondary { fill: #52514e; }
+.grid { stroke: #e4e3df; } .axis { stroke: #b5b4ae; } .err { stroke: #0b0b0b; }
+.s0 { fill: #9a9992; } .s1 { fill: #2a78d6; } .s2 { fill: #eb6834; } .s3 { fill: #1baf7a; }
+.s4 { fill: #eda100; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #1a1a19; } .primary { fill: #f0efec; } .secondary { fill: #c3c2b7; }
+  .grid { stroke: #3a3a37; } .axis { stroke: #5c5b55; } .err { stroke: #f0efec; }
+  .s0 { fill: #75746e; } .s1 { fill: #3987e5; } .s2 { fill: #d95926; } .s3 { fill: #199e70; }
+  .s4 { fill: #c98500; }
+}
+text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+</style>
+<rect class="bg" width="720" height="560"/>
+<text class="primary" x="16" y="28" font-size="18" font-weight="600">Prompt-Verarbeitung pro Modell</text>
+<text class="secondary" x="16" y="48" font-size="13">Mittelwert mit Standardabweichung, Token pro Sekunde bei 4096 Tokens Prompt</text>
+<rect class="s2" x="16" y="58" width="12" height="12" rx="2"/>
+<text class="secondary" x="34" y="69" font-size="13">Ollama</text>
+<rect class="s1" x="93.2" y="58" width="12" height="12" rx="2"/>
+<text class="secondary" x="111.2" y="69" font-size="13">llama.cpp</text>
+<line class="axis" x1="196.0" x2="196.0" y1="78" y2="524"/>
+<text class="secondary" x="196.0" y="542" font-size="12" text-anchor="middle">0</text>
+<line class="grid" x1="288.0" x2="288.0" y1="78" y2="524"/>
+<text class="secondary" x="288.0" y="542" font-size="12" text-anchor="middle">500</text>
+<line class="grid" x1="380.0" x2="380.0" y1="78" y2="524"/>
+<text class="secondary" x="380.0" y="542" font-size="12" text-anchor="middle">1000</text>
+<line class="grid" x1="472.0" x2="472.0" y1="78" y2="524"/>
+<text class="secondary" x="472.0" y="542" font-size="12" text-anchor="middle">1500</text>
+<line class="grid" x1="564.0" x2="564.0" y1="78" y2="524"/>
+<text class="secondary" x="564.0" y="542" font-size="12" text-anchor="middle">2000</text>
+<line class="grid" x1="656.0" x2="656.0" y1="78" y2="524"/>
+<text class="secondary" x="656.0" y="542" font-size="12" text-anchor="middle">2500</text>
+<text class="primary" x="186" y="102.0" font-size="12" text-anchor="end">lfm3:1.7b</text>
+<path class="s2" d="M196,84.0 H500.1 Q504.1,84.0 504.1,88.0 V93.0 Q504.1,97.0 500.1,97.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M503.9,90.5 H504.3 M503.9,86.5 V94.5 M504.3,86.5 V94.5"/>
+<text class="primary" x="511.3" y="94.5" font-size="12">1675</text>
+<path class="s1" d="M196,99.0 H556.0 Q560.0,99.0 560.0,103.0 V108.0 Q560.0,112.0 556.0,112.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M559.8,105.5 H560.2 M559.8,101.5 V109.5 M560.2,101.5 V109.5"/>
+<text class="primary" x="567.2" y="109.5" font-size="12">1978</text>
+<text class="primary" x="186" y="142.0" font-size="12" text-anchor="end">qwen3.6:35b-a3b</text>
+<path class="s2" d="M196,124.0 H272.7 Q276.7,124.0 276.7,128.0 V133.0 Q276.7,137.0 272.7,137.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M276.6,130.5 H276.9 M276.6,126.5 V134.5 M276.9,126.5 V134.5"/>
+<text class="primary" x="283.9" y="134.5" font-size="12">439</text>
+<path class="s1" d="M196,139.0 H283.0 Q287.0,139.0 287.0,143.0 V148.0 Q287.0,152.0 283.0,152.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M286.8,145.5 H287.2 M286.8,141.5 V149.5 M287.2,141.5 V149.5"/>
+<text class="primary" x="294.2" y="149.5" font-size="12">495</text>
+<text class="primary" x="186" y="182.0" font-size="12" text-anchor="end">gemma4:26b</text>
+<path class="s2" d="M196,164.0 H282.7 Q286.7,164.0 286.7,168.0 V173.0 Q286.7,177.0 282.7,177.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M286.5,170.5 H286.9 M286.5,166.5 V174.5 M286.9,166.5 V174.5"/>
+<text class="primary" x="293.9" y="174.5" font-size="12">493</text>
+<path class="s1" d="M196,179.0 H297.6 Q301.6,179.0 301.6,183.0 V188.0 Q301.6,192.0 297.6,192.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M301.5,185.5 H301.8 M301.5,181.5 V189.5 M301.8,181.5 V189.5"/>
+<text class="primary" x="308.8" y="189.5" font-size="12">574</text>
+<text class="primary" x="186" y="222.0" font-size="12" text-anchor="end">nemotron-3-nano:30b-a3b</text>
+<path class="s2" d="M196,204.0 H293.4 Q297.4,204.0 297.4,208.0 V213.0 Q297.4,217.0 293.4,217.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M297.2,210.5 H297.6 M297.2,206.5 V214.5 M297.6,206.5 V214.5"/>
+<text class="primary" x="304.6" y="214.5" font-size="12">551</text>
+<path class="s1" d="M196,219.0 H305.2 Q309.2,219.0 309.2,223.0 V228.0 Q309.2,232.0 305.2,232.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M309.0,225.5 H309.4 M309.0,221.5 V229.5 M309.4,221.5 V229.5"/>
+<text class="primary" x="316.4" y="229.5" font-size="12">615</text>
+<text class="primary" x="186" y="262.0" font-size="12" text-anchor="end">gpt-oss:20b</text>
+<path class="s2" d="M196,244.0 H277.4 Q281.4,244.0 281.4,248.0 V253.0 Q281.4,257.0 277.4,257.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M281.3,250.5 H281.6 M281.3,246.5 V254.5 M281.6,246.5 V254.5"/>
+<text class="primary" x="288.6" y="254.5" font-size="12">464</text>
+<path class="s1" d="M196,259.0 H296.8 Q300.8,259.0 300.8,263.0 V268.0 Q300.8,272.0 296.8,272.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M300.4,265.5 H301.2 M300.4,261.5 V269.5 M301.2,261.5 V269.5"/>
+<text class="primary" x="308.2" y="269.5" font-size="12">570</text>
+<text class="primary" x="186" y="302.0" font-size="12" text-anchor="end">mimo-v2.6:9b</text>
+<path class="s2" d="M196,284.0 H254.2 Q258.2,284.0 258.2,288.0 V293.0 Q258.2,297.0 254.2,297.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M258.2,290.5 H258.2 M258.2,286.5 V294.5 M258.2,286.5 V294.5"/>
+<text class="primary" x="265.2" y="294.5" font-size="12">338</text>
+<path class="s1" d="M196,299.0 H269.5 Q273.5,299.0 273.5,303.0 V308.0 Q273.5,312.0 269.5,312.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M273.4,305.5 H273.5 M273.4,301.5 V309.5 M273.5,301.5 V309.5"/>
+<text class="primary" x="280.5" y="309.5" font-size="12">421</text>
+<text class="primary" x="186" y="342.0" font-size="12" text-anchor="end">qwen3.8:27b</text>
+<path class="s2" d="M196,324.0 H210.3 Q214.3,324.0 214.3,328.0 V333.0 Q214.3,337.0 210.3,337.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M214.3,330.5 H214.3 M214.3,326.5 V334.5 M214.3,326.5 V334.5"/>
+<text class="primary" x="221.3" y="334.5" font-size="12">99</text>
+<path class="s1" d="M196,339.0 H214.8 Q218.8,339.0 218.8,343.0 V348.0 Q218.8,352.0 214.8,352.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M218.7,345.5 H218.8 M218.7,341.5 V349.5 M218.8,341.5 V349.5"/>
+<text class="primary" x="225.8" y="349.5" font-size="12">124</text>
+<text class="primary" x="186" y="382.0" font-size="12" text-anchor="end">qwen3.6:27b</text>
+<path class="s2" d="M196,364.0 H210.3 Q214.3,364.0 214.3,368.0 V373.0 Q214.3,377.0 210.3,377.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M214.2,370.5 H214.3 M214.2,366.5 V374.5 M214.3,366.5 V374.5"/>
+<text class="primary" x="221.3" y="374.5" font-size="12">99</text>
+<path class="s1" d="M196,379.0 H214.9 Q218.9,379.0 218.9,383.0 V388.0 Q218.9,392.0 214.9,392.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M218.9,385.5 H218.9 M218.9,381.5 V389.5 M218.9,381.5 V389.5"/>
+<text class="primary" x="225.9" y="389.5" font-size="12">124</text>
+<text class="primary" x="186" y="422.0" font-size="12" text-anchor="end">gemma4:31b</text>
+<path class="s2" d="M196,404.0 H207.8 Q211.8,404.0 211.8,408.0 V413.0 Q211.8,417.0 207.8,417.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M211.8,410.5 H211.8 M211.8,406.5 V414.5 M211.8,406.5 V414.5"/>
+<text class="primary" x="218.8" y="414.5" font-size="12">86</text>
+<path class="s1" d="M196,419.0 H212.2 Q216.2,419.0 216.2,423.0 V428.0 Q216.2,432.0 212.2,432.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M216.2,425.5 H216.2 M216.2,421.5 V429.5 M216.2,421.5 V429.5"/>
+<text class="primary" x="223.2" y="429.5" font-size="12">110</text>
+<text class="primary" x="186" y="462.0" font-size="12" text-anchor="end">Unsloth Qwen3.8 UD-Q4_K_XL</text>
+<path class="s1" d="M196,459.0 H214.5 Q218.5,459.0 218.5,463.0 V468.0 Q218.5,472.0 214.5,472.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M218.5,465.5 H218.5 M218.5,461.5 V469.5 M218.5,461.5 V469.5"/>
+<text class="primary" x="225.5" y="469.5" font-size="12">122</text>
+<text class="primary" x="186" y="502.0" font-size="12" text-anchor="end">mistral-small3.2:24b</text>
+<path class="s2" d="M196,484.0 H212.9 Q216.9,484.0 216.9,488.0 V493.0 Q216.9,497.0 212.9,497.0 H196 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M216.9,490.5 H216.9 M216.9,486.5 V494.5 M216.9,486.5 V494.5"/>
+<text class="primary" x="223.9" y="494.5" font-size="12">114</text>
+</svg>

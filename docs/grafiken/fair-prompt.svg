@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-label="Prompt-Verarbeitung mit gleichen Flags">
+<title>Prompt-Verarbeitung mit gleichen Flags</title>
+<style>
+.bg { fill: #fcfcfb; } .primary { fill: #0b0b0b; } .secondary { fill: #52514e; }
+.grid { stroke: #e4e3df; } .axis { stroke: #b5b4ae; } .err { stroke: #0b0b0b; }
+.s0 { fill: #9a9992; } .s1 { fill: #2a78d6; } .s2 { fill: #eb6834; } .s3 { fill: #1baf7a; }
+.s4 { fill: #eda100; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #1a1a19; } .primary { fill: #f0efec; } .secondary { fill: #c3c2b7; }
+  .grid { stroke: #3a3a37; } .axis { stroke: #5c5b55; } .err { stroke: #f0efec; }
+  .s0 { fill: #75746e; } .s1 { fill: #3987e5; } .s2 { fill: #d95926; } .s3 { fill: #199e70; }
+  .s4 { fill: #c98500; }
+}
+text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+</style>
+<rect class="bg" width="720" height="400"/>
+<text class="primary" x="64" y="28" font-size="18" font-weight="600">Prompt-Verarbeitung mit gleichen Flags</text>
+<text class="secondary" x="64" y="48" font-size="13">Mittelwert mit Standardabweichung, Token pro Sekunde</text>
+<rect class="s1" x="64" y="62" width="12" height="12" rx="2"/>
+<text class="secondary" x="82" y="73" font-size="13">llama.cpp MTP (n=20)</text>
+<rect class="s4" x="234.0" y="62" width="12" height="12" rx="2"/>
+<text class="secondary" x="252.0" y="73" font-size="13">+ ub1024 (n=20)</text>
+<rect class="s2" x="368.0" y="62" width="12" height="12" rx="2"/>
+<text class="secondary" x="386.0" y="73" font-size="13">Ollama GPU (n=20)</text>
+<rect class="s3" x="516.4" y="62" width="12" height="12" rx="2"/>
+<text class="secondary" x="534.4" y="73" font-size="13">Ollama CPU (n=10)</text>
+<line class="axis" x1="64" x2="696" y1="352.0" y2="352.0"/>
+<text class="secondary" x="56" y="356.0" font-size="12" text-anchor="end">0</text>
+<line class="grid" x1="64" x2="696" y1="309.3" y2="309.3"/>
+<text class="secondary" x="56" y="313.3" font-size="12" text-anchor="end">100</text>
+<line class="grid" x1="64" x2="696" y1="266.7" y2="266.7"/>
+<text class="secondary" x="56" y="270.7" font-size="12" text-anchor="end">200</text>
+<line class="grid" x1="64" x2="696" y1="224.0" y2="224.0"/>
+<text class="secondary" x="56" y="228.0" font-size="12" text-anchor="end">300</text>
+<line class="grid" x1="64" x2="696" y1="181.3" y2="181.3"/>
+<text class="secondary" x="56" y="185.3" font-size="12" text-anchor="end">400</text>
+<line class="grid" x1="64" x2="696" y1="138.7" y2="138.7"/>
+<text class="secondary" x="56" y="142.7" font-size="12" text-anchor="end">500</text>
+<line class="grid" x1="64" x2="696" y1="96.0" y2="96.0"/>
+<text class="secondary" x="56" y="100.0" font-size="12" text-anchor="end">600</text>
+<path class="s1" d="M75.0,352.0 V173.0 Q75.0,169.0 79.0,169.0 H143.0 Q147.0,169.0 147.0,173.0 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M111.0,170.0 V167.9 M105.0,170.0 H117.0 M105.0,167.9 H117.0"/>
+<text class="primary" x="111.0" y="160.9" font-size="13" text-anchor="middle">429</text>
+<path class="s4" d="M149.0,352.0 V174.5 Q149.0,170.5 153.0,170.5 H217.0 Q221.0,170.5 221.0,174.5 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M185.0,171.6 V169.5 M179.0,171.6 H191.0 M179.0,169.5 H191.0"/>
+<text class="primary" x="185.0" y="162.5" font-size="13" text-anchor="middle">425</text>
+<path class="s2" d="M223.0,352.0 V199.0 Q223.0,195.0 227.0,195.0 H291.0 Q295.0,195.0 295.0,199.0 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M259.0,195.9 V194.1 M253.0,195.9 H265.0 M253.0,194.1 H265.0"/>
+<text class="primary" x="259.0" y="187.1" font-size="13" text-anchor="middle">368</text>
+<path class="s3" d="M297.0,352.0 V287.6 Q297.0,283.6 301.0,283.6 H365.0 Q369.0,283.6 369.0,287.6 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M333.0,283.8 V283.5 M327.0,283.8 H339.0 M327.0,283.5 H339.0"/>
+<text class="primary" x="333.0" y="276.5" font-size="13" text-anchor="middle">160</text>
+<text class="secondary" x="222.0" y="376" font-size="13" text-anchor="middle">Prompt mit 512 Tokens</text>
+<path class="s1" d="M391.0,352.0 V163.9 Q391.0,159.9 395.0,159.9 H459.0 Q463.0,159.9 463.0,163.9 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M427.0,160.6 V159.3 M421.0,160.6 H433.0 M421.0,159.3 H433.0"/>
+<text class="primary" x="427.0" y="152.3" font-size="13" text-anchor="middle">450</text>
+<path class="s4" d="M465.0,352.0 V144.5 Q465.0,140.5 469.0,140.5 H533.0 Q537.0,140.5 537.0,144.5 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M501.0,141.0 V140.0 M495.0,141.0 H507.0 M495.0,140.0 H507.0"/>
+<text class="primary" x="501.0" y="133.0" font-size="13" text-anchor="middle">496</text>
+<path class="s2" d="M539.0,352.0 V168.8 Q539.0,164.8 543.0,164.8 H607.0 Q611.0,164.8 611.0,168.8 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M575.0,165.2 V164.4 M569.0,165.2 H581.0 M569.0,164.4 H581.0"/>
+<text class="primary" x="575.0" y="157.4" font-size="13" text-anchor="middle">439</text>
+<path class="s3" d="M613.0,352.0 V291.1 Q613.0,287.1 617.0,287.1 H681.0 Q685.0,287.1 685.0,291.1 V352.0 Z"/>
+<path class="err" fill="none" stroke-width="1.5" d="M649.0,287.5 V286.7 M643.0,287.5 H655.0 M643.0,286.7 H655.0"/>
+<text class="primary" x="649.0" y="279.7" font-size="13" text-anchor="middle">152</text>
+<text class="secondary" x="538.0" y="376" font-size="13" text-anchor="middle">Prompt mit 4096 Tokens</text>
+</svg>

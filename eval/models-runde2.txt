@@ -1,0 +1,12 @@
+# Modelle für Runde 2, die in den Speicher der GPU passen. Ein Modell pro Zeile.
+qwen3.6:35b-a3b-mtp-q4_K_M
+gemma4:26b
+gemma4:26b-a4b-it-mtp-q4_K_M
+gpt-oss:20b
+qwen3.8:27b
+gemma4:31b
+mistral-small3.2:24b
+nemotron-3-nano:30b-a3b
+qwen3.6:27b
+mimo-v2.6:9b
+lfm3:1.7b

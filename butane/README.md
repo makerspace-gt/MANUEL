@@ -19,20 +19,21 @@ Die Datei `manuel.ign` wird nicht committet.
 podman run --rm -v .:/data -w /data quay.io/coreos/coreos-installer:release download -f iso
 ```
 
-4. Das ISO und `manuel.ign` auf den Ventoy-Stick kopieren.
+4. Das ISO mit dem [Fedora Media Writer](https://github.com/FedoraQt/MediaWriter) auf einen USB-Stick schreiben.
+5. `manuel.ign` auf einen zweiten USB-Stick kopieren.
 
 ## Installation auf dem Mini-PC
 
-1. Den Mini-PC vom Ventoy-Stick starten und das Fedora-CoreOS-ISO auswählen.
-2. Im Live-System die Ventoy-Partition einbinden, Fedora CoreOS mit der Ignition-Datei auf die interne SSD installieren und neu starten.
+1. Den Mini-PC vom USB-Stick mit dem ISO starten.
+2. Im Live-System den zweiten Stick einbinden, Fedora CoreOS mit der Ignition-Datei auf die interne SSD installieren und neu starten.
 
 ```bash
-sudo mount -o ro /dev/disk/by-label/Ventoy /mnt
+sudo mount -o ro /dev/sdX1 /mnt
 sudo coreos-installer install /dev/nvme0n1 -i /mnt/manuel.ign
 sudo systemctl reboot
 ```
 
-Den Namen der SSD vorher mit `lsblk` prüfen. Lässt sich die Ventoy-Partition nicht einbinden, weil Ventoy sie für das gebootete ISO belegt, liegt `manuel.ign` stattdessen auf einem zweiten USB-Stick.
+Die Namen von SSD und zweitem Stick vorher mit `lsblk` prüfen und `/dev/sdX1` entsprechend ersetzen.
 
 ## Was beim ersten Start passiert
 

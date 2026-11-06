@@ -1,0 +1,203 @@
+# Inbetriebnahme des Mini-PCs
+
+Der MINISFORUM AI X1 Pro-370 wurde am 05.11.2026 geliefert. Diese Anleitung beschreibt die nötigsten Schritte bis zum Benchmark. Danach geht es mit Phase 1 und 2 im [Plan](../PLAN.md) weiter.
+
+Die Reihenfolge ist wichtig, denn in Schritt 3 wird die vorinstallierte Windows-Installation gelöscht.
+
+| Schritt | Aufgabe | Wer |
+|---|---|---|
+| 1 | BIOS umstellen | Admin |
+| 2 | Windows-Schlüssel sichern | Admin |
+| 3 | uCore installieren | Admin |
+| 4 | Ersten Prompt testen | Admin |
+| 5 | Benchmark durchführen | Claude Code, BIOS-Änderungen durch Admin |
+
+## Vorbereitung des USB-Sticks
+
+Installiert wird Fedora CoreOS, das beim ersten Start selbstständig auf unser Image auf Basis von uCore wechselt. Ein eigenes ISO von uCore gibt es dafür nicht.
+
+[Ventoy](https://www.ventoy.net/) hat auf dem Mini-PC nicht funktioniert. Im normalen Modus blieb der Start hängen, im Grub2-Modus meldete Ventoy `No bootfile found for UEFI!`. Das ISO kommt deshalb direkt auf den Stick.
+
+1. Das Live-ISO von [Fedora CoreOS](https://fedoraproject.org/coreos/download/?stream=stable) aus dem Stream Stable für Bare Metal und x86_64 herunterladen. Wir haben [44.20261023.3.1](https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/44.20261023.3.1/x86_64/fedora-coreos-44.20261023.3.1-live-iso.x86_64.iso) verwendet.
+2. Das ISO mit dem [Fedora Media Writer](https://github.com/FedoraQt/MediaWriter) auf einen USB-Stick schreiben. Dabei wird der Stick gelöscht.
+3. `manuel.ign` auf einen zweiten USB-Stick kopieren. Wie die Datei entsteht, steht in [butane/README.md](../butane/README.md).
+
+## 1 BIOS umstellen
+
+Das BIOS lässt sich direkt aus Windows heraus öffnen:
+
+1. In den Einstellungen `System` und dann `Wiederherstellung` öffnen.
+2. Bei `Erweiterter Start` auf `Jetzt neu starten` klicken.
+3. `Problembehandlung`, dann `Erweiterte Optionen` und `UEFI-Firmwareeinstellungen` wählen.
+4. Auf `Neu starten` klicken.
+
+Steckt Windows noch im Einrichtungsassistenten, das Gerät ausschalten, einschalten und direkt mehrfach `Entf` drücken.
+
+Im BIOS haben wir diese Werte eingestellt oder als Ausgangswert notiert:
+
+| Einstellung | Pfad | Wert | Hinweis |
+|---|---|---|---|
+| Secure Boot | `Security` | `Disabled` | Für den Start vom USB-Stick abgeschaltet |
+| Leistungsprofil | `Advanced` → `PowerLimit Setting` | `Performance Mode` | Gilt für alle Messungen im Benchmark |
+| Lüfter | `Advanced` → `Hardware Monitor` → Fan Mode | Performance-Modus | Lautstärke im Dauerbetrieb prüfen wir später |
+| iGPU Configuration | `Advanced` → `AMD CBS` → `NBIO Common Options` → `GFX Configuration` | `UMA_Specified` | Ausgangswert, nicht geändert |
+| UMA Frame Buffer Size | wie iGPU Configuration | `16G` | Ausgangswert war `2G`, Begründung siehe [Benchmarks](benchmarks.md) |
+| SmartShift Control | `Advanced` → `AMD CBS` → `SMU Common Options` | `Auto` | Nicht geändert |
+
+Die Pfade können je nach BIOS-Version abweichen. Eine offizielle Beschreibung des BIOS von Minisforum haben wir nicht gefunden. Einen Rundgang durch die Menüs mit Bildern bietet der Artikel [Minisforum AI X1 Pro running Linux: BIOS](https://www.linuxlinks.com/minisforum-ai-x1-pro-running-linux-bios/) von LinuxLinks. Das Gerät ist im [Shop von Minisforum](https://store.minisforum.com/products/minisforum-ai-x1-pro) beschrieben.
+
+## 2 Windows-Schlüssel sichern
+
+Der Mini-PC wird mit Windows geliefert. Der Schlüssel steht normalerweise in der Firmware und übersteht deshalb das Löschen der SSD. Wir sichern ihn trotzdem, falls wir das Gerät einschicken müssen oder Windows wieder brauchen.
+
+1. Den USB-Stick einstecken und in Windows den erweiterten Start wie in Schritt 1 öffnen. Dort `Gerät verwenden` und den USB-Stick wählen.
+2. Die Meldungen auf der Konsole abschalten. Das Live-System meldet laufend `Bluetooth hci0 Failed to load firmware`, was harmlos ist, aber die Eingabe verdeckt. Im Log bleiben die Meldungen erhalten. Noch gilt das englische Layout, deshalb steht hier `ß` für `-`. Am Bildschirm erscheint `sudo dmesg -n 1`.
+
+```text
+sudo dmesg ßn 1
+```
+
+3. Das deutsche Tastaturlayout einstellen, weil das Live-System mit dem englischen Layout startet. `Y` und `Z` sind dort vertauscht, deshalb steht hier `loadkezs`. Am Bildschirm erscheint `sudo loadkeys de`.
+
+```text
+sudo loadkezs de
+```
+
+4. Den Schlüssel auslesen.
+
+```bash
+sudo tail -c 29 /sys/firmware/acpi/tables/MSDM; echo
+```
+
+Funktioniert `loadkeys` nicht, lässt sich der Befehl auch mit englischem Layout auf einer deutschen Tastatur eingeben. Dabei ergibt `Ö` das Zeichen `;`, `-` das Zeichen `/`, `ß` das Zeichen `-` und `Z` den Buchstaben `y`.
+
+```text
+sudo tail ßc 29 -szs-firmware-acpi-tables-MSDMö echo
+```
+
+5. Das Ergebnis in Vaultwarden speichern.
+
+Der Schlüssel darf nicht in dieses öffentliche Repo. Fehlt die Datei `MSDM`, liegt kein Schlüssel in der Firmware. Dann vor Schritt 3 Windows einmal starten, einrichten und in den Einstellungen unter Aktivierung prüfen, ob eine digitale Lizenz vorhanden ist.
+
+## 3 uCore installieren
+
+Dieser Schritt löscht die interne SSD. Vorher im Reiter Actions prüfen, dass der letzte Build des Images durchgelaufen ist, denn die SSH-Schlüssel der Admins kommen aus dem Image.
+
+1. Das Netzwerkkabel anschließen.
+2. Im Live-System aus Schritt 2 den zweiten Stick einbinden und Fedora CoreOS mit `manuel.ign` installieren, wie in [butane/README.md](../butane/README.md) beschrieben.
+3. Abwarten, bis das System auf unser Image gewechselt hat. Das dauert zwei weitere Neustarts.
+4. Per SSH als Benutzer `core` anmelden und das gebootete Image prüfen.
+
+```bash
+rpm-ostree status
+```
+
+## 4 Ersten Prompt testen
+
+Dieser Test zeigt, dass Ollama im Container die GPU nutzt. Das kleine Modell `gemma3:4b` ist schnell geladen und nur für diesen Test gedacht.
+
+1. Ollama im Container starten. Der Port ist nur an `127.0.0.1` gebunden, weil Ollama keine Anmeldung kennt. `OLLAMA_IGPU_ENABLE=1` ist nötig, weil Ollama die iGPU sonst verwirft und unbemerkt auf der CPU rechnet.
+
+```bash
+sudo podman run -d --name ollama \
+  --device /dev/dri --cap-add PERFMON \
+  --security-opt label=disable \
+  -e OLLAMA_IGPU_ENABLE=1 \
+  -e OLLAMA_CONTEXT_LENGTH=32768 \
+  -v ollama:/root/.ollama \
+  -p 127.0.0.1:11434:11434 \
+  docker.io/ollama/ollama:latest
+```
+
+2. Den ersten Prompt absetzen. Beim ersten Mal lädt Ollama das Modell herunter, das dauert einige Minuten.
+
+```bash
+sudo podman exec -it ollama ollama run gemma3:4b "Mein Toaster wird nicht mehr heiß. Was prüfe ich zuerst? Antworte in drei kurzen Sätzen." --verbose
+```
+
+3. Prüfen, ob das Modell auf der GPU läuft. In der Spalte `PROCESSOR` muss `100% GPU` stehen.
+
+```bash
+sudo podman exec ollama ollama ps
+```
+
+Für einen weiteren Kaltstart das Modell vorher entladen.
+
+```bash
+sudo podman exec ollama ollama stop gemma3:4b
+```
+
+Am 05.11.2026 lieferte der erste Prompt diese Antwort:
+
+> Hier sind drei kurze Sätze, die Ihnen helfen, das Problem zu diagnostizieren:
+>
+> Zuerst überprüfen Sie, ob der Toaster richtig an einer Steckdose angeschlossen ist und ob die Steckdose funktioniert. Überprüfen Sie dann den Schutzmechanismus, der möglicherweise durch Überhitzung oder eine Fehlfunktion ausgelöst wurde. Schließlich, prüfen Sie, ob die Heizelemente nicht blockiert sind.
+
+Gemessen haben wir mit Ollama 0.40.14 über Vulkan auf der Radeon 890M bei 2 GiB UMA diese Werte:
+
+| Messgröße | Wert |
+|---|---|
+| Anteil auf der GPU | 100 % |
+| Gesamtdauer ohne Download | 8,7 s |
+| Ladezeit des Modells | 5,5 s |
+| Prompt-Verarbeitung | 121,83 Token pro Sekunde |
+| Generierung | 28,25 Token pro Sekunde |
+
+Das ist ein einzelner Kaltstart und kein Benchmark. Die Antwort zeigt auch, warum wir eigene Prompts brauchen, denn ein Sicherheitshinweis fehlt.
+
+## 5 Benchmark durchführen
+
+Den Benchmark führt [Claude Code](https://claude.com/product/claude-code) mit dem Modell Claude Opus 5.5 von einem Admin-Rechner aus per SSH durch. Es richtet die Container ein, lässt die Messungen laufen und wertet sie aus. BIOS-Änderungen macht ein Admin am Gerät, die Ergebnisse prüfen die Admins.
+
+Alle Engines laufen in Containern. Das Betriebssystem bleibt dadurch unverändert. Ollama und llama.cpp binden wir an `127.0.0.1`, weil beide ohne Anmeldung laufen. Auf dem Gerät liegen während des Benchmarks keine echten Ticketdaten.
+
+Eingesetzt werden diese Werkzeuge:
+
+- `ollama-bench` aus dem Submodul `ollama` für alle Messungen über eine Server-Schnittstelle
+- [eval/bench.sh](../eval/bench.sh) für den Ablauf der Messungen
+- Podman für die Container der Engines
+- `tmux`, damit Läufe einen Abbruch der SSH-Verbindung überstehen
+
+Hauptkandidat ist llama.cpp mit Vulkan. ROCm testen wir nicht, weil Vulkan auf der Radeon 890M bei der Textgenerierung [deutlich schneller](https://msf.github.io/blogpost/local-llm-performance-framework13.html) war und wir uns den Aufwand sparen. Verglichen werden diese Engines:
+
+- llama.cpp mit Vulkan
+- Ollama mit Vulkan, weil Zammad es direkt ansprechen kann
+- CPU allein als Basiswert
+
+Gemessen wird in Runden. Jede Runde ändert nur einen Faktor, der Gewinner geht in die nächste Runde.
+
+| Runde | Vergleich |
+|---|---|
+| 1 | Engines aus der Liste oben mit `qwen3.6:35b-a3b` |
+| 2 | Alle Modelle aus [eval/models-runde2.txt](../eval/models-runde2.txt) und Qwen3.8-27B `UD-Q4_K_XL` von [Unsloth](https://unsloth.ai/docs/models/qwen3.8), falls vorhanden auch mit MTP |
+| 3 | UMA im BIOS, GTT-Limit im Kernel und Flags wie `-ub` |
+| 4 | Dauertest über etwa 30 Minuten mit dem Gewinner |
+| 5 | Einzelversuch mit Qwen3.8-Flash-Next `UD-IQ1_S`, das mit 72,5 GB nicht in den Speicher passt und von der SSD nachlädt |
+
+Runde 2 ist bewusst breit angelegt. Geben die Reparierenden Rückmeldung zur Qualität, können wir ohne neue Messung auf ein anderes Modell ausweichen.
+
+Für jede Variante gelten dieselben Bedingungen:
+
+- Prompts mit 512 und 4096 Tokens, damit auch lange Prompts wie der des Ticket Categorizer abgedeckt sind
+- Kontextlänge 32768, Temperatur 0, fester Seed
+- 2 Läufe zum Aufwärmen und 10 gemessene Läufe
+- gleiches Image per Digest, gleiche Modelldatei und gleiches Leistungsprofil
+- `--parallel 1`, weil sonst die Messwerte für MTP nicht vergleichbar sind
+- jede Variante zweimal im Wechsel mit der Vergleichsvariante, um Einflüsse der Temperatur zu erkennen
+
+Festgehalten werden Prompt-Verarbeitung und Generierung in Token pro Sekunde, Zeit bis zum ersten Token, Ladezeit, Speicherbedarf und der Anteil auf der GPU. Läufe mit einem Anteil auf der CPU gelten nur in der Vergleichsgruppe CPU. Die Ergebnisse stehen in [benchmarks.md](benchmarks.md).
+
+Der Benchmark misst nur die Geschwindigkeit. Ob ein Modell gut antwortet, zeigt erst der Testsatz aus Phase 3.
+
+### Aufräumen
+
+Container, Images und Modelle liegen unter `/var`, die Messskripte im Verzeichnis `~/bench`. Das GTT-Limit aus Runde 3 ist ein Kernel-Parameter und bleibt gesetzt, bis wir ihn entfernen. Nach dem Benchmark räumen wir deshalb auf und behalten nur, was wir für den Betrieb brauchen.
+
+```bash
+sudo podman rm -af
+sudo podman image prune -af
+rm -rf ~/bench
+sudo rpm-ostree kargs --delete=ttm.pages_limit=<Wert>
+```
+
+Der letzte Befehl entfällt, wenn der Gewinner aus Runde 3 das Limit braucht. Das Volume mit den Modellen bleibt erhalten. Nicht mehr benötigte Modelle löschen wir einzeln, oder wir entfernen das Volume mit `sudo podman volume rm ollama`.

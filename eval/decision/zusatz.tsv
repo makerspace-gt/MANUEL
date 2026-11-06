@@ -1,0 +1,53 @@
+# Frei erfundene Beispiel-Tickets für die weiteren Fragen. Sie stammen nicht aus echten Anfragen.
+# Spalten: ID, Absicht, Wunsch, Kleinigkeit (1/0), Strom, Marke genannt (1/0), vollständig (1/0), Text
+# Vollständig heißt, das Gerät und der Fehler sind beschrieben.
+z01	neu	keine	1	netz	0	1	Bei meiner Nachttischlampe ist der Schalter im Kabel kaputt, den würde ich gerne tauschen.
+z02	neu	1130	0	netz	1	1	Meine Bosch Waschmaschine schleudert nicht mehr. Passt mir am besten um 11:30 Uhr.
+z03	neu	spaet	0	netz	0	1	Der Staubsauger saugt kaum noch und wird heiß. Ich kann erst nach 13 Uhr kommen.
+z04	neu	frueh	1	mechanisch	0	1	Könnte jemand nur mal auf meine klemmende Schublade schauen? Am liebsten gleich morgens.
+z05	neu	1400	1	netz	0	1	Ich muss nur wissen, welches Ersatzteil ich für meinen Toaster bestellen muss. Geht 14 Uhr?
+z06	neu	keine	1	netz	1	1	Kaffeemaschine von Philips leckt. Bitte erstmal nur schauen, ob sich eine Reparatur lohnt.
+z07	neu	1200	0	akku	1	1	Das iPhone 12 lädt nicht mehr, der Akku ist vermutlich hin. Um zwölf wäre super.
+z08	neu	mittel	0	netz	1	1	Unser Miele Geschirrspüler pumpt nicht ab, wir könnten so um die Mittagszeit kommen.
+z09	neu	keine	0	akku	0	1	Der Akkuschrauber dreht nicht mehr, obwohl der Akku voll ist.
+z10	neu	spaet	1	mechanisch	0	1	Fahrradreifen flicken, gerne ganz am Ende des Tages.
+z11	neu	1300	0	batterie	0	1	Das Spielzeugauto mit Batterien fährt nicht mehr. Ein Uhr würde passen.
+z12	neu	keine	0	mechanisch	0	1	Die Nähte am Rucksack sind offen und ein Träger ist gerissen.
+z13	neu	frueh	0	netz	1	1	Der Siemens Trockner wird nicht warm. Wir sind ab elf da und müssen bald wieder weg.
+z14	neu	1230	0	netz	1	1	Sony Fernseher zeigt kein Bild. Geht 12:30?
+z15	neu	keine	1	batterie	0	1	Kann mir jemand kurz zeigen, wie ich die Batterie an meiner Küchenwaage tausche?
+z16	neu	keine	0	unbekannt	0	0	Hallo, mein Gerät ist kaputt. Kann das jemand reparieren?
+z17	neu	keine	0	unbekannt	0	0	Es geht nicht mehr. Habt ihr Zeit?
+z18	neu	frueh	0	unbekannt	0	0	Hallo zusammen, ich würde gerne vorbeikommen, am liebsten früh.
+z19	neu	keine	0	netz	0	0	Ich habe hier einen Fernseher, was muss ich mitbringen?
+z20	neu	keine	0	netz	1	0	Ich möchte meine Bosch Kaffeemaschine vorbeibringen.
+z21	neu	keine	0	unbekannt	1	0	Mein Samsung geht nicht.
+z22	absage	keine	0	netz	0	1	Leider kann ich am Samstag nicht kommen, mein Toaster ist doch wieder in Ordnung.
+z23	absage	keine	0	unbekannt	0	0	Ich muss meinen Termin leider absagen, bin krank geworden.
+z24	absage	keine	0	unbekannt	0	0	Bitte streichen Sie mich von der Liste, das hat sich erledigt.
+z25	verschieben	spaet	0	unbekannt	0	0	Können wir meinen Termin von 11 auf 13:30 oder später schieben?
+z26	verschieben	frueh	0	unbekannt	0	0	Ich schaffe es doch nicht am Nachmittag, geht es auch früher am Tag?
+z27	verschieben	1200	0	unbekannt	0	0	Kann ich meinen Termin auf 12 Uhr legen?
+z28	rueckfrage	keine	0	unbekannt	0	0	Wo genau findet das Repair Café statt und gibt es Parkplätze?
+z29	rueckfrage	keine	0	unbekannt	0	0	Was kostet eine Reparatur bei euch und nehmt ihr Spenden an?
+z30	rueckfrage	keine	0	unbekannt	0	0	Wann ist der nächste Termin im Dezember?
+z31	rueckfrage	keine	0	unbekannt	0	0	Ich möchte gerne ehrenamtlich mitmachen, an wen kann ich mich wenden?
+z32	neu	mittel	1	netz	0	1	Bei der Stehlampe wackelt der Schalter, ich komme gerne so um die Mittagszeit.
+z33	neu	keine	0	akku	1	1	Der Dyson Staubsauger geht nach einer Minute aus.
+z34	neu	keine	0	netz	0	1	Mein alter Plattenspieler dreht zu langsam.
+z35	neu	keine	1	mechanisch	0	1	Am Regenschirm ist nur eine Strebe rausgesprungen.
+z36	neu	1330	1	mechanisch	0	1	Der Jackenreißverschluss hakt. Halb zwei würde mir passen.
+z37	neu	spaet	1	netz	0	1	Ich will nur abklären, ob sich die alte Mikrowelle noch lohnt, und kann erst spät kommen.
+z38	neu	keine	0	netz	1	1	Der Canon Drucker zieht kein Papier ein und meldet einen Fehler.
+z39	neu	1100	0	mechanisch	1	1	Das Gazelle Fahrrad hat einen Schaden an der Schaltung, ich komme gerne direkt um elf.
+z40	neu	keine	0	akku	1	1	Das Lenovo Notebook startet nicht mehr und der Lüfter macht laute Geräusche.
+z41	neu	keine	0	batterie	0	1	Die Fernbedienung schaltet nicht mehr, neue Batterien helfen nicht.
+z42	neu	keine	1	netz	1	1	Für meinen Braun Rasierer suche ich nur das passende Ersatzteil, bitte nur Beratung.
+z43	neu	keine	0	mechanisch	0	1	Der Handmixer ohne Strom, also die alte Kurbel, ist festgefressen.
+z44	neu	keine	0	netz	0	1	Die Heißluftfritteuse zeigt nur noch Fehler und bleibt kalt.
+z45	neu	frueh	0	akku	0	1	Mein E-Bike-Akku lädt nicht mehr. Vormittags hätte ich Zeit.
+z46	neu	keine	1	netz	0	1	Bei der Lichterkette ist ein Stecker locker, das geht sicher schnell.
+z47	absage	keine	0	unbekannt	0	0	Leider kann ich doch nicht, ich melde mich wieder.
+z48	absage	keine	0	unbekannt	0	0	Schaffe es diesmal nicht, komme dann beim nächsten Mal auf euch zu.
+z49	absage	keine	0	unbekannt	0	0	Mir ist etwas dazwischengekommen. Ich melde mich, wenn es wieder passt.
+z50	verschieben	spaet	0	unbekannt	0	0	Leider kann ich morgens doch nicht, geht auch 13:30?

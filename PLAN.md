@@ -9,7 +9,7 @@ Dieser Plan beschreibt, wie wir MANUEL vom Kauf der Hardware bis zum Verwendungs
 - **Verwendungsnachweis** mit Sachbericht und zahlenmäßigem Nachweis ist bis 31.03.2027 im Förderportal der DSEE fällig. Der Sachbericht muss auch die Veröffentlichung und Kommunikation der Ergebnisse nachweisen.
 - **Zweckbindung** gilt zwei Jahre nach Ende des Bewilligungszeitraums, also bis 31.12.2028.
 - **Förderhinweis** mit DSEE-Logo und dem Zusatz »Gefördert durch« gehört auf alle Veröffentlichungen, also auch in dieses Repo und auf das Gerät.
-- **Abweichung vom Finanzierungsplan** muss geklärt werden. Bewilligt ist die Variante mit 2 TB, gekauft wird die Variante mit 1 TB.
+- **Abweichung vom Finanzierungsplan** ist geklärt und kein Problem. Bewilligt war die Variante mit 2 TB, gekauft wurde die Variante mit 1 TB.
 
 ## Architektur
 
@@ -49,10 +49,11 @@ Grundsätze für den Betrieb:
 | Frage | Empfehlung | Alternative |
 |---|---|---|
 | Betriebssystem | [uCore Minimal](https://github.com/ublue-os/ucore) von Universal Blue auf Basis von [Fedora CoreOS](https://docs.fedoraproject.org/en-US/fedora-coreos/), weil es den neuesten Kernel mitbringt, der laut [Phoronix](https://www.phoronix.com/review/amd-perfopt/3) die LLM-Leistung von Radeon-iGPUs deutlich verbessert, sich atomar mit Rollback aktualisiert und zu Bluefin auf unseren Notebooks passt | Fedora Server mit gleichem Kernel, klassischer Paketverwaltung und einfacherer Anbindung an Ansible |
-| Inferenz-Server | [Ollama](https://docs.ollama.com/) im Container. Vulkan und ROCm vergleichen wir im Benchmark, denn die [Ollama-Doku zu GPUs](https://github.com/ollama/ollama/blob/main/docs/gpu.mdx) führt den gfx1150 des HX 370 inzwischen auch für ROCm v7 | [llama.cpp](https://github.com/ggml-org/llama.cpp) mit [llama-swap](https://github.com/mostlygeek/llama-swap), falls Ollama die GPU schlecht nutzt |
+| Inferenz-Server | [Ollama](https://docs.ollama.com/) im Container. Vulkan und ROCm vergleichen wir im Benchmark, denn die [Ollama-Doku zu GPUs](https://github.com/ollama/ollama/blob/main/docs/gpu.mdx) führt den gfx1150 des HX 370 inzwischen auch für ROCm v7 | [llama.cpp](https://github.com/ggml-org/llama.cpp) mit [llama-swap](https://github.com/mostlygeek/llama-swap), falls Ollama die GPU schlecht nutzt. Zammad bindet es über den Anbieter Custom (OpenAI Compatible) ein |
 | Anbindung an Zammad | [KI-Agenten](https://admin-docs.zammad.org/en/latest/ai/ai-agents.html) und KI-Funktionen von Zammad mit [Ollama als Anbieter](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama), das Zammad über NetBird erreicht. Zammad füllt die Felder selbst, n8n übernimmt nur Aufgaben außerhalb von Zammad | n8n-Workflows auch für die Felder, falls die Agenten nicht reichen |
 | Automatisierung | [n8n selbst gehostet](https://docs.n8n.io/hosting/) auf der Helpdesk-VM neben Zammad. Dort liegen die Zugangsdaten im Rechenzentrum statt in der offenen Werkstatt, Workflows ohne Sprachmodell laufen auch bei Neustart oder Ausfall des Mini-PCs, und Traefik, resticker und Uptime Kuma sind schon eingerichtet. n8n steht unter der [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md), die den Betrieb für eigene Zwecke erlaubt, aber keine Open-Source-Lizenz ist | n8n auf dem Mini-PC direkt neben Ollama |
 | Anzahl der Modelle | Ein Sprachmodell für alle Aufgaben mit einem eigenen Prompt pro Aufgabe, dazu ein kleines Embedding-Modell. Zwei große Modelle passen kaum gleichzeitig in den Speicher der GPU, und jeder Wechsel kostet Ladezeit | Zusätzlich ein kleines Sprachmodell, falls der Benchmark zeigt, dass einfache Aufgaben zu lange dauern |
+| Schwierige Fälle | Vorerst keine Sonderbehandlung, das Sprachmodell bearbeitet alle Tickets | Eskalation auf ein großes, langsames Modell. Das schnelle Modell bleibt Standard, das große wird auf Anforderung geladen und schreibt seine Lösung als interne Notiz. Auslöser sind ein Klick in Zammad und feste Regeln, nicht die Selbsteinschätzung des Modells. Lohnt sich nur, wenn der Testsatz einen klaren Qualitätsvorsprung zeigt. Ein Decision-Modell wie [d3](https://ollama.com/library/d3) kann vorab markieren, ob ein Ticket sicherheitsrelevant ist oder die Beschreibung nicht reicht. Die Markierung ist ein Hinweis für die Engagierten und ersetzt weder den Sicherheitshinweis im Prompt noch ihre Prüfung |
 | Embedding-Modell | [bge-m3](https://ollama.com/library/bge-m3), das Zammad für Ollama [selbst empfiehlt](https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb). Es ist mehrsprachig und dient der semantischen Suche in der Wissensdatenbank | [qwen3-embedding](https://ollama.com/library/qwen3-embedding) |
 | Reparaturanleitungen | [Wissensdatenbank von Zammad](https://admin-docs.zammad.org/en/latest/manage/knowledge-base.html). Zammad erzeugt Artikel aus einem Ticket und zeigt per Embedding [passende Artikel am Ticket](https://github.com/zammad/zammad/blob/develop/app/services/service/ticket/ai/related_knowledge_base_answers.rb) an | Wiki.js mit eigenem Embedding-Workflow in n8n |
 | Termin im Ticket | Eigenes Datumsfeld Termin über die [Objektverwaltung von Zammad](https://admin-docs.zammad.org/en/latest/system/objects.html) statt der Wartezeit des Tickets. Dann entfällt unsere angepasste Kopie der ticket.rb, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md) | Kleiner Patch als Initializer statt Kopie der ganzen Datei |
@@ -236,7 +237,7 @@ git push
 ### Phase 2 Inferenz
 
 - [ ] GPU-Stack prüfen mit vulkaninfo und Zugriff auf /dev/dri im Container
-- [ ] Speicherzuteilung für die GPU über UMA und GTT-Limit testen und dokumentieren
+- [x] Speicherzuteilung für die GPU über UMA und GTT-Limit testen und dokumentieren, Ergebnis 16 GiB UMA ohne Kernel-Parameter, siehe docs/benchmarks.md
 - [ ] Rolle ollama in it-infrastructure anlegen und den Port nur an die NetBird-Adresse binden, weil Ollama keine Anmeldung kennt und Docker die Firewall des Hosts umgeht
 - [ ] Prüfen, dass Ollama aus dem LAN und dem Gäste-WLAN des Makerspace nicht erreichbar ist
 - [ ] Kontrollieren, dass Modelle wirklich auf der GPU laufen und nicht auf der CPU, zum Beispiel an der GPU-Auslastung in Beszel
@@ -246,7 +247,7 @@ git push
 - [ ] `OLLAMA_CONTEXT_LENGTH` fest auf etwa 32768 setzen. Zammad schickt keine Kontextlänge mit, und Ollama wählt sonst je nach erkanntem Grafikspeicher 4K, 32K oder 256K, siehe [envconfig/config.go](https://github.com/ollama/ollama/blob/main/envconfig/config.go). Bei 4K würden lange Prompts wie der des Ticket Categorizer still abgeschnitten
 - [ ] `OLLAMA_KEEP_ALIVE` hoch setzen, damit das Modell beim Repair Café nicht nach 5 Minuten Pause entladen wird, und `OLLAMA_MAX_LOADED_MODELS` so wählen, dass Sprach- und Embedding-Modell gleichzeitig geladen bleiben
 - [ ] Startmodell [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) laden
-- [ ] UMA und GTT-Limit so einstellen, dass die GPU deutlich mehr als 24 GB nutzen darf
+- [x] UMA und GTT-Limit so einstellen, dass die GPU deutlich mehr als 24 GB nutzen darf
 - [ ] Embedding-Modell [bge-m3](https://ollama.com/library/bge-m3) laden und prüfen, dass es zusammen mit dem Sprachmodell in den Speicher passt
 - [ ] Geschwindigkeit messen und mit qwen3.6:35b-a3b-mtp-q4_K_M, qwen3.6:35b-a3b-q8_0 und qwen3.6:27b vergleichen, Ergebnisse in docs/benchmarks.md festhalten
 - [ ] Optional die NPU mit [AMD Lemonade](https://github.com/lemonade-sdk/lemonade) ausprobieren
@@ -288,6 +289,7 @@ git push
 - [ ] Workflow für Terminvorschläge bauen, der Anmeldungen in Nuudel auswertet
 - [ ] Workflow für den Newsletter bauen, der nur Gäste anmeldet, für die Engagierte den Wunsch im Feld zur Einwilligung vermerkt haben. Die KI-Agenten dürfen dieses Feld nie setzen. Übermittelt wird nur die E-Mail-Adresse, der Endpunkt löst die Bestätigungsmail aus, jede Übermittlung erscheint einmalig als interne Notiz im Ticket und Fehler werden gemeldet
 
+- [ ] Wechselzeit zwischen schnellem und großem Modell messen, mit Modell im Zwischenspeicher und nach einem Neustart
 ### Phase 6 Abschluss und Veröffentlichung
 
 - [ ] Kennzahlen aus dem Antrag erheben, also Reparaturquote, Reparaturen durch Gäste und neue Engagierte, Rückmeldungen zu Vorschlägen und gemeldete Reparaturen
@@ -298,6 +300,8 @@ git push
 - [ ] DSEE-Logo mit »Gefördert durch« in die README aufnehmen
 - [ ] Ergebnisse veröffentlichen, zum Beispiel auf unserer Website, im Netzwerk Reparatur-Initiativen der anstiftung und in den sozialen Medien
 - [ ] Belege der Veröffentlichung für den Sachbericht sammeln
+- [ ] Decision-Modell d3 an deutschen Beispiel-Tickets prüfen, vor allem das Kriterium sicherheitsrelevant. Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt
+- [ ] Schnelles und großes Modell am Testsatz vergleichen und entscheiden, ob sich die Eskalation lohnt
 - [ ] Verwendungsnachweis bis 31.03.2027 im Förderportal einreichen
 
 ## Ausblick
@@ -314,6 +318,7 @@ Beide Dienste würden denselben Ollama-Server über NetBird nutzen. Weitere Dien
 | Zeitraum | Phase |
 |---|---|
 | bis Lieferung | Phase 0, 0b mit Stufe 1 des IT-Plans und 0c |
+- [ ] Falls sich die Eskalation lohnt, Auslöser in Zammad anlegen und Anfragen in n8n in eine Warteschlange stellen, weil immer nur eine Anfrage gleichzeitig läuft
 | November 2026, erste Hälfte | Phase 1 und 2 |
 | November 2026 | Phase 3 mit Test beim Repair Café |
 | Dezember 2026 | Phase 4 mit Echtbetrieb beim Repair Café |
@@ -332,6 +337,7 @@ MANUEL/
 ├── build_files/     Skript für Pakete und Dienste im Image
 ├── system_files/    Dateien, die ins Image kopiert werden
 ├── butane/          Butane-Datei für die Installation und den Wechsel auf das Image
+- [ ] MANUEL in einer Art Hausarbeit dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](datenpotenzialanalyse-repairc-cafe-gt/README.md)
 ├── compose.yaml     Beispiel-Stack für Nachnutzende
 ├── docs/            Einrichtung, Betrieb, Datenschutz, Benchmarks
 ├── prompts/         Kopien der Agenten-Konfiguration aus Zammad und Prompts für n8n

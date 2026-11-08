@@ -32,6 +32,8 @@ Dieses Kapitel entsteht zum Schluss aus den Ergebnissen der Kapitel.
 * Betrieb im Makerspace, Reparaturansätze und Anleitungen, Statistik für die Open Repair Alliance
 * Eigene Partnerschaft bei der Alliance, wenn die Übertragung läuft
 * Chatbot im Forum und Benachrichtigungen über Signal nach dem Ausblick im PLAN
+* Zuschuss für Ersatzteile. Einen bundesweiten Reparaturbonus gibt es nicht, die Länder und Städte regeln das unterschiedlich. Eine aktuelle Zusammenfassung bietet cite:[kaputt-reparaturbonus]. Für Gäste aus Gütersloh gilt derzeit keines der Programme. Gibt es eines, das wie in Thüringen eine Bestätigung des Repair Café verlangt, könnte MANUEL sie aus dem Ticket vorbereiten.
+* Für das Repair Café selbst haben wir im Bundesprogramm „Reparieren statt Wegwerfen“ einen Antrag unter dem Namen „GehT Weiter!“ gestellt.
 
 .Zum Nachvollziehen
 ****

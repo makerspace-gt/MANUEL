@@ -399,7 +399,7 @@ git push
 
 ## Ausblick
 
-- **Zuschuss für Ersatzteile.** Stand 08.11.2026 gibt es für Gäste aus Gütersloh keinen Reparaturbonus, der Ersatzteile aus einem Repair Café abdeckt. Thüringen erstattet sie gegen Bestätigung des Einbaus durch das Repair Café, Bielefeld fördert nur Fachbetriebe, ein Programm in NRW ist nur beantragt. Kommt eines, schreibt MANUEL die Bestätigung als Vorlage aus den Feldern des Tickets, ein Mensch prüft und unterschreibt. Dafür braucht das Ticket Felder für Ersatzteil und Preis. Siehe Abschnitt Zuschuss für Ersatzteile in Kapitel 9 der [Fallstudie](case-study/manuel.adoc).
+- **Zuschuss für Ersatzteile.** Ein Reparaturbonus für Ersatzteile aus dem Repair Café gilt für Gäste aus Gütersloh derzeit nicht, die Lage fasst [kaputt.de](https://blog.kaputt.de/reparaturbonus-2026-alle-bundeslaender-staedte-antraege-im-check/) zusammen. Eine Vorlage braucht es noch nicht. Kommt ein passendes Programm, kann MANUEL die Bestätigung des Repair Café aus dem Ticket vorbereiten. Für das Repair Café selbst läuft der Antrag „GehT Weiter!“ im Bundesprogramm „Reparieren statt Wegwerfen“.
 
 Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verfügt über welche Kenntnisse?« und »Welche Werkzeuge und Maschinen stehen im Verein zur Verfügung?« einzusetzen.
 

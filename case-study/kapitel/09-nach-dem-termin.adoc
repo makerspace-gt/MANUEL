@@ -38,20 +38,6 @@ Dieser Abschnitt wird noch ausformuliert, sobald die erste Karte erzeugt ist.
 * Die Verteilung zeigt ein Punktdiagramm, denn Lagen auf einer gemeinsamen Achse lassen sich genauer vergleichen als Flächen oder Winkel.
 * Die Idee stammt aus der Datenpotenzialanalyse, die ein teilbares Bild mit den Infos zum nächsten Termin vorgeschlagen hat cite:[prange-2022].
 
-[[zuschuss]]
-=== Zuschuss für Ersatzteile
-
-[NOTE]
-.Entwurf in Stichpunkten, Stand 2026-11-08
-====
-Dieser Abschnitt wird noch ausformuliert.
-====
-
-* Einen bundesweiten Reparaturbonus gibt es nicht, ein Vorstoß im Bundesrat scheiterte im Mai 2026 cite:[wiki-reparaturbonus].
-* Thüringen erstattet Ersatzteile aus einem Repair Café vollständig, wenn die Rechnung mindestens 25 Euro beträgt und das Repair Café den Einbau bestätigt cite:[vzth-reparaturbonus]. Berlin hatte eine ähnliche Regel, nimmt laut Blogbeiträgen aber derzeit keine Anträge an cite:[kaputt-reparaturbonus].
-* In NRW gibt es kein Landesprogramm. Bielefeld fördert nur Reparaturen in Fachbetrieben und nur für Menschen mit Wohnsitz in Bielefeld cite:[bielefeld-reparaturbonus]. Für Gäste des Repair Café Gütersloh gilt derzeit also kein Zuschuss.
-* MANUEL könnte die Bestätigung des Einbaus vorbereiten, mit Gerät, Ersatzteil, Betrag und Termin aus dem Ticket. Ein Mensch prüft und unterschreibt. Dafür braucht das Ticket Felder für Ersatzteil und Preis.
-
 [[restarters]]
 === Übertragung an Restarters.net
 

@@ -46,6 +46,8 @@ Grundsätze für den Betrieb:
 
 ## Offene Entscheidungen
 
+Die Empfehlungen dieser Tabelle sind inzwischen entschieden und als ADR in [docs/adr](docs/adr/README.adoc) festgehalten. Die Tabelle bleibt als Stand vom 22.10.2026 stehen. Abweichend von der Empfehlung läuft das Sprachmodell mit llama.cpp, `d3:9b` und `bge-m3` mit Ollama, siehe [ADR 25](docs/adr/0025-sprachmodell-mit-llama-cpp-und-decision-modell-mit-ollama-betreiben.adoc).
+
 | Frage | Empfehlung | Alternative |
 |---|---|---|
 | Betriebssystem | [uCore Minimal](https://github.com/ublue-os/ucore) von Universal Blue auf Basis von [Fedora CoreOS](https://docs.fedoraproject.org/en-US/fedora-coreos/), weil es den neuesten Kernel mitbringt, der laut [Phoronix](https://www.phoronix.com/review/amd-perfopt/3) die LLM-Leistung von Radeon-iGPUs deutlich verbessert, sich atomar mit Rollback aktualisiert und zu Bluefin auf unseren Notebooks passt | Fedora Server mit gleichem Kernel, klassischer Paketverwaltung und einfacherer Anbindung an Ansible |

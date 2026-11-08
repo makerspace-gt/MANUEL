@@ -1,0 +1,41 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0037]]
+= 0037 Den Zitierstil Chicago nach Autor und Jahr nutzen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Nach xref:0031-literatur-mit-zotero-und-bibtex-verwalten.adoc[ADR 31] sollte das Verzeichnis im Stil ISO 690 nach Autor und Jahr auf Deutsch erscheinen. Ein Test mit asciidoctor-bibtex 0.9.0 im Container `docker-asciidoctor:1.108` zeigt zwei Probleme. Der Stil `iso690-author-date-de` erzeugt Blöcke, die asciidoctor-bibtex als Text ausgibt, und das PDF bricht damit ab. Der Stil `din-1505-2` läuft, lässt aber bei Quellen aus dem Netz URL und Abrufdatum weg.
+
+== Entscheidungskriterien
+
+* Bauen ohne Fehler als HTML und PDF
+* URL und Abrufdatum bei Quellen aus dem Netz
+* Deutsche Bezeichnungen und Datumsangaben
+* Kein eigener, angepasster Stil, der gepflegt werden muss
+
+== Betrachtete Optionen
+
+* `iso690-author-date-de`
+* `din-1505-2`
+* `chicago-author-date-de`
+* Eine angepasste Kopie von `iso690-author-date-de`
+
+== Entscheidung
+
+Das Verzeichnis nutzt den Stil `chicago-author-date-de`, also Chicago nach Autor und Jahr auf Deutsch. Er läuft als HTML und PDF ohne Fehler, zitiert im Text etwa „(Wickham und Grolemund 2017)“ und gibt bei Quellen aus dem Netz URL und Abrufdatum mit deutschem Datum aus. Alles andere aus ADR 31 gilt weiter.
+
+=== Konsequenzen
+
+* Gut, weil der Stil aus dem Container ohne Anpassung funktioniert.
+* Gut, weil Chicago weit verbreitet und gut lesbar ist.
+* Schlecht, weil Chicago bei mehreren Werken derselben Organisation den Namen durch Striche ersetzt, was bei der Open Repair Alliance oft vorkommt.
+
+== Quellen
+
+* Testlauf vom 08.11.2026 mit den drei mitgelieferten Stilen im Container `docker-asciidoctor:1.108`
+* https://github.com/asciidoctor/asciidoctor-bibtex[asciidoctor-bibtex]

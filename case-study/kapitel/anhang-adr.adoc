@@ -79,5 +79,7 @@ include::../../docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc[]
 
 include::../../docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[]
 
+include::../../docs/adr/0037-zitierstil-chicago-nach-autor-und-jahr-nutzen.adoc[]
+
 :leveloffset: -2
 :sectnums:

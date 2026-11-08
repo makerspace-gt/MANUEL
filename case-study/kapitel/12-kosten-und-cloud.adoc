@@ -1,0 +1,52 @@
+[[kosten]]
+== Kosten und Vergleich mit der Cloud
+
+_Teilfrage T10. Was kostet MANUEL im Jahr an Strom, Geld und Pflege?_ +
+_Teilfrage T11. Was verlieren wir durch den lokalen Betrieb?_
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel entsteht mit den Messungen während der Erprobung.
+====
+
+.Kernaussagen
+* Die Kosten bestehen aus Anschaffung, Strom und der Zeit für die Pflege.
+* Ein Cloud-Modell bekommt zum Vergleich nur öffentliche oder erfundene Daten, echte Tickets bleiben lokal.
+
+=== Anschaffung und Strom
+
+* Anschaffung laut Antrag bei der DSEE
+* Strom im Leerlauf und unter Last an der Steckdose gemessen, auf ein Jahr hochgerechnet
+* Strompreis am Tag der Messung
+
+=== Pflege
+
+* Zeit für Katalog, Modelle, Updates und Fehler, vom Team während der Erprobung mitgeschrieben
+* Updates des Images laufen täglich und automatisch <<adr-0016>>.
+
+=== Vergleich mit einem Cloud-Modell
+
+* Dieselbe Einordnung mit demselben Prompt und derselben Vorauswahl an den 279 Laufzetteln von 2019 bis 2021 und den 83 erfundenen Tickets
+* Anbieter und Modell legt ein eigenes ADR fest, wenn der Versuch ansteht.
+* Verglichen werden Trefferquote, Dauer und Kosten je Anfrage.
+
+=== Was wir gewinnen und verlieren
+
+* Gewinn sind Datenschutz, Unabhängigkeit und feste Kosten.
+* Verlust kann Qualität oder Geschwindigkeit sein, das zeigt der Vergleich.
+
+// Ergebnis folgt in Stufe 3, Antwort auf T10 und T11.
+
+.Zum Nachvollziehen
+****
+* Messungen zur Geschwindigkeit in {repo}/docs/benchmarks.md[docs/benchmarks.md]
+* Entscheidungen <<adr-0002>>, <<adr-0016>>, <<adr-0023>> bis <<adr-0025>>
+****
+
+[NOTE]
+.Quellen und offene Punkte für dieses Kapitel
+====
+* Noch zu suchen sind aktuelle Strompreise, Literatur zum Energiebedarf von KI-Inferenz und die Preise der Cloud-Anbieter am Tag der Messung.
+* Offen sind die Messung des Stroms und die Wahl des Cloud-Modells.
+====

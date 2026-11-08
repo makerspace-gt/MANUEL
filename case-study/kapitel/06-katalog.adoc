@@ -1,0 +1,64 @@
+[[katalog]]
+== Der Katalog der Gegenstände
+
+_Teilfrage T4. Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Mensch entscheiden? Dieses Kapitel zeigt die Liste, auf der die Einordnung beruht._
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel steht noch in Stichpunkten.
+====
+
+.Kernaussagen
+* Der Katalog vereint die feine Liste der anstiftung mit den Gruppen der Open Repair Alliance.
+* Jeder Eintrag hat einen Schlüssel, der seine ORA-Gruppe schon enthält.
+* Der Katalog steht offen unter CC BY-SA 4.0 und lässt sich von anderen Initiativen nachnutzen.
+
+.Beispiel k01, der Wasserkocher
+****
+* Der Eintrag Wasserkocher hat den Schlüssel 14.401. Die 14 steht für die ORA-Gruppe Kettle, die 401 für die Kategorie im Laufzettel der anstiftung.
+* Englischer Name „Electric kettle“, Stromversorgung 230 V, Synonym „Wasserkessel, elektrisch“
+****
+
+=== Aufbau und Quellen
+
+* 1.089 Einträge mit Namen, Beschreibung und Synonymen auf Deutsch und Englisch, ORA-Gruppe, Stromversorgung und den Kategorien der anstiftung
+* Quellen sind das Formular der anstiftung mit 1.208 Kategorien und die Open Repair Data <<adr-0007>>, <<adr-0028>>
+* Lizenz CC BY-SA 4.0 <<adr-0009>>
+
+=== Schlüssel
+
+* Form `ORA.anstiftung.eigene`, etwa 14.401 für den Wasserkocher
+* Eigene Aufteilungen bekommen eine dritte Stelle, etwa 11.459.1 und 11.459.2 für zwei Arten von Kopfhörern <<adr-0013>>
+* Mit dem Start in Zammad werden die Schlüssel eingefroren.
+
+=== Sprache
+
+* Deutsche und englische Namen, der englische Name wird bei Restarters zum Gegenstand.
+* Synonyme ordnen Begriffe der richtigen Kategorie zu.
+* Keine abwertenden Begriffe, ein solcher wurde durch Radiorekorder ersetzt <<adr-0012>>.
+
+=== Beschreibungen für Rückfragen
+
+* Beschreibungen sind für Menschen da, nicht für das Modell <<adr-0010>>.
+* Sie helfen bei Rückfragen, etwa wenn Kopfhörer oder Grill gemeint sein kann.
+
+=== Auszug
+
+* Ein Ausschnitt aus {repo}/katalog/kategorien.tsv[katalog/kategorien.tsv] mit deutschen Kopfzeilen, eingebunden in Stufe 2
+
+// Ergebnis folgt in Stufe 3.
+
+.Zum Nachvollziehen
+****
+* Katalog und Anleitung in {repo}/katalog[katalog], Prüfung mit {repo}/katalog/pruefen.py[pruefen.py]
+* Optionen für das Modell aus {repo}/katalog/eintraege.py[eintraege.py]
+* Entscheidungen <<adr-0007>> bis <<adr-0013>>
+****
+
+[NOTE]
+.Quellen und offene Punkte für dieses Kapitel
+====
+* Noch zu suchen sind die Lizenz CC BY-SA 4.0 und die Einträge der Wikipedia zu Radiorekorder und Boombox.
+* Offen ist, wie andere Initiativen eigene Aufteilungen ergänzen, ohne Schlüssel doppelt zu vergeben.
+====

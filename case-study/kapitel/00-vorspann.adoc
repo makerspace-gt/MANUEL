@@ -1,0 +1,24 @@
+[preface]
+[[zusammenfassung]]
+== Zusammenfassung
+
+[NOTE]
+.Entwurf, Stand 2026-11-08
+====
+Die Zusammenfassung entsteht zum Schluss, wenn alle Kapitel ausformuliert sind.
+====
+
+* Ausgangslage in zwei Sätzen, das Repair Café und die Meldelücke von 2 Prozent
+* Leitfrage und Vorgehen als Fallstudie
+* Die wichtigsten Ergebnisse je Teil
+* Was andere Initiativen nachnutzen können
+
+[preface]
+[[abstract]]
+== Abstract
+
+[NOTE]
+.Entwurf, Stand 2026-11-08
+====
+Das Abstract erscheint nach ADR 30 zusätzlich auf Englisch, damit die Partner der Open Repair Alliance die Ergebnisse lesen können. Es entsteht zusammen mit der Zusammenfassung.
+====

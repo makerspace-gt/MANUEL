@@ -3,7 +3,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0031 Die Literatur mit Zotero und BibTeX verwalten
 
 [horizontal]
-Status:: angenommen
+Status:: angenommen, der Zitierstil ist abgelöst durch xref:0037-zitierstil-chicago-nach-autor-und-jahr-nutzen.adoc[ADR 37]
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
 

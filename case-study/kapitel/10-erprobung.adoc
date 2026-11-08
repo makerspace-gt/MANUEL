@@ -1,0 +1,71 @@
+[[erprobung]]
+== Erprobung im Repair Café
+
+_Teilfrage T8. Was bewirkt MANUEL im Repair Café?_
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 2027.
+====
+
+.Kernaussagen
+* Gemessen wird an den vier Kennzahlen aus dem Antrag bei der DSEE <<adr-0032>>.
+* Die Vergleichswerte stammen aus der Zeit vor MANUEL.
+* Drei Monate mit rund zwei Terminen im Monat ergeben kleine Zahlen. Jede Quote bekommt deshalb ein Intervall nach Wilson.
+
+=== Zeitraum und Termine
+
+* Echtbetrieb ab Dezember 2026, Termine am ersten und dritten Samstag, außer in der Winterpause
+* Was in dieser Zeit läuft und was noch nicht
+
+=== Reparaturquote
+
+* Anteil gelungener Reparaturen an den bearbeiteten Geräten aus dem Feld Ergebnis
+* Vergleichswerte aus der Statistik des Teams
+
+[cols="1,1,1,1",options="header"]
+|===
+|Jahr |bearbeitet |gelungen |teilweise gelungen
+|2023 |227 |48 % |7 %
+|2024 |288 |45 % |6 %
+|2025 |316 |52 % |4 %
+|2026 bis 7.11. |337 |53 % |4 %
+|===
+
+* Weitere Vergleiche sind `repair_status` der Open Repair Data und das Ergebnis der Laufzettel von 2019 bis 2021.
+
+=== Reparaturen durch Gäste und neue Engagierte
+
+* Neues Feld „repariert von“ mit den Werten Gast selbst, Gast mit Hilfe und Engagierte
+* Als neu gilt, wer seit dem 15.09.2026 dabei ist, gezählt aus Nuudel. Die Abgrenzung stimmt das Team ab.
+
+=== Rückmeldungen zu den Vorschlägen
+
+* Daumen nach oben oder unten in der KI-Rückmeldung von Zammad, beim Daumen nach unten mit Kommentar
+* Stimmen und Beispiele aus den Kommentaren, ohne Personenbezug
+* Das Fehlerprotokoll zeigt, wie oft Anfragen ausgefallen sind.
+
+=== Gemeldete Reparaturen
+
+* Anteil der an Restarters übertragenen Geräte an den bearbeiteten, Ausgangswert 30 von 1.485, also rund 2 Prozent
+* Mit und ohne Nachmeldung nach <<adr-0036>> getrennt ausgewiesen
+
+=== Sharecards der Termine
+
+* Die Karten der Termine in der Erprobung als Abbildungen <<adr-0033>>
+
+// Ergebnis folgt in Stufe 3, Antwort auf T8.
+
+.Zum Nachvollziehen
+****
+* Exporte aus Zammad und die Statistik bleiben lokal, hier stehen nur Summen.
+* Entscheidungen <<adr-0032>>, <<adr-0033>>, <<adr-0036>>
+****
+
+[NOTE]
+.Quellen und offene Punkte für dieses Kapitel
+====
+* Noch zu suchen sind Hinweise zur Auswertung kleiner Stichproben und die Doku zur KI-Rückmeldung von Zammad.
+* Offen ist, ob die KI-Rückmeldung von Zammad auch für die KI-Agenten gilt.
+====

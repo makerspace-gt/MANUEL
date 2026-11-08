@@ -1,6 +1,6 @@
 # Quellen
 
-Hier liegen die Quellen, auf denen Katalog, Einordnung und Hausarbeit beruhen. Jede Quelle bleibt unverändert oder wird mit einem Skript ausgelesen, das daneben liegt. Warum die Quellen im Repo liegen, steht in [ADR 28](../docs/adr/0028-quellen-im-repo-ablegen.adoc).
+Hier liegen die Quellen, auf denen Katalog, Einordnung und Fallstudie beruhen. Jede Quelle bleibt unverändert oder wird mit einem Skript ausgelesen, das daneben liegt. Warum die Quellen im Repo liegen, steht in [ADR 28](../docs/adr/0028-quellen-im-repo-ablegen.adoc).
 
 ## Open Repair Alliance
 

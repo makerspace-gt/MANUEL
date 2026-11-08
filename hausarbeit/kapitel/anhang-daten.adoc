@@ -1,5 +1,0 @@
-[appendix]
-[[anhang-daten]]
-== Daten und Skripte
-
-// Liste der Rohdaten und Skripte im Repo mit Zweck, was nur lokal liegt und warum.

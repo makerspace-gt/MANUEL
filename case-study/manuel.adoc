@@ -1,0 +1,94 @@
+= MANUEL im Repair Café Gütersloh
+Michael Prange
+:doctype: book
+:lang: de
+:revnumber: 0.1
+:revdate: 2026-11-08
+:version-label: Version
+:last-update-label: Zuletzt geändert
+:toc: left
+:toc-title: Inhaltsverzeichnis
+:toclevels: 2
+:sectnums:
+:sectnumlevels: 3
+:figure-caption: Abbildung
+:table-caption: Tabelle
+:appendix-caption: Anhang
+:note-caption: Hinweis
+:tip-caption: Tipp
+:important-caption: Wichtig
+:warning-caption: Warnung
+:caution-caption: Achtung
+:chapter-signifier:
+:part-signifier: Teil
+:icons: font
+:imagesdir: bilder
+:source-highlighter: rouge
+:xrefstyle: short
+:experimental:
+:repo: https://github.com/makerspace-gt/MANUEL/blob/main
+:data-uri:
+:bibtex-file: {docdir}/literatur.bib
+:bibtex-style: chicago-author-date-de
+:bibtex-locale: de-DE
+:bibtex-order: alphabetical
+
+[.lead]
+Eine Fallstudie darüber, wie ein lokales Sprachmodell die Engagierten des Repair Café beim Einordnen und Bearbeiten von Anfragen unterstützt. MANUEL steht für Minimale AI für Nutzer-Unterstützung auf Einstiegs-Level.
+
+image::dsee-foerderlogo.png[Gefördert durch die Deutsche Stiftung für Engagement und Ehrenamt,width=240]
+
+ifdef::backend-html5[]
+link:manuel.pdf[Diese Arbeit als PDF zum Drucken]
+endif::[]
+
+Diese Arbeit steht unter https://creativecommons.org/licenses/by/4.0/deed.de[CC BY 4.0]. Ausgenommen ist das Logo der DSEE. Der Katalog der Gegenstände steht unter CC BY-SA 4.0.
+
+include::kapitel/00-vorspann.adoc[]
+
+= Teil I Ausgangslage
+
+include::kapitel/01-einleitung.adoc[]
+
+include::kapitel/02-erfassung.adoc[]
+
+include::kapitel/03-aufgaben.adoc[]
+
+= Teil II Der Weg einer Anfrage
+
+[partintro]
+Dieser Teil folgt einer Anfrage vom Eingang bis zur Meldung an die Open Repair Alliance. Ein erfundenes Ticket aus dem öffentlichen Testsatz begleitet ihn. Es lautet „Mein Wasserkocher schaltet sich nicht mehr ein. Die Kontrollleuchte bleibt aus, obwohl er eingesteckt ist.“ Jedes Kapitel zeigt in einem Kasten, was an seiner Station mit diesem Ticket passiert.
+
+include::kapitel/04-mini-pc-und-modelle.adoc[]
+
+include::kapitel/05-einordnung.adoc[]
+
+include::kapitel/06-katalog.adoc[]
+
+include::kapitel/07-reparaturansaetze.adoc[]
+
+include::kapitel/08-termine.adoc[]
+
+include::kapitel/09-nach-dem-termin.adoc[]
+
+= Teil III Bewertung
+
+include::kapitel/10-erprobung.adoc[]
+
+include::kapitel/11-recht-und-sicherheit.adoc[]
+
+include::kapitel/12-kosten-und-cloud.adoc[]
+
+include::kapitel/13-fazit.adoc[]
+
+= Anhang
+
+include::kapitel/anhang-adr.adoc[]
+
+include::kapitel/anhang-kategorien.adoc[]
+
+include::kapitel/anhang-daten.adoc[]
+
+include::kapitel/anhang-begriffe.adoc[]
+
+include::kapitel/literatur.adoc[]

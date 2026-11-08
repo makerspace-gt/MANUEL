@@ -1,0 +1,39 @@
+[[fazit]]
+== Fazit und Ausblick
+
+_Teilfrage T12. Was können andere Initiativen nachnutzen?_
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel entsteht zum Schluss aus den Ergebnissen der Kapitel.
+====
+
+=== Antworten auf die Fragen
+
+* Eine Antwort je Teilfrage von T1 bis T11, gesammelt aus den Absätzen „Ergebnis“ der Kapitel
+* Antwort auf die Leitfrage
+
+=== Grenzen
+
+* Sollwerte und Regeln stammen aus denselben Daten, die Bestätigung an neuen Tickets steht aus.
+* Die Sollwerte hat vor allem eine Person geprüft.
+* Die Erprobung ist kurz und die Zahlen sind klein.
+* Ein einzelner Fall lässt sich nur begrenzt auf andere Initiativen übertragen.
+
+=== Nachnutzung durch andere Initiativen
+
+* Image auf Basis von uCore, Katalog unter CC BY-SA 4.0, Skripte und ADRs im Repo
+* Sharecard für das Resümee eines Termins
+* Was andere anpassen müssen, etwa Kategorien, Termine und Zammad
+
+=== Ausblick
+
+* Betrieb im Makerspace, Reparaturansätze und Anleitungen, Statistik für die Open Repair Alliance
+* Eigene Partnerschaft bei der Alliance, wenn die Übertragung läuft
+* Chatbot im Forum und Benachrichtigungen über Signal nach dem Ausblick im PLAN
+
+.Zum Nachvollziehen
+****
+* Alle Entscheidungen in <<anhang-adr>>, Daten und Skripte in <<anhang-daten>>
+****

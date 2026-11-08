@@ -1,0 +1,41 @@
+[appendix]
+[[anhang-daten]]
+== Daten, Skripte und Läufe
+
+[NOTE]
+.Entwurf, Stand 2026-11-08
+====
+Die Tabelle der Quellen gilt schon. Die Liste der Skripte folgt nach der Umbenennung nach ADR 29.
+====
+
+=== Quellen und Daten
+
+.Quellen und Daten dieser Fallstudie
+[cols="3,2,2,3,3",options="header"]
+|===
+|Quelle |Zeitraum |Umfang |Zugang |Ort
+|Tickets aus Zammad |2024 bis 2026 |791 Tickets, davon 745 mit Sollwert |nur lokal, persönliche Daten, siehe <<adr-0002>> |lokale Exporte
+|Statistik des Teams |seit März 2019 |85 Termine, 1.485 Geräte |nur lokal, in der Arbeit nur Summen |lokale Tabelle
+|Laufzettel der Datenpotenzialanalyse |2019 bis 2021 |266 Laufzettel, 279 Zeilen in der Auswertung |CC BY 4.0 |Submodul `datenpotenzialanalyse-repairc-cafe-gt`
+|Laufzettel auf reparatur-initiativen.org |2020 bis 2025 |30 |Export nur lokal, öffentlich in den Open Repair Data |lokal
+|Rückmeldungen und Fehlerprotokolle aus Zammad |ab Dezember 2026 |offen |nur lokal |lokal
+|Anmeldungen der Helfenden in Nuudel |ab September 2026 |offen |nur lokal, in der Arbeit nur Summen |lokal
+|Open Repair Data, Version 0.3 |bis Juli 2026 |619.873 Einträge von neun Partnern |CC BY-SA 4.0 |Submodul `quellen/openrepair-data`
+|Open Repair Data Standard, Version 0.3 | | |öffentlich |Submodul `quellen/openrepair-datastandard`
+|Formular „Laufzettel erstellen“ der anstiftung |Stand 08.11.2026 |1.208 Kategorien, 3.379 Marken |gespeichert ohne Token und Anmeldenamen |`quellen/anstiftung`
+|mapped-repair-events | |Quellcode der Plattform der anstiftung |GPL-3.0 |Submodul `mapped-repair-events`
+|Kategorien von Restarters.net |Stand 08.11.2026 |47 Kategorien |über die öffentliche API |`quellen/restarters`
+|Erfundene Tickets | |83 Tickets |im Repo |`eval/decision/tickets.tsv`
+|Messungen der Geschwindigkeit |Oktober und November 2026 |mehrere Runden |im Repo |`eval/results`
+|===
+
+=== Skripte
+
+* Einordnung in {repo}/eval/decision[eval/decision]
+* Auswertung der Open Repair Data in {repo}/eval/ora[eval/ora]
+* Katalog in {repo}/katalog[katalog]
+* Auslesen der Quellen in {repo}/quellen[quellen]
+
+=== Läufe
+
+* Ab dem nächsten Lauf hält jeder Lauf in `lauf.json` Datum, Befehl, Commit, Prüfsummen der Ein- und Ausgaben sowie die Versionen von Modellen und Engines fest <<adr-0027>>.

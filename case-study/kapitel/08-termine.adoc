@@ -1,0 +1,58 @@
+[[termine]]
+== Termine vergeben
+
+_Teilfrage T6. Wie lassen sich Termine so vergeben, dass Helfende und Gäste zusammenpassen?_
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel steht noch in Stichpunkten. Der Workflow dazu entsteht in Phase 5 des PLAN.
+====
+
+.Kernaussagen
+* Wie viele Gäste parallel kommen können, rechnet Code aus den Anmeldungen der Helfenden <<adr-0026>>.
+* Das Modell liefert nur die Angaben je Ticket, also Wunschzeit, Gerät und ob es eine Kleinigkeit ist.
+* Der Plan bleibt ein Vorschlag, den Menschen bestätigen.
+
+.Beispiel k01, der Wasserkocher
+****
+* Vorschlag für einen Slot am nächsten Termin, aus einem Lauf des Workflows
+****
+
+[[anstiftung]]
+=== Termine bei der anstiftung
+
+* Die Termine stehen weiter auf reparatur-initiativen.org, damit Gäste sie abonnieren können, ebenso die Neuigkeiten der Initiative.
+* Laufzettel legen wir dort nicht mehr an, damit die Open Repair Alliance nicht doppelt zählt <<adr-0014>>.
+* Die API der anstiftung kann nur lesen. Ein Endpunkt zum Anlegen von Laufzetteln und einer zum Anmelden für die Neuigkeiten wären unser Vorschlag an die anstiftung.
+
+[[terminvergabe]]
+=== Terminvergabe
+
+* Das Repair Café ist in der Regel am ersten und dritten Samstag im Monat. Die Termine kommen aus einer gepflegten Liste, die Statistik-Tabelle führt sie bis Dezember 2027.
+* Sechs Slots im Halbstundentakt von 11:00 bis 14:00 Uhr, dazu 14:00 Uhr nur für Kleinigkeiten
+* Der Empfang schafft 6 Personen parallel, je 3 Reparierende gibt es 1 Person als Reserve.
+* Tickets werden 1 bis 2 Tage gesammelt und gemeinsam geplant. Fälle mit Wunschzeit kommen zuerst.
+* Die Reihenfolge der Regeln ist Wunschzeit des Gastes, ähnliche Geräte höchstens einen Slot auseinander, Verteilung über den Tag.
+* Vertagte Geräte behalten ohne neuen Wunsch ihre bisherige Uhrzeit, und bestätigte Termine bleiben beim Neuplanen unverändert.
+
+=== Spontane Gäste
+
+* In den drei Jahren vor dem 7. November 2026 waren im Median 21 Geräte je Termin angemeldet, spontane Gäste eingeschlossen.
+* Wie viele davon spontan kommen, zählt das Team ab jetzt in einer eigenen Spalte und später über den Tag `spontan` in Zammad <<adr-0033>>, <<adr-0034>>.
+* Der Anteil spontaner Gäste fließt in die Rechnung der Kapazität ein.
+
+// Ergebnis folgt in Stufe 3, Antwort auf T6.
+
+.Zum Nachvollziehen
+****
+* Rechnung und Regeln im Abschnitt Terminvergabe des {repo}/PLAN.md[PLAN]
+* Entscheidungen <<adr-0014>>, <<adr-0026>>, <<adr-0033>>, <<adr-0034>>
+****
+
+[NOTE]
+.Quellen und offene Punkte für dieses Kapitel
+====
+* Noch zu suchen sind die Doku von Nuudel und die Funktion der Termine auf reparatur-initiativen.org.
+* Offen sind der Workflow in n8n und wie gut die Wunschzeit aus der Nachricht erkannt wird.
+====

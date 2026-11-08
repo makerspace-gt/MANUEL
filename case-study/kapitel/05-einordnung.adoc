@@ -1,0 +1,84 @@
+[[einordnung]]
+== Anfragen einordnen
+
+_Teilfrage T4. Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Mensch entscheiden?_
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel steht noch in Stichpunkten. Es erzählt fünf Wendepunkte, alle 16 Schritte stehen in {repo}/docs/einordnung.md[docs/einordnung.md].
+====
+
+.Kernaussagen
+* Am Ende sind 98,7 Prozent der 745 Tickets richtig eingeordnet oder führen zu einer Rückfrage, nur 10 sind sicher falsch.
+* Die meisten Fehler lagen nicht am Modell, sondern an der Liste der Kategorien.
+* Eine Rückfrage ist besser als ein Fehler, deshalb fragt MANUEL bei Sammelbegriffen und Unsicherheit nach.
+
+.Beispiel k01, der Wasserkocher
+****
+* Einordnung des Betreffs und der Nachricht mit Sicherheit des Modells, aus einem Lauf mit `lauf.json`
+****
+
+=== Daten und Sollwerte
+
+* 746 echte Tickets von 2024 bis 2026, davon 745 mit Sollwert aus der Kontrolle durch das Team und einer zweiten Prüfung
+* 279 Laufzettel von 2019 bis 2021 aus der Datenpotenzialanalyse als öffentlicher Vergleich
+* Eine Rückfrage zählt als ohne Fehler, sichere Fehler werden getrennt gezählt.
+* Echte Tickets liegen nur lokal, in die Arbeit kommen nur Summen <<adr-0002>>.
+
+=== Wendepunkt 1, Gefahren zuerst
+
+* 83 erfundene Tickets zeigen, dass `d3:9b` sicherheitsrelevante Fälle fast perfekt trennt.
+* Die Formulierung der Optionen entscheidet über das Ergebnis.
+* Eine Übersetzung ins Englische hilft kleinen Modellen, bringt aber neue Fehler. Aus „funkt innen“ wurde „leaking radiation“.
+
+=== Wendepunkt 2, eine Stufe mit Vorauswahl
+
+* Zwei Stufen mit 386 Kategorien scheitern, weil eine falsche erste Stufe die richtige Antwort verdeckt.
+* Eine Ähnlichkeitssuche wählt 25 Kandidaten, das Decision-Modell entscheidet in einer Stufe <<adr-0004>>.
+* Das Sprachmodell taugt nicht als zweite Instanz <<adr-0005>>.
+* An den 279 Laufzetteln zeigt sich, dass die Sicherheit des Modells aussagekräftig ist.
+
+=== Wendepunkt 3, erst herausziehen, dann einordnen
+
+* Lange Nachrichten überfordern das Decision-Modell, Betreffe gehen deutlich besser.
+* Das Sprachmodell zieht die Gegenstände heraus, das Decision-Modell ordnet sie ein <<adr-0006>>. So werden auch mehrere Geräte in einer Anfrage erkannt.
+* Mit vollständigem Text, dem Titel der Notizen und einem Rückfall auf den Betreff steigt die Zahl der Treffer von 529 auf 546.
+
+=== Wendepunkt 4, die Liste ist das Problem
+
+* Nach der Kontrolle durch das Team sind am Betreff 83 Prozent richtig. Die meisten Fehler liegen an der Liste.
+* Mehr Einträge helfen nicht, fast gleiche Namen verwirren das Modell.
+* Gleichwertige Kategorien werden zusammengefasst <<adr-0008>>, und jeder Eintrag erscheint einmal unter seinem passendsten Namen <<adr-0010>>.
+* Die ORA-Gruppe zuerst zu wählen bringt für die Kategorie keinen Gewinn.
+
+=== Wendepunkt 5, Rückfrage statt Fehler
+
+* Viele sichere Fehler entstehen bei Sammelbegriffen wie Kopfhörer und bei Bauteilen oder Dienstleistungen wie Netzteil oder Linux installieren.
+* Für beide Fälle löst eine Regel eine Rückfrage aus, und die Nachricht klärt einen Teil davon gleich selbst <<adr-0011>>.
+* Von den verbleibenden 10 Fehlern steht bei fünf das Gerät nur in der Nachricht, vier sind Grenzfälle und einer ist eine echte Verwechslung.
+* Ergebnis sind 657 von 745 richtig, 10 sichere Fehler und 179 Rückfragen, also 98,7 Prozent ohne Fehler.
+
+.Trefferquote der Verfahren nach Sicherheit des Modells
+image::../../docs/grafiken/einordnung-verfahren-hell.svg[Trefferquote der Verfahren,width=100%]
+
+=== Wirkung der Aufbereitung
+
+* Vergleich roh gegen aufbereitet wie Tabelle 2 der Datenpotenzialanalyse, aus dem Abschnitt „Wirkung der Aufbereitung“ in {repo}/docs/einordnung.md[docs/einordnung.md]
+
+// Ergebnis folgt in Stufe 3, Antwort auf T4.
+
+.Zum Nachvollziehen
+****
+* Alle Schritte mit Zahlen in {repo}/docs/einordnung.md[docs/einordnung.md]
+* Skripte in {repo}/eval/decision[eval/decision], darunter {repo}/eval/decision/rueckfrage.py[rueckfrage.py] für die Regeln
+* Grafik aus {repo}/eval/decision/grafik_einordnung.py[grafik_einordnung.py]
+* Entscheidungen <<adr-0003>> bis <<adr-0011>>
+****
+
+[NOTE]
+.Quellen und offene Punkte für dieses Kapitel
+====
+* Noch zu suchen sind Wilson 1927 zum Intervall sowie Literatur zu Klassifikation mit Enthaltung und zur Kalibrierung von Modellen.
+* Offen ist die Bestätigung an neuen Tickets, denn Sollwerte und Regeln stammen aus denselben Daten.
+====

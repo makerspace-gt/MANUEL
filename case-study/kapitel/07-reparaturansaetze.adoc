@@ -1,0 +1,62 @@
+[[reparaturansaetze]]
+== Erstdiagnose und Reparaturansatz
+
+_Teilfrage T5. Wie hilfreich und wie sicher sind Erstdiagnosen und Reparaturansätze?_
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel steht noch in Stichpunkten. Die Prompts und Tests dazu entstehen in Phase 3 des PLAN.
+====
+
+.Kernaussagen
+* Ein Reparaturansatz ist Hilfe zur Selbsthilfe, also Schritte zum Mitmachen mit dem nötigen Werkzeug und möglichen Ersatzteilen.
+* Sicherheit geht vor. Bei Netzspannung, Akkus, großen Kondensatoren und Gas gehört immer ein Hinweis dazu.
+* MANUEL erfindet nichts. Was es nicht weiß, schreibt es als unbekannt.
+
+.Beispiel k01, der Wasserkocher
+****
+* Erstdiagnose und Reparaturansatz für den Wasserkocher als interne Notiz, aus einem Lauf mit `lauf.json`
+* Erwartet wird ein Hinweis auf Netzspannung, denn k01 ist im Testsatz als sicherheitsrelevant markiert.
+****
+
+=== Was ein Reparaturansatz ist
+
+* Ein Custom AI Agent in Zammad schreibt eine interne Notiz, nie eine Antwort an Gäste.
+* Inhalt sind eine erste Vermutung zur Ursache, Schritte zum Mitmachen, Werkzeug und Ersatzteile.
+* Passende Artikel aus der Wissensdatenbank zeigt Zammad am Ticket an <<adr-0022>>.
+
+=== Sicherheit
+
+* `d3:9b` markiert sicherheitsrelevante Tickets <<adr-0003>>.
+* Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt.
+* Im Zweifel verweist MANUEL an eine Fachperson.
+* Das Feld „VDE 0701/0702 geprüft“ hat in allen Tickets von 2024 bis 2026 einen Wert. Die Prüfung nach einer Reparatur ist also Teil des Ablaufs.
+
+=== Anleitungen und Angaben zum Gerät
+
+* Marke, Bezeichnung und Datumscode kommen vom Foto des Typenschilds <<adr-0034>>.
+* Anleitungen, Ersatzteile und Explosionszeichnungen findet eine eigene Suche nur mit Marke und Modell <<adr-0035>>.
+* Anleitungen werden verlinkt, nicht kopiert.
+
+=== Bewertung
+
+* Kriterien aus Phase 3 sind Nützlichkeit aus Sicht der Engagierten, Sicherheitshinweis wo nötig, nichts erfunden und Hilfe zur Selbsthilfe.
+* Getestet wird am pseudonymisierten Testsatz, der nur lokal liegt.
+* Im Betrieb kommen die Rückmeldungen aus der KI-Rückmeldung von Zammad <<adr-0032>>.
+
+// Ergebnis folgt in Stufe 3, Antwort auf T5.
+
+.Zum Nachvollziehen
+****
+* Gedanken für die Prompts und Phase 3 im {repo}/PLAN.md[PLAN]
+* Erfundene Tickets mit Markierung der Sicherheit in {repo}/eval/decision/tickets.tsv[tickets.tsv]
+* Entscheidungen <<adr-0003>>, <<adr-0022>>, <<adr-0034>>, <<adr-0035>>
+****
+
+[NOTE]
+.Quellen und offene Punkte für dieses Kapitel
+====
+* Noch zu suchen sind DIN VDE 0701-0702, Hinweise zu Sicherheit und Haftung für Reparatur-Initiativen, iFixit und seine API sowie Literatur zu erfundenen Antworten von Sprachmodellen.
+* Offen sind Prompt, Testsatz und Bewertungsschema.
+====

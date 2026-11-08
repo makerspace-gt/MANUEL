@@ -374,7 +374,11 @@ git push
 
 - [ ] Kennzahlen aus dem Antrag erheben, also Reparaturquote, Reparaturen durch Gäste und neue Engagierte, Rückmeldungen zu Vorschlägen und gemeldete Reparaturen
 - [ ] Dokumentation in docs/ vervollständigen, sodass andere Reparaturinitiativen MANUEL nachbauen können
-- [ ] MANUEL in einer Art Hausarbeit dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](datenpotenzialanalyse-repairc-cafe-gt/README.md)
+- [ ] MANUEL als Fallstudie in [case-study](case-study/manuel.adoc) dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](datenpotenzialanalyse-repairc-cafe-gt/README.md), siehe [ADR 30](docs/adr/0030-rahmen-der-fallstudie-festlegen.adoc). Sie entsteht vom Groben zum Feinen
+  - [ ] Stufe 1 im November 2026, Gliederung, Stichpunkte je Kapitel und Quellen
+  - [ ] Stufe 2 im November und Dezember 2026, Reihenfolge der Absätze, Abbildungen und fehlende Daten wie Läufe für das Beispiel k01 und die Strommessung
+  - [ ] Stufe 3 von Dezember 2026 bis Februar 2027, ausformulieren, zuerst die Kapitel 2, 5, 6 und 9, dann parallel zur Erprobung die Kapitel 7 bis 10
+  - [ ] Stufe 4 im März 2027, Zusammenfassung, Abstract auf Englisch, Gegenlesen durch das Team und Version 1.0 mit dem Sachbericht
 - [ ] Eigenständige compose.yaml als Beispiel für Nachnutzende bereitstellen
 - [ ] Im Build-Workflow mit [syft](https://github.com/anchore/syft) eine SBOM des Images erzeugen und sie mit cosign als [Attestation](https://docs.sigstore.dev/cosign/verifying/attestation/) an das Image hängen, damit Nachnutzende Bibliotheken und Lizenzen prüfen können
 - [ ] Dateien nach [REUSE](https://reuse.software/) mit SPDX-Angaben zu Lizenz und Urheber kennzeichnen, weil das Repo CC0 und Apache 2.0 mischt

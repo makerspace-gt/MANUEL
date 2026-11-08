@@ -1,0 +1,78 @@
+[[architektur]]
+== Der Mini-PC und seine Modelle
+
+_Teilfrage T3. Reicht ein Mini-PC für den Betrieb und welche Modelle passen?_
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel steht noch in Stichpunkten.
+====
+
+.Kernaussagen
+* Ein Mini-PC mit 64 GB gemeinsamem Speicher hält Sprachmodell, Decision-Modell und Embedding-Modell gleichzeitig geladen.
+* Ein Reparaturansatz ist in knapp 30 Sekunden fertig, eine Einordnung in Sekundenbruchteilen.
+* Der Mini-PC bleibt ein reiner Rechenknecht. Zammad und n8n laufen auf der Helpdesk-VM im Rechenzentrum.
+
+.Beispiel k01, der Wasserkocher
+****
+* Wo das Ticket verarbeitet wird und wie lange jede Station dauert, gemessen in einem Lauf mit `lauf.json`
+****
+
+=== Überblick
+
+* Diagramm aus dem PLAN, Mini-PC im Makerspace hinter NAT, Helpdesk-VM im Rechenzentrum
+* Verbindung über NetBird, im Makerspace werden keine Ports geöffnet <<adr-0020>>
+* Zammad nutzt KI-Agenten und füllt die Felder selbst <<adr-0018>>, die Wissensdatenbank sammelt Anleitungen <<adr-0022>>
+* n8n übernimmt nur, was außerhalb von Zammad liegt <<adr-0019>>
+* Open WebUI hinter authentik für Tests und später den Chat
+
+[[hardware]]
+=== Mini-PC und Betriebssystem
+
+* MINISFORUM AI X1 Pro-370 mit AMD Ryzen AI 9 HX 370, Radeon 890M, 64 GB DDR5 und 1 TB SSD
+* Eigenes Image auf Basis von uCore, täglich neu gebaut, Wechsel per `bootc switch` <<adr-0016>>
+* Inbetriebnahme nach {repo}/docs/inbetriebnahme.md[docs/inbetriebnahme.md]
+
+=== Messmethodik
+
+* `ollama-bench` und `llama-bench`, Prompts mit 512 und 4096 Tokens, mehrere Läufe
+* Was nicht gemessen wurde, etwa die Qualität der Antworten, die erst der Testsatz zeigt
+
+=== Engines im Vergleich
+
+* llama.cpp mit Vulkan, `-ub 1024` und MTP ist bei fast allen Modellen etwas schneller.
+* `d3:9b` läuft nur über die Decision-Funktion von Ollama, deshalb laufen beide Engines nebeneinander <<adr-0025>>.
+
+=== Modelle im Vergleich
+
+* `qwen3.6:35b-a3b` ist als Mixture-of-Experts-Modell mit rund 3B aktiven Parametern je Token unter den größeren Modellen am schnellsten <<adr-0023>>.
+* Es versteht Deutsch und Bilder, etwa Fotos von Typenschildern.
+* Für schwierige Fälle käme `qwen3.8:27b` mit rund 100 Sekunden für eine lange Antwort in Frage.
+
+=== Speicher
+
+* 16 GiB UMA geben der GPU 39,3 statt 32,2 GiB, alle drei Modelle passen zusammen auf die GPU <<adr-0024>>.
+* Nach einem Wechsel des Modells dauert die erste Antwort 26 statt 0,27 Sekunden.
+
+=== Decision-Modelle
+
+* `d3:9b` trennt an erfundenen Tickets sicherheitsrelevante Fälle fast perfekt <<adr-0003>>.
+* Das Ergebnis ist immer ein gültiger Wert, und die Sicherheit lässt sich über eine Schwelle einstellen.
+* Als Embedding-Modell dient `bge-m3`, mehrsprachig und von Zammad unterstützt <<adr-0021>>.
+
+// Ergebnis folgt in Stufe 3, Antwort auf T3.
+
+.Zum Nachvollziehen
+****
+* Messungen in {repo}/docs/benchmarks.md[docs/benchmarks.md], Rohdaten in {repo}/eval/results[eval/results], Grafiken mit {repo}/eval/plot.py[plot.py]
+* Image in {repo}/Containerfile[Containerfile] und {repo}/build_files[build_files]
+* Entscheidungen <<adr-0003>>, <<adr-0016>>, <<adr-0018>> bis <<adr-0025>>
+****
+
+[NOTE]
+.Quellen und offene Punkte für dieses Kapitel
+====
+* Noch zu suchen sind Angaben des Herstellers zum Ryzen AI 9 HX 370, die Doku von Ollama und llama.cpp, die Modellkarten von qwen3.6 und d3, das Paper zu BGE-M3 und die Doku von uCore.
+* Offen sind die Messung für k01 und die Ladezeit nach einem Neustart.
+====

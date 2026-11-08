@@ -1,6 +1,6 @@
 # Einordnung von Tickets
 
-Hier halten wir fest, wie wir Schritt für Schritt zu einer brauchbaren Einordnung von Repair-Café-Tickets gekommen sind. Die Reihenfolge ist Absicht. Jeder Schritt zeigt, was wir ausprobiert haben, was dabei herauskam und warum wir den nächsten Schritt gegangen sind. Die Dokumentation dient später als Grundlage für die Hausarbeit.
+Hier halten wir fest, wie wir Schritt für Schritt zu einer brauchbaren Einordnung von Repair-Café-Tickets gekommen sind. Die Reihenfolge ist Absicht. Jeder Schritt zeigt, was wir ausprobiert haben, was dabei herauskam und warum wir den nächsten Schritt gegangen sind. Die Dokumentation dient als Grundlage für die Fallstudie in [case-study](../case-study/manuel.adoc).
 
 Alle Zahlen stammen vom 06. und 07.11.2026, die Sollwerte aus der Kontrolle durch das Team vom 07.11.2026. Rohdaten zu den erfundenen Tickets und zum öffentlichen Datensatz liegen in [eval/results/decision](../eval/results/decision), die Tabellen stehen in den [Benchmarks](benchmarks.md). Echte Tickets und daraus abgeleitete Ergebnisse liegen nur lokal und gehören nicht in dieses Repo. Hier stehen deshalb nur Summen und allgemeine Gerätebezeichnungen.
 
@@ -15,7 +15,7 @@ Die Arbeit folgt demselben Ablauf wie die [Datenpotenzialanalyse](../datenpotenz
 | Transform | Kategorien abgeleitet | Kategorien, Stromversorgung, Defekt |
 | Visualise | Tabellen | Tabellen und Grafiken |
 | Model | nicht Teil der Arbeit | Decision- und Sprachmodell |
-| Communicate | Handlungsempfehlungen | Vorschläge im Ticket, Hausarbeit |
+| Communicate | Handlungsempfehlungen | Vorschläge im Ticket, Fallstudie |
 
 Drei Grundsätze übernehmen wir direkt:
 

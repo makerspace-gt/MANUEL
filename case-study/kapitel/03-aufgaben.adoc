@@ -1,0 +1,68 @@
+[[aufgaben]]
+== Was MANUEL übernehmen soll
+
+_Teilfrage T2. Welche Aufgaben kann ein lokales Modell übernehmen, welche bleiben bei Menschen oder festen Regeln?_
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel steht noch in Stichpunkten.
+====
+
+.Kernaussagen
+* MANUEL bereitet vor, ein Mensch entscheidet.
+* Code rechnet, das Modell formuliert. Zählen, Zuordnen, Termine planen und Daten übertragen laufen nach festen Regeln.
+* Die Prüfung der Daten in Kapitel 2 bringt vier neue Aufgaben zur Erfassung.
+
+=== Aufgaben im Repair Café
+
+* Tabelle der Aufgaben aus dem {repo}/PLAN.md[PLAN] mit der Spalte, wer sie erledigt, also Sprachmodell, Decision-Modell, Zammad oder n8n
+* Felder füllen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung und Baujahr
+* Reparaturansatz als interne Notiz, Lösung aus Stichworten formulieren, Anleitungen in der Wissensdatenbank
+* Tickets zusammenfassen und verknüpfen, Gästedaten als Vorschlag
+* Terminvorschläge, Statistik, Meldung an die Open Repair Alliance, Newsletter mit Einwilligung
+
+=== Neue Aufgaben zur Erfassung
+
+* Ein Ticket je Gerät, auch für spontane Gäste <<adr-0034>>
+* Foto vom Typenschild, das Hauptmodell liest Marke, Bezeichnung und Datumscode <<adr-0034>>
+* Felder aus dem Katalog, etwa die Stromversorgung aus der Kategorie <<adr-0034>>
+* Websuche nach Anleitungen nur mit Marke und Modell <<adr-0035>>
+
+=== Grundsätze
+
+* Ein Mensch entscheidet <<adr-0017>>. MANUEL antwortet nie selbst an Gäste.
+* Daten bleiben lokal <<adr-0002>>. Einzige Ausnahme sind Marke und Modell für die Websuche <<adr-0035>>.
+* Code rechnet und das Modell formuliert.
+* Alles ist Code, also Image, Prompts, Workflows und Auswertungen im Repo.
+
+[[landkarte]]
+=== Der Weg einer Anfrage
+
+* Landkarte als Grafik in Stufe 2, mit den Stationen und ihren Kapiteln
+** Anfrage geht ein, Kapitel 4 zeigt, wo sie verarbeitet wird
+** Einordnen, Kapitel 5 und 6
+** Erstdiagnose und Reparaturansatz, Kapitel 7
+** Termin, Kapitel 8
+** am Tisch reparieren, Ergebnis eintragen
+** zählen, teilen und melden, Kapitel 9
+
+=== Datenschutz in Kürze
+
+* Löschfristen, Verzeichnis von Verarbeitungstätigkeiten, Testdaten nur lokal, Verschlüsselung vor dem Umzug in den Makerspace
+* Ausführlich in <<recht>>
+
+// Ergebnis folgt in Stufe 3, Antwort auf T2.
+
+.Zum Nachvollziehen
+****
+* {repo}/PLAN.md[PLAN] mit Aufgaben, Grundsätzen und Phasen
+* Entscheidungen <<adr-0002>>, <<adr-0017>>, <<adr-0018>>, <<adr-0034>>, <<adr-0035>>
+****
+
+[NOTE]
+.Quellen und offene Punkte für dieses Kapitel
+====
+* Noch zu suchen sind die Doku von Zammad zu KI-Agenten, Core Workflows und Wissensdatenbank sowie Literatur zu Systemen, bei denen ein Mensch entscheidet.
+* Offen ist, welche Aufgaben bis zum Ende der Erprobung wirklich laufen.
+====

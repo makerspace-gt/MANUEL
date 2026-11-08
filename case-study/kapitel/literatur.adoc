@@ -1,0 +1,5 @@
+[bibliography]
+[[literatur]]
+== Literatur- und Quellenverzeichnis
+
+bibliography::[]

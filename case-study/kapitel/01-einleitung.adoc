@@ -1,0 +1,87 @@
+[[einleitung]]
+== Einleitung
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel steht noch in Stichpunkten. Die Tabellen zu Fragen und Lesewegen gelten schon.
+====
+
+=== Das Repair Café Gütersloh
+
+* Repair Cafés allgemein, Hilfe zur Selbsthilfe, nicht kommerziell, Gäste reparieren mit Unterstützung von Engagierten, nach Kapitel 1.1 von cite:[prange-2022]
+* Das Repair Café im Makerspace Gütersloh gibt es seit März 2019. Bis zum 7. November 2026 waren es 85 Termine mit 1.485 bearbeiteten Geräten.
+* Ablauf heute, Anfrage per Mail, Telefon oder Formular, Ticket in Zammad seit November 2022, Termin am ersten oder dritten Samstag, Slots von 11 bis 14 Uhr
+* Wer mitmacht, Empfang, Reparierende, Orga
+
+=== Von der Datenpotenzialanalyse zu MANUEL
+
+* 2022 wurden 266 Laufzettel von Hand digitalisiert und bereinigt cite:[prange-2022].
+* Die Empfehlungen von damals sind feste Wertelisten, der Rohwert bleibt neben dem bereinigten Wert, Menschen kontrollieren die Qualität, und erfasst wird möglichst schon während des Termins.
+* Umgesetzt wurde seitdem Zammad statt Papier, mit Feldern wie Ergebnis samt Grund.
+* Offen blieben die Meldung an die Open Repair Alliance und viele leere Felder, siehe Kapitel 2.
+* Förderung durch die DSEE im Mikroförderprogramm, Bewilligungszeitraum vom 15.09. bis 31.12.2026, Zweckbindung bis 2028
+* Warum ein eigener Mini-PC statt eines Cloud-Dienstes, Daten bleiben im Haus, keine laufenden Kosten für die Nutzung, Unabhängigkeit, auf das Repair Café zugeschnitten
+
+[[fragen]]
+=== Fragen und Aufbau
+
+Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Repair Café bei Anfragen unterstützen, ohne dass Daten das Haus verlassen?“ Zwölf Teilfragen in drei Teilen beantworten sie.
+
+.Teilfragen dieser Arbeit
+[cols="2,1,7,1",options="header"]
+|===
+|Teil |Nr. |Teilfrage |Kapitel
+|I Ausgangslage |T1 |Wie wird eine Reparatur erfasst und wie machen das andere Initiativen? |<<reparaturdaten,2>>
+| |T2 |Welche Aufgaben kann ein lokales Modell übernehmen, welche bleiben bei Menschen oder festen Regeln? |<<aufgaben,3>>
+|II Der Weg einer Anfrage |T3 |Reicht ein Mini-PC für den Betrieb und welche Modelle passen? |<<architektur,4>>
+| |T4 |Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Mensch entscheiden? |<<einordnung,5>>, <<katalog,6>>
+| |T5 |Wie hilfreich und wie sicher sind Erstdiagnosen und Reparaturansätze? |<<reparaturansaetze,7>>
+| |T6 |Wie lassen sich Termine so vergeben, dass Helfende und Gäste zusammenpassen? |<<termine,8>>
+| |T7 |Wie gelangen die Ergebnisse eines Termins zur Open Repair Alliance und an die Öffentlichkeit? |<<weitergabe,9>>
+|III Bewertung |T8 |Was bewirkt MANUEL im Repair Café? |<<erprobung,10>>
+| |T9 |Welche Pflichten aus DSGVO und KI-Verordnung hat ein Verein, der MANUEL betreibt, und wie schützt er sich vor Missbrauch? |<<recht,11>>
+| |T10 |Was kostet MANUEL im Jahr an Strom, Geld und Pflege? |<<kosten,12>>
+| |T11 |Was verlieren wir durch den lokalen Betrieb? |<<kosten,12>>
+| |T12 |Was können andere Initiativen nachnutzen? |<<fazit,13>>
+|===
+
+* Teil II folgt dem Weg einer Anfrage. Ein erfundenes Ticket mit einem Wasserkocher begleitet ihn.
+* Abgrenzung in drei Sätzen. Kapitel 11 gibt einen Überblick über Pflichten, aber keine Rechtsberatung. Der Aufbau der Vereins-IT steht in it-infrastructure. Chatbot, Discourse und Signal kommen nur im Ausblick vor.
+
+[[lesewege]]
+=== Für wen diese Arbeit ist
+
+.Lesewege
+[cols="2,4,3",options="header"]
+|===
+|Gruppe |braucht |Kapitel
+|Team des Repair Café |wie MANUEL vorschlägt, wann es nachfragt und was zu prüfen ist |Zusammenfassung, 3, 5, 7 bis 10, Anhang D
+|andere Initiativen |was sich nachnutzen lässt und mit welchem Aufwand |Zusammenfassung, 2, 3, 6, 9, 11 bis 13
+|DSEE |Ziele, Kennzahlen und Ergebnis |Zusammenfassung, 1.2, 10, 13
+|Datenpartner |Erfassung, Zuordnung, Meldelücke und der Wunsch nach einer schreibenden API |Abstract, 2, 6, 9, Anhang B
+|Vorstand und Mitglieder |Recht, Betrieb, Kosten und Zweckbindung bis 2028 |Zusammenfassung, 1.2, 4, 11 bis 13
+|technisch Interessierte |Nachbau, Läufe und Benchmarks |4, 5, 12, Anhang A und C
+|===
+
+[[vorgehen]]
+=== Vorgehen und Quellen
+
+* Die Arbeit ist eine Einzelfallstudie. Nach Yin untersucht eine Fallstudie ein aktuelles Phänomen in seinem realen Umfeld, hier MANUEL im laufenden Repair Café.
+* Für Daten und Einordnung gelten die Schritte einer Datenanalyse nach cite:[wickham] wie 2022. Die Gegenüberstellung von 2022 und 2026 steht als Tabelle in {repo}/docs/einordnung.md[docs/einordnung.md].
+* Jeder Versuch hält Vorgehen, Ergebnis und Erkenntnis fest. Gemessen wird an Sollwerten, die das Team geprüft hat. Die Trefferquote bekommt ein Intervall nach Wilson, und eine Rückfrage zählt als ohne Fehler.
+* Die Erprobung im Repair Café läuft von Dezember 2026 bis Februar 2027 mit den vier Kennzahlen aus dem Antrag, siehe <<adr-0032>>.
+* Ein Vergleich mit einem Cloud-Modell nutzt nur öffentliche oder erfundene Daten.
+* Entscheidungen stehen als ADR in Anhang A, Läufe werden nach <<adr-0027>> mit `lauf.json` festgehalten.
+* Welche Daten es gibt und welche nur lokal liegen, zeigt Anhang C.
+* Texte sind deutsch, Code ist englisch, dazu kommt ein Abstract auf Englisch, siehe <<adr-0029>> und <<adr-0030>>.
+
+.Quellen für dieses Kapitel
+* cite:[prange-2022], cite:[wickham]
+* Noch zu suchen sind Yin zur Fallstudie, Stichting Repair Café und Netzwerk Reparatur-Initiativen, Studien zu Repair Cafés, der Förderaufruf der DSEE und die EU-Richtlinie zum Recht auf Reparatur.
+
+.Offen
+* Zahl der Engagierten und Rollen im Team
+* Wie andere Initiativen die Arbeit lesen sollen, wenn sie nur einen Teil brauchen
+
+// Ergebnis folgt in Stufe 3.

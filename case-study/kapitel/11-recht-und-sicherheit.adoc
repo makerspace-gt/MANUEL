@@ -1,0 +1,58 @@
+[[recht]]
+== Recht und Sicherheit
+
+_Teilfrage T9. Welche Pflichten aus DSGVO und KI-Verordnung hat ein Verein, der MANUEL betreibt, und wie schützt er sich vor Missbrauch?_
+
+[NOTE]
+.Entwurf in Stichpunkten, Stand 2026-11-08
+====
+Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist keine Rechtsberatung.
+====
+
+.Kernaussagen
+* Der Betrieb auf eigener Hardware vermeidet die Weitergabe von Ticketdaten an Dritte.
+* Auch ein Verein braucht Löschfristen, ein Verzeichnis der Verarbeitungen und Engagierte, die mit KI umgehen können.
+* Ticketinhalte und Webseiten sind Daten, keine Anweisungen. Die Agenten haben keine Aktionen, mit denen sie Schaden anrichten könnten.
+
+=== Datenschutz
+
+* Rechtsgrundlage für die Verarbeitung der Anfragen
+* Löschfristen, Tickets nach drei Jahren, Tickets mit dem Tag `abgelehnt` nach drei Monaten
+* Verzeichnis von Verarbeitungstätigkeiten und Datenschutzhinweis, angelegt in it-infrastructure
+* Testdaten nur lokal <<adr-0002>>, Verschlüsselung des Mini-PCs vor dem Umzug in den Makerspace
+* Fotos vom Typenschild, nur das Typenschild, Ortsdaten in den Bildern werden nicht ausgewertet <<adr-0034>>
+
+=== KI-Verordnung
+
+* Einordnung von MANUEL nach Risiko
+* Pflicht zur KI-Kompetenz für alle, die mit dem System arbeiten
+* Transparenz, MANUEL schreibt nur interne Notizen und nie an Gäste <<adr-0017>>
+
+=== Schutz vor Missbrauch
+
+* Gäste schreiben frei, ein Text kann wie eine Anweisung an das Modell aussehen. Der Testsatz enthält dafür eigene erfundene Tickets der Gruppe „angriff“.
+* Agenten in Zammad bekommen nie die Aktion zum Versand von E-Mails oder SMS.
+* Bei der Websuche gehen nur Marke und Modell nach außen, Inhalte von Webseiten steuern das Modell nicht <<adr-0035>>.
+* Zugang zu Ollama nur über NetBird <<adr-0020>>
+
+=== Haftung und Urheberrecht
+
+* Hinweise zur Sicherheit bei Netzspannung, Akkus und Gas, im Zweifel an eine Fachperson verweisen
+* Prüfung nach DIN VDE 0701-0702 nach einer Reparatur
+* Anleitungen anderer werden verlinkt, nicht kopiert.
+
+// Ergebnis folgt in Stufe 3, Antwort auf T9.
+
+.Zum Nachvollziehen
+****
+* Grundsätze und Gedanken für die Prompts im {repo}/PLAN.md[PLAN]
+* Erfundene Tickets mit Angriffen in {repo}/eval/decision/tickets.tsv[tickets.tsv]
+* Entscheidungen <<adr-0002>>, <<adr-0017>>, <<adr-0020>>, <<adr-0034>>, <<adr-0035>>
+****
+
+[NOTE]
+.Quellen und offene Punkte für dieses Kapitel
+====
+* Noch zu suchen sind die DSGVO, die KI-Verordnung mit Artikel 4 und 50, die Orientierungshilfe der Datenschutzkonferenz zu KI, das BSI zu großen Sprachmodellen, die OWASP Top 10 für LLM-Anwendungen und Hinweise zu Haftung in Reparatur-Initiativen.
+* Offen sind die Rechtsgrundlage im Detail und die Frage, welche Pflichten der KI-Verordnung für MANUEL tatsächlich gelten.
+====

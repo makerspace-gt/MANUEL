@@ -1,0 +1,49 @@
+# ORA group of our catalog and the category id on Restarters.net, see PLAN.md, section "Anbindung an Restarters.net".
+# Ids from quellen/restarters/kategorien.csv. An empty id means the size of the device decides, the team clarifies it.
+ora_group	restarters_id	restarters_category	note
+Aircon/dehumidifier	35	Aircon/dehumidifier
+Battery/charger/adapter	46	Misc
+Coffee maker	10	Coffee maker
+Decorative or safety lights	36	Decorative or safety lights
+Desktop computer	11	Desktop computer
+Digital compact camera	21	Digital compact camera
+DSLR/video camera	22	DSLR/video camera
+Fan	37	Fan
+Flat screen			Größe in Zoll klären
+Food processor	42	Small kitchen item
+Games console	6	Games console
+Hair & beauty item	38	Hair & beauty item
+Hair dryer	38	Hair & beauty item
+Handheld entertainment device	23	Handheld entertainment device
+Headphones	24	Headphones
+Hi-Fi integrated	29	Hi-Fi integrated
+Hi-Fi separates	30	Hi-Fi separates
+Iron	9	Iron
+Kettle	39	Kettle
+Lamp	40	Lamp
+Laptop			Größe klären
+Large home electrical	46	Misc
+Misc	46	Misc
+Mobile	25	Mobile
+Musical instrument	31	Musical instrument
+Paper shredder	18	Paper shredder
+PC accessory	19	PC accessory
+Portable radio	32	Portable radio
+Power tool	41	Power tool
+Printer/scanner	20	Printer/scanner
+Projector	33	Projector
+Sewing machine	8	Sewing machine
+Small home electrical	46	Misc
+Small kitchen item	42	Small kitchen item
+Tablet	26	Tablet
+Toaster	43	Toaster
+Toy	44	Toy
+TV and gaming-related accessories	34	TV and gaming-related accessories
+Vacuum	45	Vacuum
+Watch/clock	7	Watch/clock
+Unpowered - Bicycle	48	Bicycle
+Unpowered - Furniture	47	Furniture
+Unpowered - Household	50	Misc	oder Hand tool
+Unpowered - Jewellery	52	Jewellery
+Unpowered - Other	50	Misc
+Unpowered - Textile	49	Clothing/textile

@@ -49,6 +49,8 @@ include::kapitel/08-fazit.adoc[]
 
 include::kapitel/anhang-adr.adoc[]
 
+include::kapitel/anhang-kategorien.adoc[]
+
 include::kapitel/anhang-daten.adoc[]
 
 include::kapitel/literatur.adoc[]

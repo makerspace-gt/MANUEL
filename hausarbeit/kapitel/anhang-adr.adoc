@@ -59,5 +59,9 @@ include::../../docs/adr/0025-sprachmodell-mit-llama-cpp-und-decision-modell-mit-
 
 include::../../docs/adr/0026-terminkapazitaet-per-formel-berechnen.adoc[]
 
+include::../../docs/adr/0027-laeufe-reproduzierbar-festhalten.adoc[]
+
+include::../../docs/adr/0028-quellen-im-repo-ablegen.adoc[]
+
 :leveloffset: -2
 :sectnums:

@@ -1,0 +1,17 @@
+[appendix]
+[[anhang-kategorien]]
+== Kategorien der Partner nach ORA-Gruppen
+
+Jede Zeile ist eine ORA-Gruppe. Jede Zelle nennt die Zahl der Einträge eines Partners in dieser Gruppe und seine drei häufigsten Kategorien mit Anteil. Die letzte Spalte zeigt die Einträge unseres Katalogs. Erzeugt mit {repo}/eval/ora/kategorien_matrix.py[kategorien_matrix.py] aus den Open Repair Data vom Juli 2026, die unter CC BY-SA 4.0 stehen. Die ganze Matrix in einer Tabelle liegt in {repo}/docs/ora/kategorien-matrix.tsv[kategorien-matrix.tsv].
+
+.Kategorien der Partner, Teil 1
+[%header,format=tsv,cols="1,3,2,5,5,5,5,5",.small]
+|===
+include::../../docs/ora/kategorien-matrix-teil1.tsv[]
+|===
+
+.Kategorien der Partner, Teil 2
+[%header,format=tsv,cols="1,3,5,5,5,5,5",.small]
+|===
+include::../../docs/ora/kategorien-matrix-teil2.tsv[]
+|===

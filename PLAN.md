@@ -84,7 +84,7 @@ MANUEL läuft auf der neu aufgebauten IT des Vereins. Zugangs-VM mit authentik u
 | Gästedaten eintragen | Custom AI Agent schreibt erkannte Kontaktdaten als interne Notiz, ein Mensch übernimmt sie | |
 | Terminvorschläge | Datumsfeld Termin im Ticket | Anmeldungen der Helfenden in [Nuudel](https://nuudel.digitalcourage.de/) lesen, daraus die Zahl paralleler Reparaturen ableiten, regelmäßige Zeitslots von Gästen beibehalten, ähnliche Geräte höchstens einen Slot auseinander einplanen und den Vorschlagstext von Ollama formulieren lassen, siehe [Terminvergabe](#terminvergabe) |
 | Statistik | Ergebnisfelder und Berichte | Ergebnisse zählen, also erfolgreich, teilweise, vertagt, nicht gelungen und nicht erschienen, und Freitexte zu fehlendem Werkzeug und Highlights von Ollama zusammenfassen lassen |
-| Open Repair Alliance | Felder mit den Werten der Laufzettel | Laufzettel auf reparatur-initiativen.org anlegen, die anstiftung meldet sie an die Open Repair Alliance weiter |
+| Open Repair Alliance | Felder mit den Werten der Laufzettel | Gerät über die API von Restarters.net beim passenden Event anlegen, Restarters meldet es an die Open Repair Alliance weiter |
 | Newsletter | Feld für die Einwilligung | Gäste mit dokumentierter Einwilligung für die Neuigkeiten unserer Initiative auf reparatur-initiativen.org anmelden, die Plattform verschickt dann die Bestätigungsmail |
 
 Zammad löst n8n über die Trigger-Aktion Webhook aus, zum Beispiel wenn ein Ticket nach dem Termin geschlossen wird.
@@ -124,7 +124,9 @@ Die Rechnung und die Verteilung übernimmt n8n. Vertagte Geräte bleiben im selb
 
 Die Plattform [reparatur-initiativen.org](https://www.reparatur-initiativen.org) der anstiftung basiert auf dem Open-Source-Projekt [mapped-repair-events](https://github.com/anstiftung/mapped-repair-events) unter GPL-3.0. Es liegt als Submodul in diesem Repo.
 
-- **Die Open Repair Alliance bekommt unsere Daten über die anstiftung.** Im [Datensatz der Open Repair Alliance](https://openrepair.org/open-data/) ist die anstiftung als Datenlieferantin geführt. Den Datensatz laden wir bei Bedarf dort herunter. Er steht unter CC BY-SA 4.0 und ist mit über 100 MB zu groß für das Repo, deshalb steht er in der `.gitignore`. Ihre Einträge tragen die Kategorien von reparatur-initiativen.org. Reparaturen, die wir dort als Laufzettel melden, landen also ohne eigenen Export bei der Open Repair Alliance.
+Entscheidung vom 08.11.2026. Reparaturen melden wir künftig über Restarters.net an die Open Repair Alliance, siehe den nächsten Abschnitt. Bei der anstiftung führen wir weiter die Termine, damit Gäste sie abonnieren können, und die Neuigkeiten. Laufzettel legen wir dort nicht mehr an, sonst zählt die Open Repair Alliance jede Reparatur doppelt. Sie bittet ausdrücklich darum, nur ein Werkzeug zu nutzen.
+
+- **Bisher bekam die Open Repair Alliance unsere Daten über die anstiftung.** Im [Datensatz der Open Repair Alliance](https://openrepair.org/open-data/) ist die anstiftung als Datenlieferantin geführt. Den Datensatz laden wir bei Bedarf dort herunter. Er steht unter CC BY-SA 4.0 und ist mit über 100 MB zu groß für das Repo, deshalb steht er in der `.gitignore`. Ihre Einträge tragen die Kategorien von reparatur-initiativen.org. Reparaturen, die wir dort als Laufzettel melden, landen also ohne eigenen Export bei der Open Repair Alliance.
 - **Laufzettel gibt es bisher nur als Webformular.** Ein Laufzettel gehört zu einem Termin und enthält unter anderem Gerät, Kategorie, Marke, Alter, Fehlerbeschreibung und das Ergebnis der Reparatur mit Gründen.
 - **Die Neuigkeiten einer Initiative gibt es ebenfalls nur als Webformular.** Nach der Anmeldung verschickt die Plattform eine Mail zur Bestätigung, also ein Double-Opt-in.
 - **Die vorhandene API kann nur lesen.** Sie liefert Initiativen und Statistiken und braucht einen API-Token. Schreibende Endpunkte gibt es nicht.
@@ -135,6 +137,29 @@ Ideal wären zwei neue Endpunkte, die wir der anstiftung als Beitrag zum Projekt
 - ein Endpunkt zum Anmelden für die Neuigkeiten einer Initiative, der wie das Webformular die Bestätigungsmail auslöst
 
 Die API-Token sind bisher nicht an eine Initiative gebunden. Für schreibende Endpunkte müsste ein Token auf die Initiativen beschränkt sein, die er verwalten darf.
+
+## Anbindung an Restarters.net
+
+[Restarters.net](https://restarters.net) von The Restart Project ist Open Source und hat eine API, über die sich Geräte anlegen, ändern und löschen lassen. Die Open Repair Alliance übernimmt die Daten von dort in ihre Datensätze. Lesen geht ohne Token, Schreiben braucht einen API-Token, den die Betreiber auf Anfrage vergeben.
+
+- **Jedes Gerät gehört zu einem Event einer Gruppe.** Wir brauchen also eine Gruppe für unser Repair Café und je Termin ein Event. Die Termine stehen dann bei der anstiftung und bei Restarters. Das ist unkritisch, weil die Open Repair Alliance Geräte zählt und keine Termine.
+- **Ein Gerät hat die Felder** `category`, `item_type`, `brand`, `model`, `age`, `problem`, `notes`, `repair_status`, `spare_parts` und `barrier`. Pflicht sind nur `category` und `item_type`.
+- **Restarters hat 47 eigene Kategorien.** Sie entsprechen meist einer ORA-Gruppe. Einige ORA-Gruppen gibt es dort nicht. Die Open Repair Alliance leitet sie aus dem `item_type` ab, aus `Small kitchen item ~ Blender` wird zum Beispiel Food processor. Wir senden deshalb als `item_type` den englischen Namen aus unserem [Katalog](katalog/).
+
+| ORA-Gruppe im Katalog | Kategorie bei Restarters |
+|---|---|
+| die meisten Gruppen | gleichnamige Kategorie |
+| Food processor | Small kitchen item |
+| Hair dryer | Hair & beauty item |
+| Battery/charger/adapter, Small home electrical, Large home electrical | Misc mit Strom |
+| Laptop | Laptop small, medium oder large |
+| Flat screen | Flat screen nach Bildschirmgröße in Zoll |
+| Unpowered - Textile | Clothing/textile |
+| Unpowered - Household | Hand tool oder Misc ohne Strom |
+| Unpowered - Furniture, Bicycle, Jewellery | Furniture, Bicycle, Jewellery |
+| Unpowered - Other | Misc ohne Strom |
+
+Die Zuordnung stammt aus den Open Repair Data vom Juli 2026. Dort steht bei jedem Eintrag von Restarters die ursprüngliche Kategorie neben der ORA-Gruppe. Bei Laptop und Fernseher braucht Restarters die Größe, danach fragt MANUEL, wenn sie in der Nachricht fehlt.
 
 ### Stammdaten für die Felder im Ticket
 

@@ -1,0 +1,70 @@
+---
+# Baut die Hausarbeit als HTML für GitHub Pages und als PDF zum Drucken, siehe docs/adr/0015.
+name: Hausarbeit
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'hausarbeit/**'
+      - 'docs/adr/**'
+      - 'docs/grafiken/**'
+      - 'katalog/**'
+      - '.github/workflows/hausarbeit.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'hausarbeit/**'
+      - 'docs/adr/**'
+      - '.github/workflows/hausarbeit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hausarbeit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bauen:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.io/asciidoctor/docker-asciidoctor:1.108
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: HTML und PDF erzeugen
+        run: |
+          mkdir -p _site
+          asciidoctor --failure-level WARN -o _site/index.html hausarbeit/manuel.adoc
+          asciidoctor-pdf --failure-level WARN -o _site/manuel.pdf hausarbeit/manuel.adoc
+
+      - name: PDF als Artefakt ablegen
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: hausarbeit-pdf
+          path: _site/manuel.pdf
+
+      - name: Seite für GitHub Pages ablegen
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site
+
+  veroeffentlichen:
+    if: github.event_name != 'pull_request'
+    needs: bauen
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Auf GitHub Pages veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

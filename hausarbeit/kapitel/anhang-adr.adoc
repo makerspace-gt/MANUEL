@@ -63,5 +63,7 @@ include::../../docs/adr/0027-laeufe-reproduzierbar-festhalten.adoc[]
 
 include::../../docs/adr/0028-quellen-im-repo-ablegen.adoc[]
 
+include::../../docs/adr/0029-zielgruppe-und-sprache-festlegen.adoc[]
+
 :leveloffset: -2
 :sectnums:

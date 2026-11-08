@@ -43,6 +43,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |26 |xref:0026-terminkapazitaet-per-formel-berechnen.adoc[Die Kapazität der Termine per Formel berechnen] |angenommen |2026-11-06
 |27 |xref:0027-laeufe-reproduzierbar-festhalten.adoc[Läufe reproduzierbar festhalten] |angenommen |2026-11-08
 |28 |xref:0028-quellen-im-repo-ablegen.adoc[Die Quellen im Repo ablegen] |angenommen |2026-11-08
+|29 |xref:0029-zielgruppe-und-sprache-festlegen.adoc[Zielgruppe und Sprache festlegen] |angenommen |2026-11-08
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

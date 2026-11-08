@@ -1,0 +1,40 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0029]]
+= 0029 Zielgruppe und Sprache festlegen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Im Repo stehen deutsche Texte neben Skripten mit deutschen Namen wie `rueckfrage.py` oder Variablen wie `ZIEL` und `teil`. In Code mischt sich das mit englischen Schlüsselwörtern und Bibliotheken zu Denglisch. Gleichzeitig ist unklar, für wen die Dokumentation geschrieben ist.
+
+== Entscheidungskriterien
+
+* Verständlich für die, die MANUEL betreiben und nutzen
+* Code gut lesbar, ohne Mischsprache
+* Nachnutzung durch andere Initiativen
+
+== Betrachtete Optionen
+
+* Alles auf Deutsch
+* Alles auf Englisch
+* Texte auf Deutsch, Code auf Englisch
+
+== Entscheidung
+
+Zielgruppe ist zuerst das Team des Repair Café Gütersloh, danach andere deutschsprachige Initiativen. Texte für Menschen sind deutsch. Dazu gehören Hausarbeit, ADRs, Dokumentation, Beschriftungen von Grafiken und alles, was MANUEL im Ticket schreibt.
+
+Code ist englisch. Das gilt für Dateinamen von Skripten, Bezeichner, Kommentare, Docstrings und Spaltennamen neuer Datendateien, die Skripte lesen oder schreiben. Fachbegriffe aus fremden Quellen bleiben, wie sie sind, etwa die Kategorien der anstiftung oder die Felder des Open Repair Data Standard.
+
+=== Konsequenzen
+
+* Gut, weil Code ohne Denglisch lesbar bleibt und sich leichter mit anderen teilen lässt.
+* Gut, weil die Texte für das Team in seiner Sprache bleiben.
+* Schlecht, weil bestehende Skripte und Spalten mit deutschen Namen umbenannt werden müssen. Verweise in Doku und ADRs ändern sich dabei mit.
+
+== Quellen
+
+* {repo}/eval/ora/charts.py[charts.py] als erstes Skript nach dieser Regel

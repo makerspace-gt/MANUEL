@@ -40,9 +40,32 @@ include::../../docs/ora/partner.tsv[]
 
 Die Spalte `feste_stufe` zeigt, welcher Teil der Kategorie eines Partners aus einer festen Liste stammt. Eine 1 heißt, die erste Stufe ist fest und die zweite Freitext. Eine 2 heißt, beide Stufen sind fest. Eine 0 heißt, es gibt nur Freitext.
 
+==== Der Datensatz im Überblick
+
+Die Zahl der gemeldeten Reparaturen ist stark gewachsen, von 1.395 im Jahr 2015 auf 155.290 im Jahr 2025. Der Sprung ab 2022 kommt von allen großen Partnern gleichzeitig. 2020 bricht die Kurve wegen der Pandemie fast auf null ein. Jeden Sommer und um den Jahreswechsel gibt es Täler, weil dann weniger Veranstaltungen stattfinden. The Restart Project und Repair Café International liefern zusammen 70 Prozent aller Einträge.
+
+.Gemeldete Reparaturen je Jahr und Partner
+image::../../docs/grafiken/ora-jahre-partner-hell.svg[Gemeldete Reparaturen je Jahr und Partner,width=100%]
+
+.Gemeldete Reparaturen je Monat
+image::../../docs/grafiken/ora-monate-hell.svg[Gemeldete Reparaturen je Monat,width=100%]
+
+Auch die Mischung der Geräte hat sich verschoben. Textilien und Gegenstände ohne Strom aus dem Haushalt machen 2026 zusammen fast ein Drittel aus, 2015 waren es 7 Prozent. Laptops fielen von 12 auf 2 Prozent. Das liegt vermutlich weniger an den Geräten als an den Partnern. Anfangs meldete fast nur The Restart Project, dessen Veranstaltungen sich auf Elektronik konzentrieren.
+
+.Die 15 häufigsten ORA-Gruppen je Jahr
+image::../../docs/grafiken/ora-gruppen-jahre-hell.svg[Die 15 häufigsten ORA-Gruppen je Jahr,width=100%]
+
+Hinter den Einträgen stehen Gruppen und ihre Termine. Bei der anstiftung melden 169 Initiativen an 4.478 Terminen im Median 10 Geräte je Termin. Toronto und Fixit Clinic melden jeweils als eine einzige Gruppe.
+
+.Gruppen, Termine und Einträge je Partner
+[%header,format=tsv,cols="3,1,1,1,1,1,1"]
+|===
+include::../../docs/ora/events_by_partner.tsv[]
+|===
+
 ==== Wie viel ankommt
 
-Der Datensatz zeigt nur, was gemeldet wird. Beim Repair Café Gütersloh ist das ein kleiner Teil. Die eigene Statistik des Teams zählt seit 2019 1.485 bearbeitete Geräte an 85 Terminen. Auf reparatur-initiativen.org stehen für dieselbe Zeit 30 Laufzettel, das sind rund 2 Prozent. 29 davon finden sich in den Open Repair Data wieder, der Weg über die anstiftung funktioniert also. Es wird nur fast nichts gemeldet, weil jeder Laufzettel von Hand abgetippt werden muss.
+Der Datensatz zeigt nur, was gemeldet wird. Beim Repair Café Gütersloh ist das ein kleiner Teil. Die eigene Statistik des Teams zählt seit 2019 1.485 bearbeitete Geräte an 85 Terminen. Auf reparatur-initiativen.org stehen für dieselbe Zeit 30 Laufzettel, das sind rund 2 Prozent. Alle 30 finden sich in den Open Repair Data wieder, unter der Gruppe 17503 mit denselben Terminen und Kategorien. Der Weg über die anstiftung funktioniert also. Es wird nur fast nichts gemeldet, weil jeder Laufzettel von Hand abgetippt werden muss.
 
 .Bearbeitete Geräte und gemeldete Laufzettel des Repair Café Gütersloh
 [cols="1,1,1,1",options="header"]

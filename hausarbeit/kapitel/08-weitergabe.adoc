@@ -11,6 +11,13 @@ Von den Werkzeugen in <<werkzeuge>> erlaubt nur Restarters.net, Reparaturen übe
 // API POST /api/v2/devices, Konto für MANUEL als Host der Gruppe, Token, Zuordnung der Kategorien, Größen bei Laptop und Fernseher.
 // Aus <<vereinheitlichung>> folgt, dass MANUEL beide Felder sorgfältig füllt. Die Kategorie ergibt sich aus der ORA-Gruppe im Katalog, der Gegenstand aus dem englischen Namen des Eintrags.
 
+[[eigene-partnerschaft]]
+==== Eigener Partner der Alliance werden
+
+Statt über Restarters könnte das Repair Café seine Daten auch selbst an die Alliance liefern. Organisationen, die mitmachen wollen, sollen sich bei ihr melden. Die Daten sollen dem Standard folgen und mindestens Gruppe und Datum, Gegenstand, Marke und Alter sowie Problem, Ergebnis und Hindernis enthalten <<ora-record>>. Repair Café Denmark hat zum Beispiel eine Tabelle geliefert, die die Alliance in ihren Datensatz übernommen hat <<ora-members>>. Alle bisherigen Partner sind allerdings Netzwerke oder Plattformen. Ob die Alliance auch eine einzelne Initiative aufnimmt, steht auf ihren Seiten nicht.
+
+Für MANUEL wäre das zunächst mehr Aufwand als Restarters. Wir müssten eine Ausgabe im Format des Standards bauen, sie zu jedem neuen Datensatz rechtzeitig liefern und mit der Alliance abstimmen, dass die Laufzettel bei der anstiftung nicht doppelt gezählt werden. Die Zuordnung der Kategorien wäre dagegen kein Hindernis, weil der Katalog die ORA-Gruppe schon im Schlüssel trägt. Wir beginnen deshalb mit Restarters und fragen bei der Alliance nach, wenn die Übertragung läuft und sich zeigt, ob uns dort Felder fehlen.
+
 [[anstiftung]]
 === Termine bei der anstiftung
 

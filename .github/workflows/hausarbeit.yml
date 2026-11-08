@@ -48,6 +48,11 @@ jobs:
           name: hausarbeit-pdf
           path: _site/manuel.pdf
 
+      # Das Image basiert auf Alpine, upload-pages-artifact braucht GNU tar statt BusyBox
+      - name: GNU tar installieren
+        if: github.event_name != 'pull_request'
+        run: apk add --no-cache tar
+
       - name: Seite für GitHub Pages ablegen
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0

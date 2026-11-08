@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 340" role="img" aria-label="Gemeldete Reparaturen je Monat">
+<title>Gemeldete Reparaturen je Monat</title>
+<style>
+.bg { fill: #fcfcfb; } .primary { fill: #0b0b0b; } .secondary { fill: #52514e; }
+.grid { stroke: #e4e3df; } .axis { stroke: #b5b4ae; } .line { stroke: #2a78d6; }
+.s0 { fill: #9a9992; } .s1 { fill: #2a78d6; } .s2 { fill: #eb6834; } .s3 { fill: #1baf7a; }
+.s4 { fill: #eda100; } .s5 { fill: #e87ba4; }
+.h0 { fill: #f0efec; } .h1 { fill: #cde2fb; } .h2 { fill: #9ec5f4; } .h3 { fill: #5598e7; }
+.h4 { fill: #256abf; } .h5 { fill: #0d366b; } .on-dark { fill: #fcfcfb; }
+@media (prefers-color-scheme: dark) {
+  .bg { fill: #1a1a19; } .primary { fill: #f0efec; } .secondary { fill: #c3c2b7; }
+  .grid { stroke: #3a3a37; } .axis { stroke: #5c5b55; } .line { stroke: #3987e5; }
+  .s0 { fill: #75746e; } .s1 { fill: #3987e5; } .s2 { fill: #d95926; } .s3 { fill: #199e70; }
+  .s4 { fill: #c98500; } .s5 { fill: #d55181; }
+  .h0 { fill: #262624; } .h1 { fill: #104281; } .h2 { fill: #1c5cab; } .h3 { fill: #3987e5; }
+  .h4 { fill: #86b6ef; } .h5 { fill: #cde2fb; } .on-dark { fill: #0b0b0b; }
+}
+text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+</style>
+<rect class="bg" width="860" height="340"/>
+<text class="primary" x="24" y="30" font-size="18" font-weight="600">Gemeldete Reparaturen je Monat</text>
+<text class="secondary" x="24" y="50" font-size="13">Alle Partner zusammen, nach Datum der Veranstaltung</text>
+<line class="axis" x1="70" x2="836" y1="300.0" y2="300.0"/>
+<text class="secondary" x="62" y="304.0" font-size="11" text-anchor="end">0</text>
+<line class="grid" x1="70" x2="836" y1="242.5" y2="242.5"/>
+<text class="secondary" x="62" y="246.5" font-size="11" text-anchor="end">5.000</text>
+<line class="grid" x1="70" x2="836" y1="185.0" y2="185.0"/>
+<text class="secondary" x="62" y="189.0" font-size="11" text-anchor="end">10.000</text>
+<line class="grid" x1="70" x2="836" y1="127.5" y2="127.5"/>
+<text class="secondary" x="62" y="131.5" font-size="11" text-anchor="end">15.000</text>
+<line class="grid" x1="70" x2="836" y1="70.0" y2="70.0"/>
+<text class="secondary" x="62" y="74.0" font-size="11" text-anchor="end">20.000</text>
+<polyline class="line" fill="none" stroke-width="2" points="70.0,298.8 75.6,298.8 81.1,298.8 86.7,298.8 92.2,298.3 97.8,299.3 103.3,298.6 108.9,299.4 114.4,298.5 120.0,298.1 125.5,298.0 131.1,298.5 136.6,298.1 142.2,298.0 147.7,296.2 153.3,297.5 158.8,297.0 164.4,297.3 169.9,296.8 175.5,296.9 181.0,296.5 186.6,296.1 192.1,292.1 197.7,298.6 203.2,293.4 208.8,292.2 214.3,291.6 219.9,290.2 225.4,290.4 231.0,287.9 236.5,295.1 242.1,293.6 247.6,288.5 253.2,287.2 258.7,284.5 264.3,292.2 269.8,283.9 275.4,284.5 280.9,285.2 286.5,281.8 292.0,283.1 297.6,286.3 303.1,287.3 308.7,290.9 314.2,275.2 319.8,275.4 325.3,271.7 330.9,284.7 336.4,271.2 342.0,270.4 347.5,269.9 353.1,270.0 358.6,270.9 364.2,275.4 369.7,279.6 375.3,282.6 380.8,264.7 386.4,261.5 391.9,255.5 397.5,277.3 403.0,253.6 408.6,244.0 414.1,282.2 419.7,299.8 425.2,299.4 430.8,296.5 436.3,293.1 441.9,293.2 447.4,285.3 453.0,283.4 458.6,297.7 464.1,297.9 469.7,295.6 475.2,297.3 480.8,296.8 486.3,295.9 491.9,292.1 497.4,287.4 503.0,286.7 508.5,285.5 514.1,268.9 519.6,259.4 525.2,267.1 530.7,282.2 536.3,280.7 541.8,263.8 547.4,252.0 552.9,257.7 558.5,245.2 564.0,256.5 569.6,264.0 575.1,269.6 580.7,244.2 586.2,231.5 591.8,221.2 597.3,249.1 602.9,225.1 608.4,215.6 614.0,211.5 619.5,215.1 625.1,214.1 630.6,203.6 636.2,230.8 641.7,240.9 647.3,200.1 652.8,179.8 658.4,153.7 663.9,224.4 669.5,183.5 675.0,159.2 680.6,156.0 686.1,146.8 691.7,180.9 697.2,170.5 702.8,215.5 708.3,218.9 713.9,150.1 719.4,139.2 725.0,133.1 730.5,200.7 736.1,160.7 741.6,137.7 747.2,125.3 752.7,140.7 758.3,140.3 763.8,139.9 769.4,200.6 774.9,201.1 780.5,139.2 786.0,126.1 791.6,114.0 797.1,188.6 802.7,159.0 808.2,115.2 813.8,123.0 819.3,138.2 824.9,153.9 830.4,160.5 836.0,204.9"/>
+<text class="secondary" x="70.0" y="316" font-size="11" text-anchor="middle">2015</text>
+<text class="secondary" x="136.6" y="316" font-size="11" text-anchor="middle">2016</text>
+<text class="secondary" x="203.2" y="316" font-size="11" text-anchor="middle">2017</text>
+<text class="secondary" x="269.8" y="316" font-size="11" text-anchor="middle">2018</text>
+<text class="secondary" x="336.4" y="316" font-size="11" text-anchor="middle">2019</text>
+<text class="secondary" x="403.0" y="316" font-size="11" text-anchor="middle">2020</text>
+<text class="secondary" x="469.7" y="316" font-size="11" text-anchor="middle">2021</text>
+<text class="secondary" x="536.3" y="316" font-size="11" text-anchor="middle">2022</text>
+<text class="secondary" x="602.9" y="316" font-size="11" text-anchor="middle">2023</text>
+<text class="secondary" x="669.5" y="316" font-size="11" text-anchor="middle">2024</text>
+<text class="secondary" x="736.1" y="316" font-size="11" text-anchor="middle">2025</text>
+<text class="secondary" x="802.7" y="316" font-size="11" text-anchor="middle">2026</text>
+<text class="primary" x="791.6" y="106.0" font-size="11" text-anchor="middle">16.176 im 11/2025</text>
+</svg>

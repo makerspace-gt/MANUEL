@@ -42,7 +42,7 @@ Drei Grundsätze übernehmen wir direkt:
 | 13 | 746 echte Betreffe | ORA-Gruppe zuerst, dann Kategorie | Gruppe zu 88 Prozent richtig, für die Kategorie kein Gewinn |
 | 14 | 746 echte Betreffe | Katalog mit Zusammenfassungen, Synonymen und Beschreibungen, Kaskade nach ABC | Vertreter-Namen fast gleich gut bei weniger Nachfragen, Beschreibungen und Kaskade schaden |
 | 15 | 746 echte Nachrichten | Kette mit vollständigem Text und Titel der Notizen | Titel hilft bei Notizen, mit Rückfall 546 statt 529 Treffer |
-| 16 | 746 echte Betreffe | Ursachen der sicheren Fehler, Regeln für Rückfragen | Mit zwei Regeln und den Entscheidungen des Teams 98,4 Prozent richtig oder nachgefragt, 12 sichere Fehler |
+| 16 | 746 echte Betreffe | Ursachen der sicheren Fehler, Regeln für Rückfragen | Mit zwei Regeln, den Entscheidungen des Teams und der Nachricht 98,7 Prozent richtig oder nachgefragt, 10 sichere Fehler |
 
 ## Schritt 1 Erfundene Tickets
 
@@ -204,7 +204,7 @@ Für einen fairen Vergleich zählen beide Läufe gleich. Gleichwertige Paare, Te
 
 Die längere Liste allein bringt also nichts. Sie behebt zwar die veralteten Namen aus Schritt 11, in 31 Fällen trifft das Modell jetzt den Sollwert und lag vorher daneben. In 35 Fällen ist es aber umgekehrt. Die neue Liste enthält viele fast gleiche Einträge, zwischen denen das Modell schwankt, zum Beispiel `Schwibbogen` und `Lichterbogen`, `Türgong` und `Funkglocke /Funkklingel`, `Handy` und `Mobiltelefon`, `Standmixer` und `Mixer` oder `Quadrocopter` und `Drohne`. Dazu kommt, dass die Sollwerte mit der alten Liste vor Augen entstanden sind. Das begünstigt die CSV etwas.
 
-Das Team hat daraufhin weitere Paare festgelegt. `Mixer` allein wird nicht vergeben, weil Standmixer und Handmixer verschiedene Geräte sind. Sauger mit Akku zählen als `Staubsauger` mit Strom Akku, nur `Handstaubsauger` bleibt eigen. Bei Audiogeräten zählt die Ausstattung, nicht die Größe. Mit CD, Kassette oder Plattenspieler in einem Gerät ist es eine `Musikanlage`, auch der Ghettoblaster, den der Standard als Boombox zu Hi-Fi integrated zählt. Vorverstärker und Surround-Anlage gehören zum `Verstärker`, Geräte nur mit Empfang zum `Radio`. Das `Röhren-Radio` bleibt eigen. Mit allen Paaren liegt die Formularliste knapp vor der CSV.
+Das Team hat daraufhin weitere Paare festgelegt. `Mixer` allein wird nicht vergeben, weil Standmixer und Handmixer verschiedene Geräte sind. Sauger mit Akku zählen als `Staubsauger` mit Strom Akku, nur `Handstaubsauger` bleibt eigen. Bei Audiogeräten zählt die Ausstattung, nicht die Größe. Mit CD, Kassette oder Plattenspieler in einem Gerät ist es eine `Musikanlage`, auch der tragbare Radiorekorder, den der Standard als Boombox zu Hi-Fi integrated zählt. Vorverstärker und Surround-Anlage gehören zum `Verstärker`, Geräte nur mit Empfang zum `Radio`. Das `Röhren-Radio` bleibt eigen. Mit allen Paaren liegt die Formularliste knapp vor der CSV.
 
 Die Sicherheit bleibt aussagekräftig.
 
@@ -411,7 +411,19 @@ Dieser Lauf nutzt [rueckfrage.py](../eval/decision/rueckfrage.py), das [echt_ver
 | Rückfragen | 189, davon 141 unsicher, 35 Sammelbegriff, 9 Bauteil, 2 Dienstleistung, 2 fehlende Tickets |
 | ohne Fehler | 98,4 % |
 
-Von den 12 Fehlern steht bei fünf das Gerät nur in der Nachricht, etwa ein tragbares Radio, das ein Ghettoblaster war. Zweimal fehlt das Synonym Kartoffelraspel, weil Reibe, elektrisch noch nicht im Katalog steht. Vier sind Grenzfälle wie PC-Boxen und Lautsprecher oder Regentonnenpumpe und Wasserpumpe. Nur einer ist eine echte Verwechslung, aus dem Handy mit Wasserschaden wurde ein Wassermelder.
+Von den 12 Fehlern steht bei fünf das Gerät nur in der Nachricht, etwa ein tragbares Radio, das ein Radiorekorder war. Zweimal fehlt das Synonym Kartoffelraspel, weil Reibe, elektrisch noch nicht im Katalog steht. Vier sind Grenzfälle wie PC-Boxen und Lautsprecher oder Regentonnenpumpe und Wasserpumpe. Nur einer ist eine echte Verwechslung, aus dem Handy mit Wasserschaden wurde ein Wassermelder.
+
+Ein weiterer Lauf ergänzt drei Dinge. Reibe, elektrisch steht mit dem Synonym Kartoffelraspel im Katalog. Kopfhörer, In-Ear fehlte bisher in der Auswahl, weil sich beide Kopfhörer-Einträge dieselben Formular-IDs teilen. Bei Kopfhörer, Funkkopfhörer oder Headset ohne Bauform fragt MANUEL nach. Außerdem löst [rueckfrage.py](../eval/decision/rueckfrage.py) Sammelbegriffe über die Nachricht auf. Nennt sie genau eine Bauart, etwa Nespresso bei der Kaffeemaschine, entfällt die Rückfrage.
+
+| Lauf vom 08.11.2026 | ohne Nachricht | mit Nachricht |
+|---|---|---|
+| Kategorie richtig | 652 von 745 | 657 von 745 |
+| automatisch eingetragen | 558 | 564 |
+| davon falsch | 10 | 10 |
+| Rückfragen | 187 | 181 |
+| ohne Fehler | 98,7 % | 98,7 % |
+
+Die Nachricht klärt 6 der 29 Rückfragen bei Sammelbegriffen, alle richtig. Die übrigen Nachrichten nennen nur den Sammelbegriff selbst. Von den 10 Fehlern steht bei fünf das Gerät nur in der Nachricht, vier sind Grenzfälle und einer ist eine echte Verwechslung.
 
 Auch diese Werte stammen aus denselben Daten, aus denen die Regeln abgeleitet sind, und müssen an neuen Tickets bestätigt werden.
 

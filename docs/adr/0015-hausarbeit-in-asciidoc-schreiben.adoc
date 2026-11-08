@@ -5,7 +5,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
-Beteiligte:: Team des Repair Café Gütersloh
+Beteiligte:: Michael Prange
 
 == Kontext und Problem
 

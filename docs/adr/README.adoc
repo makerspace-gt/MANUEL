@@ -7,6 +7,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 * Eine Datei je Entscheidung, benannt als `NNNN-verbphrase-im-imperativ.adoc`.
 * Status ist vorgeschlagen, angenommen, verworfen oder abgelöst durch ein neueres ADR.
 * Ein angenommenes ADR wird nicht umgeschrieben. Ändert sich die Entscheidung, entsteht ein neues ADR, und das alte verweist darauf.
+* Unter Beteiligte stehen alle, die an der Entscheidung mitgewirkt haben. Bisher arbeitet Michael Prange allein an MANUEL, weitere Mitwirkende kommen bei ihren Entscheidungen dazu.
 * Jedes ADR nennt seine Quellen, etwa Messungen in link:../einordnung.md[Einordnung von Tickets] oder link:../benchmarks.md[Benchmarks].
 
 == Übersicht

@@ -1,0 +1,14 @@
+[[architektur]]
+== Architektur
+
+=== Überblick
+
+// Diagramm aus dem PLAN, Mini-PC im Makerspace, Helpdesk-VM im Rechenzentrum.
+
+=== Zammad mit KI-Agenten und Wissensdatenbank
+
+// <<adr-0018>>, <<adr-0022>>, wie ein Agent über Trigger ausgelöst wird, was Zammad an den Server schickt.
+
+=== n8n und Vernetzung
+
+// <<adr-0019>>, <<adr-0020>>, NetBird, Open WebUI hinter authentik.

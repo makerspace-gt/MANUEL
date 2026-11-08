@@ -1,0 +1,18 @@
+[[weitergabe]]
+== Termine und Weitergabe der Daten
+
+=== Terminvergabe
+
+// Kapazität aus den Anmeldungen der Helfenden, Reihenfolge der Regeln. <<adr-0026>>
+
+=== Open Repair Alliance
+
+// Open Repair Data Standard, wie die Alliance Daten der Partner zusammenführt. <<ora-standard>>, <<ora-datasets>>
+
+=== Restarters.net
+
+// API, Zuordnung der Kategorien, item_type auf Englisch, Größen bei Laptop und Fernseher. <<adr-0014>>
+
+=== anstiftung
+
+// Termine zum Abonnieren und Neuigkeiten, keine Laufzettel mehr, Vorschlag einer schreibenden API.

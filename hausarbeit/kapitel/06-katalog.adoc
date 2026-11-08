@@ -1,0 +1,18 @@
+[[katalog]]
+== Katalog der Gegenstände
+
+=== Aufbau und Quellen
+
+// Spalten, Quellen anstiftung und Open Repair Data, Lizenz. <<adr-0009>>
+
+=== Schlüssel
+
+// ORA.anstiftung.eigene mit Beispielen, Regeln ab dem Start in Zammad. <<adr-0013>>
+
+=== Sprache
+
+// Deutsch und Englisch, Synonyme, keine abwertenden Begriffe. <<adr-0012>>
+
+=== Auszug
+
+// Ausschnitt direkt aus katalog/kategorien.tsv eingebunden.

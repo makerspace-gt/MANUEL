@@ -3,7 +3,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0029 Zielgruppe und Sprache festlegen
 
 [horizontal]
-Status:: angenommen
+Status:: angenommen, die Zielgruppe ist ergänzt und das Abstract auf Englisch ausgenommen durch xref:0030-rahmen-der-fallstudie-festlegen.adoc[ADR 30]
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
 

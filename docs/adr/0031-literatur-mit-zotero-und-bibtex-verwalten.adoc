@@ -1,0 +1,62 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0031]]
+= 0031 Die Literatur mit Zotero und BibTeX verwalten
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Bisher stehen die Quellen von Hand in `literatur.adoc`. Im Text erscheinen sie als Kürzel wie [ora-standard]. Die Dokumente sollen in Zotero gesammelt werden, und für die Fallstudie kommen viele neue Quellen dazu. Wie lassen sich Quellen einheitlich pflegen und zitieren?
+
+== Entscheidungskriterien
+
+* Einheitliche Zitierweise im Text und im Verzeichnis
+* Quellen in Zotero pflegen und ohne Abtippen übernehmen
+* Bauen im bestehenden Container ohne weitere Installation
+* Stabile Schlüssel, damit Verweise nicht brechen
+
+== Betrachtete Optionen
+
+* Von Hand mit Kürzeln wie bisher
+* Von Hand mit Marken nach Autor und Jahr
+* BibTeX aus Zotero, gesetzt mit asciidoctor-bibtex
+
+== Entscheidung
+
+Die Quellen stehen in `case-study/literatur.bib`. Zotero liest die Datei direkt ein und exportiert sie mit Better BibTeX wieder. Die Schlüssel wie `ora-standard` bleiben. Seit Zotero 8 stehen sie in einem eigenen Feld für den Zitierschlüssel, in älteren Versionen als Zeile `Citation Key:` im Feld Extra.
+
+Im Text wird mit `cite:[ora-standard]` zitiert. Das Verzeichnis setzt asciidoctor-bibtex im Stil ISO 690 nach Autor und Jahr auf Deutsch. Jede Quelle aus dem Netz hat ein Abrufdatum. Offline-Kopien liegen lokal, Kopien mit unklarer Lizenz kommen nach xref:0028-quellen-im-repo-ablegen.adoc[ADR 28] nicht ins Repo.
+
+Dieses ADR ergänzt xref:0015-hausarbeit-in-asciidoc-schreiben.adoc[ADR 15].
+
+=== Konsequenzen
+
+* Gut, weil Zitate einheitlich sind und sich das Verzeichnis selbst sortiert.
+* Gut, weil der Container `docker-asciidoctor:1.108` asciidoctor-bibtex 0.9.0 und den Stil `iso690-author-date-de` schon mitbringt.
+* Schlecht, weil der Build die Erweiterung mit `-r asciidoctor-bibtex` laden muss.
+* Schlecht, weil eine `.bib`-Datei von Hand schwerer zu lesen ist als eine Liste.
+
+== Vor- und Nachteile der Optionen
+
+=== Von Hand mit Kürzeln
+
+* Gut, weil es keine Erweiterung braucht.
+* Schlecht, weil Kürzel wie [ora-standard] im Text wenig sagen und Zotero nicht angebunden ist.
+
+=== Von Hand mit Marken nach Autor und Jahr
+
+* Gut, weil der Text lesbarer wird.
+* Schlecht, weil jede Angabe von Hand doppelt gepflegt wird.
+
+=== BibTeX aus Zotero
+
+* Gut, weil Zotero die Quelle der Wahrheit wird und der Text nur Schlüssel kennt.
+* Schlecht, weil ein Export nach jeder Änderung in Zotero nötig ist.
+
+== Quellen
+
+* https://github.com/asciidoctor/asciidoctor-bibtex[asciidoctor-bibtex]
+* https://retorque.re/zotero-better-bibtex/[Better BibTeX für Zotero]

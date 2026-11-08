@@ -1,0 +1,99 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0030]]
+= 0030 Den Rahmen der Fallstudie festlegen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Die Dokumentation von MANUEL hieß bisher Hausarbeit, nach dem Vorbild der Datenpotenzialanalyse von 2022. Sie wird aber nicht benotet und richtet sich an mehrere Lesergruppen. Ihre Gliederung stand nur in Kommentaren und war nach Themen sortiert. Die Fragen F1 bis F4 stammten aus der Zeit vor dem Kapitel zu Reparaturdaten, und Ziele aus dem Antrag wie Erstdiagnosen fehlten. Wie heißt die Arbeit, für wen ist sie, welche Fragen beantwortet sie und wie entsteht sie?
+
+== Entscheidungskriterien
+
+* Verständlich für alle Lesergruppen, auch ohne Vorwissen
+* Spannend zu lesen und trotzdem nachvollziehbar
+* Passend zur Methode, also ein Fall im echten Betrieb mit mehreren Quellen
+* Einzelheiten dürfen in Skripten, Läufen und ADRs stehen statt im Text
+
+== Betrachtete Optionen
+
+* Hausarbeit
+* Projektbericht
+* White Paper
+* Fallstudie
+
+== Entscheidung
+
+Die Arbeit heißt Fallstudie. Nach Yin ist eine Fallstudie eine empirische Untersuchung eines aktuellen Phänomens in seinem realen Umfeld, auch mit nur einem Fall. Das trifft auf MANUEL im Repair Café Gütersloh zu. Der Titel bleibt "MANUEL im Repair Café Gütersloh" mit dem Untertitel "Eine Fallstudie". Die Dateien liegen im Ordner `case-study/`.
+
+Lesergruppen sind zuerst das Team und andere Initiativen wie in xref:0029-zielgruppe-und-sprache-festlegen.adoc[ADR 29]. Dazu kommen ausdrücklich die DSEE für den Sachbericht, die Datenpartner Open Repair Alliance, anstiftung und Restarters, Vorstand und Mitglieder des Vereins sowie technisch Interessierte, die MANUEL nachbauen wollen. Die Einleitung zeigt für jede Gruppe einen Leseweg.
+
+Die Leitfrage lautet "Wie kann ein lokales Sprachmodell die Engagierten des Repair Café bei Anfragen unterstützen, ohne dass Daten das Haus verlassen?". Zwölf Teilfragen in drei Teilen beantworten sie.
+
+[cols="2,1,7,1",options="header"]
+|===
+|Teil |Nr. |Teilfrage |Kapitel
+|I Ausgangslage |T1 |Wie wird eine Reparatur erfasst und wie machen das andere Initiativen? |2
+| |T2 |Welche Aufgaben kann ein lokales Modell übernehmen, welche bleiben bei Menschen oder festen Regeln? |3
+|II Der Weg einer Anfrage |T3 |Reicht ein Mini-PC für den Betrieb und welche Modelle passen? |4
+| |T4 |Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Mensch entscheiden? |5, 6
+| |T5 |Wie hilfreich und wie sicher sind Erstdiagnosen und Reparaturansätze? |7
+| |T6 |Wie lassen sich Termine so vergeben, dass Helfende und Gäste zusammenpassen? |8
+| |T7 |Wie gelangen die Ergebnisse eines Termins zur Open Repair Alliance und an die Öffentlichkeit? |9
+|III Bewertung |T8 |Was bewirkt MANUEL im Repair Café? |10
+| |T9 |Welche Pflichten aus DSGVO und KI-Verordnung hat ein Verein, der MANUEL betreibt, und wie schützt er sich vor Missbrauch? |11
+| |T10 |Was kostet MANUEL im Jahr an Strom, Geld und Pflege? |12
+| |T11 |Was verlieren wir durch den lokalen Betrieb? |12
+| |T12 |Was können andere Initiativen nachnutzen? |13
+|===
+
+Teil II folgt dem Weg einer Anfrage. Ein erfundenes Ticket aus dem öffentlichen Testsatz, k01 mit einem Wasserkocher, begleitet die Lesenden durch alle Stationen. Was dabei mit k01 passiert, stammt aus echten Läufen. Die Kapitel erzählen die Wendepunkte und nicht jeden Schritt. Jedes Kapitel beginnt mit seiner Teilfrage und endet mit einem Ergebnis und einem Kasten zum Nachvollziehen mit Skripten, Daten, Läufen und ADRs.
+
+Die Arbeit entsteht vom Groben zum Feinen in vier Stufen:
+
+. Stichpunkte je Kapitel und Quellen. Die Stichpunkte stehen online sichtbar als Entwurf.
+. Reihenfolge der Absätze, Abbildungen und fehlende Daten
+. Ausformulieren, zuerst die Kapitel mit vorhandenen Daten
+. Zusammenfassung, Abstract, Gegenlesen durch das Team und Version 1.0 mit dem Sachbericht
+
+Abweichend von ADR 29 erscheint zusätzlich ein Abstract auf Englisch, damit die Partner der Open Repair Alliance die Ergebnisse lesen können. Das Format bleibt AsciiDoc nach xref:0015-hausarbeit-in-asciidoc-schreiben.adoc[ADR 15].
+
+=== Konsequenzen
+
+* Gut, weil der Begriff zur Methode passt und weder an Noten noch an Haushalt denken lässt.
+* Gut, weil jede Lesergruppe ihren Weg durch die Arbeit findet.
+* Gut, weil das Beispiel den Weg einer Anfrage greifbar macht.
+* Schlecht, weil Fallstudie für manche wissenschaftlich klingt. Die Einleitung erklärt den Begriff deshalb kurz.
+* Schlecht, weil Ordner und Workflow umbenannt werden.
+
+== Vor- und Nachteile der Optionen
+
+=== Hausarbeit
+
+* Gut, weil der Anschluss an 2022 sichtbar bleibt.
+* Schlecht, weil das Wort im Alltag zuerst Haushaltsarbeit meint und im Studium eine benotete Arbeit.
+
+=== Projektbericht
+
+* Gut, weil es für DSEE und Vorstand eindeutig ist.
+* Schlecht, weil es wenig über die Methode sagt.
+
+=== White Paper
+
+* Gut, weil es knapp die eigene Haltung vertritt.
+* Schlecht, weil es meist kurz ist und überzeugen will. Für eine ausführliche Arbeit mit Irrwegen und Grenzen passt es nicht.
+
+=== Fallstudie
+
+* Gut, weil der Begriff die Methode beschreibt.
+* Schlecht, weil er weniger eingängig ist.
+
+== Quellen
+
+* Yin, Case Study Research and Applications, 6. Auflage, im https://katalog.ub.uni-heidelberg.de/titel/68728331[Katalog der UB Heidelberg], zusammengefasst in den https://ocw.mit.edu/courses/11-237-practice-of-participatory-action-research-par-spring-2016/639123ca7074fcca0b80a128ff72639c_MIT11_237S16_YinNotes.pdf[Notizen des MIT]
+* https://de.wiktionary.org/wiki/Hausarbeit[Wiktionary zu Hausarbeit]
+* https://en.wikipedia.org/wiki/White_paper[Wikipedia zu White Paper]
+* Antrag bei der DSEE, Abschnitte 5.1 bis 5.5

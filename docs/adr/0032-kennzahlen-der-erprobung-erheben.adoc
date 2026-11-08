@@ -1,0 +1,65 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0032]]
+= 0032 Die Kennzahlen der Erprobung erheben
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Der Antrag bei der DSEE misst den Erfolg an vier Kennzahlen. Das sind die Reparaturquote, die Reparaturen durch Gäste und neue Engagierte, die Rückmeldungen zu den Vorschlägen der KI und die an die Open Repair Alliance gemeldeten Reparaturen. Der Sachbericht ist bis zum 31.03.2027 fällig. Wie erhebt das Team diese Zahlen ohne großen Aufwand?
+
+== Entscheidungskriterien
+
+* Wenig zusätzlicher Aufwand für das Team
+* Keine Personenbezüge in der Fallstudie
+* Vergleichswerte aus der Zeit vor MANUEL
+
+== Betrachtete Optionen
+
+* Befragung der Helfenden nach jedem Termin
+* Eigene Felder im Ticket für jede Kennzahl
+* Vorhandene Felder und die eingebaute KI-Rückmeldung von Zammad
+
+== Entscheidung
+
+Die Erprobung läuft von Dezember 2026 bis Februar 2027. Die Kennzahlen kommen aus vorhandenen Feldern und der KI-Rückmeldung von Zammad.
+
+. *Reparaturquote* aus dem Feld Ergebnis. Vergleichswerte sind die Statistik seit 2019, `repair_status` der Open Repair Data und die Laufzettel von 2019 bis 2021.
+. *Reparaturen durch Gäste und neue Engagierte* über ein neues Feld "repariert von" mit den Werten Gast selbst, Gast mit Hilfe und Engagierte, wie es die Datenpotenzialanalyse vorgeschlagen hat. Als neu gilt, wer seit dem 15.09.2026 dabei ist, gezählt aus Nuudel. Die genaue Abgrenzung stimmen wir mit dem Team ab.
+. *Rückmeldungen* aus der KI-Rückmeldung von Zammad. Engagierte geben einen Daumen nach oben oder unten und schreiben beim Daumen nach unten einen Kommentar. Admins laden Rückmeldungen und Fehlerprotokoll unter KI, Feedback & Logs als xlsx herunter, dafür braucht es die Berechtigung `admin.ai_feedback_logs`. Ob das auch für die KI-Agenten gilt, prüfen wir an unserer Version.
+. *Gemeldete Reparaturen* als Anteil der an Restarters übertragenen Geräte an den bearbeiteten. Ausgangswert sind 30 von 1.485 Geräten, rund 2 Prozent. Die Nachmeldung nach xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[ADR 36] wird getrennt ausgewiesen.
+
+Die Exporte liegen nur lokal, in die Fallstudie kommen nur Summen. Eine Entlastung des Teams, etwa über die Zeit bis zur ersten Antwort, wird nicht gemessen.
+
+=== Konsequenzen
+
+* Gut, weil drei der vier Kennzahlen aus Feldern kommen, die das Team ohnehin pflegt.
+* Gut, weil die Rückmeldung direkt am Vorschlag entsteht.
+* Schlecht, weil drei Monate mit rund zwei Terminen im Monat nur kleine Zahlen liefern. Die Fallstudie nennt deshalb Intervalle nach Wilson.
+* Schlecht, weil das Feld "repariert von" neu eingeführt werden muss.
+
+== Vor- und Nachteile der Optionen
+
+=== Befragung nach jedem Termin
+
+* Gut, weil sie auch Stimmen und Beispiele liefert.
+* Schlecht, weil sie nach einem langen Termin zusätzliche Zeit kostet.
+
+=== Eigene Felder für jede Kennzahl
+
+* Gut, weil alles an einem Ort steht.
+* Schlecht, weil das Ticket noch mehr Felder bekommt.
+
+=== Vorhandene Felder und KI-Rückmeldung
+
+* Gut, weil fast nichts neu eingeführt werden muss.
+* Schlecht, weil noch offen ist, ob die KI-Agenten die Rückmeldung schon unterstützen.
+
+== Quellen
+
+* https://admin-docs.zammad.org/en/latest/ai/feedback-and-logs.html[Zammad, Feedback & Logs]
+* Antrag bei der DSEE, Abschnitt 5.2
+* https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt[Datenpotenzialanalyse], Abschnitt 4.2

@@ -1,0 +1,85 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0036]]
+= 0036 Reparaturen ab 2024 an Restarters nachmelden
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Das Team hat seit 2019 1.485 Geräte bearbeitet. Bei der Open Repair Alliance kommen davon über die Laufzettel der anstiftung 30 an. Seit xref:0014-reparaturen-ueber-restarters-melden.adoc[ADR 14] melden wir künftig über Restarters.net. Die Tickets von 2024 bis 2026 enthalten Kategorie, Ergebnis und oft den Grund für das Ergebnis. Nach drei Jahren werden sie gelöscht, die ersten also 2027.
+
+== Entscheidungskriterien
+
+* Keine doppelten Meldungen
+* Kein Personenbezug und kein Freitext
+* Nachvollziehbare Zuordnung zum Open Repair Data Standard
+* Unklare Fälle entscheidet das Team
+* Nichts wird ohne Freigabe gesendet
+
+== Betrachtete Optionen
+
+* Nicht nachmelden
+* Laufzettel von Hand bei der anstiftung nachtragen
+* Über die API von Restarters nachmelden
+
+== Entscheidung
+
+Die Geräte von 2024 bis 2026 werden über die API von Restarters nachgemeldet. Das sind die Tickets mit Ergebnis und ohne No-Show, 150 aus 2024, 277 aus 2025 und 270 aus 2026.
+
+* Die Kategorie ist der Sollwert des Teams. Neuere Tickets ohne Sollwert ordnet MANUEL ein, und das Team prüft sie.
+* Die Kategorie bei Restarters folgt aus der ORA-Gruppe im Katalog, der Gegenstand aus dem englischen Namen des Eintrags.
+* Als Problem geht nur der Wert aus dem Feld Defekt mit, nie Freitext.
+* Der Termin kommt aus "Pending till", sonst aus "Closed At".
+* Der eine Laufzettel von 2025 bei der anstiftung wird ausgelassen.
+* Ein Skript erzeugt zuerst eine lokale Vorschau. Gesendet wird erst nach ausdrücklicher Freigabe, zuerst ein Termin zur Probe. Das Token liegt in Vaultwarden.
+
+Die Ergebnisse werden so zugeordnet:
+
+[cols="5,2,4",options="header"]
+|===
+|Ergebnis in Zammad |Status bei Restarters |Hindernis
+|gelungen |Fixed |
+|teilweise gelungen 2+|mit dem Team klären
+|vertagt, auch mit Grund |Repairable |
+|nicht erfolgt::Ersatzteil nicht erhältlich |End of life |Spare parts not available
+|nicht erfolgt::Ersatzteil zu teuer |End of life |Spare parts too expensive
+|nicht erfolgt::Öffnung des Gerätes nicht möglich |End of life |No way to open the product
+|nicht erfolgt::Reparaturinformationen nicht verfügbar |End of life |Repair information not available
+|nicht erfolgt::Hilfsmittel oder Zubehör fehlt |End of life |Lack of equipment
+|nicht erfolgt::Abnutzung zu groß |End of life |Item too worn out
+|nicht erfolgt mit anderem Grund, etwa "Fehler nicht gefunden" oder "hat noch Garantie" 2+|einzeln mit dem Team klären
+|abgebrochen |End of life |
+|No-Show oder leer 2+|nicht melden
+|===
+
+=== Konsequenzen
+
+* Gut, weil sich die Meldelücke für drei Jahre schließt.
+* Gut, weil das Wissen über die Reparaturen ohne Personenbezug erhalten bleibt, wenn die Tickets gelöscht werden.
+* Schlecht, weil vergangene Termine bei Restarters angelegt werden müssen.
+* Schlecht, weil einige Ergebnisse keine eindeutige Entsprechung im Standard haben.
+
+== Vor- und Nachteile der Optionen
+
+=== Nicht nachmelden
+
+* Gut, weil es keinen Aufwand macht.
+* Schlecht, weil die Daten von drei Jahren mit den Tickets verloren gehen.
+
+=== Laufzettel von Hand bei der anstiftung
+
+* Gut, weil die Gruppe dort schon besteht.
+* Schlecht, weil rund 700 Laufzettel abgetippt werden müssten. Genau daran ist die Meldung bisher gescheitert.
+
+=== API von Restarters
+
+* Gut, weil ein Skript die Meldung übernimmt und die Zuordnung nachvollziehbar bleibt.
+* Schlecht, weil vorher Termine angelegt und offene Fälle geklärt werden müssen.
+
+== Quellen
+
+* {repo}/quellen/openrepair-datastandard[Open Repair Data Standard] mit den sechs Hindernissen
+* Zählungen aus den lokalen Exporten vom 08.11.2026, nur Summen

@@ -65,5 +65,19 @@ include::../../docs/adr/0028-quellen-im-repo-ablegen.adoc[]
 
 include::../../docs/adr/0029-zielgruppe-und-sprache-festlegen.adoc[]
 
+include::../../docs/adr/0030-rahmen-der-fallstudie-festlegen.adoc[]
+
+include::../../docs/adr/0031-literatur-mit-zotero-und-bibtex-verwalten.adoc[]
+
+include::../../docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc[]
+
+include::../../docs/adr/0033-resuemee-als-sharecard-teilen.adoc[]
+
+include::../../docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[]
+
+include::../../docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc[]
+
+include::../../docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[]
+
 :leveloffset: -2
 :sectnums:

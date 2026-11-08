@@ -1,0 +1,69 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0033]]
+= 0033 Das Resümee eines Termins als Sharecard teilen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Nach jedem Termin schreibt das Team ein Resümee als Text. Darin stehen die Zahlen des Tages, die Spenden und eine Liste, was fürs nächste Mal bestellt werden soll. Ein Bild mit Grafiken wäre schneller zu erfassen und ließe sich im Forum, in sozialen Medien, im Messenger des Teams sowie auf Website und Newsletter teilen. Die Datenpotenzialanalyse hatte schon ein teilbares Bild mit den Infos zum nächsten Termin vorgeschlagen.
+
+== Entscheidungskriterien
+
+* Auf einen Blick verständlich, mehr Grafik als Text
+* Keine Personenbezüge, denn die Karte ist öffentlich
+* Die Zahlen stimmen und lassen sich prüfen
+* Wenig Aufwand nach dem Termin
+
+== Betrachtete Optionen
+
+* Text wie bisher
+* Vorlage zum Ausfüllen von Hand
+* Karte per Skript, zuerst aus der Statistik-Tabelle und später aus Zammad
+
+== Entscheidung
+
+Ein Skript erzeugt die Karte als SVG und PNG mit 1080 mal 1080 Pixeln und dazu einen Alternativtext. Auf der Karte stehen:
+
+* angemeldet, bearbeitet, nicht erschienen und spontan. Angemeldet ist wie in der Statistik bearbeitet plus nicht erschienen.
+* ein Raster mit einem Feld je angemeldetem Gerät, gefärbt nach Ergebnis. Spontane Geräte sind markiert, nicht erschienene bleiben leer.
+* ein Punktdiagramm der angemeldeten Geräte aller Termine der letzten drei Jahre. Der Rang ist der Anteil der Termine ohne mehr angemeldete Geräte. Gleichstände zählen mit, der Termin selbst und ausgefallene Termine nicht.
+* die Spenden mit dem Betrag je bearbeitetem Gerät
+* ein Highlight des Tages ohne Personenbezug
+* der nächste Termin
+* der Förderhinweis der DSEE
+
+Die Bestellliste bleibt im Text für das Team.
+
+In der ersten Stufe liest das Skript nur das Blatt "Eingabe" der Statistik-Tabelle, die lokal bleibt. Für spontane Gäste bekommt das Blatt eine eigene Spalte. In der zweiten Stufe holt n8n die Zahlen aus Zammad, spontane Gäste erkennt es nach xref:0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[ADR 34] am Tag `spontan`. Highlights markieren die Engagierten mit dem Tag `highlight` am Ticket. In beiden Stufen prüft ein Mensch die Karte, bevor sie geteilt wird.
+
+=== Konsequenzen
+
+* Gut, weil die Karte den Termin in die letzten drei Jahre einordnet.
+* Gut, weil das Skript die Summen prüft, bevor eine Zahl öffentlich wird.
+* Schlecht, weil spontane Gäste erst ab jetzt gezählt werden. Ältere Karten zeigen sie nicht.
+
+== Vor- und Nachteile der Optionen
+
+=== Text wie bisher
+
+* Gut, weil er schnell geschrieben ist.
+* Schlecht, weil Zahlen als Text schwerer zu erfassen sind und nichts einordnen.
+
+=== Vorlage von Hand
+
+* Gut, weil sie ohne Skript auskommt.
+* Schlecht, weil Zahlen abgetippt werden und Fehler unbemerkt bleiben.
+
+=== Karte per Skript
+
+* Gut, weil Zahlen, Rang und Alternativtext aus denselben Daten kommen.
+* Schlecht, weil das Skript gepflegt werden muss.
+
+== Quellen
+
+* https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt[Datenpotenzialanalyse], Kapitel 5
+* Resümee des Termins vom 07.11.2026

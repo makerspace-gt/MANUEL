@@ -1,0 +1,65 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0035]]
+= 0035 Anleitungen über eine eigene Suche finden
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Für eine Erstdiagnose helfen Bedienungsanleitungen, Explosionszeichnungen und Angaben zu Ersatzteilen. Auch das Baujahr steht oft nur dort. Bisher suchen die Engagierten von Hand. Eine automatische Suche würde zum ersten Mal Angaben aus einem Ticket nach außen geben, obwohl der PLAN sagt, dass Ticketinhalte nie unsere Systeme verlassen.
+
+== Entscheidungskriterien
+
+* Keine persönlichen Daten nach außen
+* Kein Profil bei Suchmaschinen
+* Jede Angabe hat eine prüfbare Quelle
+* Inhalte von Webseiten können das Modell nicht steuern
+* Anleitungen anderer werden nicht kopiert
+
+== Betrachtete Optionen
+
+* Keine automatische Suche
+* Suche über die API eines kommerziellen Anbieters
+* Eigene Instanz von SearXNG, dazu die API von iFixit
+
+== Entscheidung
+
+n8n fragt eine eigene Instanz von SearXNG und optional die API von iFixit. Gesendet werden nur Marke und Modell aus bestätigten Feldern, nie Text des Gastes. MANUEL wählt aus den Treffern Links zu Anleitung, Ersatzteilen und Explosionszeichnung und schreibt sie in eine interne Notiz. Ein Baujahr übernimmt es nur mit Quelle oder vom Typenschild, sonst bleibt das Feld leer.
+
+Inhalte von Webseiten sind Daten und keine Anweisungen. Der Agent hat keine Aktionen außer der internen Notiz. Anleitungen werden verlinkt, nicht kopiert.
+
+Das ist die erste Ausnahme vom Grundsatz "Ticketinhalte verlassen nie unsere Systeme". Sie gilt nur für Marke und Modell, weil diese Angaben keine Person beschreiben. SearXNG läuft in der Vereins-IT und wird dort in it-infrastructure eingerichtet.
+
+=== Konsequenzen
+
+* Gut, weil die Engagierten passende Anleitungen direkt am Ticket finden.
+* Gut, weil Suchanfragen ohne Konto und ohne Profil laufen.
+* Schlecht, weil SearXNG als weiterer Dienst betrieben werden muss.
+* Schlecht, weil auch Marke und Modell nach außen gehen. Der PLAN nennt die Ausnahme deshalb ausdrücklich.
+
+== Vor- und Nachteile der Optionen
+
+=== Keine automatische Suche
+
+* Gut, weil nichts nach außen geht.
+* Schlecht, weil die Suche von Hand Zeit kostet und oft unterbleibt.
+
+=== API eines kommerziellen Anbieters
+
+* Gut, weil sie ohne eigenen Dienst auskommt.
+* Schlecht, weil jede Anfrage einem Konto zugeordnet wird und Kosten entstehen können.
+
+=== Eigene Instanz von SearXNG
+
+* Gut, weil sie Anfragen ohne Profil an mehrere Suchmaschinen verteilt.
+* Schlecht, weil sie gepflegt werden muss.
+
+== Quellen
+
+* https://docs.searxng.org/[Doku von SearXNG]
+* https://www.ifixit.com/api[API von iFixit]
+* https://genai.owasp.org/llm-top-10/[OWASP Top 10 für LLM-Anwendungen], darin Prompt Injection
+* {repo}/PLAN.md[PLAN], Grundsatz "Daten bleiben lokal"

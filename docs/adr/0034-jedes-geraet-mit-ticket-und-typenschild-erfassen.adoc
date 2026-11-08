@@ -1,0 +1,62 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0034]]
+= 0034 Jedes Gerät mit Ticket und Typenschild erfassen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Die Exporte aus Zammad von 2024 bis 2026 enthalten 791 Tickets. Die Statistik zählt für dieselbe Zeit 941 bearbeitete Geräte, denn für spontane Gäste gibt es meist kein Ticket. In den Tickets ist die Marke bei rund 25 Prozent gefüllt, die Bezeichnung bei rund 12 Prozent, die Stromversorgung bei 4 bis 9 Prozent und das Baujahr bei keinem. Für die Open Repair Alliance und für gute Vorschläge fehlen damit wichtige Angaben.
+
+== Entscheidungskriterien
+
+* Vollständige Statistik und vollständige Meldung an die Open Repair Alliance
+* Wenig Aufwand für Gäste, Empfang und Reparierende
+* Keine zusätzlichen persönlichen Daten
+* Ein Mensch bestätigt, was das Modell erkennt
+
+== Betrachtete Optionen
+
+* Weiter wie bisher
+* Pflichtfelder, die das Team von Hand füllt
+* Ein Ticket je Gerät, ein Foto vom Typenschild und Felder aus dem Katalog
+
+== Entscheidung
+
+* Jedes Gerät bekommt ein Ticket. Der Empfang legt auch für spontane Gäste eines an und setzt den Tag `spontan`. Bringt jemand mehrere Geräte mit, gibt es mehrere Tickets.
+* Gäste schicken mit der Anfrage ein Foto vom Typenschild, oder Engagierte machen es am Tisch. Das Hauptmodell liest Marke, Bezeichnung und Datumscode in die Felder, ein Mensch bestätigt. Der Hinweis an die Gäste bittet, nur das Typenschild zu fotografieren. Ortsdaten in den Bildern wertet MANUEL nicht aus, und die Fotos verlassen Zammad nicht.
+* Die Stromversorgung ergibt sich aus der Kategorie im Katalog.
+* Nach dem ungefähren Alter fragt MANUEL in der Rückfrage. Der Open Repair Data Standard erlaubt das Alter in Jahren statt des Baujahrs.
+
+=== Konsequenzen
+
+* Gut, weil Statistik, Sharecard und Meldung an die Open Repair Alliance vollständig werden.
+* Gut, weil Marke, Bezeichnung und Alter auch für Erstdiagnose und Anleitungen gebraucht werden.
+* Schlecht, weil der Empfang bei spontanen Gästen mehr zu tun hat.
+* Schlecht, weil Fotos als Anhänge Speicher brauchen. Sie werden mit den Tickets nach drei Jahren gelöscht.
+
+== Vor- und Nachteile der Optionen
+
+=== Weiter wie bisher
+
+* Gut, weil sich am Ablauf nichts ändert.
+* Schlecht, weil rund 150 Geräte ohne Ticket bleiben und Marke und Alter meist fehlen.
+
+=== Pflichtfelder von Hand
+
+* Gut, weil die Felder sicher gefüllt werden.
+* Schlecht, weil das Abtippen am Tisch Zeit kostet und Gäste die Angaben oft nicht kennen.
+
+=== Ticket, Typenschild und Katalog
+
+* Gut, weil das Modell die Arbeit übernimmt und ein Mensch nur bestätigt.
+* Schlecht, weil das Auslesen der Fotos erst getestet werden muss.
+
+== Quellen
+
+* Zählungen aus den lokalen Exporten und der Statistik vom 08.11.2026, nur Summen
+* {repo}/PLAN.md[PLAN], Aufgabe "Felder füllen"
+* {repo}/quellen/openrepair-datastandard[Open Repair Data Standard], Felder `brand`, `year_of_manufacture` und `product_age`

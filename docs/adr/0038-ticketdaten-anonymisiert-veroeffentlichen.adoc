@@ -3,7 +3,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0038 Ticketdaten anonymisiert veröffentlichen
 
 [horizontal]
-Status:: vorgeschlagen
+Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
 
@@ -26,21 +26,22 @@ Nach xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2] liegen echte Ti
 
 == Entscheidung
 
-Alle rund 790 Tickets von 2024 bis 2026 werden von Hand anonymisiert und danach veröffentlicht.
+Alle rund 790 Tickets von 2024 bis 2026 werden von Hand anonymisiert und danach veröffentlicht. Das gilt für die Felder aus den Exporten und für die Texte der Nachrichten, die `messages.py` aus Zammad holt.
 
 * Namen, Adressen, Telefonnummern, E-Mail-Adressen und Orte werden durch Platzhalter wie [Name] oder [Ort] ersetzt.
 * Angaben, die eine Person über Umwege erkennbar machen, werden verallgemeinert, etwa ein seltenes Gerät mit Hinweis auf den Besitzer oder genaue Daten zu Wohnung und Familie.
-* MANUEL darf lokal auf dem Mini-PC Vorschläge für die Ersetzungen machen. Ein Mensch prüft jedes Ticket.
+* MANUEL darf lokal auf dem Mini-PC Vorschläge für die Ersetzungen machen. Michael Prange prüft jedes Ticket.
+* Die Anonymisierung ist fertig, bevor die ersten Tickets von 2024 im Jahr 2027 gelöscht werden.
 * Bis die Prüfung abgeschlossen ist, gilt ADR 2 weiter, und nichts wird veröffentlicht.
 
-Offen sind die Lizenz und der Ort im Repo. Naheliegend ist CC BY 4.0 wie bei den Laufzetteln der Datenpotenzialanalyse.
+Die anonymisierten Tickets liegen unter CC BY 4.0 in `eval/decision/tickets-anonym/`, wie die Laufzettel der Datenpotenzialanalyse.
 
 === Konsequenzen
 
 * Gut, weil Dritte die Einordnung mit echten Texten nachrechnen können.
 * Gut, weil anonymisierte Daten keiner Löschfrist unterliegen und das Wissen über die Reparaturen erhalten bleibt.
 * Schlecht, weil die Prüfung von rund 790 Tickets viel Zeit kostet.
-* Schlecht, weil sich bei Freitext nie ganz ausschließen lässt, dass etwas übersehen wird.
+* Schlecht, weil sich bei Freitext nie ganz ausschließen lässt, dass etwas übersehen wird, zumal nur eine Person prüft.
 
 == Vor- und Nachteile der Optionen
 

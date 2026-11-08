@@ -1,0 +1,10 @@
+[[anbindung]]
+== Anbindung an andere Systeme
+
+// Zammad, Restarters.net und reparatur-initiativen.org, <<adr-0014>>
+
+=== Zammad
+
+=== Open Repair Alliance über Restarters.net
+
+=== Termine bei der anstiftung

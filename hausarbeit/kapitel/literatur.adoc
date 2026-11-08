@@ -1,0 +1,11 @@
+[bibliography]
+[[literatur]]
+== Literatur- und Quellenverzeichnis
+
+* [[[ora-standard]]] Open Repair Alliance. Open Repair Data Standard, Version 0.3. https://standard.openrepair.org/, Quelle https://github.com/openrepair/datastandard, Stand Commit c1a1f29, abgerufen am 08.11.2026.
+* [[[ora-datasets]]] Open Repair Alliance. Producing the Open Repair Alliance datasets. https://openrepair.org/open-data/producing-the-open-repair-alliance-datasets/, geändert am 16.10.2026, abgerufen am 08.11.2026.
+* [[[ora-record]]] Open Repair Alliance. How to record repairs. https://openrepair.org/open-data/how-to-get-started/, geändert am 06.12.2023, abgerufen am 08.11.2026.
+* [[[szpak-mather]]] Szpak, Monique und Mather, Neil. Repair data collection tips and tools. An examination of data recording practices at repair events. Google-Dokument ohne Datum, abgerufen am 08.11.2026.
+* [[[ora-data]]] Open Repair Alliance. Open Repair Data, Version 0.3 vom Juli 2026. https://openrepair.org/open-data/downloads/
+* [[[prange-2022]]] Prange, Michael. Datenpotenzialanalyse des Repair Café Gütersloh. Hausarbeit im Modul Business Intelligence, Fachhochschule Bielefeld, Wintersemester 2021/22. https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt
+* [[[wickham]]] Wickham, Hadley und Grolemund, Garrett. R for Data Science.

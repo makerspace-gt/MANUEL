@@ -1,0 +1,22 @@
+[[einleitung]]
+== Einleitung
+
+// Vorbild ist Kapitel 1 der Datenpotenzialanalyse von 2022.
+
+=== Das Repair Café Gütersloh
+
+// Was ist ein Repair Café, Geschichte seit der Datenpotenzialanalyse, Ablauf mit Zammad und Terminen.
+
+=== Ausgangslage und Förderung
+
+// Mikroförderprogramm der DSEE, Bewilligungszeitraum 15.09. bis 31.12.2026, Mini-PC statt Cloud.
+
+=== Fragen dieser Arbeit
+
+// Welche Aufgaben kann ein lokales Modell im Repair Café übernehmen?
+// Wie zuverlässig ordnet es Anfragen ein, und wann muss ein Mensch entscheiden?
+// Wie gelangen die Daten zur Open Repair Alliance?
+
+=== Vorgehen
+
+// Ablauf einer Datenanalyse nach Wickham und Grolemund wie 2022, Entscheidungen als ADR im Anhang.

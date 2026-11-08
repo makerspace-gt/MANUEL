@@ -1,0 +1,12 @@
+[[katalog]]
+== Katalog der Gegenstände
+
+// Quelle katalog/README.md, <<adr-0009>>, <<adr-0012>>, <<adr-0013>>
+
+=== Aufbau und Schlüssel
+
+=== Zusammenfassungen und Synonyme
+
+=== Beispiele
+
+// Auszug direkt aus katalog/kategorien.tsv, sobald die Tabelle eingebunden wird.

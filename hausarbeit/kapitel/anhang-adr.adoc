@@ -1,0 +1,41 @@
+[appendix]
+[[anhang-adr]]
+== Entscheidungen
+
+Jede Entscheidung ist als Architecture Decision Record festgehalten. Die Dateien liegen in {repo}/docs/adr[docs/adr].
+
+:sectnums!:
+:leveloffset: +2
+
+include::../../docs/adr/0001-entscheidungen-als-adr-festhalten.adoc[]
+
+include::../../docs/adr/0002-echte-ticketdaten-nur-lokal-auswerten.adoc[]
+
+include::../../docs/adr/0003-auswahlwerte-mit-decision-modell-bestimmen.adoc[]
+
+include::../../docs/adr/0004-kategorie-in-einer-stufe-waehlen.adoc[]
+
+include::../../docs/adr/0005-sprachmodell-nicht-nachentscheiden-lassen.adoc[]
+
+include::../../docs/adr/0006-gegenstaende-erst-herausziehen.adoc[]
+
+include::../../docs/adr/0007-kategorien-aus-dem-laufzettel-nehmen.adoc[]
+
+include::../../docs/adr/0008-gleichwertige-kategorien-zusammenfassen.adoc[]
+
+include::../../docs/adr/0009-katalog-offen-veroeffentlichen.adoc[]
+
+include::../../docs/adr/0010-mit-vertreter-namen-einordnen.adoc[]
+
+include::../../docs/adr/0011-bei-unsicherheit-nachfragen.adoc[]
+
+include::../../docs/adr/0012-keine-abwertenden-begriffe-verwenden.adoc[]
+
+include::../../docs/adr/0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[]
+
+include::../../docs/adr/0014-reparaturen-ueber-restarters-melden.adoc[]
+
+include::../../docs/adr/0015-hausarbeit-in-asciidoc-schreiben.adoc[]
+
+:leveloffset: -2
+:sectnums:

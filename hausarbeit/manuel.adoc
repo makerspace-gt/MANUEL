@@ -1,0 +1,50 @@
+= MANUEL im Repair Café Gütersloh
+Michael Prange
+:doctype: book
+:lang: de
+:toc: left
+:toc-title: Inhaltsverzeichnis
+:toclevels: 2
+:sectnums:
+:sectnumlevels: 3
+:figure-caption: Abbildung
+:table-caption: Tabelle
+:appendix-caption: Anhang
+:chapter-signifier:
+:part-signifier: Teil
+:icons: font
+:imagesdir: bilder
+:source-highlighter: rouge
+:xrefstyle: short
+:experimental:
+:repo: https://github.com/makerspace-gt/MANUEL/blob/main
+:data-uri:
+
+[.lead]
+Minimale AI für Nutzer-Unterstützung auf Einstiegs-Level. Wie ein lokales Sprachmodell die Engagierten des Repair Café beim Einordnen und Bearbeiten von Anfragen unterstützt.
+
+image::dsee-foerderlogo.png[Gefördert durch die Deutsche Stiftung für Engagement und Ehrenamt,width=240]
+
+ifdef::backend-html5[]
+link:manuel.pdf[Diese Arbeit als PDF zum Drucken]
+endif::[]
+
+Diese Arbeit steht unter https://creativecommons.org/licenses/by/4.0/deed.de[CC BY 4.0]. Ausgenommen ist das Logo der DSEE. Der Katalog der Gegenstände steht unter CC BY-SA 4.0.
+
+include::kapitel/01-einleitung.adoc[]
+
+include::kapitel/02-rahmen-und-architektur.adoc[]
+
+include::kapitel/03-hardware-und-modelle.adoc[]
+
+include::kapitel/04-einordnung.adoc[]
+
+include::kapitel/05-katalog.adoc[]
+
+include::kapitel/06-anbindung.adoc[]
+
+include::kapitel/07-fazit.adoc[]
+
+include::kapitel/anhang-adr.adoc[]
+
+include::kapitel/literatur.adoc[]

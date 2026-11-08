@@ -399,6 +399,8 @@ git push
 
 ## Ausblick
 
+- **Zuschuss für Ersatzteile.** Stand 08.11.2026 gibt es für Gäste aus Gütersloh keinen Reparaturbonus, der Ersatzteile aus einem Repair Café abdeckt. Thüringen erstattet sie gegen Bestätigung des Einbaus durch das Repair Café, Bielefeld fördert nur Fachbetriebe, ein Programm in NRW ist nur beantragt. Kommt eines, schreibt MANUEL die Bestätigung als Vorlage aus den Feldern des Tickets, ein Mensch prüft und unterschreibt. Dafür braucht das Ticket Felder für Ersatzteil und Preis. Siehe Abschnitt Zuschuss für Ersatzteile in Kapitel 9 der [Fallstudie](case-study/manuel.adoc).
+
 Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verfügt über welche Kenntnisse?« und »Welche Werkzeuge und Maschinen stehen im Verein zur Verfügung?« einzusetzen.
 
 - **Tags für Techniken.** Vorrang hat die Wissensdatenbank. Tickets werden nach drei Jahren gelöscht, Artikel bleiben und wachsen weiter, deshalb verlinkt MANUEL zuerst passende Artikel. Tags wie löten oder 3d-druck dienen danach vor allem als Ordnung für die Artikel. An Tickets bleiben sie optional, zum Beispiel um zu sehen, wie viele Tickets eines Termins Löten brauchen.

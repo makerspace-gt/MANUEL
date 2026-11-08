@@ -66,4 +66,4 @@ Die Datei [butane/manuel.bu](butane/manuel.bu) beschreibt die Installation mit F
 
 ## Lizenz
 
-Die Inhalte dieses Repositorys stehen unter [CC0 1.0](LICENSE). Ausgenommen sind die Dateien aus dem image-template von Universal Blue. Sie stehen unter der [Apache License 2.0](LICENSES/Apache-2.0.txt). Das sind `Containerfile`, `Justfile`, `image-template.env`, `artifacthub-repo.yml`, `build_files/`, `disk_config/` und `.github/`. Logos und Inhalte Dritter fallen ebenfalls nicht unter CC0.
+Die Inhalte dieses Repositorys stehen unter [CC0 1.0](LICENSE). Ausgenommen sind die Dateien aus dem image-template von Universal Blue. Sie stehen unter der [Apache License 2.0](LICENSES/Apache-2.0.txt). Das sind `Containerfile`, `Justfile`, `image-template.env`, `artifacthub-repo.yml`, `build_files/`, `disk_config/` und `.github/`. Der [Katalog der Gegenstände](katalog/) steht unter [CC BY-SA 4.0](LICENSES/CC-BY-SA-4.0.txt), weil er Bezeichnungen aus den Open Repair Data nutzt. Logos und Inhalte Dritter fallen ebenfalls nicht unter CC0.

@@ -21,9 +21,9 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |4 |xref:0004-kategorie-in-einer-stufe-waehlen.adoc[Die Kategorie in einer Stufe aus einer Vorauswahl wählen] |angenommen |2026-11-06
 |5 |xref:0005-sprachmodell-nicht-nachentscheiden-lassen.adoc[Das Sprachmodell nicht nachentscheiden lassen] |angenommen |2026-11-07
 |6 |xref:0006-gegenstaende-erst-herausziehen.adoc[Bei Nachrichten erst die Gegenstände herausziehen] |angenommen |2026-11-06
-|7 |xref:0007-kategorien-aus-dem-laufzettel-nehmen.adoc[Die Kategorien aus dem Laufzettel der anstiftung nehmen] |angenommen |2026-11-07
+|7 |xref:0007-kategorien-aus-dem-laufzettel-nehmen.adoc[Die Kategorien aus dem Laufzettel der anstiftung nehmen] |angenommen, teils abgelöst durch 28 |2026-11-07
 |8 |xref:0008-gleichwertige-kategorien-zusammenfassen.adoc[Gleichwertige Kategorien zusammenfassen] |angenommen |2026-11-07
-|9 |xref:0009-katalog-offen-veroeffentlichen.adoc[Den Katalog offen veröffentlichen] |angenommen |2026-11-07
+|9 |xref:0009-katalog-offen-veroeffentlichen.adoc[Den Katalog offen veröffentlichen] |angenommen, teils abgelöst durch 28 |2026-11-07
 |10 |xref:0010-mit-vertreter-namen-einordnen.adoc[Mit Vertreter-Namen einordnen und Beschreibungen nur Menschen zeigen] |angenommen |2026-11-08
 |11 |xref:0011-bei-unsicherheit-nachfragen.adoc[Bei Unsicherheit nachfragen statt raten] |angenommen |2026-11-08
 |12 |xref:0012-keine-abwertenden-begriffe-verwenden.adoc[Keine abwertenden Begriffe verwenden] |angenommen |2026-11-08
@@ -41,6 +41,8 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |24 |xref:0024-16-gib-uma-fuer-die-gpu-reservieren.adoc[16 GiB UMA für die GPU reservieren] |angenommen |2026-11-06
 |25 |xref:0025-sprachmodell-mit-llama-cpp-und-decision-modell-mit-ollama-betreiben.adoc[Das Sprachmodell mit llama.cpp und das Decision-Modell mit Ollama betreiben] |angenommen |2026-11-08
 |26 |xref:0026-terminkapazitaet-per-formel-berechnen.adoc[Die Kapazität der Termine per Formel berechnen] |angenommen |2026-11-06
+|27 |xref:0027-laeufe-reproduzierbar-festhalten.adoc[Läufe reproduzierbar festhalten] |angenommen |2026-11-08
+|28 |xref:0028-quellen-im-repo-ablegen.adoc[Die Quellen im Repo ablegen] |angenommen |2026-11-08
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

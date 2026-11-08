@@ -1,0 +1,45 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0028]]
+= 0028 Die Quellen im Repo ablegen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Katalog, Einordnung und Hausarbeit beruhen auf Daten anderer, vor allem auf den Open Repair Data der Open Repair Alliance und der Liste der Kategorien im Laufzettel der anstiftung. Bisher wurden diese Quellen nur verlinkt, siehe xref:0007-kategorien-aus-dem-laufzettel-nehmen.adoc[ADR 7] und xref:0009-katalog-offen-veroeffentlichen.adoc[ADR 9]. Webseiten und Datensätze ändern sich aber. Die PDFs auf der Seite des Standards sind schon nicht mehr erreichbar, und die Liste in `database.sql` der anstiftung ist nicht aktuell.
+
+== Entscheidungskriterien
+
+* Jede Aussage der Hausarbeit lässt sich mit dem Stand der Quelle prüfen, auf dem sie beruht
+* Lizenzen und Rechte der Quellen bleiben gewahrt
+* Keine persönlichen Daten im öffentlichen Repo
+
+== Betrachtete Optionen
+
+* Quellen nur verlinken
+* Quellen als Submodul oder als Datei mit Stand im Repo ablegen
+
+== Entscheidung
+
+Die Quellen liegen im Ordner `quellen/` des Repos.
+
+* Was in einem eigenen Git-Repo liegt, wird als Submodul eingebunden. Das sind die Open Repair Data und der Open Repair Data Standard, beide unter CC BY-SA 4.0, sowie wie bisher mapped-repair-events.
+* Was nur als Webseite oder API vorliegt, wird mit Datum gespeichert und mit einem Skript ausgelesen, das daneben liegt. Das sind die Seite "Laufzettel erstellen" der anstiftung und die Kategorien von Restarters.net.
+* Persönliche Daten werden vorher entfernt. Die gespeicherte Seite der anstiftung verliert das Token der Sitzung und den Anmeldenamen.
+* Eigene Daten des Repair Café mit persönlichen Angaben wie die gepflegte Statistik mit Namensschildern bleiben lokal. In die Arbeit gehen nur Summen.
+* Fremde Texte, deren Lizenz unklar ist, etwa Webseiten der Open Repair Alliance oder Dokumente anderer, bleiben lokal und werden zitiert.
+
+Dieses ADR löst den Teil von ADR 7 und ADR 9 ab, nach dem fremde Daten nur verlinkt werden.
+
+=== Konsequenzen
+
+* Gut, weil jede Auswertung mit dem Stand der Quelle im Repo nachgerechnet werden kann.
+* Gut, weil Submodule nur auf einen Commit verweisen und das Repo nicht aufblähen.
+* Schlecht, weil die Submodule beim Klonen mit `--recurse-submodules` geholt werden müssen.
+
+== Quellen
+
+* {repo}/quellen/README.md[Übersicht der Quellen]

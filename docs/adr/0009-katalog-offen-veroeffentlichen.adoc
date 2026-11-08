@@ -3,7 +3,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0009 Den Katalog offen veröffentlichen
 
 [horizontal]
-Status:: angenommen
+Status:: angenommen, die Ablage fremder Daten ist abgelöst durch xref:0028-quellen-im-repo-ablegen.adoc[ADR 28]
 Datum:: 2026-11-07
 Beteiligte:: Michael Prange
 

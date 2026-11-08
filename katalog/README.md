@@ -41,7 +41,7 @@ Bis MANUEL in Zammad läuft, kann sich ein Schlüssel noch ändern, etwa wenn wi
 - [Open Repair Data Standard](https://standard.openrepair.org/) der Open Repair Alliance für die ORA-Gruppen.
 - [Open Repair Data](https://openrepair.org/open-data/downloads/) für die Häufigkeit der Einträge und die englischen Bezeichnungen, vor allem von Repair Café International und Repair Cafe Wales.
 
-Die Daten der Quellen liegen nicht in diesem Repo.
+Die Quellen liegen mit Stand im Ordner [quellen](../quellen), siehe [ADR 28](../docs/adr/0028-quellen-im-repo-ablegen.adoc).
 
 ## Lizenz
 

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Ordnet Tickets aus einem Zammad-Export mit einem Decision-Modell ein.
+"""Classifies tickets from a Zammad export with a decision model.
 
-Zwei Stufen, erst die Oberkategorie, dann die Kategorie darunter, dazu die Stromversorgung.
-Die Tickets liegen nur lokal in einer JSON-Datei und gehören nicht ins Repo.
+Two stages, first the top category, then the category below it, plus the power supply.
+The tickets exist only locally in a JSON file and do not belong in the repo.
 
-Aufruf:
-    python3 echt.py <tickets.json> <kategorien.json> <Ausgabe.jsonl> <Modell>
+Usage:
+    python3 real.py <tickets.json> <kategorien.json> <output.jsonl> <model>
 """
 
 import json
@@ -14,7 +14,7 @@ import time
 
 from decision import post
 
-STROM = {
+POWER = {
     "230 V": "Direkt am Stromnetz über Stecker und Kabel",
     "mit Netzteil": "Über ein externes Netzteil",
     "Akku": "Mit eingebautem oder wechselbarem Akku",
@@ -57,7 +57,7 @@ def main():
                     "strom": {
                         "type": "choice",
                         "instructions": "Womit wird dieser Gegenstand betrieben?",
-                        "criteria": STROM,
+                        "criteria": POWER,
                     },
                 })
                 row["ober"] = first["ober"]["choice"]
@@ -73,7 +73,7 @@ def main():
                     }})["kategorie"]
                     row["kategorie"] = second["choice"]
                     row["kategorie_p"] = second["probabilities"][second["choice"]]
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

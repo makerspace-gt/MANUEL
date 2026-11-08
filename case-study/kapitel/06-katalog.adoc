@@ -51,8 +51,8 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 .Zum Nachvollziehen
 ****
-* Katalog und Anleitung in {repo}/katalog[katalog], Prüfung mit {repo}/katalog/pruefen.py[pruefen.py]
-* Optionen für das Modell aus {repo}/katalog/eintraege.py[eintraege.py]
+* Katalog und Anleitung in {repo}/katalog[katalog], Prüfung mit {repo}/katalog/check.py[check.py]
+* Optionen für das Modell aus {repo}/katalog/entries.py[entries.py]
 * Entscheidungen <<adr-0007>> bis <<adr-0013>>
 ****
 

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Prüft Modelle an den erfundenen Tickets aus tickets.tsv.
+"""Tests models on the invented tickets from tickets.tsv.
 
-Decision-Modelle laufen über /v1/systemone und liefern Wahrscheinlichkeiten pro Ticket.
-Das eingebaute `ollama-bench -decision` zählt nur Treffer, für die Schwelle des Kriteriums
-sicherheitsrelevant brauchen wir aber die Werte. Sprachmodelle laufen als Vergleich über
-/api/chat mit festem JSON-Schema.
+Decision models run via /v1/systemone and return probabilities per ticket.
+The built-in `ollama-bench -decision` only counts hits, but the threshold for the criterion
+safety-relevant needs the values. Language models run for comparison via
+/api/chat with a fixed JSON schema.
 
-Aufruf:
-    python3 decision.py <Ausgabedatei.jsonl> <decision|chat> <Modell> [de|en]
+Usage:
+    python3 decision.py <output.jsonl> <decision|chat> <model> [de|en]
 
-Die Umgebungsvariable TICKETS wählt eine andere Datei, zum Beispiel die übersetzten Tickets.
+The environment variable TICKETS selects another file, for example the translated tickets.
 """
 
 import json
@@ -168,7 +168,7 @@ def main():
             try:
                 result = ask(model, lang, text)
                 error = None
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 result, error = {}, f"{problem} {detail}"[:300]
             row = {

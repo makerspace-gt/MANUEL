@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Ordnet Tickets über Ähnlichkeit und Decision-Modell ein.
+"""Classifies tickets via similarity and a decision model.
 
-bge-m3 sucht die ähnlichsten Kategorien aus der CSV von mapped-repair-events, das Decision-Modell
-wählt daraus. So kann eine falsche Oberkategorie die richtige Kategorie nicht mehr verdecken.
-Die Tickets liegen nur lokal und gehören nicht ins Repo.
+bge-m3 finds the most similar categories in the CSV from mapped-repair-events, the decision model
+chooses among them. This way a wrong top category can no longer hide the right category.
+The tickets exist only locally and do not belong in the repo.
 
-Aufruf:
-    python3 echt2.py <tickets.json> <cf-mf.csv> <Ausgabe.jsonl> <Modell> [Anzahl]
+Usage:
+    python3 real2.py <tickets.json> <cf-mf.csv> <output.jsonl> <model> [count]
 """
 
 import csv
@@ -68,7 +68,7 @@ def main():
                 row["aehnlich"] = shortlist[0]
                 row["kategorie"] = answer["choice"]
                 row["kategorie_p"] = answer["probabilities"][answer["choice"]]
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

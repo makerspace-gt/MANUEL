@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""Holt pro Ticket den Titel und die erste Nachricht des Gastes aus Zammad.
+"""Fetches the title and the guest's first message per ticket from Zammad.
 
-Das Skript liest nur. Es nutzt die Ticketnummern aus den Exporten tickets-Repair*.xlsx, prüft vor dem
-Abruf, dass das Ticket zu den Gruppen Repair Café oder Repair Café Anfragen gehört, und speichert
-Titel, Betreff, Text und Kanal in einer JSON-Datei. Der Titel ist nötig, weil bei Tickets, die
-Engagierte selbst anlegen, etwa nach einem Anruf, der Betreff der Nachricht leer ist.
+The script only reads. It uses the ticket numbers from the exports tickets-Repair*.xlsx, checks before
+fetching that the ticket belongs to the groups Repair Café or Repair Café Anfragen, and saves
+title, subject, text and channel in a JSON file. The title is needed because for tickets that
+volunteers create themselves, for example after a call, the subject of the message is empty.
 
-Der Text bleibt vollständig, nur HTML wird zu einfachem Text. Er ist nicht pseudonymisiert und enthält
-Namen, Adressen und Telefonnummern. Die Datei gehört deshalb nicht ins Repo und bleibt lokal oder auf
-dem Mini-PC. Bereits geholte Tickets mit Titel überspringt es, ein abgebrochener Lauf setzt also fort.
+The text stays complete, only HTML becomes plain text. It is not pseudonymised and contains
+names, addresses and phone numbers. The file therefore does not belong in the repo and stays local or on
+the mini PC. It skips tickets already fetched with a title, so an aborted run resumes.
 
-Das Token kommt aus der Umgebung und nicht von der Kommandozeile:
+The token comes from the environment and not from the command line:
     read -rs ZAMMAD_TOKEN && export ZAMMAD_TOKEN
-    python3 MANUEL/eval/decision/nachrichten.py --url https://zammad.example.org
+    python3 MANUEL/eval/decision/messages.py --url https://zammad.example.org
 
-Das Token braucht nur Leserechte auf Tickets, in Zammad ticket.agent.
+The token only needs read access to tickets, in Zammad ticket.agent.
 """
 
 import argparse
@@ -37,7 +37,7 @@ GROUPS = ("Repair Café", "Repair Café Anfragen")
 
 
 class Text(html.parser.HTMLParser):
-    """Macht aus dem HTML einer Nachricht einfachen Text."""
+    """Turns the HTML of a message into plain text."""
 
     BREAK = {"br", "p", "div", "li", "tr"}
 
@@ -72,14 +72,14 @@ def plain(body, content_type):
 
 
 def text_of(body, content_type):
-    """Wandelt die Nachricht in einfachen Text um, ohne etwas wegzulassen."""
+    """Converts the message into plain text without leaving anything out."""
     text = plain(body, content_type).replace("\xa0", " ").replace("\r", "")
     lines = [line.rstrip() for line in text.splitlines()]
     return re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip()
 
 
 def sheet_rows(path):
-    """Liest das erste Blatt eines Exports als Liste von Zeilen, ohne openpyxl."""
+    """Reads the first sheet of an export as a list of rows, without openpyxl."""
     with zipfile.ZipFile(path) as archive:
         shared = []
         if "xl/sharedStrings.xml" in archive.namelist():
@@ -108,7 +108,7 @@ def sheet_rows(path):
 
 
 def numbers(pattern):
-    """Liest die Ticketnummern aus den Exporten, ohne die Statistik-Tickets."""
+    """Reads the ticket numbers from the exports, without the statistics tickets."""
     found = []
     for path in sorted(glob.glob(pattern)):
         _, rows = sheet_rows(path)
@@ -139,7 +139,7 @@ class Zammad:
         return None
 
     def ticket_id(self, number):
-        """Sucht erst im Feld Nummer, dann frei. Die Antwort ist je nach Version Liste oder Objekt."""
+        """Searches the number field first, then freely. Depending on the version the answer is a list or an object."""
         for term in (f"number:{number}", number):
             query = urllib.parse.quote(term)
             found = self.get(f"/api/v1/tickets/search?query={query}&limit=5&expand=true")
@@ -162,7 +162,7 @@ class Zammad:
 
 
 def first_message(articles):
-    """Die erste öffentliche Nachricht des Gastes, sonst die erste Notiz, etwa nach einem Anruf."""
+    """The guest's first public message, otherwise the first note, for example after a call."""
     visible = [a for a in articles if not a.get("internal")]
     for article in visible:
         if article.get("sender") == "Customer":
@@ -186,7 +186,7 @@ def main():
 
     target = Path(args.ausgabe)
     result = json.loads(target.read_text(encoding="utf-8")) if target.exists() else {}
-    # Fehler und ältere Einträge ohne Titel werden erneut geholt, Tickets anderer Gruppen nicht
+    # Errors and older entries without a title are fetched again, tickets of other groups are not
     todo = [
         n for n in numbers(args.export)
         if n not in result or ("titel" not in result[n] and result[n].get("fehler") != "andere Gruppe")

@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Sprachmodell zieht Gegenstände aus der Nachricht, Decision-Modell ordnet jeden davon ein.
+"""The language model extracts items from the message, the decision model classifies each of them.
 
-Das Sprachmodell liefert pro Gegenstand Name, Marke und Defekt, ohne zu raten. Danach läuft
-für jeden Gegenstand die Ähnlichkeitssuche und die Auswahl wie beim Betreff. Fehlt der Gegenstand,
-bleibt es bei ??. Die Tickets liegen nur lokal und gehören nicht ins Repo.
+The language model returns name, brand and defect per item without guessing. Then the similarity
+search and the choice run for each item as for the subject. If no item is found,
+the result stays ??. The tickets exist only locally and do not belong in the repo.
 
-Kurze Notizen wie „klemmt“ nennen kein Gerät, weil es schon im Betreff steht. Deshalb greift ein
-Rückfall, wenn das Sprachmodell nichts findet: bei Anrufen der von Engagierten gesetzte Betreff,
-bei Antwortmails der Betreff der Mail. Voicemails haben keinen brauchbaren Betreff und bleiben bei ??.
+Short notes such as "klemmt" name no device because it is already in the subject. Therefore a
+fallback applies when the language model finds nothing, for calls the subject set by volunteers,
+for reply mails the subject of the mail. Voicemails have no usable subject and stay ??.
 
-Aufruf:
-    python3 echt5.py <tickets.json> <nachrichten.json> <cf-mf.csv> <Ausgabe.jsonl> <Sprachmodell> <Decision-Modell>
-    python3 echt5.py rueckfall <tickets.json> <nachrichten.json> <cf-mf.csv> <Eingabe.jsonl> <Ausgabe.jsonl> <Decision-Modell>
+Usage:
+    python3 real5.py <tickets.json> <nachrichten.json> <cf-mf.csv> <output.jsonl> <language model> <decision model>
+    python3 real5.py rueckfall <tickets.json> <nachrichten.json> <cf-mf.csv> <input.jsonl> <output.jsonl> <decision model>
 """
 
 import csv
@@ -21,8 +21,8 @@ import sys
 import time
 
 from decision import post
-from echt2 import embed, unit
-from echt4 import STROM, message
+from real2 import embed, unit
+from real4 import POWER, message
 
 PROMPT = """Lies die Anfrage an ein Repair Café und nenne die Gegenstände, die repariert werden sollen.
 Pro Gegenstand gibst du an:
@@ -59,7 +59,7 @@ SCHEMA = {
 
 
 def fallback(ticket, entry):
-    """Liefert die Gerätebezeichnung aus dem Betreff, bei leerem Betreff aus dem Titel, sonst nichts."""
+    """Returns the device name from the subject, from the title if the subject is empty, otherwise nothing."""
     subject = re.sub(r"\[msg#\d+\]|^(\s*(re|aw|fwd?|wg)\s*:\s*)+", "", entry.get("betreff") or "",
                      flags=re.IGNORECASE).strip()
     title = (entry.get("titel") or ticket["titel"] or "").strip()
@@ -81,7 +81,7 @@ def load_categories(csv_file):
 
 
 def classify(item, names, vectors, decision_model):
-    """Ergänzt Kategorie und Stromversorgung an einem Gegenstand."""
+    """Adds category and power supply to an item."""
     label = item["name"].strip()
     query = unit(embed([label])[0])
     scored = sorted(
@@ -102,7 +102,7 @@ def classify(item, names, vectors, decision_model):
             "strom": {
                 "type": "choice",
                 "instructions": "Womit wird dieser Gegenstand üblicherweise betrieben?",
-                "criteria": {k: v for k, v in STROM.items() if k != "unbekannt"},
+                "criteria": {k: v for k, v in POWER.items() if k != "unbekannt"},
             },
         },
     })["answers"]
@@ -113,7 +113,7 @@ def classify(item, names, vectors, decision_model):
 
 
 def second_pass(tickets_file, messages_file, csv_file, source, output, decision_model):
-    """Ergänzt in einem fertigen Lauf die Tickets ohne Gegenstand über den Betreff."""
+    """Fills in the tickets without an item in a finished run via the subject."""
     names, vectors = load_categories(csv_file)
     tickets = {t["id"]: t for t in json.load(open(tickets_file, encoding="utf-8"))}
     messages = json.load(open(messages_file, encoding="utf-8"))
@@ -169,7 +169,7 @@ def main():
                         continue
                     classify(item, names, vectors, decision_model)
                     row["gegenstaende"].append(item)
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

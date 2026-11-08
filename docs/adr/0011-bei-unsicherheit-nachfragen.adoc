@@ -60,4 +60,4 @@ Die Rückfrage ist eine interne Notiz mit nummerierten Vorschlägen, auf die Eng
 == Quellen
 
 * {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 16
-* {repo}/eval/decision/rueckfrage.py[rueckfrage.py]
+* {repo}/eval/decision/follow_up.py[follow_up.py]

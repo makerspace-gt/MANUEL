@@ -19,7 +19,7 @@ Hier liegen die Quellen, auf denen Katalog, Einordnung und Fallstudie beruhen. J
 | [anstiftung/marken.csv](anstiftung/marken.csv) | 3.379 Marken aus dem Formular | 06.11.2026 |
 | [anstiftung/felder.csv](anstiftung/felder.csv) | übrige Auswahlfelder, etwa Gründe für vertagt oder nicht erfolgt | 06.11.2026 |
 
-Die Liste in `database.sql` ist nicht aktuell, das Formular enthält deutlich mehr Kategorien. [formular_auslesen.py](anstiftung/formular_auslesen.py) erzeugt die CSV-Dateien und die bereinigte Seite aus der gespeicherten Seite.
+Die Liste in `database.sql` ist nicht aktuell, das Formular enthält deutlich mehr Kategorien. [parse_form.py](anstiftung/parse_form.py) erzeugt die CSV-Dateien und die bereinigte Seite aus der gespeicherten Seite.
 
 ## Restarters.net
 
@@ -27,7 +27,7 @@ Die Liste in `database.sql` ist nicht aktuell, das Formular enthält deutlich me
 |---|---|---|
 | [restarters/kategorien.csv](restarters/kategorien.csv) | 47 Kategorien aus der öffentlichen API, mit Kennung und Strom | 08.11.2026 |
 
-[kategorien_abrufen.py](restarters/kategorien_abrufen.py) ruft die Liste neu ab. Der Quellcode liegt unter [TheRestartProject/restarters.net](https://github.com/TheRestartProject/restarters.net).
+[fetch_categories.py](restarters/fetch_categories.py) ruft die Liste neu ab. Der Quellcode liegt unter [TheRestartProject/restarters.net](https://github.com/TheRestartProject/restarters.net).
 
 ## Weitere Partner der Open Repair Alliance
 

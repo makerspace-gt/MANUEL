@@ -219,7 +219,7 @@ Die Sicherheit bleibt aussagekräftig.
 
 Die Oberkategorien des Formulars sind zu grob, `Elektro divers` reicht vom Lötkolben bis zur Lichterkette. Maßgeblich für die Zwischenstufe sind deshalb die Produktkategorien des Open Repair Data Standard. Das sind 40 Gruppen mit Strom und 6 ohne Strom ([ora-gruppen.tsv](../eval/decision/ora-gruppen.tsv)). Jede Gruppe hat eine deutsche Beschreibung aus den Beispielen des Standards.
 
-[gruppen.py](../eval/decision/gruppen.py) lässt `d3:9b` jede Formularkategorie einer Gruppe zuordnen. Die Hälfte der Zuordnungen liegt unter 70 Prozent Sicherheit, 324 unter 50 Prozent. Das liegt oft an der Liste selbst. Unter `Haushaltsgeräte` stehen auch Kugelschreiber, Gießkanne und Kinderwagen, die keine Gruppe mit Strom treffen. Claude hat 17 klare Fehler korrigiert, etwa die Personenwaage nach Entscheidung des Teams oder den Kleiderbügel, der als zweite Wahl beim Bügeleisen lag.
+[groups.py](../eval/decision/groups.py) lässt `d3:9b` jede Formularkategorie einer Gruppe zuordnen. Die Hälfte der Zuordnungen liegt unter 70 Prozent Sicherheit, 324 unter 50 Prozent. Das liegt oft an der Liste selbst. Unter `Haushaltsgeräte` stehen auch Kugelschreiber, Gießkanne und Kinderwagen, die keine Gruppe mit Strom treffen. Claude hat 17 klare Fehler korrigiert, etwa die Personenwaage nach Entscheidung des Teams oder den Kleiderbügel, der als zweite Wahl beim Bügeleisen lag.
 
 Wo eine ORA-Gruppe zu grob ist, steht darunter eine eigene Zwischenkategorie. `Misc` zerfällt zum Beispiel in Elektroinstallation, Mess- und Prüfgeräte, Pumpen und Wasser, Heizen und Wärme, Medizin und Pflege sowie Motoren und Antriebe. `Power tool` trennt Gartengeräte und Löten vom übrigen Elektrowerkzeug. Die Zwischenkategorien sind feiner als der Standard, lassen sich aber immer auf ihn zurückführen. Den Entwurf prüft das Team noch.
 
@@ -262,7 +262,7 @@ Zwei naheliegende Gegenmittel helfen kaum. Die ORA-Gruppe aus Schritt 13 als zwe
 
 ## Schritt 13 Gruppe vor der Kategorie
 
-[echt_gruppe.py](../eval/decision/echt_gruppe.py) fragt `d3:9b` zuerst nach der ORA-Gruppe. Die Shortlist besteht dann aus den 20 ähnlichsten Kategorien der beiden wahrscheinlichsten Gruppen und den 10 ähnlichsten ohne Einschränkung. Grundlage ist der noch ungeprüfte Entwurf aus Schritt 12. Ein Ticket dauert im Median 3,7 Sekunden.
+[real_group.py](../eval/decision/real_group.py) fragt `d3:9b` zuerst nach der ORA-Gruppe. Die Shortlist besteht dann aus den 20 ähnlichsten Kategorien der beiden wahrscheinlichsten Gruppen und den 10 ähnlichsten ohne Einschränkung. Grundlage ist der noch ungeprüfte Entwurf aus Schritt 12. Ein Ticket dauert im Median 3,7 Sekunden.
 
 | Verfahren | Kategorie richtig |
 |---|---|
@@ -291,7 +291,7 @@ Zwei Drittel der Einträge decken nur 5 Prozent der Reparaturen und 49 der 745 T
 
 ## Schritt 14 Katalog in der Einordnung
 
-[echt_katalog.py](../eval/decision/echt_katalog.py) ordnet die Betreffe mit dem Katalog ein. Die Ähnlichkeitssuche nutzt Name und Synonyme, das Decision-Modell sieht zu jeder Option einen Text. Grundlage sind 1.084 Einträge nach allen Zusammenfassungen, 225 davon mit Beschreibung.
+[real_catalog.py](../eval/decision/real_catalog.py) ordnet die Betreffe mit dem Katalog ein. Die Ähnlichkeitssuche nutzt Name und Synonyme, das Decision-Modell sieht zu jeder Option einen Text. Grundlage sind 1.084 Einträge nach allen Zusammenfassungen, 225 davon mit Beschreibung.
 
 Im ersten Versuch bekam `d3:9b` die Beschreibung aus dem Katalog. Das Ergebnis war deutlich schlechter, 592 statt 639 Treffer. Zwei Ursachen fallen auf.
 
@@ -306,7 +306,7 @@ Der Katalog gehört deshalb hinter das Modell. Das Modell wählt weiter aus den 
 
 Ein dritter Versuch fasste die Einträge zusammen und ließ die Namen in der Option sichtbar, etwa `Unterhaltungselektronik / Radio (auch Radiowecker, DAB-Radio, Kofferradio, …)`. Das ergab nur 590 Treffer. Lange Optionen verlieren. Beim Betreff Radio wählte das Modell `Funkempfänger`, beim Betreff Radiowecker `Wecker (auch Reisewecker, Funkwecker)`. Das Modell bewertet die Option als Ganzes, und eine lange Liste verwässert den Treffer.
 
-Daraus folgt der vierte Versuch mit [echt_vertreter.py](../eval/decision/echt_vertreter.py). Die Ähnlichkeitssuche läuft über alle Formularnamen und Synonyme. In der Shortlist erscheint jeder Eintrag nur einmal, und zwar unter dem kurzen Namen, der dem Ticket am ähnlichsten ist. Beim Betreff Radiowecker heißt die Option für den Eintrag Radio also `Unterhaltungselektronik / Radiowecker`. So gibt es weder Fast-Dubletten noch lange Optionen.
+Daraus folgt der vierte Versuch mit [real_representatives.py](../eval/decision/real_representatives.py). Die Ähnlichkeitssuche läuft über alle Formularnamen und Synonyme. In der Shortlist erscheint jeder Eintrag nur einmal, und zwar unter dem kurzen Namen, der dem Ticket am ähnlichsten ist. Beim Betreff Radiowecker heißt die Option für den Eintrag Radio also `Unterhaltungselektronik / Radiowecker`. So gibt es weder Fast-Dubletten noch lange Optionen.
 
 Das ergab 636 Treffer, also fast so viele wie ohne Katalog. Neu richtig sind Fälle, in denen ein kurzer Name aus dem Katalog hilft, etwa Airfryer, Fahrradakku, Kassettendeck oder Rasierer. Neu falsch sind vor allem Fälle mit einem ungeschickten Synonym. „Drucker“ landete über das Synonym Druckreiniger beim Hochdruckreiniger, „Laptop“ über Laptopnetzteil beim Netzteil. Diese Synonyme sind entfernt. Die schweren Fehler in einer anderen ORA-Gruppe sinken von 47 auf 42. Das Modell ist häufiger sicher, ab 70 Prozent sind es 599 statt 554 Tickets, und davon stimmen wie bisher 92 Prozent. Zwischen 70 und 90 Prozent liegt die Quote bei 86 statt 88 Prozent, ab 90 Prozent wie bisher bei 95 Prozent. Bei gleicher Trefferquote muss also bei 45 Tickets weniger ein Mensch nachgefragt werden.
 
@@ -338,7 +338,7 @@ Die Beschreibungen helfen dem Modell in keiner Form. Selbst neben den gewohnten 
 
 ## Schritt 15 Kette mit vollständigen Nachrichten
 
-[nachrichten.py](../eval/decision/nachrichten.py) holt die Nachrichten jetzt ohne Pseudonymisierung und ohne Kürzung. Zitate früherer Mails bleiben erhalten. Bei Tickets, die Engagierte selbst anlegen, ist der Betreff der Notiz leer. Das Gerät steht dann nur im Titel des Tickets. Die Kette bekommt deshalb bei solchen Notizen den Titel vor den Text gestellt. Das betrifft 126 der 745 Tickets mit Sollwert.
+[messages.py](../eval/decision/messages.py) holt die Nachrichten jetzt ohne Pseudonymisierung und ohne Kürzung. Zitate früherer Mails bleiben erhalten. Bei Tickets, die Engagierte selbst anlegen, ist der Betreff der Notiz leer. Das Gerät steht dann nur im Titel des Tickets. Die Kette bekommt deshalb bei solchen Notizen den Titel vor den Text gestellt. Das betrifft 126 der 745 Tickets mit Sollwert.
 
 Damit der Vergleich fair bleibt, ist auch der Lauf aus Schritt 9 mit der Zählweise aus Schritt 12 neu ausgewertet. Er kommt so auf 529 statt 510 Treffer. Zwei Tickets gibt es in Zammad nicht mehr, sie zählen als Fehler.
 
@@ -354,7 +354,7 @@ Die Kette bleibt mit 546 Treffern hinter dem Betreff mit 639 zurück. Am schwäc
 
 ### Alle Verfahren im Vergleich
 
-Die Grafik zeigt für jedes Verfahren die Trefferquote insgesamt und getrennt nach der Sicherheit des Modells. Die Fehlerbalken geben das 95-Prozent-Intervall nach Wilson an. Unter jedem Balken steht, wie viele Tickets in die Stufe fallen. Erzeugt wird sie mit [grafik_einordnung.py](../eval/decision/grafik_einordnung.py).
+Die Grafik zeigt für jedes Verfahren die Trefferquote insgesamt und getrennt nach der Sicherheit des Modells. Die Fehlerbalken geben das 95-Prozent-Intervall nach Wilson an. Unter jedem Balken steht, wie viele Tickets in die Stufe fallen. Erzeugt wird sie mit [chart_classification.py](../eval/decision/chart_classification.py).
 
 ![Trefferquote der Verfahren nach Sicherheit des Modells](grafiken/einordnung-verfahren.svg)
 
@@ -401,7 +401,7 @@ Von den 23 Fehlern nach R1 und R2 waren die meisten offene Entscheidungen oder s
 
 Die neuen Synonyme wirken erst in einem neuen Lauf.
 
-Dieser Lauf nutzt [rueckfrage.py](../eval/decision/rueckfrage.py), das [echt_vertreter.py](../eval/decision/echt_vertreter.py) zu jedem Ticket den Grund für eine Rückfrage liefert. Die Einträge sind aus dem aktuellen Katalog und den Entscheidungen neu gebaut, 1.085 Einträge mit 1.713 Namen. Zwei weitere Tickets mit Herrnhuter Sternen bekamen den Sollwert Weihnachtsbeleuchtung, passend zur Entscheidung.
+Dieser Lauf nutzt [follow_up.py](../eval/decision/follow_up.py), das [real_representatives.py](../eval/decision/real_representatives.py) zu jedem Ticket den Grund für eine Rückfrage liefert. Die Einträge sind aus dem aktuellen Katalog und den Entscheidungen neu gebaut, 1.085 Einträge mit 1.713 Namen. Zwei weitere Tickets mit Herrnhuter Sternen bekamen den Sollwert Weihnachtsbeleuchtung, passend zur Entscheidung.
 
 | Lauf vom 08.11.2026 | Ergebnis |
 |---|---|
@@ -413,7 +413,7 @@ Dieser Lauf nutzt [rueckfrage.py](../eval/decision/rueckfrage.py), das [echt_ver
 
 Von den 12 Fehlern steht bei fünf das Gerät nur in der Nachricht, etwa ein tragbares Radio, das ein Radiorekorder war. Zweimal fehlt das Synonym Kartoffelraspel, weil Reibe, elektrisch noch nicht im Katalog steht. Vier sind Grenzfälle wie PC-Boxen und Lautsprecher oder Regentonnenpumpe und Wasserpumpe. Nur einer ist eine echte Verwechslung, aus dem Handy mit Wasserschaden wurde ein Wassermelder.
 
-Ein weiterer Lauf ergänzt drei Dinge. Reibe, elektrisch steht mit dem Synonym Kartoffelraspel im Katalog. Kopfhörer, In-Ear fehlte bisher in der Auswahl, weil sich beide Kopfhörer-Einträge dieselben Formular-IDs teilen. Bei Kopfhörer, Funkkopfhörer oder Headset ohne Bauform fragt MANUEL nach. Außerdem löst [rueckfrage.py](../eval/decision/rueckfrage.py) Sammelbegriffe über die Nachricht auf. Nennt sie genau eine Bauart, etwa Nespresso bei der Kaffeemaschine, entfällt die Rückfrage.
+Ein weiterer Lauf ergänzt drei Dinge. Reibe, elektrisch steht mit dem Synonym Kartoffelraspel im Katalog. Kopfhörer, In-Ear fehlte bisher in der Auswahl, weil sich beide Kopfhörer-Einträge dieselben Formular-IDs teilen. Bei Kopfhörer, Funkkopfhörer oder Headset ohne Bauform fragt MANUEL nach. Außerdem löst [follow_up.py](../eval/decision/follow_up.py) Sammelbegriffe über die Nachricht auf. Nennt sie genau eine Bauart, etwa Nespresso bei der Kaffeemaschine, entfällt die Rückfrage.
 
 | Lauf vom 08.11.2026 | ohne Nachricht | mit Nachricht |
 |---|---|---|
@@ -425,7 +425,7 @@ Ein weiterer Lauf ergänzt drei Dinge. Reibe, elektrisch steht mit dem Synonym K
 
 Die Nachricht klärt 6 der 29 Rückfragen bei Sammelbegriffen, alle richtig. Die übrigen Nachrichten nennen nur den Sammelbegriff selbst. Von den 10 Fehlern steht bei fünf das Gerät nur in der Nachricht, vier sind Grenzfälle und einer ist eine echte Verwechslung.
 
-Danach wurde der Katalog auf alle 1.089 Einträge erweitert. Jeder bekommt einen Schlüssel der Form `ORA.anstiftung.eigene`, die Optionen für das Modell baut [eintraege.py](../katalog/eintraege.py) direkt aus dem Katalog. Ein Prüflauf ergab dieselben 10 sicheren Fehler und 98,7 Prozent, mit Nachricht 179 statt 181 Rückfragen.
+Danach wurde der Katalog auf alle 1.089 Einträge erweitert. Jeder bekommt einen Schlüssel der Form `ORA.anstiftung.eigene`, die Optionen für das Modell baut [entries.py](../katalog/entries.py) direkt aus dem Katalog. Ein Prüflauf ergab dieselben 10 sicheren Fehler und 98,7 Prozent, mit Nachricht 179 statt 181 Rückfragen.
 
 Auch diese Werte stammen aus denselben Daten, aus denen die Regeln abgeleitet sind, und müssen an neuen Tickets bestätigt werden.
 

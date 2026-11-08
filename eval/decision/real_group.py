@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-"""Ordnet Tickets mit vorgeschalteter ORA-Gruppe ein.
+"""Classifies tickets with an ORA group chosen first.
 
-Erst wählt das Decision-Modell aus den Gruppen des Open Repair Data Standard. Die Shortlist für
-die Kategorie besteht dann aus den ähnlichsten Kategorien der beiden wahrscheinlichsten Gruppen,
-ergänzt um die ähnlichsten Kategorien ohne Einschränkung. So verdeckt eine falsche Gruppe die
-richtige Kategorie nicht vollständig. Die Tickets liegen nur lokal und gehören nicht ins Repo.
+First the decision model chooses from the groups of the Open Repair Data Standard. The shortlist for
+the category then consists of the most similar categories of the two most likely groups,
+plus the most similar categories without restriction. This way a wrong group does not completely hide
+the right category. The tickets exist only locally and do not belong in the repo.
 
-Aufruf:
-    python3 echt_gruppe.py <tickets.json> <formular.csv> <zuordnung.tsv> <ora-gruppen.tsv> \
-        <Ausgabe.jsonl> <Modell> [aus Gruppen] [ohne Einschränkung]
+Usage:
+    python3 real_group.py <tickets.json> <formular.csv> <zuordnung.tsv> <ora-gruppen.tsv> <output.jsonl> <model> [from groups] [without restriction]
 
-zuordnung.tsv enthält pro Zeile "Oberkategorie / Kategorie" und die ORA-Gruppe, getrennt durch Tab.
+zuordnung.tsv contains per line "top category / category" and the ORA group, separated by a tab.
 """
 
 import csv
@@ -19,7 +18,7 @@ import sys
 import time
 
 from decision import post
-from echt2 import embed, unit
+from real2 import embed, unit
 
 
 def similar(query, vectors, names, allowed, size):
@@ -89,7 +88,7 @@ def main():
                 row["zweite_p"] = ranked[1][1]
                 row["kategorie"] = choice["choice"]
                 row["kategorie_p"] = choice["probabilities"][choice["choice"]]
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

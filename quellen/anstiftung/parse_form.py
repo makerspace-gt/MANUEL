@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Liest die Auswahllisten aus der gespeicherten Seite "Laufzettel erstellen" auf reparatur-initiativen.org.
+"""Reads the option lists from the saved page "Laufzettel erstellen" on reparatur-initiativen.org.
 
-Die Seite wurde angemeldet gespeichert. Das Skript schreibt eine bereinigte Kopie ohne Sicherheitstoken
-der Sitzung und ohne Anmeldenamen und zieht die Listen heraus.
+The page was saved while logged in. The script writes a cleaned copy without the session's security
+token and without the login name and extracts the lists.
 
-* kategorien.csv mit Oberkategorie, Kategorie, ID und ob die Kategorie bestätigt ist
-* marken.csv mit Marke und ID
-* felder.csv mit den übrigen Auswahlfeldern, etwa Ergebnis und Gründe
+* kategorien.csv with top category, category, ID and whether the category is confirmed
+* marken.csv with brand and ID
+* felder.csv with the other option fields, for example result and reasons
 
-Aufruf im Wurzelverzeichnis des Repos:
-    python3 quellen/anstiftung/formular_auslesen.py <gespeicherte Seite.html>
+Run in the repository root:
+    python3 quellen/anstiftung/parse_form.py <saved page.html>
 """
 
 import csv
@@ -18,11 +18,11 @@ import re
 import sys
 from pathlib import Path
 
-ZIEL = Path("quellen/anstiftung")
+OUTPUT_DIR = Path("quellen/anstiftung")
 
 
 def options(body):
-    """Liefert (Gruppe, Wert, Text) für alle Optionen, Gruppe aus optgroup."""
+    """Returns (group, value, text) for all options, group from optgroup."""
     result, group = [], ""
     for part in re.finditer(r'<optgroup label="([^"]*)"|<option[^>]*value="([^"]*)"[^>]*>(.*?)</option>', body, re.S):
         if part.group(1) is not None:
@@ -38,22 +38,22 @@ def main():
     clean = re.sub(r'(name="(?:_csrfToken|_Token\[[^\]]*\])"[^>]*value=")[^"]*', r"\1entfernt", page)
     clean = re.sub(r'(value=")[^"]*("[^>]*name="(?:_csrfToken|_Token\[[^\]]*\])")', r"\1entfernt\2", clean)
     clean = re.sub(r'(<div class="greeting">Willkommen)[^<]*', r"\1", clean)
-    (ZIEL / "laufzettel-erstellen.html").write_text(clean, encoding="utf-8")
+    (OUTPUT_DIR / "laufzettel-erstellen.html").write_text(clean, encoding="utf-8")
     selects = {m.group(1): m.group(2) for m in re.finditer(r'<select[^>]*name="([^"]*)"[^>]*>(.*?)</select>', page, re.S)}
-    with (ZIEL / "kategorien.csv").open("w", encoding="utf-8", newline="") as out:
+    with (OUTPUT_DIR / "kategorien.csv").open("w", encoding="utf-8", newline="") as out:
         writer = csv.writer(out, lineterminator="\n")
-        writer.writerow(["Oberkategorie", "Kategorie", "id", "bestaetigt"])
+        writer.writerow(["top_category", "category", "id", "confirmed"])
         for group, value, text in options(selects["InfoSheets[category_id]"]):
             unconfirmed = text.endswith("(unbestätigt)")
             writer.writerow([group, text.removesuffix("(unbestätigt)").strip(), value, "nein" if unconfirmed else "ja"])
-    with (ZIEL / "marken.csv").open("w", encoding="utf-8", newline="") as out:
+    with (OUTPUT_DIR / "marken.csv").open("w", encoding="utf-8", newline="") as out:
         writer = csv.writer(out, lineterminator="\n")
-        writer.writerow(["Marke", "id"])
+        writer.writerow(["brand", "id"])
         for _, value, text in options(selects["InfoSheets[brand_id]"]):
             writer.writerow([text, value])
-    with (ZIEL / "felder.csv").open("w", encoding="utf-8", newline="") as out:
+    with (OUTPUT_DIR / "felder.csv").open("w", encoding="utf-8", newline="") as out:
         writer = csv.writer(out, lineterminator="\n")
-        writer.writerow(["Feld", "Wert", "Text"])
+        writer.writerow(["field", "value", "text"])
         for name, body in selects.items():
             if name in ("InfoSheets[category_id]", "InfoSheets[brand_id]"):
                 continue
@@ -68,7 +68,7 @@ def main():
             text = html.unescape(re.sub(r"<[^>]+>", "", label.group(1))).strip() if label else ""
             if name and value:
                 writer.writerow([name.group(1), value.group(1), text])
-    print("geschrieben nach", ZIEL)
+    print("geschrieben nach", OUTPUT_DIR)
 
 
 if __name__ == "__main__":

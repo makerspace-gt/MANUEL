@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Erzeugt die Grafik der Trefferquoten aller Verfahren für docs/einordnung.md.
+"""Creates the chart of hit rates of all methods for docs/einordnung.md.
 
-Die Zahlen stammen aus der Auswertung der Läufe gegen die Sollwerte des Teams. Die Läufe
-selbst enthalten echte Tickets und liegen nicht im Repo, deshalb stehen hier nur die Summen.
-Jeder Balken zeigt die Trefferquote, der Fehlerbalken das 95-Prozent-Intervall nach Wilson.
-Das Skript braucht nur die Standardbibliothek.
+The numbers come from evaluating the runs against the team's target values. The runs
+themselves contain real tickets and are not in the repo, so only the totals are here.
+Each bar shows the hit rate, the error bar the 95 percent Wilson interval.
+The script needs only the standard library.
 
-Aufruf im Wurzelverzeichnis des Repos:
-    python3 eval/decision/grafik_einordnung.py
+Run in the repository root:
+    python3 eval/decision/chart_classification.py
 """
 
 import math
@@ -15,13 +15,13 @@ from html import escape
 from pathlib import Path
 
 OUTPUT = Path("docs/grafiken/einordnung-verfahren.svg")
-# Ohne Dunkelmodus für das PDF der Hausarbeit, der PDF-Renderer wertet @media nicht aus.
+# Without dark mode for the PDF of the case study, the PDF renderer ignores @media.
 OUTPUT_HELL = Path("docs/grafiken/einordnung-verfahren-hell.svg")
 
 BANDS = ["gesamt", "unter 50", "50 bis 70", "70 bis 90", "ab 90"]
 
-# Name, (richtig, Tickets) gesamt, dann je Sicherheitsstufe unter 50, 50 bis 70, 70 bis 90, ab 90 Prozent.
-# Bei der Kette fehlen in den Stufen die Tickets, bei denen kein Gegenstand eingeordnet wurde.
+# Name, (correct, tickets) overall, then per confidence band below 50, 50 to 70, 70 to 90, from 90 percent.
+# For the chain the bands lack the tickets in which no item was classified.
 ROWS = [
     ("Am Betreff", [
         ("Formularnamen", (639, 745), [(49, 84), (79, 107), (211, 239), (300, 315)]),
@@ -61,7 +61,7 @@ text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
 
 
 def wilson(hits, total, z=1.96):
-    """95-Prozent-Intervall einer Quote nach Wilson, auch bei kleinen Zahlen brauchbar."""
+    """95 percent Wilson interval of a rate, usable even for small numbers."""
     if not total:
         return 0.0, 0.0
     p = hits / total
@@ -71,7 +71,7 @@ def wilson(hits, total, z=1.96):
 
 
 def bar(x, y, width, base):
-    """Balken mit 4 px gerundetem Ende an der Datenseite, an der Grundlinie eckig."""
+    """Bar with a 4 px rounded end on the data side, square at the baseline."""
     radius = min(4, width / 2, max(base - y, 0))
     return (
         f"M{x:.1f},{base:.1f} V{y + radius:.1f} Q{x:.1f},{y:.1f} {x + radius:.1f},{y:.1f} "
@@ -85,7 +85,7 @@ def percent(value):
 
 
 def panel(out, x0, y0, width, height, name, total, bands, first):
-    """Ein Verfahren mit fünf Balken, gesamt und je Sicherheitsstufe."""
+    """One method with five bars, overall and per confidence band."""
     plot_top, plot_bottom = y0 + 58, y0 + height - 40
     plot_h = plot_bottom - plot_top
     hits, count = total

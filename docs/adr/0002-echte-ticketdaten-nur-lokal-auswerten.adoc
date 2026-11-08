@@ -50,4 +50,4 @@ Eine Pseudonymisierung ist dafür nicht nötig. Für die Einordnung zählt der v
 == Quellen
 
 * {repo}/docs/einordnung.md[Einordnung von Tickets]
-* {repo}/eval/decision/nachrichten.py[nachrichten.py] holt die Nachrichten nur lesend über die API
+* {repo}/eval/decision/messages.py[messages.py] holt die Nachrichten nur lesend über die API

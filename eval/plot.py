@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Erzeugt die Grafiken für docs/benchmarks.md aus den Rohdaten in eval/results.
+"""Creates the charts for docs/benchmarks.md from the raw data in eval/results.
 
-Balken zeigen den Mittelwert, Fehlerbalken die Standardabweichung aller Läufe
-einer Variante über alle Durchgänge. Das Skript braucht nur die Standardbibliothek.
+Bars show the mean, error bars the standard deviation of all runs
+of a variant across all passes. The script needs only the standard library.
 
-Aufruf im Wurzelverzeichnis des Repos:
+Run in the repository root:
     python3 eval/plot.py
 """
 
@@ -17,7 +17,7 @@ from pathlib import Path
 RESULTS = Path("eval/results")
 OUTPUT = Path("docs/grafiken")
 
-# Reihenfolge und Slot sind fest. Eine Variante behält immer ihre Farbe.
+# Order and slot are fixed. A variant always keeps its colour.
 VARIANTS = [
     ("runde1/llamacpp-vulkan", "llama.cpp GPU", 1),
     ("runde1/ollama-vulkan", "Ollama GPU", 2),
@@ -31,8 +31,8 @@ FAIR = [
 ]
 PROMPTS = [512, 4096]
 
-# Ein Modell pro Zeile. Die Tags mit -mtp nutzen dieselbe Datei und entfallen deshalb,
-# gemma4 nimmt den Tag mit -mtp, weil llama.cpp nur dort lief.
+# One model per row. The tags with -mtp use the same file and are therefore left out,
+# gemma4 takes the tag with -mtp because llama.cpp only ran there.
 MODELS = [
     ("lfm3:1.7b", "r2-lfm3-1-7b/ollama-vulkan", "r2-lfm3-1-7b/llamacpp-vulkan"),
     ("qwen3.6:35b-a3b", "r2-qwen3-6-35b-a3b/ollama-vulkan", "r2-qwen3-6-35b-a3b/llamacpp-vulkan"),
@@ -73,7 +73,7 @@ text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
 
 
 def read_runs(paths):
-    """Liefert {(Variante, Prompt): {Messgröße: [Werte]}}."""
+    """Returns {(variant, prompt): {metric: [values]}}."""
     data = defaultdict(lambda: defaultdict(list))
     for path in paths:
         for file in sorted((RESULTS / path).glob("pass*/p*.csv")):
@@ -92,7 +92,7 @@ def read_runs(paths):
 
 
 def nice_max(value):
-    """Rundet auf eine glatte Obergrenze der Achse."""
+    """Rounds up to a round upper limit of the axis."""
     magnitude = 10 ** (len(str(int(value))) - 1)
     for step in (1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10):
         if step * magnitude >= value:
@@ -101,7 +101,7 @@ def nice_max(value):
 
 
 def intervals(top):
-    """Wählt die Einteilung der Achse so, dass nur glatte Werte entstehen."""
+    """Chooses the axis ticks so that only round values occur."""
     for count in (5, 4, 6):
         step = top / count
         magnitude = 10 ** (len(str(int(step))) - 1)
@@ -115,7 +115,7 @@ def number(value, unit_digits):
 
 
 def bar(x, y, width, base):
-    """Balken mit 4 px gerundetem Ende an der Datenseite, an der Grundlinie eckig."""
+    """Bar with a 4 px rounded end on the data side, square at the baseline."""
     radius = min(4, width / 2, base - y)
     return (
         f"M{x:.1f},{base:.1f} V{y + radius:.1f} Q{x:.1f},{y:.1f} {x + radius:.1f},{y:.1f} "
@@ -125,7 +125,7 @@ def bar(x, y, width, base):
 
 
 def summary(values):
-    """Mittelwert, Standardabweichung und Anzahl der Läufe."""
+    """Mean, standard deviation and number of runs."""
     spread = statistics.stdev(values) if len(values) > 1 else 0.0
     return statistics.fmean(values), spread, len(values)
 
@@ -210,7 +210,7 @@ def chart(data, variants, metric, title, unit, digits, filename):
 
 
 def hchart(data, rows, series, prompt, metric, title, unit, digits, filename):
-    """Liegende Balken für viele Modelle. rows enthält (Name, Pfad je Reihe)."""
+    """Horizontal bars for many models. rows contains (name, path per series)."""
     width = 720
     left, right, top, bottom = 196, 64, 84, 36
     bar_h, gap, row_gap = 13, 2, 12

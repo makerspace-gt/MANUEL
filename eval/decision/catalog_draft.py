@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Lässt ein Sprachmodell Beschreibungen und Synonyme für den Katalog entwerfen.
+"""Lets a language model draft descriptions and synonyms for the catalog.
 
-Für jeden Eintrag bekommt das Modell die Namen im Formular, die ORA-Gruppe und die ähnlichsten
-anderen Einträge. Die Beschreibung soll vor allem die Abgrenzung zu diesen Nachbarn nennen.
-Die Entwürfe prüfen Menschen, bevor sie in den Katalog kommen.
+For each entry the model gets the names in the form, the ORA group and the most similar
+other entries. The description should above all name the distinction from these neighbours.
+People check the drafts before they go into the catalog.
 
-Aufruf:
-    python3 katalog_entwurf.py <eingabe.json> <Ausgabe.jsonl> <Chat-Modell>
+Usage:
+    python3 catalog_draft.py <input.json> <output.jsonl> <chat model>
 """
 
 import json
@@ -14,9 +14,9 @@ import sys
 import time
 
 from decision import post
-from echt2 import embed, unit
+from real2 import embed, unit
 
-STROM = ["230 V", "mit Netzteil", "Batterie", "Akku", "ohne Kabel (Mechanik)"]
+POWER = ["230 V", "mit Netzteil", "Batterie", "Akku", "ohne Kabel (Mechanik)"]
 SCHEMA = {
     "type": "object",
     "properties": {
@@ -25,7 +25,7 @@ SCHEMA = {
         "name_en": {"type": "string"},
         "beschreibung_en": {"type": "string"},
         "synonyme_en": {"type": "array", "items": {"type": "string"}},
-        "strom": {"type": "array", "items": {"type": "string", "enum": STROM}},
+        "strom": {"type": "array", "items": {"type": "string", "enum": POWER}},
     },
     "required": ["beschreibung_de", "synonyme_de", "name_en", "beschreibung_en", "synonyme_en", "strom"],
 }
@@ -71,7 +71,7 @@ def main():
                         ora=entry["ora"], nachbarn=", ".join(neighbours))}],
                 })
                 row.update(json.loads(reply["message"]["content"]))
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

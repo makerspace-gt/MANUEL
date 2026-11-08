@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Prüft kategorien.tsv auf Widersprüche.
+"""Checks kategorien.tsv for contradictions.
 
-Ein Synonym darf nicht der Name oder das Synonym eines anderen Eintrags sein. Mit --warnungen
-zeigt es zusätzlich Synonyme, die den Namen eines anderen Eintrags als Wortteil enthalten. Meist ist das
-harmlos, etwa Lampe in Bettlampe, es hilft aber beim Durchsehen. Die Stromversorgung
-nutzt nur die Werte des Laufzettels, die ORA-Gruppe nur Gruppen aus ora-gruppen.tsv.
+A synonym must not be the name or a synonym of another entry. With --warnungen
+it also shows synonyms that contain the name of another entry as part of a word. Usually this is
+harmless, for example Lampe in Bettlampe, but it helps when reviewing. The power supply
+uses only the values of the form, the ORA group only groups from ora-gruppen.tsv.
 
-Der Schlüssel hat die Form ORA.anstiftung oder ORA.anstiftung.eigene. Vorne steht die Nummer der
-ORA-Gruppe, in der Mitte die führende ID des Laufzettels, hinten eine eigene Unterscheidung, wo wir eine
-Kategorie der anstiftung aufteilen. Jede ID des Laufzettels gehört zu genau einem Eintrag ohne eigene
-Unterscheidung. Die bevorzugten Namen in gleichwertig.tsv müssen Einträge im Katalog sein.
+The key has the form ORA.anstiftung or ORA.anstiftung.eigene. In front is the number of the
+ORA group, in the middle the leading ID of the form, at the end our own distinction where we split
+a category of anstiftung. Each ID of the form belongs to exactly one entry without its own
+distinction. The preferred names in gleichwertig.tsv must be entries in the catalog.
 
-Aufruf im Wurzelverzeichnis des Repos:
-    python3 katalog/pruefen.py [--warnungen]
+Run in the repository root:
+    python3 katalog/check.py [--warnungen]
 """
 
 import csv
@@ -20,11 +20,11 @@ import re
 import sys
 from pathlib import Path
 
-KATALOG = Path("katalog/kategorien.tsv")
-GRUPPEN = Path("eval/decision/ora-gruppen.tsv")
-GLEICH = Path("eval/decision/gleichwertig.tsv")
-SCHLUESSEL = re.compile(r"(\d+)\.(\d+)(\.\d+)?")
-STROM = {"230 V", "mit Netzteil", "Batterie", "Akku", "ohne Kabel (Mechanik)"}
+CATALOG = Path("katalog/kategorien.tsv")
+ORA_GROUPS = Path("eval/decision/ora-gruppen.tsv")
+EQUIVALENT = Path("eval/decision/gleichwertig.tsv")
+KEY_PATTERN = re.compile(r"(\d+)\.(\d+)(\.\d+)?")
+POWER = {"230 V", "mit Netzteil", "Batterie", "Akku", "ohne Kabel (Mechanik)"}
 
 
 def key(text):
@@ -32,52 +32,52 @@ def key(text):
 
 
 def main():
-    groups = {line.split("\t")[1]: line.split("\t")[0] for line in GRUPPEN.read_text(encoding="utf-8").splitlines()
+    groups = {line.split("\t")[1]: line.split("\t")[0] for line in ORA_GROUPS.read_text(encoding="utf-8").splitlines()
               if line and not line.startswith("#")}
-    rows = list(csv.DictReader(KATALOG.open(encoding="utf-8"), delimiter="\t"))
+    rows = list(csv.DictReader(CATALOG.open(encoding="utf-8"), delimiter="\t"))
     owner = {}
     problems = []
     for row in rows:
-        for word in [row["name"]] + [s for s in row["synonyme"].split(" | ") if s]:
+        for word in [row["name"]] + [s for s in row["synonyms"].split(" | ") if s]:
             other = owner.setdefault(key(word), row["name"])
             if other != row["name"]:
                 problems.append(f"{row['name']}: {word} gehört schon zu {other}")
     seen, base = set(), {}
     for row in rows:
-        match = SCHLUESSEL.fullmatch(row["schluessel"])
-        ids = [i for i in row["formular_ids"].split(" | ") if i]
+        match = KEY_PATTERN.fullmatch(row["key"])
+        ids = [i for i in row["form_ids"].split(" | ") if i]
         if not match:
             problems.append(f"{row['name']}: Schlüssel {row['schluessel']} hat nicht die Form ORA.anstiftung")
         else:
-            if groups.get(row["ora_gruppe"]) != match[1]:
+            if groups.get(row["ora_group"]) != match[1]:
                 problems.append(f"{row['name']}: Schlüssel {row['schluessel']} passt nicht zur ORA-Gruppe")
             if match[2] not in ids:
-                problems.append(f"{row['name']}: führende ID {match[2]} fehlt in formular_ids")
+                problems.append(f"{row['name']}: führende ID {match[2]} fehlt in form_ids")
             if not match[3]:
                 for i in ids:
                     other = base.setdefault(i, row["name"])
                     if other != row["name"]:
                         problems.append(f"{row['name']}: ID {i} gehört schon zu {other}")
-        if row["schluessel"] in seen:
+        if row["key"] in seen:
             problems.append(f"{row['name']}: Schlüssel {row['schluessel']} doppelt")
-        seen.add(row["schluessel"])
+        seen.add(row["key"])
     names_all = {row["name"] for row in rows}
-    for line in GLEICH.read_text(encoding="utf-8").splitlines():
+    for line in EQUIVALENT.read_text(encoding="utf-8").splitlines():
         if line and not line.startswith("#") and line.split("\t")[0] not in names_all:
             problems.append(f"gleichwertig.tsv: {line.split(chr(9))[0]} ist kein Eintrag im Katalog")
     for row in rows:
-        if row["ora_gruppe"] not in groups:
+        if row["ora_group"] not in groups:
             problems.append(f"{row['name']}: unbekannte ORA-Gruppe {row['ora_gruppe']}")
-        for value in [v for v in row["strom"].split(" | ") if v]:
-            if value not in STROM:
+        for value in [v for v in row["power"].split(" | ") if v]:
+            if value not in POWER:
                 problems.append(f"{row['name']}: unbekannte Stromversorgung {value}")
-        for field in ("beschreibung", "beschreibung_en"):
+        for field in ("description", "description_en"):
             if re.search(r"[:;–]", row[field]):
                 problems.append(f"{row['name']}: Doppelpunkt, Semikolon oder Gedankenstrich in {field}")
     names = {key(row["name"]): row["name"] for row in rows}
     warnings = []
     for row in rows:
-        for word in [s for s in row["synonyme"].split(" | ") if s]:
+        for word in [s for s in row["synonyms"].split(" | ") if s]:
             for short, other in names.items():
                 if other != row["name"] and len(short) >= 5 and short in key(word) and short != key(word):
                     warnings.append(f"Warnung {row['name']}: {word} enthält {other}")

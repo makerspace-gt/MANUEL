@@ -1,4 +1,4 @@
-partner	eintraege	laender	jahre	feste_stufe	werte_stufe1	werte_gesamt	brand_gefuellt	year_of_manufacture_gefuellt	problem_gefuellt	repair_barrier_if_end_of_life_gefuellt
+partner	entries	countries	years	fixed_level	values_level1	values_total	brand_filled	year_of_manufacture_filled	problem_filled	repair_barrier_if_end_of_life_filled
 The Restart Project	231080	GBR, BEL, NZL, FRA	2012 bis 2026	1	47	23061	38 %	44 %	74 %	5 %
 Repair Café International	203938	NLD, GBR, FRA, CAN	2015 bis 2026	2	16	4321	55 %	34 %	90 %	5 %
 Repair Café Denmark	69637	DNK	2019 bis 2026	0	1510	19763	57 %	0 %	0 %	15 %

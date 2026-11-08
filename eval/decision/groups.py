@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Schlägt für jede Kategorie des Formulars eine Gruppe aus ora-gruppen.tsv vor.
+"""Proposes a group from ora-gruppen.tsv for each category of the form.
 
-Das Decision-Modell sieht Oberkategorie und Kategorie und wählt eine der 46 Gruppen. Das Ergebnis
-ist ein Entwurf, den Menschen prüfen. Die Kategorienliste gehört der anstiftung und liegt nicht im Repo.
+The decision model sees top category and category and chooses one of the 46 groups. The result
+is a draft that people check. The category list belongs to anstiftung and is not in the repo.
 
-Aufruf:
-    python3 gruppen.py <formular.csv> <ora-gruppen.tsv> <Ausgabe.jsonl> <Modell>
+Usage:
+    python3 groups.py <formular.csv> <ora-gruppen.tsv> <output.jsonl> <model>
 """
 
 import csv
@@ -50,7 +50,7 @@ def main():
                 result["p"] = answer["probabilities"][answer["choice"]]
                 result["zweite"] = ranked[1][0]
                 result["zweite_p"] = ranked[1][1]
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 result["fehler"] = f"{problem} {detail}"[:300]
             result["sekunden"] = round(time.monotonic() - start, 3)

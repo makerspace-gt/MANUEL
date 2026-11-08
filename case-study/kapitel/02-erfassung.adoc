@@ -85,12 +85,13 @@ Entscheidend für diese Arbeit ist das Verhältnis der ersten beiden Kategoriefe
 Der Datensatz enthält 620.000 Einträge von neun Partnern.
 
 .Partner der Open Repair Alliance im Datensatz vom Juli 2026
-[%header,format=tsv,cols="3,2,2,2,1,1,1,1,1,1,1"]
+[format=tsv,cols="3,2,2,2,1,1,1,1,1,1,1",options="header"]
 |===
-include::../../docs/ora/partner.tsv[]
+Partner	Einträge	Länder	Jahre	feste Stufe	Werte Stufe 1	Werte gesamt	Marke gefüllt	Baujahr gefüllt	Problem gefüllt	Hindernis gefüllt
+include::../../docs/ora/partner.tsv[lines=2..-1]
 |===
 
-Die Spalte `feste_stufe` zeigt, welcher Teil der Kategorie eines Partners aus einer festen Liste stammt. Eine 1 heißt, die erste Stufe ist fest und die zweite Freitext. Eine 2 heißt, beide Stufen sind fest. Eine 0 heißt, es gibt nur Freitext.
+Die Spalte „feste Stufe“ zeigt, welcher Teil der Kategorie eines Partners aus einer festen Liste stammt. Eine 1 heißt, die erste Stufe ist fest und die zweite Freitext. Eine 2 heißt, beide Stufen sind fest. Eine 0 heißt, es gibt nur Freitext.
 
 [[werkzeuge]]
 Die Alliance empfiehlt, Reparaturen mit dem Werkzeug eines Partners zu erfassen, und bittet, nur ein Werkzeug zu nutzen, weil sonst doppelt gezählt wird cite:[ora-record].
@@ -146,9 +147,10 @@ image::../../docs/grafiken/ora-gruppen-jahre-hell.svg[Die 15 häufigsten ORA-Gru
 Hinter den Einträgen stehen Gruppen und ihre Termine. Bei der anstiftung melden 169 Initiativen an 4.478 Terminen im Median 10 Geräte je Termin. Toronto und Fixit Clinic melden jeweils als eine einzige Gruppe.
 
 .Gruppen, Termine und Einträge je Partner
-[%header,format=tsv,cols="3,1,1,1,1,1,1"]
+[format=tsv,cols="3,1,1,1,1,1,1",options="header"]
 |===
-include::../../docs/ora/events_by_partner.tsv[]
+Partner	Gruppen	Termine	Einträge	je Termin im Median	je Termin im Mittel	je Termin höchstens
+include::../../docs/ora/events_by_partner.tsv[lines=2..-1]
 |===
 
 [[eigene-daten]]
@@ -177,7 +179,7 @@ Bei anderen Initiativen dürfte es ähnlich sein. Für die Auswertungen der Alli
 
 .Zum Nachvollziehen
 ****
-* Auswertung der Open Repair Data mit {repo}/eval/ora/kategorien_matrix.py[kategorien_matrix.py] und {repo}/eval/ora/charts.py[charts.py], Tabellen in {repo}/docs/ora[docs/ora]
+* Auswertung der Open Repair Data mit {repo}/eval/ora/category_matrix.py[category_matrix.py] und {repo}/eval/ora/charts.py[charts.py], Tabellen in {repo}/docs/ora[docs/ora]
 * Quellen im Repo unter {repo}/quellen[quellen], siehe <<adr-0028>>
 * Zählung der Felder aus den lokalen Exporten von Zammad, nur Summen
 * Entscheidungen <<adr-0007>>, <<adr-0013>>, <<adr-0014>>, <<adr-0034>>

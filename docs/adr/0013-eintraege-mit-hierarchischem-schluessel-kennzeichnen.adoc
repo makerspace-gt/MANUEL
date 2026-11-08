@@ -32,7 +32,7 @@ Bis MANUEL in Zammad läuft, darf sich ein Schlüssel noch ändern. Danach bleib
 === Konsequenzen
 
 * Gut, weil der Schlüssel ORA-Gruppe und Laufzettel direkt zeigt.
-* Gut, weil `pruefen.py` Form und Eindeutigkeit prüft.
+* Gut, weil `check.py` Form und Eindeutigkeit prüft.
 * Schlecht, weil eine spätere Korrektur der ORA-Gruppe einen Verweis braucht.
 
 == Vor- und Nachteile der Optionen
@@ -49,4 +49,4 @@ Bis MANUEL in Zammad läuft, darf sich ein Schlüssel noch ändern. Danach bleib
 == Quellen
 
 * {repo}/katalog/README.md[README des Katalogs], Abschnitt Schlüssel
-* {repo}/katalog/pruefen.py[pruefen.py]
+* {repo}/katalog/check.py[check.py]

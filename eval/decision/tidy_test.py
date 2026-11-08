@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Prüft die Einordnung am bereinigten Datensatz der Datenpotenzialanalyse.
+"""Tests the classification on the cleaned data set of the Datenpotenzialanalyse.
 
-Laufzettel-tidy.csv enthält 281 Geräte von 2019 bis 2021 mit den Rohwerten und den von Hand
-vergebenen Werten für Gerät, Kategorie, Stromversorgung und Defekt. Das ergibt echte Sollwerte.
-Die Daten stehen unter CC BY 4.0 und enthalten keine Personendaten.
+Laufzettel-tidy.csv contains 281 devices from 2019 to 2021 with the raw values and the values
+assigned by hand for device, category, power supply and defect. This gives real target values.
+The data are under CC BY 4.0 and contain no personal data.
 
-Aufruf:
-    python3 tidy_test.py <Laufzettel-tidy.csv> <Werte.csv> <cf-mf.csv> <Ausgabe.jsonl> <Modell>
-    python3 tidy_test.py auswertung <Ausgabe.jsonl>
-    python3 tidy_test.py variante <Laufzettel-tidy.csv> <cf-mf.csv> <Ausgabe.jsonl> <Modell> <Sprachmodell>
+Usage:
+    python3 tidy_test.py <Laufzettel-tidy.csv> <Werte.csv> <cf-mf.csv> <output.jsonl> <model>
+    python3 tidy_test.py auswertung <output.jsonl>
+    python3 tidy_test.py variante <Laufzettel-tidy.csv> <cf-mf.csv> <output.jsonl> <model> <language model>
 
-Die Variante sucht ähnliche Kategorien nur mit der Gerätebezeichnung statt mit dem ganzen Text,
-wie es die Kette aus echt5.py tut, und merkt sich, an welcher Stelle der Sollwert in der Vorauswahl
-steht. Unter 70 Prozent Sicherheit entscheidet zusätzlich das Sprachmodell.
+The variant searches similar categories only with the device name instead of the whole text,
+as the chain from real5.py does, and records at which position the target value is in the shortlist.
+Below 70 percent confidence the language model decides in addition.
 """
 
 import collections
@@ -22,14 +22,14 @@ import sys
 import time
 
 from decision import post
-from echt2 import embed, unit
+from real2 import embed, unit
 
-OBER = {
+TOP_CATEGORIES = {
     "Elektro Sonstiges": "Elektro divers",
     "Möbel (Holzbearbeitung)": "Möbel/Holz",
     "Handy / Smartphone / Tablet": "Smartphone/Tablet",
 }
-STROM = {
+POWER = {
     "230 V": "Direkt am Stromnetz über Stecker und Kabel",
     "mit Netzteil": "Über ein externes Netzteil",
     "Akku": "Mit eingebautem oder wechselbarem Akku",
@@ -61,7 +61,7 @@ def run(tidy_file, values_file, csv_file, output, model):
             start = time.monotonic()
             result = {
                 "zeile": index, "text": state, "soll_geraet": row["Gerät/Gegenstand"],
-                "soll_ober": OBER.get(row["Reparaturkategorie"], row["Reparaturkategorie"]),
+                "soll_ober": TOP_CATEGORIES.get(row["Reparaturkategorie"], row["Reparaturkategorie"]),
                 "soll_strom": row["Stromversorgung"], "soll_defekt": row["Defekt"], "fehler": None,
             }
             try:
@@ -82,7 +82,7 @@ def run(tidy_file, values_file, csv_file, output, model):
                         "strom": {
                             "type": "choice",
                             "instructions": "Womit wird dieser Gegenstand üblicherweise betrieben?",
-                            "criteria": STROM,
+                            "criteria": POWER,
                         },
                         "defekt": {
                             "type": "choice",
@@ -94,7 +94,7 @@ def run(tidy_file, values_file, csv_file, output, model):
                 for name in ("kategorie", "strom", "defekt"):
                     result[name] = answers[name]["choice"]
                     result[name + "_p"] = answers[name]["probabilities"][answers[name]["choice"]]
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 result["fehler"] = f"{problem} {detail}"[:300]
             result["sekunden"] = round(time.monotonic() - start, 3)
@@ -119,7 +119,7 @@ def variant(tidy_file, csv_file, output, model, chat_model):
             label = device if device not in ("", "NA") else defect
             state = label if defect in ("", "NA") or label == defect else f"{label}. Defekt: {defect}"
             result = {"zeile": index, "text": state, "soll_geraet": row["Gerät/Gegenstand"],
-                      "soll_ober": OBER.get(row["Reparaturkategorie"], row["Reparaturkategorie"]),
+                      "soll_ober": TOP_CATEGORIES.get(row["Reparaturkategorie"], row["Reparaturkategorie"]),
                       "fehler": None, "sprachmodell": None}
             start = time.monotonic()
             try:
@@ -158,7 +158,7 @@ def variant(tidy_file, csv_file, output, model, chat_model):
                     number = json.loads(reply["message"]["content"])["nummer"]
                     if 1 <= number <= len(shortlist):
                         result["sprachmodell"] = shortlist[number - 1]
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 result["fehler"] = f"{problem} {detail}"[:300]
             out.write(json.dumps(result, ensure_ascii=False) + "\n")
@@ -178,7 +178,7 @@ def evaluate(path):
     score("Gerät exakt", known, lambda r: r["kategorie"].split(" / ", 1)[1].lower() == r["soll_geraet"].lower())
     score("Oberkategorie", [r for r in good if r["soll_ober"] not in ("", "NA")],
           lambda r: r["kategorie"].split(" / ", 1)[0] == r["soll_ober"])
-    score("Stromversorgung", [r for r in good if r["soll_strom"] in STROM], lambda r: r["strom"] == r["soll_strom"])
+    score("Stromversorgung", [r for r in good if r["soll_strom"] in POWER], lambda r: r["strom"] == r["soll_strom"])
     score("Defekt", [r for r in good if r["soll_defekt"] not in ("", "NA", "Fortsetzung")],
           lambda r: r["defekt"] == r["soll_defekt"])
     wrong = collections.Counter(

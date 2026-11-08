@@ -65,4 +65,4 @@ Die Vertreter-Namen treffen fast so oft wie die Formularnamen, machen das Modell
 == Quellen
 
 * {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 13 und 14
-* {repo}/eval/decision/echt_vertreter.py[echt_vertreter.py]
+* {repo}/eval/decision/real_representatives.py[real_representatives.py]

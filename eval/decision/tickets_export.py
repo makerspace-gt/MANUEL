@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Macht aus den Zammad-Exporten tickets-Repair*.xlsx die Datei tickets.json für die Läufe.
+"""Turns the Zammad exports tickets-Repair*.xlsx into the file tickets.json for the runs.
 
-Das Jahr stammt aus dem Dateinamen. Die Datei enthält echte Tickets und gehört nicht ins Repo.
+The year comes from the file name. The file contains real tickets and does not belong in the repo.
 
-Aufruf:
-    python3 MANUEL/eval/decision/tickets_export.py [Muster der Exporte] [Ausgabe]
+Usage:
+    python3 MANUEL/eval/decision/tickets_export.py [pattern of the exports] [output]
 """
 
 import glob
@@ -12,7 +12,7 @@ import json
 import re
 import sys
 
-from nachrichten import sheet_rows
+from messages import sheet_rows
 
 FIELDS = {
     "titel": "Title", "defekt": "Defekt", "hack": "Hack", "marke": "Marke",

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Liest den Kategorienbaum aus database.sql von mapped-repair-events.
+"""Reads the category tree from database.sql of mapped-repair-events.
 
-Aufruf im Wurzelverzeichnis des Repos:
-    python3 eval/decision/kategorien.py eval/decision/kategorien.json
+Run in the repository root:
+    python3 eval/decision/categories.py eval/decision/kategorien.json
 """
 
 import json
@@ -14,7 +14,7 @@ SQL = Path("mapped-repair-events/config/sql/init/database.sql")
 
 
 def fields(row):
-    """Trennt eine SQL-Zeile an Kommas außerhalb von Anführungszeichen."""
+    """Splits an SQL line at commas outside of quotes."""
     return [value.strip() for value in re.findall(r"\s*'(?:[^'\\]|\\.)*'|[^,]+", row)]
 
 

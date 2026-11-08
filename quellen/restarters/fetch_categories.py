@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Ruft die Kategorien von Restarters.net über die öffentliche API ab.
+"""Fetches the categories of Restarters.net via the public API.
 
-Die API liefert unter /api/v2/items alle bisher erfassten Gegenstände mit ihrer Kategorie. Daraus
-ergibt sich die Liste der Kategorien mit Kennung und ob das Gerät Strom braucht. Die Gegenstände
-selbst sind Freitext der Nutzerinnen und Nutzer und werden nicht gespeichert.
+The API returns under /api/v2/items all items recorded so far with their category. From this
+follows the list of categories with identifier and whether the device needs power. The items
+themselves are free text of the users and are not saved.
 
-Aufruf im Wurzelverzeichnis des Repos:
-    python3 quellen/restarters/kategorien_abrufen.py
+Run in the repository root:
+    python3 quellen/restarters/fetch_categories.py
 """
 
 import csv
@@ -17,7 +17,7 @@ from datetime import date
 from pathlib import Path
 
 URL = "https://restarters.net/api/v2/items"
-ZIEL = Path("quellen/restarters/kategorien.csv")
+OUTPUT = Path("quellen/restarters/kategorien.csv")
 
 
 def main():
@@ -28,13 +28,13 @@ def main():
     for item in items:
         categories[item["idcategories"]] = (item["categoryname"], item["powered"])
         count[item["idcategories"]] += 1
-    with ZIEL.open("w", encoding="utf-8", newline="") as out:
+    with OUTPUT.open("w", encoding="utf-8", newline="") as out:
         writer = csv.writer(out, lineterminator="\n")
-        writer.writerow(["id", "kategorie", "strom", "gegenstaende_in_der_api"])
+        writer.writerow(["id", "category", "power", "items_in_api"])
         for ident in sorted(categories):
             name, powered = categories[ident]
             writer.writerow([ident, name, "ja" if powered else "nein", count[ident]])
-    print(f"{len(categories)} Kategorien am {date.today()} nach {ZIEL}")
+    print(f"{len(categories)} Kategorien am {date.today()} nach {OUTPUT}")
 
 
 if __name__ == "__main__":

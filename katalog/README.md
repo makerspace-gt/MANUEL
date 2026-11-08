@@ -6,17 +6,19 @@ Jeder Eintrag hat einen deutschen und einen englischen Teil. Der deutsche Teil d
 
 ## Spalten von kategorien.tsv
 
+Die Spalten haben nach [ADR 29](../docs/adr/0029-zielgruppe-und-sprache-festlegen.adoc) englische Namen, die Inhalte sind deutsch und englisch.
+
 | Spalte | Inhalt |
 |---|---|
-| schluessel | fester Schlüssel des Eintrags, siehe unten |
+| key | fester Schlüssel des Eintrags, siehe unten |
 | name | bevorzugter Name |
-| beschreibung | ein Satz, was gemeint ist und wovon es sich abgrenzt |
-| synonyme | andere Wörter für denselben Gegenstand, getrennt durch einen senkrechten Strich |
-| name_en, beschreibung_en, synonyme_en | dasselbe auf Englisch |
-| ora_gruppe | Produktkategorie nach dem Open Repair Data Standard |
-| zwischenkategorie | eigene feinere Gruppe, wo die ORA-Gruppe zu grob ist |
-| strom | übliche Stromversorgung mit den Werten des Laufzettels |
-| formular_ids | IDs der Kategorien im Laufzettel auf reparatur-initiativen.org, die zu diesem Eintrag gehören |
+| description | ein Satz, was gemeint ist und wovon es sich abgrenzt |
+| synonyms | andere Wörter für denselben Gegenstand, getrennt durch einen senkrechten Strich |
+| name_en, description_en, synonyms_en | dasselbe auf Englisch |
+| ora_group | Produktkategorie nach dem Open Repair Data Standard |
+| intermediate_category | eigene feinere Gruppe, wo die ORA-Gruppe zu grob ist |
+| power | übliche Stromversorgung mit den Werten des Laufzettels |
+| form_ids | IDs der Kategorien im Laufzettel auf reparatur-initiativen.org, die zu diesem Eintrag gehören |
 | status | Entwurf oder bestätigt |
 
 ## Schlüssel
@@ -33,7 +35,7 @@ Bis MANUEL in Zammad läuft, kann sich ein Schlüssel noch ändern, etwa wenn wi
 
 ## Für MANUEL
 
-[eintraege.py](eintraege.py) baut aus dem Katalog die Optionen für die Einordnung. Dafür braucht es die Liste der Kategorien des Laufzettels, die nicht in diesem Repo liegt. [pruefen.py](pruefen.py) prüft Schlüssel, Synonyme, ORA-Gruppen und die Stromversorgung.
+[entries.py](entries.py) baut aus dem Katalog die Optionen für die Einordnung. Dafür braucht es die Liste der Kategorien des Laufzettels, die nicht in diesem Repo liegt. [check.py](check.py) prüft Schlüssel, Synonyme, ORA-Gruppen und die Stromversorgung.
 
 ## Quellen
 

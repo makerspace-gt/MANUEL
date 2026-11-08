@@ -1,34 +1,34 @@
 #!/usr/bin/env python3
-"""Entscheidet, ob MANUEL eine Einordnung einträgt oder nachfragt.
+"""Decides whether MANUEL enters a classification or asks back.
 
-Neben der Schwelle gibt es zwei Regeln aus der Auswertung der sicheren Fehler, siehe docs/einordnung.md,
-Schritt 16. R1 fragt bei Sammelbegriffen nach, deren Bauart das Team unterscheiden will. R2 fragt nach,
-wenn die Wahl ein Bauteil ist oder der Betreff eine Dienstleistung nennt, denn dann steht das Gerät
-meist erst in der Nachricht. Nennt die Nachricht bei einem Sammelbegriff genau eine Bauart, entfällt die
-Rückfrage, siehe aus_nachricht.
+Besides the threshold there are two rules from evaluating the confident errors, see docs/einordnung.md,
+step 16. R1 asks back for collective terms whose type the team wants to distinguish. R2 asks back
+if the choice is a component or the subject names a service, because then the device is
+usually only in the message. If the message names exactly one type for a collective term, the
+follow-up question is dropped, see from_message.
 """
 
 import re
 
-SCHWELLE = 0.7
+THRESHOLD = 0.7
 
-# R1, Einträge und Namen, bei denen das Team nachfragen will, siehe gleichwertig.tsv
-SAMMEL_EINTRAEGE = {
+# R1, entries and names for which the team wants to ask back, see gleichwertig.tsv
+COLLECTIVE_ENTRIES = {
     "Kaffeemaschine", "Mixer", "Ladegerät", "Lautsprecher(boxen)", "Fotoapparat", "Projektor",
     "Grill", "Heizung", "Kopfhörer", "Funkkopfhörer", "Headset",
 }
-SAMMEL_NAMEN = {"Kopfhörer", "Kamera", "Lautsprecher", "Mixer", "Kaffeemaschine", "Ladegerät", "Projektor", "Grill", "Heizung"}
+COLLECTIVE_NAMES = {"Kopfhörer", "Kamera", "Lautsprecher", "Mixer", "Kaffeemaschine", "Ladegerät", "Projektor", "Grill", "Heizung"}
 
-# R2, Bauteile statt Geräte und Dienstleistungen im Betreff
-BAUTEILE = {
+# R2, components instead of devices and services in the subject
+COMPONENTS = {
     "Software", "Display", "USB-Stick", "Gehäuse", "Festplatte", "Akku", "Kabel", "Netzteil", "Stecker", "Adapter",
 }
-DIENSTLEISTUNG = re.compile(r"install|linux|dualboot|3d[- ]?druck(?!er)", re.IGNORECASE)
+SERVICE = re.compile(r"install|linux|dualboot|3d[- ]?druck(?!er)", re.IGNORECASE)
 
 
-# Begriffe in der Nachricht, die einen Sammelbegriff auflösen. Passt genau ein genauerer Eintrag,
-# entfällt die Rückfrage. Passen mehrere oder keiner, bleibt sie.
-AUFLOESUNG = {
+# Terms in the message that resolve a collective term. If exactly one more specific entry matches,
+# the follow-up question is dropped. If several or none match, it stays.
+RESOLUTION = {
     "Kaffeemaschine": {
         "Pad-/Kapsel-Kaffeemaschine": r"nespresso|kapsel|senseo|dolce ?gusto|tassimo|cafissimo|\bpads?\b",
         "Kaffeevollautomat": r"vollautomat|mahlwerk|bohnen|brüheinheit|brühgruppe|\bjura\b|saeco|caffeo|magnifica",
@@ -79,44 +79,44 @@ AUFLOESUNG = {
 }
 
 
-AUFLOESUNG["Funkkopfhörer"] = AUFLOESUNG["Headset"] = AUFLOESUNG["Kopfhörer"]
-AUFLOESUNG["Lautsprecher"] = AUFLOESUNG["Lautsprecher(boxen)"]
-AUFLOESUNG["Kamera"] = AUFLOESUNG["Fotoapparat"]
+RESOLUTION["Funkkopfhörer"] = RESOLUTION["Headset"] = RESOLUTION["Kopfhörer"]
+RESOLUTION["Lautsprecher"] = RESOLUTION["Lautsprecher(boxen)"]
+RESOLUTION["Kamera"] = RESOLUTION["Fotoapparat"]
 
 
-def aus_nachricht(eintrag, name, text):
-    """Liefert den genaueren Eintrag, wenn die Nachricht genau einen nennt, sonst None.
+def from_message(entry, name, text):
+    """Returns the more specific entry if the message names exactly one, otherwise None.
 
-    eintrag ist der gewählte Eintrag, name der gewählte Name ohne Oberkategorie.
+    entry is the chosen entry, name the chosen name without the top category.
     """
-    regeln = AUFLOESUNG.get(eintrag) or AUFLOESUNG.get(name)
-    if not regeln or not text:
+    rules = RESOLUTION.get(entry) or RESOLUTION.get(name)
+    if not rules or not text:
         return None
-    treffer = [ziel for ziel, muster in regeln.items() if re.search(muster, text, re.IGNORECASE)]
-    return treffer[0] if len(treffer) == 1 else None
+    hits = [specific for specific, pattern in rules.items() if re.search(pattern, text, re.IGNORECASE)]
+    return hits[0] if len(hits) == 1 else None
 
 
-def grund(eintrag, name, betreff, sicherheit, schwelle=SCHWELLE):
-    """Liefert den Grund für eine Rückfrage oder None, wenn MANUEL die Einordnung einträgt.
+def reason(entry, name, subject, confidence, threshold=THRESHOLD):
+    """Returns the reason for a follow-up question or None if MANUEL enters the classification.
 
-    eintrag ist der zusammengefasste Eintrag, name der gewählte Name ohne Oberkategorie.
+    entry is the merged entry, name the chosen name without the top category.
     """
-    if sicherheit < schwelle:
+    if confidence < threshold:
         return "unsicher"
-    if eintrag in SAMMEL_EINTRAEGE or name in SAMMEL_NAMEN:
+    if entry in COLLECTIVE_ENTRIES or name in COLLECTIVE_NAMES:
         return "Sammelbegriff"
-    if eintrag in BAUTEILE:
+    if entry in COMPONENTS:
         return "Bauteil"
-    if DIENSTLEISTUNG.search(betreff or ""):
+    if SERVICE.search(subject or ""):
         return "Dienstleistung"
     return None
 
 
 def main():
-    """Löst Sammelbegriffe in einem Ergebnis von echt_vertreter.py über die Nachrichten auf.
+    """Resolves collective terms in a result of real_representatives.py via the messages.
 
-    Aufruf:
-        python3 rueckfrage.py <Ergebnis.jsonl> <nachrichten.json> <Ausgabe.jsonl>
+    Usage:
+        python3 follow_up.py <result.jsonl> <nachrichten.json> <output.jsonl>
     """
     import json
     import sys
@@ -128,7 +128,7 @@ def main():
             row = json.loads(line)
             if row.get("rueckfrage") == "Sammelbegriff":
                 text = row["titel"] + "\n" + (messages.get(row["id"], {}).get("text") or "")
-                target = aus_nachricht(row["kategorie"], row["name"].split(" / ", 1)[-1], text)
+                target = from_message(row["kategorie"], row["name"].split(" / ", 1)[-1], text)
                 if target:
                     row["kategorie_vorher"], row["kategorie"] = row["kategorie"], target
                     row["rueckfrage"] = None

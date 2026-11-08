@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Ordnet Tickets mit dem Katalog ein.
+"""Classifies tickets with the catalog.
 
-Die Ähnlichkeitssuche nutzt Name und Synonyme jedes Eintrags, das Decision-Modell bekommt die
-Beschreibung als Erläuterung der Option. Einträge ohne Beschreibung gehen nur mit dem Namen ein.
-Die Tickets liegen nur lokal und gehören nicht ins Repo.
+The similarity search uses name and synonyms of each entry, the decision model gets the
+description as an explanation of the option. Entries without a description enter with their name only.
+The tickets exist only locally and do not belong in the repo.
 
-Aufruf:
-    python3 echt_katalog.py <tickets.json> <eintraege.json> <Ausgabe.jsonl> <Modell> [Text] [Anzahl]
+Usage:
+    python3 real_catalog.py <tickets.json> <eintraege.json> <output.jsonl> <model> [text] [count]
 
-eintraege.json ist eine Liste mit name, beschreibung und synonyme je Eintrag. Text legt fest, was das
-Decision-Modell zu jeder Option sieht: beschreibung (nur die Beschreibung), synonyme (Name und
-Synonyme) oder ohne_abgrenzung (Name, Synonyme und Beschreibung ohne die Sätze über eigene Einträge).
+eintraege.json is a list with name, beschreibung and synonyme per entry. Text sets what the
+decision model sees for each option, beschreibung (only the description), synonyme (name and
+synonyms) or ohne_abgrenzung (name, synonyms and description without the sentences about own entries).
 """
 
 import json
@@ -19,11 +19,11 @@ import sys
 import time
 
 from decision import post
-from echt2 import embed, unit
+from real2 import embed, unit
 
 
 def option(entry, mode):
-    """Der Text, den das Decision-Modell zu einer Option sieht."""
+    """The text the decision model sees for an option."""
     if mode == "beschreibung":
         return entry["beschreibung"] or None
     words = ", ".join([entry["name"]] + entry["synonyme"])
@@ -68,7 +68,7 @@ def main():
                 })["answers"]["kategorie"]
                 row["kategorie"] = answer["choice"]
                 row["kategorie_p"] = answer["probabilities"][answer["choice"]]
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

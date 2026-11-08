@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Prüft Decision-Modelle mit den weiteren Fragen an den Tickets aus zusatz.tsv.
+"""Tests decision models with the further questions on the tickets from zusatz.tsv.
 
-Aufruf im Verzeichnis eval/decision:
-    python3 zusatz.py lauf <Ausgabedatei.jsonl> <Modell> [de|en]
-    python3 zusatz.py auswertung <Verzeichnis>
+Run in the directory eval/decision:
+    python3 extra.py lauf <output.jsonl> <model> [de|en]
+    python3 extra.py auswertung <directory>
 """
 
 import json
@@ -118,7 +118,7 @@ def run(output, model, lang):
                 row["ist"] = {
                     name: value.get("choice", value.get("noul")) for name, value in reply.items()
                 }
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

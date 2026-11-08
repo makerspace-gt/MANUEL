@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Ordnet Tickets anhand der ersten Nachricht ein, wie sie beim Eingang vorliegt.
+"""Classifies tickets by the first message as it arrives.
 
-Pflichttexte vom Empfang ersetzt das Skript durch Betreff und Defekt. Neben Kategorie und
-Stromversorgung fragt es, ob Gegenstand und Defekt erkennbar sind und ob es um mehrere
-Gegenstände geht. Die Tickets liegen nur lokal und gehören nicht ins Repo.
+The script replaces mandatory texts from the reception with subject and defect. Besides category and
+power supply it asks whether item and defect are recognisable and whether the request is about several
+items. The tickets exist only locally and do not belong in the repo.
 
-Aufruf:
-    python3 echt4.py <tickets.json> <nachrichten.json> <cf-mf.csv> <Ausgabe.jsonl> <Modell>
+Usage:
+    python3 real4.py <tickets.json> <nachrichten.json> <cf-mf.csv> <output.jsonl> <model>
 """
 
 import csv
@@ -16,7 +16,7 @@ import sys
 import time
 
 from decision import post
-from echt2 import embed, unit
+from real2 import embed, unit
 
 PLACEHOLDER = re.compile(
     r"^(kam spontan vorbei|wurde spontan mitgebracht|handschriftliche notiz ins zammad übertragen.*|intern)?$",
@@ -24,7 +24,7 @@ PLACEHOLDER = re.compile(
 )
 FORM = re.compile(r"Was bringst du mit\?:\s*(.*?)\s*Was ist daran defekt\?:\s*(.*)", re.DOTALL)
 VOICEMAIL = "Folgende Nachricht wurde hinterlassen:"
-STROM = {
+POWER = {
     "230 V": "Direkt am Stromnetz über Stecker und Kabel",
     "mit Netzteil": "Über ein externes Netzteil",
     "Akku": "Mit eingebautem oder wechselbarem Akku",
@@ -35,7 +35,7 @@ STROM = {
 
 
 def message(ticket, entry):
-    """Liefert den Text und woher er stammt."""
+    """Returns the text and where it comes from."""
     text = (entry.get("text") or "").strip()
     if PLACEHOLDER.match(text):
         fallback = ticket["titel"]
@@ -47,7 +47,7 @@ def message(ticket, entry):
     form = FORM.search(text)
     if form:
         return f"Gegenstand: {form.group(1)}. Defekt: {form.group(2)}", "formular"
-    # Legen Engagierte das Ticket selbst an, ist der Betreff leer und der Titel nennt oft erst den Gegenstand
+    # If volunteers create the ticket themselves, the subject is empty and the title often names the item first
     title = (entry.get("titel") or ticket["titel"] or "").strip()
     if not (entry.get("betreff") or "").strip() and title:
         return f"Titel: {title}\n{text}", "notiz mit titel"
@@ -70,7 +70,7 @@ def main():
     messages = json.load(open(messages_file, encoding="utf-8"))
 
     questions = {
-        "strom": {"type": "choice", "instructions": "Womit wird der Gegenstand betrieben?", "criteria": STROM},
+        "strom": {"type": "choice", "instructions": "Womit wird der Gegenstand betrieben?", "criteria": POWER},
         "gegenstand": yes_no(
             "Geht aus dem Text hervor, welcher Gegenstand repariert werden soll?",
             "Ja, der Gegenstand ist benannt",
@@ -120,7 +120,7 @@ def main():
                 row["strom_p"] = answers["strom"]["probabilities"][row["strom"]]
                 for name in ("gegenstand", "defekt", "mehrere"):
                     row[name] = answers[name]["noul"]
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

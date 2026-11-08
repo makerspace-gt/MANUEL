@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Lässt das Sprachmodell unsichere Einordnungen aus echt2.py neu entscheiden.
+"""Lets the language model decide again on uncertain classifications from real2.py.
 
-Es bekommt dieselbe Liste der ähnlichsten Kategorien und darf auch eine neue Unterkategorie
-vorschlagen oder ?? antworten. Die Tickets liegen nur lokal und gehören nicht ins Repo.
+It gets the same list of the most similar categories and may also propose a new subcategory
+or answer ??. The tickets exist only locally and do not belong in the repo.
 
-Aufruf:
-    python3 echt3.py <tickets.json> <cf-mf.csv> <d3.jsonl> <Ausgabe.jsonl> <Modell> [Schwelle]
+Usage:
+    python3 real3.py <tickets.json> <cf-mf.csv> <d3.jsonl> <output.jsonl> <model> [threshold]
 """
 
 import csv
@@ -14,7 +14,7 @@ import sys
 import time
 
 from decision import post
-from echt2 import embed, unit
+from real2 import embed, unit
 
 NEW = "NEU"
 UNKNOWN = "??"
@@ -78,7 +78,7 @@ def main():
                     "messages": [{"role": "user", "content": prompt}],
                 })
                 row.update(json.loads(reply["message"]["content"]))
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

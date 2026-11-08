@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Ordnet Tickets in Stufen nach der ABC-Klasse der Einträge ein.
+"""Classifies tickets in stages by the ABC class of the entries.
 
-Erst wählt das Decision-Modell aus den ähnlichsten A-Einträgen. Ist es unsicher, folgt eine Runde mit
-B-Einträgen, danach mit C-Einträgen. Die Sieger der Runden treten in einer Endrunde gegeneinander an,
-weil die Sicherheit aus Runden mit verschiedenen Optionen nicht vergleichbar ist. Jede Runde wird
-gespeichert, damit sich andere Regeln ohne neuen Lauf prüfen lassen.
-Die Tickets liegen nur lokal und gehören nicht ins Repo.
+First the decision model chooses from the most similar A entries. If it is uncertain, a round with
+B entries follows, then one with C entries. The winners of the rounds compete in a final round,
+because the confidence from rounds with different options is not comparable. Every round is
+saved so that other rules can be tested without a new run.
+The tickets exist only locally and do not belong in the repo.
 
-Aufruf:
-    python3 echt_abc.py <tickets.json> <eintraege.json> <Ausgabe.jsonl> <Modell> [Schwelle] [Anzahl]
+Usage:
+    python3 real_abc.py <tickets.json> <eintraege.json> <output.jsonl> <model> [threshold] [count]
 
-eintraege.json ist eine Liste mit name und klasse (A, B oder C) je Eintrag.
+eintraege.json is a list with name and klasse (A, B or C) per entry.
 """
 
 import json
@@ -18,7 +18,7 @@ import sys
 import time
 
 from decision import post
-from echt2 import embed, unit
+from real2 import embed, unit
 
 QUESTION = "Welche Kategorie beschreibt diesen Gegenstand am besten?"
 
@@ -56,10 +56,10 @@ def main():
                 query = unit(embed([state])[0])
                 scored = sorted(((sum(a * b for a, b in zip(query, v)), i)
                                  for i, v in enumerate(vectors)), reverse=True)
-                for klasse in "ABC":
-                    shortlist = [names[i] for _, i in scored if classes[i] == klasse][:size]
+                for abc_class in "ABC":
+                    shortlist = [names[i] for _, i in scored if classes[i] == abc_class][:size]
                     choice, p = choose(state, shortlist, model)
-                    row["runden"].append({"klasse": klasse, "kategorie": choice, "p": p})
+                    row["runden"].append({"klasse": abc_class, "kategorie": choice, "p": p})
                     if p >= threshold:
                         break
                 winners = [r["kategorie"] for r in row["runden"]]
@@ -68,7 +68,7 @@ def main():
                 else:
                     row["kategorie"], row["kategorie_p"] = choose(state, winners, model)
                     row["endrunde"] = True
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

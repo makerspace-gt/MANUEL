@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Wertet die Ergebnisse von decision.py aus.
+"""Evaluates the results of decision.py.
 
-Aufruf im Verzeichnis eval/decision:
-    python3 auswerten.py [Verzeichnis] [--details Dateiname]
+Run in the directory eval/decision:
+    python3 evaluate.py [directory] [--details file name]
 """
 
 import json
@@ -18,7 +18,7 @@ def read(path):
 
 
 def auc(rows):
-    """Anteil der Paare, in denen ein gefährlicher Fall höher liegt als ein harmloser."""
+    """Share of pairs in which a dangerous case ranks higher than a harmless one."""
     high = [row["sicherheit"] for row in rows if row["soll_sicherheit"]]
     low = [row["sicherheit"] for row in rows if not row["soll_sicherheit"]]
     pairs = sum((a > b) + 0.5 * (a == b) for a in high for b in low)

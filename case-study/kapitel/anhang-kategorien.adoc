@@ -2,16 +2,18 @@
 [[anhang-kategorien]]
 == Kategorien der Partner nach ORA-Gruppen
 
-Jede Zeile ist eine ORA-Gruppe. Jede Zelle nennt die Zahl der Einträge eines Partners in dieser Gruppe und seine drei häufigsten Kategorien mit Anteil. Die letzte Spalte zeigt die Einträge unseres Katalogs. Erzeugt mit {repo}/eval/ora/kategorien_matrix.py[kategorien_matrix.py] aus den Open Repair Data vom Juli 2026, die unter CC BY-SA 4.0 stehen. Die ganze Matrix in einer Tabelle liegt in {repo}/docs/ora/kategorien-matrix.tsv[kategorien-matrix.tsv].
+Jede Zeile ist eine ORA-Gruppe. Jede Zelle nennt die Zahl der Einträge eines Partners in dieser Gruppe und seine drei häufigsten Kategorien mit Anteil. Die letzte Spalte zeigt die Einträge unseres Katalogs. Erzeugt mit {repo}/eval/ora/category_matrix.py[category_matrix.py] aus den Open Repair Data vom Juli 2026, die unter CC BY-SA 4.0 stehen. Die ganze Matrix in einer Tabelle liegt in {repo}/docs/ora/kategorien-matrix.tsv[kategorien-matrix.tsv].
 
 .Kategorien der Partner, Teil 1
-[%header,format=tsv,cols="1,3,2,5,5,5,5,5",.small]
+[format=tsv,cols="1,3,2,5,5,5,5,5",options="header",.small]
 |===
-include::../../docs/ora/kategorien-matrix-teil1.tsv[]
+ID	ORA-Gruppe	Einträge	The Restart Project	Repair Café International	Repair Café Denmark	anstiftung	Repair Cafe Wales
+include::../../docs/ora/kategorien-matrix-teil1.tsv[lines=2..-1]
 |===
 
 .Kategorien der Partner, Teil 2
-[%header,format=tsv,cols="1,3,5,5,5,5,5",.small]
+[format=tsv,cols="1,3,5,5,5,5,5",options="header",.small]
 |===
-include::../../docs/ora/kategorien-matrix-teil2.tsv[]
+ID	ORA-Gruppe	Repair Café Toronto	Repair Connects	Fixit Clinic	iFixit	MANUEL
+include::../../docs/ora/kategorien-matrix-teil2.tsv[lines=2..-1]
 |===

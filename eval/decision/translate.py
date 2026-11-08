@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Lässt das Sprachmodell die Tickets ins Englische übersetzen.
+"""Lets the language model translate the tickets into English.
 
-Damit prüfen wir, ob Decision-Modelle mit übersetztem Text besser werden.
+This tests whether decision models get better with translated text.
 
-Aufruf im Verzeichnis eval/decision:
-    python3 uebersetzen.py <Ausgabedatei.tsv> <Modell>
+Run in the directory eval/decision:
+    python3 translate.py <output.tsv> <model>
 """
 
 import sys

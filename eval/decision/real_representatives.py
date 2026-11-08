@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""Ordnet Tickets mit zusammengefassten Einträgen ein, die unter ihrem passendsten Namen erscheinen.
+"""Classifies tickets with merged entries that appear under their best matching name.
 
-Jeder Eintrag des Katalogs fasst mehrere Namen des Formulars zusammen. Die Ähnlichkeitssuche läuft über
-alle Namen. In der Shortlist erscheint jeder Eintrag nur einmal, und zwar unter dem Namen, der dem Ticket
-am ähnlichsten ist. So sieht das Decision-Modell kurze, genaue Optionen ohne Fast-Dubletten.
+Each catalog entry merges several names of the form. The similarity search runs over
+all names. In the shortlist each entry appears only once, under the name that is most similar
+to the ticket. This way the decision model sees short, precise options without near duplicates.
 
-Mit kaskade wählt das Modell erst aus A-Einträgen, bei Unsicherheit aus B und dann aus C. Die Sieger
-der Runden treten in einer Endrunde gegeneinander an. Jede Runde wird gespeichert.
-Das Feld rueckfrage nennt den Grund, aus dem MANUEL nachfragen würde, siehe rueckfrage.py.
-Die Tickets liegen nur lokal und gehören nicht ins Repo.
+With kaskade the model first chooses from A entries, if uncertain from B and then from C. The winners
+of the rounds compete in a final round. Every round is saved.
+The field rueckfrage gives the reason why MANUEL would ask back, see follow_up.py.
+The tickets exist only locally and do not belong in the repo.
 
-Aufruf:
-    python3 echt_vertreter.py <tickets.json> <eintraege.json> <Ausgabe.jsonl> <Modell> <alle|kaskade|ab> [Schwelle] [Anzahl]
+Usage:
+    python3 real_representatives.py <tickets.json> <eintraege.json> <output.jsonl> <model> <alle|kaskade|ab> [threshold] [count]
 
-eintraege.json ist eine Liste mit name, klasse (A, B oder C) und namen. Die Namen sind die Formularnamen
-und Synonyme, jeweils mit Oberkategorie davor.
+eintraege.json is a list with name, klasse (A, B or C) and namen. The names are the form names
+and synonyms, each with the top category in front.
 """
 
 import json
@@ -22,8 +22,8 @@ import sys
 import time
 
 from decision import post
-from echt2 import embed, unit
-from rueckfrage import grund
+from real2 import embed, unit
+from follow_up import reason
 
 QUESTION = "Welche Kategorie beschreibt diesen Gegenstand am besten?"
 
@@ -38,7 +38,7 @@ def choose(state, options, model):
 
 
 def shortlist(scored, labels, owner, classes, allowed, size):
-    """Die besten Einträge der erlaubten Klassen, jeder unter seinem ähnlichsten Namen."""
+    """The best entries of the allowed classes, each under its most similar name."""
     seen, options = set(), []
     for _, i in scored:
         entry = owner[i]
@@ -94,9 +94,9 @@ def main():
                     row["name"], row["kategorie_p"] = choose(state, winners, model)
                     row["endrunde"] = True
                 row["kategorie"] = entry_of[row["name"]]
-                row["rueckfrage"] = grund(row["kategorie"], row["name"].split(" / ", 1)[-1],
+                row["rueckfrage"] = reason(row["kategorie"], row["name"].split(" / ", 1)[-1],
                                           ticket["titel"], row["kategorie_p"], threshold)
-            except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
+            except Exception as problem:  # An error must not stop the rest of the run
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]
             row["sekunden"] = round(time.monotonic() - start, 3)

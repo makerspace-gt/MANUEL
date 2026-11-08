@@ -14,7 +14,7 @@ python3 eval/restarters/backfill.py --exports "../tickets-Repair Café-Created *
 
 | Feld bei Restarters | Quelle |
 |---|---|
-| Event | letzter Termin der Statistik zwischen Anlegen und Schließen des Tickets, sonst Pending till, wenn es ein Termin ist |
+| Event | letzter Tag mit Datum am Ticket, bei älteren Tickets der Termin im Monat aus dem Tag, sonst der letzte Termin der Statistik zwischen Anlegen und Schließen oder Pending till |
 | `category` | ORA-Gruppe des Eintrags im Katalog nach [ora_to_restarters.tsv](ora_to_restarters.tsv) |
 | `item_type` | englischer Name des Eintrags im Katalog |
 | `brand` | Feld Marke |
@@ -28,14 +28,15 @@ Die Kategorie kommt aus dem Sollwert des Teams, also „Kategorie richtig“ ode
 - **Defekt ist Freitext.** Das Feld hat 480 verschiedene Werte. Nach ADR 36 geht kein Freitext mit, `problem` bleibt deshalb leer.
 - **Vergangene Events lassen sich per API anlegen**, mit `POST /api/v2/events`. Je nach Netzwerk muss ein Event erst freigegeben werden.
 - **Sechs Termine der Statistik liegen nicht auf einem Samstag.** Von Januar bis Juni 2025 stehen dort Sonntage und Montage, etwa der 04.05.2025 für den Laufzettel vom 03.05.2025. Die Vorschau setzt sie auf den Samstag davor und vermerkt das. Besser ist, die Daten in der Statistik zu korrigieren.
-- **Viele Tickets werden vor dem Termin geschlossen.** Ohne Termin dazwischen und ohne Pending till nennt die Vorschau den nächsten Termin nach dem Anlegen als Schätzung.
+- **Die Termine stehen in den Tags.** 2026 trägt fast jedes Ticket das Datum als Tag, 2025 etwa die Hälfte, 2024 nur den Monat. Bei 587 von 636 Tickets stimmt das mit dem letzten Termin zwischen Anlegen und Schließen überein. Die Spalte `date_source` nennt die Herkunft. Ohne Termin bleiben 11 Tickets.
+- **„Abnutzung zu groß“ ist noch offen.** Die Vorschau meldet diese Geräte vorerst als End of life ohne Hindernis, bis wir die Zuordnung erarbeitet haben.
 
 ## Was das Team klären muss
 
 Die Spalte `action` sagt, was mit einem Gerät geschieht. Gemeldet wird nur „melden“. Bei „klären“ steht der Grund in `note`.
 
 - Ergebnisse ohne Entsprechung, etwa „teilweise gelungen“ oder „nicht erfolgt::Fehler nicht gefunden“
-- Einträge ohne englischen Namen im Katalog
+- Einträge ohne englischen Namen im Katalog, die Namen erarbeiten wir noch
 - Größe bei Laptops und Bildschirmen
 - Termin, wo er sich nicht ableiten lässt
 

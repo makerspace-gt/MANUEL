@@ -7,6 +7,7 @@ am ähnlichsten ist. So sieht das Decision-Modell kurze, genaue Optionen ohne Fa
 
 Mit kaskade wählt das Modell erst aus A-Einträgen, bei Unsicherheit aus B und dann aus C. Die Sieger
 der Runden treten in einer Endrunde gegeneinander an. Jede Runde wird gespeichert.
+Das Feld rueckfrage nennt den Grund, aus dem MANUEL nachfragen würde, siehe rueckfrage.py.
 Die Tickets liegen nur lokal und gehören nicht ins Repo.
 
 Aufruf:
@@ -22,6 +23,7 @@ import time
 
 from decision import post
 from echt2 import embed, unit
+from rueckfrage import grund
 
 QUESTION = "Welche Kategorie beschreibt diesen Gegenstand am besten?"
 
@@ -92,6 +94,8 @@ def main():
                     row["name"], row["kategorie_p"] = choose(state, winners, model)
                     row["endrunde"] = True
                 row["kategorie"] = entry_of[row["name"]]
+                row["rueckfrage"] = grund(row["kategorie"], row["name"].split(" / ", 1)[-1],
+                                          ticket["titel"], row["kategorie_p"], threshold)
             except Exception as problem:  # Ein Fehler soll den Rest des Laufs nicht verhindern
                 detail = problem.read().decode() if hasattr(problem, "read") else ""
                 row["fehler"] = f"{problem} {detail}"[:300]

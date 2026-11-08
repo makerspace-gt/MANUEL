@@ -425,6 +425,8 @@ Ein weiterer Lauf ergänzt drei Dinge. Reibe, elektrisch steht mit dem Synonym K
 
 Die Nachricht klärt 6 der 29 Rückfragen bei Sammelbegriffen, alle richtig. Die übrigen Nachrichten nennen nur den Sammelbegriff selbst. Von den 10 Fehlern steht bei fünf das Gerät nur in der Nachricht, vier sind Grenzfälle und einer ist eine echte Verwechslung.
 
+Danach wurde der Katalog auf alle 1.089 Einträge erweitert. Jeder bekommt einen Schlüssel der Form `ORA.anstiftung.eigene`, die Optionen für das Modell baut [eintraege.py](../katalog/eintraege.py) direkt aus dem Katalog. Ein Prüflauf ergab dieselben 10 sicheren Fehler und 98,7 Prozent, mit Nachricht 179 statt 181 Rückfragen.
+
 Auch diese Werte stammen aus denselben Daten, aus denen die Regeln abgeleitet sind, und müssen an neuen Tickets bestätigt werden.
 
 ## Wirkung der Aufbereitung

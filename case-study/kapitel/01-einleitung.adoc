@@ -13,6 +13,7 @@ Dieses Kapitel steht noch in Stichpunkten. Die Tabellen zu Fragen und Lesewegen 
 * Das Repair Café im Makerspace Gütersloh gibt es seit März 2019. Bis zum 7. November 2026 waren es 85 Termine mit 1.485 bearbeiteten Geräten.
 * Ablauf heute, Anfrage per Mail, Telefon oder Formular, Ticket in Zammad seit November 2022, Termin am ersten oder dritten Samstag, Slots von 11 bis 14 Uhr
 * Wer mitmacht, Empfang, Reparierende, Orga
+* Weltweit erhebt das Centre for Sustainable Design in Umfragen, wer Repair Cafés betreibt und wie sie arbeiten, zuerst 2014 und zuletzt 2026 cite:[charter-keiller-2014] cite:[quinton-counter-2026].
 
 === Von der Datenpotenzialanalyse zu MANUEL
 
@@ -20,7 +21,8 @@ Dieses Kapitel steht noch in Stichpunkten. Die Tabellen zu Fragen und Lesewegen 
 * Die Empfehlungen von damals sind feste Wertelisten, der Rohwert bleibt neben dem bereinigten Wert, Menschen kontrollieren die Qualität, und erfasst wird möglichst schon während des Termins.
 * Umgesetzt wurde seitdem Zammad statt Papier, mit Feldern wie Ergebnis samt Grund.
 * Offen blieben die Meldung an die Open Repair Alliance und viele leere Felder, siehe Kapitel 2.
-* Förderung durch die DSEE im Mikroförderprogramm, Bewilligungszeitraum vom 15.09. bis 31.12.2026, Zweckbindung bis 2028
+* Förderung durch die DSEE im Mikroförderprogramm cite:[dsee-2026], Bewilligungszeitraum vom 15.09. bis 31.12.2026, Zweckbindung bis 2028
+* Die EU stärkt mit dem Recht auf Reparatur die Reparatur von Waren cite:[eu-2024-1799]. Reparaturdaten zeigen, wo das nötig ist.
 * Warum ein eigener Mini-PC statt eines Cloud-Dienstes, Daten bleiben im Haus, keine laufenden Kosten für die Nutzung, Unabhängigkeit, auf das Repair Café zugeschnitten
 
 [[fragen]]
@@ -67,7 +69,7 @@ Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Re
 [[vorgehen]]
 === Vorgehen und Quellen
 
-* Die Arbeit ist eine Einzelfallstudie. Nach Yin untersucht eine Fallstudie ein aktuelles Phänomen in seinem realen Umfeld, hier MANUEL im laufenden Repair Café.
+* Die Arbeit ist eine Einzelfallstudie. Eine Fallstudie untersucht ein aktuelles Phänomen in seinem realen Umfeld cite:[yin-2018], hier MANUEL im laufenden Repair Café.
 * Für Daten und Einordnung gelten die Schritte einer Datenanalyse nach cite:[wickham] wie 2022. Die Gegenüberstellung von 2022 und 2026 steht als Tabelle in {repo}/docs/einordnung.md[docs/einordnung.md].
 * Jeder Versuch hält Vorgehen, Ergebnis und Erkenntnis fest. Gemessen wird an Sollwerten, die das Team geprüft hat. Die Trefferquote bekommt ein Intervall nach Wilson, und eine Rückfrage zählt als ohne Fehler.
 * Die Erprobung im Repair Café läuft von Dezember 2026 bis Februar 2027 mit den vier Kennzahlen aus dem Antrag, siehe <<adr-0032>>.
@@ -77,8 +79,8 @@ Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Re
 * Texte sind deutsch, Code ist englisch, dazu kommt ein Abstract auf Englisch, siehe <<adr-0029>> und <<adr-0030>>.
 
 .Quellen für dieses Kapitel
-* cite:[prange-2022], cite:[wickham]
-* Noch zu suchen sind Yin zur Fallstudie, Stichting Repair Café und Netzwerk Reparatur-Initiativen, Studien zu Repair Cafés, der Förderaufruf der DSEE und die EU-Richtlinie zum Recht auf Reparatur.
+* cite:[yin-2018], cite:[charter-keiller-2014], cite:[quinton-counter-2026], cite:[dsee-2026], cite:[eu-2024-1799], cite:[prange-2022], cite:[wickham]
+* Noch zu suchen sind die Seiten von Stichting Repair Café und Netzwerk Reparatur-Initiativen und die Ergebnisse der Umfrage von 2026 im Einzelnen.
 
 .Offen
 * Zahl der Engagierten und Rollen im Team

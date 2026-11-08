@@ -59,7 +59,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 * `d3:9b` trennt an erfundenen Tickets sicherheitsrelevante Fälle fast perfekt <<adr-0003>>.
 * Das Ergebnis ist immer ein gültiger Wert, und die Sicherheit lässt sich über eine Schwelle einstellen.
-* Als Embedding-Modell dient `bge-m3`, mehrsprachig und von Zammad unterstützt <<adr-0021>>.
+* Als Embedding-Modell dient `bge-m3`, mehrsprachig und von Zammad unterstützt <<adr-0021>>. Es unterstützt über 100 Sprachen cite:[chen-2024].
 
 // Ergebnis folgt in Stufe 3, Antwort auf T3.
 
@@ -73,6 +73,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 [NOTE]
 .Quellen und offene Punkte für dieses Kapitel
 ====
-* Noch zu suchen sind Angaben des Herstellers zum Ryzen AI 9 HX 370, die Doku von Ollama und llama.cpp, die Modellkarten von qwen3.6 und d3, das Paper zu BGE-M3 und die Doku von uCore.
+* cite:[chen-2024]
+* Noch zu suchen sind Angaben des Herstellers zum Ryzen AI 9 HX 370, die Doku von Ollama und llama.cpp, die Modellkarten von qwen3.6 und d3 und die Doku von uCore.
 * Offen sind die Messung für k01 und die Ladezeit nach einem Neustart.
 ====

@@ -19,6 +19,7 @@ Dieses Kapitel entsteht mit den Messungen während der Erprobung.
 * Anschaffung laut Antrag bei der DSEE
 * Strom im Leerlauf und unter Last an der Steckdose gemessen, auf ein Jahr hochgerechnet
 * Strompreis am Tag der Messung
+* Generative Modelle brauchen für dieselbe Aufgabe deutlich mehr Energie als spezialisierte Modelle cite:[luccioni-2024]. Das spricht dafür, kleine Modelle wie `d3:9b` für das Einordnen zu nutzen.
 
 === Pflege
 
@@ -47,6 +48,7 @@ Dieses Kapitel entsteht mit den Messungen während der Erprobung.
 [NOTE]
 .Quellen und offene Punkte für dieses Kapitel
 ====
-* Noch zu suchen sind aktuelle Strompreise, Literatur zum Energiebedarf von KI-Inferenz und die Preise der Cloud-Anbieter am Tag der Messung.
+* cite:[luccioni-2024]
+* Noch zu suchen sind aktuelle Strompreise und die Preise der Cloud-Anbieter am Tag der Messung.
 * Offen sind die Messung des Stroms und die Wahl des Cloud-Modells.
 ====

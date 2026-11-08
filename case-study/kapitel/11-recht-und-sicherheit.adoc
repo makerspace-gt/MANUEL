@@ -16,7 +16,8 @@ Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist kein
 
 === Datenschutz
 
-* Rechtsgrundlage für die Verarbeitung der Anfragen
+* Rechtsgrundlage für die Verarbeitung der Anfragen nach der DSGVO cite:[eu-2016-679]
+* Die Datenschutzkonferenz gibt eine Checkliste für Auswahl und Einsatz von KI cite:[dsk-2024].
 * Löschfristen, Tickets nach drei Jahren, Tickets mit dem Tag `abgelehnt` nach drei Monaten
 * Verzeichnis von Verarbeitungstätigkeiten und Datenschutzhinweis, angelegt in it-infrastructure
 * Testdaten nur lokal <<adr-0002>>, Verschlüsselung des Mini-PCs vor dem Umzug in den Makerspace
@@ -24,21 +25,22 @@ Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist kein
 
 === KI-Verordnung
 
-* Einordnung von MANUEL nach Risiko
-* Pflicht zur KI-Kompetenz für alle, die mit dem System arbeiten
+* Einordnung von MANUEL nach Risiko cite:[eu-2024-1689]
+* Pflicht zur KI-Kompetenz nach Artikel 4, sie gilt seit dem 2. Februar 2025.
+* Transparenzpflichten nach Artikel 50 gelten ab dem 2. August 2026.
 * Transparenz, MANUEL schreibt nur interne Notizen und nie an Gäste <<adr-0017>>
 
 === Schutz vor Missbrauch
 
-* Gäste schreiben frei, ein Text kann wie eine Anweisung an das Modell aussehen. Der Testsatz enthält dafür eigene erfundene Tickets der Gruppe „angriff“.
+* Gäste schreiben frei, ein Text kann wie eine Anweisung an das Modell aussehen. Diese Prompt Injection steht an erster Stelle der Risiken für Anwendungen mit Sprachmodellen cite:[owasp-llm-2025]. Der Testsatz enthält dafür eigene erfundene Tickets der Gruppe „angriff“.
 * Agenten in Zammad bekommen nie die Aktion zum Versand von E-Mails oder SMS.
-* Bei der Websuche gehen nur Marke und Modell nach außen, Inhalte von Webseiten steuern das Modell nicht <<adr-0035>>.
+* Bei der Websuche gehen nur Marke und Modell über eine eigene Instanz von SearXNG nach außen cite:[searxng], Inhalte von Webseiten steuern das Modell nicht <<adr-0035>>.
 * Zugang zu Ollama nur über NetBird <<adr-0020>>
 
 === Haftung und Urheberrecht
 
 * Hinweise zur Sicherheit bei Netzspannung, Akkus und Gas, im Zweifel an eine Fachperson verweisen
-* Prüfung nach DIN VDE 0701-0702 nach einer Reparatur
+* Prüfung nach einer Reparatur nach DIN EN 50678 (VDE 0701), die DIN VDE 0701-0702 ersetzt hat cite:[din-vde-0701-0702]
 * Anleitungen anderer werden verlinkt, nicht kopiert.
 
 // Ergebnis folgt in Stufe 3, Antwort auf T9.
@@ -53,6 +55,7 @@ Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist kein
 [NOTE]
 .Quellen und offene Punkte für dieses Kapitel
 ====
-* Noch zu suchen sind die DSGVO, die KI-Verordnung mit Artikel 4 und 50, die Orientierungshilfe der Datenschutzkonferenz zu KI, das BSI zu großen Sprachmodellen, die OWASP Top 10 für LLM-Anwendungen und Hinweise zu Haftung in Reparatur-Initiativen.
-* Offen sind die Rechtsgrundlage im Detail und die Frage, welche Pflichten der KI-Verordnung für MANUEL tatsächlich gelten.
+* cite:[eu-2016-679], cite:[eu-2024-1689], cite:[dsk-2024], cite:[owasp-llm-2025], cite:[searxng], cite:[din-vde-0701-0702]
+* Noch zu suchen sind das Papier des BSI zu generativen KI-Modellen und Hinweise zu Haftung in Reparatur-Initiativen.
+* Offen sind die Rechtsgrundlage im Detail und die Frage, welche Pflichten der KI-Verordnung für MANUEL tatsächlich gelten. Laut Fachpresse hat der Digital Omnibus 2026 Fristen geändert, die geltende Fassung ist auf EUR-Lex zu prüfen.
 ====

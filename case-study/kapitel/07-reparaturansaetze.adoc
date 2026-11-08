@@ -12,7 +12,7 @@ Dieses Kapitel steht noch in Stichpunkten. Die Prompts und Tests dazu entstehen 
 .Kernaussagen
 * Ein Reparaturansatz ist Hilfe zur Selbsthilfe, also Schritte zum Mitmachen mit dem nötigen Werkzeug und möglichen Ersatzteilen.
 * Sicherheit geht vor. Bei Netzspannung, Akkus, großen Kondensatoren und Gas gehört immer ein Hinweis dazu.
-* MANUEL erfindet nichts. Was es nicht weiß, schreibt es als unbekannt.
+* MANUEL erfindet nichts. Was es nicht weiß, schreibt es als unbekannt. Sprachmodelle neigen sonst dazu, plausible, aber falsche Angaben zu machen cite:[huang-2024].
 
 .Beispiel k01, der Wasserkocher
 ****
@@ -32,11 +32,12 @@ Dieses Kapitel steht noch in Stichpunkten. Die Prompts und Tests dazu entstehen 
 * Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt.
 * Im Zweifel verweist MANUEL an eine Fachperson.
 * Das Feld „VDE 0701/0702 geprüft“ hat in allen Tickets von 2024 bis 2026 einen Wert. Die Prüfung nach einer Reparatur ist also Teil des Ablaufs.
+* Das Feld ist nach DIN VDE 0701-0702 benannt. Diese Norm ist ersetzt, für die Prüfung nach einer Reparatur gilt jetzt DIN EN 50678 (VDE 0701) cite:[din-vde-0701-0702].
 
 === Anleitungen und Angaben zum Gerät
 
 * Marke, Bezeichnung und Datumscode kommen vom Foto des Typenschilds <<adr-0034>>.
-* Anleitungen, Ersatzteile und Explosionszeichnungen findet eine eigene Suche nur mit Marke und Modell <<adr-0035>>.
+* Anleitungen, Ersatzteile und Explosionszeichnungen findet eine eigene Suche nur mit Marke und Modell <<adr-0035>>, dazu die API von iFixit cite:[ifixit-api].
 * Anleitungen werden verlinkt, nicht kopiert.
 
 === Bewertung
@@ -57,6 +58,7 @@ Dieses Kapitel steht noch in Stichpunkten. Die Prompts und Tests dazu entstehen 
 [NOTE]
 .Quellen und offene Punkte für dieses Kapitel
 ====
-* Noch zu suchen sind DIN VDE 0701-0702, Hinweise zu Sicherheit und Haftung für Reparatur-Initiativen, iFixit und seine API sowie Literatur zu erfundenen Antworten von Sprachmodellen.
-* Offen sind Prompt, Testsatz und Bewertungsschema.
+* cite:[huang-2024], cite:[din-vde-0701-0702], cite:[ifixit-api]
+* Noch zu suchen sind Hinweise zu Sicherheit und Haftung für Reparatur-Initiativen und der Text von DIN EN 50678.
+* Offen sind Prompt, Testsatz und Bewertungsschema. Offen ist auch, ob das Feld in Zammad nach der neuen Norm umbenannt werden soll und wer nach ihr prüfen darf.
 ====

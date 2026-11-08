@@ -1,0 +1,41 @@
+Feld,Wert,Text
+InfoSheets[new_subcategory_parent_id],630,3D-Reparatur
+InfoSheets[new_subcategory_parent_id],90,Computer
+InfoSheets[new_subcategory_parent_id],87,Elektro divers
+InfoSheets[new_subcategory_parent_id],96,Fahrrad
+InfoSheets[new_subcategory_parent_id],88,Haushaltsgeräte
+InfoSheets[new_subcategory_parent_id],397,Leder
+InfoSheets[new_subcategory_parent_id],94,Metallbearbeitung
+InfoSheets[new_subcategory_parent_id],113,Möbel/Holz
+InfoSheets[new_subcategory_parent_id],398,Schmuck
+InfoSheets[new_subcategory_parent_id],178,Smartphone/Tablet
+InfoSheets[new_subcategory_parent_id],95,Textilien
+InfoSheets[new_subcategory_parent_id],89,Unterhaltungselektronik
+InfoSheets[new_subcategory_parent_id],126,Upcycling/Basteln
+InfoSheets[form_field_options][_ids][],1,mit Netzteil
+InfoSheets[form_field_options][_ids][],2,230 V
+InfoSheets[form_field_options][_ids][],3,Batterie
+InfoSheets[form_field_options][_ids][],4,Akku
+InfoSheets[form_field_options][_ids][],5,ohne Kabel (Mechanik)
+InfoSheets[defect_found_reason],1,erfolgreich abgeschlossen
+InfoSheets[defect_found_reason],2,"vertagt, weil..."
+InfoSheets[defect_found_reason],3,"nicht erfolgt, weil..."
+InfoSheets[defect_found_reason],4,Abbruch: Gerät darf nicht mehr genutzt werden
+InfoSheets[repair_postponed_reason],1,Hilfsmittel oder Zubehör fehlt
+InfoSheets[repair_postponed_reason],2,Ersatzteilbesorgung durch Besucher
+InfoSheets[repair_postponed_reason],3,Ersatzteilbesorgung durch Reparateur
+InfoSheets[no_repair_reason],1,hat noch Garantie
+InfoSheets[no_repair_reason],2,Hilfsmittel oder Zubehör fehlt
+InfoSheets[no_repair_reason],11,Öffnung des Gerätes nicht möglich
+InfoSheets[no_repair_reason],3,Gerät nicht komplett
+InfoSheets[no_repair_reason],4,Ersatzteil nicht erhältlich
+InfoSheets[no_repair_reason],12,Ersatzteil zu teuer
+InfoSheets[no_repair_reason],13,Reparaturinformationen nicht verfügbar
+InfoSheets[no_repair_reason],5,Teilnutzung möglich
+InfoSheets[no_repair_reason],14,Abnutzung zu groß
+InfoSheets[no_repair_reason],6,Gesamtaufwand zu hoch
+InfoSheets[no_repair_reason],9,zu lange Wartezeit
+InfoSheets[no_repair_reason],15,Fehler nicht gefunden
+InfoSheets[no_repair_reason],10,Sonstiges
+InfoSheets[device_must_not_be_used_anymore],7,technisch nicht möglich
+InfoSheets[device_must_not_be_used_anymore],8,nicht betriebssicher

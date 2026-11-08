@@ -1,0 +1,1209 @@
+Oberkategorie,Kategorie,id,bestaetigt
+Computer,All-in-One-PC,1838,ja
+Computer,Beamer,570,ja
+Computer,Bildschirm,487,ja
+Computer,Computermaus,447,ja
+Computer,Desktopcomputer,405,ja
+Computer,Diskettenlaufwerk,691,ja
+Computer,Dockingstation,1782,ja
+Computer,Drucker,445,ja
+Computer,DVD Laufwerk,1217,ja
+Computer,Festplatte,580,ja
+Computer,Flachbettscanner,1678,ja
+Computer,Gameboy,648,ja
+Computer,Grafikkarte,1722,ja
+Computer,Grafiktablet / Maltablet / Zeichentablet,1098,ja
+Computer,Kopierer,670,ja
+Computer,Laptop / Notebook,406,ja
+Computer,Mainboard,744,ja
+Computer,Mini-PC,1614,ja
+Computer,Monitor,965,ja
+Computer,NAS / Netzwerkspeicher,1031,ja
+Computer,Netzteil,565,ja
+Computer,Adapter,638,ja
+Computer,Platine,1238,ja
+Computer,Router / Modem,671,ja
+Computer,Scanner,449,ja
+Computer,Schachcomputer,1048,ja
+Computer,Schneideplotter,1330,ja
+Computer,Schrittzähler,726,ja
+Computer,Single-Board-Computer,702,ja
+Computer,Smartwatch,871,ja
+Computer,Software,1391,ja
+Computer,Taschenrechner,750,ja
+Computer,Tastatur,446,ja
+Computer,Time Capsule,862,ja
+Computer,Trackball,1604,ja
+Computer,USB-Hub,639,ja
+Computer,USB Klemmlampe,1521,ja
+Computer,USB-Soundkarte,743,ja
+Computer,USB-Stick,654,ja
+3D-Reparatur,Gehäuse,1308,ja
+3D-Reparatur,KFZ - Rücksitz,1668,ja
+3D-Reparatur,Kleinzentrifuge,1574,ja
+3D-Reparatur,Naben-Abstandhalter,1647,ja
+3D-Reparatur,Pavillon,1117,ja
+Elektro divers,Modellflugzeug,1738,ja
+Elektro divers,Heißluftföhn / Heißluftgebläse,1739,ja
+Elektro divers,Starthilfe,1741,ja
+Elektro divers,Wechselrichter,521,ja
+Elektro divers,3D-Drucker,1236,ja
+Elektro divers,3D-Stift,1685,ja
+Elektro divers,"Adventskalender, elektrisch",1746,ja
+Elektro divers,Akku,969,ja
+Elektro divers,Akku Ladegerät,1394,ja
+Elektro divers,Akku-Leuchte,1284,ja
+Elektro divers,"Akku, mechanisch",500,ja
+Elektro divers,Akkukompressor,1780,ja
+Elektro divers,Akkuschrauber / Akkubohrer,477,ja
+Elektro divers,Alarmanlage,863,ja
+Elektro divers,Anrufbeantworter,918,ja
+Elektro divers,Anzeigetafel,1255,ja
+Elektro divers,Arduino,1605,ja
+Elektro divers,Armbanduhr,793,ja
+Elektro divers,Außenstrahler,1088,ja
+Elektro divers,Antenne,1383,ja
+Elektro divers,Autobatterie-Ladegerät,498,ja
+Elektro divers,Autodisplay,590,ja
+Elektro divers,Autoschlüssel,656,ja
+Elektro divers,Babyphone,558,ja
+Elektro divers,Badewannenlifter,1151,ja
+Elektro divers,Bandsäge,772,ja
+Elektro divers,Bandschleifer,959,ja
+Elektro divers,Batterietester,1072,ja
+Elektro divers,Modellbau-Bausatz,1755,ja
+Elektro divers,Beatmungsgerät,1115,ja
+Elektro divers,Betonmischer,698,ja
+Elektro divers,Bewässerungspumpe,1326,ja
+Elektro divers,Bewegungsmelder,817,ja
+Elektro divers,Mikroskop,778,ja
+Elektro divers,Blinkerrelais,1291,ja
+Elektro divers,Blinklicht,1625,ja
+Elektro divers,Blitzgerät,625,ja
+Elektro divers,Blutdruckmessgerät,496,ja
+Elektro divers,Bohrhammer,722,ja
+Elektro divers,Bohrmaschine,476,ja
+Elektro divers,Bootsmotor,800,ja
+Elektro divers,Braille-Lesegerät,1601,ja
+Elektro divers,Braille-Schreibmaschine,1608,ja
+Elektro divers,Braillezeile,1455,ja
+Elektro divers,Brandmalgerät,1298,ja
+Elektro divers,Braukessel,1275,ja
+Elektro divers,Brillenreinigungsgerät,1810,ja
+Elektro divers,Brutschrank,1495,ja
+Elektro divers,Campinglampe,1850,ja
+Elektro divers,Carrerabahn,1325,ja
+Elektro divers,Ceranfeld,1335,ja
+Elektro divers,Deckenbeleuchtung / Deckenfluter,829,ja
+Elektro divers,Dekopiersäge,1140,ja
+Elektro divers,Deltaschleifer,798,ja
+Elektro divers,Desinfektionsgerät,811,ja
+Elektro divers,Dickenhobel,1144,ja
+Elektro divers,Diktiergerät,607,ja
+Elektro divers,Dimmerpack,1094,ja
+Elektro divers,Drehstrommotor,1677,ja
+Elektro divers,Dreieckschleifer,1179,ja
+Elektro divers,Dremel,692,ja
+Elektro divers,Drumcomputer,991,ja
+Elektro divers,E-Auto,730,ja
+Elektro divers,E-Gehrungssäge,972,ja
+Elektro divers,E-Gitarre,1375,ja
+Elektro divers,E-Ladekabel,1158,ja
+Elektro divers,E-Piano,929,ja
+Elektro divers,E-Zigarette,961,ja
+Elektro divers,Effektgerät,1293,ja
+Elektro divers,E-Ladegerät,1201,ja
+Elektro divers,Elektrische Höhenverstellung,954,ja
+Elektro divers,"Malstift, elektrisch",992,ja
+Elektro divers,Muskelstimulator,1478,ja
+Elektro divers,Kinder-Elektroauto,1561,ja
+Elektro divers,Elektrohobel,847,ja
+Elektro divers,elektronischer Schweif,1389,ja
+Elektro divers,"Schlagzeug, elektronisch",1818,ja
+Elektro divers,Elektrorasierer,474,ja
+Elektro divers,Endoskop,1750,ja
+Elektro divers,Entlötstation,1339,ja
+Elektro divers,Epilierer,1231,ja
+Elektro divers,Etikettiergerät,1148,ja
+Elektro divers,Falzmaschine,974,ja
+Elektro divers,Faxgerät,584,ja
+Elektro divers,Fitnesstracker / Pulsuhr,1133,ja
+Elektro divers,Fitnesstrainer,766,ja
+Elektro divers,Fledermausdetektor,1207,ja
+Elektro divers,Flex,799,ja
+Elektro divers,Fön,400,ja
+Elektro divers,Frequenzumrichter,655,ja
+Elektro divers,Funkboot /Modellboot,1665,ja
+Elektro divers,Funkglocke /Funkklingel,1786,ja
+Elektro divers,Funksteckdose,801,ja
+Elektro divers,Funkuhr,850,ja
+Elektro divers,Fußpflegegerät,1005,ja
+Elektro divers,Fußschalter,1273,ja
+Elektro divers,Garagenöffner,941,ja
+Elektro divers,Garten,533,ja
+Elektro divers,Gartenhäcksler,976,ja
+Elektro divers,Gartenlampe,1599,ja
+Elektro divers,Gasheizung Regelung,1258,ja
+Elektro divers,Gasofen,824,ja
+Elektro divers,Geigerzähler,1630,ja
+Elektro divers,Getreidemühle,973,ja
+Elektro divers,Glasschleifer,1393,ja
+Elektro divers,Globus,1110,ja
+Elektro divers,Graviergerät,651,ja
+Elektro divers,Guitarren-Pedal-Board,1813,ja
+Elektro divers,Hängeleuchte,1288,ja
+Elektro divers,Handkreissäge,946,ja
+Elektro divers,Haussprechanlage,1044,ja
+Elektro divers,Heckenschere,492,ja
+Elektro divers,Heimorgel,1884,ja
+Elektro divers,Heißklebemaschine,989,ja
+Elektro divers,Heißklebepistole,640,ja
+Elektro divers,Heißluftpistole,637,ja
+Elektro divers,Heiz-Socken,1032,ja
+Elektro divers,Heizschuh,1361,ja
+Elektro divers,Heizstein,864,ja
+Elektro divers,Heizstrahler,877,ja
+Elektro divers,Heizung,549,ja
+Elektro divers,Heizungsregler,1466,ja
+Elektro divers,Hochentaster,1409,ja
+Elektro divers,Hörgerät,908,ja
+Elektro divers,Holzfigur beleuchtet,892,ja
+Elektro divers,Holzspalter,822,ja
+Elektro divers,Hornhautentferner,823,ja
+Elektro divers,Hoverboard,840,ja
+Elektro divers,Hupe,1206,ja
+Elektro divers,Induktive Ladeschale,1152,ja
+Elektro divers,Interaktives Lernspielzeug,1549,ja
+Elektro divers,Inverter,960,ja
+Elektro divers,IPL Laserhaarentferner,1426,ja
+Elektro divers,Kabel,578,ja
+Elektro divers,Kabeltrommel,556,ja
+Elektro divers,Kappsäge,776,ja
+Elektro divers,Kartenmischmaschine,1376,ja
+Elektro divers,Katzenklappe,699,ja
+Elektro divers,Katzenschreck,1811,ja
+Elektro divers,Kehrmaschine,763,ja
+Elektro divers,Kärcher,790,ja
+Elektro divers,Kettensäge,577,ja
+Elektro divers,KFZ-Sitzheizung (Nachrüstung),1511,ja
+Elektro divers,Kilometerzähler,1839,ja
+Elektro divers,Kinder-Elektromotorrad,1499,ja
+Elektro divers,Kinderherd,1806,ja
+Elektro divers,Körperpflege,538,ja
+Elektro divers,Kompressor,819,ja
+Elektro divers,Krankenbett-Schalttafel,1027,ja
+Elektro divers,Kreissäge,789,ja
+Elektro divers,Kunststoffschweißgerät,1642,ja
+Elektro divers,Labornetzgerät,649,ja
+Elektro divers,Labortechnikgerät,1245,ja
+Elektro divers,Ladegerät,673,ja
+Elektro divers,USB-C Ladekabel,1676,ja
+Elektro divers,Lampe,399,ja
+Elektro divers,Lan-Kabel,1673,ja
+Elektro divers,Laser,975,ja
+Elektro divers,Laserdrucker,873,ja
+Elektro divers,Laterne,1188,ja
+Elektro divers,Laubbläser,944,ja
+Elektro divers,Laubsauger,821,ja
+Elektro divers,Laufband,844,ja
+Elektro divers,Lautstärkeregler,1057,ja
+Elektro divers,Lawinenpipsgerät,882,ja
+Elektro divers,LED-Licht/LED-Leuchte,539,ja
+Elektro divers,LED-Spiegel,1132,ja
+Elektro divers,Leitungssucher,1489,ja
+Elektro divers,Leselampe,1307,ja
+Elektro divers,Leselupe,984,ja
+Elektro divers,Leuchtball / Leuchtkugel,1757,ja
+Elektro divers,Leuchtreklame,1299,ja
+Elektro divers,Lichterbogen,1349,ja
+Elektro divers,Lockenstab,412,ja
+Elektro divers,Lötkolben,928,ja
+Elektro divers,Lötstation,1036,ja
+Elektro divers,Lokomotive,849,ja
+Elektro divers,Loop Station,1028,ja
+Elektro divers,Lüfter,611,ja
+Elektro divers,Luftkühler,780,ja
+Elektro divers,Luftreiniger,994,ja
+Elektro divers,Mähroboter,1234,ja
+Elektro divers,Magnetfeldmatte,943,ja
+Elektro divers,Manikürgerät,917,ja
+Elektro divers,Marderschreck,794,ja
+Elektro divers,Massagegerät,527,ja
+Elektro divers,Massageball,1011,ja
+Elektro divers,Massagekissen,1454,ja
+Elektro divers,Medizintechnik,1274,ja
+Elektro divers,Megafon,728,ja
+Elektro divers,Mehrfachsteckdose,806,ja
+Elektro divers,Messgerät,701,ja
+Elektro divers,Metalldetektor,1645,ja
+Elektro divers,Metronom,575,ja
+Elektro divers,Milchpumpe,1323,ja
+Elektro divers,Modelleisenbahn,1357,ja
+Elektro divers,Motor,825,ja
+Elektro divers,Motorhacke,1464,ja
+Elektro divers,Motorsäge,826,ja
+Elektro divers,Motorsense/Freischneider,898,ja
+Elektro divers,Mückenbrennstab,1053,ja
+Elektro divers,Münzzählautomat,666,ja
+Elektro divers,Multiboy,832,ja
+Elektro divers,Multifunktionswerkzeug,784,ja
+Elektro divers,Multimeter,547,ja
+Elektro divers,Mundspülgerät,1342,ja
+Elektro divers,Musikinstrument,418,ja
+Elektro divers,Nachttischlampe,1172,ja
+Elektro divers,Nähmaschine,420,ja
+Elektro divers,Nagellack-Abfüllmaschine,1086,ja
+Elektro divers,Nagelset,971,ja
+Elektro divers,Nasenhaartrimmer,1268,ja
+Elektro divers,Nebelmaschine,777,ja
+Elektro divers,Netzstromverteiler,1570,ja
+Elektro divers,Netzteil,693,ja
+Elektro divers,Notfallgerät,1253,ja
+Elektro divers,Oberfräse,1779,ja
+Elektro divers,Oszilloskop,1016,ja
+Elektro divers,Otoskop,856,ja
+Elektro divers,Papierschredderer,796,ja
+Elektro divers,Pedalantrieb,1251,ja
+Elektro divers,Personenwaage,925,ja
+Elektro divers,Pinnenpilot,1390,ja
+Elektro divers,Pixel Bilderrahmen,1439,ja
+Elektro divers,Plastikfigur,1530,ja
+Elektro divers,Playmobil Eisenbahn,854,ja
+Elektro divers,Poliergerät,1107,ja
+Elektro divers,Poolfilter,899,ja
+Elektro divers,Poolreiniger,988,ja
+Elektro divers,Powerstation,1498,ja
+Elektro divers,Probengeber /Probennehmer,1470,ja
+Elektro divers,Pumpe,1666,ja
+Elektro divers,Pyrometer,1063,ja
+Elektro divers,Rasenkantenschere,897,ja
+Elektro divers,Rasenkantenschneider,1344,ja
+Elektro divers,Rasenmäher,528,ja
+Elektro divers,"Rasenschere, elektrisch",1515,ja
+Elektro divers,Rasentrimmer,820,ja
+Elektro divers,Rauchmelder,1748,ja
+Elektro divers,Rechenmaschine,963,ja
+Elektro divers,Ringlicht,1314,ja
+Elektro divers,Rolladenmotor,939,ja
+Elektro divers,Rollpiano,979,ja
+Elektro divers,Rotlichtlampe,872,ja
+Elektro divers,Rückfahrkamera,1459,ja
+Elektro divers,Säge,1136,ja
+Elektro divers,Saugroboter,786,ja
+Elektro divers,Schalter,562,ja
+Elektro divers,Scheibenwischer,555,ja
+Elektro divers,Scheinwerfer,827,ja
+Elektro divers,Schlagbohrmaschine,1636,ja
+Elektro divers,Schleifgerät / Schleifer,546,ja
+Elektro divers,Schleifmaus,956,ja
+Elektro divers,Schukostecker,985,ja
+Elektro divers,Schweißgerät,1247,ja
+Elektro divers,Schwertsäge,662,ja
+Elektro divers,Schwibbogen,831,ja
+Elektro divers,Schwingschleifer,948,ja
+Elektro divers,Schwippbogen,1602,ja
+Elektro divers,SD-Karte,1186,ja
+Elektro divers,Seifenblasenmaschine,1537,ja
+Elektro divers,Elektroseilwinde,1735,ja
+Elektro divers,Servomotor,1213,ja
+Elektro divers,Sicherungskasten,718,ja
+Elektro divers,Solarkonverter,1730,ja
+Elektro divers,Solarleuchte,1089,ja
+Elektro divers,Solarpanel,1052,ja
+Elektro divers,Sonnensegel,1842,ja
+Elektro divers,Spannungsmesser,560,ja
+Elektro divers,Spannungsregler,1014,ja
+Elektro divers,Spannungswandler,1496,ja
+Elektro divers,Spiegelschrank,1183,ja
+Elektro divers,Spielzeug,421,ja
+Elektro divers,Spielzeugauto,1612,ja
+Elektro divers,Spitzmaschine elektrisch,1047,ja
+Elektro divers,Sprechanlage,598,ja
+Elektro divers,Standlüfter,797,ja
+Elektro divers,Steamer,879,ja
+Elektro divers,Steckdose,1763,ja
+Elektro divers,Steckdosenleiste /Steckerleiste,589,ja
+Elektro divers,Steckdosensicherung,1533,ja
+Elektro divers,Stecker,952,ja
+Elektro divers,Stehleuchte,890,ja
+Elektro divers,Steuergerät,653,ja
+Elektro divers,Steuerung,1261,ja
+Elektro divers,Stichsäge,571,ja
+Elektro divers,Stirnlampe,1058,ja
+Elektro divers,Stoffschere,1210,ja
+Elektro divers,Stromverteiler Zigarettenanzünder,1219,ja
+Elektro divers,Stromzähler,1592,ja
+Elektro divers,Kartenlesegerät,1796,ja
+Elektro divers,TAN Generator,987,ja
+Elektro divers,Taschenlampe,490,ja
+Elektro divers,Tattoomaschine,1406,ja
+Elektro divers,Tauchlampe,1861,ja
+Elektro divers,Tauchpumpe,868,ja
+Elektro divers,Tauchsäge,853,ja
+Elektro divers,Teichpumpe,935,ja
+Elektro divers,Telefon,422,ja
+Elektro divers,Tennisschläger Spannmaschine,1138,ja
+Elektro divers,Thermostat,644,ja
+Elektro divers,Tischlampe,889,ja
+Elektro divers,Tischleuchte,1462,ja
+Elektro divers,Tischrechner,848,ja
+Elektro divers,Trafo,949,ja
+Elektro divers,Transferpresse,1520,ja
+Elektro divers,Transformator,754,ja
+Elektro divers,Transmitter,1687,ja
+Elektro divers,Trennschleifer,805,ja
+Elektro divers,Tresor,787,ja
+Elektro divers,Türgong,1041,ja
+Elektro divers,Türsprechanlage,688,ja
+Elektro divers,TV-LED-Tester,1606,ja
+Elektro divers,Überwachungskamera,1278,ja
+Elektro divers,Uhr,622,ja
+Elektro divers,Uhrenanlage,1465,ja
+Elektro divers,Uhrenbeweger,1150,ja
+Elektro divers,Umformer,1407,ja
+Elektro divers,Umschaltmotor,1663,ja
+Elektro divers,Universal Streugerät,1262,ja
+Elektro divers,Unkrautbrenner,1173,ja
+Elektro divers,USB-Ladegerät,1726,ja
+Elektro divers,USB-Ladestation,1562,ja
+Elektro divers,USB-Netzteil,1638,ja
+Elektro divers,Vakumiergerät,661,ja
+Elektro divers,Vakuumpumpe,1713,ja
+Elektro divers,Venenwalker,491,ja
+Elektro divers,Vergrößerungsgerät,1300,ja
+Elektro divers,Verlängerungskabel,926,ja
+Elektro divers,Vertikutierer,875,ja
+Elektro divers,Vibrationskissen,1316,ja
+Elektro divers,Vogelerkennungsstift,1400,ja
+Elektro divers,VW-Bus,1460,ja
+Elektro divers,WLAN-Repeater,1715,ja
+Elektro divers,Wärmedecke,1012,ja
+Elektro divers,Funkgerät Walkie Talkie,773,ja
+Elektro divers,Wandlampe,1178,ja
+Elektro divers,Wassermelder,1348,ja
+Elektro divers,Wecker,478,ja
+Elektro divers,Weidezaungerät,900,ja
+Elektro divers,Weihnachtsbaum aus Kunststoff mit Motoren,1143,ja
+Elektro divers,Lichterkette,557,ja
+Elektro divers,Weihnachtsbeleuchtung,1159,ja
+Elektro divers,"Weihnachtsfigur, musikalisch",1345,ja
+Elektro divers,Weihnachtsstern,1697,ja
+Elektro divers,Werkzeug,554,ja
+Elektro divers,Wetterstation,495,ja
+Elektro divers,Wildkamera,1287,ja
+Elektro divers,Winkelschleifer,808,ja
+Elektro divers,WLAN Verstärker,1263,ja
+Elektro divers,Zauberstab,1343,ja
+Elektro divers,Zigarettenautomat,878,ja
+Elektro divers,Zündschloss,895,ja
+Elektro divers,E-Mobil,1881,nein
+Elektro divers,Gurtwickler,1860,nein
+Elektro divers,Kondensathebeanlage,1880,nein
+Elektro divers,LED-Schlauch,1864,nein
+Elektro divers,Leuchtstab,1877,nein
+Elektro divers,Lufterfrischer,1873,nein
+Elektro divers,Sonstiges,1639,nein
+Elektro divers,Steckerleuchte,1872,nein
+Fahrrad,Fahrradaufhängung,1743,ja
+Fahrrad,Akku-Luftpumpe,1518,ja
+Fahrrad,Antrieb,465,ja
+Fahrrad,Beleuchtung,461,ja
+Fahrrad,Bremsen,462,ja
+Fahrrad,Damenfahrrad,532,ja
+Fahrrad,Dreirad mit E-Antrieb,1311,ja
+Fahrrad,E-Bike-Akku,910,ja
+Fahrrad,E-Fahrrad / E-Bike,588,ja
+Fahrrad,E-Roller,710,ja
+Fahrrad,"Einrad, elektrisch",1568,ja
+Fahrrad,"Fahrrad, allgemein",1337,ja
+Fahrrad,Fahrradanhänger,1002,ja
+Fahrrad,Fahrradcomputer,779,ja
+Fahrrad,Fahrraddynamo,1128,ja
+Fahrrad,Fahrradkette,1650,ja
+Fahrrad,Fahrradklingel,869,ja
+Fahrrad,Fahrradkorb,1068,ja
+Fahrrad,Fahrradlicht,712,ja
+Fahrrad,Fahrradpedal,1616,ja
+Fahrrad,Fahrradsattel,1087,ja
+Fahrrad,Fahrradtäschchen,1171,ja
+Fahrrad,Gangschaltung,464,ja
+Fahrrad,Gepäckträger,1129,ja
+Fahrrad,Gokart,839,ja
+Fahrrad,Herrenfahrrad,531,ja
+Fahrrad,Inlineskater,694,ja
+Fahrrad,Kettcar,1350,ja
+Fahrrad,Kinderfahrrad,716,ja
+Fahrrad,Kindersitz,708,ja
+Fahrrad,Ladegerät E-Bike,1131,ja
+Fahrrad,Lampe,1340,ja
+Fahrrad,Lastenrad,936,ja
+Fahrrad,Luftpumpe,724,ja
+Fahrrad,MTB,1246,ja
+Fahrrad,Rahmen,463,ja
+Fahrrad,Reifen,460,ja
+Fahrrad,Roller (mechanisch),981,ja
+Fahrrad,Rollstuhl,1197,ja
+Fahrrad,Rücklicht,1649,ja
+Fahrrad,Schlauch,1146,ja
+Fahrrad,Schloss,741,ja
+Fahrrad,Scooter / E-Scooter,1007,ja
+Fahrrad,Sonstiges,494,ja
+Fahrrad,Rollstuhlschiebehilfe,1859,nein
+Smartphone/Tablet,Display,567,ja
+Smartphone/Tablet,E-Book-Reader,450,ja
+Smartphone/Tablet,Funktelefon,1656,ja
+Smartphone/Tablet,GPS-Gerät,1733,ja
+Smartphone/Tablet,Handy,407,ja
+Smartphone/Tablet,Handyhalterung,1824,ja
+Smartphone/Tablet,Headset,646,ja
+Smartphone/Tablet,iPad,1461,ja
+Smartphone/Tablet,Mobiltelefon,600,ja
+Smartphone/Tablet,Navigationsgerät,483,ja
+Smartphone/Tablet,Powerbank,689,ja
+Smartphone/Tablet,Schutzhülle,1142,ja
+Smartphone/Tablet,Smartphone,408,ja
+Smartphone/Tablet,Stativ,1003,ja
+Smartphone/Tablet,Tablet,409,ja
+Haushaltsgeräte,Sportgerät (ohne Strom),1379,ja
+Haushaltsgeräte,Glühweinerhitzer / Glühweinzapfanlage,1729,ja
+Haushaltsgeräte,Munddusche,1737,ja
+Haushaltsgeräte,Zuckerwattenmaschine,1740,ja
+Haushaltsgeräte,"Anspitzer, elektrisch",1742,ja
+Haushaltsgeräte,Dampfgarer,520,ja
+Haushaltsgeräte,Akku-Sauger,1108,ja
+Haushaltsgeräte,Akkuschere,1552,ja
+Haushaltsgeräte,Akkustaubsauger,1577,ja
+Haushaltsgeräte,Allesschneider,703,ja
+Haushaltsgeräte,Angel,1220,ja
+Haushaltsgeräte,Apfelpflücker,1792,ja
+Haushaltsgeräte,Aroma Diffuser,1214,ja
+Haushaltsgeräte,Aschesauger,1526,ja
+Haushaltsgeräte,Astschere,858,ja
+Haushaltsgeräte,Außentemperaturfühler,802,ja
+Haushaltsgeräte,Außenthermometer,1832,ja
+Haushaltsgeräte,Siphon,1392,ja
+Haushaltsgeräte,Axt,1798,ja
+Haushaltsgeräte,Babyschaukel,1828,ja
+Haushaltsgeräte,Backautomat,682,ja
+Haushaltsgeräte,Backblech,1613,ja
+Haushaltsgeräte,"Backform, Springform",1215,ja
+Haushaltsgeräte,Backofen,1061,ja
+Haushaltsgeräte,Backofen Timer,1853,ja
+Haushaltsgeräte,Badewannen-Sprudler / Sprudelmatte,1793,ja
+Haushaltsgeräte,Barometer,783,ja
+Haushaltsgeräte,Bartschneider,1397,ja
+Haushaltsgeräte,Beil,1305,ja
+Haushaltsgeräte,Beschriftungsgerät,1671,ja
+Haushaltsgeräte,Besteck,706,ja
+Haushaltsgeräte,Besteckkasten,1548,ja
+Haushaltsgeräte,Bleistiftspitzer,1166,ja
+Haushaltsgeräte,Blumenstecker,1155,ja
+Haushaltsgeräte,Bodenreiniger,1039,ja
+Haushaltsgeräte,Bodenwischer,909,ja
+Haushaltsgeräte,Boiler,1059,ja
+Haushaltsgeräte,Box,1118,ja
+Haushaltsgeräte,Brandmelder,1365,ja
+Haushaltsgeräte,Bratpfanne,966,ja
+Haushaltsgeräte,Briefwaage,1056,ja
+Haushaltsgeräte,Brotbackautomat,1018,ja
+Haushaltsgeräte,Brotschneidemaschine,469,ja
+Haushaltsgeräte,Brotzeitbrett,922,ja
+Haushaltsgeräte,Bügelbrett,903,ja
+Haushaltsgeräte,Bügeleisen,466,ja
+Haushaltsgeräte,Bügelpresse,1380,ja
+Haushaltsgeräte,Bügelstation,501,ja
+Haushaltsgeräte,Aktenvernichter,593,ja
+Haushaltsgeräte,"Buttonpresse, mechanisch",1874,ja
+Haushaltsgeräte,Cocktailshaker,1590,ja
+Haushaltsgeräte,Crepesgerät,841,ja
+Haushaltsgeräte,Dampfbügeleisen,891,ja
+Haushaltsgeräte,Dampfbügelstation,1453,ja
+Haushaltsgeräte,Dampfbügler,1313,ja
+Haushaltsgeräte,Dampfkochtopf,535,ja
+Haushaltsgeräte,Dampfreiniger,620,ja
+Haushaltsgeräte,Dartscheibe,1487,ja
+Haushaltsgeräte,Deckenlüfter,1609,ja
+Haushaltsgeräte,Dekoration,559,ja
+Haushaltsgeräte,Digitalthermometer,978,ja
+Haushaltsgeräte,Dörrgerät / Dehydriergerät,606,ja
+Haushaltsgeräte,Induktionsplatte,534,ja
+Haushaltsgeräte,Dosenöffner,1819,ja
+Haushaltsgeräte,Dritte Hand,1659,ja
+Haushaltsgeräte,Durchlauferhitzer,1065,ja
+Haushaltsgeräte,Durchschlag,951,ja
+Haushaltsgeräte,Duschschlauch,1075,ja
+Haushaltsgeräte,E-Grill /Elektrogrill,1209,ja
+Haushaltsgeräte,Eierkocher,471,ja
+Haushaltsgeräte,Eierschalensollbruchverursacher,940,ja
+Haushaltsgeräte,Eieruhr,838,ja
+Haushaltsgeräte,Einkochautomat,1020,ja
+Haushaltsgeräte,Einweckkocher,525,ja
+Haushaltsgeräte,Eismaschine,913,ja
+Haushaltsgeräte,Eispotionierer,1372,ja
+Haushaltsgeräte,Eiswürfelmaschine,1826,ja
+Haushaltsgeräte,Elektrische Bürste,1074,ja
+Haushaltsgeräte,"Kerze, elektrisch",1584,ja
+Haushaltsgeräte,Elektrischer Fliegenfänger,1269,ja
+Haushaltsgeräte,Elektrischer Handbesen,1194,ja
+Haushaltsgeräte,Haushaltsgerät,1267,ja
+Haushaltsgeräte,Elektrokochtopf,1100,ja
+Haushaltsgeräte,Elektromesser,1181,ja
+Haushaltsgeräte,Elektrokamin,958,ja
+Haushaltsgeräte,Entsafter,468,ja
+Haushaltsgeräte,Ergometer,1404,ja
+Haushaltsgeräte,Espressokocher,545,ja
+Haushaltsgeräte,Espressomaschine,1476,ja
+Haushaltsgeräte,Fächer,901,ja
+Haushaltsgeräte,Fallrohrfilter / Regendieb,1309,ja
+Haushaltsgeräte,Faltrollo,1082,ja
+Haushaltsgeräte,Feinwaage,1699,ja
+Haushaltsgeräte,Fensterheber,1469,ja
+Haushaltsgeräte,Fensterreiniger,697,ja
+Haushaltsgeräte,Fernglas,752,ja
+Haushaltsgeräte,Feuerzeug,568,ja
+Haushaltsgeräte,Fieberthermometer,1883,ja
+Haushaltsgeräte,Flaschenwärmer,1768,ja
+Haushaltsgeräte,Fleischwolf,1029,ja
+Haushaltsgeräte,Fliegenklatsche,1851,ja
+Haushaltsgeräte,Föhn,663,ja
+Haushaltsgeräte,Folienschweißgerät,846,ja
+Haushaltsgeräte,Fotoapparat,934,ja
+Haushaltsgeräte,Frostwächter,1043,ja
+Haushaltsgeräte,Füllfederhalter,1317,ja
+Haushaltsgeräte,Fusselfräse,761,ja
+Haushaltsgeräte,Garderobenständer,1264,ja
+Haushaltsgeräte,Garten,523,ja
+Haushaltsgeräte,Gartenpumpe,1320,ja
+Haushaltsgeräte,Gartenschere,1187,ja
+Haushaltsgeräte,Gasgrill,1586,ja
+Haushaltsgeräte,Gaskocher,1252,ja
+Haushaltsgeräte,Gefrierfach,996,ja
+Haushaltsgeräte,Gefrierschrank,1849,ja
+Haushaltsgeräte,Geschirr,586,ja
+Haushaltsgeräte,Spülmaschine,605,ja
+Haushaltsgeräte,Geschirrspüler,1441,ja
+Haushaltsgeräte,Gewürzmühle,700,ja
+Haushaltsgeräte,Gießkanne,1038,ja
+Haushaltsgeräte,Glätteisen,472,ja
+Haushaltsgeräte,Glaskugel elektrisch,1023,ja
+Haushaltsgeräte,Glasregal,1331,ja
+Haushaltsgeräte,Greifzange,537,ja
+Haushaltsgeräte,Grill,542,ja
+Haushaltsgeräte,Grillofen,938,ja
+Haushaltsgeräte,Kuchenbackautomat,1564,ja
+Haushaltsgeräte,Gymnastikball,857,ja
+Haushaltsgeräte,Haarschneidemaschine,624,ja
+Haushaltsgeräte,Haartrockner,1040,ja
+Haushaltsgeräte,Händetrockner,1176,ja
+Haushaltsgeräte,Haferflockenspender,1417,ja
+Haushaltsgeräte,Handbesen,1195,ja
+Haushaltsgeräte,Handmixer,425,ja
+Haushaltsgeräte,Handnähmaschine,1191,ja
+Haushaltsgeräte,Handrührgerät,812,ja
+Haushaltsgeräte,Handstaubsauger,1045,ja
+Haushaltsgeräte,Harke,1024,ja
+Haushaltsgeräte,Haushaltsschere,1135,ja
+Haushaltsgeräte,Hebelschere,930,ja
+Haushaltsgeräte,Heißgetränkespender,1501,ja
+Haushaltsgeräte,Fritteuse,619,ja
+Haushaltsgeräte,Heißluftfritteuse,1223,ja
+Haushaltsgeräte,Heizdecke / Heizkissen,475,ja
+Haushaltsgeräte,Heizlüfter,473,ja
+Haushaltsgeräte,Heizplatte,1346,ja
+Haushaltsgeräte,Hemdenbügler,1222,ja
+Haushaltsgeräte,Herd,1727,ja
+Haushaltsgeräte,Herdplatte,865,ja
+Haushaltsgeräte,Hochdruckreiniger,715,ja
+Haushaltsgeräte,Hörnchenautomat,1250,ja
+Haushaltsgeräte,Hutweiter,1124,ja
+Haushaltsgeräte,Hygrometer,1571,ja
+Haushaltsgeräte,Induktionsgerät,791,ja
+Haushaltsgeräte,Infrarotheizung,983,ja
+Haushaltsgeräte,Inhalator,677,ja
+Haushaltsgeräte,Insektenstichheiler,1760,ja
+Haushaltsgeräte,Joghurtbereiter,1013,ja
+Haushaltsgeräte,Kaffeefilter,1033,ja
+Haushaltsgeräte,Kaffeekanne,967,ja
+Haushaltsgeräte,Kaffeemaschine,430,ja
+Haushaltsgeräte,Kaffeemühle,427,ja
+Haushaltsgeräte,Kaffeeröster,1840,ja
+Haushaltsgeräte,Kaffeevollautomat,431,ja
+Haushaltsgeräte,Kaminuhr,1473,ja
+Haushaltsgeräte,Kartenmischgerät,1093,ja
+Haushaltsgeräte,Kartoffelschählmaschine,1720,ja
+Haushaltsgeräte,Katzenfutterautomat,947,ja
+Haushaltsgeräte,Kerzenhalter,566,ja
+Haushaltsgeräte,Kinderwagen,643,ja
+Haushaltsgeräte,Kleiderbügel,676,ja
+Haushaltsgeräte,Kleiderständer,1282,ja
+Haushaltsgeräte,Klimagerät,896,ja
+Haushaltsgeräte,Klobürste,626,ja
+Haushaltsgeräte,Knoblauchmühle,1591,ja
+Haushaltsgeräte,Kochfeld,1615,ja
+Haushaltsgeräte,Kochplatte,727,ja
+Haushaltsgeräte,Kochthermometer,526,ja
+Haushaltsgeräte,Kompass,1324,ja
+Haushaltsgeräte,Kontaktgrill,1306,ja
+Haushaltsgeräte,Konvektomat,1356,ja
+Haushaltsgeräte,Korb,1199,ja
+Haushaltsgeräte,Dunstabzugshaube,748,ja
+Haushaltsgeräte,Küchenmaschine,429,ja
+Haushaltsgeräte,Küchenwaage,923,ja
+Haushaltsgeräte,Küchenwecker,1522,ja
+Haushaltsgeräte,Kühlbox,641,ja
+Haushaltsgeräte,Kühlschrank,632,ja
+Haushaltsgeräte,Kühltruhe,587,ja
+Haushaltsgeräte,Kugelschreiber,937,ja
+Haushaltsgeräte,Kurzzeitwecker (Eieruhr),795,ja
+Haushaltsgeräte,Laminiergerät,687,ja
+Haushaltsgeräte,"Lattenrost, elektrisch",1843,ja
+Haushaltsgeräte,Lava Lampe,1836,ja
+Haushaltsgeräte,Leuchter,1153,ja
+Haushaltsgeräte,Locher,668,ja
+Haushaltsgeräte,Löffel,1610,ja
+Haushaltsgeräte,Luftbefeuchter /Diffuser,660,ja
+Haushaltsgeräte,Luftentfeuchter,601,ja
+Haushaltsgeräte,Lupe,669,ja
+Haushaltsgeräte,Maulwurfschreck,1474,ja
+Haushaltsgeräte,Mehlsieb,1145,ja
+Haushaltsgeräte,Messer,782,ja
+Haushaltsgeräte,Messerschärfer,678,ja
+Haushaltsgeräte,Mikrowelle,489,ja
+Haushaltsgeräte,Milchaufschäumer,470,ja
+Haushaltsgeräte,Minibackofen,502,ja
+Haushaltsgeräte,Mixer,1534,ja
+Haushaltsgeräte,Mixeraufsatz,1664,ja
+Haushaltsgeräte,Mühle,735,ja
+Haushaltsgeräte,Mülleimer,888,ja
+Haushaltsgeräte,Multikocher,1336,ja
+Haushaltsgeräte,Multizerkleinerer,1121,ja
+Haushaltsgeräte,Munddusche,720,ja
+Haushaltsgeräte,Musikinstrument,739,ja
+Haushaltsgeräte,Nachtlicht,1167,ja
+Haushaltsgeräte,Nagelfräser,1095,ja
+Haushaltsgeräte,Nass-Sauger / Saug-Wischer /Waschsauger,904,ja
+Haushaltsgeräte,Leuchtstoffröhre,1756,ja
+Haushaltsgeräte,Nivelliergerät,1083,ja
+Haushaltsgeräte,Nudelmaschine,980,ja
+Haushaltsgeräte,Ölradiator,1770,ja
+Haushaltsgeräte,Ofen,736,ja
+Haushaltsgeräte,Ofen-Ventilator,1634,ja
+Haushaltsgeräte,Ordner,837,ja
+Haushaltsgeräte,Pad-/Kapsel-Kaffeemaschine,911,ja
+Haushaltsgeräte,Partygrill,1276,ja
+Haushaltsgeräte,Pediküre-Set,1161,ja
+Haushaltsgeräte,Kosmetikgerät,725,ja
+Haushaltsgeräte,Pelletofen,642,ja
+Haushaltsgeräte,Petroleumlampe,1425,ja
+Haushaltsgeräte,Pfeffermühle,1122,ja
+Haushaltsgeräte,Pflanzenmilchbereiter,1576,ja
+Haushaltsgeräte,Pillenbox,667,ja
+Haushaltsgeräte,Pizza-Ofen,1587,ja
+Haushaltsgeräte,Pizzastein,1035,ja
+Haushaltsgeräte,Poolpumpe,1667,ja
+Haushaltsgeräte,Poolsauger,1593,ja
+Haushaltsgeräte,Pop Socket,1852,ja
+Haushaltsgeräte,Popcornmaschine,1030,ja
+Haushaltsgeräte,Postkartenautomat,683,ja
+Haushaltsgeräte,Prägemaschine,684,ja
+Haushaltsgeräte,Putzeimer mit Wringerfunktion,1103,ja
+Haushaltsgeräte,Raclette,597,ja
+Haushaltsgeräte,Radiator,1506,ja
+Haushaltsgeräte,Rasensprenger,1825,ja
+Haushaltsgeräte,Reibe,1034,ja
+Haushaltsgeräte,"Reibe, elektrisch",679,ja
+Haushaltsgeräte,Reinigungszubehör,583,ja
+Haushaltsgeräte,Reiskocher,807,ja
+Haushaltsgeräte,Rolladensteuerung,1594,ja
+Haushaltsgeräte,Rollator,1084,ja
+Haushaltsgeräte,"Rollo, elektrisch",1827,ja
+Haushaltsgeräte,Sackkarre,1225,ja
+Haushaltsgeräte,Safe,775,ja
+Haushaltsgeräte,Saftpresse,428,ja
+Haushaltsgeräte,Salatschleuder,681,ja
+Haushaltsgeräte,Salzstreuer,993,ja
+Haushaltsgeräte,Sandwichtoaster,1141,ja
+Haushaltsgeräte,Saugnapf,1823,ja
+Haushaltsgeräte,Saunaofen,1856,ja
+Haushaltsgeräte,Schachuhr,1882,ja
+Haushaltsgeräte,Schleuder,530,ja
+Haushaltsgeräte,Schlosserhammer,1545,ja
+Haushaltsgeräte,Schnapprollo,665,ja
+Haushaltsgeräte,Schneidemesser,1352,ja
+Haushaltsgeräte,Schnellkochtopf,1725,ja
+Haushaltsgeräte,Fondue,1386,ja
+Haushaltsgeräte,Schrankuhr,1154,ja
+Haushaltsgeräte,Schraubstock,563,ja
+Haushaltsgeräte,Schredder,674,ja
+Haushaltsgeräte,Schreibmaschine,594,ja
+Haushaltsgeräte,Schreibtischlampe,1509,ja
+Haushaltsgeräte,Schuhputzgerät,1848,ja
+Haushaltsgeräte,Seifenspender,569,ja
+Haushaltsgeräte,Siebträgermaschine,942,ja
+Haushaltsgeräte,Silikonpresse,1070,ja
+Haushaltsgeräte,Slusheismaschine,1517,ja
+Haushaltsgeräte,Smartmirror,1695,ja
+Haushaltsgeräte,Smoothie Maker,1626,ja
+Haushaltsgeräte,Sodastream,1025,ja
+Haushaltsgeräte,Sparschäler,1546,ja
+Haushaltsgeräte,Sparschwein,968,ja
+Haushaltsgeräte,Spaten,1797,ja
+Haushaltsgeräte,Spiegel,874,ja
+Haushaltsgeräte,Spieluhr,551,ja
+Haushaltsgeräte,Sportgerät (mit Strom),1329,ja
+Haushaltsgeräte,Springbrunnen,1572,ja
+Haushaltsgeräte,"Sprinkler, nicht-elektrisch",1566,ja
+Haushaltsgeräte,Sprudelbad,1338,ja
+Haushaltsgeräte,Sprühflasche,582,ja
+Haushaltsgeräte,Spülkasten,1800,ja
+Haushaltsgeräte,Stabanzünder,1385,ja
+Haushaltsgeräte,Stabmixer / Pürierstab,424,ja
+Haushaltsgeräte,Standmixer,423,ja
+Haushaltsgeräte,Staubroller,1844,ja
+Haushaltsgeräte,Staubsauger,402,ja
+Haushaltsgeräte,Staubsaugerroboter,803,ja
+Haushaltsgeräte,Stehlampe,1198,ja
+Haushaltsgeräte,Stemmhammer,861,ja
+Haushaltsgeräte,Sterilisator,1702,ja
+Haushaltsgeräte,Stickmaschine,893,ja
+Haushaltsgeräte,Stöpsel,774,ja
+Haushaltsgeräte,Stopenheber,1451,ja
+Haushaltsgeräte,Stopfmaschine,1190,ja
+Haushaltsgeräte,Strauchschere,986,ja
+Haushaltsgeräte,Strickmaschine,685,ja
+Haushaltsgeräte,Stromgenerator,1364,ja
+Haushaltsgeräte,Stuhl,541,ja
+Haushaltsgeräte,Süßigkeitenspender,1503,ja
+Haushaltsgeräte,Tacker,686,ja
+Haushaltsgeräte,Tasse,860,ja
+Haushaltsgeräte,Teekanne,845,ja
+Haushaltsgeräte,Teekocher,1055,ja
+Haushaltsgeräte,Teesieb,536,ja
+Haushaltsgeräte,Teigrolle,738,ja
+Haushaltsgeräte,Telefonregister,1333,ja
+Haushaltsgeräte,Teleskop,1644,ja
+Haushaltsgeräte,Teleskopstange,1433,ja
+Haushaltsgeräte,Teppichauffrischer,1022,ja
+Haushaltsgeräte,Teppichbürste,932,ja
+Haushaltsgeräte,Thermomix,1021,ja
+Haushaltsgeräte,Thermoskanne / Thermosflasche,912,ja
+Haushaltsgeräte,Tischgrill,1163,ja
+Haushaltsgeräte,Tischschleuder,953,ja
+Haushaltsgeräte,Toaster,432,ja
+Haushaltsgeräte,Töpferscheibe,581,ja
+Haushaltsgeräte,Toilette,1304,ja
+Haushaltsgeräte,Topf,579,ja
+Haushaltsgeräte,Tortenring,1200,ja
+Haushaltsgeräte,Transportwagen,645,ja
+Haushaltsgeräte,Trinkflasche,950,ja
+Haushaltsgeräte,Trockenhaube,1280,ja
+Haushaltsgeräte,Trolley,921,ja
+Haushaltsgeräte,Türklingel,1286,ja
+Haushaltsgeräte,Turmventilator,1845,ja
+Haushaltsgeräte,Uhr,480,ja
+Haushaltsgeräte,Ultraschallreiniger,636,ja
+Haushaltsgeräte,Unifix,1643,ja
+Haushaltsgeräte,Unkrautjäter,1351,ja
+Haushaltsgeräte,Untersetzer,627,ja
+Haushaltsgeräte,UV Lampe,1422,ja
+Haushaltsgeräte,Vakuumierer,1125,ja
+Haushaltsgeräte,Ventilator,713,ja
+Haushaltsgeräte,Verdampfer,1104,ja
+Haushaltsgeräte,Vibrationsgerät,1585,ja
+Haushaltsgeräte,"Waage, elektrisch",467,ja
+Haushaltsgeräte,Wärmebehälter,1543,ja
+Haushaltsgeräte,Wärmeschublade,1227,ja
+Haushaltsgeräte,Wärmflasche,1221,ja
+Haushaltsgeräte,Wäschemangel,785,ja
+Haushaltsgeräte,Wäscheschleuder,1583,ja
+Haushaltsgeräte,Wäscheständer,592,ja
+Haushaltsgeräte,Wäschetrockner,729,ja
+Haushaltsgeräte,Waffeleisen,426,ja
+Haushaltsgeräte,"Wagenheber, hydraulisch",1184,ja
+Haushaltsgeräte,Wanderstöcke,540,ja
+Haushaltsgeräte,Warmhalteplatte / Wärmplatte,1226,ja
+Haushaltsgeräte,Waschmaschine,599,ja
+Haushaltsgeräte,Wasserdestilierer,1332,ja
+Haushaltsgeräte,Wasserfilter,1764,ja
+Haushaltsgeräte,Wasserhahn,628,ja
+Haushaltsgeräte,Wasserionisierer,1218,ja
+Haushaltsgeräte,Wasserkocher,401,ja
+Haushaltsgeräte,Wasserpumpe,608,ja
+Haushaltsgeräte,Wassersprudler,652,ja
+Haushaltsgeräte,Weihnachtskrippe,1719,ja
+Haushaltsgeräte,Weihnachtspyramide,1156,ja
+Haushaltsgeräte,Weltempfänger,1820,ja
+Haushaltsgeräte,Werkzeug - ohne Strom,705,ja
+Haushaltsgeräte,Wischmopp,1149,ja
+Haushaltsgeräte,Wischroboter,1169,ja
+Haushaltsgeräte,"Zahnbürste, elektrisch",417,ja
+Haushaltsgeräte,Zahnbürstenstation,1019,ja
+Haushaltsgeräte,Zahnputztimer,1833,ja
+Haushaltsgeräte,Zapfanlage,1054,ja
+Haushaltsgeräte,Zeitschaltuhr,1157,ja
+Haushaltsgeräte,Zeltstange,1712,ja
+Haushaltsgeräte,Zerkleinerer,916,ja
+Haushaltsgeräte,Zimmerbrunnen,1189,ja
+Haushaltsgeräte,Zuckerdose,1692,ja
+Haushaltsgeräte,Bügelmaschine,1885,nein
+Haushaltsgeräte,Einkaufswagen,1863,nein
+Haushaltsgeräte,Milchzubereiter,1875,nein
+Haushaltsgeräte,Wischlappen,1871,nein
+Möbel/Holz,Adventskranz Holz,1694,ja
+Möbel/Holz,Barhocker,1432,ja
+Möbel/Holz,Bierbank,1102,ja
+Möbel/Holz,Bilderrahmen,876,ja
+Möbel/Holz,Blumentopf,1081,ja
+Möbel/Holz,Blumentopfständer,1069,ja
+Möbel/Holz,Bogenständer,1731,ja
+Möbel/Holz,Boot,740,ja
+Möbel/Holz,Bürostuhl,1456,ja
+Möbel/Holz,Campinghocker,1079,ja
+Möbel/Holz,Campingtisch,1000,ja
+Möbel/Holz,Deckchair,1858,ja
+Möbel/Holz,Drehpendeluhr,1679,ja
+Möbel/Holz,Drehstuhl,1635,ja
+Möbel/Holz,Einhandsäge,1360,ja
+Möbel/Holz,Holz-Figuren,1701,ja
+Möbel/Holz,Gartenstuhl,1418,ja
+Möbel/Holz,Gehstock,1749,ja
+Möbel/Holz,Gitarre,595,ja
+Möbel/Holz,Hobelmaschine,818,ja
+Möbel/Holz,Sitzbank,1434,ja
+Möbel/Holz,Holzbrett,998,ja
+Möbel/Holz,Dekoration,602,ja
+Möbel/Holz,Holzfigur,1233,ja
+Möbel/Holz,Holzplatte,1789,ja
+Möbel/Holz,Holzschale,1105,ja
+Möbel/Holz,Holzstuhl,1175,ja
+Möbel/Holz,Holzuntersetzer,997,ja
+Möbel/Holz,Hunde-Transport-Brett,1669,ja
+Möbel/Holz,Jalousien,1208,ja
+Möbel/Holz,Kästchen,1791,ja
+Möbel/Holz,Kaminuhr,1773,ja
+Möbel/Holz,Kinderstuhl,1168,ja
+Möbel/Holz,Kiste / Kasten,1080,ja
+Möbel/Holz,Kleinmöbel,1542,ja
+Möbel/Holz,Kuckucksuhr,1114,ja
+Möbel/Holz,Küchenvitrine,1565,ja
+Möbel/Holz,Küchengerät,1242,ja
+Möbel/Holz,Kunstoffkatze,1830,ja
+Möbel/Holz,Liegestuhl,977,ja
+Möbel/Holz,Lostrommel / Tombola,1327,ja
+Möbel/Holz,Luftbett/Luftmatratze,1230,ja
+Möbel/Holz,Massagesessel,1134,ja
+Möbel/Holz,Metallsessel,1147,ja
+Möbel/Holz,Moderationstafel,1452,ja
+Möbel/Holz,Möbelstück,456,ja
+Möbel/Holz,Nähkasten,1551,ja
+Möbel/Holz,Notenständer,1769,ja
+Möbel/Holz,Puppenstube,866,ja
+Möbel/Holz,Puppenwagen,1174,ja
+Möbel/Holz,Regal,680,ja
+Möbel/Holz,Regentonne,1423,ja
+Möbel/Holz,Schlitten,1762,ja
+Möbel/Holz,Schneidebrett,1560,ja
+Möbel/Holz,Schrank,1709,ja
+Möbel/Holz,Schublade,1067,ja
+Möbel/Holz,Servierwagen,870,ja
+Möbel/Holz,Sessel,1704,ja
+Möbel/Holz,Sitzmöbel,1559,ja
+Möbel/Holz,Skateboard,1120,ja
+Möbel/Holz,Sonnenschirm,1096,ja
+Möbel/Holz,Spieltisch,1285,ja
+Möbel/Holz,Spielzeug,457,ja
+Möbel/Holz,Standuhr/Regulator,886,ja
+Möbel/Holz,Teller,1781,ja
+Möbel/Holz,Tisch,1071,ja
+Möbel/Holz,Türgriff,1557,ja
+Möbel/Holz,Türschließer,1318,ja
+Möbel/Holz,Vogelhäuschen,612,ja
+Möbel/Holz,Wanduhr,1092,ja
+Möbel/Holz,Webstuhl,1334,ja
+Möbel/Holz,Wohnzimmerstuhl,1801,ja
+Möbel/Holz,Sofa,1865,nein
+Leder,Aktenkoffer,1279,ja
+Leder,Geldbörse,1119,ja
+Leder,Gürtel,485,ja
+Leder,Bekleidung / Kleidungsstück,454,ja
+Leder,Lederjacke,1696,ja
+Leder,Stiefel,1442,ja
+Leder,Tasche / Koffer,455,ja
+Metallbearbeitung,Staubsauger,1232,ja
+Metallbearbeitung,Auto-Kindersitz,1799,ja
+Metallbearbeitung,Bingo Maschine,1693,ja
+Metallbearbeitung,Bollerwagen,1374,ja
+Metallbearbeitung,Briefkasten,1809,ja
+Metallbearbeitung,Haushaltsgerät,1259,ja
+Metallbearbeitung,Felgen,1254,ja
+Metallbearbeitung,Gewindestange,836,ja
+Metallbearbeitung,Hängematte,1698,ja
+Metallbearbeitung,Haken,1355,ja
+Metallbearbeitung,Halterung,695,ja
+Metallbearbeitung,Hoftor,1467,ja
+Metallbearbeitung,Hüpfstange,1363,ja
+Metallbearbeitung,Kerzenlöscher,1211,ja
+Metallbearbeitung,Kette,1237,ja
+Metallbearbeitung,Kinderwagen,1734,ja
+Metallbearbeitung,Kuchengitter,1378,ja
+Metallbearbeitung,Messer und Scheren schärfen/schleifen,529,ja
+Metallbearbeitung,Metalldose,933,ja
+Metallbearbeitung,Metallplatte,834,ja
+Metallbearbeitung,Metallstab,999,ja
+Metallbearbeitung,Mistgabel / Grabegabel,1294,ja
+Metallbearbeitung,Münzen,1001,ja
+Metallbearbeitung,Nussknacker,1295,ja
+Metallbearbeitung,PKW,1787,ja
+Metallbearbeitung,Säge,1540,ja
+Metallbearbeitung,Schlagschrauber,1492,ja
+Metallbearbeitung,Schraubendreher,1106,ja
+Metallbearbeitung,Schraubzwinge,1655,ja
+Metallbearbeitung,Schutzblech,1066,ja
+Metallbearbeitung,Schwenkarm,1618,ja
+Metallbearbeitung,Seitenschneider,1547,ja
+Metallbearbeitung,Stahlgestell,1458,ja
+Metallbearbeitung,Stepper,1855,ja
+Metallbearbeitung,Türautomat,1544,ja
+Metallbearbeitung,Türschloss,792,ja
+Metallbearbeitung,Zahlenschloss,1539,ja
+Metallbearbeitung,Zwinge,1017,ja
+Schmuck,Armband,1296,ja
+Schmuck,Brille,499,ja
+Schmuck,Brosche,659,ja
+Schmuck,Haarklammer,1812,ja
+Schmuck,Haarreifen,1216,ja
+Schmuck,Halskette,746,ja
+Schmuck,Handtasche,1579,ja
+Schmuck,Medaillon,1377,ja
+Schmuck,Modeschmuck,1784,ja
+Schmuck,Ohrring,675,ja
+Schmuck,Schlüsselanhänger,1297,ja
+Schmuck,Taschenuhr,1353,ja
+Textilien,Anzug,1651,ja
+Textilien,Arbeitshose,1788,ja
+Textilien,Badeanzug,1716,ja
+Textilien,Badebekleidung,1419,ja
+Textilien,Bademantel,1822,ja
+Textilien,Bauchtasche / Gürteltasche,1684,ja
+Textilien,Bettbezug,1681,ja
+Textilien,Bettwäsche,915,ja
+Textilien,Beutel,1123,ja
+Textilien,Imkeranzug,1837,ja
+Textilien,Bienenkästen-Abdeckungen,1554,ja
+Textilien,Bluse,1292,ja
+Textilien,Duschvorhang,1721,ja
+Textilien,Fahne,1516,ja
+Textilien,Fahrradhelm,1657,ja
+Textilien,Fahrradtasche,1162,ja
+Textilien,Gardinen,945,ja
+Textilien,Halstuch,1239,ja
+Textilien,Handschuhe,1362,ja
+Textilien,Handtuch,1091,ja
+Textilien,Handyhülle,1683,ja
+Textilien,Handytasche,1744,ja
+Textilien,Hemd,1170,ja
+Textilien,Hose,1077,ja
+Textilien,Hundehalsband,1450,ja
+Textilien,Hundeleine,1235,ja
+Textilien,Imker-Anzug,1674,ja
+Textilien,Imker-Hut,1708,ja
+Textilien,Jacke,1165,ja
+Textilien,Jeans,1367,ja
+Textilien,Jeansjacke,1556,ja
+Textilien,Kinderbody,1076,ja
+Textilien,Kissenbezug / Kissenhülle,1633,ja
+Textilien,Kleid,1449,ja
+Textilien,Kleidungsstück,451,ja
+Textilien,Krawatte,1682,ja
+Textilien,Lederhose,1648,ja
+Textilien,Leggings,1658,ja
+Textilien,Mantel,1580,ja
+Textilien,Matratzenbezug,1597,ja
+Textilien,Mütze,1621,ja
+Textilien,Oberteil,1623,ja
+Textilien,Orthopädie,1302,ja
+Textilien,Pullover,1078,ja
+Textilien,Puppe,552,ja
+Textilien,Regenschirm,880,ja
+Textilien,Regenschutz,1680,ja
+Textilien,Reißverschluss,1260,ja
+Textilien,Rock,1366,ja
+Textilien,Rucksack,1177,ja
+Textilien,Wolldecke,1611,ja
+Textilien,Schirm,486,ja
+Textilien,Schlafanzug,1736,ja
+Textilien,Schlafmaske,1821,ja
+Textilien,Schlafsack,1440,ja
+Textilien,Schlappen,1620,ja
+Textilien,Schonbezug,1573,ja
+Textilien,Schoner,1816,ja
+Textilien,Schuhe,576,ja
+Textilien,Seil,1310,ja
+Textilien,Socken/Strümpfe,1538,ja
+Textilien,Kissen,1412,ja
+Textilien,Spannbetttuch,1164,ja
+Textilien,Stofftier,1581,ja
+Textilien,Strickjacke,1595,ja
+Textilien,Strumpfhose,1774,ja
+Textilien,T-Shirt,1180,ja
+Textilien,Tarp / Zeltplane,1099,ja
+Textilien,Tasche / Koffer,453,ja
+Textilien,Textilien,1504,ja
+Textilien,Tischdecke,1289,ja
+Textilien,Topflappen,1497,ja
+Textilien,Turnschuhe,1703,ja
+Textilien,Unterwäsche,1244,ja
+Textilien,Vorhang,855,ja
+Textilien,Warnweste,1847,ja
+Textilien,Weste,1354,ja
+Textilien,Wickelunterlage,1691,ja
+Textilien,Winterhose,1598,ja
+Textilien,Wohntextilie,452,ja
+Textilien,Babybody,1867,nein
+Textilien,Bikini,1868,nein
+Textilien,Hüfttasche,1869,nein
+Textilien,Pyjama,1866,nein
+Textilien,Strandflagge,1870,nein
+Unterhaltungselektronik,CD Wechsler,931,ja
+Unterhaltungselektronik,Action Figur,1064,ja
+Unterhaltungselektronik,Aktivlautsprecher,1229,ja
+Unterhaltungselektronik,Alexa,1745,ja
+Unterhaltungselektronik,Audiointerface,1629,ja
+Unterhaltungselektronik,Audiorecorder,690,ja
+Unterhaltungselektronik,Aufnahmegerät,1101,ja
+Unterhaltungselektronik,Autoradio,481,ja
+Unterhaltungselektronik,Puppenbadewanne,1795,ja
+Unterhaltungselektronik,Subwoofer,1369,ja
+Unterhaltungselektronik,Blueray Player,833,ja
+Unterhaltungselektronik,Bluetooth-Lautsprecher,1728,ja
+Unterhaltungselektronik,Bluetooth Musikbox,804,ja
+Unterhaltungselektronik,Bluetooth-Radio,1622,ja
+Unterhaltungselektronik,Bluetooth-Transmitter,1714,ja
+Unterhaltungselektronik,CD-Player,436,ja
+Unterhaltungselektronik,CD-Radio,881,ja
+Unterhaltungselektronik,Controller,927,ja
+Unterhaltungselektronik,DAB-Radio,906,ja
+Unterhaltungselektronik,Diabetrachter,497,ja
+Unterhaltungselektronik,Diaprojektor,902,ja
+Unterhaltungselektronik,Digitalisierer,1814,ja
+Unterhaltungselektronik,Digitalkamera,419,ja
+Unterhaltungselektronik,Discman,439,ja
+Unterhaltungselektronik,DJ Controller,830,ja
+Unterhaltungselektronik,Domino-Aufstellapparat,1802,ja
+Unterhaltungselektronik,Drohne,623,ja
+Unterhaltungselektronik,DVD Micro-Audio System,867,ja
+Unterhaltungselektronik,DVD-Player,435,ja
+Unterhaltungselektronik,DVD-Recorder,1026,ja
+Unterhaltungselektronik,Einschaltmodul / Umschaltbox,1783,ja
+Unterhaltungselektronik,ELA-Anlage,907,ja
+Unterhaltungselektronik,Digitaler Bilderrahmen,1747,ja
+Unterhaltungselektronik,Equalizer,970,ja
+Unterhaltungselektronik,Faltpiano,1723,ja
+Unterhaltungselektronik,Fernbedienung,448,ja
+Unterhaltungselektronik,Ferngesteuertes Auto,816,ja
+Unterhaltungselektronik,Fernseher,403,ja
+Unterhaltungselektronik,Festplattenrekorder,843,ja
+Unterhaltungselektronik,Filmprojektor,924,ja
+Unterhaltungselektronik,Flachbildfernseher,1661,ja
+Unterhaltungselektronik,Frequenzweiche,1717,ja
+Unterhaltungselektronik,Funk-Radiowecker,1525,ja
+Unterhaltungselektronik,Funkempfänger,1686,ja
+Unterhaltungselektronik,Funkfernbedienung,1130,ja
+Unterhaltungselektronik,Funkkopfhörer,887,ja
+Unterhaltungselektronik,Geräuschmodul,1315,ja
+Unterhaltungselektronik,Ghettoblaster,1578,ja
+Unterhaltungselektronik,Grammophon,1006,ja
+Unterhaltungselektronik,Heimkinosystem,742,ja
+Unterhaltungselektronik,HiFi-Musik-Anlage,437,ja
+Unterhaltungselektronik,iPod,1139,ja
+Unterhaltungselektronik,Internet-Radio,1257,ja
+Unterhaltungselektronik,Jukebox,444,ja
+Unterhaltungselektronik,Kabeltuner,1600,ja
+Unterhaltungselektronik,"Kamera, analog",633,ja
+Unterhaltungselektronik,Karaoke-Anlage/CD-Spieler,982,ja
+Unterhaltungselektronik,Kassetten Tape Deck,894,ja
+Unterhaltungselektronik,Kassette,781,ja
+Unterhaltungselektronik,Kassetten-Radio,1137,ja
+Unterhaltungselektronik,Kassettenrekorder,433,ja
+Unterhaltungselektronik,Keyboard,543,ja
+Unterhaltungselektronik,Kinderklavier,1240,ja
+Unterhaltungselektronik,Kofferradio,1290,ja
+Unterhaltungselektronik,Kopfhörer,459,ja
+Unterhaltungselektronik,Küchenradio,1042,ja
+Unterhaltungselektronik,Laserprojektor,1575,ja
+Unterhaltungselektronik,Lautsprecher(boxen),441,ja
+Unterhaltungselektronik,Lego Batteriebox,1794,ja
+Unterhaltungselektronik,Leiterplatte,696,ja
+Unterhaltungselektronik,Lichtorgel,1062,ja
+Unterhaltungselektronik,Micro-HiFi-System,1761,ja
+Unterhaltungselektronik,Mikrofon,458,ja
+Unterhaltungselektronik,MiniDisc-Player,1060,ja
+Unterhaltungselektronik,Minifernseher mit Radio,1046,ja
+Unterhaltungselektronik,Mischpult,714,ja
+Unterhaltungselektronik,MP3-Player,440,ja
+Unterhaltungselektronik,Multimedia-Center,704,ja
+Unterhaltungselektronik,Multirekorder,964,ja
+Unterhaltungselektronik,Music System,1205,ja
+Unterhaltungselektronik,Musikkompaktanlage,1507,ja
+Unterhaltungselektronik,Musikstreamer,1785,ja
+Unterhaltungselektronik,Plattenspieler,443,ja
+Unterhaltungselektronik,Spielekonsole,914,ja
+Unterhaltungselektronik,Projektor,647,ja
+Unterhaltungselektronik,Quadrocopter,809,ja
+Unterhaltungselektronik,Radio,404,ja
+Unterhaltungselektronik,Radiorecorder,721,ja
+Unterhaltungselektronik,Radiowecker,479,ja
+Unterhaltungselektronik,"Receiver (Sat, Kabel, Antenne, Audio)",484,ja
+Unterhaltungselektronik,Roboter,610,ja
+Unterhaltungselektronik,Röhren-Radio,905,ja
+Unterhaltungselektronik,Sampler,1301,ja
+Unterhaltungselektronik,Smart-TV,1502,ja
+Unterhaltungselektronik,SmartHub,1790,ja
+Unterhaltungselektronik,Soundbar,852,ja
+Unterhaltungselektronik,Soundschaltung,957,ja
+Unterhaltungselektronik,Surround Anlage,1256,ja
+Unterhaltungselektronik,Space-Projektor,1753,ja
+Unterhaltungselektronik,Spielkonsole,442,ja
+Unterhaltungselektronik,Spulentonbandgerät,573,ja
+Unterhaltungselektronik,Stereoanlage,813,ja
+Unterhaltungselektronik,Synthesizer,1073,ja
+Unterhaltungselektronik,Taschenradio,1513,ja
+Unterhaltungselektronik,Time Base Corrector,1097,ja
+Unterhaltungselektronik,tiptoi Stift,1765,ja
+Unterhaltungselektronik,"Hörbox (z.B. Tonie, Tiger, Hörbert)",1475,ja
+Unterhaltungselektronik,Transistorradio,1524,ja
+Unterhaltungselektronik,TV Simulator,1050,ja
+Unterhaltungselektronik,Verstärker,544,ja
+Unterhaltungselektronik,Videokamera,482,ja
+Unterhaltungselektronik,Videorekorder,434,ja
+Unterhaltungselektronik,Vorverstärker,1807,ja
+Unterhaltungselektronik,Walkman,438,ja
+Unterhaltungselektronik,"Wasserpistole, elektisch",1815,ja
+Unterhaltungselektronik,Webcam,631,ja
+Unterhaltungselektronik,Wireless Microphone System,995,ja
+Unterhaltungselektronik,Zwitscherbox,1569,ja
+Unterhaltungselektronik,Sonstiges,1567,nein
+Upcycling/Basteln,Akkordeon,1550,ja
+Upcycling/Basteln,Fensterbild,1491,ja
+Upcycling/Basteln,Fliegengitter,1224,ja
+Upcycling/Basteln,Flyerhalter,614,ja
+Upcycling/Basteln,Gurte,1480,ja
+Upcycling/Basteln,Halterung,734,ja
+Upcycling/Basteln,Hochbeet,635,ja
+Upcycling/Basteln,Insektenhotel,634,ja
+Upcycling/Basteln,mechanische Spieldose,1778,ja
+Upcycling/Basteln,Modellauto,733,ja
+Upcycling/Basteln,Motorrad,1541,ja
+Upcycling/Basteln,Musikalien,1767,ja
+Upcycling/Basteln,Outdoor,859,ja
+Upcycling/Basteln,Papierröhre,1447,ja
+Upcycling/Basteln,Porzellanfigur,1037,ja
+Upcycling/Basteln,Schaukasten mit Motor,1228,ja
+Upcycling/Basteln,Schild,629,ja
+Upcycling/Basteln,Skateboardachse,835,ja
+Upcycling/Basteln,Stricknadel-Verbindungsteil,1670,ja
+Upcycling/Basteln,Trinkglas,1241,ja
+Upcycling/Basteln,Vergaserreparatur,1500,ja
+Upcycling/Basteln,Visible Repair Technique,1312,ja
+Upcycling/Basteln,Klemmen,1878,nein
+Kategorie nicht vorhanden?,Unterkategorie hinzufügen,-1,ja

@@ -40,7 +40,7 @@ Grundsätze für den Betrieb:
 - **Ein Mensch entscheidet.** MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. Das ist zugleich die Qualitätskontrolle, die die Datenpotenzialanalyse empfiehlt. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
 - **Ollama nur per VPN, Open WebUI über den NetBird-Proxy.** Ollama ist nur über NetBird für die Helpdesk-VM und Open WebUI erreichbar. Open WebUI ist über den Reverse Proxy von NetBird mit Anmeldung über authentik erreichbar, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
 - **Datenschutz von Anfang an.** Löschfristen, Datenschutzhinweis und Verzeichnis von Verarbeitungstätigkeiten entstehen zusammen mit den Feldern in Zammad, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
-- **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Echte Ticketdaten landen nie in diesem öffentlichen Repo.
+- **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Einzige Ausnahme sind Marke und Modell für die Suche nach Anleitungen über eine eigene SearXNG-Instanz, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc). Echte Ticketdaten landen nie in diesem öffentlichen Repo.
 - **Code rechnet, das Modell formuliert.** Zählen, Zuordnen, Termine planen und Daten übertragen erledigen Zammad-Trigger und n8n-Workflows nach festen Regeln. Das Sprachmodell liest aus Freitext heraus, schreibt Texte und fasst zusammen.
 - **Alles ist Code.** Die Einrichtung des Hosts liegt als Ansible-Rollen in it-infrastructure. Prompts, exportierte n8n-Workflows, Testsatz-Werkzeuge und Doku liegen hier. Die Konfiguration der KI-Agenten in Zammad, also Regeln und Beschreibungen der Auswahlwerte, legen wir als Kopie in prompts/ ab.
 
@@ -77,16 +77,17 @@ MANUEL läuft auf der neu aufgebauten IT des Vereins. Zugangs-VM mit authentik u
 
 | Aufgabe | Zammad | n8n |
 |---|---|---|
-| Felder füllen | Ticket Categorizer für die Art des Geräts, Ticket Text Extractor für Defekt, Stromversorgung, Marke, Bezeichnung und Baujahr, Texterkennung für Fotos vom Typenschild | |
+| Geräte erfassen | Jedes Gerät bekommt ein Ticket, auch spontane Gäste am Empfang mit dem Tag `spontan`, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc) | |
+| Felder füllen | Ticket Categorizer für die Art des Geräts, Ticket Text Extractor für Defekt, Marke, Bezeichnung und Baujahr aus Text und Foto vom Typenschild, ein Mensch bestätigt. Die Stromversorgung folgt aus der Kategorie im Katalog, nach dem ungefähren Alter fragt MANUEL in der Rückfrage | |
 | Reparaturansatz schreiben | Custom AI Agent schreibt eine interne Notiz, passende Artikel aus der Wissensdatenbank zeigt Zammad am Ticket an | |
 | Lösung schreiben | Textwerkzeug macht aus Stichworten der Engagierten einen vollständigen Text | |
-| Reparaturanleitungen | Artikel in der Wissensdatenbank aus einem erfolgreichen Ticket erzeugen und von Engagierten prüfen lassen | |
+| Reparaturanleitungen | Artikel in der Wissensdatenbank aus einem erfolgreichen Ticket erzeugen und von Engagierten prüfen lassen | Anleitungen, Ersatzteile und Explosionszeichnungen über SearXNG und die API von iFixit nur mit Marke und Modell suchen, MANUEL wählt Links für eine interne Notiz aus, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc) |
 | Tickets zusammenfassen | Eingebaute Zusammenfassung | |
 | Tickets verknüpfen | Verknüpfen von Hand, unterstützt durch passende Artikel und Zusammenfassung | Nur falls das nicht reicht, Kandidaten per Embedding suchen |
 | Gästedaten eintragen | Custom AI Agent schreibt erkannte Kontaktdaten als interne Notiz, ein Mensch übernimmt sie | |
 | Terminvorschläge | Datumsfeld Termin im Ticket | Anmeldungen der Helfenden in [Nuudel](https://nuudel.digitalcourage.de/) lesen, daraus die Zahl paralleler Reparaturen ableiten, regelmäßige Zeitslots von Gästen beibehalten, ähnliche Geräte höchstens einen Slot auseinander einplanen und den Vorschlagstext von Ollama formulieren lassen, siehe [Terminvergabe](#terminvergabe) |
-| Statistik | Ergebnisfelder und Berichte | Ergebnisse zählen, also erfolgreich, teilweise, vertagt, nicht gelungen und nicht erschienen, und Freitexte zu fehlendem Werkzeug und Highlights von Ollama zusammenfassen lassen |
-| Open Repair Alliance | Felder mit den Werten der Laufzettel | Gerät über die API von Restarters.net beim passenden Event anlegen, Restarters meldet es an die Open Repair Alliance weiter |
+| Statistik | Ergebnisfelder und Berichte, Tag `highlight` für besondere Reparaturen | Ergebnisse zählen, also gelungen, teilweise gelungen, vertagt, nicht erfolgt, abgebrochen und No-Show, Freitexte zu fehlendem Werkzeug von Ollama zusammenfassen lassen und die [Sharecard](sharecard/README.md) als Entwurf erzeugen, die ein Mensch freigibt, siehe [ADR 33](docs/adr/0033-resuemee-als-sharecard-teilen.adoc) |
+| Open Repair Alliance | Felder mit den Werten der Laufzettel | Gerät über die API von Restarters.net beim passenden Event anlegen, Restarters meldet es an die Open Repair Alliance weiter. Die Geräte von 2024 bis 2026 einmal nachmelden, siehe [ADR 36](docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc) |
 | Newsletter | Feld für die Einwilligung | Gäste mit dokumentierter Einwilligung für die Neuigkeiten unserer Initiative auf reparatur-initiativen.org anmelden, die Plattform verschickt dann die Bestätigungsmail |
 
 Zammad löst n8n über die Trigger-Aktion Webhook aus, zum Beispiel wenn ein Ticket nach dem Termin geschlossen wird.
@@ -340,6 +341,8 @@ git push
 - [ ] Decision-Modell d3 an deutschen Beispiel-Tickets prüfen, vor allem das Kriterium sicherheitsrelevant. Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt
 - [ ] Schnelles und großes Modell am Testsatz vergleichen und entscheiden, ob sich die Eskalation lohnt
 - [ ] Beim Repair Café im November Vorschläge live in Open WebUI testen und Rückmeldungen sammeln
+- [ ] Auslesen von Fotos vom Typenschild mit dem Hauptmodell an Beispielfotos testen, ein Mensch bestätigt die Felder, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
+- [ ] Spalte „spontan“ im Blatt Eingabe der Statistik anlegen, damit die [Sharecard](sharecard/README.md) spontane Gäste zeigt
 
 ### Phase 4 Anbindung an Zammad
 
@@ -356,17 +359,24 @@ git push
 - [ ] Prüfen, dass Vorschläge von MANUEL im Ticket gut erkennbar sind und Engagierte sie mit wenigen Klicks übernehmen oder korrigieren können, auch auf Tablet und Smartphone
 - [ ] Beim Repair Café im Dezember im Echtbetrieb einsetzen und Rückmeldungen zu den Notizen sammeln
 - [ ] Falls sich die Eskalation lohnt, Auslöser in Zammad anlegen und Anfragen in n8n in eine Warteschlange stellen, weil immer nur eine Anfrage gleichzeitig läuft
+- [ ] Ablauf am Empfang anpassen, jedes Gerät bekommt ein Ticket und spontane Gäste den Tag `spontan`, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
+- [ ] Stromversorgung aus der Kategorie im Katalog setzen und das ungefähre Alter in der Rückfrage erfragen
+- [ ] Feld „repariert von“ mit den Werten Gast selbst, Gast mit Hilfe und Engagierte anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
+- [ ] KI-Rückmeldung von Zammad an den KI-Agenten prüfen und den Export unter KI, Feedback & Logs testen
 
 ### Phase 5 Wissensdatenbank und n8n
 
 - [ ] Wissensdatenbank in Zammad für Reparaturanleitungen einrichten und aus erfolgreichen Reparaturen Artikel erzeugen, die Engagierte vor der Veröffentlichung prüfen
 - [ ] Rolle n8n in it-infrastructure für die Helpdesk-VM anlegen, siehe [n8n-Doku zum Selbsthosten](https://docs.n8n.io/hosting/), hinter Traefik mit Anmeldung und mit Sicherung per resticker
-- [ ] Workflow für Statistik bauen, der Ergebnisse zählt und Freitexte zu fehlendem Werkzeug und Highlights zusammenfasst
+- [ ] Workflow für Statistik bauen, der Ergebnisse zählt und Freitexte zu fehlendem Werkzeug zusammenfasst
 - [ ] Workflows als JSON nach n8n-workflows/ exportieren
 - [ ] Mit der anstiftung per Issue in mapped-repair-events klären, ob sie schreibende Endpunkte für Laufzettel und Neuigkeiten annehmen würde
 - [ ] Felder in Zammad auf die Felder der Laufzettel abbilden, damit die Daten ohne Nacharbeit übertragbar sind
 - [ ] Endpunkte in mapped-repair-events umsetzen und als Pull Request einreichen
-- [ ] Workflow bauen, der nach dem Repair Café die Laufzettel auf reparatur-initiativen.org anlegt, bis dahin Laufzettel von Hand übertragen
+- [ ] Workflow bauen, der nach dem Repair Café die Geräte über die API von Restarters.net meldet, siehe [ADR 14](docs/adr/0014-reparaturen-ueber-restarters-melden.adoc)
+- [ ] Nachmeldung der Geräte von 2024 bis 2026 an Restarters nach Freigabe der Vorschau senden, siehe [ADR 36](docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc)
+- [ ] SearXNG in it-infrastructure auf der Helpdesk-VM einrichten und den Workflow für die Suche nach Anleitungen bauen, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc)
+- [ ] Workflow für die Sharecard bauen, der die Zahlen aus Zammad holt, Highlights über den Tag `highlight` findet und die Karte als Entwurf ans Team schickt
 - [ ] Workflow für Terminvorschläge bauen, der Anmeldungen in Nuudel auswertet
 - [ ] Workflow für den Newsletter bauen, der nur Gäste anmeldet, für die Engagierte den Wunsch im Feld zur Einwilligung vermerkt haben. Die KI-Agenten dürfen dieses Feld nie setzen. Übermittelt wird nur die E-Mail-Adresse, der Endpunkt löst die Bestätigungsmail aus, jede Übermittlung erscheint einmalig als interne Notiz im Ticket und Fehler werden gemeldet
 

@@ -28,4 +28,4 @@
 
 // Schritte einer Datenanalyse nach <<wickham>> wie 2022, Gegenüberstellung als Tabelle.
 // Iteratives Vorgehen, jeder Schritt mit Ergebnis und Erkenntnis, Entscheidungen als ADR in <<anhang-adr>>.
-// Überblick über die Kapitel.
+// Überblick über die Kapitel. Kapitel 2 als Grundlagen zu Reparaturdaten und ihrer Vereinheitlichung, danach Aufgaben, Umsetzung und Weitergabe.

@@ -1,14 +1,15 @@
-[[weitergabe]]
-== Weitergabe der Daten und Termine
+[[reparaturdaten]]
+== Reparaturdaten und ihre Vereinheitlichung
 
-Reparaturdaten sind mehr als eine Statistik für den eigenen Verein. Zusammengeführt zeigen sie, welche Geräte kaputtgehen, woran Reparaturen scheitern und wo Hersteller nachbessern müssten. Dieses Kapitel beschreibt, wie die Daten des Repair Café zur Open Repair Alliance gelangen. Von dort stammen auch die Gruppen, nach denen der Katalog in <<katalog>> geordnet ist.
+Reparaturdaten sind mehr als eine Statistik für den eigenen Verein. Zusammengeführt zeigen sie, welche Geräte kaputtgehen, woran Reparaturen scheitern und wo Hersteller nachbessern müssten. Damit das gelingt, müssen Daten aus vielen Initiativen und Werkzeugen vergleichbar werden. Dieses Kapitel beschreibt, welche Reparaturdaten es gibt, wie die Open Repair Alliance sie vereinheitlicht und was daraus für MANUEL folgt. Von dort stammen auch die Gruppen, nach denen der Katalog in <<katalog>> geordnet ist.
 
 [[ora]]
 === Open Repair Alliance
 
 Die Open Repair Alliance wurde von der anstiftung, Fixit Clinic, iFixit, der Repair Café Foundation und The Restart Project gegründet. The Restart Project koordiniert sie seit November 2017 <<ora-standard>>. Die Alliance führt die Daten ihrer Partner zweimal im Jahr zu einem gemeinsamen Datensatz zusammen und veröffentlicht ihn unter CC BY-SA 4.0 <<ora-datasets>>. Ausgewertet ist hier die Version 0.3 vom Juli 2026 <<ora-data>>.
 
-==== Der Open Repair Data Standard
+[[ords]]
+=== Der Open Repair Data Standard
 
 Der Standard legt fest, welche Felder ein Eintrag hat und welche Werte erlaubt sind <<ora-standard>>.
 
@@ -28,7 +29,8 @@ Der Standard legt fest, welche Felder ein Eintrag hat und welche Werte erlaubt s
 
 Entscheidend für diese Arbeit ist das Verhältnis der ersten beiden Kategoriefelder. Jeder Partner erfasst mit seiner eigenen Liste. Die Alliance ordnet jede dieser Kategorien einer Produktkategorie des Standards zu und prüft die Zuordnung bei jedem neuen Datensatz <<ora-datasets>>. Die Produktkategorien des Standards heißen in dieser Arbeit ORA-Gruppen.
 
-==== Die Partner
+[[partner]]
+=== Partner und ihre Werkzeuge
 
 Der Datensatz enthält 620.000 Einträge von neun Partnern.
 
@@ -40,7 +42,25 @@ include::../../docs/ora/partner.tsv[]
 
 Die Spalte `feste_stufe` zeigt, welcher Teil der Kategorie eines Partners aus einer festen Liste stammt. Eine 1 heißt, die erste Stufe ist fest und die zweite Freitext. Eine 2 heißt, beide Stufen sind fest. Eine 0 heißt, es gibt nur Freitext.
 
-==== Der Datensatz im Überblick
+[[werkzeuge]]
+Die Alliance empfiehlt, Reparaturen mit dem Werkzeug eines Partners zu erfassen, und bittet, nur ein Werkzeug zu nutzen, weil sonst doppelt gezählt wird <<ora-record>>.
+
+.Werkzeuge der Partner zum Erfassen von Reparaturen
+[cols="2,2,3,2",options="header"]
+|===
+|Werkzeug |Partner |Kategorien |Schnittstelle
+|Restarters.net mit Fixometer |The Restart Project, auch iFixit |47 feste Kategorien, dazu der Gegenstand als Freitext |API mit Lesen und Schreiben
+|Repair Monitor |Repair Café International |16 Hauptkategorien mit festen Unterkategorien |keine öffentliche gefunden
+|Laufzettel auf reparatur-initiativen.org |anstiftung |13 Ober- und rund 1.190 Unterkategorien, Initiativen können neue vorschlagen |API nur zum Lesen von Statistiken
+|Online-Formulare |Repair Cafe Wales, Fixit Clinic |grobe Liste bzw. Freitext |keine
+|Tabellen |Repair Café Denmark, Repair Café Toronto |Freitext |keine
+|Repair Connects |Repair Together |direkt die ORA-Gruppen |keine gefunden
+|===
+
+Nur Restarters.net erlaubt es, Reparaturen über eine Schnittstelle anzulegen. Die API der anstiftung liefert Initiativen und Statistiken und braucht ein Token, ein Endpunkt für Laufzettel fehlt.
+
+[[datensatz]]
+=== Der Datensatz im Überblick
 
 Die Zahl der gemeldeten Reparaturen ist stark gewachsen, von 1.395 im Jahr 2015 auf 155.290 im Jahr 2025. Der Sprung ab 2022 kommt von allen großen Partnern gleichzeitig. 2020 bricht die Kurve wegen der Pandemie fast auf null ein. Jeden Sommer und um den Jahreswechsel gibt es Täler, weil dann weniger Veranstaltungen stattfinden. The Restart Project und Repair Café International liefern zusammen 70 Prozent aller Einträge.
 
@@ -63,9 +83,16 @@ Hinter den Einträgen stehen Gruppen und ihre Termine. Bei der anstiftung melden
 include::../../docs/ora/events_by_partner.tsv[]
 |===
 
-==== Wie viel ankommt
+[[eigene-daten]]
+=== Daten des Repair Café Gütersloh
 
-Der Datensatz zeigt nur, was gemeldet wird. Beim Repair Café Gütersloh ist das ein kleiner Teil. Die eigene Statistik des Teams zählt seit 2019 1.485 bearbeitete Geräte an 85 Terminen. Auf reparatur-initiativen.org stehen für dieselbe Zeit 30 Laufzettel, das sind rund 2 Prozent. Alle 30 finden sich in den Open Repair Data wieder, unter der Gruppe 17503 mit denselben Terminen und Kategorien. Der Weg über die anstiftung funktioniert also. Es wird nur fast nichts gemeldet, weil jeder Laufzettel von Hand abgetippt werden muss.
+Das Repair Café Gütersloh hat drei eigene Quellen.
+
+* *Tickets in Zammad.* Seit 2024 kommen Anfragen per Mail, Telefon oder Formular als Ticket an. Sie enthalten den Gegenstand oft nur im Betreff oder in der Nachricht und liegen wegen der persönlichen Daten nur lokal <<adr-0002>>. Mit ihnen arbeitet die Einordnung in <<einordnung>>.
+* *Die eigene Statistik.* Das Team zählt seit 2019 je Termin die bearbeiteten Geräte in einer Tabelle.
+* *Laufzettel auf reparatur-initiativen.org.* Von dort gelangen die Einträge über die anstiftung in die Open Repair Data.
+
+Der Datensatz der Alliance zeigt nur, was gemeldet wird. Beim Repair Café Gütersloh ist das ein kleiner Teil. Die eigene Statistik zählt seit 2019 1.485 bearbeitete Geräte an 85 Terminen. Auf reparatur-initiativen.org stehen für dieselbe Zeit 30 Laufzettel, das sind rund 2 Prozent. Alle 30 finden sich in den Open Repair Data wieder, unter der Gruppe 17503 mit denselben Terminen und Kategorien. Der Weg über die anstiftung funktioniert also. Es wird nur fast nichts gemeldet, weil jeder Laufzettel von Hand abgetippt werden muss.
 
 .Bearbeitete Geräte und gemeldete Laufzettel des Repair Café Gütersloh
 [cols="1,1,1,1",options="header"]
@@ -84,46 +111,20 @@ Der Datensatz zeigt nur, was gemeldet wird. Beim Repair Café Gütersloh ist das
 
 Bei anderen Initiativen dürfte es ähnlich sein. Für die Auswertungen der Alliance heißt das, dass die Zahlen die Vielfalt der Geräte zeigen, aber nicht den Umfang der Reparaturen. Für MANUEL ist es der wichtigste Grund, die Übertragung zu automatisieren.
 
-[[werkzeuge]]
-=== Werkzeuge der Partner
+[[vereinheitlichung]]
+=== Vereinheitlichung der Kategorien
 
-Die Alliance empfiehlt, Reparaturen mit dem Werkzeug eines Partners zu erfassen, und bittet, nur ein Werkzeug zu nutzen, weil sonst doppelt gezählt wird <<ora-record>>.
+Die Werkzeuge der Partner zeigen drei Wege, Kategorien vergleichbar zu machen.
 
-[cols="2,2,3,2",options="header"]
-|===
-|Werkzeug |Partner |Kategorien |Schnittstelle
-|Restarters.net mit Fixometer |The Restart Project, auch iFixit |47 feste Kategorien, dazu der Gegenstand als Freitext |API mit Lesen und Schreiben
-|Repair Monitor |Repair Café International |16 Hauptkategorien mit festen Unterkategorien |keine öffentliche gefunden
-|Laufzettel auf reparatur-initiativen.org |anstiftung |13 Ober- und rund 1.190 Unterkategorien, Initiativen können neue vorschlagen |API nur zum Lesen von Statistiken
-|Online-Formulare |Repair Cafe Wales, Fixit Clinic |grobe Liste bzw. Freitext |keine
-|Tabellen |Repair Café Denmark, Repair Café Toronto |Freitext |keine
-|Repair Connects |Repair Together |direkt die ORA-Gruppen |keine gefunden
-|===
-
-Nur Restarters.net erlaubt es, Reparaturen über eine Schnittstelle anzulegen. Die API der anstiftung liefert Initiativen und Statistiken und braucht ein Token, ein Endpunkt für Laufzettel fehlt. Das gab den Ausschlag für <<adr-0014>>.
+. *Eine gemeinsame Liste beim Erfassen.* Repair Connects erfasst direkt mit den ORA-Gruppen. Eine Zuordnung ist dann nicht mehr nötig, die Gruppen sind aber für die Arbeit am Tisch grob.
+. *Eine eigene feste Liste mit Zuordnung im Nachhinein.* So arbeiten anstiftung, Repair Café International und Restarters. Die Alliance ordnet jede Kategorie einmal einer ORA-Gruppe zu und kann das für alle Einträge wiederverwenden.
+. *Freitext mit Zuordnung im Nachhinein.* Denmark, Toronto und Fixit Clinic melden nur Freitext. Jeder neue Wert muss einzeln zugeordnet werden.
 
 [[kategorien-vergleich]]
-=== Kategorien im Vergleich
-
 Die Matrix in <<anhang-kategorien>> stellt für jede ORA-Gruppe nebeneinander, mit welchen eigenen Kategorien die Partner deren Einträge erfasst haben. Die vollständige Zuordnung jeder Kategorie zu ihren ORA-Gruppen liegt in {repo}/docs/ora/kategorien-zuordnung.tsv[kategorien-zuordnung.tsv]. Drei Beobachtungen sind für MANUEL wichtig.
 
 * *Feine Listen lassen sich eindeutig zuordnen.* Fast jede Kategorie der anstiftung landet bei genau einer ORA-Gruppe, nur 14 Zeilen der Zuordnung sind mehrdeutig. Unser Katalog baut auf dieser Liste auf und übernimmt damit diese Eindeutigkeit.
 * *Grobe Listen brauchen den Freitext.* Restarters erfasst etwa Ladegeräte zu 70 Prozent unter Misc. Erst der Freitext im Feld für den Gegenstand erlaubt der Alliance die Zuordnung zu Battery/charger/adapter. Beim Repair Monitor verteilt sich fast jede dritte Unterkategorie auf mehrere Gruppen.
 * *Freitext allein ist schwer auszuwerten.* Bei Toronto und Fixit Clinic decken selbst die 60 häufigsten Werte nur 57 bzw. 29 Prozent der Einträge ab, Schreibfehler und Mehrzahl inklusive.
 
-Für die Übertragung an Restarters folgt daraus, dass MANUEL beide Felder sorgfältig füllt. Die Kategorie ergibt sich aus der ORA-Gruppe im Katalog, der Gegenstand aus dem englischen Namen des Eintrags.
-
-[[restarters]]
-=== Übertragung an Restarters.net
-
-// API POST /api/v2/devices, Konto für MANUEL als Host der Gruppe, Token, Zuordnung der Kategorien, Größen bei Laptop und Fernseher. <<adr-0014>>
-
-[[anstiftung]]
-=== Termine bei der anstiftung
-
-// Termine zum Abonnieren und Neuigkeiten bleiben auf reparatur-initiativen.org, keine Laufzettel mehr, Vorschlag einer schreibenden API.
-
-[[terminvergabe]]
-=== Terminvergabe
-
-// Kapazität aus den Anmeldungen der Helfenden, Reihenfolge der Regeln. <<adr-0026>>
+MANUEL verbindet den zweiten Weg mit dem ersten. Der Katalog nutzt die feine Liste der anstiftung und trägt die ORA-Gruppe schon im Schlüssel <<adr-0013>>. Die Zuordnung geschieht damit einmal im Katalog statt bei jeder Meldung. Der Wortlaut der Anfrage bleibt im Ticket erhalten, so wie es die Datenpotenzialanalyse für jeden Rohwert empfohlen hat <<prange-2022>>.

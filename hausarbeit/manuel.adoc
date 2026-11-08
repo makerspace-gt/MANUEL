@@ -33,19 +33,21 @@ Diese Arbeit steht unter https://creativecommons.org/licenses/by/4.0/deed.de[CC 
 
 include::kapitel/01-einleitung.adoc[]
 
-include::kapitel/02-anforderungen.adoc[]
+include::kapitel/02-reparaturdaten.adoc[]
 
-include::kapitel/03-architektur.adoc[]
+include::kapitel/03-anforderungen.adoc[]
 
-include::kapitel/04-hardware-und-modelle.adoc[]
+include::kapitel/04-architektur.adoc[]
 
-include::kapitel/05-einordnung.adoc[]
+include::kapitel/05-hardware-und-modelle.adoc[]
 
-include::kapitel/06-katalog.adoc[]
+include::kapitel/06-einordnung.adoc[]
 
-include::kapitel/07-weitergabe.adoc[]
+include::kapitel/07-katalog.adoc[]
 
-include::kapitel/08-fazit.adoc[]
+include::kapitel/08-weitergabe.adoc[]
+
+include::kapitel/09-fazit.adoc[]
 
 include::kapitel/anhang-adr.adoc[]
 

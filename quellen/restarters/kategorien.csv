@@ -1,0 +1,48 @@
+id,kategorie,strom,gegenstaende_in_der_api
+6,Games console,ja,92
+7,Watch/clock,ja,225
+8,Sewing machine,ja,91
+9,Iron,ja,78
+10,Coffee maker,ja,165
+11,Desktop computer,ja,82
+12,"Flat screen 15-17""",ja,18
+13,"Flat screen 19-20""",ja,11
+14,"Flat screen 22-24""",ja,24
+15,Laptop large,ja,17
+16,Laptop medium,ja,58
+17,Laptop small,ja,27
+18,Paper shredder,ja,23
+19,PC accessory,ja,224
+20,Printer/scanner,ja,68
+21,Digital compact camera,ja,42
+22,DSLR/video camera,ja,35
+23,Handheld entertainment device,ja,191
+24,Headphones,ja,81
+25,Mobile,ja,73
+26,Tablet,ja,90
+27,"Flat screen 26-30""",ja,9
+28,"Flat screen 32-37""",ja,22
+29,Hi-Fi integrated,ja,157
+30,Hi-Fi separates,ja,367
+31,Musical instrument,ja,135
+32,Portable radio,ja,226
+33,Projector,ja,50
+34,TV and gaming-related accessories,ja,239
+35,Aircon/dehumidifier,ja,57
+36,Decorative or safety lights,ja,477
+37,Fan,ja,89
+38,Hair & beauty item,ja,351
+39,Kettle,ja,50
+40,Lamp,ja,426
+41,Power tool,ja,1065
+42,Small kitchen item,ja,1202
+43,Toaster,ja,30
+44,Toy,ja,860
+45,Vacuum,ja,300
+46,Misc,ja,2445
+47,Furniture,nein,802
+48,Bicycle,nein,373
+49,Clothing/textile,nein,2625
+50,Misc,nein,3183
+51,Hand tool,nein,1151
+52,Jewellery,nein,303

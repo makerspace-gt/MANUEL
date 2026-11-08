@@ -11,3 +11,9 @@
 [submodule "it-infrastructure"]
 	path = it-infrastructure
 	url = https://github.com/makerspace-gt/it-infrastructure.git
+[submodule "quellen/openrepair-data"]
+	path = quellen/openrepair-data
+	url = https://github.com/openrepair/data.git
+[submodule "quellen/openrepair-datastandard"]
+	path = quellen/openrepair-datastandard
+	url = https://github.com/openrepair/datastandard.git

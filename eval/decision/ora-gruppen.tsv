@@ -1,0 +1,48 @@
+# Produktkategorien des Open Repair Data Standard (standard.openrepair.org), ergänzt um die Gruppen ohne Strom aus den ORDS-Daten.
+# Spalten: ID, Name laut Standard, deutsche Beschreibung für das Decision-Modell. Die Beschreibungen sind eigene Übersetzungen der Beispiele im Standard.
+1	Aircon/dehumidifier	Klimagerät, Luftentfeuchter, Luftbefeuchter oder Luftreiniger
+2	Battery/charger/adapter	Akku, Ladegerät, Netzteil, Powerbank oder Adapter
+3	Decorative or safety lights	Lichterkette, Weihnachtsbeleuchtung, Schwibbogen, Fahrradlicht oder Taschenlampe
+4	Desktop computer	Desktop-PC, Tower oder Mini-PC
+5	Digital compact camera	Kleine Digitalkamera
+6	DSLR/video camera	Spiegelreflexkamera, Systemkamera oder Videokamera
+7	Fan	Ventilator, Lüfter oder Heizlüfter
+8	Flat screen	Fernseher oder Monitor
+9	Hair & beauty item	Glätteisen, Lockenstab, elektrische Zahnbürste, Rasierer, Epilierer oder Haarschneider
+10	Handheld entertainment device	Tragbares Unterhaltungsgerät wie iPod, Walkman, Discman, MP3-Player oder Gameboy
+11	Headphones	Kopfhörer, Ohrhörer oder Headset
+12	Hi-Fi integrated	Kompaktanlage, Stereoanlage oder Ghettoblaster mit eingebautem Radio, CD oder Kassette
+13	Hi-Fi separates	Einzelne HiFi-Bausteine wie Verstärker, Lautsprecher, Plattenspieler, CD-Player oder Kassettendeck
+14	Kettle	Wasserkocher
+15	Lamp	Tischlampe, Stehlampe, Nachttischlampe, Deckenleuchte oder andere Leuchte
+16	Laptop	Laptop oder Notebook
+17	Large home electrical	Großgerät wie Rasenmäher, Fitnessgerät, Waschmaschine, Herd oder Kühlschrank
+18	Misc	Elektrisches Gerät, das in keine andere Gruppe passt
+19	Mobile	Handy, Smartphone oder anderes Mobiltelefon
+20	Musical instrument	Elektrisches Musikinstrument wie Keyboard, E-Gitarre oder E-Piano
+21	Paper shredder	Aktenvernichter oder Papierschredder
+22	PC accessory	Computerzubehör wie Maus, Tastatur, Webcam, Festplatte oder Router
+23	Portable radio	Radio, Radiowecker oder Kofferradio
+24	Power tool	Elektrowerkzeug für Heimwerken oder Garten wie Bohrmaschine, Säge, Schleifer, Laubbläser oder Heckenschere
+25	Printer/scanner	Drucker, Scanner oder Kopierer
+26	Projector	Diaprojektor, Beamer oder Videoprojektor
+27	Sewing machine	Nähmaschine
+28	Small home electrical	Kleines Haushalts- oder Elektrogerät wie Babyphone, Türklingel, Messgerät, Uhrwerk mit Strom oder Massagegerät
+29	Small kitchen item	Kleines Küchengerät wie Brotbackautomat, Reiskocher, Waffeleisen, Grill oder Mikrowelle
+30	Tablet	Tablet, E-Book-Reader oder Navigationsgerät
+31	Toaster	Toaster
+32	Toy	Spielzeug mit Strom aus Netz oder Batterie
+33	TV and gaming-related accessories	Receiver, DVD-Player, Videorekorder, Fernbedienung oder Spielecontroller
+34	Vacuum	Staubsauger, Akkusauger oder Saugroboter
+35	Watch/clock	Elektrische Uhr, Wecker, Armbanduhr oder Fitnesstracker
+36	Coffee maker	Kaffeemaschine, Kapselmaschine, Kaffeevollautomat oder Espressomaschine
+37	Food processor	Küchenmaschine, Mixer, Entsafter, Kaffeemühle, Stabmixer oder Handmixer
+38	Games console	Spielkonsole wie Playstation oder Xbox
+39	Hair dryer	Föhn, Haartrockner oder Trockenhaube
+40	Iron	Bügeleisen, Dampfbügeleisen oder Bügelstation
+101	Unpowered - Textile	Kleidung, Taschen und andere Textilien ohne Strom
+102	Unpowered - Household	Haushaltsgegenstand ohne Strom wie Topf, Geschirr, Werkzeug oder mechanische Uhr
+103	Unpowered - Bicycle	Fahrrad, Fahrradteil oder Roller ohne Motor
+104	Unpowered - Jewellery	Schmuck und Brillen
+105	Unpowered - Furniture	Möbel, Stühle und Gegenstände aus Holz
+106	Unpowered - Other	Gegenstand ohne Strom, der in keine andere Gruppe passt

@@ -1,0 +1,136 @@
+# Gleichwertige Kategorien. Spalten: bevorzugt, gleichwertig, Status, Hinweis
+# Nach dem Modell wird der Wert in der zweiten Spalte durch die erste ersetzt, in der Auswertung
+# zählt beides als gleich. Status bestätigt heißt, das Team hat es entschieden, Vorschlag heißt offen.
+# Bewusst nicht gleichwertig: Personenwaage ist die Waage ohne Elektrik, auch wenn sie in der Liste unter
+# Elektro divers steht, Waage, elektrisch ist die mit Strom. Dremel bleibt eine eigene Kategorie.
+# Mixer allein wird nicht vergeben. Unterschieden werden Standmixer, Handmixer und Stabmixer / Pürierstab,
+# bei einem Ticket mit nur Mixer fragt MANUEL mit nummerierten Vorschlägen nach.
+# Handstaubsauger bleibt eigene Kategorie. Andere Sauger mit Akku sind Staubsauger mit Strom Akku.
+# Einzelbausteine wie CD-Player, Plattenspieler und Kassetten Tape Deck bleiben eigen.
+# Drucker werden nach Tinte und Laser unterschieden, Laserdrucker bleibt eigen. Leder und andere
+# Kleidung bleiben getrennt. Diaprojektor, Filmprojektor und Space-Projektor bleiben eigen, ebenso
+# Tauchpumpe und Teichpumpe sowie Espressokocher für den Herd. Fernbedienung und Funkfernbedienung bleiben getrennt.
+# Rauchmelder / Brandmelder steht so nicht im Formular, dort sind es zwei Einträge.
+# Kaffeemaschine meint die Filterkaffeemaschine. Kaffeevollautomat und Pad-/Kapsel-Kaffeemaschine bleiben eigen.
+# Kopfhörer und Headsets werden nach Bauform getrennt, In-Ear und On-/Over-Ear. Ohne Angabe fragt MANUEL nach.
+# Walkman bleibt eigen, weil es ein kleines Gerät ist. Spielzeugauto und Ferngesteuertes Auto bleiben getrennt,
+# ebenso Bohrmaschine und Schlagbohrmaschine. Fotoapparat kann digital oder analog sein, MANUEL fragt nach.
+# Getrennt bleiben Strickjacke und Pullover, Adapter und Netzteil, Lüfter und Ventilator, Stecker und Kabel.
+# Diabetrachter bleibt eigen, er ist eine kleine Lichtbox mit Lupe zum Ansehen von Dias, kein Projektor.
+# Entsafter ist die Zentrifuge, Saftpresse arbeitet mit Schnecke oder Walzen, beide gibt es elektrisch und von Hand.
+# Nach Recherche getrennt: Astschere ist größer als die Gartenschere, E-Piano und Synthesizer sind keine Keyboards.
+# Nach den Marken in den Open Repair Data getrennt: Display unter Smartphone/Tablet ist kein Monitor, Kette unter
+# Metallbearbeitung keine Halskette. Stiefel steht unter Leder und bleibt wegen der Trennung nach Leder eigen.
+# Projektor meint laut den Marken meist alte Dia- oder Filmprojektoren. Bei nur Projektor fragt MANUEL nach.
+# Lautsprecher(boxen), Aktivlautsprecher, Bluetooth Musikbox und Soundbar bleiben getrennt, bei nur Lautsprecher fragt MANUEL nach.
+# Entscheidungen vom 08.11.2026. Eigen bleiben Zwitscherbox, Space-Projektor, Kerze, elektrisch, Schlagschrauber und Mixeraufsatz.
+# Herrnhuter Stern ist Weihnachtsbeleuchtung, Kartoffelraspel ist Reibe, elektrisch, Fensterwischer ist Fensterreiniger,
+# Haustelefon ist Telefon. Die Synonyme stehen im Katalog. Kartoffelraspel folgt, sobald Reibe, elektrisch im Katalog steht.
+# Entscheidungen vom 08.11.2026 nach Recherche. Elektrogrill fasst E-Grill, Tischgrill und Partygrill zusammen. Kontaktgrill,
+# Grillofen und Gasgrill bleiben eigen, bei nur Grill fragt MANUEL nach. USB-Netzteil ist USB-Ladegerät, USB-Ladestation bleibt eigen.
+# Quadrocopter ist Drohne. Die Heizung wird nach Lüfter getrennt. Heizlüfter ist eigen mit ORA-Gruppe Fan wie im Standard,
+# Elektroheizung ohne Lüfter ist Small home electrical, bei bekannt hoher Leistung Large home electrical. Bei nur Heizung fragt MANUEL nach.
+# Getrennt bleiben Tischrechner und Taschenrechner, weil Tischrechner meist druckende Rechner mit Mechanik sind,
+# ebenso Regal und Möbelstück, GPS-Gerät und Navigationsgerät sowie Holzfigur, die teils Spielzeug ist.
+Wassersprudler	Sodastream	bestätigt	Sodastream ist eine Marke, sie gehört ins Feld Marke
+Stehlampe	Stehleuchte	bestätigt	gleicher Gegenstand, unterschiedliche Oberkategorie
+Föhn	Fön	bestätigt	Schreibweise
+Föhn	Haartrockner	bestätigt	gleicher Gegenstand
+Aktenvernichter	Papierschredderer	bestätigt	gleicher Gegenstand, Aktenvernichter geht vor
+Aktenvernichter	Schredder	bestätigt	gleicher Gegenstand
+Spielkonsole	Playstation/Spielekonsole	bestätigt	Playstation ist eine Marke
+Spielkonsole	Spielekonsole	bestätigt	Schreibweise
+Vakuumierer	Vakumiergerät	bestätigt	Schreibweise
+Fahrradtasche	Fahrradtäschchen	bestätigt	gleicher Gegenstand
+Handy	Smartphone	bestätigt	Tastenhandys und Smartphones zählen gemeinsam als Handy
+Zahnbürste, elektrisch	elektronische Zahnbürste	bestätigt	Bezeichnung von 2021
+Handmixer	Handrührgerät	bestätigt	gleicher Gegenstand
+Musikanlage	Stereoanlage	bestätigt	Musikanlage hat CD, Kassette oder Plattenspieler in einem Gerät, Größe egal
+Musikanlage	HiFi-Musik-Anlage	bestätigt	gleicher Gegenstand, im Formular unter diesem Namen
+Bügeleisen	Dampfbügeleisen	bestätigt	Bügeleisen geht vor
+Staubsauger	Akkustaubsauger	bestätigt	Strom Akku statt 230 V, Handstaubsauger bleibt eigen
+Staubsauger	Akku-Sauger	bestätigt	Strom Akku statt 230 V
+Winkelschleifer	Flex	bestätigt	Flex ist eine Marke, wie Sodastream
+Laubbläser	Laubsauger	bestätigt	Laubbläser geht vor
+Schwibbogen	Lichterbogen	bestätigt	gleicher Gegenstand
+Schwibbogen	Schwippbogen	bestätigt	Schreibweise
+Türgong	Funkglocke /Funkklingel	bestätigt	gleicher Gegenstand
+Handy	Mobiltelefon	bestätigt	wie Smartphone
+Receiver (Sat, Kabel, Antenne, Audio)	Receiver	bestätigt	im Formular unter diesem Namen
+Radio	Transistorradio	bestätigt	gleicher Gegenstand
+Musikanlage	Musikkompaktanlage	bestätigt	Größe egal
+Musikanlage	Micro-HiFi-System	bestätigt	Größe egal
+Musikanlage	Ghettoblaster	bestätigt	Boombox, laut Standard Hi-Fi integrated
+Musikanlage	CD-Radio	bestätigt	hat CD
+Musikanlage	Kassetten-Radio	bestätigt	hat Kassette
+Musikanlage	Radiorecorder	bestätigt	hat Kassette
+Verstärker	Vorverstärker	bestätigt	auch Vorverstärker und Endstufe
+Verstärker	Surround Anlage	bestätigt	meist AV-Receiver
+Radio	Kofferradio	bestätigt	nur Radio
+Radio	Taschenradio	bestätigt	nur Radio
+Radio	Küchenradio	bestätigt	nur Radio
+Radio	DAB-Radio	bestätigt	nur Radio
+Radio	Internet-Radio	bestätigt	nur Radio
+Radio	Bluetooth-Radio	bestätigt	nur Radio
+Radio	Röhren-Radio	bestätigt	nur Radio
+Radio	Radiowecker	bestätigt	nur Radio
+Radio	Funk-Radiowecker	bestätigt	nur Radio
+Radio	Autoradio	bestätigt	nur Radio
+Tintenstrahldrucker	Drucker	bestätigt	Computer / Drucker im Formular, Tinte und Laser getrennt
+Steamer	Dampfbügler	bestätigt	macht nur Dampf, wird selbst nicht heiß
+Rauchmelder / Brandmelder	Rauchmelder	bestätigt	verschiedene Geräte, gemeinsam erfasst
+Rauchmelder / Brandmelder	Brandmelder	bestätigt	verschiedene Geräte, gemeinsam erfasst
+Tischlampe	Tischleuchte	bestätigt	gleicher Gegenstand
+Bügelstation	Dampfbügelstation	bestätigt	gleicher Gegenstand
+Brotbackautomat	Backautomat	bestätigt	gleicher Gegenstand
+Brotbackautomat	Kuchenbackautomat	bestätigt	gleicher Gegenstand
+Schnellkochtopf	Dampfkochtopf	bestätigt	gleicher Gegenstand
+Kochplatte	Herdplatte	bestätigt	gleicher Gegenstand
+Kochplatte	Heizplatte	bestätigt	gleicher Gegenstand
+Türsprechanlage	Sprechanlage	bestätigt	gleicher Gegenstand
+Türsprechanlage	Haussprechanlage	bestätigt	gleicher Gegenstand
+Digitaler Bilderrahmen	Pixel Bilderrahmen	bestätigt	gleicher Gegenstand
+Kleiderständer	Garderobenständer	bestätigt	gleicher Gegenstand
+Kartenmischgerät	Kartenmischmaschine	bestätigt	gleicher Gegenstand
+Imkeranzug	Imker-Anzug	bestätigt	Schreibweise
+Badebekleidung	Badeanzug	bestätigt	gleicher Gegenstand
+Außenthermometer	Außentemperaturfühler	bestätigt	gleicher Gegenstand
+Dremel	Drehmel	bestätigt	Schreibweise, alter Name in den Open Repair Data
+Wassersprudler	Trinkwassersprudler	bestätigt	alter Name in den Open Repair Data
+Rasentrimmer	Rasenkantenschere	bestätigt	vom Team zusammengefasst
+Rasentrimmer	Rasenkantenschneider	bestätigt	vom Team zusammengefasst
+Rasentrimmer	Rasenschere, elektrisch	bestätigt	vom Team zusammengefasst
+Beamer	Laserprojektor	bestätigt	gleicher Gegenstand
+Siebträgermaschine	Espressomaschine	bestätigt	Espressokocher für den Herd bleibt eigen
+DVD-/Blu-ray-Player	DVD-Player	bestätigt	gemeinsam erfasst
+DVD-/Blu-ray-Player	Blueray Player	bestätigt	gemeinsam erfasst
+Elektroheizung	Heizstrahler	bestätigt	Heizung ohne Lüfter
+Elektroheizung	Infrarotheizung	bestätigt	Heizung ohne Lüfter
+Elektroheizung	Radiator	bestätigt	Heizung ohne Lüfter
+Elektroheizung	Ölradiator	bestätigt	Heizung ohne Lüfter
+Uhr	Wanduhr	bestätigt	gleicher Gegenstand
+Uhr	Funkuhr	bestätigt	gleicher Gegenstand
+Fernseher	Flachbildfernseher	bestätigt	gleicher Gegenstand
+Saugroboter	Staubsaugerroboter	bestätigt	gleicher Gegenstand
+Monitor	Bildschirm	bestätigt	gleicher Gegenstand
+Tablet	iPad	bestätigt	iPad ist eine Marke
+Elektrorasierer	Bartschneider	bestätigt	vom Team zusammengefasst
+Schirm	Regenschirm	bestätigt	Schirm geht vor, damit auch Sonnenschirm passt
+Schirm	Sonnenschirm	bestätigt	Schirm geht vor
+Gewürzmühle	Pfeffermühle	bestätigt	Gewürzmühle geht vor
+Küchenmaschine	Thermomix	bestätigt	vom Team zusammengefasst
+Küchenmaschine	Multikocher	bestätigt	wie Thermomix
+Fahrradlicht	Rücklicht	bestätigt	gleicher Gegenstand
+MP3-Player	iPod	bestätigt	iPod ist eine Marke
+Bettwäsche	Bettbezug	bestätigt	gleicher Gegenstand
+Zerkleinerer	Multizerkleinerer	bestätigt	gleicher Gegenstand
+Ventilator	Turmventilator	bestätigt	gleicher Gegenstand
+Hochdruckreiniger	Kärcher	bestätigt	Kärcher ist eine Marke
+Desktopcomputer	Mini-PC	bestätigt	gleicher Gegenstand
+Ladegerät	E-Ladegerät	bestätigt	laut Marken allgemeines Elektro-Ladegerät, nicht nur für E-Bikes
+Stabmixer / Pürierstab	Zauberstab	bestätigt	Zauberstab ist eine Marke von ESGE, laut Open Repair Data fast immer Stabmixer
+Elektrogrill	E-Grill /Elektrogrill	bestätigt	im Formular unter diesem Namen
+Elektrogrill	Tischgrill	bestätigt	gleiche Marken in den Open Repair Data
+Elektrogrill	Partygrill	bestätigt	vom Team zusammengefasst
+USB-Ladegerät	USB-Netzteil	bestätigt	gleicher Gegenstand
+Drohne	Quadrocopter	bestätigt	Quadrocopter ist eine Drohne mit vier Rotoren

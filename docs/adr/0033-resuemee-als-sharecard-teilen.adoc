@@ -38,7 +38,7 @@ Ein Skript erzeugt die Karte als SVG und PNG mit 1080 mal 1080 Pixeln und dazu e
 
 Die Bestellliste bleibt im Text für das Team.
 
-In der ersten Stufe liest das Skript nur das Blatt "Eingabe" der Statistik-Tabelle, die lokal bleibt. Für spontane Gäste bekommt das Blatt eine eigene Spalte. In der zweiten Stufe holt n8n die Zahlen aus Zammad, spontane Gäste erkennt es nach xref:0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[ADR 34] am Tag `spontan`. Highlights markieren die Engagierten mit dem Tag `highlight` am Ticket. In beiden Stufen prüft ein Mensch die Karte, bevor sie geteilt wird.
+In der ersten Stufe liest das Skript nur das Blatt "Eingabe" der Statistik-Tabelle, die lokal bleibt. Für spontane Gäste bekommt das Blatt eine eigene Spalte. In der zweiten Stufe holt n8n die Zahlen aus Zammad, spontane Gäste erkennt es nach xref:0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[ADR 34] daran, dass ihr Ticket am Tag des Termins angelegt wurde. Highlights markieren die Engagierten mit dem Tag `highlight` am Ticket. In beiden Stufen prüft ein Mensch die Karte, bevor sie geteilt wird.
 
 === Konsequenzen
 

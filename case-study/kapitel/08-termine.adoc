@@ -39,7 +39,7 @@ Dieses Kapitel steht noch in Stichpunkten. Der Workflow dazu entsteht in Phase 5
 === Spontane Gäste
 
 * In den drei Jahren vor dem 7. November 2026 waren im Median 21 Geräte je Termin angemeldet, spontane Gäste eingeschlossen.
-* Wie viele davon spontan kommen, zählt das Team ab jetzt in einer eigenen Spalte und später über den Tag `spontan` in Zammad <<adr-0033>>, <<adr-0034>>.
+* Wie viele davon spontan kommen, zählt das Team ab jetzt in einer eigenen Spalte und später über Tickets, die am Tag des Termins angelegt wurden <<adr-0033>>, <<adr-0034>>.
 * Der Anteil spontaner Gäste fließt in die Rechnung der Kapazität ein.
 
 // Ergebnis folgt in Stufe 3, Antwort auf T6.

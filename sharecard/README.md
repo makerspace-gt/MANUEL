@@ -41,4 +41,4 @@ Die Tests bauen eine kleine Tabelle mit erfundenen Zahlen und einem Blatt mit Na
 
 ## Später aus Zammad
 
-In der zweiten Stufe holt n8n die Zahlen direkt aus den Ergebnisfeldern der Tickets in Zammad. Spontane Gäste erkennt es am Tag `spontan`, den der Empfang nach [ADR 34](../docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc) setzt. Dann lassen sich spontane Geräte auch einzeln im Raster markieren. Highlights markieren die Engagierten mit dem Tag `highlight`, MANUEL formuliert daraus einen Satz, und ein Mensch gibt die Karte frei.
+In der zweiten Stufe holt n8n die Zahlen direkt aus den Ergebnisfeldern der Tickets in Zammad. Spontane Gäste erkennt es nach [ADR 34](../docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc) daran, dass ihr Ticket am Tag des Termins angelegt wurde. Dann lassen sich spontane Geräte auch einzeln im Raster markieren. Highlights markieren die Engagierten mit dem Tag `highlight`, MANUEL formuliert daraus einen Satz, und ein Mensch gibt die Karte frei.

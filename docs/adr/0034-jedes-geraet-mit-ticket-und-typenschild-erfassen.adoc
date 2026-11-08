@@ -5,11 +5,12 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
 
-Die Exporte aus Zammad von 2024 bis 2026 enthalten 791 Tickets. Die Statistik zählt für dieselbe Zeit 941 bearbeitete Geräte, denn für spontane Gäste gibt es meist kein Ticket. In den Tickets ist die Marke bei rund 25 Prozent gefüllt, die Bezeichnung bei rund 12 Prozent, die Stromversorgung bei 4 bis 9 Prozent und das Baujahr bei keinem. Für die Open Repair Alliance und für gute Vorschläge fehlen damit wichtige Angaben.
+Die Exporte aus Zammad von 2024 bis 2026 enthalten 791 Tickets. Die Statistik zählt für dieselbe Zeit 941 bearbeitete Geräte, denn für spontane Gäste gab es lange kein Ticket. Inzwischen legt der Empfang auch für sie eines an. In den Tickets ist die Marke bei rund 25 Prozent gefüllt, die Bezeichnung bei rund 12 Prozent, die Stromversorgung bei 4 bis 9 Prozent und das Baujahr bei keinem. Für die Open Repair Alliance und für gute Vorschläge fehlen damit wichtige Angaben.
 
 == Entscheidungskriterien
 
@@ -26,8 +27,9 @@ Die Exporte aus Zammad von 2024 bis 2026 enthalten 791 Tickets. Die Statistik z�
 
 == Entscheidung
 
-* Jedes Gerät bekommt ein Ticket. Der Empfang legt auch für spontane Gäste eines an und setzt den Tag `spontan`. Bringt jemand mehrere Geräte mit, gibt es mehrere Tickets.
-* Gäste schicken mit der Anfrage ein Foto vom Typenschild, oder Engagierte machen es am Tisch. Das Hauptmodell liest Marke, Bezeichnung und Datumscode in die Felder, ein Mensch bestätigt. Der Hinweis an die Gäste bittet, nur das Typenschild zu fotografieren. Ortsdaten in den Bildern wertet MANUEL nicht aus, und die Fotos verlassen Zammad nicht.
+* Jedes Gerät bekommt ein Ticket, auch bei spontanen Gästen. Bringt jemand mehrere Geräte mit, gibt es mehrere Tickets.
+* Jedes Ticket bekommt wie bisher einen Tag mit dem Datum des Termins, aus dem die Nachmeldung nach xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[ADR 36] den Termin liest. Ein eigener Tag für spontane Gäste ist nicht nötig. Ein Ticket ist spontan, wenn es am Tag des Termins angelegt wurde.
+* Gäste schicken mit der Anfrage ein Foto vom Typenschild, oder Engagierte machen es am Tisch. Das Hauptmodell `qwen3.6:35b-a3b` nach xref:0023-qwen3-6-als-hauptmodell-nutzen.adoc[ADR 23] liest Marke, Bezeichnung und Datumscode in die Felder, ein Mensch bestätigt. Laut Ollama nimmt das Modell auch Bilder an, ob es Typenschilder zuverlässig liest, muss ein Test zeigen. Der Hinweis an die Gäste bittet, nur das Typenschild zu fotografieren. Ortsdaten in den Bildern wertet MANUEL nicht aus, und die Fotos verlassen Zammad nicht. Auch bei der anonymisierten Veröffentlichung nach xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38] bleiben sie außen vor.
 * Die Stromversorgung ergibt sich aus der Kategorie im Katalog.
 * Nach dem ungefähren Alter fragt MANUEL in der Rückfrage. Der Open Repair Data Standard erlaubt das Alter in Jahren statt des Baujahrs.
 
@@ -59,4 +61,5 @@ Die Exporte aus Zammad von 2024 bis 2026 enthalten 791 Tickets. Die Statistik z�
 
 * Zählungen aus den lokalen Exporten und der Statistik vom 08.11.2026, nur Summen
 * {repo}/PLAN.md[PLAN], Aufgabe "Felder füllen"
+* https://ollama.com/library/qwen3.6/tags[qwen3.6 bei Ollama], Angabe „Text, Image input“, abgerufen am 08.11.2026
 * {repo}/quellen/openrepair-datastandard[Open Repair Data Standard], Felder `brand`, `year_of_manufacture` und `product_age`

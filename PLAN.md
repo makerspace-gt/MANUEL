@@ -82,7 +82,7 @@ MANUEL läuft auf der neu aufgebauten IT des Vereins. Zugangs-VM mit authentik u
 
 | Aufgabe | Zammad | n8n |
 |---|---|---|
-| Geräte erfassen | Jedes Gerät bekommt ein Ticket, auch spontane Gäste am Empfang mit dem Tag `spontan`, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc) | |
+| Geräte erfassen | Jedes Gerät bekommt ein Ticket, auch bei spontanen Gästen. Spontan ist ein Ticket, das am Tag des Termins angelegt wurde, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc) | |
 | Felder füllen | Ticket Categorizer für die Art des Geräts, Ticket Text Extractor für Defekt, Marke, Bezeichnung und Baujahr aus Text und Foto vom Typenschild, ein Mensch bestätigt. Die Stromversorgung folgt aus der Kategorie im Katalog, nach dem ungefähren Alter fragt MANUEL in der Rückfrage | |
 | Reparaturansatz schreiben | Custom AI Agent schreibt eine interne Notiz, passende Artikel aus der Wissensdatenbank zeigt Zammad am Ticket an | |
 | Lösung schreiben | Textwerkzeug macht aus Stichworten der Engagierten einen vollständigen Text | |
@@ -364,7 +364,7 @@ git push
 - [ ] Prüfen, dass Vorschläge von MANUEL im Ticket gut erkennbar sind und Engagierte sie mit wenigen Klicks übernehmen oder korrigieren können, auch auf Tablet und Smartphone
 - [ ] Beim Repair Café im Dezember im Echtbetrieb einsetzen und Rückmeldungen zu den Notizen sammeln
 - [ ] Falls sich die Eskalation lohnt, Auslöser in Zammad anlegen und Anfragen in n8n in eine Warteschlange stellen, weil immer nur eine Anfrage gleichzeitig läuft
-- [ ] Ablauf am Empfang anpassen, jedes Gerät bekommt ein Ticket und spontane Gäste den Tag `spontan`, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
+- [ ] Ablauf am Empfang anpassen, jedes Gerät bekommt ein Ticket mit dem Tag des Termins, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
 - [ ] Stromversorgung aus der Kategorie im Katalog setzen und das ungefähre Alter in der Rückfrage erfragen
 - [ ] Feld „repariert von“ mit den Werten Gast selbst, Gast mit Hilfe und Engagierte anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
 - [ ] KI-Rückmeldung von Zammad an den KI-Agenten prüfen und den Export unter KI, Feedback & Logs testen

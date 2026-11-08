@@ -69,7 +69,7 @@ Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Re
 [[vorgehen]]
 === Vorgehen und Quellen
 
-* Die Arbeit ist eine Einzelfallstudie. Eine Fallstudie untersucht ein aktuelles Phänomen in seinem realen Umfeld cite:[yin-2018], hier MANUEL im laufenden Repair Café.
+* Die Arbeit ist eine Einzelfallstudie. Eine Fallstudie untersucht ein aktuelles Phänomen in seinem realen Umfeld cite:[mit-yin], hier MANUEL im laufenden Repair Café.
 * Für Daten und Einordnung gelten die Schritte einer Datenanalyse nach cite:[wickham] wie 2022. Die Gegenüberstellung von 2022 und 2026 steht als Tabelle in {repo}/docs/einordnung.md[docs/einordnung.md].
 * Jeder Versuch hält Vorgehen, Ergebnis und Erkenntnis fest. Gemessen wird an Sollwerten, die das Team geprüft hat. Die Trefferquote bekommt ein Intervall nach Wilson, und eine Rückfrage zählt als ohne Fehler.
 * Die Erprobung im Repair Café läuft von Dezember 2026 bis Februar 2027 mit den vier Kennzahlen aus dem Antrag, siehe <<adr-0032>>.
@@ -77,9 +77,11 @@ Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Re
 * Entscheidungen stehen als ADR in Anhang A, Läufe werden nach <<adr-0027>> mit `lauf.json` festgehalten.
 * Welche Daten es gibt und welche nur lokal liegen, zeigt Anhang C.
 * Texte sind deutsch, Code ist englisch, dazu kommt ein Abstract auf Englisch, siehe <<adr-0029>> und <<adr-0030>>.
+* Werkzeuge beim Schreiben sind Claude Opus 5.5 für große Teile von Text, Skripten und Auswertungen sowie DeepL Write und LanguageTool für Sprache und Rechtschreibung. Ein Mensch prüft alles, siehe den Hinweis zur Entstehung am Anfang.
+* Zitiert werden nur öffentlich zugängliche Quellen. Quellen, die nur nach Anmeldung oder gegen Bezahlung zugänglich sind, kommen nicht ins Verzeichnis. Sekundärquellen wie Blogbeiträge, Kursnotizen oder Wikipedia sind erlaubt, etwa für Yin und Wilson, deren Originale nicht frei zugänglich sind.
 
 .Quellen für dieses Kapitel
-* cite:[yin-2018], cite:[charter-keiller-2014], cite:[quinton-counter-2026], cite:[dsee-2026], cite:[eu-2024-1799], cite:[prange-2022], cite:[wickham]
+* cite:[mit-yin], cite:[charter-keiller-2014], cite:[quinton-counter-2026], cite:[dsee-2026], cite:[eu-2024-1799], cite:[prange-2022], cite:[wickham]
 * Noch zu suchen sind die Seiten von Stichting Repair Café und Netzwerk Reparatur-Initiativen und die Ergebnisse der Umfrage von 2026 im Einzelnen.
 
 .Offen

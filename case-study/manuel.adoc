@@ -44,6 +44,14 @@ endif::[]
 
 Diese Arbeit steht unter https://creativecommons.org/licenses/by/4.0/deed.de[CC BY 4.0]. Ausgenommen ist das Logo der DSEE. Der Katalog der Gegenstände steht unter CC BY-SA 4.0.
 
+[NOTE]
+.Hinweis zur Entstehung
+====
+Ein Großteil dieser Arbeit ist mit dem Sprachmodell Claude Opus 5.5 von Anthropic entstanden, ebenso viele Skripte und Auswertungen im Repo. Für Sprache und Rechtschreibung kommen zusätzlich https://www.deepl.com/write[DeepL Write] und https://languagetool.org/de[LanguageTool] zum Einsatz. Inhalte, Zahlen und Entscheidungen prüft ein Mensch, die Verantwortung liegt beim Autor.
+
+Zitiert werden nur öffentlich zugängliche Quellen, dazu gehören auch Sekundärquellen wie Blogbeiträge. Eigene Daten des Repair Café wie Tickets und Statistik liegen nur lokal, in die Arbeit gehen davon nur Summen.
+====
+
 include::kapitel/00-vorspann.adoc[]
 
 = Teil I Ausgangslage

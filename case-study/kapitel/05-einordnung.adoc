@@ -24,7 +24,7 @@ Dieses Kapitel steht noch in Stichpunkten. Es erzählt fünf Wendepunkte, alle 1
 * 746 echte Tickets von 2024 bis 2026, davon 745 mit Sollwert aus der Kontrolle durch das Team und einer zweiten Prüfung
 * 279 Laufzettel von 2019 bis 2021 aus der Datenpotenzialanalyse als öffentlicher Vergleich
 * Eine Rückfrage zählt als ohne Fehler, sichere Fehler werden getrennt gezählt.
-* Jede Trefferquote bekommt ein Intervall nach citenp:[wilson-1927], das auch bei kleinen Zahlen brauchbar ist.
+* Jede Trefferquote bekommt ein Intervall nach Wilson cite:[wiki-wilson], das auch bei kleinen Zahlen brauchbar ist.
 * Echte Tickets liegen nur lokal, in die Arbeit kommen nur Summen <<adr-0002>>.
 
 === Wendepunkt 1, Gefahren zuerst
@@ -80,7 +80,7 @@ image::../../docs/grafiken/einordnung-verfahren-hell.svg[Trefferquote der Verfah
 [NOTE]
 .Quellen und offene Punkte für dieses Kapitel
 ====
-* cite:[wilson-1927], cite:[guo-2017], cite:[geifman-2017]
+* cite:[wiki-wilson], cite:[guo-2017], cite:[geifman-2017]
 * Noch zu suchen ist Literatur zur Einordnung mit Sprachmodellen ohne eigenes Training.
 * Offen ist die Bestätigung an neuen Tickets, denn Sollwerte und Regeln stammen aus denselben Daten.
 ====

@@ -12,7 +12,7 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 .Kernaussagen
 * Gemessen wird an den vier Kennzahlen aus dem Antrag bei der DSEE <<adr-0032>>.
 * Die Vergleichswerte stammen aus der Zeit vor MANUEL.
-* Drei Monate mit rund zwei Terminen im Monat ergeben kleine Zahlen. Jede Quote bekommt deshalb ein Intervall nach citenp:[wilson-1927].
+* Drei Monate mit rund zwei Terminen im Monat ergeben kleine Zahlen. Jede Quote bekommt deshalb ein Intervall nach Wilson cite:[wiki-wilson].
 
 === Zeitraum und Termine
 
@@ -66,7 +66,7 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 [NOTE]
 .Quellen und offene Punkte für dieses Kapitel
 ====
-* cite:[wilson-1927], cite:[zammad-feedback]
+* cite:[wiki-wilson], cite:[zammad-feedback]
 * Noch zu suchen sind Hinweise zur Auswertung kleiner Stichproben über die Intervalle hinaus.
 * Offen ist, ob die KI-Rückmeldung von Zammad auch für die KI-Agenten gilt.
 ====

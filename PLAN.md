@@ -40,7 +40,12 @@ Grundsätze für den Betrieb:
 - **Ein Mensch entscheidet.** MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. Das ist zugleich die Qualitätskontrolle, die die Datenpotenzialanalyse empfiehlt. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
 - **Ollama nur per VPN, Open WebUI über den NetBird-Proxy.** Ollama ist nur über NetBird für die Helpdesk-VM und Open WebUI erreichbar. Open WebUI ist über den Reverse Proxy von NetBird mit Anmeldung über authentik erreichbar, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
 - **Datenschutz von Anfang an.** Löschfristen, Datenschutzhinweis und Verzeichnis von Verarbeitungstätigkeiten entstehen zusammen mit den Feldern in Zammad, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
-- **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Einzige Ausnahme sind Marke und Modell für die Suche nach Anleitungen über eine eigene SearXNG-Instanz, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc). Echte Ticketdaten landen nie in diesem öffentlichen Repo.
+- **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Es gibt drei Ausnahmen:
+  - Marke und Modellbezeichnung des Geräts für die Suche nach Anleitungen über eine eigene SearXNG-Instanz und iFixit, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc)
+  - die Reparaturen ohne Personenbezug an Restarters.net, den Defekt erst nach der Anonymisierung, siehe [ADR 36](docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc)
+  - die von Hand anonymisierten und geprüften Tickets, siehe [ADR 38](docs/adr/0038-ticketdaten-anonymisiert-veroeffentlichen.adoc)
+
+  Echte, nicht anonymisierte Ticketdaten landen nie in diesem öffentlichen Repo.
 - **Code rechnet, das Modell formuliert.** Zählen, Zuordnen, Termine planen und Daten übertragen erledigen Zammad-Trigger und n8n-Workflows nach festen Regeln. Das Sprachmodell liest aus Freitext heraus, schreibt Texte und fasst zusammen.
 - **Alles ist Code.** Die Einrichtung des Hosts liegt als Ansible-Rollen in it-infrastructure. Prompts, exportierte n8n-Workflows, Testsatz-Werkzeuge und Doku liegen hier. Die Konfiguration der KI-Agenten in Zammad, also Regeln und Beschreibungen der Auswahlwerte, legen wir als Kopie in prompts/ ab.
 

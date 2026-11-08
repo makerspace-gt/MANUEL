@@ -10,7 +10,9 @@ Kette:: Der Ablauf für Nachrichten. Das Sprachmodell zieht zuerst die Gegenstä
 Laufzettel:: Ein Formular, auf dem eine Reparatur erfasst wird, auf Papier oder online.
 Open Repair Data Standard:: Das gemeinsame Format der Open Repair Alliance für Reparaturdaten.
 ORA-Gruppe:: Eine Produktkategorie des Open Repair Data Standard, etwa Kettle für Wasserkocher.
+Prompt Injection:: Ein Angriff, bei dem Text von außen, etwa auf einer Webseite, Anweisungen an ein Sprachmodell enthält, die es vom eigentlichen Auftrag abbringen sollen.
 Rückfrage:: MANUEL fragt nach, statt zu raten, etwa wenn nur ein Sammelbegriff wie Kopfhörer genannt ist.
+SearXNG:: Eine freie Metasuchmaschine, die Anfragen ohne Konto und ohne Profil an mehrere Suchmaschinen weitergibt. Sie läuft als eigener Dienst.
 Sharecard:: Ein Bild mit dem Resümee eines Termins, das sich im Forum, in sozialen Medien und im Messenger teilen lässt.
 Sollwert:: Die richtige Antwort für ein Ticket, geprüft durch das Team.
 Ticket:: Eine Anfrage in Zammad mit allen Nachrichten und Feldern.

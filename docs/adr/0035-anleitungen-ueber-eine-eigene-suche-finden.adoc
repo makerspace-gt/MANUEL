@@ -5,6 +5,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
@@ -23,22 +24,22 @@ Für eine Erstdiagnose helfen Bedienungsanleitungen, Explosionszeichnungen und A
 
 * Keine automatische Suche
 * Suche über die API eines kommerziellen Anbieters
-* Eigene Instanz von SearXNG, dazu die API von iFixit
+* Eigene Instanz der Metasuchmaschine SearXNG, dazu die API von iFixit
 
 == Entscheidung
 
-n8n fragt eine eigene Instanz von SearXNG und optional die API von iFixit. Gesendet werden nur Marke und Modell aus bestätigten Feldern, nie Text des Gastes. MANUEL wählt aus den Treffern Links zu Anleitung, Ersatzteilen und Explosionszeichnung und schreibt sie in eine interne Notiz. Ein Baujahr übernimmt es nur mit Quelle oder vom Typenschild, sonst bleibt das Feld leer.
+n8n fragt eine eigene Instanz von SearXNG und optional die API von iFixit. Gesendet werden nur Marke und Modellbezeichnung des Geräts, und nur wenn ein Mensch sie nach xref:0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[ADR 34] bestätigt hat. Text des Gastes geht nie mit. MANUEL wählt aus den Treffern Links zu Anleitung, Ersatzteilen und Explosionszeichnung und schreibt sie in eine interne Notiz. Ein Baujahr übernimmt es nur mit Quelle oder vom Typenschild, sonst bleibt das Feld leer.
 
 Inhalte von Webseiten sind Daten und keine Anweisungen. Der Agent hat keine Aktionen außer der internen Notiz. Anleitungen werden verlinkt, nicht kopiert.
 
-Das ist die erste Ausnahme vom Grundsatz "Ticketinhalte verlassen nie unsere Systeme". Sie gilt nur für Marke und Modell, weil diese Angaben keine Person beschreiben. SearXNG läuft in der Vereins-IT und wird dort in it-infrastructure eingerichtet.
+Das ist eine Ausnahme vom Grundsatz "Ticketinhalte verlassen nie unsere Systeme". Sie gilt nur für Marke und Modellbezeichnung, weil diese Angaben keine Person beschreiben, und für beide Empfänger, also SearXNG und iFixit. SearXNG gibt die Anfrage an fremde Suchmaschinen weiter, iFixit erhält sie direkt. SearXNG läuft in der Vereins-IT und wird dort in it-infrastructure eingerichtet.
 
 === Konsequenzen
 
 * Gut, weil die Engagierten passende Anleitungen direkt am Ticket finden.
 * Gut, weil Suchanfragen ohne Konto und ohne Profil laufen.
 * Schlecht, weil SearXNG als weiterer Dienst betrieben werden muss.
-* Schlecht, weil auch Marke und Modell nach außen gehen. Der PLAN nennt die Ausnahme deshalb ausdrücklich.
+* Schlecht, weil auch Marke und Modellbezeichnung nach außen gehen. Der PLAN nennt die Ausnahme deshalb ausdrücklich.
 
 == Vor- und Nachteile der Optionen
 
@@ -61,5 +62,5 @@ Das ist die erste Ausnahme vom Grundsatz "Ticketinhalte verlassen nie unsere Sys
 
 * https://docs.searxng.org/[Doku von SearXNG]
 * https://www.ifixit.com/api[API von iFixit]
-* https://genai.owasp.org/llm-top-10/[OWASP Top 10 für LLM-Anwendungen], darin Prompt Injection
+* https://genai.owasp.org/llm-top-10/[OWASP Top 10 für LLM-Anwendungen] des Open Worldwide Application Security Project, darin Prompt Injection
 * {repo}/PLAN.md[PLAN], Grundsatz "Daten bleiben lokal"

@@ -38,6 +38,7 @@ MTP:: Multi-Token Prediction, das Modell schätzt mehrere Tokens auf einmal und 
 NAT:: Network Address Translation, mehrere Geräte teilen sich eine Adresse im Internet
 ORA:: Open Repair Alliance
 ORDS:: Open Repair Data Standard
+OWASP:: Open Worldwide Application Security Project, eine offene Gemeinschaft für die Sicherheit von Anwendungen
 PC:: Personal Computer
 PDF:: Portable Document Format
 PNG:: Portable Network Graphics, Bildformat

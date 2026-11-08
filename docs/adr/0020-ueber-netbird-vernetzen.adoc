@@ -1,0 +1,39 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0020]]
+= 0020 Über NetBird vernetzen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-10-22
+Nachgetragen:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Der Mini-PC steht im Makerspace hinter NAT, Zammad läuft auf der Helpdesk-VM im Rechenzentrum. Ollama und llama.cpp haben keine Anmeldung und kein TLS. Im Makerspace sollen keine Ports geöffnet werden.
+
+== Entscheidungskriterien
+
+* Keine offenen Ports im Makerspace
+* Nur die Helpdesk-VM erreicht die Modelle
+* Zugang für Admins per SSH
+
+== Betrachtete Optionen
+
+* NetBird mit Regeln je Dienst
+* Tailscale, das in uCore schon enthalten ist
+
+== Entscheidung
+
+Mini-PC und Helpdesk-VM sind über NetBird verbunden. Regeln erlauben nur der Helpdesk-VM den Zugriff auf die Modelle und nur Admins den Zugriff per SSH. Open WebUI ist über den Reverse Proxy von NetBird mit Anmeldung über authentik erreichbar.
+
+=== Konsequenzen
+
+* Gut, weil die Schnittstellen der Modelle nie offen im Netz stehen.
+* Gut, weil derselbe Weg im Plan für den Neuaufbau der IT gilt.
+* Schlecht, weil der Mini-PC ohne NetBird für Zammad nicht erreichbar ist.
+
+== Quellen
+
+* https://docs.netbird.io/[Doku von NetBird]
+* https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md[Plan für den Neuaufbau der IT]

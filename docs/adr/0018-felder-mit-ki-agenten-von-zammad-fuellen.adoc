@@ -1,0 +1,40 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0018]]
+= 0018 Felder mit den KI-Agenten von Zammad füllen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-10-22
+Nachgetragen:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+MANUEL soll im Ticket Felder füllen und interne Notizen schreiben. Das kann Zammad selbst über seine KI-Agenten, oder ein externer Workflow in n8n ruft das Modell auf und schreibt über die API zurück.
+
+== Entscheidungskriterien
+
+* Wenig eigener Code
+* Ergebnisse direkt im Ticket
+* Auslösen über die gewohnten Trigger von Zammad
+
+== Betrachtete Optionen
+
+* KI-Agenten und KI-Funktionen von Zammad mit dem Mini-PC als Anbieter
+* n8n-Workflows auch für die Felder
+
+== Entscheidung
+
+Zammad füllt die Felder selbst über seine KI-Agenten. Dazu gehören Ticket Categorizer für Auswahlfelder auch als Baum, Ticket Text Extractor für Text und Custom AI Agent für Notizen. Ein Agent wird über einen normalen Trigger ausgelöst und wendet sein Ergebnis mit denselben Aktionen an. n8n übernimmt nur Aufgaben außerhalb von Zammad.
+
+=== Konsequenzen
+
+* Gut, weil Zammad die Ergebnisse ohne eigene Schnittstelle ins Ticket schreibt.
+* Schlecht, weil Zammad laut Quellcode keine Kontextlänge mitschickt. Die muss der Server auf dem Mini-PC vorgeben.
+* Offen ist, ob die Agenten das Decision-Modell nutzen können. Die Einordnung aus xref:0010-mit-vertreter-namen-einordnen.adoc[ADR 10] und xref:0011-bei-unsicherheit-nachfragen.adoc[ADR 11] braucht dafür womöglich doch einen eigenen Workflow.
+
+== Quellen
+
+* https://admin-docs.zammad.org/en/latest/ai/ai-agents.html[KI-Agenten in der Doku von Zammad]
+* https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb[Quellcode des Ollama-Anbieters in Zammad]
+* {repo}/PLAN.md[PLAN], Abschnitt Offene Entscheidungen

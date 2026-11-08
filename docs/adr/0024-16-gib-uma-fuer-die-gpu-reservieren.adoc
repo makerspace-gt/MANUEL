@@ -1,0 +1,46 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0024]]
+= 0024 16 GiB UMA für die GPU reservieren
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-06
+Nachgetragen:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Die Radeon 890M teilt sich den Arbeitsspeicher mit dem System. Im BIOS lässt sich ein fester Anteil als UMA reservieren, den Rest kann die GPU dynamisch als GTT nutzen. Mit 2 GiB UMA passten Sprachmodell, `d3:9b` und `bge-m3` nicht zusammen auf die GPU, und jeder Wechsel kostete Ladezeit.
+
+== Entscheidungskriterien
+
+* Alle drei Modelle gleichzeitig geladen
+* Geschwindigkeit
+* Genug Speicher für das System
+
+== Betrachtete Optionen
+
+* 2 GiB UMA mit 30 GiB GTT
+* 16 GiB UMA mit 23 GiB GTT
+
+== Entscheidung
+
+Der Mini-PC läuft mit 16 GiB UMA. Damit stehen der GPU 39,3 statt 32,2 GiB zur Verfügung. Alle drei Modelle passen zusammen auf die GPU, belegt sind dann 36,2 GiB Grafikspeicher, und 23 GiB bleiben frei. Die Generierung wird 2 bis 8 Prozent schneller.
+
+[cols="2,1,1",options="header"]
+|===
+|Aufruf |geladen |nach einem Wechsel
+|Sprachmodell, 5 Tokens |0,27 s |26 s
+|`d3:9b`, eine Frage |0,40 s |13 s
+|`bge-m3` |0,04 s |1,6 s
+|===
+
+=== Konsequenzen
+
+* Gut, weil der Wechsel zwischen den Modellen entfällt, wenn sie geladen bleiben.
+* Schlecht, weil das System nur noch 46 statt 60 GiB hat.
+* Offen ist, ob alle Modelle im Betrieb dauerhaft geladen bleiben.
+
+== Quellen
+
+* {repo}/docs/benchmarks.md[Benchmarks], Runde 3 UMA

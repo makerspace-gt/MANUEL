@@ -30,19 +30,17 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |13 |xref:0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[Einträge mit einem hierarchischen Schlüssel kennzeichnen] |angenommen |2026-11-08
 |14 |xref:0014-reparaturen-ueber-restarters-melden.adoc[Reparaturen über Restarters.net an die Open Repair Alliance melden] |angenommen |2026-11-08
 |15 |xref:0015-hausarbeit-in-asciidoc-schreiben.adoc[Die Hausarbeit in AsciiDoc schreiben] |angenommen |2026-11-08
+|16 |xref:0016-eigenes-image-auf-basis-von-ucore-bauen.adoc[Ein eigenes Image auf Basis von uCore bauen] |angenommen |2026-10-22
+|17 |xref:0017-einen-menschen-entscheiden-lassen.adoc[Einen Menschen entscheiden lassen] |angenommen |2026-10-22
+|18 |xref:0018-felder-mit-ki-agenten-von-zammad-fuellen.adoc[Felder mit den KI-Agenten von Zammad füllen] |angenommen |2026-10-22
+|19 |xref:0019-n8n-auf-der-helpdesk-vm-betreiben.adoc[n8n auf der Helpdesk-VM betreiben] |angenommen |2026-10-22
+|20 |xref:0020-ueber-netbird-vernetzen.adoc[Über NetBird vernetzen] |angenommen |2026-10-22
+|21 |xref:0021-bge-m3-als-embedding-modell-nutzen.adoc[bge-m3 als Embedding-Modell nutzen] |angenommen |2026-10-22
+|22 |xref:0022-reparaturanleitungen-in-der-wissensdatenbank-von-zammad-sammeln.adoc[Reparaturanleitungen in der Wissensdatenbank von Zammad sammeln] |angenommen |2026-10-22
+|23 |xref:0023-qwen3-6-als-hauptmodell-nutzen.adoc[qwen3.6:35b-a3b als Hauptmodell nutzen] |angenommen |2026-11-06
+|24 |xref:0024-16-gib-uma-fuer-die-gpu-reservieren.adoc[16 GiB UMA für die GPU reservieren] |angenommen |2026-11-06
+|25 |xref:0025-sprachmodell-mit-llama-cpp-und-decision-modell-mit-ollama-betreiben.adoc[Das Sprachmodell mit llama.cpp und das Decision-Modell mit Ollama betreiben] |angenommen |2026-11-08
+|26 |xref:0026-terminkapazitaet-per-formel-berechnen.adoc[Die Kapazität der Termine per Formel berechnen] |angenommen |2026-11-06
 |===
 
-== Noch nachzutragen
-
-Diese Entscheidungen stehen bisher im link:../../PLAN.md[PLAN] und werden als ADR nachgetragen.
-
-* Betriebssystem uCore und eigenes Image
-* Inferenz mit Ollama oder llama.cpp
-* Hauptmodell `qwen3.6:35b-a3b`
-* 16 GiB UMA für die GPU
-* KI-Agenten in Zammad, n8n auf der Helpdesk-VM
-* Vernetzung über NetBird
-* Embedding-Modell `bge-m3`
-* Reparaturanleitungen in der Wissensdatenbank von Zammad
-* Ein Mensch entscheidet, MANUEL antwortet nie selbst an Gäste
-* Kapazität der Termine per Formel aus den Helfenden statt per Modell
+Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

@@ -1,0 +1,39 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0022]]
+= 0022 Reparaturanleitungen in der Wissensdatenbank von Zammad sammeln
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-10-22
+Nachgetragen:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Aus erfolgreichen Reparaturen sollen Anleitungen entstehen, die bei ähnlichen Anfragen wieder auftauchen. Bisher war dafür Wiki.js vorgesehen.
+
+== Entscheidungskriterien
+
+* Passende Anleitungen erscheinen direkt am Ticket
+* Wenig eigener Code
+* Ein System weniger zu betreiben
+
+== Betrachtete Optionen
+
+* Wissensdatenbank von Zammad
+* Wiki.js mit eigenem Embedding-Workflow in n8n
+
+== Entscheidung
+
+Reparaturanleitungen liegen in der Wissensdatenbank von Zammad. Zammad erzeugt Artikel aus einem Ticket und zeigt per Embedding passende Artikel am Ticket an. Engagierte prüfen jeden Artikel, bevor er erscheint.
+
+=== Konsequenzen
+
+* Gut, weil Wiki.js entfällt.
+* Gut, weil die Kategorie aus der Einordnung die Suche nach Artikeln eingrenzen kann.
+* Schlecht, weil die Anleitungen an Zammad gebunden sind.
+
+== Quellen
+
+* https://admin-docs.zammad.org/en/latest/manage/knowledge-base.html[Wissensdatenbank in der Doku von Zammad]
+* https://github.com/zammad/zammad/blob/develop/app/services/service/ticket/ai/related_knowledge_base_answers.rb[Quellcode der passenden Artikel in Zammad]

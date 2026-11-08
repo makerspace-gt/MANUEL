@@ -1,0 +1,43 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0016]]
+= 0016 Ein eigenes Image auf Basis von uCore bauen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-10-22
+Nachgetragen:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Der Mini-PC braucht ein Betriebssystem, das die Radeon 890M für Sprachmodelle gut nutzt und sich mit wenig Pflege sicher aktualisieren lässt. Im Makerspace kümmern sich Ehrenamtliche darum, ein Fehler bei einem Update darf das System nicht lahmlegen.
+
+== Entscheidungskriterien
+
+* Aktueller Kernel für die Leistung der iGPU
+* Updates mit Rollback
+* Wenig Pflege, alles als Code
+* Passt zu den Notebooks des Vereins
+
+== Betrachtete Optionen
+
+* uCore Minimal von Universal Blue auf Basis von Fedora CoreOS mit eigenem Image
+* Fedora Server mit gleichem Kernel und klassischer Paketverwaltung
+
+== Entscheidung
+
+MANUEL läuft auf einem eigenen Image auf Basis von uCore Minimal. GitHub Actions baut es täglich neu und veröffentlicht es als `ghcr.io/makerspace-gt/manuel`. Ein System wechselt mit `bootc switch` darauf. Laut Phoronix verbessert der neueste Kernel die Leistung von Sprachmodellen auf Radeon-iGPUs deutlich, und uCore bringt ihn mit.
+
+=== Konsequenzen
+
+* Gut, weil Updates atomar sind und sich zurückrollen lassen.
+* Gut, weil die Anpassungen in `Containerfile` und `build_files/` nachvollziehbar sind.
+* Gut, weil es zu Bluefin auf den Notebooks des Vereins passt.
+* Schlecht, weil die Anbindung an Ansible aufwendiger ist als bei Fedora Server.
+
+== Quellen
+
+* {repo}/README.md[README], Abschnitt Betriebssystem-Image
+* {repo}/docs/inbetriebnahme.md[Inbetriebnahme des Mini-PCs]
+* https://github.com/ublue-os/ucore[uCore] und https://github.com/ublue-os/image-template[image-template] von Universal Blue
+* https://www.phoronix.com/review/amd-perfopt/3[Phoronix zur Leistung von Radeon-iGPUs mit neuem Kernel]

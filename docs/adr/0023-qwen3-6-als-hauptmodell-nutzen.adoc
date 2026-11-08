@@ -1,0 +1,56 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0023]]
+= 0023 qwen3.6:35b-a3b als Hauptmodell nutzen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-06
+Nachgetragen:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+MANUEL braucht ein Sprachmodell, das Gegenstände aus Nachrichten herauszieht, Reparaturansätze schreibt und Texte formuliert. Es muss auf der Radeon 890M schnell genug für die Arbeit am Ticket sein.
+
+== Entscheidungskriterien
+
+* Geschwindigkeit bei kurzen und langen Prompts
+* Passt mit `d3:9b` und `bge-m3` in den Grafikspeicher
+* Versteht Deutsch und Bilder wie Fotos von Typenschildern
+
+== Betrachtete Optionen
+
+* `qwen3.6:35b-a3b`
+* `gemma4:26b`
+* `qwen3.8:27b`
+* `lfm3:1.7b` als kleines Modell
+
+== Entscheidung
+
+Hauptmodell ist `qwen3.6:35b-a3b` mit festem Tag. Als Mixture-of-Experts-Modell sind pro Token nur etwa 3B Parameter aktiv, was bei begrenzter Speicherbandbreite zählt. Es ist unter den größeren Modellen am schnellsten und bleibt auch bei langen Prompts und langen Antworten schnell. Eine Reparaturanleitung ist in knapp 30 Sekunden fertig.
+
+=== Konsequenzen
+
+* Gut, weil es auch Bilder versteht.
+* Schlecht, weil die Benchmarks nur die Geschwindigkeit messen. Ob es gut antwortet, zeigt erst der Testsatz aus Phase 3.
+
+== Vor- und Nachteile der Optionen
+
+=== gemma4:26b
+
+* Gut, weil es bei kurzen Prompts gleichwertig ist und rund 2,5 GiB weniger Speicher braucht.
+* Schlecht, weil es bei langen Prompts etwas abfällt.
+
+=== qwen3.8:27b
+
+* Gut, weil es dem Mindestmaß entspricht, das sich das Team für schwierige Fälle wünscht.
+* Schlecht, weil eine lange Antwort rund 100 Sekunden dauert. Als alleiniges Modell würde jede Anfrage eine Minute und mehr dauern.
+
+=== lfm3:1.7b
+
+* Gut, weil es für Vorarbeit schnell genug ist und neben einem großen Modell in den Speicher passt.
+* Schlecht, weil die Qualität für Texte nicht geprüft ist.
+
+== Quellen
+
+* {repo}/docs/benchmarks.md[Benchmarks], Runde 2 Modelle und Empfehlung

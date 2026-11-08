@@ -1,0 +1,39 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0019]]
+= 0019 n8n auf der Helpdesk-VM betreiben
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-10-22
+Nachgetragen:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Für Aufgaben außerhalb von Zammad braucht MANUEL Workflows, etwa für Nuudel, Restarters.net und die Statistik. n8n kann auf dem Mini-PC neben dem Modell oder auf der Helpdesk-VM neben Zammad laufen.
+
+== Entscheidungskriterien
+
+* Sicherheit der Zugangsdaten
+* Workflows ohne Modell laufen auch bei Ausfall des Mini-PCs
+* Vorhandene Dienste für Proxy, Backup und Überwachung
+
+== Betrachtete Optionen
+
+* n8n selbst gehostet auf der Helpdesk-VM
+* n8n auf dem Mini-PC
+
+== Entscheidung
+
+n8n läuft selbst gehostet auf der Helpdesk-VM neben Zammad. Dort liegen die Zugangsdaten im Rechenzentrum statt in der offenen Werkstatt. Workflows ohne Sprachmodell laufen auch bei Neustart oder Ausfall des Mini-PCs, und Traefik, resticker und Uptime Kuma sind dort schon eingerichtet.
+
+=== Konsequenzen
+
+* Gut, weil der Mini-PC ein reiner Rechenknecht für die Modelle bleibt.
+* Schlecht, weil n8n unter der Sustainable Use License steht. Sie erlaubt den Betrieb für eigene Zwecke, ist aber keine Open-Source-Lizenz.
+
+== Quellen
+
+* {repo}/PLAN.md[PLAN], Abschnitt Offene Entscheidungen
+* https://docs.n8n.io/hosting/[Doku von n8n zum Selbsthosten]
+* https://github.com/n8n-io/n8n/blob/master/LICENSE.md[Lizenz von n8n]

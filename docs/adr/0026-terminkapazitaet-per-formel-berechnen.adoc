@@ -1,0 +1,45 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0026]]
+= 0026 Die Kapazität der Termine per Formel berechnen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-06
+Nachgetragen:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+MANUEL soll Gästen Termine vorschlagen. Wie viele Reparaturen parallel möglich sind, hängt davon ab, wie viele Helfende sich angemeldet haben. Das ließe sich vom Sprachmodell schätzen oder fest berechnen.
+
+== Entscheidungskriterien
+
+* Das Ergebnis ist immer gleich und nachvollziehbar
+* Kein Risiko durch Fehler des Modells
+
+== Betrachtete Optionen
+
+* Feste Formel in n8n
+* Das Sprachmodell plant die Termine
+
+== Entscheidung
+
+Die Kapazität ist eine Rechnung, kein Modell. Termine laufen von 11:00 bis 14:00 Uhr im Halbstundentakt, 14:00 Uhr nur für Kleinigkeiten. Der Empfang schafft 6 Personen parallel, pro 3 Reparierende gibt es 1 Person als Reserve. Bei einer gegebenen Zahl an Helfenden gilt der größte Wert für Parallel, der damit auskommt. Das Sprachmodell formuliert nur den Text des Vorschlags.
+
+[cols="1,2",options="header"]
+|===
+|Wert |Rechnung
+|Empfang |Parallel durch 6, aufgerundet
+|Unterstützung |Parallel durch 3, aufgerundet
+|Personen |Parallel plus Empfang plus Unterstützung
+|Termine |Parallel mal 6, mit 14:00 Uhr mal 7
+|===
+
+=== Konsequenzen
+
+* Gut, weil der Grundsatz gilt, dass Code rechnet und das Modell formuliert.
+* Gut, weil Menschen den Vorschlag leicht prüfen können.
+
+== Quellen
+
+* {repo}/PLAN.md[PLAN], Abschnitt Terminvergabe

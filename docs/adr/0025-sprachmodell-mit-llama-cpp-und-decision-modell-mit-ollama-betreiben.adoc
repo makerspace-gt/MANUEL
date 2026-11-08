@@ -1,0 +1,52 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0025]]
+= 0025 Das Sprachmodell mit llama.cpp und das Decision-Modell mit Ollama betreiben
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Nachgetragen:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Für die Modelle auf dem Mini-PC kamen Ollama und llama.cpp mit Vulkan in Frage. Die Benchmarks zeigen llama.cpp bei fast allen Modellen etwas schneller und sparsamer im Speicher. `d3:9b` läuft aber nur über die Decision-Funktion von Ollama.
+
+== Entscheidungskriterien
+
+* Geschwindigkeit des Sprachmodells
+* `d3:9b` muss laufen
+* Aufwand für Einrichtung und Wechsel der Modelle
+
+== Betrachtete Optionen
+
+* Ollama für alle Modelle
+* llama.cpp für alle Modelle
+* llama.cpp für das Sprachmodell, Ollama für `d3:9b` und `bge-m3`
+
+== Entscheidung
+
+Das Sprachmodell läuft mit llama.cpp über Vulkan mit `-ub 1024` und MTP. `d3:9b` und `bge-m3` laufen mit Ollama. Zammad bindet llama.cpp über den Anbieter Custom (OpenAI Compatible) an.
+
+=== Konsequenzen
+
+* Gut, weil das Sprachmodell den kleinen Vorsprung von llama.cpp nutzt.
+* Schlecht, weil zwei Server laufen und sich den Grafikspeicher teilen.
+* Schlecht, weil bei llama.cpp die Flags für MTP pro Modell selbst gesetzt werden müssen.
+* Offen ist, ob Zammad Sprachmodell und Embeddings von zwei verschiedenen Anbietern beziehen kann. Wenn nicht, liefert Ollama die Embeddings für die Wissensdatenbank über einen eigenen Workflow.
+
+== Vor- und Nachteile der Optionen
+
+=== Ollama für alle Modelle
+
+* Gut, weil ein Server reicht und Ollama die Modelle selbst wechselt.
+* Gut, weil `qwen3.8:27b` unter Ollama derzeit deutlich schneller ist.
+* Schlecht, weil das Sprachmodell etwas langsamer ist und mehr Speicher braucht.
+
+=== llama.cpp für alle Modelle
+
+* Schlecht, weil `d3:9b` dort nicht läuft.
+
+== Quellen
+
+* {repo}/docs/benchmarks.md[Benchmarks], Fairer Vergleich der Engines und Empfehlung

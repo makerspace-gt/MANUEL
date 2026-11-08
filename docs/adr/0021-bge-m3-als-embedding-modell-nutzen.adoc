@@ -1,0 +1,39 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0021]]
+= 0021 bge-m3 als Embedding-Modell nutzen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-10-22
+Nachgetragen:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Für die Ähnlichkeitssuche in der Einordnung und für passende Artikel aus der Wissensdatenbank braucht MANUEL ein Embedding-Modell, das Deutsch versteht und neben dem Sprachmodell in den Speicher passt.
+
+== Entscheidungskriterien
+
+* Mehrsprachig, vor allem Deutsch
+* Von Zammad unterstützt
+* Klein und schnell
+
+== Betrachtete Optionen
+
+* `bge-m3`
+* `qwen3-embedding`
+
+== Entscheidung
+
+MANUEL nutzt `bge-m3`. Zammad empfiehlt es für Ollama selbst, es ist mehrsprachig, und ein Aufruf dauert geladen 0,04 Sekunden.
+
+=== Konsequenzen
+
+* Gut, weil dasselbe Modell die Einordnung und die Wissensdatenbank bedient.
+* Gut, weil es in den Grafikspeicher neben Sprachmodell und `d3:9b` passt, siehe xref:0024-16-gib-uma-fuer-die-gpu-reservieren.adoc[ADR 24].
+
+== Quellen
+
+* https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb[Quellcode des Ollama-Anbieters in Zammad]
+* {repo}/docs/benchmarks.md[Benchmarks], Runde 3 UMA
+* {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 6

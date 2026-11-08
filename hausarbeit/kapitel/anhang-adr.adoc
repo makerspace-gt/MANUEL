@@ -37,5 +37,27 @@ include::../../docs/adr/0014-reparaturen-ueber-restarters-melden.adoc[]
 
 include::../../docs/adr/0015-hausarbeit-in-asciidoc-schreiben.adoc[]
 
+include::../../docs/adr/0016-eigenes-image-auf-basis-von-ucore-bauen.adoc[]
+
+include::../../docs/adr/0017-einen-menschen-entscheiden-lassen.adoc[]
+
+include::../../docs/adr/0018-felder-mit-ki-agenten-von-zammad-fuellen.adoc[]
+
+include::../../docs/adr/0019-n8n-auf-der-helpdesk-vm-betreiben.adoc[]
+
+include::../../docs/adr/0020-ueber-netbird-vernetzen.adoc[]
+
+include::../../docs/adr/0021-bge-m3-als-embedding-modell-nutzen.adoc[]
+
+include::../../docs/adr/0022-reparaturanleitungen-in-der-wissensdatenbank-von-zammad-sammeln.adoc[]
+
+include::../../docs/adr/0023-qwen3-6-als-hauptmodell-nutzen.adoc[]
+
+include::../../docs/adr/0024-16-gib-uma-fuer-die-gpu-reservieren.adoc[]
+
+include::../../docs/adr/0025-sprachmodell-mit-llama-cpp-und-decision-modell-mit-ollama-betreiben.adoc[]
+
+include::../../docs/adr/0026-terminkapazitaet-per-formel-berechnen.adoc[]
+
 :leveloffset: -2
 :sectnums:

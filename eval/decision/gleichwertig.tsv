@@ -25,10 +25,12 @@
 # Lautsprecher(boxen), Aktivlautsprecher, Bluetooth Musikbox und Soundbar bleiben getrennt, bei nur Lautsprecher fragt MANUEL nach.
 # Entscheidungen vom 08.11.2026. Eigen bleiben Zwitscherbox, Space-Projektor, Kerze, elektrisch, Schlagschrauber und Mixeraufsatz.
 # Herrnhuter Stern ist Weihnachtsbeleuchtung, Kartoffelraspel ist Reibe, elektrisch, Fensterwischer ist Fensterreiniger,
-# Haustelefon ist Telefon. Die Synonyme stehen im Katalog. Kartoffelraspel folgt, sobald Reibe, elektrisch im Katalog steht.
+# Haustelefon ist Telefon. Die Synonyme stehen im Katalog.
 # Entscheidungen vom 08.11.2026 nach Recherche. Elektrogrill fasst E-Grill, Tischgrill und Partygrill zusammen. Kontaktgrill,
 # Grillofen und Gasgrill bleiben eigen, bei nur Grill fragt MANUEL nach. USB-Netzteil ist USB-Ladegerät, USB-Ladestation bleibt eigen.
-# Quadrocopter ist Drohne. Die Heizung wird nach Lüfter getrennt. Heizlüfter ist eigen mit ORA-Gruppe Fan wie im Standard,
+# Ghettoblaster steht so im Formular, wir verwenden den Begriff wegen seiner abwertenden Herkunft nicht und sagen Radiorekorder,
+# englisch Boombox, wie die Wikipedia.
+# MANUEL zeigt ihn dem Modell nicht an. Wir schlagen der anstiftung vor, den Eintrag umzubenennen. Quadrocopter ist Drohne. Die Heizung wird nach Lüfter getrennt. Heizlüfter ist eigen mit ORA-Gruppe Fan wie im Standard,
 # Elektroheizung ohne Lüfter ist Small home electrical, bei bekannt hoher Leistung Large home electrical. Bei nur Heizung fragt MANUEL nach.
 # Getrennt bleiben Tischrechner und Taschenrechner, weil Tischrechner meist druckende Rechner mit Mechanik sind,
 # ebenso Regal und Möbelstück, GPS-Gerät und Navigationsgerät sowie Holzfigur, die teils Spielzeug ist.
@@ -60,7 +62,7 @@ Receiver (Sat, Kabel, Antenne, Audio)	Receiver	bestätigt	im Formular unter dies
 Radio	Transistorradio	bestätigt	gleicher Gegenstand
 Musikanlage	Musikkompaktanlage	bestätigt	Größe egal
 Musikanlage	Micro-HiFi-System	bestätigt	Größe egal
-Musikanlage	Ghettoblaster	bestätigt	Boombox, laut Standard Hi-Fi integrated
+Musikanlage	Ghettoblaster	bestätigt	Name im Formular, wir sagen Radiorekorder, laut Standard Hi-Fi integrated
 Musikanlage	CD-Radio	bestätigt	hat CD
 Musikanlage	Kassetten-Radio	bestätigt	hat Kassette
 Musikanlage	Radiorecorder	bestätigt	hat Kassette

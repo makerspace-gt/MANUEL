@@ -1,0 +1,68 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0010]]
+= 0010 Mit Vertreter-Namen einordnen und Beschreibungen nur Menschen zeigen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+Nach den Zusammenfassungen hat ein Eintrag oft viele Namen. Radio umfasst Radiowecker, Kofferradio, DAB-Radio und weitere. Die Frage war, wie das Decision-Modell die Einträge zu sehen bekommt. `d3:9b` wählt stark nach dem Namen der Option.
+
+== Entscheidungskriterien
+
+* Trefferquote an 745 echten Betreffen
+* Anzahl sicherer Einordnungen ab 70 Prozent
+* Schwere Fehler, also sicher und in einer anderen ORA-Gruppe
+
+== Betrachtete Optionen
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Verfahren |Treffer |ab 70 % sicher |davon richtig |schwere Fehler
+|Formularnamen ohne Katalog |639 |554 |511 |18
+|Katalog mit Beschreibung |592 | | |27
+|Katalog mit Synonymen |607 | | |26
+|Katalog mit Beschreibung ohne Abgrenzung |610 | | |27
+|Formularnamen mit Beschreibung |630 |511 |470 |18
+|Zusammengefasst mit langen Optionen |590 | | |31
+|*Vertreter-Namen, alle Einträge* |*636* |*599* |*553* |*16*
+|Vertreter-Namen, Kaskade A, B, C |556 |715 |549 |58
+|Vertreter-Namen, nur A und B |615 |595 |547 |14
+|===
+
+Außerdem wurde getestet, erst die ORA-Gruppe und dann die Kategorie zu wählen. Die Gruppe war zu 88 Prozent richtig, für die Kategorie brachte das keinen Gewinn.
+
+== Entscheidung
+
+Jeder Eintrag erscheint in der Vorauswahl genau einmal, und zwar unter dem Namen oder Synonym, der dem Ticket am ähnlichsten ist. Beim Betreff Radiowecker heißt die Option für den Eintrag Radio also `Unterhaltungselektronik / Radiowecker`. Nach der Wahl wird der Name auf den Eintrag zurückgeführt. Die Beschreibungen des Katalogs sieht das Modell nicht.
+
+Die Vertreter-Namen treffen fast so oft wie die Formularnamen, machen das Modell aber bei 45 Tickets mehr sicher, bei gleicher Quote von 92 Prozent. Sie haben die wenigsten schweren Fehler unter den Verfahren mit allen Einträgen.
+
+=== Konsequenzen
+
+* Gut, weil es weder Fast-Dubletten noch lange Optionen gibt.
+* Gut, weil jedes gute Synonym im Katalog die Einordnung verbessert.
+* Schlecht, weil ein ungeschicktes Synonym schadet. Druckreiniger als Synonym machte aus dem Drucker einen Hochdruckreiniger.
+
+== Vor- und Nachteile der Optionen
+
+=== Beschreibungen für das Modell
+
+* Schlecht, weil die Beschreibung den Namen ersetzt. Beim Toaster wählte das Modell Küchengerät, weil die Beschreibung das Wort Toaster nicht enthielt.
+* Schlecht, weil Sätze zur Abgrenzung zum Nachbarn locken. Nach „Die kleine Handnähmaschine ist ein eigener Eintrag“ landeten vier Nähmaschinen bei der Handnähmaschine.
+
+=== Kaskade nach ABC-Klassen
+
+* Schlecht, weil das Modell schon in der Runde mit den häufigen Einträgen sicher war, auch wenn das richtige Gerät fehlte. Die Sicherheit sagt nur, welche der angebotenen Optionen am besten passt, nicht ob überhaupt eine passt.
+
+=== Lange Optionen mit allen Namen
+
+* Schlecht, weil eine lange Liste den Treffer verwässert. Beim Betreff Radio wählte das Modell Funkempfänger.
+
+== Quellen
+
+* {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 13 und 14
+* {repo}/eval/decision/echt_vertreter.py[echt_vertreter.py]

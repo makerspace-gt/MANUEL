@@ -1,0 +1,38 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0009]]
+= 0009 Den Katalog offen veröffentlichen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-07
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+Aus den Zusammenfassungen entsteht ein Katalog der Gegenstände mit Beschreibungen und Synonymen auf Deutsch und Englisch. Er ist eigene Arbeit und für andere Repair Cafés nützlich. Er stützt sich aber auf Daten anderer, die Liste der anstiftung und die Open Repair Data der Open Repair Alliance.
+
+== Entscheidungskriterien
+
+* Nutzen für andere Initiativen
+* Rechte an fremden Daten
+* Vereinbarkeit mit den Lizenzen der Quellen
+
+== Betrachtete Optionen
+
+* Katalog öffentlich unter CC BY-SA 4.0, fremde Daten nur verlinken
+* Katalog unter CC0 wie der übrige Inhalt des Repos
+* Katalog nur intern nutzen
+
+== Entscheidung
+
+Der Katalog steht öffentlich unter CC BY-SA 4.0. Ein Teil der englischen Bezeichnungen stammt aus den Open Repair Data, die ebenfalls unter CC BY-SA 4.0 stehen. Die Liste der anstiftung und die Exporte der Open Repair Alliance werden nur als Quelle verlinkt, nicht committet und nicht gelöscht. Der Katalog verweist über die IDs des Laufzettels auf die Liste der anstiftung.
+
+=== Konsequenzen
+
+* Gut, weil andere Repair Cafés den Katalog nutzen und verbessern können.
+* Schlecht, weil der Katalog eine andere Lizenz hat als der Rest des Repos. Das README nennt die Ausnahme.
+
+== Quellen
+
+* {repo}/katalog/README.md[README des Katalogs]
+* https://creativecommons.org/licenses/by-sa/4.0/[CC BY-SA 4.0]

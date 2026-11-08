@@ -1,0 +1,37 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0005]]
+= 0005 Das Sprachmodell nicht nachentscheiden lassen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-07
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+Bei unsicheren Einordnungen lag es nahe, ein zweites, größeres Modell entscheiden zu lassen. `qwen3.6:35b-a3b` sieht dieselben Optionen und darf auch eine neue Kategorie oder `??` vorschlagen.
+
+== Entscheidungskriterien
+
+* Trefferquote bei den unsicheren Tickets
+* Zusätzliche Zeit pro Ticket
+
+== Betrachtete Optionen
+
+* Sprachmodell entscheidet unter 70 Prozent Sicherheit nach
+* Unsichere Fälle gehen an einen Menschen
+
+== Entscheidung
+
+Das Sprachmodell entscheidet nicht nach. Bei den 204 unsicheren Tickets lag es nach den Sollwerten des Teams 94-mal richtig, `d3:9b` 125-mal. Bei den 279 Laufzetteln der Datenpotenzialanalyse senkte das Nachentscheiden das Ergebnis von 190 auf 183 Treffer. Das Sprachmodell wählte unter der festen Liste oft etwas Spezielleres oder Falsches, ein Radio landete bei Saftpresse. `??` nutzte es nie.
+
+Unsichere Fälle fragt MANUEL stattdessen bei einem Menschen nach, siehe xref:0011-bei-unsicherheit-nachfragen.adoc[ADR 11].
+
+=== Konsequenzen
+
+* Gut, weil kein zweiter Modellaufruf Zeit kostet.
+* Gut, weil Abweichungen zwischen beiden Modellen trotzdem als Hinweis für Prüffälle taugen.
+
+== Quellen
+
+* {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 7, 10 und 11

@@ -1,0 +1,63 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0011]]
+= 0011 Bei Unsicherheit nachfragen statt raten
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+Von der Kategorie hängen Artikel aus der Wissensdatenbank, der Reparaturansatz und die passenden Helfenden ab. Eine falsche Kategorie schickt die Reparatur in die falsche Richtung. Ziel ist deshalb eine Quote nahe 100 Prozent, wobei eine Rückfrage als Erfolg zählt. Entscheidend ist, wie oft MANUEL sicher ist und trotzdem falsch liegt.
+
+== Entscheidungskriterien
+
+* Möglichst wenige sichere Fehler
+* Möglichst wenige Rückfragen
+* Einfache, nachvollziehbare Regeln
+
+== Betrachtete Optionen
+
+* Nur eine höhere Schwelle
+* Schwelle 70 Prozent mit festen Regeln für Rückfragen
+* Zusätzlich Rückfrage, wenn die Kette in der Nachricht ein anderes Gerät findet
+
+== Entscheidung
+
+MANUEL fragt nach, wenn die Sicherheit unter 70 Prozent liegt oder eine von zwei Regeln greift.
+
+* *R1 Sammelbegriff.* Die Wahl ist ein Eintrag, bei dem das Team die Bauart unterscheiden will, etwa Kaffeemaschine, Mixer, Kopfhörer, Projektor, Grill oder Heizung. Nennt die Nachricht genau eine Bauart, etwa Nespresso bei der Kaffeemaschine, entfällt die Rückfrage.
+* *R2 Bauteil oder Dienstleistung.* Die Wahl ist ein Bauteil wie Software, Display oder Akku, oder der Betreff nennt eine Installation oder einen 3D-Druck.
+
+Die Rückfrage ist eine interne Notiz mit nummerierten Vorschlägen, auf die Engagierte etwa mit `2` antworten.
+
+[cols="3,1,1,1",options="header"]
+|===
+|Regeln |davon falsch |Rückfragen |ohne Fehler
+|nur Schwelle 70 % |46 |146 |93,8 %
+|nur Schwelle 98 % |3 |588 |99,6 %
+|Schwelle 70 %, R1 und R2, Entscheidungen des Teams, Nachricht |10 |179 |98,7 %
+|===
+
+=== Konsequenzen
+
+* Gut, weil nur noch 10 von 745 Tickets sicher falsch eingeordnet werden.
+* Schlecht, weil etwa jedes vierte Ticket eine Rückfrage braucht.
+* Schlecht, weil Regeln und Werte aus denselben Daten stammen. Neue Tickets müssen sie bestätigen.
+
+== Vor- und Nachteile der Optionen
+
+=== Nur eine höhere Schwelle
+
+* Schlecht, weil fast jedes Ticket in die Rückfrage geht, bevor die Fehler verschwinden.
+
+=== Rückfrage bei abweichender Kette
+
+* Gut, weil sie weitere 16 Fehler fängt.
+* Schlecht, weil sie auch 113 richtige Tickets in die Rückfrage schickt.
+
+== Quellen
+
+* {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 16
+* {repo}/eval/decision/rueckfrage.py[rueckfrage.py]

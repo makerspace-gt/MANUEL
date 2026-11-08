@@ -1,0 +1,41 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0003]]
+= 0003 Auswahlwerte mit einem Decision-Modell bestimmen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-06
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+MANUEL soll im Ticket Felder mit festen Werten füllen, etwa ob ein Gerät sicherheitsrelevant ist, welche Stromversorgung es hat und zu welcher Kategorie es gehört. Ein Sprachmodell schreibt dafür freien Text, der erst auf einen gültigen Wert abgebildet werden muss. Decision-Modelle wie `d3:9b` wählen direkt aus vorgegebenen Optionen und geben zu jeder Option eine Wahrscheinlichkeit aus.
+
+== Entscheidungskriterien
+
+* Gefahren dürfen nicht übersehen werden
+* Ergebnis ist immer ein gültiger Wert
+* Die Sicherheit lässt sich über eine Schwelle einstellen
+* Geschwindigkeit auf dem Mini-PC
+
+== Betrachtete Optionen
+
+* Decision-Modell `d3:9b` für Auswahlwerte, Sprachmodell für Text
+* Ein Sprachmodell für alles
+* Kleinere Decision-Modelle wie `tev1:4b` oder `nimble:9b`
+
+== Entscheidung
+
+Feste Auswahlwerte bestimmt `d3:9b`, Texte schreibt das Sprachmodell. Bei 83 erfundenen Tickets übersah `d3:9b` mit einer Schwelle von 0,34 keine sicherheitsrelevante Gefahr, bei einem einzigen Fehlalarm. Die Sprachmodelle waren bei der Kategorie zwar mit bis zu 87 Prozent besser, ließen sich aber nicht über eine Schwelle einstellen.
+
+=== Konsequenzen
+
+* Gut, weil jede Antwort ein gültiger Wert mit Wahrscheinlichkeit ist und sich unsichere Fälle erkennen lassen.
+* Gut, weil `d3:9b` neben dem Sprachmodell in den Speicher passt.
+* Schlecht, weil `d3` bisher nur über die Decision-Funktion von Ollama läuft. Ollama bleibt damit nötig.
+* Schlecht, weil die Formulierung der Optionen das Ergebnis stark beeinflusst, siehe Schritt 3 der Einordnung.
+
+== Quellen
+
+* {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 1 bis 4
+* {repo}/docs/benchmarks.md[Benchmarks], Abschnitt Decision-Modelle im Test

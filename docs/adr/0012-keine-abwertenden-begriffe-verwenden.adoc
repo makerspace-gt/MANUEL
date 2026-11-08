@@ -1,0 +1,37 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0012]]
+= 0012 Keine abwertenden Begriffe verwenden
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+Die Liste der anstiftung enthält den Eintrag Ghettoblaster. Der Begriff hat eine abwertende Herkunft. MANUEL zeigt Namen aus dem Katalog in Rückfragen und Vorschlägen an.
+
+== Entscheidungskriterien
+
+* Respektvolle Sprache gegenüber Gästen und Engagierten
+* Daten der anstiftung lassen sich weiter zuordnen
+
+== Betrachtete Optionen
+
+* Begriff weiter verwenden, weil er im Formular steht
+* Eigenen Begriff verwenden und den Formularnamen nur zur Zuordnung behalten
+
+== Entscheidung
+
+Wir sagen Radiorekorder, englisch Boombox, wie die Wikipedia. Der Formularname bleibt nur an einer Stelle in `gleichwertig.tsv`, damit Einträge der anstiftung zugeordnet werden. Das Modell bekommt ihn nicht als Option angezeigt. Wir schlagen der anstiftung vor, den Eintrag umzubenennen.
+
+Dasselbe gilt für künftige Fälle. Abwertende Begriffe aus fremden Listen übernehmen wir nicht in den Katalog.
+
+=== Konsequenzen
+
+* Gut, weil MANUEL keine abwertenden Begriffe anzeigt.
+* Schlecht, weil der Katalog an dieser Stelle vom Formular abweicht.
+
+== Quellen
+
+* https://de.wikipedia.org/wiki/Radiorekorder[Radiorekorder in der Wikipedia]

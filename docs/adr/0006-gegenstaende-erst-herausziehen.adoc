@@ -1,0 +1,37 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0006]]
+= 0006 Bei Nachrichten erst die Gegenstände herausziehen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-06
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+Beim Eingang eines Tickets gibt es noch keinen Betreff von Engagierten, nur die Nachricht des Gastes. Das Decision-Modell direkt auf der langen Nachricht war deutlich schwächer als auf dem Betreff. Manche Nachrichten nennen mehrere Geräte.
+
+== Entscheidungskriterien
+
+* Trefferquote auf Nachrichten
+* Erkennen mehrerer Geräte
+* Nichts erfinden, wenn die Nachricht kein Gerät nennt
+
+== Betrachtete Optionen
+
+* Decision-Modell direkt auf der Nachricht
+* Kette, das Sprachmodell zieht Gegenstände mit Marke und Defekt heraus, danach ordnet das Decision-Modell jeden Gegenstand ein
+
+== Entscheidung
+
+Für Nachrichten gilt die Kette. `qwen3.6:35b-a3b` zieht pro Gegenstand Name, Marke und Defekt heraus und gibt bei Unklarheit eine leere Liste aus. Danach ordnet `d3:9b` jeden Gegenstand ein. Findet das Sprachmodell nichts, greift der Betreff oder der Titel des Tickets. Mit vollständigem Text, Titel und Rückfall trifft die Kette 546 von 745 Kategorien.
+
+=== Konsequenzen
+
+* Gut, weil die Kette mehrere Geräte erkennt, von 21 aufgeteilten Anfragen 17.
+* Gut, weil beim Eingang schon ein Vorschlag entsteht.
+* Schlecht, weil die Kette mit 546 Treffern hinter dem Betreff mit 639 zurückbleibt. Am schwächsten sind Voicemails.
+
+== Quellen
+
+* {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 8, 9 und 15

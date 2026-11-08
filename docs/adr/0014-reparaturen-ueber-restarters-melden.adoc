@@ -1,0 +1,55 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0014]]
+= 0014 Reparaturen über Restarters.net an die Open Repair Alliance melden
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+Die Reparaturdaten des Repair Café sollen bei der Open Repair Alliance landen. Bisher geschah das über Laufzettel auf reparatur-initiativen.org. Die API der anstiftung kann aber nur lesen, Laufzettel gibt es nur als Webformular. MANUEL soll die Daten ohne Abtippen übertragen.
+
+== Entscheidungskriterien
+
+* Daten landen bei der Open Repair Alliance
+* Übertragung über eine API
+* Keine doppelte Zählung
+
+== Betrachtete Optionen
+
+* Restarters.net mit API
+* Laufzettel bei der anstiftung, MANUEL füllt nur vor
+* Formular der anstiftung automatisch ausfüllen
+* Schreibende API bei der anstiftung anregen
+
+== Entscheidung
+
+Reparaturen meldet MANUEL über die API von Restarters.net. Ein Gerät wird mit `POST /api/v2/devices` beim passenden Event angelegt. Bei der anstiftung führt das Repair Café weiter die Termine, damit Gäste sie abonnieren können, und die Neuigkeiten. Laufzettel entfallen, denn die Open Repair Alliance bittet, nur ein Werkzeug zu nutzen.
+
+Die Kategorie für Restarters folgt aus der ORA-Gruppe im Katalog. Als `item_type` sendet MANUEL den englischen Namen, aus dem die Alliance feinere Gruppen ableitet.
+
+=== Konsequenzen
+
+* Gut, weil keine Daten mehr abgetippt werden.
+* Schlecht, weil Termine an zwei Stellen gepflegt werden.
+* Schlecht, weil Restarters bei Laptops und Fernsehern die Größe verlangt. MANUEL muss danach fragen.
+* Schlecht, weil der API-Token bisher nur über das Cookie der Anmeldung zugänglich ist.
+
+== Vor- und Nachteile der Optionen
+
+=== Formular automatisch ausfüllen
+
+* Schlecht, weil jede Änderung am Formular den Ablauf bricht und es ohne Absprache mit der anstiftung nicht in Frage kommt.
+
+=== Schreibende API bei der anstiftung
+
+* Gut, weil alles bei einer Plattform bliebe.
+* Schlecht, weil sie erst entwickelt werden müsste.
+
+== Quellen
+
+* https://openrepair.org/open-data/how-to-get-started/[Open Repair Alliance, How to record repairs]
+* https://github.com/TheRestartProject/restarters.net[Quellcode von Restarters.net]
+* {repo}/PLAN.md[PLAN], Abschnitt Anbindung an Restarters.net

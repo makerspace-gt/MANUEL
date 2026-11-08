@@ -1,0 +1,52 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0013]]
+= 0013 Einträge mit einem hierarchischen Schlüssel kennzeichnen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+Zammad, die Statistik und spätere Rückfragen brauchen für jeden Eintrag des Katalogs einen festen Schlüssel. Der Name taugt dafür nicht, er hat sich schon mehrfach geändert. Die IDs der anstiftung passen nicht eins zu eins, weil ein Eintrag mehrere Kategorien zusammenfasst und manche Einträge eine Kategorie aufteilen.
+
+== Entscheidungskriterien
+
+* Lesbar und sortierbar
+* Direkte Zuordnung zur ORA-Gruppe und zum Laufzettel
+* Stabil, sobald Tickets ihn speichern
+
+== Betrachtete Optionen
+
+* Hierarchischer Schlüssel `ORA.anstiftung.eigene`
+* Neutrale Nummer wie `M0001` und der hierarchische Schlüssel nur berechnet
+* Kurzname wie `elektrogrill`
+
+== Entscheidung
+
+Jeder Eintrag bekommt den Schlüssel `ORA.anstiftung.eigene`. Vorne steht die Nummer der ORA-Gruppe, die Gruppen ohne Strom bekommen 101 bis 106. In der Mitte steht die führende ID des Laufzettels, hinten eine eigene Unterscheidung, wo wir eine Kategorie aufteilen. Beispiele sind `37.424` für den Stabmixer mit dem Synonym Zauberstab und `11.459.1` für In-Ear-Kopfhörer.
+
+Bis MANUEL in Zammad läuft, darf sich ein Schlüssel noch ändern. Danach bleibt er fest. Ändert sich dann eine ORA-Gruppe, bekommt der Eintrag einen neuen Schlüssel, und der alte bleibt als Verweis stehen.
+
+=== Konsequenzen
+
+* Gut, weil der Schlüssel ORA-Gruppe und Laufzettel direkt zeigt.
+* Gut, weil `pruefen.py` Form und Eindeutigkeit prüft.
+* Schlecht, weil eine spätere Korrektur der ORA-Gruppe einen Verweis braucht.
+
+== Vor- und Nachteile der Optionen
+
+=== Kurzname
+
+* Schlecht, weil ein Name wie `ghettoblaster` bei einer Umbenennung bleiben müsste, siehe xref:0012-keine-abwertenden-begriffe-verwenden.adoc[ADR 12].
+
+=== Neutrale Nummer
+
+* Gut, weil sie sich nie ändern muss.
+* Schlecht, weil sie nichts über den Eintrag verrät.
+
+== Quellen
+
+* {repo}/katalog/README.md[README des Katalogs], Abschnitt Schlüssel
+* {repo}/katalog/pruefen.py[pruefen.py]

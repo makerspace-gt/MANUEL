@@ -1,0 +1,50 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0015]]
+= 0015 Die Hausarbeit in AsciiDoc schreiben
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-08
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+MANUEL wird am Ende im Stil einer Hausarbeit dokumentiert, wie die Datenpotenzialanalyse von 2022. Es gibt keine Vorgaben und keine Bewertung. Die Arbeit soll vor allem online gelesen werden, sich aber auch gut als PDF drucken lassen. Tabellen, Skripte und Ergebnisse sollen direkt aus dem Repo zitiert werden, damit Arbeit und Daten nicht auseinanderlaufen.
+
+== Entscheidungskriterien
+
+* Dateien aus dem Repo direkt einbinden
+* Online lesbar und als PDF druckbar
+* Literaturverzeichnis
+
+== Betrachtete Optionen
+
+* AsciiDoc mit Asciidoctor
+* Typst
+* Markdown
+* ODT wie die Datenpotenzialanalyse
+
+== Entscheidung
+
+Die Hausarbeit entsteht in AsciiDoc. Sie bindet Tabellen und Codeausschnitte mit `include` direkt ein. Eine GitHub Action erzeugt daraus eine HTML-Seite für GitHub Pages und mit asciidoctor-pdf ein PDF. Die Daten werden bei Abschluss mit einem Git-Tag eingefroren, damit Zitate auf genau diesen Stand verweisen.
+
+=== Konsequenzen
+
+* Gut, weil Tabellen und Code nicht von Hand abgeschrieben werden.
+* Gut, weil auch die ADRs in AsciiDoc vorliegen und als Anhang eingebunden werden.
+* Schlecht, weil GitHub beim Anzeigen von AsciiDoc keine eingebundenen Dateien zeigt. Gelesen wird die Arbeit deshalb über GitHub Pages.
+
+== Vor- und Nachteile der Optionen
+
+=== Typst
+
+* Gut, weil es CSV und Literatur im Format CSL von Haus aus kann.
+* Schlecht, weil GitHub Typst nicht anzeigt.
+
+=== Markdown
+
+* Schlecht, weil Markdown keine Dateien einbinden kann.
+
+== Quellen
+
+* https://docs.asciidoctor.org/[Asciidoctor]

@@ -1,0 +1,53 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0002]]
+= 0002 Echte Ticketdaten nur lokal auswerten
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-06
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+Für die Tests der Einordnung brauchen wir echte Tickets aus Zammad mit Nachrichten der Gäste. Sie enthalten Namen, Adressen, Telefonnummern und Beschreibungen von Geräten. Das Repo von MANUEL ist öffentlich.
+
+== Entscheidungskriterien
+
+* Schutz der Daten der Gäste
+* Aussagekraft der Tests
+* Nachvollziehbarkeit für die Hausarbeit
+
+== Betrachtete Optionen
+
+* Echte Daten nur lokal und auf dem Mini-PC, im Repo nur Summen
+* Pseudonymisierte Daten im Repo
+* Nur erfundene Tickets testen
+
+== Entscheidung
+
+Echte Tickets und alle daraus abgeleiteten Ergebnisse liegen nur lokal und auf dem Mini-PC, der bis zum Umzug privat steht. Der Token für Zammad ist nur lesend und bleibt beim Team. Ins Repo kommen nur Summen und allgemeine Gerätebezeichnungen. Vor dem Umzug in den Makerspace werden die Daten gelöscht und der Datenträger verschlüsselt.
+
+Eine Pseudonymisierung ist dafür nicht nötig. Für die Einordnung zählt der vollständige Text der Nachricht, und Kürzungen verfälschen die Tests.
+
+=== Konsequenzen
+
+* Gut, weil keine Daten von Gästen öffentlich werden.
+* Gut, weil die Tests mit echten Texten laufen.
+* Schlecht, weil Dritte die Ergebnisse nicht selbst nachrechnen können. Die öffentlichen Laufzettel der Datenpotenzialanalyse dienen dafür als Ersatz.
+
+== Vor- und Nachteile der Optionen
+
+=== Pseudonymisierte Daten im Repo
+
+* Gut, weil andere nachrechnen könnten.
+* Schlecht, weil Freitext sich nicht sicher pseudonymisieren lässt. Namen und Orte stehen auch mitten im Text.
+
+=== Nur erfundene Tickets
+
+* Gut, weil es keine Daten von Gästen braucht.
+* Schlecht, weil erfundene Tickets zu sauber sind. Schritt 1 bis 4 der {repo}/docs/einordnung.md[Einordnung] zeigen, dass echte Betreffe und Nachrichten andere Schwierigkeiten bringen.
+
+== Quellen
+
+* {repo}/docs/einordnung.md[Einordnung von Tickets]
+* {repo}/eval/decision/nachrichten.py[nachrichten.py] holt die Nachrichten nur lesend über die API

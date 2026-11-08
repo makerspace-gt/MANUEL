@@ -1,0 +1,39 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0007]]
+= 0007 Die Kategorien aus dem Laufzettel der anstiftung nehmen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-07
+Beteiligte:: Team des Repair Café Gütersloh
+
+== Kontext und Problem
+
+Die Kategorien kamen zuerst aus `database.sql` von mapped-repair-events mit 386 Einträgen, dann aus der Datei `cf-mf-update-2024-09.csv` mit 759 Einträgen. Bei der Kontrolle durch das Team standen 55 Sollwerte in keiner der beiden Listen, wohl aber im Formular des Laufzettels auf reparatur-initiativen.org. Dort können Initiativen neue Kategorien vorschlagen, die Liste wächst also.
+
+== Entscheidungskriterien
+
+* Die Liste ist aktuell
+* Die Kategorien passen zu dem, was das Team einträgt
+* Trefferquote
+
+== Betrachtete Optionen
+
+* `database.sql` aus mapped-repair-events
+* `cf-mf-update-2024-09.csv`
+* Die Liste im Formular des Laufzettels, nur bestätigte Einträge
+
+== Entscheidung
+
+Die Kategorien kommen aus dem Formular des Laufzettels, ohne die unbestätigten Vorschläge anderer Initiativen. Das waren am 07.11.2026 1.186 Einträge. Mehr Einträge allein brachten keinen Gewinn, mit allen gleichwertigen Paaren lagen CSV und Formular bei 633 und 634 von 745 Treffern. Das Formular ist aber die Liste, aus der das Team tatsächlich wählt.
+
+=== Konsequenzen
+
+* Gut, weil auch neue Kategorien wie 3D-Drucker oder Akkustaubsauger zur Wahl stehen.
+* Schlecht, weil fast gleiche Namen das Modell verwirren. Daraus folgt xref:0008-gleichwertige-kategorien-zusammenfassen.adoc[ADR 8].
+* Schlecht, weil die Liste der anstiftung gehört. Sie liegt nur lokal, der Katalog verweist über IDs darauf.
+
+== Quellen
+
+* {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 11 und 12
+* https://www.reparatur-initiativen.de/[Netzwerk Reparatur-Initiativen der anstiftung]

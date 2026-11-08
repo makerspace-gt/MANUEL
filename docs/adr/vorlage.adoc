@@ -1,0 +1,45 @@
+= NNNN Titel als Verbphrase im Imperativ
+
+[horizontal]
+Status:: vorgeschlagen, angenommen, verworfen oder abgelöst durch xref:NNNN-titel.adoc[ADR NNNN]
+Datum:: JJJJ-MM-TT
+Beteiligte:: wer entschieden hat
+
+== Kontext und Problem
+
+Worum geht es, und warum muss entschieden werden? Zwei bis vier Sätze, gern als Frage.
+
+== Entscheidungskriterien
+
+* Kriterium 1
+* Kriterium 2
+
+== Betrachtete Optionen
+
+* Option 1
+* Option 2
+
+== Entscheidung
+
+Gewählt wird Option 1, weil ...
+
+=== Konsequenzen
+
+* Gut, weil ...
+* Schlecht, weil ...
+
+== Vor- und Nachteile der Optionen
+
+=== Option 1
+
+* Gut, weil ...
+* Schlecht, weil ...
+
+=== Option 2
+
+* Gut, weil ...
+* Schlecht, weil ...
+
+== Quellen
+
+* Messungen, Dokumente oder Gespräche, auf denen die Entscheidung beruht

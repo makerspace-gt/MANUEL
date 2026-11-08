@@ -3,7 +3,8 @@
 
 Reads the local Zammad exports, the team's target values and the statistics, and writes a local
 preview with one row per device. Nothing is sent. Columns with personal data such as customer or
-owner are never read. The defect is free text and is therefore not used.
+owner are never read. The defect is free text and is only used once the ticket is anonymized
+after docs/adr/0038, until then it is left out.
 
 The date of a repair comes from the ticket's tags. The team tags each ticket with the date of the
 event, a postponed ticket gets one tag per event and the last one counts. Older tickets only carry the

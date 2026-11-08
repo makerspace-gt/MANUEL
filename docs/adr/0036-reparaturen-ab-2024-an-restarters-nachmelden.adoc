@@ -15,7 +15,7 @@ Das Team hat seit 2019 1.485 Geräte bearbeitet. Bei der Open Repair Alliance ko
 == Entscheidungskriterien
 
 * Keine doppelten Meldungen
-* Kein Personenbezug und kein Freitext
+* Kein Personenbezug
 * Nachvollziehbare Zuordnung zum Open Repair Data Standard
 * Unklare Fälle entscheidet das Team
 * Nichts wird ohne Freigabe gesendet
@@ -32,7 +32,7 @@ Die Geräte von 2024 bis 2026 werden über die API von Restarters nachgemeldet. 
 
 * Die Kategorie ist der Sollwert des Teams. Neuere Tickets ohne Sollwert ordnet MANUEL ein, und das Team prüft sie.
 * Die Kategorie bei Restarters folgt aus der Gruppe der Open Repair Alliance (ORA) im Katalog, der Gegenstand aus dem englischen Namen des Eintrags. Die englischen Namen erarbeiten wir noch, bis dahin bleiben die Geräte ohne Namen offen.
-* Als Problem geht nur der Wert aus dem Feld Defekt mit, nie Freitext.
+* Als Problem geht der Text aus dem Feld Defekt mit, aber erst wenn das Ticket nach xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38] anonymisiert und geprüft ist. Bis dahin bleibt das Feld leer. Der Standard sieht hier Freitext vor und verlangt, persönliche Angaben vorher zu entfernen, denn die Alliance veröffentlicht die Daten offen.
 * Der Termin kommt aus den Tags des Tickets. Das Team vergibt je Termin einen Tag mit dem Datum, bei vertagten Geräten zählt der letzte. Ältere Tickets tragen nur den Monat, dann zählt der Termin der Statistik in diesem Monat. Fehlt ein passender Tag, zählt der letzte Termin der Statistik zwischen Anlegen und Schließen des Tickets.
 * Der eine Laufzettel von 2025 bei der anstiftung wird ausgelassen.
 * Ein Skript erzeugt zuerst eine lokale Vorschau. Gesendet wird erst nach ausdrücklicher Freigabe, zuerst ein Termin zur Probe. Das Token liegt in Vaultwarden.
@@ -85,4 +85,5 @@ Der Standard kennt sechs Hindernisse, die API von Restarters nimmt aber nur fün
 == Quellen
 
 * {repo}/quellen/openrepair-datastandard[Open Repair Data Standard] mit den sechs Hindernissen
+* Open Repair Data Standard, Feld _problem_, „Free text. Personal data should be removed“
 * Zählungen aus den lokalen Exporten vom 08.11.2026, nur Summen

@@ -25,7 +25,7 @@ Die Kategorie kommt aus dem Sollwert des Teams, also „Kategorie richtig“ ode
 ## Befunde bei der Vorbereitung am 08.11.2026
 
 - **Die API nimmt nur fünf Hindernisse an.** Laut Quellcode von Restarters fehlt „Item too worn out“. „nicht erfolgt::Abnutzung zu groß“ geht deshalb als End of life ohne Hindernis.
-- **Defekt ist Freitext.** Das Feld hat 480 verschiedene Werte. Nach ADR 36 geht kein Freitext mit, `problem` bleibt deshalb leer.
+- **Defekt ist Freitext.** Das Feld hat 480 verschiedene Werte. Der Standard erlaubt Freitext, verlangt aber, persönliche Angaben zu entfernen. Nach ADR 36 geht Defekt deshalb erst mit, wenn das Ticket nach ADR 38 anonymisiert ist. Bis dahin bleibt `problem` leer.
 - **Vergangene Events lassen sich per API anlegen**, mit `POST /api/v2/events`. Je nach Netzwerk muss ein Event erst freigegeben werden.
 - **Sechs Termine der Statistik liegen nicht auf einem Samstag.** Von Januar bis Juni 2025 stehen dort Sonntage und Montage, etwa der 04.05.2025 für den Laufzettel vom 03.05.2025. Die Vorschau setzt sie auf den Samstag davor und vermerkt das. Besser ist, die Daten in der Statistik zu korrigieren.
 - **Die Termine stehen in den Tags.** 2026 trägt fast jedes Ticket das Datum als Tag, 2025 etwa die Hälfte, 2024 nur den Monat. Bei 587 von 636 Tickets stimmt das mit dem letzten Termin zwischen Anlegen und Schließen überein. Die Spalte `date_source` nennt die Herkunft. Ohne Termin bleiben 11 Tickets.

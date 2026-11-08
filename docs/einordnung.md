@@ -42,7 +42,7 @@ Drei Grundsätze übernehmen wir direkt:
 | 13 | 746 echte Betreffe | ORA-Gruppe zuerst, dann Kategorie | Gruppe zu 88 Prozent richtig, für die Kategorie kein Gewinn |
 | 14 | 746 echte Betreffe | Katalog mit Zusammenfassungen, Synonymen und Beschreibungen, Kaskade nach ABC | Vertreter-Namen fast gleich gut bei weniger Nachfragen, Beschreibungen und Kaskade schaden |
 | 15 | 746 echte Nachrichten | Kette mit vollständigem Text und Titel der Notizen | Titel hilft bei Notizen, mit Rückfall 546 statt 529 Treffer |
-| 16 | 746 echte Betreffe | Ursachen der sicheren Fehler, Regeln für Rückfragen | Zwei einfache Regeln senken die sicheren Fehler von 46 auf 23, der Rest sind meist offene Entscheidungen |
+| 16 | 746 echte Betreffe | Ursachen der sicheren Fehler, Regeln für Rückfragen | Mit zwei Regeln und den Entscheidungen des Teams 98,4 Prozent richtig oder nachgefragt, 12 sichere Fehler |
 
 ## Schritt 1 Erfundene Tickets
 
@@ -399,7 +399,21 @@ Von den 23 Fehlern nach R1 und R2 waren die meisten offene Entscheidungen oder s
 | Schwelle 80 %, R1 und R2 | 514 | 13 | 231 | 98,3 % |
 | Schwelle 90 %, R1 und R2 | 390 | 8 | 355 | 98,9 % |
 
-Die neuen Synonyme wirken erst in einem neuen Lauf und sind hier noch nicht enthalten. Die Zahlen in den früheren Schritten beruhen auf den Sollwerten vor der Korrektur. Auch diese Werte stammen aus denselben Daten, aus denen die Regeln abgeleitet sind, und müssen an neuen Tickets bestätigt werden.
+Die neuen Synonyme wirken erst in einem neuen Lauf.
+
+Dieser Lauf nutzt [rueckfrage.py](../eval/decision/rueckfrage.py), das [echt_vertreter.py](../eval/decision/echt_vertreter.py) zu jedem Ticket den Grund für eine Rückfrage liefert. Die Einträge sind aus dem aktuellen Katalog und den Entscheidungen neu gebaut, 1.085 Einträge mit 1.713 Namen. Zwei weitere Tickets mit Herrnhuter Sternen bekamen den Sollwert Weihnachtsbeleuchtung, passend zur Entscheidung.
+
+| Lauf vom 08.11.2026 | Ergebnis |
+|---|---|
+| Kategorie richtig | 651 von 745 |
+| automatisch eingetragen | 556 |
+| davon falsch | 12 |
+| Rückfragen | 189, davon 141 unsicher, 35 Sammelbegriff, 9 Bauteil, 2 Dienstleistung, 2 fehlende Tickets |
+| ohne Fehler | 98,4 % |
+
+Von den 12 Fehlern steht bei fünf das Gerät nur in der Nachricht, etwa ein tragbares Radio, das ein Ghettoblaster war. Zweimal fehlt das Synonym Kartoffelraspel, weil Reibe, elektrisch noch nicht im Katalog steht. Vier sind Grenzfälle wie PC-Boxen und Lautsprecher oder Regentonnenpumpe und Wasserpumpe. Nur einer ist eine echte Verwechslung, aus dem Handy mit Wasserschaden wurde ein Wassermelder.
+
+Auch diese Werte stammen aus denselben Daten, aus denen die Regeln abgeleitet sind, und müssen an neuen Tickets bestätigt werden.
 
 ## Wirkung der Aufbereitung
 

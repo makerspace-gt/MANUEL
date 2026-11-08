@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen, die Ablage fremder Daten ist abgelöst durch xref:0028-quellen-im-repo-ablegen.adoc[ADR 28]
 Datum:: 2026-11-07
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -26,6 +27,8 @@ Die Kategorien kamen zuerst aus `database.sql` von mapped-repair-events mit 386 
 == Entscheidung
 
 Die Kategorien kommen aus dem Formular des Laufzettels, ohne die unbestätigten Vorschläge anderer Initiativen. Das waren am 07.11.2026 1.186 Einträge. Mehr Einträge allein brachten keinen Gewinn, mit allen gleichwertigen Paaren lagen CSV und Formular bei 633 und 634 von 745 Treffern. Das Formular ist aber die Liste, aus der das Team tatsächlich wählt.
+
+Aus dieser Liste entsteht im Lauf der Fallstudie der Katalog der Gegenstände, siehe xref:0009-katalog-offen-veroeffentlichen.adoc[ADR 9], xref:0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[ADR 13] und Kapitel 6.
 
 === Konsequenzen
 

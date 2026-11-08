@@ -7,6 +7,8 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 * Eine Datei je Entscheidung, benannt als `NNNN-verbphrase-im-imperativ.adoc`.
 * Status ist vorgeschlagen, angenommen, verworfen oder abgelöst durch ein neueres ADR.
 * Ein angenommenes ADR wird nicht umgeschrieben. Ändert sich die Entscheidung, entsteht ein neues ADR, und das alte verweist darauf.
+* Klarstellungen und sachliche Korrekturen sind bei einer Durchsicht erlaubt. Das ADR bekommt dann die Zeile `Überarbeitet::` mit Datum. Die erste Durchsicht aller ADRs lief im November 2026.
+* Abkürzungen erklärt das link:../../case-study/kapitel/anhang-abkuerzungen.adoc[Abkürzungsverzeichnis] im Anhang der Fallstudie.
 * Unter Beteiligte stehen alle, die an der Entscheidung mitgewirkt haben. Bisher arbeitet Michael Prange allein an MANUEL, weitere Mitwirkende kommen bei ihren Entscheidungen dazu.
 * Jedes ADR nennt seine Quellen, etwa Messungen in link:../einordnung.md[Einordnung von Tickets] oder link:../benchmarks.md[Benchmarks].
 
@@ -16,7 +18,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |===
 |Nr. |Entscheidung |Status |Datum
 |1 |xref:0001-entscheidungen-als-adr-festhalten.adoc[Entscheidungen als ADR festhalten] |angenommen |2026-11-08
-|2 |xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[Echte Ticketdaten nur lokal auswerten] |angenommen |2026-11-06
+|2 |xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[Echte Ticketdaten nur lokal auswerten] |angenommen, Veröffentlichung abgelöst durch 38 |2026-11-06
 |3 |xref:0003-auswahlwerte-mit-decision-modell-bestimmen.adoc[Auswahlwerte mit einem Decision-Modell bestimmen] |angenommen |2026-11-06
 |4 |xref:0004-kategorie-in-einer-stufe-waehlen.adoc[Die Kategorie in einer Stufe aus einer Vorauswahl wählen] |angenommen |2026-11-06
 |5 |xref:0005-sprachmodell-nicht-nachentscheiden-lassen.adoc[Das Sprachmodell nicht nachentscheiden lassen] |angenommen |2026-11-07
@@ -52,6 +54,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |35 |xref:0035-anleitungen-ueber-eine-eigene-suche-finden.adoc[Anleitungen über eine eigene Suche finden] |angenommen |2026-11-08
 |36 |xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[Reparaturen ab 2024 an Restarters nachmelden] |angenommen |2026-11-08
 |37 |xref:0037-zitierstil-chicago-nach-autor-und-jahr-nutzen.adoc[Den Zitierstil Chicago nach Autor und Jahr nutzen] |angenommen |2026-11-08
+|38 |xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[Ticketdaten anonymisiert veröffentlichen] |vorgeschlagen |2026-11-08
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

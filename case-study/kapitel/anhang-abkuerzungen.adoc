@@ -1,0 +1,54 @@
+[appendix]
+[[anhang-abkuerzungen]]
+== Abkürzungen
+
+Namen von Modellen wie `d3:9b` oder `bge-m3` und Produktnamen wie Zammad oder n8n stehen nicht in dieser Liste, sie erklärt die Fallstudie dort, wo sie vorkommen.
+
+[horizontal]
+AB:: Anrufbeantworter
+ABC:: Einteilung der Einträge im Katalog nach Häufigkeit, A häufig, B mittel, C selten
+ADR:: Architectural Decision Record, eine festgehaltene Entscheidung, siehe Anhang A
+AI:: Artificial Intelligence, englisch für künstliche Intelligenz
+AMD:: Advanced Micro Devices, Hersteller des Prozessors im Mini-PC
+API:: Application Programming Interface, Programmierschnittstelle
+BIOS:: Basic Input/Output System, Grundeinstellungen eines Rechners
+BSI:: Bundesamt für Sicherheit in der Informationstechnik
+CC BY, CC BY-SA, CC0:: Lizenzen von Creative Commons. BY verlangt Namensnennung, SA die Weitergabe unter gleichen Bedingungen, CC0 verzichtet auf alle Rechte.
+CSL:: Citation Style Language, Format für Zitierstile
+CSV:: Comma-Separated Values, Tabelle als Text mit Trennzeichen
+DIN:: Deutsches Institut für Normung, DIN EN steht für eine europäische Norm
+DSEE:: Deutsche Stiftung für Engagement und Ehrenamt
+DSGVO:: Datenschutz-Grundverordnung der EU
+EU:: Europäische Union
+GB, GiB:: Gigabyte und Gibibyte, Maße für Speicher
+GPL:: GNU General Public License, eine Lizenz für freie Software
+GPU:: Graphics Processing Unit, Grafikprozessor
+GTT:: Graphics Translation Table, Arbeitsspeicher, den sich der Grafikprozessor bei Bedarf leiht
+HTML:: Hypertext Markup Language, Sprache für Webseiten
+ID:: Identifikator, eine eindeutige Kennung
+ISO:: International Organization for Standardization
+IT:: Informationstechnik
+KI:: künstliche Intelligenz
+LLM:: Large Language Model, großes Sprachmodell
+MADR:: Markdown Any Decision Records, bis Version 3 Markdown Architectural Decision Records, eine Vorlage für ADRs
+MANUEL:: Minimale AI für Nutzer-Unterstützung auf Einstiegs-Level
+MIT:: Massachusetts Institute of Technology
+MTP:: Multi-Token Prediction, das Modell schätzt mehrere Tokens auf einmal und wird so schneller
+NAT:: Network Address Translation, mehrere Geräte teilen sich eine Adresse im Internet
+ORA:: Open Repair Alliance
+ORDS:: Open Repair Data Standard
+PC:: Personal Computer
+PDF:: Portable Document Format
+PNG:: Portable Network Graphics, Bildformat
+SHA-256:: Secure Hash Algorithm mit 256 Bit, eine Prüfsumme
+SMS:: Short Message Service
+SSD:: Solid State Drive, Datenträger ohne bewegte Teile
+SSH:: Secure Shell, verschlüsselter Zugang zu einem Rechner
+SVG:: Scalable Vector Graphics, Format für Grafiken
+TB:: Terabyte
+TLS:: Transport Layer Security, Verschlüsselung von Verbindungen
+UB:: Universitätsbibliothek
+UMA:: Unified Memory Architecture, hier der Teil des Arbeitsspeichers, der fest für den Grafikprozessor reserviert ist
+URL:: Uniform Resource Locator, Adresse im Internet
+VDE:: Verband der Elektrotechnik Elektronik Informationstechnik
+VM:: virtuelle Maschine

@@ -6,37 +6,39 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
-MANUEL ist über Wochen in kleinen Schritten entstanden. Entscheidungen stehen bisher verstreut im PLAN, in der Doku zur Einordnung, in Kommentaren von `gleichwertig.tsv` und in Commit-Nachrichten. Später, etwa beim Umzug in den Makerspace oder bei einem Wechsel im Team, lässt sich kaum noch nachvollziehen, warum etwas so ist. Auch die Hausarbeit braucht eine Stelle, an der jede Entscheidung mit Begründung steht.
+MANUEL ist über Wochen in kleinen Schritten entstanden. Entscheidungen stehen bisher verstreut im PLAN, in der Doku zur Einordnung, in Kommentaren von `gleichwertig.tsv` und in Commit-Nachrichten. Später, etwa beim Umzug in den Makerspace oder bei einem Wechsel im Team, lässt sich kaum noch nachvollziehen, warum etwas so ist. Auch die Fallstudie braucht eine Stelle, an der jede Entscheidung mit Begründung steht. Auf Architectural Decision Records (ADR) aufmerksam wurde Michael Prange durch die Folge 311 des Podcasts Freak Show.
 
 == Entscheidungskriterien
 
 * Nachvollziehbar für Menschen, die nicht dabei waren
 * Wenig Aufwand beim Schreiben
 * Versioniert im Repo neben dem Code
-* Direkt in die Hausarbeit einbindbar
+* Direkt in die Fallstudie einbindbar
 
 == Betrachtete Optionen
 
-* Architecture Decision Records nach der Vorlage von MADR
+* ADR nach der Vorlage Markdown Any Decision Records (MADR), bis Version 3 Markdown Architectural Decision Records
 * ADR nach der kurzen Vorlage von Michael Nygard
 * Weiter alles im PLAN festhalten
 
 == Entscheidung
 
-Jede Entscheidung, die das Verhalten von MANUEL, die Daten oder die Zusammenarbeit mit anderen bestimmt, bekommt ein Architecture Decision Record in `docs/adr/`. Die Vorlage folgt MADR auf Deutsch, weil viele Entscheidungen auf Messreihen mit mehreren Varianten beruhen und MADR die betrachteten Optionen mit Vor- und Nachteilen festhält. Die Dateien sind in AsciiDoc geschrieben und heißen `NNNN-verbphrase.adoc`.
+Jede Entscheidung, die das Verhalten von MANUEL, die Daten oder die Zusammenarbeit mit anderen bestimmt, bekommt ein ADR in `docs/adr/`. Die Vorlage folgt MADR auf Deutsch, weil viele Entscheidungen auf Messreihen mit mehreren Varianten beruhen und MADR die betrachteten Optionen mit Vor- und Nachteilen festhält. Die Dateien sind in AsciiDoc geschrieben und heißen `NNNN-verbphrase.adoc`.
 
 Ein ADR wird nicht nachträglich umgeschrieben. Ändert sich eine Entscheidung, entsteht ein neues ADR, und das alte bekommt den Status abgelöst mit Verweis auf das neue.
 
 === Konsequenzen
 
 * Gut, weil jede Entscheidung mit Datum, Optionen und Quellen an einer Stelle steht.
-* Gut, weil die Hausarbeit die ADRs als Anhang einbindet.
+* Gut, weil die Fallstudie die ADRs als Anhang einbindet.
 * Schlecht, weil Entscheidungen, die schon im PLAN stehen, einmal nachgetragen werden müssen.
 
 == Quellen
 
+* https://freakshow.fm/fs311-back-in-the-ussr[Freak Show, Folge 311]
 * https://github.com/architecture-decision-record/architecture-decision-record[Sammlung zu Architecture Decision Records]
 * https://adr.github.io/madr/[Markdown Any Decision Records (MADR)]

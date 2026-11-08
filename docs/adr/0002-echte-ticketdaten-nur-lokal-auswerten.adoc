@@ -3,9 +3,10 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0002 Echte Ticketdaten nur lokal auswerten
 
 [horizontal]
-Status:: angenommen
+Status:: angenommen, die Veröffentlichung ist abgelöst durch xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38]
 Datum:: 2026-11-06
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -15,7 +16,7 @@ Für die Tests der Einordnung brauchen wir echte Tickets aus Zammad mit Nachrich
 
 * Schutz der Daten der Gäste
 * Aussagekraft der Tests
-* Nachvollziehbarkeit für die Hausarbeit
+* Nachvollziehbarkeit für die Fallstudie
 
 == Betrachtete Optionen
 

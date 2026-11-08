@@ -99,4 +99,6 @@ include::kapitel/anhang-daten.adoc[]
 
 include::kapitel/anhang-begriffe.adoc[]
 
+include::kapitel/anhang-abkuerzungen.adoc[]
+
 include::kapitel/literatur.adoc[]

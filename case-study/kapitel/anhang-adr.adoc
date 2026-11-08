@@ -81,5 +81,7 @@ include::../../docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[]
 
 include::../../docs/adr/0037-zitierstil-chicago-nach-autor-und-jahr-nutzen.adoc[]
 
+include::../../docs/adr/0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[]
+
 :leveloffset: -2
 :sectnums:

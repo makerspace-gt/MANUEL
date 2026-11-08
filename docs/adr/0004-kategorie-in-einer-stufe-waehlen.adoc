@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-06
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -25,6 +26,8 @@ Das Formular der anstiftung kennt Hunderte Kategorien. So viele Optionen auf ein
 == Entscheidung
 
 Die Kategorie wird in einer Stufe gewählt. Die Ähnlichkeitssuche mit `bge-m3` liefert die 25 ähnlichsten Kategorien aus der ganzen Liste, `d3:9b` wählt daraus. Bei zwei Stufen verdeckte eine falsche erste Stufe die richtige Antwort. Ein Ultraschallgerät landete bei Elektro Sonstiges, obwohl der Ultraschallreiniger unter Haushaltsgeräte steht. Eine Stufe war mit 1,0 statt 3,1 Sekunden pro Ticket auch schneller.
+
+Die Zahlen stammen aus einem frühen Versuch mit 386 Kategorien. Das Verfahren aus Vorauswahl und einer Stufe gilt weiter, heute mit dem Katalog und den Vertreter-Namen nach xref:0010-mit-vertreter-namen-einordnen.adoc[ADR 10] und xref:0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[ADR 13].
 
 === Konsequenzen
 

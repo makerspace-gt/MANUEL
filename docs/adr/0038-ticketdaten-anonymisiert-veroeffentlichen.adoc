@@ -1,0 +1,70 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0038]]
+= 0038 Ticketdaten anonymisiert veröffentlichen
+
+[horizontal]
+Status:: vorgeschlagen
+Datum:: 2026-11-08
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Nach xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2] liegen echte Tickets nur lokal. Dritte können die Einordnung deshalb nicht nachrechnen, obwohl die Fallstudie nachvollziehbar sein soll. Pseudonymisierte Daten gelten nach der Datenschutz-Grundverordnung (DSGVO) weiter als personenbezogen. Erst anonymisierte Daten, bei denen keine Person mehr zu erkennen ist, fallen nicht mehr unter die DSGVO.
+
+== Entscheidungskriterien
+
+* Keine Person darf aus den Daten zu erkennen sein
+* Dritte können die Einordnung mit echten Texten nachrechnen
+* Der Aufwand ist für das Team tragbar
+
+== Betrachtete Optionen
+
+* Echte Tickets bleiben nur lokal
+* Nur Felder ohne Freitext veröffentlichen, etwa Kategorie, Sollwert, Ergebnis und Monat
+* Eine anonymisierte Teilmenge von etwa 100 Tickets veröffentlichen
+* Alle Tickets von 2024 bis 2026 anonymisieren und veröffentlichen
+
+== Entscheidung
+
+Alle rund 790 Tickets von 2024 bis 2026 werden von Hand anonymisiert und danach veröffentlicht.
+
+* Namen, Adressen, Telefonnummern, E-Mail-Adressen und Orte werden durch Platzhalter wie [Name] oder [Ort] ersetzt.
+* Angaben, die eine Person über Umwege erkennbar machen, werden verallgemeinert, etwa ein seltenes Gerät mit Hinweis auf den Besitzer oder genaue Daten zu Wohnung und Familie.
+* MANUEL darf lokal auf dem Mini-PC Vorschläge für die Ersetzungen machen. Ein Mensch prüft jedes Ticket.
+* Bis die Prüfung abgeschlossen ist, gilt ADR 2 weiter, und nichts wird veröffentlicht.
+
+Offen sind die Lizenz und der Ort im Repo. Naheliegend ist CC BY 4.0 wie bei den Laufzetteln der Datenpotenzialanalyse.
+
+=== Konsequenzen
+
+* Gut, weil Dritte die Einordnung mit echten Texten nachrechnen können.
+* Gut, weil anonymisierte Daten keiner Löschfrist unterliegen und das Wissen über die Reparaturen erhalten bleibt.
+* Schlecht, weil die Prüfung von rund 790 Tickets viel Zeit kostet.
+* Schlecht, weil sich bei Freitext nie ganz ausschließen lässt, dass etwas übersehen wird.
+
+== Vor- und Nachteile der Optionen
+
+=== Nur lokal
+
+* Gut, weil kein Risiko entsteht.
+* Schlecht, weil niemand die Ergebnisse nachrechnen kann.
+
+=== Nur Felder ohne Freitext
+
+* Gut, weil das Risiko gering ist.
+* Schlecht, weil sich die Einordnung am Text damit nicht nachrechnen lässt.
+
+=== Anonymisierte Teilmenge
+
+* Gut, weil der Aufwand kleiner ist.
+* Schlecht, weil eine Teilmenge nicht alle Ergebnisse der Fallstudie abdeckt.
+
+=== Alle Tickets anonymisieren
+
+* Gut, weil alle Zahlen der Fallstudie nachrechenbar werden.
+* Schlecht, weil der Aufwand am größten ist.
+
+== Quellen
+
+* https://eur-lex.europa.eu/eli/reg/2016/679/oj/deu[DSGVO], Erwägungsgrund 26 zu anonymen Daten
+* xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2]

@@ -367,7 +367,7 @@ git push
 - [ ] Ablauf am Empfang anpassen, jedes Gerät bekommt ein Ticket mit dem Tag des Termins, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
 - [ ] Stromversorgung aus der Kategorie im Katalog setzen und das ungefähre Alter in der Rückfrage erfragen
 - [ ] Feld „repariert von“ mit den Werten Gast selbst, Gast mit Hilfe und Engagierte anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
-- [ ] KI-Rückmeldung von Zammad an den KI-Agenten prüfen und den Export unter KI, Feedback & Logs testen
+- [ ] KI-Rückmeldung von Zammad an den KI-Agenten prüfen und den Export unter KI, Feedback & Logs testen. Die Doku nennt sie nur für KI-Funktionen wie den Schreibassistenten, davon hängt Kennzahl 3 ab, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
 
 ### Phase 5 Wissensdatenbank und n8n
 

@@ -54,3 +54,4 @@ UMA:: Unified Memory Architecture, hier der Teil des Arbeitsspeichers, der fest 
 URL:: Uniform Resource Locator, Adresse im Internet
 VDE:: Verband der Elektrotechnik Elektronik Informationstechnik
 VM:: virtuelle Maschine
+XLSX:: Dateiformat von Microsoft Excel, Office Open XML

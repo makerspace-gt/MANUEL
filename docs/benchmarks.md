@@ -254,7 +254,7 @@ Mit klareren Beschreibungen der Optionen steigt die Absicht bei `d3:9b` von 37 a
 
 Übersetzt `qwen3.6:35b-a3b` die Tickets zuerst ins Englische, übersieht `tev1:4b` 3 statt 26 Fälle und `nimble:9b` 2 statt 6. `d3:9b` bleibt fast gleich. Die Übersetzung macht aber Fehler. Aus „funkt innen“ wurde „leaking radiation“.
 
-Rohdaten liegen in [eval/results/decision](../eval/results/decision).
+Rohdaten liegen in [eval/results/decision](../eval/results/decision). Wie wir von diesen Tests zu echten Tickets gekommen sind, beschreibt [Einordnung von Tickets](einordnung.md).
 
 ## Empfehlung
 

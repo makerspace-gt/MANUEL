@@ -1,6 +1,6 @@
 # Katalog der Gegenstände
 
-Der Katalog beschreibt die Gegenstände, die Gäste ins Repair Café bringen. Er dient zwei Zwecken. Menschen sehen, was mit einem Eintrag gemeint ist und wie er sich von ähnlichen Einträgen abgrenzt. MANUEL nutzt Beschreibung und Synonyme, um Tickets einzuordnen.
+Der Katalog beschreibt die Gegenstände, die Gäste ins Repair Café bringen. Er dient zwei Zwecken. Menschen sehen, was mit einem Eintrag gemeint ist und wie er sich von ähnlichen Einträgen abgrenzt. MANUEL nutzt die Namen und Synonyme, um Tickets einzuordnen, und die Beschreibungen für Rückfragen mit nummerierten Vorschlägen. Dem Modell selbst helfen Beschreibungen nicht, siehe [Einordnung](../docs/einordnung.md), Schritt 14.
 
 Jeder Eintrag hat einen deutschen und einen englischen Teil. Der deutsche Teil dient der Einordnung der Tickets. Mit dem englischen Teil lassen sich die Daten anderer Initiativen in den Open Repair Data zuordnen.
 
@@ -8,6 +8,7 @@ Jeder Eintrag hat einen deutschen und einen englischen Teil. Der deutsche Teil d
 
 | Spalte | Inhalt |
 |---|---|
+| schluessel | fester Schlüssel des Eintrags, siehe unten |
 | name | bevorzugter Name |
 | beschreibung | ein Satz, was gemeint ist und wovon es sich abgrenzt |
 | synonyme | andere Wörter für denselben Gegenstand, getrennt durch einen senkrechten Strich |
@@ -15,8 +16,24 @@ Jeder Eintrag hat einen deutschen und einen englischen Teil. Der deutsche Teil d
 | ora_gruppe | Produktkategorie nach dem Open Repair Data Standard |
 | zwischenkategorie | eigene feinere Gruppe, wo die ORA-Gruppe zu grob ist |
 | strom | übliche Stromversorgung mit den Werten des Laufzettels |
-| formular_ids | IDs der Kategorien im Laufzettel auf reparatur-initiativen.org |
+| formular_ids | IDs der Kategorien im Laufzettel auf reparatur-initiativen.org, die zu diesem Eintrag gehören |
 | status | Entwurf oder bestätigt |
+
+## Schlüssel
+
+Der Schlüssel hat die Form `ORA.anstiftung` oder `ORA.anstiftung.eigene`.
+
+- Vorne steht die Nummer der ORA-Gruppe aus [ora-gruppen.tsv](../eval/decision/ora-gruppen.tsv). Die Gruppen ohne Strom haben in den Open Repair Data keine Nummer, sie bekommen 101 bis 106.
+- In der Mitte steht die führende ID im Laufzettel. Fasst ein Eintrag mehrere Kategorien zusammen, ist es die ID der Kategorie mit dem bevorzugten Namen oder die zuerst genannte. Synonyme und zusammengefasste Kategorien haben keinen eigenen Schlüssel, sie gehören zu ihrem Eintrag.
+- Hinten steht eine eigene Unterscheidung, wo wir eine Kategorie der anstiftung aufteilen. Die Kopfhörer der anstiftung haben `11.459`, darunter liegen `11.459.1` für In-Ear und `11.459.2` für On- und Over-Ear. Beim allgemeinen Eintrag fragt MANUEL nach.
+
+Beispiele sind `37.424` für Stabmixer mit dem Synonym Zauberstab, `23.404` für Radio mit Radiowecker und Kofferradio sowie `29.1209` für Elektrogrill mit Tischgrill und Partygrill.
+
+Bis MANUEL in Zammad läuft, kann sich ein Schlüssel noch ändern, etwa wenn wir eine ORA-Gruppe korrigieren. Danach bleibt er fest. Ändert sich dann doch eine Gruppe, bekommt der Eintrag einen neuen Schlüssel, und der alte bleibt als Verweis stehen, damit alte Tickets zugeordnet bleiben.
+
+## Für MANUEL
+
+[eintraege.py](eintraege.py) baut aus dem Katalog die Optionen für die Einordnung. Dafür braucht es die Liste der Kategorien des Laufzettels, die nicht in diesem Repo liegt. [pruefen.py](pruefen.py) prüft Schlüssel, Synonyme, ORA-Gruppen und die Stromversorgung.
 
 ## Quellen
 
@@ -32,4 +49,4 @@ Der Katalog steht unter [CC BY-SA 4.0](../LICENSES/CC-BY-SA-4.0.txt). Ein Teil d
 
 ## Stand
 
-Ein Entwurf für die 225 häufigsten Einträge. Sie decken 90 Prozent der deutschen Reparaturen in den Open Repair Data ab. [pruefen.py](pruefen.py) stellt sicher, dass kein Synonym zu zwei Einträgen gehört. Welche Gegenstände gleich gelten, entscheidet das Team in [gleichwertig.tsv](../eval/decision/gleichwertig.tsv).
+Der Katalog enthält alle 1.089 Einträge, die nach den Zusammenfassungen übrig bleiben. Die 226 häufigsten haben Beschreibung und Synonyme auf Deutsch und Englisch, sie decken 90 Prozent der deutschen Reparaturen in den Open Repair Data ab. Bei den übrigen stehen bisher nur Name, ORA-Gruppe aus einem Entwurf und die IDs des Laufzettels. Warum Einträge zusammengefasst oder getrennt sind, steht in [gleichwertig.tsv](../eval/decision/gleichwertig.tsv).

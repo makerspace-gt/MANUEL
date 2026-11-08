@@ -6,6 +6,11 @@ zeigt es zusätzlich Synonyme, die den Namen eines anderen Eintrags als Wortteil
 harmlos, etwa Lampe in Bettlampe, es hilft aber beim Durchsehen. Die Stromversorgung
 nutzt nur die Werte des Laufzettels, die ORA-Gruppe nur Gruppen aus ora-gruppen.tsv.
 
+Der Schlüssel hat die Form ORA.anstiftung oder ORA.anstiftung.eigene. Vorne steht die Nummer der
+ORA-Gruppe, in der Mitte die führende ID des Laufzettels, hinten eine eigene Unterscheidung, wo wir eine
+Kategorie der anstiftung aufteilen. Jede ID des Laufzettels gehört zu genau einem Eintrag ohne eigene
+Unterscheidung. Die bevorzugten Namen in gleichwertig.tsv müssen Einträge im Katalog sein.
+
 Aufruf im Wurzelverzeichnis des Repos:
     python3 katalog/pruefen.py [--warnungen]
 """
@@ -17,6 +22,8 @@ from pathlib import Path
 
 KATALOG = Path("katalog/kategorien.tsv")
 GRUPPEN = Path("eval/decision/ora-gruppen.tsv")
+GLEICH = Path("eval/decision/gleichwertig.tsv")
+SCHLUESSEL = re.compile(r"(\d+)\.(\d+)(\.\d+)?")
 STROM = {"230 V", "mit Netzteil", "Batterie", "Akku", "ohne Kabel (Mechanik)"}
 
 
@@ -25,7 +32,7 @@ def key(text):
 
 
 def main():
-    groups = {line.split("\t")[1] for line in GRUPPEN.read_text(encoding="utf-8").splitlines()
+    groups = {line.split("\t")[1]: line.split("\t")[0] for line in GRUPPEN.read_text(encoding="utf-8").splitlines()
               if line and not line.startswith("#")}
     rows = list(csv.DictReader(KATALOG.open(encoding="utf-8"), delimiter="\t"))
     owner = {}
@@ -35,10 +42,33 @@ def main():
             other = owner.setdefault(key(word), row["name"])
             if other != row["name"]:
                 problems.append(f"{row['name']}: {word} gehört schon zu {other}")
+    seen, base = set(), {}
+    for row in rows:
+        match = SCHLUESSEL.fullmatch(row["schluessel"])
+        ids = [i for i in row["formular_ids"].split(" | ") if i]
+        if not match:
+            problems.append(f"{row['name']}: Schlüssel {row['schluessel']} hat nicht die Form ORA.anstiftung")
+        else:
+            if groups.get(row["ora_gruppe"]) != match[1]:
+                problems.append(f"{row['name']}: Schlüssel {row['schluessel']} passt nicht zur ORA-Gruppe")
+            if match[2] not in ids:
+                problems.append(f"{row['name']}: führende ID {match[2]} fehlt in formular_ids")
+            if not match[3]:
+                for i in ids:
+                    other = base.setdefault(i, row["name"])
+                    if other != row["name"]:
+                        problems.append(f"{row['name']}: ID {i} gehört schon zu {other}")
+        if row["schluessel"] in seen:
+            problems.append(f"{row['name']}: Schlüssel {row['schluessel']} doppelt")
+        seen.add(row["schluessel"])
+    names_all = {row["name"] for row in rows}
+    for line in GLEICH.read_text(encoding="utf-8").splitlines():
+        if line and not line.startswith("#") and line.split("\t")[0] not in names_all:
+            problems.append(f"gleichwertig.tsv: {line.split(chr(9))[0]} ist kein Eintrag im Katalog")
     for row in rows:
         if row["ora_gruppe"] not in groups:
             problems.append(f"{row['name']}: unbekannte ORA-Gruppe {row['ora_gruppe']}")
-        for value in row["strom"].split(" | "):
+        for value in [v for v in row["strom"].split(" | ") if v]:
             if value not in STROM:
                 problems.append(f"{row['name']}: unbekannte Stromversorgung {value}")
         for field in ("beschreibung", "beschreibung_en"):

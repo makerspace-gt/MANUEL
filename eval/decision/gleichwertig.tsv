@@ -1,4 +1,7 @@
 # Gleichwertige Kategorien. Spalten: bevorzugt, gleichwertig, Status, Hinweis
+# Welche Kategorien des Laufzettels zu einem Eintrag gehören, legt die Spalte formular_ids in katalog/kategorien.tsv fest.
+# Diese Datei hält die Begründungen fest und dient der Auswertung. pruefen.py stellt sicher, dass jeder bevorzugte Name
+# ein Eintrag im Katalog ist.
 # Nach dem Modell wird der Wert in der zweiten Spalte durch die erste ersetzt, in der Auswertung
 # zählt beides als gleich. Status bestätigt heißt, das Team hat es entschieden, Vorschlag heißt offen.
 # Bewusst nicht gleichwertig: Personenwaage ist die Waage ohne Elektrik, auch wenn sie in der Liste unter

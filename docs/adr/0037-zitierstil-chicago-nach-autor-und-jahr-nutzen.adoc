@@ -5,6 +5,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
+Überarbeitet:: 2026-11-08, APA geprüft
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
@@ -23,6 +24,7 @@ Nach xref:0031-literatur-mit-zotero-und-bibtex-verwalten.adoc[ADR 31] sollte das
 * `iso690-author-date-de`
 * `din-1505-2`
 * `chicago-author-date-de`
+* `apa`, der Stil der American Psychological Association
 * Eine angepasste Kopie von `iso690-author-date-de`
 
 == Entscheidung
@@ -33,9 +35,37 @@ Das Verzeichnis nutzt den Stil `chicago-author-date-de`, also Chicago nach Autor
 
 * Gut, weil der Stil aus dem Container ohne Anpassung funktioniert.
 * Gut, weil Chicago weit verbreitet und gut lesbar ist.
+* Gut, weil das Abrufdatum bei jeder Webseite zeigt, wann wir sie gelesen haben. Viele Quellen der Fallstudie sind Webseiten, die sich ändern.
 * Schlecht, weil Chicago bei mehreren Werken derselben Organisation den Namen durch Striche ersetzt, was bei der Open Repair Alliance oft vorkommt.
+
+== Vor- und Nachteile der Optionen
+
+=== `iso690-author-date-de`
+
+* Gut, weil ADR 31 ihn vorsah.
+* Schlecht, weil das PDF damit abbricht.
+
+=== `din-1505-2`
+
+* Gut, weil er als deutscher Stil bekannt ist.
+* Schlecht, weil URL und Abrufdatum fehlen.
+
+=== `chicago-author-date-de`
+
+* Gut, weil er fehlerfrei läuft und URL und Abrufdatum ausgibt.
+* Schlecht, weil wiederholte Autoren als Striche erscheinen.
+
+=== `apa`
+
+* Gut, weil APA in Deutschland verbreitet ist und Autoren wiederholt statt Striche setzt.
+* Schlecht, weil das Abrufdatum fehlt, sobald eine Webseite ein Jahr hat, und Vornamen nur als Initiale erscheinen.
+
+=== Angepasste Kopie von ISO 690
+
+* Gut, weil der gewünschte Stil erhalten bliebe.
+* Schlecht, weil wir einen eigenen Stil pflegen müssten.
 
 == Quellen
 
-* Testlauf vom 08.11.2026 mit den drei mitgelieferten Stilen im Container `docker-asciidoctor:1.108`
+* Testlauf vom 08.11.2026 mit vier mitgelieferten Stilen, APA am selben Tag nachgeholt, im Container `docker-asciidoctor:1.108`
 * https://github.com/asciidoctor/asciidoctor-bibtex[asciidoctor-bibtex]

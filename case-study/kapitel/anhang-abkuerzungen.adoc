@@ -10,6 +10,7 @@ ABC:: Einteilung der Einträge im Katalog nach Häufigkeit, A häufig, B mittel,
 ADR:: Architectural Decision Record, eine festgehaltene Entscheidung, siehe Anhang A
 AI:: Artificial Intelligence, englisch für künstliche Intelligenz
 AMD:: Advanced Micro Devices, Hersteller des Prozessors im Mini-PC
+APA:: American Psychological Association, hier ihr Zitierstil
 API:: Application Programming Interface, Programmierschnittstelle
 BIOS:: Basic Input/Output System, Grundeinstellungen eines Rechners
 BSI:: Bundesamt für Sicherheit in der Informationstechnik

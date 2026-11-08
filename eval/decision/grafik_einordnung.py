@@ -15,6 +15,8 @@ from html import escape
 from pathlib import Path
 
 OUTPUT = Path("docs/grafiken/einordnung-verfahren.svg")
+# Ohne Dunkelmodus für das PDF der Hausarbeit, der PDF-Renderer wertet @media nicht aus.
+OUTPUT_HELL = Path("docs/grafiken/einordnung-verfahren-hell.svg")
 
 BANDS = ["gesamt", "unter 50", "50 bis 70", "70 bis 90", "ab 90"]
 
@@ -163,7 +165,9 @@ def main():
     out.append("</svg>")
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text("\n".join(out) + "\n", encoding="utf-8")
-    print(OUTPUT)
+    light = "\n".join(out).replace(STYLE, STYLE.split("@media")[0] + "text { font-family: system-ui, -apple-system, \"Segoe UI\", sans-serif; }\n")
+    OUTPUT_HELL.write_text(light + "\n", encoding="utf-8")
+    print(OUTPUT, OUTPUT_HELL)
 
 
 if __name__ == "__main__":

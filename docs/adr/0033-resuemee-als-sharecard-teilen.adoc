@@ -3,8 +3,9 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0033 Das Resümee eines Termins als Sharecard teilen
 
 [horizontal]
-Status:: angenommen
+Status:: vorgeschlagen, Entwurf, die Karte wird im Laufe der Fallstudie überarbeitet
 Datum:: 2026-11-08
+Überarbeitet:: 2026-11-08, spontane Gäste über das Anlegedatum statt über einen Tag, zurück auf Entwurf
 Beteiligte:: Michael Prange
 
 == Kontext und Problem

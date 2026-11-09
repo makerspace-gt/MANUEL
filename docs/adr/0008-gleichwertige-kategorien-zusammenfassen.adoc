@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-07
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -25,9 +26,9 @@ Die Liste des Laufzettels enthält Dopplungen. Marken stehen neben Gattungen wie
 
 == Entscheidung
 
-Das Team entscheidet für jedes Paar, ob es gleichwertig ist. Grundlage sind eine Recherche im Internet und die Marken je Kategorie in den Open Repair Data. Die Gattung geht vor der Marke. Getrennt bleibt, was eine andere Reparatur verlangt, etwa Kaffeevollautomat und Kapselmaschine oder Bohrmaschine und Schlagbohrmaschine. Wo die Bauart offen ist, wie bei Mixer oder Kopfhörer, fragt MANUEL nach. Nach allen Zusammenfassungen bleiben 1.089 Einträge.
+Das Team entscheidet für jedes Paar, ob es gleichwertig ist. Grundlage sind eine Recherche im Internet und die Marken je Kategorie in den Open Repair Data. Die Gattung geht vor der Marke. Getrennt bleibt, was eine andere Reparatur verlangt, etwa Kaffeevollautomat und Kapselmaschine oder Bohrmaschine und Schlagbohrmaschine. Wo die Bauart offen ist, wie bei Mixer oder Kopfhörer, stellt MANUEL eine Rückfrage an das Team nach xref:0011-bei-unsicherheit-nachfragen.adoc[ADR 11]. Fehlt die Angabe, folgt eine Nachfrage beim Gast. Nach allen Zusammenfassungen bleiben 1.089 Einträge.
 
-Welche Kategorien des Laufzettels zu einem Eintrag gehören, legt die Spalte `form_ids` im Katalog fest. Die Begründungen stehen in `gleichwertig.tsv`.
+Welche Kategorien des Laufzettels zu einem Eintrag gehören, legt die Spalte `form_ids` im Katalog fest. Die Begründungen stehen in `gleichwertig.tsv`. Die Liste besprechen wir mit der anstiftung, weil ihr die Kategorien gehören.
 
 === Konsequenzen
 
@@ -36,6 +37,16 @@ Welche Kategorien des Laufzettels zu einem Eintrag gehören, legt die Spalte `fo
 * Schlecht, weil jede Entscheidung Arbeit für das Team ist. Mehrere Vorschläge erwiesen sich nach der Recherche als falsch, etwa Display und Monitor oder Kette und Halskette.
 
 == Vor- und Nachteile der Optionen
+
+=== Alle Einträge einzeln lassen
+
+* Gut, weil die Liste genau dem Formular entspricht.
+* Schlecht, weil das Modell seine Sicherheit auf fast gleiche Optionen verteilt und die Statistik zerfällt.
+
+=== Das Team entscheidet jedes Paar
+
+* Gut, weil jede Zusammenfassung begründet ist und wichtige Unterschiede bleiben.
+* Schlecht, weil jede Entscheidung Recherche und Zeit kostet.
 
 === Automatisch nach Ähnlichkeit
 

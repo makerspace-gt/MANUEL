@@ -80,6 +80,8 @@ MANUEL läuft auf der neu aufgebauten IT des Vereins. Zugangs-VM mit authentik u
 
 ## Aufgaben
 
+Den Ablauf vom Eingang einer Anfrage bis zur Meldung zeigt das Diagramm [Weg einer Anfrage](docs/grafiken/weg-einer-anfrage.svg). Es entsteht mit [request_flow.py](docs/grafiken/request_flow.py).
+
 | Aufgabe | Zammad | n8n |
 |---|---|---|
 | Geräte erfassen | Jedes Gerät bekommt ein Ticket, auch bei spontanen Gästen. Spontan ist ein Ticket, das am Tag des Termins angelegt wurde, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc) | |

@@ -47,7 +47,10 @@ Dieses Kapitel steht noch in Stichpunkten.
 [[landkarte]]
 === Der Weg einer Anfrage
 
-* Landkarte als Grafik in Stufe 2, mit den Stationen und ihren Kapiteln
+.Der Weg einer Anfrage im Repair Café
+image::../../docs/grafiken/weg-einer-anfrage.svg[Ablauf vom Eingang über Einordnung, Lösungsansatz, Termin, Reparatur und Ergebnis bis zu Statistik und Meldung,width=100%]
+
+* Die Stationen und ihre Kapitel
 ** Anfrage geht ein, Kapitel 4 zeigt, wo sie verarbeitet wird
 ** Einordnen, Kapitel 5 und 6
 ** Erstdiagnose und Reparaturansatz, Kapitel 7

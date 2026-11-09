@@ -7,6 +7,7 @@ Status:: angenommen
 Datum:: 2026-10-22
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -27,11 +28,27 @@ Der Mini-PC steht im Makerspace hinter NAT, Zammad läuft auf der Helpdesk-VM im
 
 Mini-PC und Helpdesk-VM sind über NetBird verbunden. Regeln erlauben nur der Helpdesk-VM den Zugriff auf die Modelle und nur Admins den Zugriff per SSH. Open WebUI ist über den Reverse Proxy von NetBird mit Anmeldung über authentik erreichbar.
 
+Ollama und llama.cpp binden ihren Port nur an die NetBird-Adresse des Mini-PCs. Eine Regel in der Firewall des Hosts allein reicht nicht, weil Docker sie umgeht.
+
+NetBird läuft selbst gehostet auf der Zugangs-VM aus Stufe 1 des Plans für den Neuaufbau der IT. Ohne sie gibt es keinen Echtbetrieb, sie liegt damit auf dem kritischen Weg zum Start am 05.12.2026.
+
 === Konsequenzen
 
 * Gut, weil die Schnittstellen der Modelle nie offen im Netz stehen.
 * Gut, weil derselbe Weg im Plan für den Neuaufbau der IT gilt.
 * Schlecht, weil der Mini-PC ohne NetBird für Zammad nicht erreichbar ist.
+
+== Vor- und Nachteile der Optionen
+
+=== NetBird mit Regeln je Dienst
+
+* Gut, weil wir den Server selbst betreiben und die Regeln je Dienst und Gerät festlegen.
+* Schlecht, weil die Zugangs-VM zuerst stehen muss.
+
+=== Tailscale
+
+* Gut, weil es in uCore schon enthalten ist und sofort läuft.
+* Schlecht, weil die Steuerung bei einem fremden Anbieter liegt, solange kein eigener Server wie Headscale läuft.
 
 == Quellen
 

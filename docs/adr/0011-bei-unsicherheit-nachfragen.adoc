@@ -3,7 +3,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0011 Bei Unsicherheit nachfragen statt raten
 
 [horizontal]
-Status:: angenommen
+Status:: angenommen, für die Kategorie im Betrieb zunächst zurückgestellt durch xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40]
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
 

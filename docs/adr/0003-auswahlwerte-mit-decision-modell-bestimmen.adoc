@@ -3,7 +3,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0003 Auswahlwerte mit einem Decision-Modell bestimmen
 
 [horizontal]
-Status:: angenommen
+Status:: angenommen, für die Kategorie im Betrieb zunächst zurückgestellt durch xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40]
 Datum:: 2026-11-06
 Beteiligte:: Michael Prange
 Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht

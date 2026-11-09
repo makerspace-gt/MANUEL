@@ -1,0 +1,72 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0040]]
+= 0040 Mit dem Ticket Categorizer von Zammad beginnen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-09
+Beteiligte:: Michael Prange und das Team in der Planung vom 09.11.2026
+
+== Kontext und Problem
+
+Der Echtbetrieb in Zammad beginnt am 05.12.2026. Die gemessene Einordnung nach xref:0003-auswahlwerte-mit-decision-modell-bestimmen.adoc[ADR 3], xref:0004-kategorie-in-einer-stufe-waehlen.adoc[ADR 4] und xref:0011-bei-unsicherheit-nachfragen.adoc[ADR 11] braucht die Sicherheit von `d3:9b`, damit MANUEL unter 70 Prozent nachfragt statt einzutragen. Der Ticket Categorizer von Zammad gibt nur einen Wert zurück und keine Sicherheit. Der gemessene Weg liefe deshalb nur über n8n oder ein eigenes Skript, und n8n steht im IT-Plan erst in Stufe 2 von Januar bis März 2027. Womit startet die Einordnung am 05.12.?
+
+== Entscheidungskriterien
+
+* Start am 05.12.2026 ohne zusätzlichen Dienst
+* Möglichst wenige falsche Einträge
+* Ein Mensch prüft jede Kategorie am Termin
+* Ein späterer Umstieg ist ohne Neuanfang möglich
+
+== Betrachtete Optionen
+
+* n8n schon im November einrichten und den gemessenen Weg nutzen
+* Nur den Ticket Categorizer von Zammad nutzen
+* Ein eigenes kleines Skript, ausgelöst per Webhook
+* Mit dem Ticket Categorizer beginnen, vorher testen und bei Bedarf auf n8n umsteigen
+
+== Entscheidung
+
+Zum Start füllt der Ticket Categorizer von Zammad die Art des Geräts mit dem Sprachmodell `qwen3.6:35b-a3b`. Er bekommt nach xref:0010-mit-vertreter-namen-einordnen.adoc[ADR 10] nur die Vertreter-Namen, keine Beschreibungen.
+
+* *Liste.* Welche Einträge der Categorizer zur Wahl bekommt, ist noch offen. Alle 1.089 Einträge des Katalogs sind zu viele. Infrage kommen etwa die 113 A-Einträge, die 362 A- und B-Einträge, die zusammen 696 der 745 geprüften Tickets abdecken, oder die 46 Gruppen der Open Repair Alliance.
+* *Vorabtest.* Vor dem Start wird der Prompt des Categorizer aus `quellen/zammad` lokal an den 745 vom Team geprüften Tickets nachgestellt, für jede Liste, die infrage kommt. Die Ergebnisse bleiben lokal, in die Fallstudie gehen nur Summen.
+* *Ohne Sicherheit.* Die Rückfrage mit nummerierten Vorschlägen nach ADR 11 entfällt vorerst. Passt kein Wert, lässt der Categorizer das Feld leer, und die Engagierten tragen die Art ein.
+* *Umstieg.* MANUEL wechselt auf n8n mit `d3:9b`, Sicherheit und Rückfrage, wenn der Vorabtest oder die ersten zwei Termine mehr als 5 Prozent falsche Einträge zeigen, gemessen an allen eingetragenen Kategorien, oder wenn das Team es für nötig hält.
+
+xref:0018-felder-mit-ki-agenten-von-zammad-fuellen.adoc[ADR 18] gilt damit weiter. ADR 3, 4 und 11 bleiben das Ziel für den Weg über n8n und sind für die Kategorie im Betrieb zunächst zurückgestellt.
+
+=== Konsequenzen
+
+* Gut, weil der Start ohne zusätzlichen Dienst auskommt und nur Einstellungen in Zammad braucht.
+* Gut, weil der Vorabtest zeigt, wie viele falsche Einträge zu erwarten sind, bevor Gäste betroffen sind.
+* Schlecht, weil ohne Sicherheit auch unsichere Fälle eingetragen werden. Die gemessenen 98,7 Prozent ohne Fehler gelten für diesen Weg nicht.
+* Schlecht, weil ein Umstieg während der Erprobung die Zahlen davor und danach schwerer vergleichbar macht. Die Fallstudie weist beide Zeiträume getrennt aus.
+
+== Vor- und Nachteile der Optionen
+
+=== n8n im November
+
+* Gut, weil der gemessene Weg mit Rückfrage von Anfang an läuft.
+* Schlecht, weil n8n zusätzlich zur Helpdesk-VM bis zum 05.12. stehen müsste.
+
+=== Nur der Ticket Categorizer
+
+* Gut, weil er am wenigsten Aufwand macht.
+* Schlecht, weil niemand vorher weiß, wie gut er ist, und kein Weg zurück zur Rückfrage geplant ist.
+
+=== Eigenes Skript
+
+* Gut, weil es schnell gebaut ist.
+* Schlecht, weil es ein weiterer Dienst neben n8n wäre, der gepflegt werden muss.
+
+=== Categorizer mit Vorabtest und Umstieg
+
+* Gut, weil der Start einfach bleibt und die Grenze für den Umstieg vorher feststeht.
+* Schlecht, weil der Vorabtest vor dem Start zusätzliche Arbeit macht.
+
+== Quellen
+
+* {repo}/quellen/zammad/app/models/ai/agent/type/ticket_categorizer.rb[Ticket Categorizer im Quellcode von Zammad], Ergebnis nur der Wert ohne Sicherheit, Stand Commit `3b0c2ed`
+* {repo}/docs/einordnung.md[Einordnung von Tickets], ABC-Analyse der Einträge
+* Planung mit fünf Engagierten am 09.11.2026

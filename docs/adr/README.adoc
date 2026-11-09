@@ -19,15 +19,15 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |Nr. |Entscheidung |Status |Datum
 |1 |xref:0001-entscheidungen-als-adr-festhalten.adoc[Entscheidungen als ADR festhalten] |angenommen |2026-11-08
 |2 |xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[Echte Ticketdaten nur lokal auswerten] |angenommen, Veröffentlichung abgelöst durch 38 |2026-11-06
-|3 |xref:0003-auswahlwerte-mit-decision-modell-bestimmen.adoc[Auswahlwerte mit einem Decision-Modell bestimmen] |angenommen |2026-11-06
-|4 |xref:0004-kategorie-in-einer-stufe-waehlen.adoc[Die Kategorie in einer Stufe aus einer Vorauswahl wählen] |angenommen |2026-11-06
+|3 |xref:0003-auswahlwerte-mit-decision-modell-bestimmen.adoc[Auswahlwerte mit einem Decision-Modell bestimmen] |angenommen, im Betrieb zurückgestellt durch 40 |2026-11-06
+|4 |xref:0004-kategorie-in-einer-stufe-waehlen.adoc[Die Kategorie in einer Stufe aus einer Vorauswahl wählen] |angenommen, im Betrieb zurückgestellt durch 40 |2026-11-06
 |5 |xref:0005-sprachmodell-nicht-nachentscheiden-lassen.adoc[Das Sprachmodell nicht nachentscheiden lassen] |angenommen |2026-11-07
 |6 |xref:0006-gegenstaende-erst-herausziehen.adoc[Bei Nachrichten erst die Gegenstände herausziehen] |angenommen |2026-11-06
 |7 |xref:0007-kategorien-aus-dem-laufzettel-nehmen.adoc[Die Kategorien aus dem Laufzettel der anstiftung nehmen] |angenommen, teils abgelöst durch 28 |2026-11-07
 |8 |xref:0008-gleichwertige-kategorien-zusammenfassen.adoc[Gleichwertige Kategorien zusammenfassen] |angenommen |2026-11-07
 |9 |xref:0009-katalog-offen-veroeffentlichen.adoc[Den Katalog offen veröffentlichen] |angenommen, teils abgelöst durch 28 |2026-11-07
 |10 |xref:0010-mit-vertreter-namen-einordnen.adoc[Mit Vertreter-Namen einordnen und Beschreibungen nur Menschen zeigen] |angenommen |2026-11-08
-|11 |xref:0011-bei-unsicherheit-nachfragen.adoc[Bei Unsicherheit nachfragen statt raten] |angenommen |2026-11-08
+|11 |xref:0011-bei-unsicherheit-nachfragen.adoc[Bei Unsicherheit nachfragen statt raten] |angenommen, im Betrieb zurückgestellt durch 40 |2026-11-08
 |12 |xref:0012-keine-abwertenden-begriffe-verwenden.adoc[Keine abwertenden Begriffe verwenden] |angenommen |2026-11-08
 |13 |xref:0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[Einträge mit einem hierarchischen Schlüssel kennzeichnen] |angenommen |2026-11-08
 |14 |xref:0014-reparaturen-ueber-restarters-melden.adoc[Reparaturen über Restarters.net an die Open Repair Alliance melden] |angenommen |2026-11-08
@@ -56,6 +56,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |37 |xref:0037-zitierstil-chicago-nach-autor-und-jahr-nutzen.adoc[Den Zitierstil Chicago nach Autor und Jahr nutzen] |angenommen |2026-11-08
 |38 |xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[Ticketdaten anonymisiert veröffentlichen] |angenommen, teils abgelöst durch 39 |2026-11-08
 |39 |xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[Nur Tickets von 2025 und 2026 anonymisieren] |angenommen |2026-11-09
+|40 |xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[Mit dem Ticket Categorizer von Zammad beginnen] |angenommen |2026-11-09
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

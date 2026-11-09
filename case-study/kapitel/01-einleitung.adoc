@@ -28,7 +28,7 @@ Dieses Kapitel steht noch in Stichpunkten. Die Tabellen zu Fragen und Lesewegen 
 [[fragen]]
 === Fragen und Aufbau
 
-Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Repair Café bei Anfragen unterstützen, ohne dass Daten das Haus verlassen?“ Zwölf Teilfragen in drei Teilen beantworten sie.
+Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Repair Café bei Anfragen unterstützen, ohne dass persönliche Daten das Haus verlassen?“ Zwölf Teilfragen in drei Teilen beantworten sie.
 
 .Teilfragen dieser Arbeit
 [cols="2,1,7,1",options="header"]

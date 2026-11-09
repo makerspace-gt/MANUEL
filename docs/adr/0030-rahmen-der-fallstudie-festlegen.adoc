@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -31,7 +32,7 @@ Die Arbeit heißt Fallstudie. Nach Yin ist eine Fallstudie eine empirische Unter
 
 Lesergruppen sind zuerst das Team und andere Initiativen wie in xref:0029-zielgruppe-und-sprache-festlegen.adoc[ADR 29]. Dazu kommen ausdrücklich die DSEE für den Sachbericht, die Datenpartner Open Repair Alliance, anstiftung und Restarters, Vorstand und Mitglieder des Vereins sowie technisch Interessierte, die MANUEL nachbauen wollen. Die Einleitung zeigt für jede Gruppe einen Leseweg.
 
-Die Leitfrage lautet "Wie kann ein lokales Sprachmodell die Engagierten des Repair Café bei Anfragen unterstützen, ohne dass Daten das Haus verlassen?". Zwölf Teilfragen in drei Teilen beantworten sie.
+Die Leitfrage lautet "Wie kann ein lokales Sprachmodell die Engagierten des Repair Café bei Anfragen unterstützen, ohne dass persönliche Daten das Haus verlassen?". Zwölf Teilfragen in drei Teilen beantworten sie. Gemeint sind persönliche Daten, denn Marke und Modell für die Suche nach Anleitungen, Reparaturen ohne Personenbezug für Restarters und anonymisierte Tickets verlassen das Haus nach xref:0035-anleitungen-ueber-eine-eigene-suche-finden.adoc[ADR 35], xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[ADR 36] und xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[ADR 39] bewusst.
 
 [cols="2,1,7,1",options="header"]
 |===
@@ -58,6 +59,8 @@ Die Arbeit entsteht vom Groben zum Feinen in vier Stufen:
 . Reihenfolge der Absätze, Abbildungen und fehlende Daten
 . Ausformulieren, zuerst die Kapitel mit vorhandenen Daten
 . Zusammenfassung, Abstract, Gegenlesen durch das Team und Version 1.0 mit dem Sachbericht
+
+Ein Hinweis zur Entstehung am Anfang der Arbeit nennt die Werkzeuge. Ein Großteil entsteht mit dem Sprachmodell Claude Opus 5.5, für Sprache und Rechtschreibung kommen DeepL Write und LanguageTool dazu. Inhalte, Zahlen und Entscheidungen prüft ein Mensch. Der Hinweis sagt auch, dass wir den Einsatz von KI selbst erst lernen. Zitiert werden nur öffentlich zugängliche Quellen, dazu gehören auch Sekundärquellen wie Blogbeiträge. Eigene Daten des Repair Café gehen nur als Summen in die Arbeit.
 
 Abweichend von ADR 29 erscheint zusätzlich ein Abstract auf Englisch, damit die Partner der Open Repair Alliance die Ergebnisse lesen können. Das Format bleibt AsciiDoc nach xref:0015-hausarbeit-in-asciidoc-schreiben.adoc[ADR 15].
 

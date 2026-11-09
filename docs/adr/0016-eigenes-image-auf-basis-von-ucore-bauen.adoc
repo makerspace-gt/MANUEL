@@ -7,6 +7,7 @@ Status:: angenommen
 Datum:: 2026-10-22
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -26,7 +27,7 @@ Der Mini-PC braucht ein Betriebssystem, das die Radeon 890M für Sprachmodelle g
 
 == Entscheidung
 
-MANUEL läuft auf einem eigenen Image auf Basis von uCore Minimal. GitHub Actions baut es täglich neu und veröffentlicht es als `ghcr.io/makerspace-gt/manuel`. Ein System wechselt mit `bootc switch` darauf. Laut Phoronix verbessert der neueste Kernel die Leistung von Sprachmodellen auf Radeon-iGPUs deutlich, und uCore bringt ihn mit.
+MANUEL läuft auf einem eigenen Image auf Basis von uCore Minimal. GitHub Actions baut es täglich neu und veröffentlicht es als `ghcr.io/makerspace-gt/manuel`. Ein System wechselt mit `bootc switch` darauf. Das Image ist mit cosign signiert, und das System prüft die Signatur bei jedem Update. Die öffentlichen SSH-Schlüssel der Admins holt der Bau von GitHub. Laut Phoronix verbessert der neueste Kernel die Leistung von Sprachmodellen auf Radeon-iGPUs deutlich, und uCore bringt ihn mit.
 
 === Konsequenzen
 
@@ -34,6 +35,19 @@ MANUEL läuft auf einem eigenen Image auf Basis von uCore Minimal. GitHub Action
 * Gut, weil die Anpassungen in `Containerfile` und `build_files/` nachvollziehbar sind.
 * Gut, weil es zu Bluefin auf den Notebooks des Vereins passt.
 * Schlecht, weil die Anbindung an Ansible aufwendiger ist als bei Fedora Server.
+* Offen ist die Verschlüsselung der SSD mit LUKS und dem Schlüssel im TPM. Sie fehlt in der Butane-Datei und lässt sich vermutlich nur mit einer Neuinstallation nachholen. Nach dem Zeitplan im PLAN soll sie bis zum 28.11.2026 erledigt sein.
+
+== Vor- und Nachteile der Optionen
+
+=== uCore mit eigenem Image
+
+* Gut, weil der neueste Kernel, atomare Updates und Rollback dabei sind.
+* Schlecht, weil Pakete nur über das Image oder Container dazukommen.
+
+=== Fedora Server
+
+* Gut, weil Pakete klassisch installiert werden und Ansible einfach anbindet.
+* Schlecht, weil ein fehlerhaftes Update sich nicht mit einem Schritt zurückrollen lässt.
 
 == Quellen
 

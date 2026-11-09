@@ -28,10 +28,12 @@ GPU:: Graphics Processing Unit, Grafikprozessor
 GTT:: Graphics Translation Table, Arbeitsspeicher, den sich der Grafikprozessor bei Bedarf leiht
 HTML:: Hypertext Markup Language, Sprache für Webseiten
 ID:: Identifikator, eine eindeutige Kennung
+iGPU:: integrierte GPU, die im Prozessor eingebaute Grafik
 ISO:: International Organization for Standardization
 IT:: Informationstechnik
 KI:: künstliche Intelligenz
 LLM:: Large Language Model, großes Sprachmodell
+LUKS:: Linux Unified Key Setup, Verschlüsselung von Datenträgern unter Linux
 MADR:: Markdown Any Decision Records, bis Version 3 Markdown Architectural Decision Records, eine Vorlage für ADRs
 MANUEL:: Minimale AI für Nutzer-Unterstützung auf Einstiegs-Level
 MIT:: Massachusetts Institute of Technology
@@ -50,6 +52,7 @@ SSH:: Secure Shell, verschlüsselter Zugang zu einem Rechner
 SVG:: Scalable Vector Graphics, Format für Grafiken
 TB:: Terabyte
 TLS:: Transport Layer Security, Verschlüsselung von Verbindungen
+TPM:: Trusted Platform Module, Sicherheitschip, der etwa den Schlüssel für die Verschlüsselung der SSD verwahrt
 UB:: Universitätsbibliothek
 UMA:: Unified Memory Architecture, hier der Teil des Arbeitsspeichers, der fest für den Grafikprozessor reserviert ist
 URL:: Uniform Resource Locator, Adresse im Internet

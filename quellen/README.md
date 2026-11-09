@@ -29,6 +29,14 @@ Die Liste in `database.sql` ist nicht aktuell, das Formular enthält deutlich me
 
 [fetch_categories.py](restarters/fetch_categories.py) ruft die Liste neu ab. Der Quellcode liegt unter [TheRestartProject/restarters.net](https://github.com/TheRestartProject/restarters.net).
 
+## Zammad
+
+| Ordner | Inhalt | Lizenz | Stand |
+|---|---|---|---|
+| [zammad](zammad) | Submodul mit dem Quellcode von Zammad, flach geklont, Zweig `develop`, Version 7.4.x in Entwicklung | AGPL-3.0 | Commit `3b0c2ed` vom 09.11.2026 |
+
+Wichtig für MANUEL sind die KI-Agenten in `app/models/ai/agent/type/`, die Anbieter in `lib/ai/provider/` und die Texterkennung in Bildern in `app/services/service/ai/ticket/pre_process_article_content.rb`. Der Zweig `develop` kann Funktionen enthalten, die in unserer Version noch fehlen.
+
 ## Weitere Partner der Open Repair Alliance
 
 Für diese Partner gibt es keine öffentliche Liste ihrer Kategorien. Ihre Kategorien sind nur über die Open Repair Data zugänglich, ausgewertet in [docs/ora](../docs/ora).

@@ -17,3 +17,8 @@
 [submodule "quellen/openrepair-datastandard"]
 	path = quellen/openrepair-datastandard
 	url = https://github.com/openrepair/datastandard.git
+[submodule "quellen/zammad"]
+	path = quellen/zammad
+	url = https://github.com/zammad/zammad.git
+	branch = develop
+	shallow = true

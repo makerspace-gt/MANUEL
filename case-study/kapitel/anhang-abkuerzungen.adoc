@@ -8,6 +8,7 @@ Namen von Modellen wie `d3:9b` oder `bge-m3` und Produktnamen wie Zammad oder n8
 AB:: Anrufbeantworter
 ABC:: Einteilung der Einträge im Katalog nach Häufigkeit, A häufig, B mittel, C selten
 ADR:: Architectural Decision Record, eine festgehaltene Entscheidung, siehe Anhang A
+AGPL:: GNU Affero General Public License, eine Lizenz für freie Software, die auch beim Betrieb als Dienst gilt
 AI:: Artificial Intelligence, englisch für künstliche Intelligenz
 AMD:: Advanced Micro Devices, Hersteller des Prozessors im Mini-PC
 APA:: American Psychological Association, hier ihr Zitierstil

@@ -7,6 +7,7 @@ Status:: angenommen
 Datum:: 2026-10-22
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -27,14 +28,28 @@ MANUEL soll im Ticket Felder füllen und interne Notizen schreiben. Das kann Zam
 
 Zammad füllt die Felder selbst über seine KI-Agenten. Dazu gehören Ticket Categorizer für Auswahlfelder auch als Baum, Ticket Text Extractor für Text und Custom AI Agent für Notizen. Ein Agent wird über einen normalen Trigger ausgelöst und wendet sein Ergebnis mit denselben Aktionen an. n8n übernimmt nur Aufgaben außerhalb von Zammad.
 
+Zammad bietet außerdem Title Rewriter, Tagger, Prioritizer und Group Dispatcher. Der Title Rewriter könnte Tickets ohne Betreff einen Titel geben, ein Problem aus xref:0006-gegenstaende-erst-herausziehen.adoc[ADR 6]. Jede Änderung durch einen Agenten steht mit seinem Namen im Verlauf des Tickets.
+
 === Konsequenzen
 
 * Gut, weil Zammad die Ergebnisse ohne eigene Schnittstelle ins Ticket schreibt.
 * Schlecht, weil Zammad laut Quellcode keine Kontextlänge mitschickt. Die muss der Server auf dem Mini-PC vorgeben.
-* Offen ist, ob die Agenten das Decision-Modell nutzen können. Die Einordnung aus xref:0010-mit-vertreter-namen-einordnen.adoc[ADR 10] und xref:0011-bei-unsicherheit-nachfragen.adoc[ADR 11] braucht dafür womöglich doch einen eigenen Workflow.
+* Schlecht, weil der Ticket Categorizer keine Sicherheit zurückgibt. Die Einordnung aus xref:0010-mit-vertreter-namen-einordnen.adoc[ADR 10] und xref:0011-bei-unsicherheit-nachfragen.adoc[ADR 11] braucht dafür einen eigenen Workflow. Wie wir trotzdem mit den Agenten beginnen, regelt xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40].
+
+== Vor- und Nachteile der Optionen
+
+=== KI-Agenten von Zammad
+
+* Gut, weil Ergebnisse ohne eigenen Code und mit Eintrag im Verlauf ins Ticket kommen.
+* Schlecht, weil wir nur nutzen können, was die Agenten anbieten, etwa keine Sicherheit beim Categorizer.
+
+=== n8n-Workflows auch für die Felder
+
+* Gut, weil wir Modelle, Prompts und Regeln frei wählen.
+* Schlecht, weil jeder Workflow eigene Schnittstellen zu Zammad und eigene Pflege braucht.
 
 == Quellen
 
 * https://admin-docs.zammad.org/en/latest/ai/ai-agents.html[KI-Agenten in der Doku von Zammad]
-* https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb[Quellcode des Ollama-Anbieters in Zammad]
+* https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/lib/ai/provider/ollama.rb[Quellcode des Ollama-Anbieters in Zammad], Stand Commit `3b0c2ed`
 * {repo}/PLAN.md[PLAN], Abschnitt Offene Entscheidungen

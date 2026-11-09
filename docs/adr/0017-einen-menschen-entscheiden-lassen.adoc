@@ -7,6 +7,7 @@ Status:: angenommen
 Datum:: 2026-10-22
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -27,11 +28,25 @@ MANUEL soll den Engagierten Arbeit abnehmen. Ein Sprachmodell kann sich aber irr
 
 MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
 
+Ein Beispiel ist der Hinweis bei mehreren Geräten nach xref:0041-ein-geraet-je-gast-und-repair-cafe-bearbeiten.adoc[ADR 41]. MANUEL entwirft den Text, ein Mensch prüft ihn und schickt ihn ab.
+
 === Konsequenzen
 
 * Gut, weil die Prüfung durch Menschen zugleich die Qualitätskontrolle ist, die die Datenpotenzialanalyse empfiehlt.
 * Gut, weil Rückfragen bei Unsicherheit natürlich in diesen Ablauf passen, siehe xref:0011-bei-unsicherheit-nachfragen.adoc[ADR 11].
 * Schlecht, weil jede Antwort weiter einen Menschen braucht.
+
+== Vor- und Nachteile der Optionen
+
+=== Ein Mensch entscheidet
+
+* Gut, weil Fehler des Modells auffallen, bevor sie Gäste erreichen.
+* Schlecht, weil jede Antwort weiter Zeit von Engagierten braucht.
+
+=== MANUEL antwortet einfachen Anfragen selbst
+
+* Gut, weil einfache Anfragen ohne Wartezeit beantwortet würden.
+* Schlecht, weil ein Fehler oder eine falsche Zusage direkt beim Gast ankommt.
 
 == Quellen
 

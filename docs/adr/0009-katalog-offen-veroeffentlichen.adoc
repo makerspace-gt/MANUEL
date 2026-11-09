@@ -6,10 +6,11 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen, die Ablage fremder Daten ist abgelöst durch xref:0028-quellen-im-repo-ablegen.adoc[ADR 28]
 Datum:: 2026-11-07
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
-Aus den Zusammenfassungen entsteht ein Katalog der Gegenstände mit Beschreibungen und Synonymen auf Deutsch und Englisch. Er ist eigene Arbeit und für andere Repair Cafés nützlich. Er stützt sich aber auf Daten anderer, die Liste der anstiftung und die Open Repair Data der Open Repair Alliance.
+Aus den Zusammenfassungen entsteht ein Katalog der Gegenstände mit Beschreibungen und Synonymen auf Deutsch und Englisch. Am 09.11.2026 fehlt der englische Name noch bei 863 von 1.089 Einträgen, wir erarbeiten ihn noch. Er ist eigene Arbeit und für andere Repair Cafés nützlich. Er stützt sich aber auf Daten anderer, die Liste der anstiftung und die Open Repair Data der Open Repair Alliance.
 
 == Entscheidungskriterien
 
@@ -25,12 +26,29 @@ Aus den Zusammenfassungen entsteht ein Katalog der Gegenstände mit Beschreibung
 
 == Entscheidung
 
-Der Katalog steht öffentlich unter CC BY-SA 4.0. Ein Teil der englischen Bezeichnungen stammt aus den Open Repair Data, die ebenfalls unter CC BY-SA 4.0 stehen. Die Liste der anstiftung und die Exporte der Open Repair Alliance werden nur als Quelle verlinkt, nicht committet und nicht gelöscht. Der Katalog verweist über die IDs des Laufzettels auf die Liste der anstiftung.
+Der Katalog steht öffentlich unter CC BY-SA 4.0. Ein Teil der englischen Bezeichnungen stammt aus den Open Repair Data, die ebenfalls unter CC BY-SA 4.0 stehen. Die Liste der anstiftung und die Exporte der Open Repair Alliance werden nur als Quelle verlinkt, nicht committet und nicht gelöscht. Der Katalog verweist über die IDs des Laufzettels auf die Liste der anstiftung. Seit xref:0028-quellen-im-repo-ablegen.adoc[ADR 28] liegen beide Quellen mit Stand unter `quellen/`.
 
 === Konsequenzen
 
 * Gut, weil andere Repair Cafés den Katalog nutzen und verbessern können.
 * Schlecht, weil der Katalog eine andere Lizenz hat als der Rest des Repos. Das README nennt die Ausnahme.
+
+== Vor- und Nachteile der Optionen
+
+=== CC BY-SA 4.0
+
+* Gut, weil andere den Katalog nutzen dürfen und Verbesserungen offen bleiben.
+* Schlecht, weil der Katalog anders lizenziert ist als der Rest des Repos.
+
+=== CC0 wie der Rest des Repos
+
+* Gut, weil eine Lizenz für alles reicht.
+* Schlecht, weil Bezeichnungen aus den Open Repair Data unter CC BY-SA stehen und das nicht zulassen.
+
+=== Nur intern
+
+* Gut, weil keine Fragen zu Lizenzen entstehen.
+* Schlecht, weil andere Initiativen den Katalog nicht nutzen können.
 
 == Quellen
 

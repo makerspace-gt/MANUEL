@@ -46,7 +46,7 @@ Dieses Kapitel steht noch in Stichpunkten. Es erzählt fünf Wendepunkte, alle 1
 * Das Sprachmodell zieht die Gegenstände heraus, das Decision-Modell ordnet sie ein <<adr-0006>>. So werden auch mehrere Geräte in einer Anfrage erkannt.
 * Mit vollständigem Text, dem Titel der Notizen und einem Rückfall auf den Betreff steigt die Zahl der Treffer von 529 auf 546.
 * Noch zu prüfen ist, wie zuverlässig MANUEL erkennt, dass mehrere Gegenstände angemeldet sind. Bisher sind es 17 von 21 aufgeteilten Anfragen.
-* Noch zu prüfen ist, wie zuverlässig MANUEL erkennt, dass gar kein Gegenstand angegeben ist, und ob dann eine Rückfrage folgt.
+* Noch zu prüfen ist, wie zuverlässig MANUEL erkennt, dass gar kein Gegenstand angegeben ist, und ob dann eine Nachfrage beim Gast folgt.
 
 === Wendepunkt 4, die Liste ist das Problem
 

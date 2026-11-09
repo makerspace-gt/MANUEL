@@ -85,7 +85,7 @@ Den Ablauf vom Eingang einer Anfrage bis zur Meldung zeigt das Diagramm [Weg ein
 | Aufgabe | Zammad | n8n |
 |---|---|---|
 | Geräte erfassen | Jedes Gerät bekommt ein Ticket, auch bei spontanen Gästen. Spontan ist ein Ticket, das am Tag des Termins angelegt wurde, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc) | |
-| Felder füllen | Ticket Categorizer für die Art des Geräts, zum Start ohne Sicherheit und mit Umstieg auf n8n bei Bedarf, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc). Ticket Text Extractor für Defekt, Marke, Bezeichnung und Baujahr aus Text und Foto vom Typenschild, ein Mensch bestätigt. Die Stromversorgung folgt aus der Kategorie im Katalog, nach dem ungefähren Alter fragt MANUEL in der Rückfrage | |
+| Felder füllen | Ticket Categorizer für die Art des Geräts, zum Start ohne Sicherheit und mit Umstieg auf n8n bei Bedarf, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc). Ticket Text Extractor für Defekt, Marke, Bezeichnung und Baujahr aus Text und Foto vom Typenschild, ein Mensch bestätigt. Die Stromversorgung folgt aus der Kategorie im Katalog, nach dem ungefähren Alter fragt MANUEL in der Nachfrage beim Gast | |
 | Reparaturansatz schreiben | Custom AI Agent schreibt eine interne Notiz, passende Artikel aus der Wissensdatenbank zeigt Zammad am Ticket an | |
 | Lösung schreiben | Textwerkzeug macht aus Stichworten der Engagierten einen vollständigen Text | |
 | Reparaturanleitungen | Artikel in der Wissensdatenbank aus einem erfolgreichen Ticket erzeugen und von Engagierten prüfen lassen | Anleitungen, Ersatzteile und Explosionszeichnungen über SearXNG und die API von iFixit nur mit Marke und Modell suchen, MANUEL wählt Links für eine interne Notiz aus, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc) |
@@ -373,7 +373,7 @@ git push
 - [ ] Beim Repair Café im Dezember im Echtbetrieb einsetzen und Rückmeldungen zu den Notizen sammeln
 - [ ] Falls sich die Eskalation lohnt, Auslöser in Zammad anlegen und Anfragen in n8n in eine Warteschlange stellen, weil immer nur eine Anfrage gleichzeitig läuft
 - [ ] Ablauf am Empfang anpassen, jedes Gerät bekommt ein Ticket mit dem Tag des Termins, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
-- [ ] Stromversorgung aus der Kategorie im Katalog setzen und das ungefähre Alter in der Rückfrage erfragen
+- [ ] Stromversorgung aus der Kategorie im Katalog setzen und das ungefähre Alter in der Nachfrage beim Gast erfragen
 - [ ] Feld „repariert von“ mit den Werten Gast selbst, Gast mit Hilfe und Engagierte anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
 - [ ] KI-Rückmeldung von Zammad an den KI-Agenten prüfen und den Export unter KI, Feedback & Logs testen. Die Doku nennt sie nur für KI-Funktionen wie den Schreibassistenten, davon hängt Kennzahl 3 ab, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
 

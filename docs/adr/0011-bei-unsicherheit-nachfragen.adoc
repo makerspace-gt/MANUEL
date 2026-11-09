@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen, für die Kategorie im Betrieb zunächst zurückgestellt durch xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40]
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -30,7 +31,7 @@ MANUEL fragt nach, wenn die Sicherheit unter 70 Prozent liegt oder eine von zwei
 * *R1 Sammelbegriff.* Die Wahl ist ein Eintrag, bei dem das Team die Bauart unterscheiden will, etwa Kaffeemaschine, Mixer, Kopfhörer, Projektor, Grill oder Heizung. Nennt die Nachricht genau eine Bauart, etwa Nespresso bei der Kaffeemaschine, entfällt die Rückfrage.
 * *R2 Bauteil oder Dienstleistung.* Die Wahl ist ein Bauteil wie Software, Display oder Akku, oder der Betreff nennt eine Installation oder einen 3D-Druck.
 
-Die Rückfrage ist eine interne Notiz mit nummerierten Vorschlägen, auf die Engagierte etwa mit `2` antworten.
+Die Rückfrage ist eine interne Notiz mit nummerierten Vorschlägen, auf die Engagierte etwa mit `2` antworten. Sie richtet sich an das Team, nicht an den Gast. Brauchen die Engagierten Angaben vom Gast, etwa die Bauart, folgt eine Nachfrage beim Gast. Deren Text entwirft MANUEL, ein Mensch schickt ihn nach xref:0017-einen-menschen-entscheiden-lassen.adoc[ADR 17].
 
 [cols="3,1,1,1",options="header"]
 |===
@@ -48,8 +49,14 @@ Die Rückfrage ist eine interne Notiz mit nummerierten Vorschlägen, auf die Eng
 
 == Vor- und Nachteile der Optionen
 
+=== Schwelle 70 Prozent mit festen Regeln
+
+* Gut, weil nur 10 von 745 Tickets sicher falsch sind und die Regeln nachvollziehbar bleiben.
+* Schlecht, weil die Regeln aus denselben Daten stammen und an neuen Tickets bestätigt werden müssen.
+
 === Nur eine höhere Schwelle
 
+* Gut, weil sie ohne eigene Regeln auskommt.
 * Schlecht, weil fast jedes Ticket in die Rückfrage geht, bevor die Fehler verschwinden.
 
 === Rückfrage bei abweichender Kette

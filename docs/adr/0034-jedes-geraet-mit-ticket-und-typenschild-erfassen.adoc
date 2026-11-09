@@ -5,7 +5,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
-Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, und 2026-11-09, Texterkennung von Zammad
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, und 2026-11-09, Texterkennung von Zammad und Nachfrage beim Gast
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
@@ -31,7 +31,7 @@ Die Exporte aus Zammad von 2024 bis 2026 enthalten 791 Tickets. Die Statistik z�
 * Jedes Ticket bekommt wie bisher einen Tag mit dem Datum des Termins, aus dem die Nachmeldung nach xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[ADR 36] den Termin liest. Ein eigener Tag für spontane Gäste ist nicht nötig. Ein Ticket ist spontan, wenn es am Tag des Termins angelegt wurde.
 * Gäste schicken mit der Anfrage ein Foto vom Typenschild, oder Engagierte machen es am Tisch. Das Hauptmodell `qwen3.6:35b-a3b` nach xref:0023-qwen3-6-als-hauptmodell-nutzen.adoc[ADR 23] liest Marke, Bezeichnung und Datumscode in die Felder, ein Mensch bestätigt. Laut Ollama nimmt das Modell auch Bilder an, ob es Typenschilder zuverlässig liest, muss ein Test zeigen. Ist in Zammad ein Modell mit Bildverständnis eingerichtet, liest Zammad Bilder in Nachrichten selbst per Texterkennung und gibt den Text an die KI-Agenten weiter. Einen eigenen Workflow braucht es dafür nicht. Der Hinweis an die Gäste bittet, nur das Typenschild zu fotografieren. Ortsdaten in den Bildern wertet MANUEL nicht aus, und die Fotos verlassen Zammad nicht. Auch bei der anonymisierten Veröffentlichung nach xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38] bleiben sie außen vor.
 * Die Stromversorgung ergibt sich aus der Kategorie im Katalog.
-* Nach dem ungefähren Alter fragt MANUEL in der Rückfrage. Der Open Repair Data Standard erlaubt das Alter in Jahren statt des Baujahrs.
+* Nach dem ungefähren Alter fragen wir in der Nachfrage beim Gast, MANUEL entwirft den Text. Der Open Repair Data Standard erlaubt das Alter in Jahren statt des Baujahrs.
 
 === Konsequenzen
 

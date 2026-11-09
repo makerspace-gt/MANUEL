@@ -68,7 +68,7 @@ box(20, 254, 190, 114, 'mensch', 'Aufteilen', 'mehrere Geräte genannt\nHinweis 
 arrow([(250, 290), (212, 290)])
 arrow([(115, 254), (115, 188), (248, 188)], dashed=True, label='je Gerät ein Ticket', lx=124, ly=210, anchor='start')
 # Rückfrage
-box(790, 254, 190, 90, 'mensch', 'Rückfrage', 'wenn Angaben fehlen\nText von MANUEL', 'ADR 11')
+box(790, 254, 190, 90, 'mensch', 'Nachfrage beim Gast', 'wenn Angaben fehlen\nText von MANUEL', 'ADR 17, 34')
 arrow([(750, 290), (788, 290)])
 arrow([(885, 254), (885, 188), (752, 188)], dashed=True, label='Antwort des Gastes', lx=876, ly=210, anchor='end')
 arrow([(CX, 326), (CX, 354)])

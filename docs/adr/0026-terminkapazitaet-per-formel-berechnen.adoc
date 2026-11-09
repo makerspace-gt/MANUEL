@@ -7,6 +7,7 @@ Status:: angenommen
 Datum:: 2026-11-06
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -24,7 +25,7 @@ MANUEL soll Gästen Termine vorschlagen. Wie viele Reparaturen parallel möglich
 
 == Entscheidung
 
-Die Kapazität ist eine Rechnung, kein Modell. Termine laufen von 11:00 bis 14:00 Uhr im Halbstundentakt, 14:00 Uhr nur für Kleinigkeiten. Der Empfang schafft 6 Personen parallel, pro 3 Reparierende gibt es 1 Person als Reserve. Bei einer gegebenen Zahl an Helfenden gilt der größte Wert für Parallel, der damit auskommt. Das Sprachmodell formuliert nur den Text des Vorschlags.
+Die Kapazität ist eine Rechnung, kein Modell. Termine laufen von 11:00 bis 14:00 Uhr im Halbstundentakt, 14:00 Uhr nur für Kleinigkeiten. Der Empfang schafft 6 Personen parallel, pro 3 Reparierende gibt es 1 Person als Reserve. Die Zahl der Helfenden kommt aus ihren Anmeldungen in Nuudel. Bei einer gegebenen Zahl an Helfenden gilt der größte Wert für Parallel, der damit auskommt. Das Sprachmodell formuliert nur den Text des Vorschlags.
 
 [cols="1,2",options="header"]
 |===
@@ -35,10 +36,26 @@ Die Kapazität ist eine Rechnung, kein Modell. Termine laufen von 11:00 bis 14:0
 |Termine |Parallel mal 6, mit 14:00 Uhr mal 7
 |===
 
+Ein Beispiel mit 9 Helfenden. Bei 6 Reparaturen parallel braucht es 1 Person am Empfang und 2 zur Unterstützung, zusammen 9. Bei 7 wären es schon 12. Es gibt also 36 Termine, mit 14:00 Uhr 42.
+
+Offen ist, wie spontane Gäste in die Rechnung eingehen. Kapitel 8 der Fallstudie will ihren Anteil berücksichtigen, sobald er gezählt wird. Ändert sich die Formel, entsteht ein neues ADR.
+
 === Konsequenzen
 
 * Gut, weil der Grundsatz gilt, dass Code rechnet und das Modell formuliert.
 * Gut, weil Menschen den Vorschlag leicht prüfen können.
+
+== Vor- und Nachteile der Optionen
+
+=== Feste Formel in n8n
+
+* Gut, weil das Ergebnis immer gleich ist und sich von Hand nachrechnen lässt.
+* Schlecht, weil Sonderfälle wie ein ausgefallener Raum oder besonders große Geräte nicht in der Formel stehen. Menschen bestätigen den Plan deshalb.
+
+=== Das Sprachmodell plant
+
+* Gut, weil es Sonderfälle aus dem Text berücksichtigen könnte.
+* Schlecht, weil es sich verrechnen kann und das Ergebnis nicht immer gleich ist.
 
 == Quellen
 

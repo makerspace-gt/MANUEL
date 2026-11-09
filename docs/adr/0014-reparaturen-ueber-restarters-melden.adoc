@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -28,7 +29,11 @@ Die Reparaturdaten des Repair Café sollen bei der Open Repair Alliance landen. 
 
 Reparaturen meldet MANUEL über die API von Restarters.net. Ein Gerät wird mit `POST /api/v2/devices` beim passenden Event angelegt. Bei der anstiftung führt das Repair Café weiter die Termine, damit Gäste sie abonnieren können, und die Neuigkeiten. Laufzettel entfallen, denn die Open Repair Alliance bittet, nur ein Werkzeug zu nutzen.
 
-Die Kategorie für Restarters folgt aus der ORA-Gruppe im Katalog. Als `item_type` sendet MANUEL den englischen Namen, aus dem die Alliance feinere Gruppen ableitet.
+Die Kategorie für Restarters folgt aus der ORA-Gruppe im Katalog. Als `item_type` sendet MANUEL den englischen Namen, aus dem die Alliance feinere Gruppen ableitet. Am 09.11.2026 fehlt er noch bei 863 von 1.089 Einträgen des Katalogs. Wir erarbeiten ihn noch, bis dahin bleiben diese Geräte offen.
+
+Je Termin legt n8n mit `POST /api/v2/events` ein Event an. Je nach Netzwerk muss es erst freigegeben werden. Dafür braucht das Repair Café eine eigene Gruppe bei Restarters. Von den sechs Hindernissen des Standards nimmt die API nur fünf an, „Item too worn out“ fehlt.
+
+Offen ist, ob der Defekt bei der laufenden Meldung mitgeht. Nach xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[ADR 36] geht er erst nach der Anonymisierung mit, und neue Tickets ab 2027 werden nach xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[ADR 39] nicht anonymisiert. Ohne eigene Regel bliebe der Defekt also leer.
 
 === Konsequenzen
 
@@ -39,8 +44,19 @@ Die Kategorie für Restarters folgt aus der ORA-Gruppe im Katalog. Als `item_typ
 
 == Vor- und Nachteile der Optionen
 
+=== Restarters.net mit API
+
+* Gut, weil eine offene API Geräte anlegen kann und die Daten von dort zur Alliance gehen.
+* Schlecht, weil Termine zusätzlich als Events bei Restarters stehen.
+
+=== Laufzettel, MANUEL füllt vor
+
+* Gut, weil alles bei der anstiftung bliebe.
+* Schlecht, weil jemand jeden Laufzettel weiter von Hand absenden müsste. Genau daran ist die Meldung bisher gescheitert.
+
 === Formular automatisch ausfüllen
 
+* Gut, weil es ohne neue Plattform ginge.
 * Schlecht, weil jede Änderung am Formular den Ablauf bricht und es ohne Absprache mit der anstiftung nicht in Frage kommt.
 
 === Schreibende API bei der anstiftung

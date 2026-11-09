@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -27,7 +28,9 @@ Zammad, die Statistik und spätere Rückfragen brauchen für jeden Eintrag des K
 
 Jeder Eintrag bekommt den Schlüssel `ORA.anstiftung.eigene`. Vorne steht die Nummer der ORA-Gruppe, die Gruppen ohne Strom bekommen 101 bis 106. In der Mitte steht die führende ID des Laufzettels, hinten eine eigene Unterscheidung, wo wir eine Kategorie aufteilen. Beispiele sind `37.424` für den Stabmixer mit dem Synonym Zauberstab und `11.459.1` für In-Ear-Kopfhörer.
 
-Bis MANUEL in Zammad läuft, darf sich ein Schlüssel noch ändern. Danach bleibt er fest. Ändert sich dann eine ORA-Gruppe, bekommt der Eintrag einen neuen Schlüssel, und der alte bleibt als Verweis stehen.
+Bis MANUEL in Zammad läuft, darf sich ein Schlüssel noch ändern. Ab dem Echtbetrieb am 05.12.2026 bleibt er fest. Ändert sich dann eine ORA-Gruppe, bekommt der Eintrag einen neuen Schlüssel, und der alte bleibt als Verweis stehen.
+
+Laut Quellcode von Zammad sieht der Ticket Categorizer bei einem einfachen Auswahlfeld Wert und Bezeichnung jeder Option, bei einer Baumauswahl nur den Pfad. Ist der Schlüssel der Wert und der Name die Bezeichnung, bleibt der Schlüssel im Ticket, auch wenn sich ein Name ändert. Ob das Modell so gut wählt, zeigt der Vorabtest nach xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40].
 
 === Konsequenzen
 
@@ -37,9 +40,15 @@ Bis MANUEL in Zammad läuft, darf sich ein Schlüssel noch ändern. Danach bleib
 
 == Vor- und Nachteile der Optionen
 
+=== Hierarchischer Schlüssel
+
+* Gut, weil er ORA-Gruppe und Laufzettel zeigt und sich sortieren lässt.
+* Schlecht, weil eine geänderte ORA-Gruppe einen neuen Schlüssel braucht.
+
 === Kurzname
 
-* Schlecht, weil ein Name wie `ghettoblaster` bei einer Umbenennung bleiben müsste, siehe xref:0012-keine-abwertenden-begriffe-verwenden.adoc[ADR 12].
+* Gut, weil er ohne Nachschlagen verständlich ist.
+* Schlecht, weil ein Kurzname bei einer Umbenennung bleiben müsste, auch wenn er abwertend war, siehe xref:0012-keine-abwertenden-begriffe-verwenden.adoc[ADR 12].
 
 === Neutrale Nummer
 
@@ -50,3 +59,4 @@ Bis MANUEL in Zammad läuft, darf sich ein Schlüssel noch ändern. Danach bleib
 
 * {repo}/katalog/README.md[README des Katalogs], Abschnitt Schlüssel
 * {repo}/katalog/check.py[check.py]
+* https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/app/services/service/ai/agent/run/context/instruction/object_attributes/options.rb[Optionen für die Agenten im Quellcode von Zammad], Stand Commit `3b0c2ed`

@@ -83,7 +83,7 @@ MANUEL läuft auf der neu aufgebauten IT des Vereins. Zugangs-VM mit authentik u
 | Aufgabe | Zammad | n8n |
 |---|---|---|
 | Geräte erfassen | Jedes Gerät bekommt ein Ticket, auch bei spontanen Gästen. Spontan ist ein Ticket, das am Tag des Termins angelegt wurde, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc) | |
-| Felder füllen | Ticket Categorizer für die Art des Geräts, Ticket Text Extractor für Defekt, Marke, Bezeichnung und Baujahr aus Text und Foto vom Typenschild, ein Mensch bestätigt. Die Stromversorgung folgt aus der Kategorie im Katalog, nach dem ungefähren Alter fragt MANUEL in der Rückfrage | |
+| Felder füllen | Ticket Categorizer für die Art des Geräts, zum Start ohne Sicherheit und mit Umstieg auf n8n bei Bedarf, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc). Ticket Text Extractor für Defekt, Marke, Bezeichnung und Baujahr aus Text und Foto vom Typenschild, ein Mensch bestätigt. Die Stromversorgung folgt aus der Kategorie im Katalog, nach dem ungefähren Alter fragt MANUEL in der Rückfrage | |
 | Reparaturansatz schreiben | Custom AI Agent schreibt eine interne Notiz, passende Artikel aus der Wissensdatenbank zeigt Zammad am Ticket an | |
 | Lösung schreiben | Textwerkzeug macht aus Stichworten der Engagierten einen vollständigen Text | |
 | Reparaturanleitungen | Artikel in der Wissensdatenbank aus einem erfolgreichen Ticket erzeugen und von Engagierten prüfen lassen | Anleitungen, Ersatzteile und Explosionszeichnungen über SearXNG und die API von iFixit nur mit Marke und Modell suchen, MANUEL wählt Links für eine interne Notiz aus, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc) |
@@ -205,13 +205,13 @@ Auch die Kategorien in database.sql sind nicht aktuell. Das Formular auf reparat
 
 Die Kategorienliste enthält Dopplungen. Marken stehen neben Gattungen wie `Sodastream` und `Wassersprudler`, Schreibweisen wie `Fön` und `Föhn`, und 21 Namen stehen unter mehreren Oberkategorien. Welche gleichwertig sind, halten wir in [eval/decision/gleichwertig.tsv](eval/decision/gleichwertig.tsv) fest. Die Gattung geht vor, die Marke kommt ins Feld Marke. Die Liste besprechen wir mit der anstiftung, weil ihr die Kategorien gehören.
 
-Unsichere Einordnungen klärt ein Mensch mit einer Zahl. Liegt die Sicherheit unter 70 Prozent, schreibt MANUEL eine interne Notiz mit drei bis fünf nummerierten Vorschlägen ins Ticket, und Engagierte antworten etwa mit `2`. Die Grundlage steht in der [Einordnung](docs/einordnung.md), Schritt 10.
+Unsichere Einordnungen klärt ein Mensch mit einer Zahl. Liegt die Sicherheit unter 70 Prozent, schreibt MANUEL eine interne Notiz mit drei bis fünf nummerierten Vorschlägen ins Ticket, und Engagierte antworten etwa mit `2`. Die Grundlage steht in der [Einordnung](docs/einordnung.md), Schritt 10. Das gilt für den Weg über n8n. Zum Start am 05.12.2026 ordnet der Ticket Categorizer von Zammad ohne Sicherheit ein, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc).
 
 Die Kategorie ist mehr als ein Feld für die Statistik. Von ihr hängen die Artikel aus der Wissensdatenbank, der Reparaturansatz und die passenden Helfenden ab. Eine falsche Kategorie schickt die Reparatur in die falsche Richtung. Aus dem Stabmixer wird ein Spielzeug, aus dem Akku-Ladegerät ein CD-Player. Nicht jeder Fehler wiegt gleich. Bleibt er in derselben ORA-Gruppe, etwa Standmixer statt Mixer, passen die Vorschläge meist trotzdem. Landet er in einer anderen Gruppe, sind sie wertlos oder irreführend. Deshalb messen wir beides getrennt, und unsichere Fälle fragt MANUEL lieber nach, als sie einzutragen. Damit Beschreibungen und Synonyme die Verwechslungen verringern, gibt es den [Katalog](katalog/).
 
 Die Ersatzteilwerte sind nur anders benannt und lassen sich direkt zuordnen, ebenso `gelungen` und `erfolgreich abgeschlossen`. Offen sind `teilweise gelungen`, die beiden zusätzlichen Gründe für die Vertagung, `Fehler nicht gefunden`, das in database.sql vermutlich dem Feld defect_found entspricht, und die Gründe für den Abbruch.
 
-Die Kategorien legen wir in Zammad als Baumauswahl an, die der Ticket Categorizer direkt füllt. Mit 407 Kategorien wird sein Prompt lang, deshalb muss die Kontextlänge in Ollama groß genug sein. Reicht das nicht, beschränken wir den Agenten auf die Kategorien, die im Repair Café tatsächlich vorkommen. Die 1.328 Marken passen nicht sinnvoll in eine Auswahl. Die Marke bleibt deshalb ein Textfeld, das der Ticket Text Extractor füllt. Beim Anlegen des Laufzettels sucht n8n den passenden Eintrag in der Markenliste.
+Die Kategorien legen wir in Zammad als Baumauswahl an, die der Ticket Categorizer direkt füllt. Mit 407 Kategorien wird sein Prompt lang, deshalb muss die Kontextlänge in Ollama groß genug sein. Reicht das nicht, beschränken wir den Agenten auf die Kategorien, die im Repair Café tatsächlich vorkommen. Alle 1.089 Einträge des Katalogs sind zu viele. Welche Liste der Categorizer bekommt, entscheidet ein Vorabtest an den 745 geprüften Tickets. Die 1.328 Marken passen nicht sinnvoll in eine Auswahl. Die Marke bleibt deshalb ein Textfeld, das der Ticket Text Extractor füllt. Beim Anlegen des Laufzettels sucht n8n den passenden Eintrag in der Markenliste.
 
 Die Datei ist ein Stand zur Installation der Plattform. Ob sie mit den Listen auf reparatur-initiativen.org übereinstimmt, klären wir mit der anstiftung. Ein lesender API-Endpunkt für Kategorien und Marken würde den Abgleich vereinfachen.
 
@@ -244,9 +244,9 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 
 ### Phase 0 Vorbereitung bis zur Lieferung
 
-- [ ] DSEE über die Variante mit 1 TB statt 2 TB informieren
-- [ ] Gerät bestellen und Rechnung vor dem 31.12.2026 bezahlen
-- [ ] Offene Entscheidungen oben treffen
+- [x] DSEE über die Variante mit 1 TB statt 2 TB informieren, die Abweichung ist geklärt, siehe Rahmenbedingungen
+- [x] Gerät bestellen und Rechnung vor dem 31.12.2026 bezahlen
+- [x] Offene Entscheidungen oben treffen, festgehalten als ADR
 - [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren
 - [ ] Termin als eigenes Datumsfeld anlegen und beim Umzug bestehende Wartezeiten übernehmen, die angepasste ticket.rb kommt nicht mit, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md)
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
@@ -262,7 +262,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Kurzen Datenschutzhinweis für Gäste schreiben, der auch die Unterstützung durch ein lokales Sprachmodell nennt
 - [ ] MANUEL in das Verzeichnis von Verarbeitungstätigkeiten aufnehmen, mit Zweck, verarbeiteten Feldern, lokaler Verarbeitung auf dem Mini-PC und Speicherdauer der Prompts in Ollama und Open WebUI
 - [ ] Standort, Stromversorgung und LAN-Anschluss im Makerspace klären
-- [ ] Zuständige Engagierte für Betrieb, Prompts und Auswertung finden
+- [ ] Namen in der Tabelle [Rollen](#rollen) eintragen
 
 ### Phase 0b Voraussetzungen aus dem IT-Plan
 
@@ -329,11 +329,11 @@ git push
 - [ ] `OLLAMA_IGPU_ENABLE=1` setzen. Ollama verwirft integrierte AMD-GPUs standardmäßig und lässt nur gfx1151 zu, siehe [discover/runner.go](https://github.com/ollama/ollama/blob/main/discover/runner.go). Ohne die Variable läuft auf dem HX 370 mit gfx1150 alles unbemerkt auf der CPU
 - [ ] `OLLAMA_CONTEXT_LENGTH` fest auf etwa 32768 setzen. Zammad schickt keine Kontextlänge mit, und Ollama wählt sonst je nach erkanntem Grafikspeicher 4K, 32K oder 256K, siehe [envconfig/config.go](https://github.com/ollama/ollama/blob/main/envconfig/config.go). Bei 4K würden lange Prompts wie der des Ticket Categorizer still abgeschnitten
 - [ ] `OLLAMA_KEEP_ALIVE` hoch setzen, damit das Modell beim Repair Café nicht nach 5 Minuten Pause entladen wird, und `OLLAMA_MAX_LOADED_MODELS` so wählen, dass Sprach- und Embedding-Modell gleichzeitig geladen bleiben
-- [ ] Startmodell [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) laden
+- [x] Startmodell [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) laden
 - [x] UMA und GTT-Limit so einstellen, dass die GPU deutlich mehr als 24 GB nutzen darf
-- [ ] Embedding-Modell [bge-m3](https://ollama.com/library/bge-m3) laden und prüfen, dass es zusammen mit dem Sprachmodell in den Speicher passt
-- [ ] Wechselzeit zwischen schnellem und großem Modell messen, mit Modell im Zwischenspeicher und nach einem Neustart
-- [ ] Geschwindigkeit messen und mit qwen3.6:35b-a3b-mtp-q4_K_M, qwen3.6:35b-a3b-q8_0 und qwen3.6:27b vergleichen, Ergebnisse in docs/benchmarks.md festhalten
+- [x] Embedding-Modell [bge-m3](https://ollama.com/library/bge-m3) laden und prüfen, dass es zusammen mit dem Sprachmodell in den Speicher passt
+- [x] Wechselzeit zwischen schnellem und großem Modell messen, mit Modell im Zwischenspeicher und nach einem Neustart
+- [x] Geschwindigkeit messen und mit qwen3.6:35b-a3b-mtp-q4_K_M, qwen3.6:35b-a3b-q8_0 und qwen3.6:27b vergleichen, Ergebnisse in docs/benchmarks.md festhalten
 - [ ] Optional die NPU mit [AMD Lemonade](https://github.com/lemonade-sdk/lemonade) ausprobieren
 
 ### Phase 3 Prompts und Tests
@@ -341,13 +341,15 @@ git push
 - [ ] Rolle open-webui anlegen und Konten für die beteiligten Engagierten einrichten
 - [ ] Testsatz aus abgeschlossenen Repair-Café-Tickets exportieren und pseudonymisieren, nur lokal speichern
 - [ ] Extraktionsregeln und Anweisungen für die Agenten sowie die Textwerkzeuge nach den Gedanken oben in prompts/ ablegen
-- [ ] Skript in eval/ schreiben, das Modelle und Prompts gegen den Testsatz laufen lässt
+- [x] Skript in eval/ schreiben, das Modelle und Prompts gegen den Testsatz laufen lässt
 - [ ] Bewertungskriterien festlegen, zum Beispiel richtige Kategorie und Nützlichkeit des Vorschlags aus Sicht der Engagierten
-- [ ] Decision-Modell d3 an deutschen Beispiel-Tickets prüfen, vor allem das Kriterium sicherheitsrelevant. Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt
+- [x] Decision-Modell d3 an deutschen Beispiel-Tickets prüfen, vor allem das Kriterium sicherheitsrelevant. Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt
 - [ ] Schnelles und großes Modell am Testsatz vergleichen und entscheiden, ob sich die Eskalation lohnt
 - [ ] Beim Repair Café im November Vorschläge live in Open WebUI testen und Rückmeldungen sammeln
 - [ ] Auslesen von Fotos vom Typenschild mit dem Hauptmodell an Beispielfotos testen, ein Mensch bestätigt die Felder, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
 - [ ] Spalte „spontan“ im Blatt Eingabe der Statistik anlegen, damit die [Sharecard](sharecard/README.md) spontane Gäste zeigt
+- [ ] Vorabtest des Ticket Categorizer. Seinen Prompt aus `quellen/zammad` lokal an den 745 geprüften Tickets nachstellen und kürzere Listen vergleichen, etwa A-Einträge, A- und B-Einträge und ORA-Gruppen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)
+- [ ] Liste für den Categorizer nach dem Vorabtest festlegen
 
 ### Phase 4 Anbindung an Zammad
 
@@ -355,7 +357,8 @@ git push
 - [ ] Prüfen, dass der Status des Anbieters nach der ersten Anfrage grün ist
 - [ ] bge-m3 als Embedding-Modell beim Anbieter eintragen
 - [ ] Speicherverbrauch von Elasticsearch in Beszel beobachten, weil dort auch die Vektoren der semantischen Suche liegen. Die Zammad-Rolle erlaubt bisher 4 GB
-- [ ] Agenten Ticket Categorizer für die Art des Geräts und Ticket Text Extractor für die übrigen Felder anlegen
+- [ ] Agenten Ticket Categorizer für die Art des Geräts mit der Liste aus dem Vorabtest und Ticket Text Extractor für die übrigen Felder anlegen
+- [ ] Nach den ersten zwei Terminen den Anteil falscher Kategorien zählen. Ab 5 Prozent oder auf Wunsch des Teams auf n8n mit `d3:9b` und Rückfrage umsteigen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)
 - [ ] Custom AI Agent für den Reparaturansatz und einen für erkannte Kontaktdaten anlegen, beide schreiben nur interne Notizen
 - [ ] Trigger anlegen, die die Agenten bei neuen Tickets der Gruppe Repair Café auslösen
 - [ ] Prüfen, dass kein Agent und kein Trigger E-Mails oder SMS an Gäste verschickt
@@ -391,7 +394,7 @@ git push
 - [ ] Weitere Zahlen über die Zeit erheben, also Geräte je reparierender Person und Termin sowie Geräte je Gast, und vertagte Geräte über die Tags der Termine verfolgen
 - [ ] Dokumentation in docs/ vervollständigen, sodass andere Reparaturinitiativen MANUEL nachbauen können
 - [ ] MANUEL als Fallstudie in [case-study](case-study/manuel.adoc) dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](datenpotenzialanalyse-repairc-cafe-gt/README.md), siehe [ADR 30](docs/adr/0030-rahmen-der-fallstudie-festlegen.adoc). Sie entsteht vom Groben zum Feinen
-  - [ ] Stufe 1 im November 2026, Gliederung, Stichpunkte je Kapitel und Quellen
+  - [x] Stufe 1 im November 2026, Gliederung, Stichpunkte je Kapitel und Quellen. Die Durchsicht durch das Team steht aus
   - [ ] Stufe 2 im November und Dezember 2026, Reihenfolge der Absätze, Abbildungen und fehlende Daten wie Läufe für das Beispiel k01 und die Strommessung
   - [ ] Stufe 3 von Dezember 2026 bis Februar 2027, ausformulieren, zuerst die Kapitel 2, 5, 6 und 9, dann parallel zur Erprobung die Kapitel 7 bis 10
   - [ ] Stufe 4 im März 2027, Zusammenfassung, Abstract auf Englisch, Gegenlesen durch das Team und Version 1.0 mit dem Sachbericht
@@ -417,14 +420,39 @@ Beide Dienste würden denselben Ollama-Server über NetBird nutzen. Weitere Dien
 
 ## Zeitplan
 
-| Zeitraum | Phase |
+Stand der Planung mit fünf Engagierten am 09.11.2026. Der Echtbetrieb und damit die Erprobung beginnen am 05.12.2026. Die Termine stammen aus der Statistik-Tabelle.
+
+| Datum | Ziel |
 |---|---|
-| bis Lieferung | Phase 0, 0b mit Stufe 1 des IT-Plans und 0c |
-| November 2026, erste Hälfte | Phase 1 und 2 |
-| November 2026 | Phase 3 mit Test beim Repair Café |
-| Dezember 2026 | Phase 4 mit Echtbetrieb beim Repair Café |
-| Dezember 2026 | Phase 5, so weit wie möglich innerhalb des Bewilligungszeitraums |
-| Januar bis März 2027 | Phase 6 |
+| bis 21.11.2026 | Helpdesk-VM mit Zammad und NetBird aus Stufe 1 des IT-Plans steht, die Version von Zammad ist geprüft |
+| 21.11.2026 | Repair Café, Vorschläge in Open WebUI zeigen, falls eingerichtet |
+| bis 28.11.2026 | Felder in Zammad, Vorabtest und Liste für den Categorizer, Datenschutzhinweis, Löschfristen und SSD-Verschlüsselung |
+| 05.12.2026 | Start des Echtbetriebs und der Erprobung |
+| 19.12.2026 | zweiter Termin, danach Entscheidung über den Umstieg auf n8n nach [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc) |
+| 31.12.2026 | Ende des Projektzeitraums, alle Ausgaben sind bezahlt |
+| 16.01., 06.02. und 20.02.2027 | weitere Termine der Erprobung, der 02.01. fällt in die Winterpause |
+| Januar bis März 2027 | n8n nach Stufe 2 des IT-Plans, Phase 5 und 6 |
+| bis 31.03.2027 | Auswertung der Kennzahlen und Verwendungsnachweis |
+
+Die Zwischenziele bis zum 28.11. folgen aus dem kritischen Weg. Alles in Zammad hängt an der neuen Helpdesk-VM, danach kommen Felder und Categorizer und erst dann der Echtbetrieb. Die Zuständigen stimmen die Zwischenziele ab.
+
+### Pflicht und Kür
+
+- **Pflicht bis 31.03.2027** ist die Erprobung im Echtbetrieb mit den vier Kennzahlen aus dem Antrag, dazu der Verwendungsnachweis mit Belegen der Veröffentlichung.
+- **Kür** sind die Nachmeldung an Restarters, die Fallstudie in Version 1.0, die Sharecard, das Foto vom Typenschild, die Suche nach Anleitungen, die Wissensdatenbank, der Newsletter und die Terminvorschläge.
+- Die Tickets von 2024 werden ab 2027 gelöscht. Soll die Nachmeldung sie noch erfassen, muss sie vorher laufen, auch wenn sie Kür ist.
+
+### Rollen
+
+Je Rolle eine Person und eine Vertretung. Die Namen trägt das Team ein.
+
+| Rolle | Person | Vertretung |
+|---|---|---|
+| Betrieb von Mini-PC und IT | | |
+| Einrichtung von Zammad | | |
+| Ablauf am Empfang und Statistik-Tabelle | | |
+| Klärung der Nachmeldung und englische Namen im Katalog | | |
+| Gegenlesen der Fallstudie und Auswertung der Erprobung | | |
 
 ## Repo-Struktur
 

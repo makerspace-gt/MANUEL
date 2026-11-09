@@ -63,6 +63,10 @@ box(250, 152, 500, 72, 'regel', 'Ticket in Zammad', 'ein Ticket je Gerät, Tag m
 arrow([(CX, 224), (CX, 252)])
 # Einordnen
 box(250, 254, 500, 72, 'manuel', 'Einordnen und Felder vorschlagen', 'Kategorie, Marke, Bezeichnung, Defekt\nauch vom Foto des Typenschilds', 'ADR 34, 40')
+# Split
+box(20, 254, 190, 90, 'mensch', 'Aufteilen', 'mehrere Geräte genannt\nMANUEL erkennt sie', 'ADR 6, 34')
+arrow([(250, 290), (212, 290)])
+arrow([(115, 254), (115, 188), (248, 188)], dashed=True, label='je Gerät ein Ticket', lx=124, ly=210, anchor='start')
 # Rückfrage
 box(790, 254, 190, 90, 'mensch', 'Rückfrage', 'wenn Angaben fehlen\nText von MANUEL', 'ADR 11')
 arrow([(750, 290), (788, 290)])

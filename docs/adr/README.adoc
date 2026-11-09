@@ -31,7 +31,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |12 |xref:0012-keine-abwertenden-begriffe-verwenden.adoc[Keine abwertenden Begriffe verwenden] |angenommen |2026-11-08
 |13 |xref:0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[Einträge mit einem hierarchischen Schlüssel kennzeichnen] |angenommen |2026-11-08
 |14 |xref:0014-reparaturen-ueber-restarters-melden.adoc[Reparaturen über Restarters.net an die Open Repair Alliance melden] |angenommen |2026-11-08
-|15 |xref:0015-hausarbeit-in-asciidoc-schreiben.adoc[Die Hausarbeit in AsciiDoc schreiben] |angenommen |2026-11-08
+|15 |xref:0015-hausarbeit-in-asciidoc-schreiben.adoc[Die Fallstudie in AsciiDoc schreiben] |angenommen |2026-11-08
 |16 |xref:0016-eigenes-image-auf-basis-von-ucore-bauen.adoc[Ein eigenes Image auf Basis von uCore bauen] |angenommen |2026-10-22
 |17 |xref:0017-einen-menschen-entscheiden-lassen.adoc[Einen Menschen entscheiden lassen] |angenommen |2026-10-22
 |18 |xref:0018-felder-mit-ki-agenten-von-zammad-fuellen.adoc[Felder mit den KI-Agenten von Zammad füllen] |angenommen |2026-10-22

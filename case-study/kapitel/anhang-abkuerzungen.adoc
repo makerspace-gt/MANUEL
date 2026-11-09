@@ -39,6 +39,7 @@ MANUEL:: Minimale AI für Nutzer-Unterstützung auf Einstiegs-Level
 MIT:: Massachusetts Institute of Technology
 MTP:: Multi-Token Prediction, das Modell schätzt mehrere Tokens auf einmal und wird so schneller
 NAT:: Network Address Translation, mehrere Geräte teilen sich eine Adresse im Internet
+ODT:: OpenDocument Text, Format für Textdokumente, etwa aus LibreOffice
 ORA:: Open Repair Alliance
 ORDS:: Open Repair Data Standard
 OWASP:: Open Worldwide Application Security Project, eine offene Gemeinschaft für die Sicherheit von Anwendungen

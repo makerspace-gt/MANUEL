@@ -1,15 +1,16 @@
 ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [[adr-0015]]
-= 0015 Die Hausarbeit in AsciiDoc schreiben
+= 0015 Die Fallstudie in AsciiDoc schreiben
 
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht, der Titel sprach bis dahin von der Hausarbeit
 
 == Kontext und Problem
 
-MANUEL wird am Ende im Stil einer Hausarbeit dokumentiert, wie die Datenpotenzialanalyse von 2022. Es gibt keine Vorgaben und keine Bewertung. Die Arbeit soll vor allem online gelesen werden, sich aber auch gut als PDF drucken lassen. Tabellen, Skripte und Ergebnisse sollen direkt aus dem Repo zitiert werden, damit Arbeit und Daten nicht auseinanderlaufen.
+MANUEL wird am Ende ausführlich dokumentiert, wie die Datenpotenzialanalyse von 2022 als Hausarbeit. Seit xref:0030-rahmen-der-fallstudie-festlegen.adoc[ADR 30] heißt die Arbeit Fallstudie. Es gibt keine Vorgaben und keine Bewertung. Die Arbeit soll vor allem online gelesen werden, sich aber auch gut als PDF drucken lassen. Tabellen, Skripte und Ergebnisse sollen direkt aus dem Repo zitiert werden, damit Arbeit und Daten nicht auseinanderlaufen.
 
 == Entscheidungskriterien
 
@@ -26,7 +27,7 @@ MANUEL wird am Ende im Stil einer Hausarbeit dokumentiert, wie die Datenpotenzia
 
 == Entscheidung
 
-Die Hausarbeit entsteht in AsciiDoc. Sie bindet Tabellen und Codeausschnitte mit `include` direkt ein. Eine GitHub Action erzeugt daraus eine HTML-Seite für GitHub Pages und mit asciidoctor-pdf ein PDF. Die Daten werden bei Abschluss mit einem Git-Tag eingefroren, damit Zitate auf genau diesen Stand verweisen.
+Die Fallstudie entsteht in AsciiDoc. Sie bindet Tabellen und Codeausschnitte mit `include` direkt ein. Eine GitHub Action erzeugt daraus eine HTML-Seite für GitHub Pages und mit asciidoctor-pdf ein PDF. Die Daten werden bei Abschluss mit einem Git-Tag eingefroren, damit Zitate auf genau diesen Stand verweisen. Das Literaturverzeichnis setzt asciidoctor-bibtex aus `literatur.bib`, siehe xref:0031-literatur-mit-zotero-und-bibtex-verwalten.adoc[ADR 31] und xref:0037-zitierstil-chicago-nach-autor-und-jahr-nutzen.adoc[ADR 37].
 
 === Konsequenzen
 
@@ -36,6 +37,11 @@ Die Hausarbeit entsteht in AsciiDoc. Sie bindet Tabellen und Codeausschnitte mit
 
 == Vor- und Nachteile der Optionen
 
+=== AsciiDoc mit Asciidoctor
+
+* Gut, weil es Dateien aus dem Repo einbindet und HTML und PDF aus derselben Quelle erzeugt.
+* Schlecht, weil GitHub eingebundene Dateien nicht anzeigt.
+
 === Typst
 
 * Gut, weil es CSV und Literatur im Format CSL von Haus aus kann.
@@ -43,7 +49,13 @@ Die Hausarbeit entsteht in AsciiDoc. Sie bindet Tabellen und Codeausschnitte mit
 
 === Markdown
 
+* Gut, weil es fast alle kennen und GitHub es direkt anzeigt.
 * Schlecht, weil Markdown keine Dateien einbinden kann.
+
+=== ODT wie die Datenpotenzialanalyse
+
+* Gut, weil es sich mit LibreOffice ohne Vorkenntnisse bearbeiten lässt.
+* Schlecht, weil Tabellen und Ergebnisse von Hand übertragen werden und Änderungen in Git schwer zu verfolgen sind.
 
 == Quellen
 

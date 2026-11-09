@@ -7,6 +7,7 @@ Status:: angenommen
 Datum:: 2026-11-06
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -25,7 +26,7 @@ Die Radeon 890M teilt sich den Arbeitsspeicher mit dem System. Im BIOS lässt si
 
 == Entscheidung
 
-Der Mini-PC läuft mit 16 GiB UMA. Damit stehen der GPU 39,3 statt 32,2 GiB zur Verfügung. Alle drei Modelle passen zusammen auf die GPU, belegt sind dann 36,2 GiB Grafikspeicher, und 23 GiB bleiben frei. Die Generierung wird 2 bis 8 Prozent schneller.
+Der Mini-PC läuft mit 16 GiB UMA. Damit stehen der GPU 39,3 statt 32,2 GiB zur Verfügung. Alle drei Modelle passen zusammen auf die GPU, belegt sind dann 36,2 GiB Grafikspeicher. Der GPU bleiben gut 3 GiB, dem System 23 GiB freier Arbeitsspeicher. Die Generierung wird 2 bis 8 Prozent schneller.
 
 [cols="2,1,1",options="header"]
 |===
@@ -40,6 +41,18 @@ Der Mini-PC läuft mit 16 GiB UMA. Damit stehen der GPU 39,3 statt 32,2 GiB zur 
 * Gut, weil der Wechsel zwischen den Modellen entfällt, wenn sie geladen bleiben.
 * Schlecht, weil das System nur noch 46 statt 60 GiB hat.
 * Offen ist, ob alle Modelle im Betrieb dauerhaft geladen bleiben.
+
+== Vor- und Nachteile der Optionen
+
+=== 2 GiB UMA mit 30 GiB GTT
+
+* Gut, weil dem System 60 GiB bleiben.
+* Schlecht, weil die drei Modelle nicht zusammen auf die GPU passen und jeder Wechsel bis zu 26 Sekunden kostet.
+
+=== 16 GiB UMA mit 23 GiB GTT
+
+* Gut, weil alle drei Modelle zusammen geladen bleiben können und die Generierung etwas schneller wird.
+* Schlecht, weil dem System nur noch 46 GiB bleiben.
 
 == Quellen
 

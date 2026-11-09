@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen, die Zielgruppe ist ergänzt und das Abstract auf Englisch ausgenommen durch xref:0030-rahmen-der-fallstudie-festlegen.adoc[ADR 30]
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -25,15 +26,32 @@ Im Repo stehen deutsche Texte neben Skripten mit deutschen Namen wie `rueckfrage
 
 == Entscheidung
 
-Zielgruppe ist zuerst das Team des Repair Café Gütersloh, danach andere deutschsprachige Initiativen. Texte für Menschen sind deutsch. Dazu gehören Hausarbeit, ADRs, Dokumentation, Beschriftungen von Grafiken und alles, was MANUEL im Ticket schreibt.
+Zielgruppe ist zuerst das Team des Repair Café Gütersloh, danach andere deutschsprachige Initiativen. Texte für Menschen sind deutsch. Dazu gehören Fallstudie, ADRs, Dokumentation, Beschriftungen von Grafiken und alles, was MANUEL im Ticket schreibt.
 
-Code ist englisch. Das gilt für Dateinamen von Skripten, Bezeichner, Kommentare, Docstrings und Spaltennamen neuer Datendateien, die Skripte lesen oder schreiben. Fachbegriffe aus fremden Quellen bleiben, wie sie sind, etwa die Kategorien der anstiftung oder die Felder des Open Repair Data Standard.
+Code ist englisch. Das gilt für Dateinamen von Skripten, Bezeichner, Kommentare, Docstrings und Spaltennamen aller Datendateien, die Skripte lesen oder schreiben, auch der bestehenden. Fachbegriffe aus fremden Quellen bleiben, wie sie sind, etwa die Kategorien der anstiftung oder die Felder des Open Repair Data Standard.
 
 === Konsequenzen
 
 * Gut, weil Code ohne Denglisch lesbar bleibt und sich leichter mit anderen teilen lässt.
 * Gut, weil die Texte für das Team in seiner Sprache bleiben.
-* Schlecht, weil bestehende Skripte und Spalten mit deutschen Namen umbenannt werden müssen. Verweise in Doku und ADRs ändern sich dabei mit.
+* Schlecht, weil bestehende Skripte und Spalten mit deutschen Namen umbenannt werden müssen. Verweise in Doku und ADRs ändern sich dabei mit. Die Umbenennung ist seit dem 08.11.2026 erledigt.
+
+== Vor- und Nachteile der Optionen
+
+=== Alles auf Deutsch
+
+* Gut, weil das Team alles in seiner Sprache liest.
+* Schlecht, weil sich deutsche Bezeichner mit englischen Schlüsselwörtern und Bibliotheken zu Denglisch mischen.
+
+=== Alles auf Englisch
+
+* Gut, weil Texte und Code auch außerhalb des deutschen Sprachraums nachnutzbar sind.
+* Schlecht, weil das Team und andere deutschsprachige Initiativen die Texte schlechter lesen.
+
+=== Texte auf Deutsch, Code auf Englisch
+
+* Gut, weil der Code einheitlich bleibt und die Texte für das Team verständlich sind.
+* Schlecht, weil bestehende Namen umbenannt werden müssen.
 
 == Quellen
 

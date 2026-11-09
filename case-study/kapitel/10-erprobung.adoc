@@ -51,6 +51,11 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 * Anteil der an Restarters übertragenen Geräte an den bearbeiteten, Ausgangswert 30 von 1.485, also rund 2 Prozent
 * Mit und ohne Nachmeldung nach <<adr-0036>> getrennt ausgewiesen
 
+=== Vertagte Geräte
+
+* Vertagte Geräte verfolgen. Wie viele kommen wieder, nach wie vielen Terminen, und wie geht es aus?
+* Die Grundlage sind die Tags mit dem Datum je Termin <<adr-0036>>. 2025 und 2026 tragen 44 Tickets mehr als ein Datum.
+
 === Sharecards der Termine
 
 * Die Karten der Termine in der Erprobung als Abbildungen <<adr-0033>>

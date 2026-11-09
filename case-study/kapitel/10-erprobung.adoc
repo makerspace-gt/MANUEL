@@ -51,6 +51,12 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 * Anteil der an Restarters übertragenen Geräte an den bearbeiteten, Ausgangswert 30 von 1.485, also rund 2 Prozent
 * Mit und ohne Nachmeldung nach <<adr-0036>> getrennt ausgewiesen
 
+=== Weitere Zahlen über die Zeit
+
+* Bearbeitete Geräte je reparierender Person und Termin, über die Jahre. Die Zahl der Reparierenden kommt aus Nuudel oder der Statistik.
+* Geräte je Gast, also wie viele Geräte eine Person im Schnitt mitbringt. Gezählt wird lokal, in die Fallstudie kommen nur Summen.
+* Diese Zahlen gehören nicht zu den Kennzahlen des Antrags, sie ordnen die Erprobung aber ein.
+
 === Vertagte Geräte
 
 * Vertagte Geräte verfolgen. Wie viele kommen wieder, nach wie vielen Terminen, und wie geht es aus?

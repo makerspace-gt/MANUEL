@@ -43,7 +43,7 @@ Grundsätze für den Betrieb:
 - **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Es gibt drei Ausnahmen:
   - Marke und Modellbezeichnung des Geräts für die Suche nach Anleitungen über eine eigene SearXNG-Instanz und iFixit, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc)
   - die Reparaturen ohne Personenbezug an Restarters.net, den Defekt erst nach der Anonymisierung, siehe [ADR 36](docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc)
-  - die von Hand anonymisierten und geprüften Tickets, siehe [ADR 38](docs/adr/0038-ticketdaten-anonymisiert-veroeffentlichen.adoc)
+  - die von Hand anonymisierten und geprüften Tickets von 2025 und 2026, siehe [ADR 38](docs/adr/0038-ticketdaten-anonymisiert-veroeffentlichen.adoc) und [ADR 39](docs/adr/0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc)
 
   Echte, nicht anonymisierte Ticketdaten landen nie in diesem öffentlichen Repo.
 - **Code rechnet, das Modell formuliert.** Zählen, Zuordnen, Termine planen und Daten übertragen erledigen Zammad-Trigger und n8n-Workflows nach festen Regeln. Das Sprachmodell liest aus Freitext heraus, schreibt Texte und fasst zusammen.
@@ -388,6 +388,7 @@ git push
 ### Phase 6 Abschluss und Veröffentlichung
 
 - [ ] Kennzahlen aus dem Antrag erheben, also Reparaturquote, Reparaturen durch Gäste und neue Engagierte, Rückmeldungen zu Vorschlägen und gemeldete Reparaturen
+- [ ] Weitere Zahlen über die Zeit erheben, also Geräte je reparierender Person und Termin sowie Geräte je Gast, und vertagte Geräte über die Tags der Termine verfolgen
 - [ ] Dokumentation in docs/ vervollständigen, sodass andere Reparaturinitiativen MANUEL nachbauen können
 - [ ] MANUEL als Fallstudie in [case-study](case-study/manuel.adoc) dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](datenpotenzialanalyse-repairc-cafe-gt/README.md), siehe [ADR 30](docs/adr/0030-rahmen-der-fallstudie-festlegen.adoc). Sie entsteht vom Groben zum Feinen
   - [ ] Stufe 1 im November 2026, Gliederung, Stichpunkte je Kapitel und Quellen

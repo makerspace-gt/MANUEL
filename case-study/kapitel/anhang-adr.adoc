@@ -83,5 +83,7 @@ include::../../docs/adr/0037-zitierstil-chicago-nach-autor-und-jahr-nutzen.adoc[
 
 include::../../docs/adr/0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[]
 
+include::../../docs/adr/0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[]
+
 :leveloffset: -2
 :sectnums:

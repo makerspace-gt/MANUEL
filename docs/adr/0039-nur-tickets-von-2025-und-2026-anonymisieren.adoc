@@ -1,0 +1,63 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0039]]
+= 0039 Nur Tickets von 2025 und 2026 anonymisieren
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-09
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Nach xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38] sollen alle rund 790 Tickets von 2024 bis 2026 von Hand anonymisiert werden, bevor die ersten Tickets von 2024 im Jahr 2027 gelöscht werden. Das ist viel Arbeit für eine Person und in kurzer Zeit. Außerdem kommen laufend neue Tickets dazu, und alte fallen nach drei Jahren weg. Welcher Satz von Tickets wird anonymisiert?
+
+== Entscheidungskriterien
+
+* Ein fester Satz, der sich nicht mehr ändert
+* Der Aufwand passt zu einer Person, die jedes Ticket prüft
+* Die Zahlen der Fallstudie lassen sich daran nachrechnen
+
+== Betrachtete Optionen
+
+* Alle Tickets von 2024 bis 2026 wie in ADR 38
+* Nur die Tickets von 2025 und 2026 als festen Satz
+* Laufend alle neuen Tickets anonymisieren
+
+== Entscheidung
+
+Anonymisiert und veröffentlicht werden nur die Tickets, die 2025 und 2026 angelegt wurden. Das sind nach den Exporten vom 08.11.2026 rund 610 Tickets, bis Ende 2026 kommen die restlichen Tickets des Jahres dazu. Danach ist der Satz fest.
+
+* Neue Tickets ab 2027 kommen nicht dazu.
+* Tickets von 2024 entfallen, sie werden 2027 nach drei Jahren gelöscht.
+* Tickets, die vorher gelöscht werden, etwa abgesagte mit dem Tag `abgelehnt`, entfallen ebenfalls.
+
+Die Frist aus ADR 38 richtet sich nun nach den Tickets von 2025. Die ersten davon werden 2028 gelöscht. Alles andere aus ADR 38 gilt weiter, also Anonymisierung von Hand, Prüfung jedes Tickets, CC BY 4.0 und die Ablage in `eval/decision/tickets-anonym/`.
+
+=== Konsequenzen
+
+* Gut, weil der Satz fest ist und sich nicht mehr ändert.
+* Gut, weil der Aufwand um etwa ein Viertel sinkt und mehr Zeit bleibt.
+* Schlecht, weil Zahlen der Fallstudie, die 2024 einschließen, nicht vollständig nachrechenbar sind. Die Fallstudie weist deshalb aus, welche Zahlen auf dem veröffentlichten Satz beruhen.
+* Schlecht, weil der Defekt der Geräte von 2024 nach xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[ADR 36] nie an Restarters geht. Er wird erst nach der Anonymisierung gesendet, und die Tickets von 2024 werden nicht anonymisiert.
+
+== Vor- und Nachteile der Optionen
+
+=== Alle Tickets von 2024 bis 2026
+
+* Gut, weil alle Zahlen nachrechenbar werden.
+* Schlecht, weil rund 790 Tickets bis Ende 2026 geprüft sein müssten.
+
+=== Tickets von 2025 und 2026
+
+* Gut, weil der Satz fest und der Aufwand kleiner ist.
+* Schlecht, weil 2024 fehlt.
+
+=== Laufend alle neuen Tickets
+
+* Gut, weil auch die Erprobung nachrechenbar wird.
+* Schlecht, weil die Arbeit nie endet und sich der Satz ständig ändert.
+
+== Quellen
+
+* xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38]
+* Zählungen aus den lokalen Exporten vom 08.11.2026, nur Summen

@@ -3,7 +3,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0038 Ticketdaten anonymisiert veröffentlichen
 
 [horizontal]
-Status:: angenommen
+Status:: angenommen, Menge der Tickets und Frist abgelöst durch xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[ADR 39]
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
 

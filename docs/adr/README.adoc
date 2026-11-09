@@ -54,7 +54,8 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |35 |xref:0035-anleitungen-ueber-eine-eigene-suche-finden.adoc[Anleitungen über eine eigene Suche finden] |angenommen |2026-11-08
 |36 |xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[Reparaturen ab 2024 an Restarters nachmelden] |angenommen |2026-11-08
 |37 |xref:0037-zitierstil-chicago-nach-autor-und-jahr-nutzen.adoc[Den Zitierstil Chicago nach Autor und Jahr nutzen] |angenommen |2026-11-08
-|38 |xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[Ticketdaten anonymisiert veröffentlichen] |angenommen |2026-11-08
+|38 |xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[Ticketdaten anonymisiert veröffentlichen] |angenommen, teils abgelöst durch 39 |2026-11-08
+|39 |xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[Nur Tickets von 2025 und 2026 anonymisieren] |angenommen |2026-11-09
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

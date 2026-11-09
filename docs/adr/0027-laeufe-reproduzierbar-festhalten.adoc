@@ -6,10 +6,11 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
-Die Hausarbeit soll ausführlich und reproduzierbar sein. Bisher halten die Ergebnisdateien fest, was ein Modell geantwortet hat, aber nicht immer, mit welchen Eingaben, welchem Stand des Katalogs und welcher Version eines Modells. Ein Modell mit demselben Namen kann nach einem `ollama pull` ein anderes sein.
+Die Fallstudie soll ausführlich und reproduzierbar sein. Bisher halten die Ergebnisdateien fest, was ein Modell geantwortet hat, aber nicht immer, mit welchen Eingaben, welchem Stand des Katalogs und welcher Version eines Modells. Ein Modell mit demselben Namen kann nach einem `ollama pull` ein anderes sein.
 
 == Entscheidungskriterien
 
@@ -29,15 +30,29 @@ Jeder Lauf bekommt neben seiner Ausgabe eine Datei `lauf.json`. Sie enthält
 * Datum, Befehl und den Commit des Repos,
 * Pfad und SHA-256 jeder Eingabe und jeder Ausgabe,
 * Name und Digest jedes Modells in Ollama, bei llama.cpp die SHA-256 der GGUF-Datei,
-* die Versionen von Ollama und llama.cpp sowie Kernel und Speicheraufteilung des Mini-PCs.
+* die Versionen von Ollama und llama.cpp sowie Kernel und Speicheraufteilung des Mini-PCs,
+* die Startparameter von llama.cpp, etwa ob das Nachdenken des Modells abgeschaltet ist,
+* bei Prompts, die aus Zammad nachgestellt sind, den Commit von `quellen/zammad`.
 
-Die Beschreibung darf öffentlich sein, weil Prüfsummen nichts über den Inhalt verraten. Die Eingaben und Ausgaben mit echten Tickets bleiben lokal. Wer sie hat, kann über die Prüfsummen zeigen, dass es dieselben sind.
+Die Beschreibung darf öffentlich sein, weil Prüfsummen nichts über den Inhalt verraten. Die Eingaben und Ausgaben mit echten Tickets bleiben lokal. Wer sie hat, kann über die Prüfsummen zeigen, dass es dieselben sind. Läufe auf den anonymisierten Tickets nach xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[ADR 39] können Dritte vollständig wiederholen, weil dann auch die Eingaben öffentlich sind.
 
 === Konsequenzen
 
-* Gut, weil jede Zahl in der Hausarbeit auf einen bestimmten Lauf mit bestimmten Versionen zurückgeht.
-* Schlecht, weil die Skripte dafür eine gemeinsame Hilfsfunktion brauchen. Sie entsteht vor dem nächsten Lauf.
+* Gut, weil jede Zahl in der Fallstudie auf einen bestimmten Lauf mit bestimmten Versionen zurückgeht.
+* Schlecht, weil die Skripte dafür eine gemeinsame Hilfsfunktion brauchen. Sie fehlt am 09.11.2026 noch. Der nächste Lauf ist der Vorabtest des Ticket Categorizer nach xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40], er bekommt sie zuerst.
 * Schlecht, weil die bisherigen Läufe vom 06. bis 08.11.2026 diese Beschreibung nicht haben. Ihre Versionen stehen in den Benchmarks und in der Einordnung.
+
+== Vor- und Nachteile der Optionen
+
+=== Beschreibung zu jedem Lauf
+
+* Gut, weil Eingaben, Modelle und Versionen auch Monate später feststehen.
+* Schlecht, weil jedes Skript die Beschreibung schreiben muss.
+
+=== Nur Ergebnisdateien und Doku
+
+* Gut, weil es keinen zusätzlichen Aufwand macht.
+* Schlecht, weil nach einem Update von Modell oder Engine niemand mehr sicher sagen kann, womit eine Zahl entstanden ist.
 
 == Quellen
 

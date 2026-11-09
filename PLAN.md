@@ -348,6 +348,7 @@ git push
 - [ ] Beim Repair Café im November Vorschläge live in Open WebUI testen und Rückmeldungen sammeln
 - [ ] Auslesen von Fotos vom Typenschild mit dem Hauptmodell an Beispielfotos testen, ein Mensch bestätigt die Felder, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
 - [ ] Spalte „spontan“ im Blatt Eingabe der Statistik anlegen, damit die [Sharecard](sharecard/README.md) spontane Gäste zeigt
+- [ ] Gemeinsame Hilfsfunktion für `lauf.json` schreiben, bevor der Vorabtest läuft, siehe [ADR 27](docs/adr/0027-laeufe-reproduzierbar-festhalten.adoc)
 - [ ] Vorabtest des Ticket Categorizer. Seinen Prompt aus `quellen/zammad` lokal an den 745 geprüften Tickets nachstellen und kürzere Listen vergleichen, etwa A-Einträge, A- und B-Einträge und ORA-Gruppen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)
 - [ ] Liste für den Categorizer nach dem Vorabtest festlegen
 

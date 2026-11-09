@@ -8,6 +8,7 @@ Decision-Modell:: Ein Sprachmodell, das aus einer festen Liste von Optionen gena
 Embedding:: Eine Zahlenfolge, die die Bedeutung eines Textes abbildet. Ähnliche Texte liegen nah beieinander, so findet die Ähnlichkeitssuche passende Kategorien.
 Kette:: Der Ablauf für Nachrichten. Das Sprachmodell zieht zuerst die Gegenstände heraus, das Decision-Modell ordnet sie dann ein.
 Laufzettel:: Ein Formular, auf dem eine Reparatur erfasst wird, auf Papier oder online.
+Mixture of Experts:: Ein Sprachmodell, das aus vielen Teilnetzen besteht und für jedes Token nur einige davon nutzt. Es rechnet dadurch schneller, als seine Größe vermuten lässt.
 Open Repair Data Standard:: Das gemeinsame Format der Open Repair Alliance für Reparaturdaten.
 ORA-Gruppe:: Eine Produktkategorie des Open Repair Data Standard, etwa Kettle für Wasserkocher.
 Prompt Injection:: Ein Angriff, bei dem Text von außen, etwa auf einer Webseite, Anweisungen an ein Sprachmodell enthält, die es vom eigentlichen Auftrag abbringen sollen.
@@ -16,6 +17,7 @@ SearXNG:: Eine freie Metasuchmaschine, die Anfragen ohne Konto und ohne Profil a
 Sharecard:: Ein Bild mit dem Resümee eines Termins, das sich im Forum, in sozialen Medien und im Messenger teilen lässt.
 Sollwert:: Die richtige Antwort für ein Ticket, geprüft durch das Team.
 Ticket:: Eine Anfrage in Zammad mit allen Nachrichten und Feldern.
+Token:: Ein Stück Text, mit dem ein Sprachmodell rechnet, meist ein Wort oder ein Teil davon. Geschwindigkeiten werden in Token pro Sekunde gemessen.
 Trefferquote:: Der Anteil richtiger Antworten an allen Tickets mit Sollwert.
 Vertreter-Name:: Der Name, unter dem ein Eintrag des Katalogs dem Modell gezeigt wird, also sein passendster Name oder ein Synonym.
 Wilson-Intervall:: Ein Bereich um eine gemessene Quote, der zeigt, wie unsicher sie bei kleinen Zahlen ist. Hier immer mit 95 Prozent Konfidenz.

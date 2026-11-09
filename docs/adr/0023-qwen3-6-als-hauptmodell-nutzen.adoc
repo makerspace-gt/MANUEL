@@ -7,6 +7,7 @@ Status:: angenommen
 Datum:: 2026-11-06
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -27,14 +28,19 @@ MANUEL braucht ein Sprachmodell, das Gegenstände aus Nachrichten herauszieht, R
 
 == Entscheidung
 
-Hauptmodell ist `qwen3.6:35b-a3b` mit festem Tag. Als Mixture-of-Experts-Modell sind pro Token nur etwa 3B Parameter aktiv, was bei begrenzter Speicherbandbreite zählt. Es ist unter den größeren Modellen am schnellsten und bleibt auch bei langen Prompts und langen Antworten schnell. Eine Reparaturanleitung ist in knapp 30 Sekunden fertig.
+Hauptmodell ist `qwen3.6:35b-a3b` mit festem Tag. Als Mixture-of-Experts-Modell sind pro Token nur etwa 3 Milliarden Parameter aktiv, was bei begrenzter Speicherbandbreite zählt. Es ist unter den größeren Modellen am schnellsten und bleibt auch bei langen Prompts und langen Antworten schnell. Eine Reparaturanleitung ist in knapp 30 Sekunden fertig.
 
 === Konsequenzen
 
-* Gut, weil es auch Bilder versteht.
-* Schlecht, weil die Benchmarks nur die Geschwindigkeit messen. Ob es gut antwortet, zeigt erst der Testsatz aus Phase 3.
+* Gut, weil es laut Ollama auch Bilder annimmt. Mit llama.cpp nach xref:0025-sprachmodell-mit-llama-cpp-und-decision-modell-mit-ollama-betreiben.adoc[ADR 25] braucht das Bildverständnis aber eine eigene Projektor-Datei (mmproj). Das ist noch nicht geprüft und betrifft das Foto vom Typenschild nach xref:0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[ADR 34].
+* Schlecht, weil die Benchmarks nur die Geschwindigkeit messen. Beim Herausziehen der Gegenstände aus Nachrichten hat es sich bewährt, siehe xref:0006-gegenstaende-erst-herausziehen.adoc[ADR 6]. Für Reparaturansätze steht der Test noch aus.
 
 == Vor- und Nachteile der Optionen
+
+=== qwen3.6:35b-a3b
+
+* Gut, weil es unter den größeren Modellen am schnellsten ist, auch bei langen Prompts.
+* Schlecht, weil es mit rund 30 GiB den größten Teil des Grafikspeichers belegt.
 
 === gemma4:26b
 
@@ -54,3 +60,4 @@ Hauptmodell ist `qwen3.6:35b-a3b` mit festem Tag. Als Mixture-of-Experts-Modell 
 == Quellen
 
 * {repo}/docs/benchmarks.md[Benchmarks], Runde 2 Modelle und Empfehlung
+* https://ollama.com/library/qwen3.6/tags[qwen3.6 bei Ollama], Angabe „Text, Image input“, abgerufen am 08.11.2026

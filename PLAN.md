@@ -346,6 +346,7 @@ git push
 - [x] Decision-Modell d3 an deutschen Beispiel-Tickets prüfen, vor allem das Kriterium sicherheitsrelevant. Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt
 - [ ] Schnelles und großes Modell am Testsatz vergleichen und entscheiden, ob sich die Eskalation lohnt
 - [ ] Beim Repair Café im November Vorschläge live in Open WebUI testen und Rückmeldungen sammeln
+- [ ] Bildverständnis des Hauptmodells mit llama.cpp einrichten, dafür braucht es eine Projektor-Datei (mmproj), siehe [ADR 23](docs/adr/0023-qwen3-6-als-hauptmodell-nutzen.adoc)
 - [ ] Auslesen von Fotos vom Typenschild mit dem Hauptmodell an Beispielfotos testen, ein Mensch bestätigt die Felder, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
 - [ ] Spalte „spontan“ im Blatt Eingabe der Statistik anlegen, damit die [Sharecard](sharecard/README.md) spontane Gäste zeigt
 - [ ] Gemeinsame Hilfsfunktion für `lauf.json` schreiben, bevor der Vorabtest läuft, siehe [ADR 27](docs/adr/0027-laeufe-reproduzierbar-festhalten.adoc)

@@ -7,6 +7,7 @@ Status:: angenommen
 Datum:: 2026-10-22
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -25,15 +26,27 @@ Für die Ähnlichkeitssuche in der Einordnung und für passende Artikel aus der 
 
 == Entscheidung
 
-MANUEL nutzt `bge-m3`. Zammad empfiehlt es für Ollama selbst, es ist mehrsprachig, und ein Aufruf dauert geladen 0,04 Sekunden.
+MANUEL nutzt `bge-m3`. Zammad empfiehlt es für Ollama selbst, es ist mehrsprachig, und ein Aufruf dauert geladen 0,04 Sekunden. Beim Einrichten verlangt Zammad die Zahl der Dimensionen und die Länge des Kontexts. Für `bge-m3` sind das 1024 und 8192 Token.
 
 === Konsequenzen
 
 * Gut, weil dasselbe Modell die Einordnung und die Wissensdatenbank bedient.
 * Gut, weil es in den Grafikspeicher neben Sprachmodell und `d3:9b` passt, siehe xref:0024-16-gib-uma-fuer-die-gpu-reservieren.adoc[ADR 24].
 
+== Vor- und Nachteile der Optionen
+
+=== bge-m3
+
+* Gut, weil Zammad es für Ollama empfiehlt und es sehr schnell ist.
+* Schlecht, weil es älter ist als neuere Embedding-Modelle.
+
+=== qwen3-embedding
+
+* Gut, weil es neuer ist und in Vergleichen oft besser abschneidet.
+* Schlecht, weil es größer ist und Zammad es nicht empfiehlt.
+
 == Quellen
 
-* https://github.com/zammad/zammad/blob/develop/lib/ai/provider/ollama.rb[Quellcode des Ollama-Anbieters in Zammad]
+* https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/lib/ai/provider/ollama.rb[Quellcode des Ollama-Anbieters in Zammad], Stand Commit `3b0c2ed`
 * {repo}/docs/benchmarks.md[Benchmarks], Runde 3 UMA
 * {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 6

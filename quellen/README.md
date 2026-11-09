@@ -6,14 +6,14 @@ Hier liegen die Quellen, auf denen Katalog, Einordnung und Fallstudie beruhen. J
 
 | Ordner | Inhalt | Lizenz | Stand |
 |---|---|---|---|
-| [openrepair-data](openrepair-data) | Submodul mit den Datensätzen der Open Repair Alliance, Open Repair Data v0.3 vom Juli 2026 | CC BY-SA 4.0 | Commit `d1b2ab5` vom 21.10.2026 |
-| [openrepair-datastandard](openrepair-datastandard) | Submodul mit dem Open Repair Data Standard samt PDFs der Versionen 0.1 bis 0.3 | CC BY-SA 4.0 | Commit `c1a1f29` vom 30.05.2024 |
+| [openrepair-data](https://github.com/openrepair/data/tree/d1b2ab5a7b05c96645f5d4afec7951fc912639e1) | Submodul mit den Datensätzen der Open Repair Alliance, Open Repair Data v0.3 vom Juli 2026 | CC BY-SA 4.0 | Commit `d1b2ab5` vom 21.10.2026 |
+| [openrepair-datastandard](https://github.com/openrepair/datastandard/tree/c1a1f2979937a3a481782d3afbde1b62f9b24b58) | Submodul mit dem Open Repair Data Standard samt PDFs der Versionen 0.1 bis 0.3 | CC BY-SA 4.0 | Commit `c1a1f29` vom 30.05.2024 |
 
 ## anstiftung
 
 | Ort | Inhalt | Stand |
 |---|---|---|
-| [../mapped-repair-events](../mapped-repair-events) | Submodul mit dem Quellcode von reparatur-initiativen.org, darin `database.sql` mit 386 Kategorien | GPL-3.0 |
+| [../mapped-repair-events](https://github.com/anstiftung/mapped-repair-events/tree/a507956b91fca2f30dd372e847f015a24138abf7) | Submodul mit dem Quellcode von reparatur-initiativen.org, darin `database.sql` mit 386 Kategorien | GPL-3.0 |
 | [anstiftung/laufzettel-erstellen.html](anstiftung/laufzettel-erstellen.html) | Seite "Laufzettel erstellen", gespeichert am 06.11.2026, ohne Token der Sitzung und ohne Anmeldenamen | 06.11.2026 |
 | [anstiftung/kategorien.csv](anstiftung/kategorien.csv) | 1.208 Kategorien aus dem Formular, 21 davon unbestätigt | 06.11.2026 |
 | [anstiftung/marken.csv](anstiftung/marken.csv) | 3.379 Marken aus dem Formular | 06.11.2026 |
@@ -33,7 +33,7 @@ Die Liste in `database.sql` ist nicht aktuell, das Formular enthält deutlich me
 
 | Ordner | Inhalt | Lizenz | Stand |
 |---|---|---|---|
-| [zammad](zammad) | Submodul mit dem Quellcode von Zammad, flach geklont, Zweig `develop`, Version 7.4.x in Entwicklung | AGPL-3.0 | Commit `3b0c2ed` vom 09.11.2026 |
+| [zammad](https://github.com/zammad/zammad/tree/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8) | Submodul mit dem Quellcode von Zammad, flach geklont, Zweig `develop`, Version 7.4.x in Entwicklung | AGPL-3.0 | Commit `3b0c2ed` vom 09.11.2026 |
 
 Wichtig für MANUEL sind die KI-Agenten in `app/models/ai/agent/type/`, die Anbieter in `lib/ai/provider/` und die Texterkennung in Bildern in `app/services/service/ai/ticket/pre_process_article_content.rb`. Der Zweig `develop` kann Funktionen enthalten, die in unserer Version noch fehlen.
 

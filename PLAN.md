@@ -171,7 +171,7 @@ Die Zuordnung stammt aus den Open Repair Data vom Juli 2026. Dort steht bei jede
 
 ### Stammdaten für die Felder im Ticket
 
-Die Datei [config/sql/init/database.sql](mapped-repair-events/config/sql/init/database.sql) enthält die Wertelisten der Laufzettel. Sie ist die verbindliche Quelle für die Auswahlwerte in Zammad und für das JSON-Schema der Prompts. Wenn wir dieselben Werte und IDs nutzen, lassen sich Tickets ohne Nacharbeit als Laufzettel übertragen.
+Die Datei [config/sql/init/database.sql](https://github.com/anstiftung/mapped-repair-events/blob/a507956b91fca2f30dd372e847f015a24138abf7/config/sql/init/database.sql) enthält die Wertelisten der Laufzettel. Sie ist die verbindliche Quelle für die Auswahlwerte in Zammad und für das JSON-Schema der Prompts. Wenn wir dieselben Werte und IDs nutzen, lassen sich Tickets ohne Nacharbeit als Laufzettel übertragen.
 
 | Feld in Zammad | Feld im Laufzettel | Werte aus der Datenbank |
 |---|---|---|
@@ -393,7 +393,7 @@ git push
 - [ ] Kennzahlen aus dem Antrag erheben, also Reparaturquote, Reparaturen durch Gäste und neue Engagierte, Rückmeldungen zu Vorschlägen und gemeldete Reparaturen
 - [ ] Weitere Zahlen über die Zeit erheben, also Geräte je reparierender Person und Termin sowie Geräte je Gast, und vertagte Geräte über die Tags der Termine verfolgen
 - [ ] Dokumentation in docs/ vervollständigen, sodass andere Reparaturinitiativen MANUEL nachbauen können
-- [ ] MANUEL als Fallstudie in [case-study](case-study/manuel.adoc) dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](datenpotenzialanalyse-repairc-cafe-gt/README.md), siehe [ADR 30](docs/adr/0030-rahmen-der-fallstudie-festlegen.adoc). Sie entsteht vom Groben zum Feinen
+- [ ] MANUEL als Fallstudie in [case-study](case-study/manuel.adoc) dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt/src/commit/cf02f276f6a473529921b643a62e77b6ec245550/README.md), siehe [ADR 30](docs/adr/0030-rahmen-der-fallstudie-festlegen.adoc). Sie entsteht vom Groben zum Feinen
   - [x] Stufe 1 im November 2026, Gliederung, Stichpunkte je Kapitel und Quellen. Die Durchsicht durch das Team steht aus
   - [ ] Stufe 2 im November und Dezember 2026, Reihenfolge der Absätze, Abbildungen und fehlende Daten wie Läufe für das Beispiel k01 und die Strommessung
   - [ ] Stufe 3 von Dezember 2026 bis Februar 2027, ausformulieren, zuerst die Kapitel 2, 5, 6 und 9, dann parallel zur Erprobung die Kapitel 7 bis 10

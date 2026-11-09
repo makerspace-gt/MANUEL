@@ -6,7 +6,7 @@ Alle Zahlen stammen vom 06. und 07.11.2026, die Sollwerte aus der Kontrolle durc
 
 ## Vorgehen
 
-Die Arbeit folgt demselben Ablauf wie die [Datenpotenzialanalyse](../datenpotenzialanalyse-repairc-cafe-gt/README.md) von 2022, also den Schritten einer Datenanalyse nach Wickham und Grolemund. Neu ist, dass ein Modell einen Teil der Handarbeit übernimmt.
+Die Arbeit folgt demselben Ablauf wie die [Datenpotenzialanalyse](https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt/src/commit/cf02f276f6a473529921b643a62e77b6ec245550/README.md) von 2022, also den Schritten einer Datenanalyse nach Wickham und Grolemund. Neu ist, dass ein Modell einen Teil der Handarbeit übernimmt.
 
 | Schritt | Datenpotenzialanalyse 2022 | MANUEL 2026 |
 |---|---|---|

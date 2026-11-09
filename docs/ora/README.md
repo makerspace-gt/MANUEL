@@ -1,6 +1,6 @@
 # Auswertung der Open Repair Data
 
-Diese Tabellen entstehen mit [category_matrix.py](../../eval/ora/category_matrix.py) aus den [Open Repair Data](../../quellen/openrepair-data) der Open Repair Alliance, Version 0.3 vom Juli 2026. Wie die Quelle stehen sie unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Diese Tabellen entstehen mit [category_matrix.py](../../eval/ora/category_matrix.py) aus den [Open Repair Data](https://github.com/openrepair/data/tree/d1b2ab5a7b05c96645f5d4afec7951fc912639e1) der Open Repair Alliance, Version 0.3 vom Juli 2026. Wie die Quelle stehen sie unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 | Datei | Inhalt |
 |---|---|

@@ -6,14 +6,15 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
-Katalog, Einordnung und Hausarbeit beruhen auf Daten anderer, vor allem auf den Open Repair Data der Open Repair Alliance und der Liste der Kategorien im Laufzettel der anstiftung. Bisher wurden diese Quellen nur verlinkt, siehe xref:0007-kategorien-aus-dem-laufzettel-nehmen.adoc[ADR 7] und xref:0009-katalog-offen-veroeffentlichen.adoc[ADR 9]. Webseiten und Datensätze ändern sich aber. Die PDFs auf der Seite des Standards sind schon nicht mehr erreichbar, und die Liste in `database.sql` der anstiftung ist nicht aktuell.
+Katalog, Einordnung und Fallstudie beruhen auf Daten anderer, vor allem auf den Open Repair Data der Open Repair Alliance und der Liste der Kategorien im Laufzettel der anstiftung. Bisher wurden diese Quellen nur verlinkt, siehe xref:0007-kategorien-aus-dem-laufzettel-nehmen.adoc[ADR 7] und xref:0009-katalog-offen-veroeffentlichen.adoc[ADR 9]. Webseiten und Datensätze ändern sich aber. Die PDFs auf der Seite des Standards sind schon nicht mehr erreichbar, und die Liste in `database.sql` der anstiftung ist nicht aktuell.
 
 == Entscheidungskriterien
 
-* Jede Aussage der Hausarbeit lässt sich mit dem Stand der Quelle prüfen, auf dem sie beruht
+* Jede Aussage der Fallstudie lässt sich mit dem Stand der Quelle prüfen, auf dem sie beruht
 * Lizenzen und Rechte der Quellen bleiben gewahrt
 * Keine persönlichen Daten im öffentlichen Repo
 
@@ -26,10 +27,10 @@ Katalog, Einordnung und Hausarbeit beruhen auf Daten anderer, vor allem auf den 
 
 Die Quellen liegen im Ordner `quellen/` des Repos.
 
-* Was in einem eigenen Git-Repo liegt, wird als Submodul eingebunden. Das sind die Open Repair Data und der Open Repair Data Standard, beide unter CC BY-SA 4.0, sowie wie bisher mapped-repair-events.
+* Was in einem eigenen Git-Repo liegt, wird als Submodul eingebunden. Das sind die Open Repair Data und der Open Repair Data Standard, beide unter CC BY-SA 4.0, seit dem 09.11.2026 der Quellcode von Zammad unter AGPL-3.0 sowie wie bisher mapped-repair-events im Hauptordner des Repos.
 * Was nur als Webseite oder API vorliegt, wird mit Datum gespeichert und mit einem Skript ausgelesen, das daneben liegt. Das sind die Seite "Laufzettel erstellen" der anstiftung und die Kategorien von Restarters.net.
 * Persönliche Daten werden vorher entfernt. Die gespeicherte Seite der anstiftung verliert das Token der Sitzung und den Anmeldenamen.
-* Eigene Daten des Repair Café mit persönlichen Angaben wie die gepflegte Statistik mit Namensschildern bleiben lokal. In die Arbeit gehen nur Summen.
+* Eigene Daten des Repair Café mit persönlichen Angaben wie die gepflegte Statistik mit Namensschildern bleiben lokal. In die Arbeit gehen nur Summen. Die einzige Ausnahme sind die von Hand anonymisierten Tickets nach xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38] und xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[ADR 39].
 * Fremde Texte, deren Lizenz unklar ist, etwa Webseiten der Open Repair Alliance oder Dokumente anderer, bleiben lokal und werden zitiert.
 
 Dieses ADR löst den Teil von ADR 7 und ADR 9 ab, nach dem fremde Daten nur verlinkt werden.
@@ -39,6 +40,19 @@ Dieses ADR löst den Teil von ADR 7 und ADR 9 ab, nach dem fremde Daten nur verl
 * Gut, weil jede Auswertung mit dem Stand der Quelle im Repo nachgerechnet werden kann.
 * Gut, weil Submodule nur auf einen Commit verweisen und das Repo nicht aufblähen.
 * Schlecht, weil die Submodule beim Klonen mit `--recurse-submodules` geholt werden müssen.
+* Schlecht, weil GitHub Links auf Dateien in einem Submodul nicht auflöst. Solche Links zeigen deshalb auf denselben Commit beim Original.
+
+== Vor- und Nachteile der Optionen
+
+=== Quellen nur verlinken
+
+* Gut, weil das Repo klein bleibt und keine Fragen zu Lizenzen entstehen.
+* Schlecht, weil sich Webseiten und Datensätze ändern oder verschwinden und Aussagen dann nicht mehr prüfbar sind.
+
+=== Als Submodul oder als Datei mit Stand ablegen
+
+* Gut, weil jede Aussage mit dem Stand der Quelle prüfbar bleibt.
+* Schlecht, weil vor dem Ablegen Lizenz und persönliche Daten geprüft werden müssen.
 
 == Quellen
 

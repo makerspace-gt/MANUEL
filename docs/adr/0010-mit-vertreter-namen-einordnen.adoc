@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -39,6 +40,8 @@ Außerdem wurde getestet, erst die ORA-Gruppe und dann die Kategorie zu wählen.
 
 Jeder Eintrag erscheint in der Vorauswahl genau einmal, und zwar unter dem Namen oder Synonym, der dem Ticket am ähnlichsten ist. Beim Betreff Radiowecker heißt die Option für den Eintrag Radio also `Unterhaltungselektronik / Radiowecker`. Nach der Wahl wird der Name auf den Eintrag zurückgeführt. Die Beschreibungen des Katalogs sieht das Modell nicht.
 
+Vertreter-Namen entstehen je Ticket aus der Ähnlichkeitssuche und setzen den Weg über n8n voraus. Der Ticket Categorizer von Zammad zeigt jede Option immer unter demselben Namen. Zum Start nach xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40] bekommt er deshalb einen festen Namen je Eintrag, ebenfalls ohne Beschreibung.
+
 Die Vertreter-Namen treffen fast so oft wie die Formularnamen, machen das Modell aber bei 45 Tickets mehr sicher, bei gleicher Quote von 92 Prozent. Sie haben die wenigsten schweren Fehler unter den Verfahren mit allen Einträgen.
 
 === Konsequenzen
@@ -48,6 +51,11 @@ Die Vertreter-Namen treffen fast so oft wie die Formularnamen, machen das Modell
 * Schlecht, weil ein ungeschicktes Synonym schadet. Druckreiniger als Synonym machte aus dem Drucker einen Hochdruckreiniger.
 
 == Vor- und Nachteile der Optionen
+
+=== Vertreter-Namen
+
+* Gut, weil jeder Eintrag einmal und unter dem passendsten Namen erscheint, mit den wenigsten schweren Fehlern.
+* Schlecht, weil die Namen je Ticket neu entstehen und das nur mit eigener Ähnlichkeitssuche geht, nicht im Categorizer von Zammad.
 
 === Beschreibungen für das Modell
 

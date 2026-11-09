@@ -257,6 +257,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Für jeden Auswahlwert eine kurze Beschreibung hinterlegen, weil die Agenten sie als Kontext nutzen
 - [ ] Zusätzliche Felder aus der Datenpotenzialanalyse anlegen, also wer repariert hat, Dauer der Reparatur, wieder aufgenommen und Werbung durch
 - [ ] Mit der anstiftung klären, ob database.sql dem aktuellen Stand der Kategorien und Marken auf reparatur-initiativen.org entspricht
+- [ ] Der anstiftung vorschlagen, die Kategorie mit dem abwertenden Namen in Radiorekorder umzubenennen, siehe [ADR 12](docs/adr/0012-keine-abwertenden-begriffe-verwenden.adoc)
 - [ ] Feld für die Einwilligung in den Newsletter anlegen
 - [ ] Über [Core Workflows](https://admin-docs.zammad.org/en/latest/system/core-workflows.html) nur die Felder zeigen, die beim Repair Café gerade gebraucht werden, zum Beispiel Lösung und Ergebnis erst nach der Reparatur
 - [ ] [Übersichten](https://admin-docs.zammad.org/en/latest/manage/overviews.html) für das Repair Café anlegen, etwa Termine des nächsten Repair Cafés und offene Reparaturen

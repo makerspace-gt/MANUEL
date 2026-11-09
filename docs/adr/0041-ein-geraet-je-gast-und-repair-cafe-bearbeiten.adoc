@@ -1,0 +1,56 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0041]]
+= 0041 Ein Gerät je Gast und Repair Café bearbeiten
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-09
+Beteiligte:: Michael Prange und das Team in der Planung vom 09.11.2026
+
+== Kontext und Problem
+
+Manche Anfragen nennen mehrere Geräte. Nach xref:0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[ADR 34] bekommt jedes Gerät ein eigenes Ticket, und die Kette aus xref:0006-gegenstaende-erst-herausziehen.adoc[ADR 6] erkennt mehrere Geräte in einer Nachricht, bisher bei 17 von 21 aufgeteilten Anfragen. Offen war, ob alle Geräte eines Gastes am selben Tag drankommen. Die Termine sind knapp, ihre Zahl folgt aus den Helfenden nach xref:0026-terminkapazitaet-per-formel-berechnen.adoc[ADR 26].
+
+== Entscheidungskriterien
+
+* Möglichst viele Gäste kommen an einem Tag dran
+* Eine klare Regel, die Gäste verstehen
+* Wenig Aufwand bei der Planung
+
+== Betrachtete Optionen
+
+* Alle Geräte eines Gastes am selben Tag
+* Ein Gerät je Gast und Repair Café, weitere an späteren Tagen
+* Je nach freier Kapazität entscheiden
+
+== Entscheidung
+
+Wir bearbeiten je Gast und Repair Café ein Gerät. Nennt eine Anfrage mehrere Geräte, teilen die Engagierten das Ticket nach ADR 34 auf. Der Gast bekommt einen Hinweis, dass wir pro Termin nur ein Gerät bearbeiten. MANUEL entwirft den Text, ein Mensch prüft ihn und schickt ihn ab, wie es xref:0017-einen-menschen-entscheiden-lassen.adoc[ADR 17] verlangt. Weitere Geräte bekommen Termine an späteren Repair Cafés.
+
+=== Konsequenzen
+
+* Gut, weil mehr Gäste einen Termin bekommen und die Planung einfach bleibt.
+* Schlecht, weil Gäste mit mehreren Geräten öfter kommen müssen.
+* Schlecht, weil MANUEL mehrere Geräte zuverlässig erkennen muss. Übersieht es eines, fällt das erst den Engagierten auf.
+
+== Vor- und Nachteile der Optionen
+
+=== Alle Geräte am selben Tag
+
+* Gut, weil Gäste nur einmal kommen.
+* Schlecht, weil wenige Gäste viele Termine belegen.
+
+=== Ein Gerät je Gast und Repair Café
+
+* Gut, weil die Termine gerecht verteilt werden.
+* Schlecht, weil sich Reparaturen mehrerer Geräte über Wochen ziehen.
+
+=== Je nach Kapazität
+
+* Gut, weil freie Termine genutzt werden.
+* Schlecht, weil die Regel für Gäste schwer vorherzusehen ist und jede Planung eine Einzelentscheidung braucht.
+
+== Quellen
+
+* xref:0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[ADR 34] und xref:0006-gegenstaende-erst-herausziehen.adoc[ADR 6]
+* Planung mit fünf Engagierten am 09.11.2026

@@ -124,7 +124,7 @@ Feste Regeln sind die Plätze pro Slot und dass 14:00 Uhr nur Kleinigkeiten beko
 
 Das System läuft mit 16 GiB UMA. Damit passen `qwen3.6:35b-a3b`, `d3:9b` und `bge-m3` zusammen auf die GPU, ein Wechsel würde sonst 13 bis 26 Sekunden kosten. Ob alle Modelle dauerhaft geladen bleiben, entscheiden wir im Betrieb.
 
-Eine Anfrage kann mehrere Geräte nennen. Das Decision-Modell erkennt das vorab, das Sprachmodell listet die Geräte auf, und die Engagierten teilen das Ticket auf. Jedes Gerät bekommt ein eigenes Ticket, damit Slots, Ergebnis und Statistik pro Gerät stimmen.
+Eine Anfrage kann mehrere Geräte nennen. Das Decision-Modell erkennt das vorab, das Sprachmodell listet die Geräte auf, und die Engagierten teilen das Ticket auf. Jedes Gerät bekommt ein eigenes Ticket, damit Slots, Ergebnis und Statistik pro Gerät stimmen. Je Gast und Repair Café bearbeiten wir ein Gerät. Der Gast bekommt dazu einen Hinweis, den MANUEL entwirft und ein Mensch schickt, weitere Geräte kommen an späteren Repair Cafés dran, siehe [ADR 41](docs/adr/0041-ein-geraet-je-gast-und-repair-cafe-bearbeiten.adoc).
 
 Am Ende soll es für alle so bequem wie möglich sein. Im Zweifel bekommt ein Gast die Zeit, die ihm am wenigsten Umstände macht, und bestätigte Termine bleiben unverändert, wenn neu geplant wird.
 

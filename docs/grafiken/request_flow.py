@@ -64,7 +64,7 @@ arrow([(CX, 224), (CX, 252)])
 # Einordnen
 box(250, 254, 500, 72, 'manuel', 'Einordnen und Felder vorschlagen', 'Kategorie, Marke, Bezeichnung, Defekt\nauch vom Foto des Typenschilds', 'ADR 34, 40')
 # Split
-box(20, 254, 190, 90, 'mensch', 'Aufteilen', 'mehrere Geräte genannt\nMANUEL erkennt sie', 'ADR 6, 34')
+box(20, 254, 190, 114, 'mensch', 'Aufteilen', 'mehrere Geräte genannt\nHinweis an den Gast\nweitere an späteren Tagen', 'ADR 34, 41')
 arrow([(250, 290), (212, 290)])
 arrow([(115, 254), (115, 188), (248, 188)], dashed=True, label='je Gerät ein Ticket', lx=124, ly=210, anchor='start')
 # Rückfrage

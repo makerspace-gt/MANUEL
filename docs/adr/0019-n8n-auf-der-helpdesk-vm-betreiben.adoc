@@ -7,6 +7,7 @@ Status:: angenommen
 Datum:: 2026-10-22
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -25,12 +26,24 @@ Für Aufgaben außerhalb von Zammad braucht MANUEL Workflows, etwa für Nuudel, 
 
 == Entscheidung
 
-n8n läuft selbst gehostet auf der Helpdesk-VM neben Zammad. Dort liegen die Zugangsdaten im Rechenzentrum statt in der offenen Werkstatt. Workflows ohne Sprachmodell laufen auch bei Neustart oder Ausfall des Mini-PCs, und Traefik, resticker und Uptime Kuma sind dort schon eingerichtet.
+n8n läuft selbst gehostet auf der Helpdesk-VM neben Zammad. Dort liegen die Zugangsdaten im Rechenzentrum statt in der offenen Werkstatt. Workflows ohne Sprachmodell laufen auch bei Neustart oder Ausfall des Mini-PCs. Traefik und resticker kommen mit der neuen Helpdesk-VM aus Stufe 1 des Plans für den Neuaufbau der IT, Uptime Kuma läuft ab Stufe 2 auf einer eigenen Monitoring-VM. Bei der Entscheidung waren diese Dienste noch auf der alten VM eingerichtet.
 
 === Konsequenzen
 
 * Gut, weil der Mini-PC ein reiner Rechenknecht für die Modelle bleibt.
 * Schlecht, weil n8n unter der Sustainable Use License steht. Sie erlaubt den Betrieb für eigene Zwecke, ist aber keine Open-Source-Lizenz.
+
+== Vor- und Nachteile der Optionen
+
+=== Helpdesk-VM
+
+* Gut, weil Zugangsdaten im Rechenzentrum liegen und Workflows ohne Modell weiterlaufen, wenn der Mini-PC aus ist.
+* Schlecht, weil jeder Aufruf eines Modells über NetBird zum Mini-PC geht.
+
+=== Mini-PC
+
+* Gut, weil n8n direkt neben den Modellen läuft.
+* Schlecht, weil Zugangsdaten dann in der offenen Werkstatt liegen und alle Workflows mit dem Mini-PC ausfallen.
 
 == Quellen
 

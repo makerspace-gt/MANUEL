@@ -16,7 +16,8 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 
 === Zeitraum und Termine
 
-* Echtbetrieb ab Dezember 2026, Termine am ersten und dritten Samstag, außer in der Winterpause
+* Echtbetrieb ab dem 05.12.2026 mit den Terminen am 05.12., 19.12., 16.01., 06.02. und 20.02. Der 02.01. fällt in die Winterpause.
+* Steigt MANUEL nach <<adr-0040>> von Zammad auf n8n um, weist die Fallstudie die Zeit davor und danach getrennt aus.
 * Was in dieser Zeit läuft und was noch nicht
 
 === Reparaturquote

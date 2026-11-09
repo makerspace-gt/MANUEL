@@ -65,6 +65,13 @@ Dieses Kapitel steht noch in Stichpunkten. Es erzählt fünf Wendepunkte, alle 1
 .Trefferquote der Verfahren nach Sicherheit des Modells
 image::../../docs/grafiken/einordnung-verfahren-hell.svg[Trefferquote der Verfahren,width=100%]
 
+=== Weg in den Betrieb
+
+* Der gemessene Weg braucht die Sicherheit von `d3:9b`. Der Ticket Categorizer von Zammad liefert sie nicht <<adr-0040>>.
+* Zum Start am 05.12.2026 ordnet trotzdem der Categorizer mit dem Sprachmodell ein, mit einer kürzeren Liste aus Vertreter-Namen. Alle 1.089 Einträge sind zu viele.
+* Ein Vorabtest an den 745 geprüften Tickets zeigt vorher, wie viele falsche Einträge zu erwarten sind und welche Liste am besten passt.
+* Ab 5 Prozent falscher Einträge oder auf Wunsch des Teams folgt der Umstieg auf n8n mit Sicherheit und Rückfrage.
+
 === Wirkung der Aufbereitung
 
 * Vergleich roh gegen aufbereitet wie Tabelle 2 der Datenpotenzialanalyse, aus dem Abschnitt „Wirkung der Aufbereitung“ in {repo}/docs/einordnung.md[docs/einordnung.md]

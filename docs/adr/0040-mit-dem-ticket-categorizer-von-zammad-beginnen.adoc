@@ -67,6 +67,6 @@ xref:0018-felder-mit-ki-agenten-von-zammad-fuellen.adoc[ADR 18] gilt damit weite
 
 == Quellen
 
-* {repo}/quellen/zammad/app/models/ai/agent/type/ticket_categorizer.rb[Ticket Categorizer im Quellcode von Zammad], Ergebnis nur der Wert ohne Sicherheit, Stand Commit `3b0c2ed`
+* https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/app/models/ai/agent/type/ticket_categorizer.rb[Ticket Categorizer im Quellcode von Zammad], Ergebnis nur der Wert ohne Sicherheit, Stand Commit `3b0c2ed`
 * {repo}/docs/einordnung.md[Einordnung von Tickets], ABC-Analyse der Einträge
 * Planung mit fünf Engagierten am 09.11.2026

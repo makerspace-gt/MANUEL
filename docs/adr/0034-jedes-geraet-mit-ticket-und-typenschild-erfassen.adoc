@@ -63,4 +63,4 @@ Die Exporte aus Zammad von 2024 bis 2026 enthalten 791 Tickets. Die Statistik z�
 * {repo}/PLAN.md[PLAN], Aufgabe "Felder füllen"
 * https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/app/services/service/ai/ticket/pre_process_article_content.rb[Texterkennung in Zammad], Stand Commit `3b0c2ed`
 * https://ollama.com/library/qwen3.6/tags[qwen3.6 bei Ollama], Angabe „Text, Image input“, abgerufen am 08.11.2026
-* {repo}/quellen/openrepair-datastandard[Open Repair Data Standard], Felder `brand`, `year_of_manufacture` und `product_age`
+* https://github.com/openrepair/datastandard/tree/c1a1f2979937a3a481782d3afbde1b62f9b24b58[Open Repair Data Standard], Felder `brand`, `year_of_manufacture` und `product_age`

@@ -66,7 +66,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 ****
 * {repo}/PLAN.md[PLAN] mit Aufgaben, Grundsätzen und Phasen
 * Entscheidungen <<adr-0002>>, <<adr-0017>>, <<adr-0018>>, <<adr-0034>>, <<adr-0035>>, <<adr-0040>>
-* Quellcode von Zammad in {repo}/quellen/zammad[quellen/zammad], die Agenten unter `app/models/ai/agent/type/`
+* Quellcode von Zammad als Submodul `quellen/zammad`, die Agenten unter https://github.com/zammad/zammad/tree/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/app/models/ai/agent/type[app/models/ai/agent/type]
 ****
 
 [NOTE]

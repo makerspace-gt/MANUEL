@@ -84,6 +84,6 @@ Der Standard kennt sechs Hindernisse, die API von Restarters nimmt aber nur fün
 
 == Quellen
 
-* {repo}/quellen/openrepair-datastandard[Open Repair Data Standard] mit den sechs Hindernissen
+* https://github.com/openrepair/datastandard/tree/c1a1f2979937a3a481782d3afbde1b62f9b24b58[Open Repair Data Standard] mit den sechs Hindernissen
 * Open Repair Data Standard, Feld _problem_, „Free text. Personal data should be removed“
 * Zählungen aus den lokalen Exporten vom 08.11.2026, nur Summen

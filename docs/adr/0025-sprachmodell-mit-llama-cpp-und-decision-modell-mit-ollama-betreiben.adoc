@@ -7,6 +7,7 @@ Status:: angenommen
 Datum:: 2026-11-08
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
 
 == Kontext und Problem
 
@@ -45,7 +46,13 @@ Das Sprachmodell läuft mit llama.cpp über Vulkan mit `-ub 1024` und MTP. `d3:9
 
 === llama.cpp für alle Modelle
 
+* Gut, weil ein Server reicht und das Sprachmodell den Vorsprung von llama.cpp nutzt.
 * Schlecht, weil `d3:9b` dort nicht läuft.
+
+=== llama.cpp für das Sprachmodell, Ollama für `d3:9b` und `bge-m3`
+
+* Gut, weil jedes Modell auf der Engine läuft, auf der es am besten oder überhaupt läuft.
+* Schlecht, weil zwei Server gepflegt werden und sich den Grafikspeicher teilen.
 
 == Quellen
 

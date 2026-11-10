@@ -1,0 +1,22 @@
+# Theme für das PDF der Fallstudie, eingebunden über :pdf-theme: in manuel.adoc
+extends: default
+header:
+  height: 0.65in
+  line-height: 1
+  recto:
+    left:
+      content: image:bilder/manuel-logo.svg[pdfwidth=1.1in]
+  verso:
+    left:
+      content: $header-recto-left-content
+footer:
+  recto:
+    left:
+      content: 'link:https://github.com/makerspace-gt/MANUEL/tree/main/case-study/kapitel[Auf GitHub bearbeiten]'
+    right:
+      content: '{page-number}'
+  verso:
+    left:
+      content: '{page-number}'
+    right:
+      content: $footer-recto-left-content

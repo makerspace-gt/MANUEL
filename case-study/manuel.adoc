@@ -32,6 +32,9 @@ Michael Prange
 :bibtex-style: chicago-author-date-de
 :bibtex-locale: de-DE
 :bibtex-order: alphabetical
+:docinfo: shared
+:pdf-themesdir: {docdir}
+:pdf-theme: manuel
 
 [.lead]
 Eine Fallstudie darüber, wie ein lokales Sprachmodell die Engagierten des Repair Café beim Einordnen und Bearbeiten von Anfragen unterstützt. MANUEL steht für Minimale AI für Nutzer-Unterstützung auf Einstiegs-Level.

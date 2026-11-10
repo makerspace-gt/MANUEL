@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, und 2026-11-10, neue Regel für Änderungen
 
 == Kontext und Problem
 
@@ -29,7 +29,7 @@ MANUEL ist über Wochen in kleinen Schritten entstanden. Entscheidungen stehen b
 
 Jede Entscheidung, die das Verhalten von MANUEL, die Daten oder die Zusammenarbeit mit anderen bestimmt, bekommt ein ADR in `docs/adr/`. Die Vorlage folgt MADR auf Deutsch, weil viele Entscheidungen auf Messreihen mit mehreren Varianten beruhen und MADR die betrachteten Optionen mit Vor- und Nachteilen festhält. Die Dateien sind in AsciiDoc geschrieben und heißen `NNNN-verbphrase.adoc`.
 
-Ein ADR wird nicht nachträglich umgeschrieben. Ändert sich eine Entscheidung, entsteht ein neues ADR, und das alte bekommt den Status abgelöst mit Verweis auf das neue.
+MANUEL ist unser erstes Projekt mit ADRs und mit KI. Die Folgen einzelner Entscheidungen lassen sich vorher oft nicht sicher einschätzen. Deshalb dürfen ADRs während dieses Projekts auch inhaltlich geändert werden. Jede Änderung bekommt die Zeile `Überarbeitet::` mit Datum und Grund. Bei größeren Kehrtwenden entsteht weiter ein neues ADR, und das alte bekommt den Status abgelöst mit Verweis auf das neue, weil das nachvollziehbarer ist.
 
 === Konsequenzen
 

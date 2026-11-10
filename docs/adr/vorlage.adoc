@@ -4,7 +4,7 @@
 Status:: vorgeschlagen, angenommen, verworfen oder abgelöst durch xref:NNNN-titel.adoc[ADR NNNN]
 Datum:: JJJJ-MM-TT
 Beteiligte:: wer entschieden hat
-Überarbeitet:: nur bei einer Klarstellung, JJJJ-MM-TT und kurzer Grund
+Überarbeitet:: nur bei einer Änderung, JJJJ-MM-TT und kurzer Grund
 
 == Kontext und Problem
 

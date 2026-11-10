@@ -219,13 +219,16 @@ systemctl enable tailscaled.service
 sudo systemctl enable --now tailscaled
 ```
 
-3. Das Gerät anmelden. Der Befehl gibt einen Link aus und wartet, bis die Anmeldung bestätigt ist.
+3. In der Verwaltung des Tailnets des Vereins unter Settings, Keys einen Auth-Key erzeugen. Einmalig verwendbar reicht, Ephemeral bleibt aus, sonst verschwindet das Gerät bei einer Trennung. Nie ein persönliches Konto verwenden, sonst hängt der Zugang an einer Person.
+4. Das Gerät an der Konsole anmelden. `read -s` zeigt den Schlüssel beim Tippen nicht an, und er landet nicht in der Shell-History.
 
 ```bash
-sudo tailscale up --hostname=manuel
+read -rsp "Auth-Key: " TS_KEY; echo
+sudo tailscale up --hostname=manuel --auth-key="$TS_KEY"
+unset TS_KEY
 ```
 
-4. Den Link im Browser öffnen, mit dem Konto des Vereins anmelden und das Gerät bestätigen. Nie ein persönliches Konto verwenden, sonst hängt der Zugang an einer Person.
+   Ohne Auth-Key gibt `sudo tailscale up --hostname=manuel` einen Link aus, über den sich das Gerät im Browser bestätigen lässt.
 5. In der Verwaltung des Tailnets beim Gerät `manuel` den Ablauf des Schlüssels abschalten. Sonst muss sich der Mini-PC nach 180 Tagen neu anmelden.
 6. Prüfen, dass das Gerät verbunden ist, und sich von einem anderen Gerät im Tailnet per SSH anmelden.
 

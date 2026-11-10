@@ -1,0 +1,7 @@
+[Unit]
+Description=Log load, memory, GPU, temperatures and power of MANUEL
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/manuel/metrics.env
+ExecStart=/usr/bin/python3 /usr/libexec/manuel/metrics_log.py

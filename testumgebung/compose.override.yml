@@ -1,0 +1,34 @@
+# Test environment on MANUEL, see docs/adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc
+# and docs/inbetriebnahme.md step 7. Used together with docker-compose.yml of zammad-docker-compose.
+# Every port is bound to 127.0.0.1 only. Admins reach the services through an SSH tunnel.
+
+services:
+  zammad-nginx:
+    ports: !override
+      - "127.0.0.1:8080:8080"
+
+  zammad-elasticsearch:
+    environment:
+      ES_JAVA_OPTS: "-Xms1g -Xmx2g"
+
+  # Catches every mail of the test instance, nothing reaches real guests
+  mailpit:
+    image: docker.io/axllent/mailpit:v1.33.1
+    restart: always
+    ports:
+      - "127.0.0.1:8025:8025"
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:2.45.0
+    restart: always
+    environment:
+      GENERIC_TIMEZONE: Europe/Berlin
+      TZ: Europe/Berlin
+      N8N_SECURE_COOKIE: "false"
+    ports:
+      - "127.0.0.1:5678:5678"
+    volumes:
+      - n8n-data:/home/node/.n8n
+
+volumes:
+  n8n-data:

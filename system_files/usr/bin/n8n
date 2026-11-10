@@ -1,0 +1,10 @@
+#!/bin/bash
+# Runs the n8n CLI inside the container "n8n" of the test environment, see docs/inbetriebnahme.md step 7.
+set -euo pipefail
+container=$(sudo podman ps --filter label=com.docker.compose.service=n8n --format '{{.Names}}' | head -n 1)
+if [[ -z "$container" ]]; then
+    echo "Der Container n8n läuft nicht. Die Testumgebung startet wie in docs/inbetriebnahme.md, Schritt 7." >&2
+    exit 1
+fi
+tty=(-i); [[ -t 0 && -t 1 ]] && tty=(-it)
+exec sudo podman exec "${tty[@]}" "$container" n8n "$@"

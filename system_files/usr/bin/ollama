@@ -1,0 +1,9 @@
+#!/bin/bash
+# Runs the ollama CLI inside the container "ollama", so that "ollama run" works like on the host.
+set -euo pipefail
+if ! sudo podman container exists ollama || [[ "$(sudo podman inspect -f '{{.State.Running}}' ollama)" != "true" ]]; then
+    echo "Der Container ollama läuft nicht. Starten mit: sudo podman start ollama" >&2
+    exit 1
+fi
+tty=(-i); [[ -t 0 && -t 1 ]] && tty=(-it)
+exec sudo podman exec "${tty[@]}" ollama ollama "$@"

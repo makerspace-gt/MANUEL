@@ -1,0 +1,15 @@
+#!/bin/bash
+# Opens the Rails console of the Zammad test instance, or runs "rails runner" with the given code.
+#   zammad                        console
+#   zammad 'puts Version.get'     rails runner
+set -euo pipefail
+container=$(sudo podman ps --filter label=com.docker.compose.service=zammad-railsserver --format '{{.Names}}' | head -n 1)
+if [[ -z "$container" ]]; then
+    echo "Die Testinstanz von Zammad läuft nicht. Sie startet wie in docs/inbetriebnahme.md, Schritt 7." >&2
+    exit 1
+fi
+tty=(-i); [[ -t 0 && -t 1 ]] && tty=(-it)
+if [[ $# -eq 0 ]]; then
+    exec sudo podman exec "${tty[@]}" "$container" rails console
+fi
+exec sudo podman exec "${tty[@]}" "$container" rails runner "$@"

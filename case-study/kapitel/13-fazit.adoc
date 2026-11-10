@@ -21,6 +21,13 @@ Dieses Kapitel entsteht zum Schluss aus den Ergebnissen der Kapitel.
 * Die Erprobung ist kurz und die Zahlen sind klein.
 * Ein einzelner Fall lässt sich nur begrenzt auf andere Initiativen übertragen.
 
+=== Erfahrungen mit der Arbeitsweise
+
+* MANUEL ist unser erstes Projekt mit KI und mit ADRs. Die Folgen einzelner Entscheidungen ließen sich vorher oft nicht sicher einschätzen. ADRs dürfen deshalb geändert werden, größere Kehrtwenden lösen sie ab <<adr-0001>>.
+* Als Gruppe zu planen war schwierig, weil nicht alle auf demselben Stand waren. Ein Rundgang durch die Stationen und das Ablaufdiagramm in <<landkarte>> haben geholfen.
+* Die KI einfach machen zu lassen war nicht sinnvoll. Am 09.11.2026 erfasste der Agent Hermes Nachrichten weitgehend allein. Die Ergebnisse brauchten trotzdem eine Durchsicht, und der Weg ließ sich schlecht nachvollziehen, siehe {repo}/hermes/README.md[hermes/README.md].
+* Fallstudie und ADRs haben sich bewährt, weil sie Entscheidungen und Irrwege nachvollziehbar machen.
+
 === Nachnutzung durch andere Initiativen
 
 * Image auf Basis von uCore, Katalog unter CC BY-SA 4.0, Skripte und ADRs im Repo

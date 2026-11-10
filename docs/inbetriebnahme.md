@@ -230,7 +230,13 @@ unset TS_KEY
 
    Ohne Auth-Key gibt `sudo tailscale up --hostname=manuel` einen Link aus, über den sich das Gerät im Browser bestätigen lässt.
 5. In der Verwaltung des Tailnets beim Gerät `manuel` den Ablauf des Schlüssels abschalten. Sonst muss sich der Mini-PC nach 180 Tagen neu anmelden.
-6. Prüfen, dass das Gerät verbunden ist, und sich von einem anderen Gerät im Tailnet per SSH anmelden.
+6. Tailscale SSH einschalten. Dann prüft Tailscale beim Anmelden die SSH-Regeln in der Richtlinie des Tailnets, nicht die Schlüssel aus dem Image. Der normale SSH-Dienst auf Port 22 mit den Schlüsseln der Admins bleibt daneben bestehen.
+
+```bash
+sudo tailscale set --ssh
+```
+
+7. Prüfen, dass das Gerät verbunden ist, und sich von einem anderen Gerät im Tailnet per SSH anmelden.
 
 ```bash
 tailscale status

@@ -39,6 +39,10 @@ Dieses Kapitel entsteht zum Schluss aus den Ergebnissen der Kapitel.
 * Betrieb im Makerspace, Reparaturansätze und Anleitungen, Statistik für die Open Repair Alliance
 * Eigene Partnerschaft bei der Alliance, wenn die Übertragung läuft
 * Chatbot im Forum und Benachrichtigungen über Signal nach dem Ausblick im PLAN
+* Mehrere Modelle verbinden, recherchiert am 10.11.2026. Es gibt zwei Wege.
+** Abstimmen. Mehrere Modelle oder mehrere Läufe desselben Modells antworten, und die häufigste Antwort gilt. Schon das mehrfache Fragen eines Modells mit Abstimmung verbessert die Ergebnisse cite:[li-2024]. LLM-Blender wählt und verbindet die besten Antworten mehrerer Modelle cite:[jiang-2023]. Für die Einordnung wäre das leicht zu testen, weil der Vorabtest ohnehin mehrere Modelle gegeneinander laufen lässt. Es kostet aber ein Vielfaches an Rechenzeit.
+** Zusammenführen. Aus den Gewichten mehrerer Modelle entsteht ein neues, etwa mit MergeKit cite:[goddard-2024] oder durch Wissensfusion cite:[wan-2024]. Das ist eher Forschung als Betrieb und braucht Rechenleistung, die der Mini-PC nicht hat.
+* Modelle von Hugging Face lassen sich mit Ollama direkt laden und vergleichen cite:[hf-ollama].
 * Zuschuss für Ersatzteile. Einen bundesweiten Reparaturbonus gibt es nicht, die Länder und Städte regeln das unterschiedlich. Eine aktuelle Zusammenfassung bietet cite:[kaputt-reparaturbonus]. Für Gäste aus Gütersloh gilt derzeit keines der Programme. Gibt es eines, das wie in Thüringen eine Bestätigung des Repair Café verlangt, könnte MANUEL sie aus dem Ticket vorbereiten.
 * Für das Repair Café selbst haben wir im Bundesprogramm „Reparieren statt Wegwerfen“ einen Antrag unter dem Namen „GehT Weiter!“ gestellt.
 

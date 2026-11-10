@@ -295,3 +295,15 @@ Die Modelle aus [eval/models-decision.txt](../eval/models-decision.txt) schreibe
 - Eine Auswahl ist auf 2 bis 16 Optionen begrenzt, die Modellkarte nennt nur Englisch. Unsere 407 Kategorien brauchen deshalb mehrere Stufen.
 
 Wir wollen JEV weiterhin testen, haben aber noch keinen passenden Weg dafür.
+
+## Modelle von Hugging Face
+
+Ollama lädt GGUF-Dateien direkt von Hugging Face, siehe [Use Ollama with any GGUF Model on Hugging Face Hub](https://huggingface.co/docs/hub/ollama). So lassen sich Modelle und Quantisierungen vergleichen, die es in der Bibliothek von Ollama nicht gibt. Auf MANUEL leitet der Befehl `ollama` in den Container weiter.
+
+```bash
+ollama run hf.co/<benutzer>/<repo>
+ollama run hf.co/<benutzer>/<repo>:<quantisierung>
+```
+
+Ohne Angabe nimmt Ollama `Q4_K_M`, sofern das Repo sie enthält. Für Vergleiche gilt wie bei allen Läufen eine `lauf.json` nach [ADR 27](adr/0027-laeufe-reproduzierbar-festhalten.adoc).
+

@@ -1,0 +1,67 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0043]]
+= 0043 Eine Testumgebung auf MANUEL betreiben
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-10
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Vor dem Start am 05.12.2026 sind Fragen offen, die sich nur in einem laufenden Zammad klären lassen. Welche Version brauchen wir, gibt es Daumen bei KI-Agenten für Kennzahl 3 nach xref:0032-kennzahlen-der-erprobung-erheben.adoc[ADR 32], und wie gut wählt der echte Ticket Categorizer nach xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40]? Der PLAN sah dafür eine Test-VM vor, die OpenTofu bei Bedarf anlegt. Die gibt es noch nicht, und die Helpdesk-VM liegt auf dem kritischen Weg.
+
+== Entscheidungskriterien
+
+* Testen mit echten Daten aus dem Backup, ohne dass Gäste oder Postfächer erreicht werden
+* Kein Zugriff auf das laufende Zammad
+* Echte Daten sehen nur Admins
+* Andere können MANUEL vor dem Start ausprobieren
+
+== Betrachtete Optionen
+
+* Test-VM per OpenTofu wie im PLAN
+* Testgruppe im Echtsystem
+* Testumgebung auf MANUEL
+
+== Entscheidung
+
+Auf MANUEL läuft eine Testumgebung mit Zammad aus `zammad-docker-compose`, n8n, Mailpit und Open WebUI. Der Echtbetrieb bleibt auf der Helpdesk-VM, xref:0019-n8n-auf-der-helpdesk-vm-betreiben.adoc[ADR 19] gilt für ihn weiter. Die Ergänzung zur Compose-Datei liegt in `testumgebung/`.
+
+* Zammad bekommt ein Backup, das die Admins als Datei liefern. Direkt nach dem Einspielen und vor dem Start des Schedulers schaltet `testumgebung/disable_outbound.rb` alle Kanäle und Webhooks ab. Benachrichtigungen gehen nur noch an Mailpit, das jede Mail abfängt.
+* Alle Dienste sind nur an `127.0.0.1` gebunden. Admins erreichen Zammad, n8n und Mailpit über einen SSH-Tunnel.
+* Testende bekommen nur Open WebUI. Es erscheint über `tailscale serve` im Tailnet, und MANUEL wird mit ihnen geteilt. Die Richtlinie des Tailnets erlaubt ihnen nur diesen Dienst. Echte Daten sehen sie nicht.
+* Die Befehle `ollama`, `zammad` und `n8n` funktionieren im Terminal, obwohl die Dienste im Container laufen.
+
+Echte Tickets auf MANUEL sind nach xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2] erlaubt. Vor dem Umzug in den Makerspace braucht die SSD aber die Verschlüsselung nach xref:0016-eigenes-image-auf-basis-von-ucore-bauen.adoc[ADR 16]. Die Testinstanz kommt ins Verzeichnis von Verarbeitungstätigkeiten.
+
+=== Konsequenzen
+
+* Gut, weil Version, Agenten und Rückmeldung von Zammad vor dem Start geprüft werden können.
+* Gut, weil der Vorabtest auch den echten Ticket Categorizer nutzen kann.
+* Schlecht, weil Zammad mit Elasticsearch Speicher braucht, der den Modellen fehlt. Elasticsearch ist deshalb auf 2 GB begrenzt.
+* Schlecht, weil echte Daten auf einem zweiten System liegen. Nach dem Test wird die Instanz gelöscht.
+
+== Vor- und Nachteile der Optionen
+
+=== Test-VM per OpenTofu
+
+* Gut, weil sie Echtsystem und Modelle trennt.
+* Schlecht, weil OpenTofu und die VM erst entstehen müssen.
+
+=== Testgruppe im Echtsystem
+
+* Gut, weil nichts Neues aufgesetzt wird.
+* Schlecht, weil Fehler sofort echte Gäste treffen können.
+
+=== Testumgebung auf MANUEL
+
+* Gut, weil sie sofort neben den Modellen läuft und nichts nach außen schickt.
+* Schlecht, weil sie Speicher mit den Modellen teilt.
+
+== Quellen
+
+* https://github.com/zammad/zammad-docker-compose[zammad-docker-compose], im IT-Plan als Submodul unter `upstream/`
+* https://mailpit.axllent.org/[Mailpit]
+* https://tailscale.com/kb/1312/serve[Tailscale Serve] und https://tailscale.com/kb/1084/sharing[Geräte teilen]
+* {repo}/docs/inbetriebnahme.md[Inbetriebnahme des Mini-PCs], Schritt 7

@@ -30,7 +30,7 @@ Bis NetBird läuft, verbindet Tailscale den Mini-PC. Tailscale ist in uCore enth
 
 Tailscale SSH ist eingeschaltet. Wer sich darüber anmelden darf, regeln die SSH-Regeln in der Richtlinie des Tailnets, nicht die Schlüssel aus dem Image. Der normale SSH-Dienst mit den Schlüsseln der Admins bleibt daneben bestehen.
 
-Ollama und llama.cpp bleiben an `127.0.0.1` oder später an die Adresse von NetBird gebunden. Über Tailscale sind am 10.11.2026 nur SSH und die Namensauflösung LLMNR des Systems auf Port 5355 erreichbar. Sobald NetBird läuft, wird das Gerät aus dem Tailnet entfernt und `tailscaled` im Image wieder deaktiviert. ADR 20 bleibt das Ziel.
+Ollama und llama.cpp bleiben an `127.0.0.1` oder später an die Adresse von NetBird gebunden. Über Tailscale sind am 10.11.2026 nur SSH und die Namensauflösung LLMNR des Systems auf Port 5355 erreichbar. Für die Testumgebung nach xref:0043-eine-testumgebung-auf-manuel-betreiben.adoc[ADR 43] kommt Open WebUI über `tailscale serve` dazu. Testende bekommen MANUEL geteilt und dürfen nur diesen Dienst nutzen. Sobald NetBird läuft, wird das Gerät aus dem Tailnet entfernt und `tailscaled` im Image wieder deaktiviert. ADR 20 bleibt das Ziel.
 
 === Konsequenzen
 

@@ -91,5 +91,7 @@ include::../../docs/adr/0041-ein-geraet-je-gast-und-repair-cafe-bearbeiten.adoc[
 
 include::../../docs/adr/0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc[]
 
+include::../../docs/adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc[]
+
 :leveloffset: -2
 :sectnums:

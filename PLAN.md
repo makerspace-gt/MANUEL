@@ -68,7 +68,7 @@ Die Empfehlungen dieser Tabelle sind inzwischen entschieden und als ADR in [docs
 | Zugang zu Open WebUI | [Open WebUI](https://docs.openwebui.com/) über NetBird für Engagierte mit Konto | Über Traefik auf der Helpdesk-VM, die Open WebUI per NetBird erreicht |
 | Startmodell | [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) mit festem Tag statt latest. Als Mixture-of-Experts-Modell sind pro Token nur etwa 3B Parameter aktiv, was bei begrenzter Speicherbandbreite zählt. Mit 23 bis 24 GB passt es in den Speicher, und es versteht auch Bilder wie Fotos von Typenschildern | Varianten mit MTP oder q8_0 und das dichte qwen3.6:27b als Vergleich im Benchmark |
 | Hostname | Neuer Eintrag in der Inventardatei von it-infrastructure | |
-| Testinstanz für Zammad | Test-VM, die OpenTofu nur bei Bedarf anlegt | Direkt im Echtsystem mit eigener Testgruppe |
+| Testinstanz für Zammad | Test-VM, die OpenTofu nur bei Bedarf anlegt. Abgelöst durch eine Testumgebung auf MANUEL, siehe [ADR 43](docs/adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc) | Direkt im Echtsystem mit eigener Testgruppe |
 
 Laut [Zammad-Doku](https://admin-docs.zammad.org/en/latest/ai/provider.html#ollama) lässt sich Ollama direkt als KI-Anbieter mit URL und Modell eintragen. Zammad verbindet sich dabei selbst mit Ollama. Die Doku nennt keine Anmeldung oder TLS für Ollama, deshalb schützen wir den Zugang über NetBird.
 

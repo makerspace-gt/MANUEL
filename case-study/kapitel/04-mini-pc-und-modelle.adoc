@@ -27,6 +27,24 @@ Dieses Kapitel steht noch in Stichpunkten.
 * n8n übernimmt nur, was außerhalb von Zammad liegt <<adr-0019>>
 * Open WebUI hinter authentik für Tests und später den Chat
 
+[[schichten]]
+=== Die Schichten von MANUEL
+
+* MANUEL besteht aus Schichten, die aufeinander aufbauen. Jede lässt sich für sich austauschen, etwa die Engine, ohne das Modell zu wechseln.
+
+[cols="2,4,5",options="header"]
+|===
+|Schicht |Aufgabe |Beispiel bei MANUEL
+|Hardware |rechnet |Mini-PC mit Radeon 890M und 64 GB gemeinsamem Speicher
+|Betriebssystem |startet und aktualisiert alles |eigenes Image auf Basis von uCore <<adr-0016>>
+|Inferenz |führt ein Modell aus |Ollama und llama.cpp im Container <<adr-0025>>
+|Modell |liest und schreibt Text, wählt Werte, vergleicht Bedeutung |`qwen3.6:35b-a3b`, `d3:9b`, `bge-m3`
+|Harness |gibt dem Modell Auftrag, Kontext und Werkzeuge und prüft die Antwort |Ticket Categorizer von Zammad, Skripte in `eval/`, n8n, Hermes, Claude Code
+|Anwendung |dort arbeiten Menschen |Zammad, Open WebUI
+|===
+
+* Der Irrweg mit Hermes zeigt, dass die Schicht Harness entscheidet, wie gut ein Modell arbeitet. Dasselbe Modell lieferte mit festen Skripten nachvollziehbare Ergebnisse, als Agent mit viel Freiheit nicht.
+
 [[hardware]]
 === Mini-PC und Betriebssystem
 
@@ -38,6 +56,38 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 * `ollama-bench` und `llama-bench`, Prompts mit 512 und 4096 Tokens, mehrere Läufe
 * Was nicht gemessen wurde, etwa die Qualität der Antworten, die erst der Testsatz zeigt
+
+=== So laufen die Modelle
+
+* Ollama läuft im Container, nur an `127.0.0.1` gebunden. `OLLAMA_IGPU_ENABLE=1` ist nötig, sonst rechnet Ollama auf der CPU.
+
+[source,bash]
+----
+sudo podman run -d --name ollama --restart=always \
+  --device /dev/dri --cap-add PERFMON --security-opt label=disable \
+  -e OLLAMA_IGPU_ENABLE=1 -e OLLAMA_CONTEXT_LENGTH=32768 \
+  -v ollama:/root/.ollama -p 127.0.0.1:11434:11434 \
+  docker.io/ollama/ollama:latest
+----
+
+* Im Terminal von MANUEL funktioniert `ollama` wie auf dem Host, das Image leitet den Befehl in den Container. Modelle von Hugging Face lassen sich direkt laden.
+
+[source,bash]
+----
+ollama run qwen3.6:35b-a3b "Mein Wasserkocher schaltet sich nicht mehr ein. Was prüfe ich zuerst?"
+ollama run hf.co/<benutzer>/<repo>:<quantisierung>
+----
+
+* llama.cpp lief im Benchmark so, mit der Datei des Modells aus Ollama und MTP.
+
+[source,bash]
+----
+sudo podman run -d --name llamacpp-vulkan --security-opt label=disable \
+  --device /dev/dri -v <ordner-mit-gguf>:/models:ro -p 127.0.0.1:8080:8080 \
+  ghcr.io/ggml-org/llama.cpp:server-vulkan \
+  -m /models/<datei> -ngl 99 -c 32768 --parallel 1 --host 0.0.0.0 --port 8080 \
+  -ub 1024 --spec-type draft-mtp --spec-draft-n-max 2 --spec-draft-backend-sampling
+----
 
 === Engines im Vergleich
 
@@ -67,6 +117,8 @@ Dieses Kapitel steht noch in Stichpunkten.
 ****
 * Messungen in {repo}/docs/benchmarks.md[docs/benchmarks.md], Rohdaten in {repo}/eval/results[eval/results], Grafiken mit {repo}/eval/plot.py[plot.py]
 * Image in {repo}/Containerfile[Containerfile] und {repo}/build_files[build_files]
+* Benchmark mit {repo}/eval/bench.sh[bench.sh], alle Runden in {repo}/eval/runden.sh[runden.sh], etwa `LLAMA_ARGS="-ub 1024 --spec-type draft-mtp" ./bench.sh lang-qwen36-mtp llamacpp-vulkan`
+* Modelle von Hugging Face nach https://huggingface.co/docs/hub/ollama[Use Ollama with any GGUF Model on Hugging Face Hub]
 * Entscheidungen <<adr-0003>>, <<adr-0016>>, <<adr-0018>> bis <<adr-0025>>
 ****
 

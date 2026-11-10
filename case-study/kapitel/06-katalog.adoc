@@ -53,6 +53,13 @@ Dieses Kapitel steht noch in Stichpunkten.
 ****
 * Katalog und Anleitung in {repo}/katalog[katalog], Prüfung mit {repo}/katalog/check.py[check.py]
 * Optionen für das Modell aus {repo}/katalog/entries.py[entries.py]
+* Prüfen des Katalogs und Erzeugen der Optionen
++
+[source,bash]
+----
+python3 katalog/check.py
+python3 katalog/entries.py quellen/anstiftung/kategorien.csv eintraege.json
+----
 * Entscheidungen <<adr-0007>> bis <<adr-0013>>
 ****
 

@@ -74,6 +74,15 @@ Für MANUEL wäre das zunächst mehr Aufwand als Restarters. Wir müssten eine A
 ****
 * Zuordnung der Kategorien im Abschnitt „Anbindung an Restarters.net“ des {repo}/PLAN.md[PLAN]
 * Kategorien von Restarters in {repo}/quellen/restarters[quellen/restarters]
+* Sharecard und Vorschau der Nachmeldung, beide lesen nur lokale Dateien und senden nichts
++
+[source,bash]
+----
+python3 sharecard/sharecard.py Repair-Café-Statistik.ods --date 2026-11-07
+python3 eval/restarters/backfill.py --exports "../tickets-Repair Café-Created *.xlsx" \\
+  --targets ../tickets-kontrolle-d3.xlsx --statistics Repair-Café-Statistik.ods \\
+  --laufzettel ../Laufzettel-Download-Makerspace-Guetersloh-e-V-.csv --out VORSCHAU.tsv
+----
 * Entscheidungen <<adr-0014>>, <<adr-0033>>, <<adr-0036>>
 ****
 

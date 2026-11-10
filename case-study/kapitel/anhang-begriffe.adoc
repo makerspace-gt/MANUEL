@@ -6,6 +6,8 @@
 ADR:: Architecture Decision Record. Eine kurz begründete Entscheidung mit den betrachteten Optionen und ihren Folgen, gesammelt in Anhang A.
 Decision-Modell:: Ein Sprachmodell, das aus einer festen Liste von Optionen genau eine wählt und dazu angibt, wie sicher es ist. MANUEL nutzt `d3:9b`.
 Embedding:: Eine Zahlenfolge, die die Bedeutung eines Textes abbildet. Ähnliche Texte liegen nah beieinander, so findet die Ähnlichkeitssuche passende Kategorien.
+Harness:: Alles, was ein Modell umgibt, also Auftrag, Kontext, Werkzeuge und die Prüfung der Antwort. Bei MANUEL etwa der Ticket Categorizer von Zammad oder die Skripte in `eval/`.
+Inferenz:: Das Ausführen eines fertigen Modells, um eine Antwort zu erzeugen. Engines dafür sind etwa Ollama und llama.cpp.
 Kette:: Der Ablauf für Nachrichten. Das Sprachmodell zieht zuerst die Gegenstände heraus, das Decision-Modell ordnet sie dann ein.
 Laufzettel:: Ein Formular, auf dem eine Reparatur erfasst wird, auf Papier oder online.
 Mixture of Experts:: Ein Sprachmodell, das aus vielen Teilnetzen besteht und für jedes Token nur einige davon nutzt. Es rechnet dadurch schneller, als seine Größe vermuten lässt.

@@ -83,6 +83,13 @@ image::../../docs/grafiken/einordnung-verfahren-hell.svg[Trefferquote der Verfah
 * Alle Schritte mit Zahlen in {repo}/docs/einordnung.md[docs/einordnung.md]
 * Skripte in {repo}/eval/decision[eval/decision], darunter {repo}/eval/decision/follow_up.py[follow_up.py] für die Regeln
 * Grafik aus {repo}/eval/decision/chart_classification.py[chart_classification.py]
+* Ein Lauf mit Vertreter-Namen, im Ordner `eval/decision`. Die Tickets liegen nur lokal.
++
+[source,bash]
+----
+python3 real_representatives.py tickets.json eintraege.json ergebnis.jsonl d3:9b alle 0.7
+python3 evaluate.py
+----
 * Entscheidungen <<adr-0003>> bis <<adr-0011>>
 ****
 

@@ -11,6 +11,7 @@ Die Reihenfolge ist wichtig, denn in Schritt 3 wird die vorinstallierte Windows-
 | 3 | uCore installieren | Admin |
 | 4 | Ersten Prompt testen | Admin |
 | 5 | Benchmark durchführen | Claude Code, BIOS-Änderungen durch Admin |
+| 6 | Tailscale als Übergang einrichten | Claude Code, Anmeldung im Browser durch Admin |
 
 ## Vorbereitung des USB-Sticks
 
@@ -201,3 +202,37 @@ sudo rpm-ostree kargs --delete=ttm.pages_limit=<Wert>
 ```
 
 Der letzte Befehl entfällt, wenn der Gewinner aus Runde 3 das Limit braucht. Das Volume mit den Modellen bleibt erhalten. Nicht mehr benötigte Modelle löschen wir einzeln, oder wir entfernen das Volume mit `sudo podman volume rm ollama`.
+
+## 6 Tailscale als Übergang einrichten
+
+Bis NetBird auf der Zugangs-VM läuft, erreichen Admins den Mini-PC über Tailscale, siehe [ADR 42](adr/0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc). Eingerichtet am 10.11.2026. Tailscale ist in uCore enthalten, der Dienst war aber deaktiviert.
+
+1. Im Image den Dienst aktivieren. Das steht in `build_files/build.sh` und gilt ab dem nächsten Build und Update.
+
+```bash
+systemctl enable tailscaled.service
+```
+
+2. Bis dahin den Dienst direkt auf dem Gerät aktivieren und starten. Die Einstellung liegt unter `/etc` und bleibt bei Updates erhalten.
+
+```bash
+sudo systemctl enable --now tailscaled
+```
+
+3. Das Gerät anmelden. Der Befehl gibt einen Link aus und wartet, bis die Anmeldung bestätigt ist.
+
+```bash
+sudo tailscale up --hostname=manuel
+```
+
+4. Den Link im Browser öffnen, mit dem Konto des Vereins anmelden und das Gerät bestätigen. Nie ein persönliches Konto verwenden, sonst hängt der Zugang an einer Person.
+5. In der Verwaltung des Tailnets beim Gerät `manuel` den Ablauf des Schlüssels abschalten. Sonst muss sich der Mini-PC nach 180 Tagen neu anmelden.
+6. Prüfen, dass das Gerät verbunden ist, und sich von einem anderen Gerät im Tailnet per SSH anmelden.
+
+```bash
+tailscale status
+ssh core@manuel
+```
+
+Ollama bleibt an `127.0.0.1` gebunden und ist über Tailscale nicht erreichbar. Am 10.11.2026 lauschen nach außen nur SSH auf Port 22 und die Namensauflösung LLMNR von systemd-resolved auf Port 5355, geprüft mit `sudo ss -tln`. Sobald NetBird läuft, wird `manuel` aus dem Tailnet entfernt und die Zeile in `build_files/build.sh` wieder gelöscht.
+

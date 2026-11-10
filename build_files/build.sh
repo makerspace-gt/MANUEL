@@ -26,6 +26,9 @@ dnf5 install -y tmux
 
 systemctl enable podman.socket
 
+# Tailscale is part of uCore. It connects the mini PC until NetBird runs, see docs/adr/0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc
+systemctl enable tailscaled.service
+
 ### Trust our own signing key for updates of this image
 # The key is copied to /etc/pki/containers/makerspace-gt.pub by the Containerfile
 jq '.transports.docker["ghcr.io/makerspace-gt/manuel"] = [{

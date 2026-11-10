@@ -12,6 +12,8 @@ Die Reihenfolge ist wichtig, denn in Schritt 3 wird die vorinstallierte Windows-
 | 4 | Ersten Prompt testen | Admin |
 | 5 | Benchmark durchführen | Claude Code, BIOS-Änderungen durch Admin |
 | 6 | Tailscale als Übergang einrichten | Claude Code, Anmeldung im Browser durch Admin |
+| 7 | Testumgebung mit Zammad, n8n, Mailpit und Open WebUI | Admin, Backup durch Admin |
+| 8 | Logging von System und Strom | Admin |
 
 ## Vorbereitung des USB-Sticks
 
@@ -244,4 +246,113 @@ ssh core@manuel
 ```
 
 Ollama bleibt an `127.0.0.1` gebunden und ist über Tailscale nicht erreichbar. Am 10.11.2026 lauschen nach außen nur SSH auf Port 22 und die Namensauflösung LLMNR von systemd-resolved auf Port 5355, geprüft mit `sudo ss -tln`. Sobald NetBird läuft, wird `manuel` aus dem Tailnet entfernt und die Zeile in `build_files/build.sh` wieder gelöscht.
+
+## 7 Testumgebung mit Zammad, n8n, Mailpit und Open WebUI
+
+Entwurf vom 10.11.2026, noch nicht auf MANUEL ausgeführt. Die Entscheidung steht in [ADR 43](adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc). Alle Dienste sind nur an `127.0.0.1` gebunden. Nach außen gibt es nur SSH und Open WebUI über `tailscale serve`.
+
+1. Das Image aktualisieren. Es bringt die Befehle `ollama`, `zammad` und `n8n` mit und aktiviert `podman-restart.service`.
+
+```bash
+sudo bootc upgrade
+sudo systemctl reboot
+```
+
+2. Ollama einen Neustart überstehen lassen. Der Container stammt aus Schritt 4 und hat noch keine Regel für den Neustart.
+
+```bash
+sudo podman update --restart=always ollama
+ollama list
+```
+
+3. Die Compose-Datei von Zammad und dieses Repo holen. Der Commit von `zammad-docker-compose` ist derselbe wie im Submodul des IT-Plans.
+
+```bash
+sudo mkdir -p /var/lib/manuel
+sudo git clone https://github.com/zammad/zammad-docker-compose /var/lib/manuel/zammad-docker-compose
+sudo git -C /var/lib/manuel/zammad-docker-compose checkout 16f43d8
+sudo git clone https://github.com/makerspace-gt/MANUEL /var/lib/manuel/MANUEL
+```
+
+4. Einen Befehl für Compose festlegen. Er nutzt `docker-compose` über den Socket von Podman, weil die Compose-Datei von Zammad Compose ab Version 2.24 verlangt. Die Version vorher mit `docker-compose version` prüfen.
+
+```bash
+cd /var/lib/manuel/zammad-docker-compose
+compose() {
+  sudo DOCKER_HOST=unix:///run/podman/podman.sock docker-compose -p zammad \
+    -f docker-compose.yml -f /var/lib/manuel/MANUEL/testumgebung/compose.override.yml "$@"
+}
+```
+
+5. Das Backup bereitlegen. Die beiden Dateien `*_zammad_db.psql.gz` und `*_zammad_files.tar.gz` liefert ein Admin aus der Sicherung. Niemand greift dafür auf das laufende Zammad zu.
+
+```bash
+compose create zammad-backup
+backup=$(sudo podman volume inspect zammad_zammad-backup --format '{{.Mountpoint}}')
+sudo mkdir -p "$backup/restore"
+sudo cp ~/backup/*_zammad_db.psql.gz ~/backup/*_zammad_files.tar.gz "$backup/restore/"
+```
+
+6. Zammad ohne Scheduler starten und warten, bis die Wiederherstellung fertig ist. Danach ist der Ordner `restore` umbenannt.
+
+```bash
+compose up -d zammad-backup zammad-railsserver mailpit
+sudo ls "$backup"
+```
+
+7. Vor allem anderen alle Wege nach außen abschalten. Das Skript deaktiviert alle Kanäle und Webhooks und leitet Benachrichtigungen an Mailpit.
+
+```bash
+zammad "$(cat /var/lib/manuel/MANUEL/testumgebung/disable_outbound.rb)"
+```
+
+8. Den Rest starten und die Version prüfen.
+
+```bash
+compose up -d
+zammad 'puts Version.get'
+```
+
+9. Als Admin über einen SSH-Tunnel arbeiten. Zammad liegt dann unter http://localhost:8080, Mailpit unter http://localhost:8025 und n8n unter http://localhost:5678.
+
+```bash
+ssh -L 8080:127.0.0.1:8080 -L 8025:127.0.0.1:8025 -L 5678:127.0.0.1:5678 core@manuel
+```
+
+10. Open WebUI für Testende starten und im Tailnet bereitstellen. Es nutzt das Netz des Hosts, um Ollama auf `127.0.0.1` zu erreichen, und hört selbst nur auf `127.0.0.1:3000`.
+
+```bash
+sudo podman run -d --name open-webui --restart=always --network host \
+  -e PORT=3000 -e HOST=127.0.0.1 -e OLLAMA_BASE_URL=http://127.0.0.1:11434 \
+  -v open-webui:/app/backend/data \
+  ghcr.io/open-webui/open-webui:v0.13.3
+sudo tailscale serve --bg 3000
+```
+
+11. In der Verwaltung des Tailnets MANUEL mit den Testenden teilen und in der Richtlinie für sie nur Port 443 erlauben. Prüfen, dass sie Open WebUI erreichen, aber nicht SSH.
+12. Nach dem Test die Instanz mit allen Daten löschen.
+
+```bash
+compose down -v
+```
+
+## 8 Logging von System und Strom
+
+Entwurf vom 10.11.2026. Das Image bringt den Logger `/usr/libexec/manuel/metrics_log.py` und den Timer `manuel-metrics.timer` mit. Er schreibt jede Minute eine Zeile mit Auslastung, Speicher, GPU, Temperaturen und Strom nach `/var/log/manuel/metrics-JJJJ-MM.csv`.
+
+1. Die Adresse der Steckdose NOUS A1T mit Tasmota eintragen. Sie steht nur auf dem Gerät, nicht im Repo. Ohne sie bleiben die Spalten für Strom leer.
+
+```bash
+sudo mkdir -p /etc/manuel
+echo 'NOUS_URL=http://<adresse-der-steckdose>' | sudo tee /etc/manuel/metrics.env
+```
+
+2. Prüfen, dass der Timer läuft und Zeilen ankommen.
+
+```bash
+systemctl status manuel-metrics.timer
+tail -n 3 /var/log/manuel/metrics-$(date +%Y-%m).csv
+```
+
+3. Die Werte der Steckdose mit ihrer Weboberfläche vergleichen.
 

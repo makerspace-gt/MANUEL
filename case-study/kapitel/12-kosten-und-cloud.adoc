@@ -18,6 +18,7 @@ Dieses Kapitel entsteht mit den Messungen während der Erprobung.
 
 * Anschaffung laut Antrag bei der DSEE
 * Strom im Leerlauf und unter Last an der Steckdose gemessen, auf ein Jahr hochgerechnet
+* Gemessen wird mit einer Steckdose NOUS A1T mit Tasmota. Ein Logger auf MANUEL hält jede Minute Strom, Auslastung, Speicher und Temperaturen fest, siehe {repo}/docs/inbetriebnahme.md[Inbetriebnahme], Schritt 8. Über Beginn und Ende in `lauf.json` lassen sich Strom und Last einem Lauf zuordnen.
 * Strompreis am Tag der Messung
 * Generative Modelle brauchen für dieselbe Aufgabe deutlich mehr Energie als spezialisierte Modelle cite:[luccioni-2024]. Das spricht dafür, kleine Modelle wie `d3:9b` für das Einordnen zu nutzen.
 

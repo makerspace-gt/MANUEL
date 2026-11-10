@@ -89,5 +89,7 @@ include::../../docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc
 
 include::../../docs/adr/0041-ein-geraet-je-gast-und-repair-cafe-bearbeiten.adoc[]
 
+include::../../docs/adr/0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc[]
+
 :leveloffset: -2
 :sectnums:

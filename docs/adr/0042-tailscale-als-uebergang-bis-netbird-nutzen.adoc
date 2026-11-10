@@ -1,0 +1,61 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0042]]
+= 0042 Tailscale als Übergang bis NetBird nutzen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-10
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Nach xref:0020-ueber-netbird-vernetzen.adoc[ADR 20] verbindet NetBird den Mini-PC mit der Helpdesk-VM. NetBird läuft aber auf der Zugangs-VM aus Stufe 1 des Plans für den Neuaufbau der IT, und die steht noch nicht. Bis dahin ist der Mini-PC nur im lokalen Netz erreichbar. Der Echtbetrieb beginnt am 05.12.2026.
+
+== Entscheidungskriterien
+
+* Zugang zum Mini-PC, bevor die Zugangs-VM steht
+* Keine offenen Ports im Makerspace
+* Kein Zugang, der an einer einzelnen Person hängt
+* Leicht wieder zu entfernen, wenn NetBird läuft
+
+== Betrachtete Optionen
+
+* Warten, bis NetBird läuft
+* Tailscale als Übergang im Tailnet des Vereins
+* Ports im Makerspace öffnen
+
+== Entscheidung
+
+Bis NetBird läuft, verbindet Tailscale den Mini-PC. Tailscale ist in uCore enthalten. Das Image aktiviert den Dienst `tailscaled`, das Gerät heißt im Tailnet `manuel`. Es meldet sich im Tailnet des Vereins an, nicht in einem persönlichen. Die Anmeldung läuft über einen Link im Browser, so kommt kein Schlüssel ins Repo oder in einen Chat.
+
+Ollama und llama.cpp bleiben an `127.0.0.1` oder später an die Adresse von NetBird gebunden. Über Tailscale sind am 10.11.2026 nur SSH und die Namensauflösung LLMNR des Systems auf Port 5355 erreichbar. Sobald NetBird läuft, wird das Gerät aus dem Tailnet entfernt und `tailscaled` im Image wieder deaktiviert. ADR 20 bleibt das Ziel.
+
+=== Konsequenzen
+
+* Gut, weil Admins den Mini-PC erreichen, bevor die Zugangs-VM steht.
+* Gut, weil Tailscale schon im Image ist und nichts installiert werden muss.
+* Schlecht, weil die Steuerung des Tailnets bei einem fremden Anbieter liegt.
+* Schlecht, weil der Übergang später sauber zurückgebaut werden muss.
+
+== Vor- und Nachteile der Optionen
+
+=== Warten auf NetBird
+
+* Gut, weil es keinen Übergang gibt, der zurückgebaut werden muss.
+* Schlecht, weil der Mini-PC bis dahin nur vor Ort erreichbar ist.
+
+=== Tailscale im Tailnet des Vereins
+
+* Gut, weil es sofort läuft und keine Ports öffnet.
+* Schlecht, weil das Tailnet bei Tailscale liegt.
+
+=== Ports öffnen
+
+* Gut, weil kein weiterer Dienst nötig ist.
+* Schlecht, weil der Mini-PC dann aus dem Internet angreifbar wäre.
+
+== Quellen
+
+* xref:0020-ueber-netbird-vernetzen.adoc[ADR 20]
+* https://tailscale.com/kb/1017/install[Tailscale installieren und anmelden]
+* {repo}/docs/inbetriebnahme.md[Inbetriebnahme des Mini-PCs], Schritt 6

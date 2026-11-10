@@ -33,6 +33,7 @@ ISO:: International Organization for Standardization
 IT:: Informationstechnik
 KI:: künstliche Intelligenz
 LLM:: Large Language Model, großes Sprachmodell
+LLMNR:: Link-Local Multicast Name Resolution, Namensauflösung im lokalen Netz
 LUKS:: Linux Unified Key Setup, Verschlüsselung von Datenträgern unter Linux
 MADR:: Markdown Any Decision Records, bis Version 3 Markdown Architectural Decision Records, eine Vorlage für ADRs
 MANUEL:: Minimale AI für Nutzer-Unterstützung auf Einstiegs-Level

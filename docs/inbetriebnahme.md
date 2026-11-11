@@ -358,13 +358,13 @@ Entwurf vom 10.11.2026. Am 11.11.2026 lief der Logger einmal von Hand auf MANUEL
       DeviceName MANUEL
       ```
 
-   5. Die Strommessung kalibrieren, siehe [Power Monitoring Calibration](https://tasmota.github.io/docs/Power-Monitoring-Calibration/). Ab Werk zeigte die Steckdose am 11.11.2026 291 V statt rund 230 V. Dafür eine rein ohmsche Last mit bekannter Leistung einstecken, am besten eine Glüh- oder Halogenlampe, nicht MANUEL, keine LED-Lampe und kein Netzteil. `VoltageSet` bekommt die mit einem Multimeter gemessene Spannung oder 230, `PowerSet` die Leistung der Last in Watt. Vor Tasmota 14.2 kommt noch `CurrentSet` in mA dazu, also Leistung durch Spannung mal 1000. Ohne passende Last korrigiert `VoltageSet` allein die Spannung, die Leistung ist dann nur ungefähr richtig.
+   5. Die Strommessung kalibrieren, siehe [Power Monitoring Calibration](https://tasmota.github.io/docs/Power-Monitoring-Calibration/). Ab Werk zeigte die Steckdose am 11.11.2026 291 V statt rund 230 V. Dafür eine rein ohmsche Last mit bekannter Leistung einstecken, am besten eine Glüh- oder Halogenlampe, nicht MANUEL, keine LED-Lampe und kein Netzteil. Ab Tasmota 14.2 bekommt `VoltageSet` die mit einem Multimeter gemessene Spannung oder 230, und `PowerSet` die Leistung der Last zusammen mit derselben Spannung. Den Strom berechnet die Steckdose daraus. Vor Tasmota 14.2 bekommt `PowerSet` nur die Leistung, und `CurrentSet` den Strom in mA, also Leistung mal 1000 durch Spannung. Danach muss der Leistungsfaktor in der Weboberfläche nahe 1,00 liegen, sonst die Kalibrierung wiederholen. Ohne passende Last korrigiert `VoltageSet` allein die Spannung, die Leistung ist dann nur ungefähr richtig.
 
       ```
       VoltRes 1
       WattRes 2
       VoltageSet 230
-      PowerSet 60
+      PowerSet 60.0,230
       ```
 
    6. Im Router der Steckdose eine feste Adresse geben.

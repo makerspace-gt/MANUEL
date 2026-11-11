@@ -35,6 +35,9 @@ systemctl enable podman-restart.service
 # Logs load, memory, GPU, temperatures and power once a minute to /var/log/manuel
 systemctl enable manuel-metrics.timer
 
+# Tells the admins about firmware updates, a staged image and failures, see docs/adr/0044-admins-ueber-wartung-informieren.adoc
+systemctl enable manuel-status.timer
+
 ### Trust our own signing key for updates of this image
 # The key is copied to /etc/pki/containers/makerspace-gt.pub by the Containerfile
 jq '.transports.docker["ghcr.io/makerspace-gt/manuel"] = [{

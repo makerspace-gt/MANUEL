@@ -1,0 +1,9 @@
+[Unit]
+Description=Check firmware, image, Ollama and logger of MANUEL and inform the admins
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/manuel/notify.env
+ExecStart=/usr/bin/python3 /usr/libexec/manuel/status_check.py

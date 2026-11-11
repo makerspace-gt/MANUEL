@@ -22,3 +22,7 @@
 	url = https://github.com/zammad/zammad.git
 	branch = develop
 	shallow = true
+[submodule "quellen/zammad-docker-compose"]
+	path = quellen/zammad-docker-compose
+	url = https://github.com/zammad/zammad-docker-compose.git
+	shallow = true

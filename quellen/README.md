@@ -37,6 +37,10 @@ Die Liste in `database.sql` ist nicht aktuell, das Formular enthält deutlich me
 
 Wichtig für MANUEL sind die KI-Agenten in `app/models/ai/agent/type/`, die Anbieter in `lib/ai/provider/` und die Texterkennung in Bildern in `app/services/service/ai/ticket/pre_process_article_content.rb`. Der Zweig `develop` kann Funktionen enthalten, die in unserer Version noch fehlen.
 
+| Ordner | Inhalt | Lizenz | Stand |
+|---|---|---|---|
+| [zammad-docker-compose](https://github.com/zammad/zammad-docker-compose/tree/16f43d8) | Submodul mit der Compose-Datei von Zammad für die Testumgebung auf MANUEL, derselbe Commit wie im IT-Plan. Sie kommt ins Image, siehe [ADR 43](../docs/adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc) | AGPL-3.0 | Commit `16f43d8`, Zammad 7.2.2 |
+
 ## Weitere Partner der Open Repair Alliance
 
 Für diese Partner gibt es keine öffentliche Liste ihrer Kategorien. Ihre Kategorien sind nur über die Open Repair Data zugänglich, ausgewertet in [docs/ora](../docs/ora).

@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-10
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-11, Compose im Image, ohne Elasticsearch und TLS, erst ein frisches Zammad
 
 == Kontext und Problem
 
@@ -26,8 +27,12 @@ Vor dem Start am 05.12.2026 sind Fragen offen, die sich nur in einem laufenden Z
 
 == Entscheidung
 
-Auf MANUEL läuft eine Testumgebung mit Zammad aus `zammad-docker-compose`, n8n, Mailpit und Open WebUI. Der Echtbetrieb bleibt auf der Helpdesk-VM, xref:0019-n8n-auf-der-helpdesk-vm-betreiben.adoc[ADR 19] gilt für ihn weiter. Die Ergänzung zur Compose-Datei liegt in `testumgebung/`.
+Auf MANUEL läuft eine Testumgebung mit Zammad aus `zammad-docker-compose`, n8n, Mailpit und Open WebUI. Der Echtbetrieb bleibt auf der Helpdesk-VM, xref:0019-n8n-auf-der-helpdesk-vm-betreiben.adoc[ADR 19] gilt für ihn weiter. Die Compose-Datei von Zammad liegt als Submodul unter `quellen/zammad-docker-compose`, auf demselben Commit wie im IT-Plan. Zusammen mit den Ergänzungen aus `testumgebung/` kommt sie ins Image, der Befehl `zammad-compose` startet alles damit.
 
+* Elasticsearch läuft nicht. Das spart Speicher für die Modelle, und Zammad sucht nur in der Datenbank. Für die Ähnlichkeitssuche der Wissensdatenbank bräuchte es Elasticsearch später doch.
+* Es gibt kein TLS und keinen Reverse Proxy wie Traefik, weil die Testumgebung nur lokal genutzt wird.
+* Zammad nutzt unser Ollama mit GPU. Der Container hängt dafür zusätzlich im Netz des Stapels und heißt dort `ollama`. Das Szenario `add-ollama.yml` von Zammad entfällt, weil es eine zweite Ollama ohne GPU startet.
+* Zuerst läuft ein frisches Zammad ohne Daten. Erst wenn eine Testmail sicher in Mailpit landet, kommt das Backup dazu.
 * Zammad bekommt ein Backup, das die Admins als Datei liefern. Direkt nach dem Einspielen und vor dem Start des Schedulers schaltet `testumgebung/disable_outbound.rb` alle Kanäle und Webhooks ab. Benachrichtigungen gehen nur noch an Mailpit, das jede Mail abfängt.
 * Alle Dienste sind nur an `127.0.0.1` gebunden. Admins erreichen Zammad, n8n und Mailpit über einen SSH-Tunnel.
 * Testende bekommen nur Open WebUI. Es erscheint über `tailscale serve` im Tailnet, und MANUEL wird mit ihnen geteilt. Die Richtlinie des Tailnets erlaubt ihnen nur diesen Dienst. Echte Daten sehen sie nicht.
@@ -39,7 +44,7 @@ Echte Tickets auf MANUEL sind nach xref:0002-echte-ticketdaten-nur-lokal-auswert
 
 * Gut, weil Version, Agenten und Rückmeldung von Zammad vor dem Start geprüft werden können.
 * Gut, weil der Vorabtest auch den echten Ticket Categorizer nutzen kann.
-* Schlecht, weil Zammad mit Elasticsearch Speicher braucht, der den Modellen fehlt. Elasticsearch ist deshalb auf 2 GB begrenzt.
+* Schlecht, weil ohne Elasticsearch die Suche langsamer ist und passende Artikel der Wissensdatenbank fehlen.
 * Schlecht, weil echte Daten auf einem zweiten System liegen. Nach dem Test wird die Instanz gelöscht.
 
 == Vor- und Nachteile der Optionen

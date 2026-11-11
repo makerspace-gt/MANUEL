@@ -251,77 +251,84 @@ Ollama bleibt an `127.0.0.1` gebunden und ist über Tailscale nicht erreichbar. 
 
 ## 7 Testumgebung mit Zammad, n8n, Mailpit und Open WebUI
 
-Entwurf vom 10.11.2026, noch nicht auf MANUEL ausgeführt. Die Entscheidung steht in [ADR 43](adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc). Alle Dienste sind nur an `127.0.0.1` gebunden. Nach außen gibt es nur SSH und Open WebUI über `tailscale serve`.
+Die Entscheidung steht in [ADR 43](adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc). Das Image bringt die Compose-Datei von Zammad aus dem Submodul `quellen/zammad-docker-compose` und die Ergänzungen aus `testumgebung/` unter `/usr/share/manuel` mit. Der Befehl `zammad-compose` startet alles damit.
 
-1. Das Image aktualisieren. Es bringt die Befehle `ollama`, `zammad` und `n8n` mit und aktiviert `podman-restart.service`.
+- Elasticsearch läuft nicht, das spart Speicher für die Modelle. Zammad sucht dann nur in der Datenbank.
+- Alle Dienste sind nur an `127.0.0.1` gebunden, ohne TLS und ohne Reverse Proxy, weil die Testumgebung nur lokal genutzt wird.
+- Admins arbeiten über einen SSH-Tunnel. Nach außen gibt es nur SSH und später Open WebUI über `tailscale serve`.
 
-```bash
-sudo bootc upgrade
-sudo systemctl reboot
-```
+### 7.1 Frisches Zammad und Test mit Mailpit
 
-2. Ollama einen Neustart überstehen lassen. Der Container stammt aus Schritt 4 und hat noch keine Regel für den Neustart.
+Bevor echte Daten ins Spiel kommen, zeigt ein frisches Zammad ohne Daten, dass Mails sicher in Mailpit landen.
 
-```bash
-sudo podman update --restart=always ollama
-ollama list
-```
-
-3. Die Compose-Datei von Zammad und dieses Repo holen. Der Commit von `zammad-docker-compose` ist derselbe wie im Submodul des IT-Plans.
+1. Den Stapel starten. Beim ersten Mal lädt das die Images. Docker Hub begrenzt Downloads ohne Anmeldung. Bricht ein Download ab, etwa von n8n, später erneut starten oder die übrigen Dienste einzeln nennen.
 
 ```bash
-sudo mkdir -p /var/lib/manuel
-sudo git clone https://github.com/zammad/zammad-docker-compose /var/lib/manuel/zammad-docker-compose
-sudo git -C /var/lib/manuel/zammad-docker-compose checkout 16f43d8
-sudo git clone https://github.com/makerspace-gt/MANUEL /var/lib/manuel/MANUEL
+zammad-compose up -d
+zammad-compose ps
 ```
 
-4. Einen Befehl für Compose festlegen. Er nutzt `docker-compose` über den Socket von Podman, weil die Compose-Datei von Zammad Compose ab Version 2.24 verlangt. Auf MANUEL ist am 11.11.2026 Version 5.6.0 installiert.
+2. Alle Wege nach außen abschalten und Benachrichtigungen an Mailpit leiten. Danach eine Testmail schicken. Das Testskript bricht ab, wenn noch ein anderer Kanal aktiv ist oder die Mail nicht an Mailpit ginge.
 
 ```bash
-cd /var/lib/manuel/zammad-docker-compose
-compose() {
-  sudo DOCKER_HOST=unix:///run/podman/podman.sock docker-compose -p zammad \
-    -f docker-compose.yml -f /var/lib/manuel/MANUEL/testumgebung/compose.override.yml "$@"
-}
+zammad "$(cat /usr/share/manuel/testumgebung/disable_outbound.rb)"
+zammad "$(cat /usr/share/manuel/testumgebung/mail_test.rb)"
 ```
 
-5. Das Backup bereitlegen. Die beiden Dateien `*_zammad_db.psql.gz` und `*_zammad_files.tar.gz` liefert ein Admin aus der Sicherung. Niemand greift dafür auf das laufende Zammad zu.
+3. Prüfen, dass die Mail in Mailpit liegt.
 
 ```bash
-compose create zammad-backup
-backup=$(sudo podman volume inspect zammad_zammad-backup --format '{{.Mountpoint}}')
-sudo mkdir -p "$backup/restore"
-sudo cp ~/backup/*_zammad_db.psql.gz ~/backup/*_zammad_files.tar.gz "$backup/restore/"
+curl -s http://127.0.0.1:8025/api/v1/messages | python3 -m json.tool | grep -E '"Subject"|"Address"'
 ```
 
-6. Zammad ohne Scheduler starten und warten, bis die Wiederherstellung fertig ist. Danach ist der Ordner `restore` umbenannt.
+4. Unser Ollama ins Netz des Stapels hängen. Zammad erreicht es dann als Anbieter Ollama unter `http://ollama:11434`, ohne dass ein Port nach außen aufgeht. Das Szenario `add-ollama.yml` von Zammad brauchen wir nicht, es startet eine zweite Ollama ohne GPU.
 
 ```bash
-compose up -d zammad-backup zammad-railsserver mailpit
-sudo ls "$backup"
+sudo podman network connect zammad_default ollama
+zammad 'require "net/http"; puts Net::HTTP.get(URI("http://ollama:11434/api/version"))'
 ```
 
-7. Vor allem anderen alle Wege nach außen abschalten. Das Skript deaktiviert alle Kanäle und Webhooks und leitet Benachrichtigungen an Mailpit.
+   Am 11.11.2026 lief so Zammad 7.2.2 ohne Elasticsearch. Nach `disable_outbound.rb` war nur der Kanal für Benachrichtigungen aktiv, die Testmail lag in Mailpit, und Zammad erreichte Ollama 0.40.14.
 
-```bash
-zammad "$(cat /var/lib/manuel/MANUEL/testumgebung/disable_outbound.rb)"
-```
-
-8. Den Rest starten und die Version prüfen.
-
-```bash
-compose up -d
-zammad 'puts Version.get'
-```
-
-9. Als Admin über einen SSH-Tunnel arbeiten. Zammad liegt dann unter http://localhost:8080, Mailpit unter http://localhost:8025 und n8n unter http://localhost:5678.
+5. Gegenprobe mit einem echten Testpostfach, nie dem Postfach des Repair Café. Den Kanal in Zammad einrichten und mit einer Mail „Test 1“ prüfen, dass Zammad abruft. Dann `disable_outbound.rb` ausführen, eine Mail „Test 2“ schicken und einige Minuten warten. „Test 2“ muss im Postfach bleiben, und eine Antwort im Ticket „Test 1“ darf außen nicht ankommen.
+6. Als Admin über einen SSH-Tunnel arbeiten. Zammad liegt dann unter http://localhost:8080, Mailpit unter http://localhost:8025 und n8n unter http://localhost:5678. Beim ersten Aufruf richtet Zammad ein Admin-Konto ein.
 
 ```bash
 ssh -L 8080:127.0.0.1:8080 -L 8025:127.0.0.1:8025 -L 5678:127.0.0.1:5678 core@manuel
 ```
 
-10. Open WebUI für Testende starten und im Tailnet bereitstellen. Es nutzt das Netz des Hosts, um Ollama auf `127.0.0.1` zu erreichen, und hört selbst nur auf `127.0.0.1:3000`.
+### 7.2 Backup einspielen
+
+Erst wenn 7.1 funktioniert. Die beiden Dateien `*_zammad_db.psql.gz` und `*_zammad_files.tar.gz` liefert ein Admin aus der Sicherung. Niemand greift dafür auf das laufende Zammad zu.
+
+1. Die frische Instanz löschen und das Backup bereitlegen.
+
+```bash
+zammad-compose down -v
+zammad-compose create zammad-backup
+backup=$(sudo podman volume inspect zammad_zammad-backup --format '{{.Mountpoint}}')
+sudo mkdir -p "$backup/restore"
+sudo cp ~/backup/*_zammad_db.psql.gz ~/backup/*_zammad_files.tar.gz "$backup/restore/"
+```
+
+2. Zammad ohne Scheduler starten und warten, bis die Wiederherstellung fertig ist. Danach ist der Ordner `restore` umbenannt.
+
+```bash
+zammad-compose up -d zammad-backup zammad-railsserver mailpit
+sudo ls "$backup"
+```
+
+3. Vor allem anderen alle Wege nach außen abschalten, dann den Rest starten und die Mail erneut prüfen.
+
+```bash
+zammad "$(cat /usr/share/manuel/testumgebung/disable_outbound.rb)"
+zammad-compose up -d
+zammad "$(cat /usr/share/manuel/testumgebung/mail_test.rb)"
+```
+
+### 7.3 Open WebUI für Testende
+
+Open WebUI nutzt das Netz des Hosts, um Ollama auf `127.0.0.1` zu erreichen, und hört selbst nur auf `127.0.0.1:3000`. `tailscale serve` stellt es im Tailnet bereit.
 
 ```bash
 sudo podman run -d --name open-webui --restart=always --network host \
@@ -331,11 +338,14 @@ sudo podman run -d --name open-webui --restart=always --network host \
 sudo tailscale serve --bg 3000
 ```
 
-11. In der Verwaltung des Tailnets MANUEL mit den Testenden teilen und in der Richtlinie für sie nur Port 443 erlauben. Prüfen, dass sie Open WebUI erreichen, aber nicht SSH.
-12. Nach dem Test die Instanz mit allen Daten löschen.
+In der Verwaltung des Tailnets MANUEL mit den Testenden teilen und in der Richtlinie für sie nur Port 443 erlauben.
+
+### 7.4 Aufräumen
+
+Nach dem Test die Instanz mit allen Daten löschen.
 
 ```bash
-compose down -v
+zammad-compose down -v
 ```
 
 ## 8 Logging von System und Strom
@@ -426,4 +436,6 @@ SMTP_PASSWORD=<passwort>
 SMTP_FROM=manuel@<domain>
 NOTIFY_TO=<admin1>,<admin2>
 ```
+
+Bei lima-city gilt laut [Hilfe von lima-city](https://www.lima-city.de/hilfe/wie-kann-ich-meine-e-mail-adressen-einrichten) `SMTP_HOST=mail.lima-city.de` mit `SMTP_PORT=465` und SSL von Anfang an. Benutzername ist die volle E-Mail-Adresse des Postfachs, Absender dieselbe Adresse.
 

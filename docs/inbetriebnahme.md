@@ -367,7 +367,7 @@ Entwurf vom 10.11.2026. Am 11.11.2026 lief der Logger einmal von Hand auf MANUEL
       PowerSet 60.0,230
       ```
 
-      Kalibriert am 11.11.2026 mit einem Wasserkocher mit 2200 W laut Typenschild, ohne Multimeter mit 230 V. Tasmota antwortete mit `VoltageSetCal` 1611 und `PowerSetCal` 12367. Ohne Messgerät ist die Leistung damit auf einige Prozent genau. Werte im Log vor 06:57 Uhr sind unkalibriert.
+      Kalibriert am 11.11.2026 mit einem Wasserkocher mit 2200 W laut Typenschild, ohne Multimeter mit 230 V. Tasmota antwortete mit `VoltageSetCal` 1611 und `PowerSetCal` 12367. Werte im Log vor 06:57 Uhr sind unkalibriert. Zur Kontrolle zeigte die Steckdose um 07:07 Uhr 230,9 V, ein Multimeter maß 229,7 V. Die Spannung stimmt damit auf 0,5 Prozent. Die Leistung hängt an der Angabe auf dem Typenschild und ist auf einige Prozent genau. MANUEL zog im Leerlauf rund 20 bis 28 W bei einem Leistungsfaktor von 0,68.
 
    6. Im Router der Steckdose eine feste Adresse geben.
 2. Adresse und Passwort der Steckdose auf MANUEL eintragen. Die Datei liegt nur auf dem Gerät und ist nur für root lesbar. Ohne `NOUS_URL` bleiben die Spalten für Strom leer.

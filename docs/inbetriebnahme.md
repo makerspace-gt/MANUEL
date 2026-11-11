@@ -349,7 +349,7 @@ Entwurf vom 10.11.2026. Am 11.11.2026 lief der Logger einmal von Hand auf MANUEL
       {"NAME":"NOUS A1T","GPIO":[32,0,0,0,2720,2656,0,0,2624,320,224,0,0,0],"FLAG":0,"BASE":49}
       ```
 
-   3. Unter Configuration, Other ein Passwort für die Weboberfläche setzen. Ohne Passwort kann jeder im Netz MANUEL ausschalten.
+   3. Unter Configuration, Other ein Passwort für die Weboberfläche setzen. Ohne Passwort kann jeder im Netz MANUEL ausschalten. Am 11.11.2026 ist noch keines gesetzt.
    4. In der Console drei Befehle eingeben. Nach einem Stromausfall schaltet die Steckdose wieder ein. Die Taste an der Steckdose schaltet MANUEL nicht mehr aus. Der Name erscheint in der Weboberfläche.
 
       ```
@@ -358,7 +358,16 @@ Entwurf vom 10.11.2026. Am 11.11.2026 lief der Logger einmal von Hand auf MANUEL
       DeviceName MANUEL
       ```
 
-   5. Im Router der Steckdose eine feste Adresse geben.
+   5. Die Strommessung kalibrieren, siehe [Power Monitoring Calibration](https://tasmota.github.io/docs/Power-Monitoring-Calibration/). Ab Werk zeigte die Steckdose am 11.11.2026 291 V statt rund 230 V. Dafür eine rein ohmsche Last mit bekannter Leistung einstecken, am besten eine Glüh- oder Halogenlampe, nicht MANUEL, keine LED-Lampe und kein Netzteil. `VoltageSet` bekommt die mit einem Multimeter gemessene Spannung oder 230, `PowerSet` die Leistung der Last in Watt. Vor Tasmota 14.2 kommt noch `CurrentSet` in mA dazu, also Leistung durch Spannung mal 1000. Ohne passende Last korrigiert `VoltageSet` allein die Spannung, die Leistung ist dann nur ungefähr richtig.
+
+      ```
+      VoltRes 1
+      WattRes 2
+      VoltageSet 230
+      PowerSet 60
+      ```
+
+   6. Im Router der Steckdose eine feste Adresse geben.
 2. Adresse und Passwort der Steckdose auf MANUEL eintragen. Die Datei liegt nur auf dem Gerät und ist nur für root lesbar. Ohne `NOUS_URL` bleiben die Spalten für Strom leer.
 
 ```bash

@@ -315,6 +315,7 @@ git push
 - [ ] Host in it-infrastructure aufnehmen und den Arcane-Agenten ausrollen, für Ollama und Open WebUI mit automatischen Updates
 - [ ] resticker einrichten und das Volume mit den Modellen vom Backup ausschließen, weil sich Modelle jederzeit neu laden lassen
 - [ ] Push-Monitor in Uptime Kuma anlegen
+- [ ] Kanal für die Meldungen an die Admins festlegen, E-Mail ist der Favorit, und `/etc/manuel/notify.env` einrichten, siehe [ADR 44](docs/adr/0044-admins-ueber-wartung-informieren.adoc)
 - [ ] Beszel-Agenten ausrollen und Alarme für Plattenplatz, Arbeitsspeicher und Temperatur anlegen
 - [ ] NetBird-Client auf dem Mini-PC einrichten, auf uCore per rpm-ostree oder als Container mit Host-Netzwerk
 - [ ] Startreihenfolge in systemd festlegen, sodass NetBird vor Docker läuft

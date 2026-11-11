@@ -14,6 +14,7 @@ Die Reihenfolge ist wichtig, denn in Schritt 3 wird die vorinstallierte Windows-
 | 6 | Tailscale als Übergang einrichten | Claude Code, Anmeldung im Browser durch Admin |
 | 7 | Testumgebung mit Zammad, n8n, Mailpit und Open WebUI | Admin, Backup durch Admin |
 | 8 | Logging von System und Strom | Admin |
+| 9 | Admins über Wartung informieren | Admin |
 
 ## Vorbereitung des USB-Sticks
 
@@ -355,4 +356,37 @@ tail -n 3 /var/log/manuel/metrics-$(date +%Y-%m).csv
 ```
 
 3. Die Werte der Steckdose mit ihrer Weboberfläche vergleichen.
+
+## 9 Admins über Wartung informieren
+
+Das Image bringt die Prüfung `/usr/libexec/manuel/status_check.py` und den Timer `manuel-status.timer` mit, siehe [ADR 44](adr/0044-admins-ueber-wartung-informieren.adoc). Zehn Minuten nach dem Start und jeden Morgen um 7 Uhr prüft sie Firmware-Updates, ein wartendes Image, den Container von Ollama und den Logger. Die Ergebnisse stehen im Journal und beim Login. Eingespielt wird nichts.
+
+1. Von Hand prüfen, ohne etwas zu schreiben oder zu senden.
+
+```bash
+sudo python3 /usr/libexec/manuel/status_check.py --dry-run
+```
+
+2. Firmware-Updates bewusst einspielen, am besten zusammen mit einem geplanten Neustart. Nach einem Update des BIOS die Einstellungen aus Schritt 1 prüfen, vor allem die 16 GiB UMA.
+
+```bash
+fwupdmgr get-upgrades
+sudo fwupdmgr update
+```
+
+3. Den Versand per E-Mail einrichten, sobald feststeht, über welchen Mailserver er läuft. Die Datei liegt nur auf dem Gerät.
+
+```bash
+sudo install -m 0600 /dev/null /etc/manuel/notify.env
+sudoedit /etc/manuel/notify.env
+```
+
+```
+SMTP_HOST=<mailserver>
+SMTP_PORT=587
+SMTP_USER=<benutzer>
+SMTP_PASSWORD=<passwort>
+SMTP_FROM=manuel@<domain>
+NOTIFY_TO=<admin1>,<admin2>
+```
 

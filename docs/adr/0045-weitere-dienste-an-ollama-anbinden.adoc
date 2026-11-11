@@ -1,0 +1,68 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0045]]
+= 0045 Weitere Dienste des Vereins an Ollama anbinden
+
+[horizontal]
+Status:: vorgeschlagen, Entwurf vom 11.11.2026
+Datum:: 2026-11-11
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie „Wer kann bei einem Anliegen helfen?“ und „Welche Werkzeuge gibt es im Verein?“ einzusetzen. Dafür bieten sich das Forum Discourse und die Aufgabenverwaltung Vikunja an. Nach xref:0020-ueber-netbird-vernetzen.adoc[ADR 20] erreicht aber nur die Helpdesk-VM die Modelle, und Ollama hört auf MANUEL nur auf `127.0.0.1`. Ollama kennt keine Anmeldung und beantwortet Anfragen nacheinander.
+
+== Entscheidungskriterien
+
+* Der Echtbetrieb im Repair Café ab dem 05.12.2026 hat Vorrang
+* Nur ausdrücklich zugelassene Dienste erreichen Ollama
+* Möglichst wenig eigener Code
+* Daten der Mitglieder bleiben im Verein
+
+== Betrachtete Optionen
+
+* Keine weiteren Dienste anbinden
+* Discourse über sein Plugin anbinden, Vikunja später über n8n
+* Ollama für das ganze Netz des Vereins öffnen
+
+== Entscheidung
+
+Nach dem Start der Erprobung am 05.12.2026 binden wir zuerst Discourse an, später Vikunja.
+
+* *Discourse.* Das mitgelieferte Plugin Discourse AI legt Ollama unter `/admin/plugins/discourse-ai/ai-llms` als Anbieter an. Neuere Versionen kennen Ollama direkt, sonst geht der OpenAI-kompatible Weg. Die Adresse von MANUEL muss in Discourse als erlaubte interne Adresse eingetragen werden. Infrage kommen Zusammenfassungen, ein Bot im Forum und ähnliche Themen über `bge-m3`.
+* *Vikunja.* Vikunja hat keine eingebaute Anbindung. Ein Workflow in n8n verbindet die API von Vikunja mit Ollama und schreibt erst nach Freigabe durch einen Menschen. Ein Werkzeug aus der Community oder ein künftiger MCP-Server von Vikunja sind Alternativen, die wir dann prüfen.
+* *Netz.* Ollama bleibt ohne Anmeldung, deshalb erreichen es nur zugelassene Dienste. Mit NetBird nach ADR 20 bekommen die VMs von Discourse und n8n eine eigene Regel für den Port von Ollama. Bis dahin stellt `tailscale serve` den Port im Tailnet bereit, und die Richtlinie des Tailnets lässt nur diese Dienste zu, siehe xref:0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc[ADR 42].
+* *Vorrang.* Solange Ollama Anfragen nacheinander beantwortet, bremsen sich Zammad und Discourse gegenseitig aus. Rechenintensive Aufgaben von Discourse wie Embeddings für alle Beiträge laufen deshalb nachts oder außerhalb der Termine des Repair Café.
+* *Datenschutz.* Forenbeiträge und Aufgaben enthalten Namen von Mitgliedern. Sie bleiben auf MANUEL, kommen aber als eigener Eintrag ins Verzeichnis von Verarbeitungstätigkeiten.
+
+Wird dieses ADR angenommen, ergänzt es ADR 20 um die weiteren Dienste.
+
+=== Konsequenzen
+
+* Gut, weil Discourse ohne eigenen Code die Modelle von MANUEL nutzen kann.
+* Gut, weil Mitglieder und Gäste Antworten aus dem Wissen des Vereins bekommen, ohne dass Daten das Haus verlassen.
+* Schlecht, weil mehr Last auf dem Mini-PC liegt und Zammad im Repair Café warten kann.
+* Schlecht, weil jede weitere Verbindung zu Ollama eine Regel im Netz und einen Eintrag im Verzeichnis braucht.
+
+== Vor- und Nachteile der Optionen
+
+=== Keine weiteren Dienste
+
+* Gut, weil MANUEL ganz dem Repair Café gehört.
+* Schlecht, weil das im Antrag angekündigte Ziel offen bliebe.
+
+=== Discourse über das Plugin, Vikunja über n8n
+
+* Gut, weil beide vorhandene Werkzeuge nutzen und nur zugelassene Dienste Ollama erreichen.
+* Schlecht, weil für Vikunja ein eigener Workflow entsteht.
+
+=== Ollama für das ganze Netz öffnen
+
+* Gut, weil jeder Dienst es ohne eigene Regel nutzen könnte.
+* Schlecht, weil Ollama keine Anmeldung kennt und jeder im Netz die Modelle nutzen oder auslasten könnte.
+
+== Quellen
+
+* https://meta.discourse.org/t/self-hosting-an-opensource-llm-for-discourseai/290923[Self-Hosting an OpenSource LLM for DiscourseAI], Discourse Meta
+* https://meta.discourse.org/t/how-to-use-internal-ai-endpoints/405831[How to use internal AI endpoints], Discourse Meta
+* https://community.vikunja.io/t/i-built-an-ai-task-generator-for-vikunja-open-source-self-hosted-feedback-welcome/4544[KI-Aufgabengenerator für Vikunja] und https://community.vikunja.io/t/official-mcp-server/4490[Vorschlag für einen MCP-Server], Forum von Vikunja
+* {repo}/PLAN.md[PLAN], Abschnitt Ausblick

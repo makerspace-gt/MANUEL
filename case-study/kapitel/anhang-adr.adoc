@@ -95,5 +95,7 @@ include::../../docs/adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc[]
 
 include::../../docs/adr/0044-admins-ueber-wartung-informieren.adoc[]
 
+include::../../docs/adr/0045-weitere-dienste-an-ollama-anbinden.adoc[]
+
 :leveloffset: -2
 :sectnums:

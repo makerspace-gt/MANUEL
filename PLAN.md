@@ -419,6 +419,12 @@ git push
 Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verfügt über welche Kenntnisse?« und »Welche Werkzeuge und Maschinen stehen im Verein zur Verfügung?« einzusetzen.
 
 - **Tags für Techniken.** Vorrang hat die Wissensdatenbank. Tickets werden nach drei Jahren gelöscht, Artikel bleiben und wachsen weiter, deshalb verlinkt MANUEL zuerst passende Artikel. Tags wie löten oder 3d-druck dienen danach vor allem als Ordnung für die Artikel. An Tickets bleiben sie optional, zum Beispiel um zu sehen, wie viele Tickets eines Termins Löten brauchen.
+- **Weitere Dienste an Ollama, Entwurf in [ADR 45](docs/adr/0045-weitere-dienste-an-ollama-anbinden.adoc).** Nach dem Start am 05.12.2026, in dieser Reihenfolge:
+  - [ ] Port von Ollama für Discourse freigeben, bis NetBird läuft über `tailscale serve` mit einer Regel nur für Discourse
+  - [ ] In Discourse AI Ollama als Anbieter anlegen und die Adresse von MANUEL als erlaubte interne Adresse eintragen
+  - [ ] Zusammenfassungen und ähnliche Themen testen, Embeddings für alle Beiträge nachts erzeugen
+  - [ ] Workflow in n8n für Vikunja, der Vorschläge erst nach Freigabe schreibt
+  - [ ] Discourse und Vikunja ins Verzeichnis von Verarbeitungstätigkeiten aufnehmen
 - **Discourse als Wissensbasis und Chatbot.** Für das Forum gibt es im alten Repo die Rolle [discourse](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/discourse). Das mitgelieferte Plugin [discourse-ai](https://github.com/discourse/discourse/tree/main/plugins/discourse-ai) kann Ollama [direkt ansprechen](https://github.com/discourse/discourse/blob/main/plugins/discourse-ai/lib/completions/endpoints/ollama.rb). Es bringt einen KI-Bot mit eigenen Rollen und hinterlegten Dokumenten, Zusammenfassungen, semantische Suche und ähnliche Themen per Embedding mit. Ein Bot im Forum könnte Fragen zu Kenntnissen der Mitglieder und zu Werkzeugen beantworten, gestützt auf Beiträge und Dokumente des Vereins.
 - **Signal als Kanal für Benachrichtigungen.** Für [signal-cli-rest-api](https://github.com/bbernhard/signal-cli-rest-api) auf Basis von [signal-cli](https://github.com/AsamK/signal-cli) gibt es im alten Repo die Rolle [signal-cli-rest-api](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/signal-cli-rest-api). n8n könnte darüber Engagierte an Termine erinnern oder über neue Anmeldungen informieren. Später wäre auch ein Signal-Bot denkbar, der Fragen an MANUEL weiterleitet. Gäste schreiben wir nur mit ihrer Einwilligung an.
 

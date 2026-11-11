@@ -341,21 +341,46 @@ compose down -v
 
 Entwurf vom 10.11.2026. Am 11.11.2026 lief der Logger einmal von Hand auf MANUEL und lieferte alle Werte außer denen der Steckdose. Das Image bringt den Logger `/usr/libexec/manuel/metrics_log.py` und den Timer `manuel-metrics.timer` mit. Er schreibt jede Minute eine Zeile mit Auslastung, Speicher, GPU, Temperaturen und Strom nach `/var/log/manuel/metrics-JJJJ-MM.csv`.
 
-1. Die Adresse der Steckdose NOUS A1T mit Tasmota eintragen. Sie steht nur auf dem Gerät, nicht im Repo. Ohne sie bleiben die Spalten für Strom leer.
+1. Die Steckdose NOUS A1T einrichten. Sie kommt mit Tasmota.
+   1. Die Steckdose einstecken und mit dem WLAN `tasmota-…` verbinden, das sie aufspannt. Unter http://192.168.4.1 das WLAN des Makerspace eintragen.
+   2. Unter Configuration, Other das Template eintragen und Activate anhaken. Quelle ist https://templates.blakadder.com/nous_A1T.html.
+
+      ```json
+      {"NAME":"NOUS A1T","GPIO":[32,0,0,0,2720,2656,0,0,2624,320,224,0,0,0],"FLAG":0,"BASE":49}
+      ```
+
+   3. Unter Configuration, Other ein Passwort für die Weboberfläche setzen. Ohne Passwort kann jeder im Netz MANUEL ausschalten.
+   4. In der Console drei Befehle eingeben. Nach einem Stromausfall schaltet die Steckdose wieder ein. Die Taste an der Steckdose schaltet MANUEL nicht mehr aus. Der Name erscheint in der Weboberfläche.
+
+      ```
+      PowerOnState 1
+      SetOption73 1
+      DeviceName MANUEL
+      ```
+
+   5. Im Router der Steckdose eine feste Adresse geben.
+2. Adresse und Passwort der Steckdose auf MANUEL eintragen. Die Datei liegt nur auf dem Gerät und ist nur für root lesbar. Ohne `NOUS_URL` bleiben die Spalten für Strom leer.
 
 ```bash
 sudo mkdir -p /etc/manuel
-echo 'NOUS_URL=http://<adresse-der-steckdose>' | sudo tee /etc/manuel/metrics.env
+sudo install -m 0600 /dev/null /etc/manuel/metrics.env
+sudoedit /etc/manuel/metrics.env
 ```
 
-2. Prüfen, dass der Timer läuft und Zeilen ankommen.
+```
+NOUS_URL=http://<adresse-der-steckdose>
+NOUS_USER=admin
+NOUS_PASSWORD=<passwort>
+```
+
+3. Prüfen, dass der Timer läuft und Zeilen ankommen.
 
 ```bash
 systemctl status manuel-metrics.timer
 tail -n 3 /var/log/manuel/metrics-$(date +%Y-%m).csv
 ```
 
-3. Die Werte der Steckdose mit ihrer Weboberfläche vergleichen.
+4. Die Werte der Steckdose mit ihrer Weboberfläche vergleichen.
 
 ## 9 Admins über Wartung informieren
 

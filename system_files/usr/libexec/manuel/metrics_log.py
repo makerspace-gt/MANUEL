@@ -4,7 +4,8 @@
 A systemd timer runs it once a minute, see manuel-metrics.timer. The rows go to
 /var/log/manuel/metrics-YYYY-MM.csv. Power comes from a NOUS A1T plug with Tasmota, whose
 address is set in /etc/manuel/metrics.env as NOUS_URL, for example NOUS_URL=http://192.0.2.10.
-Without it the power columns stay empty. Only the standard library is used.
+If the web interface of the plug has a password, NOUS_USER and NOUS_PASSWORD go there as well.
+Without NOUS_URL the power columns stay empty. Only the standard library is used.
 """
 
 import csv
@@ -13,6 +14,7 @@ import glob
 import json
 import os
 import time
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -91,8 +93,12 @@ def plug():
     url = os.environ.get("NOUS_URL", "").rstrip("/")
     if not url:
         return "", ""
+    query = {"cmnd": "Status 8"}
+    if os.environ.get("NOUS_PASSWORD"):
+        query["user"] = os.environ.get("NOUS_USER", "admin")
+        query["password"] = os.environ["NOUS_PASSWORD"]
     try:
-        with urllib.request.urlopen(f"{url}/cm?cmnd=Status%208", timeout=5) as response:
+        with urllib.request.urlopen(f"{url}/cm?{urllib.parse.urlencode(query)}", timeout=5) as response:
             energy = json.load(response)["StatusSNS"]["ENERGY"]
         return energy.get("Power", ""), energy.get("Total", "")
     except (OSError, ValueError, KeyError):

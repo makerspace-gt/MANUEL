@@ -1,0 +1,67 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0044]]
+= 0044 Die Admins über Wartung informieren
+
+[horizontal]
+Status:: vorgeschlagen, der Kanal für die Meldung ist noch offen
+Datum:: 2026-11-11
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Beim Login meldet MANUEL am 11.11.2026 ein Firmware-Update für die Sperrliste von Secure Boot. Solche Hinweise sehen Admins nur, wenn sie sich zufällig anmelden. Ebenso bleibt unbemerkt, wenn ein neues Image auf einen Neustart wartet oder ein Dienst ausgefallen ist. Firmware automatisch einzuspielen kommt nicht in Frage, weil ein Update des BIOS Einstellungen wie die 16 GiB UMA aus xref:0024-16-gib-uma-fuer-die-gpu-reservieren.adoc[ADR 24] zurücksetzen kann.
+
+== Entscheidungskriterien
+
+* Admins erfahren rechtzeitig, wenn sie handeln müssen
+* Nichts wird ungefragt eingespielt
+* Keine Flut von Meldungen
+* Keine Zugangsdaten im Repo
+
+== Betrachtete Optionen
+
+* Firmware und Image automatisch einspielen
+* Nur der Hinweis beim Login wie bisher
+* Eine tägliche Prüfung, die beim Login anzeigt und bei Änderungen meldet
+
+== Entscheidung
+
+Ein Dienst im Image prüft zehn Minuten nach dem Start und jeden Morgen um 7 Uhr vier Dinge:
+
+* Firmware-Updates laut fwupd
+* ein Image, das heruntergeladen ist und auf einen Neustart wartet
+* ob der Container von Ollama läuft
+* ob der Logger in der letzten Stunde geschrieben hat
+
+Jedes Ergebnis steht im Journal und beim Login unter `/run/motd.d/60-manuel.motd`. Ändern sich die Ergebnisse, geht eine Meldung an die Admins. Eingespielt wird nichts, Firmware und Neustart bleiben Handarbeit.
+
+Der Kanal ist noch offen, E-Mail ist der Favorit. Das Skript kann schon E-Mails über SMTP senden, sobald `/etc/manuel/notify.env` auf dem Gerät Server, Absender und Empfänger enthält. Bis dahin bleibt es bei Journal und Login.
+
+=== Konsequenzen
+
+* Gut, weil Admins von wartenden Updates und Ausfällen erfahren, ohne sich anzumelden.
+* Gut, weil eine Meldung nur kommt, wenn sich etwas geändert hat.
+* Schlecht, weil der Versand einen Zugang zu einem Mailserver braucht, der auf dem Gerät gepflegt werden muss.
+
+== Vor- und Nachteile der Optionen
+
+=== Automatisch einspielen
+
+* Gut, weil nichts liegen bleibt.
+* Schlecht, weil ein BIOS-Update unbemerkt Einstellungen zurücksetzen kann.
+
+=== Nur der Hinweis beim Login
+
+* Gut, weil nichts gebaut werden muss.
+* Schlecht, weil ihn nur sieht, wer sich gerade anmeldet.
+
+=== Tägliche Prüfung mit Meldung
+
+* Gut, weil Admins informiert sind und trotzdem selbst entscheiden.
+* Schlecht, weil ein weiterer Dienst gepflegt werden muss.
+
+== Quellen
+
+* {repo}/system_files/usr/libexec/manuel/status_check.py[status_check.py]
+* https://fwupd.org/[fwupd]
+* Prüfung auf MANUEL am 11.11.2026, gefunden wurden das Update der dbx von 20241101 auf 20260707 und ein wartendes Image vom 10.11.2026

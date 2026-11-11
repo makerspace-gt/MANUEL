@@ -93,5 +93,7 @@ include::../../docs/adr/0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc[]
 
 include::../../docs/adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc[]
 
+include::../../docs/adr/0044-admins-ueber-wartung-informieren.adoc[]
+
 :leveloffset: -2
 :sectnums:

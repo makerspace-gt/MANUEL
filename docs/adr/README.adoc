@@ -60,6 +60,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |41 |xref:0041-ein-geraet-je-gast-und-repair-cafe-bearbeiten.adoc[Ein Gerät je Gast und Repair Café bearbeiten] |angenommen |2026-11-09
 |42 |xref:0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc[Tailscale als Übergang bis NetBird nutzen] |angenommen |2026-11-10
 |43 |xref:0043-eine-testumgebung-auf-manuel-betreiben.adoc[Eine Testumgebung auf MANUEL betreiben] |angenommen |2026-11-10
+|44 |xref:0044-admins-ueber-wartung-informieren.adoc[Die Admins über Wartung informieren] |vorgeschlagen |2026-11-11
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

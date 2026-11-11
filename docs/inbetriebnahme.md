@@ -47,6 +47,7 @@ Im BIOS haben wir diese Werte eingestellt oder als Ausgangswert notiert:
 | iGPU Configuration | `Advanced` → `AMD CBS` → `NBIO Common Options` → `GFX Configuration` | `UMA_Specified` | Ausgangswert, nicht geändert |
 | UMA Frame Buffer Size | wie iGPU Configuration | `16G` | Ausgangswert war `2G`, Begründung siehe [Benchmarks](benchmarks.md) |
 | SmartShift Control | `Advanced` → `AMD CBS` → `SMU Common Options` | `Auto` | Nicht geändert |
+| Neustart nach Stromausfall | noch nicht gefunden | `Power On` oder `Always On` | Offen seit 11.11.2026. Wahrscheinliche Stellen sind `Advanced` → `Onboard Devices setting` oder `Advanced` → `AMD CBS` → `FCH Common Options` → `Ac Power Loss Options`. Bis dahin nach einem Stromausfall den Einschaltknopf drücken |
 
 Die Pfade können je nach BIOS-Version abweichen. Eine offizielle Beschreibung des BIOS von Minisforum haben wir nicht gefunden. Einen Rundgang durch die Menüs mit Bildern bietet der Artikel [Minisforum AI X1 Pro running Linux: BIOS](https://www.linuxlinks.com/minisforum-ai-x1-pro-running-linux-bios/) von LinuxLinks. Das Gerät ist im [Shop von Minisforum](https://store.minisforum.com/products/minisforum-ai-x1-pro) beschrieben.
 

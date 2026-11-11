@@ -2,6 +2,9 @@
 FROM scratch AS ctx
 COPY build_files /
 COPY system_files /system_files
+# Compose file of Zammad and the test environment on top, see docs/adr/0043
+COPY quellen/zammad-docker-compose /zammad-docker-compose
+COPY testumgebung /testumgebung
 # Public signing key, so the image can verify its own updates
 COPY cosign.pub /system_files/etc/pki/containers/makerspace-gt.pub
 

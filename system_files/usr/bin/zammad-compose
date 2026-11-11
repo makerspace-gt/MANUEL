@@ -1,0 +1,13 @@
+#!/bin/bash
+# Runs docker compose for the Zammad test environment with the files baked into the image,
+# see docs/inbetriebnahme.md step 7. All arguments go to docker compose, for example
+#   zammad-compose up -d
+#   zammad-compose ps
+#   zammad-compose down -v
+set -euo pipefail
+base=/usr/share/manuel
+exec sudo DOCKER_HOST=unix:///run/podman/podman.sock docker-compose -p zammad \
+    --project-directory "$base/zammad-docker-compose" \
+    --env-file "$base/testumgebung/zammad.env" \
+    -f "$base/zammad-docker-compose/docker-compose.yml" \
+    -f "$base/testumgebung/compose.override.yml" "$@"

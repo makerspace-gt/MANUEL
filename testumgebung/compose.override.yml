@@ -1,15 +1,19 @@
 # Test environment on MANUEL, see docs/adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc
-# and docs/inbetriebnahme.md step 7. Used together with docker-compose.yml of zammad-docker-compose.
-# Every port is bound to 127.0.0.1 only. Admins reach the services through an SSH tunnel.
+# and docs/inbetriebnahme.md step 7. Used together with docker-compose.yml of zammad-docker-compose
+# and zammad.env, all in the image under /usr/share/manuel, started with the command zammad-compose.
+# Every port is bound to 127.0.0.1 only, without TLS and without a reverse proxy, because the test
+# environment is used locally only. Admins reach the services through an SSH tunnel.
 
 services:
   zammad-nginx:
     ports: !override
       - "127.0.0.1:8080:8080"
 
+  # Not needed for the test environment, saves memory for the models.
+  # Zammad itself is told by ELASTICSEARCH_ENABLED=false in zammad.env.
   zammad-elasticsearch:
-    environment:
-      ES_JAVA_OPTS: "-Xms1g -Xmx2g"
+    profiles:
+      - do-not-start
 
   # Catches every mail of the test instance, nothing reaches real guests
   mailpit:

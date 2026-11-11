@@ -26,6 +26,14 @@ dnf5 install -y tmux
 
 systemctl enable podman.socket
 
+### Zammad test environment, see docs/adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc
+# The compose file comes from the submodule quellen/zammad-docker-compose, the overrides from testumgebung/
+install -d /usr/share/manuel/zammad-docker-compose /usr/share/manuel/testumgebung
+cp -a /ctx/zammad-docker-compose/docker-compose.yml /ctx/zammad-docker-compose/scenarios /ctx/zammad-docker-compose/LICENSE \
+    /usr/share/manuel/zammad-docker-compose/
+cp -a /ctx/testumgebung/. /usr/share/manuel/testumgebung/
+test -s /usr/share/manuel/zammad-docker-compose/docker-compose.yml
+
 # Tailscale is part of uCore. It connects the mini PC until NetBird runs, see docs/adr/0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc
 systemctl enable tailscaled.service
 

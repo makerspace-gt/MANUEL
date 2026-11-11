@@ -232,10 +232,10 @@ unset TS_KEY
 
    Ohne Auth-Key gibt `sudo tailscale up --hostname=manuel` einen Link aus, über den sich das Gerät im Browser bestätigen lässt.
 5. In der Verwaltung des Tailnets beim Gerät `manuel` den Ablauf des Schlüssels abschalten. Sonst muss sich der Mini-PC nach 180 Tagen neu anmelden.
-6. Tailscale SSH einschalten. Dann prüft Tailscale beim Anmelden die SSH-Regeln in der Richtlinie des Tailnets, nicht die Schlüssel aus dem Image. Der normale SSH-Dienst auf Port 22 mit den Schlüsseln der Admins bleibt daneben bestehen.
+6. Tailscale SSH ausgeschaltet lassen. Dann nimmt der normale SSH-Dienst auch über Tailscale die Verbindungen an, mit den Schlüsseln aus `build_files/github-users`. Mit Tailscale SSH bräuchte jede Person, mit der MANUEL geteilt ist, eine eigene SSH-Regel in der Richtlinie des Tailnets. Wer es versehentlich eingeschaltet hat, schaltet es so wieder ab.
 
 ```bash
-sudo tailscale set --ssh
+sudo tailscale set --ssh=false
 ```
 
 7. Prüfen, dass das Gerät verbunden ist, und sich von einem anderen Gerät im Tailnet per SSH anmelden.
@@ -274,7 +274,7 @@ sudo git -C /var/lib/manuel/zammad-docker-compose checkout 16f43d8
 sudo git clone https://github.com/makerspace-gt/MANUEL /var/lib/manuel/MANUEL
 ```
 
-4. Einen Befehl für Compose festlegen. Er nutzt `docker-compose` über den Socket von Podman, weil die Compose-Datei von Zammad Compose ab Version 2.24 verlangt. Die Version vorher mit `docker-compose version` prüfen.
+4. Einen Befehl für Compose festlegen. Er nutzt `docker-compose` über den Socket von Podman, weil die Compose-Datei von Zammad Compose ab Version 2.24 verlangt. Auf MANUEL ist am 11.11.2026 Version 5.6.0 installiert.
 
 ```bash
 cd /var/lib/manuel/zammad-docker-compose
@@ -338,7 +338,7 @@ compose down -v
 
 ## 8 Logging von System und Strom
 
-Entwurf vom 10.11.2026. Das Image bringt den Logger `/usr/libexec/manuel/metrics_log.py` und den Timer `manuel-metrics.timer` mit. Er schreibt jede Minute eine Zeile mit Auslastung, Speicher, GPU, Temperaturen und Strom nach `/var/log/manuel/metrics-JJJJ-MM.csv`.
+Entwurf vom 10.11.2026. Am 11.11.2026 lief der Logger einmal von Hand auf MANUEL und lieferte alle Werte außer denen der Steckdose. Das Image bringt den Logger `/usr/libexec/manuel/metrics_log.py` und den Timer `manuel-metrics.timer` mit. Er schreibt jede Minute eine Zeile mit Auslastung, Speicher, GPU, Temperaturen und Strom nach `/var/log/manuel/metrics-JJJJ-MM.csv`.
 
 1. Die Adresse der Steckdose NOUS A1T mit Tasmota eintragen. Sie steht nur auf dem Gerät, nicht im Repo. Ohne sie bleiben die Spalten für Strom leer.
 

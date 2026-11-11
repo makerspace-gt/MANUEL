@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-10
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-11, Tailscale SSH wieder abgeschaltet
 
 == Kontext und Problem
 
@@ -28,7 +29,7 @@ Nach xref:0020-ueber-netbird-vernetzen.adoc[ADR 20] verbindet NetBird den Mini-P
 
 Bis NetBird läuft, verbindet Tailscale den Mini-PC. Tailscale ist in uCore enthalten. Das Image aktiviert den Dienst `tailscaled`, das Gerät heißt im Tailnet `manuel`. Es meldet sich im Tailnet des Vereins an, nicht in einem persönlichen. Ein Admin meldet das Gerät an der Konsole mit einem Auth-Key an, so kommt kein Schlüssel ins Repo oder in einen Chat.
 
-Tailscale SSH ist eingeschaltet. Wer sich darüber anmelden darf, regeln die SSH-Regeln in der Richtlinie des Tailnets, nicht die Schlüssel aus dem Image. Der normale SSH-Dienst mit den Schlüsseln der Admins bleibt daneben bestehen.
+Tailscale SSH bleibt abgeschaltet. Am 10.11.2026 war es kurz eingeschaltet. Ein Admin, mit dem MANUEL geteilt war, kam dann nicht hinein, weil die SSH-Regeln des Tailnets geteilte Geräte erst mit eigenen Regeln zulassen. Über Tailscale nimmt deshalb der normale SSH-Dienst die Verbindungen an, mit den Schlüsseln aus `build_files/github-users`. So gibt es nur eine Liste der Admins. Die Netzregel des Tailnets muss Port 22 für sie erlauben.
 
 Ollama und llama.cpp bleiben an `127.0.0.1` oder später an die Adresse von NetBird gebunden. Über Tailscale sind am 10.11.2026 nur SSH und die Namensauflösung LLMNR des Systems auf Port 5355 erreichbar. Für die Testumgebung nach xref:0043-eine-testumgebung-auf-manuel-betreiben.adoc[ADR 43] kommt Open WebUI über `tailscale serve` dazu. Testende bekommen MANUEL geteilt und dürfen nur diesen Dienst nutzen. Sobald NetBird läuft, wird das Gerät aus dem Tailnet entfernt und `tailscaled` im Image wieder deaktiviert. ADR 20 bleibt das Ziel.
 
@@ -38,7 +39,6 @@ Ollama und llama.cpp bleiben an `127.0.0.1` oder später an die Adresse von NetB
 * Gut, weil Tailscale schon im Image ist und nichts installiert werden muss.
 * Schlecht, weil die Steuerung des Tailnets bei einem fremden Anbieter liegt.
 * Schlecht, weil der Übergang später sauber zurückgebaut werden muss.
-* Schlecht, weil es mit Tailscale SSH zwei Wege zur Anmeldung gibt, die getrennt gepflegt werden.
 
 == Vor- und Nachteile der Optionen
 

@@ -290,7 +290,13 @@ zammad 'require "net/http"; puts Net::HTTP.get(URI("http://ollama:11434/api/vers
 
    Am 11.11.2026 lief so Zammad 7.2.2 ohne Elasticsearch. Nach `disable_outbound.rb` war nur der Kanal für Benachrichtigungen aktiv, die Testmail lag in Mailpit, und Zammad erreichte Ollama 0.40.14.
 
-5. Gegenprobe mit einem echten Testpostfach, nie dem Postfach des Repair Café. Den Kanal in Zammad einrichten und mit einer Mail „Test 1“ prüfen, dass Zammad abruft. Dann `disable_outbound.rb` ausführen, eine Mail „Test 2“ schicken und einige Minuten warten. „Test 2“ muss im Postfach bleiben, und eine Antwort im Ticket „Test 1“ darf außen nicht ankommen.
+5. Mit einem echten Testpostfach prüfen, dass Zammad abruft, aber alles Ausgehende in Mailpit landet. Nie mit dem Postfach des Repair Café. Das Postfach im Einrichtungsassistenten unter Kanal verbinden eintragen, bei lima-city IMAP `mail.lima-city.de:993` und SMTP `mail.lima-city.de:465` mit SSL. Direkt danach den Versand aller Kanäle auf Mailpit umleiten, der Abruf bleibt an. Dann von einer eigenen Adresse eine Mail schicken. Das Ticket entsteht in Zammad, die automatische Antwort und Antworten im Ticket erscheinen nur in Mailpit.
+
+```bash
+zammad "$(cat /usr/share/manuel/testumgebung/redirect_outbound.rb)"
+```
+
+   Danach die Gegenprobe für den Fall mit Backup. Mit einer Mail „Test 1“ prüfen, dass Zammad abruft. Dann `disable_outbound.rb` ausführen, eine Mail „Test 2“ schicken und einige Minuten warten. „Test 2“ muss im Postfach bleiben, und eine Antwort im Ticket „Test 1“ darf außen nicht ankommen.
 6. Im Browser über Tailscale arbeiten. Zammad liegt unter http://manuel:8080, Mailpit unter http://manuel:8025 und n8n unter http://manuel:5678. Beim ersten Aufruf richtet Zammad ein Admin-Konto ein. Als Adresse des Systems dort `http://manuel:8080` angeben, sonst lehnt Zammad die Verbindung für Live-Updates ab.
 
 ### 7.2 Backup einspielen

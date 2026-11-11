@@ -3,16 +3,25 @@
 
 _Teilfrage T6. Wie lassen sich Termine so vergeben, dass Helfende und Gäste zusammenpassen?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Wie Termine vergeben werden, wie viele Gäste parallel kommen können und wie spontane und vertagte Geräte hineinpassen.
+
+*Ergebnis.*
+
+* Wie viele Gäste parallel kommen können, rechnet Code aus den Anmeldungen der Helfenden <<adr-0026>>.
+* Das Modell liefert nur die Angaben je Ticket, also Wunschzeit, Gerät und ob es eine Kleinigkeit ist.
+* Der Plan bleibt ein Vorschlag, den Menschen bestätigen.
+* Je Gast und Repair Café bearbeiten wir ein Gerät, weitere kommen an späteren Tagen dran <<adr-0041>>.
+
+*Wichtigste Befehle.* Keine, dieses Kapitel hat noch keine eigenen Aufrufe.
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====
 Dieses Kapitel steht noch in Stichpunkten. Der Workflow dazu entsteht in Phase 5 des PLAN.
 ====
-
-.Kernaussagen
-* Wie viele Gäste parallel kommen können, rechnet Code aus den Anmeldungen der Helfenden <<adr-0026>>.
-* Das Modell liefert nur die Angaben je Ticket, also Wunschzeit, Gerät und ob es eine Kleinigkeit ist.
-* Der Plan bleibt ein Vorschlag, den Menschen bestätigen.
 
 .Beispiel k01, der Wasserkocher
 ****

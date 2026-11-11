@@ -3,16 +3,30 @@
 
 _Teilfrage T5. Wie hilfreich und wie sicher sind Erstdiagnosen und Reparaturansätze?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Wie MANUEL eine erste Diagnose und einen Reparaturansatz als interne Notiz vorschlägt und wie sicher das ist.
+
+*Ergebnis.*
+
+* Steht aus. Prompts und Tests entstehen in Phase 3 des PLAN. Diese Grundsätze gelten schon.
+* Ein Reparaturansatz ist Hilfe zur Selbsthilfe, also Schritte zum Mitmachen mit dem nötigen Werkzeug und möglichen Ersatzteilen.
+* Sicherheit geht vor. Bei Netzspannung, Akkus, großen Kondensatoren und Gas gehört immer ein Hinweis dazu.
+* MANUEL erfindet nichts. Was es nicht weiß, schreibt es als unbekannt. Sprachmodelle neigen sonst dazu, plausible, aber falsche Angaben zu machen cite:[huang-2024].
+
+*Wichtigste Befehle.*
+
+[source,bash]
+----
+ollama run qwen3.6:35b-a3b "Mein Wasserkocher schaltet sich nicht mehr ein. Was prüfe ich zuerst?"
+----
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====
 Dieses Kapitel steht noch in Stichpunkten. Die Prompts und Tests dazu entstehen in Phase 3 des PLAN.
 ====
-
-.Kernaussagen
-* Ein Reparaturansatz ist Hilfe zur Selbsthilfe, also Schritte zum Mitmachen mit dem nötigen Werkzeug und möglichen Ersatzteilen.
-* Sicherheit geht vor. Bei Netzspannung, Akkus, großen Kondensatoren und Gas gehört immer ein Hinweis dazu.
-* MANUEL erfindet nichts. Was es nicht weiß, schreibt es als unbekannt. Sprachmodelle neigen sonst dazu, plausible, aber falsche Angaben zu machen cite:[huang-2024].
 
 .Beispiel k01, der Wasserkocher
 ****

@@ -1,6 +1,18 @@
 [[einleitung]]
 == Einleitung
 
+.Auf einen Blick
+====
+*Worum es geht.* Warum es MANUEL gibt, welche Frage die Fallstudie beantwortet und wie sie vorgeht. Tabellen zeigen die zwölf Teilfragen und für jede Lesergruppe einen Leseweg.
+
+*Ergebnis.*
+
+* Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Repair Café bei Anfragen unterstützen, ohne dass persönliche Daten das Haus verlassen?“
+* Vorgehen als Einzelfallstudie nach Yin mit Tickets, Statistik, Laufzetteln und den Open Repair Data als Quellen.
+
+*Wichtigste Befehle.* Keine.
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====

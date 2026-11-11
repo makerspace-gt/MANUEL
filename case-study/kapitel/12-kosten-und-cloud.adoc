@@ -4,15 +4,30 @@
 _Teilfrage T10. Was kostet MANUEL im Jahr an Strom, Geld und Pflege?_ +
 _Teilfrage T11. Was verlieren wir durch den lokalen Betrieb?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Was MANUEL im Jahr an Strom, Geld und Pflege kostet und was wir gegenüber einem Modell in der Cloud verlieren.
+
+*Ergebnis.*
+
+* Steht aus. Ab Dezember misst eine Steckdose NOUS A1T den Strom, ein Logger hält jede Minute die Werte fest.
+* Die Kosten bestehen aus Anschaffung, Strom und der Zeit für die Pflege.
+* Ein Cloud-Modell bekommt zum Vergleich nur öffentliche oder erfundene Daten, echte Tickets bleiben lokal.
+
+*Wichtigste Befehle.*
+
+[source,bash]
+----
+tail -n 3 /var/log/manuel/metrics-$(date +%Y-%m).csv
+sudo python3 /usr/libexec/manuel/status_check.py --dry-run
+----
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====
 Dieses Kapitel entsteht mit den Messungen während der Erprobung.
 ====
-
-.Kernaussagen
-* Die Kosten bestehen aus Anschaffung, Strom und der Zeit für die Pflege.
-* Ein Cloud-Modell bekommt zum Vergleich nur öffentliche oder erfundene Daten, echte Tickets bleiben lokal.
 
 === Anschaffung und Strom
 

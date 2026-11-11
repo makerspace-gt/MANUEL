@@ -3,16 +3,32 @@
 
 _Teilfrage T4. Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Mensch entscheiden?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Wie MANUEL aus einer Anfrage die Kategorie bestimmt, erzählt an fünf Wendepunkten vom ersten Versuch bis zur Rückfrage bei Unsicherheit.
+
+*Ergebnis.*
+
+* Am Ende sind 98,7 Prozent der 745 Tickets richtig eingeordnet oder führen zu einer Rückfrage, nur 10 sind sicher falsch.
+* Die meisten Fehler lagen nicht am Modell, sondern an der Liste der Kategorien.
+* Eine Rückfrage ist besser als ein Fehler, deshalb fragt MANUEL bei Sammelbegriffen und Unsicherheit nach.
+* Zum Start am 05.12.2026 ordnet der Ticket Categorizer von Zammad ohne Sicherheit ein. Ein Vorabtest zeigt vorher, wie viele Einträge falsch wären <<adr-0040>>.
+
+*Wichtigste Befehle.*
+
+[source,bash]
+----
+cd eval/decision
+python3 real_representatives.py tickets.json eintraege.json ergebnis.jsonl d3:9b alle 0.7
+python3 evaluate.py
+----
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====
 Dieses Kapitel steht noch in Stichpunkten. Es erzählt fünf Wendepunkte, alle 16 Schritte stehen in {repo}/docs/einordnung.md[docs/einordnung.md].
 ====
-
-.Kernaussagen
-* Am Ende sind 98,7 Prozent der 745 Tickets richtig eingeordnet oder führen zu einer Rückfrage, nur 10 sind sicher falsch.
-* Die meisten Fehler lagen nicht am Modell, sondern an der Liste der Kategorien.
-* Eine Rückfrage ist besser als ein Fehler, deshalb fragt MANUEL bei Sammelbegriffen und Unsicherheit nach.
 
 .Beispiel k01, der Wasserkocher
 ****

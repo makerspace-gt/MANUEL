@@ -3,6 +3,27 @@
 
 _Teilfrage T7. Wie gelangen die Ergebnisse eines Termins zur Open Repair Alliance und an die Öffentlichkeit?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Wie die Ergebnisse eines Termins gezählt, als Sharecard geteilt und über Restarters.net an die Open Repair Alliance gemeldet werden.
+
+*Ergebnis.*
+
+* Künftig meldet MANUEL jedes Gerät über die API von Restarters.net <<adr-0014>>.
+* Die Vorschau der Nachmeldung zählt 429 zu meldende und 267 zu klärende Geräte. Gesendet ist nichts <<adr-0036>>.
+* Die Sharecard ist ein Entwurf <<adr-0033>>.
+
+*Wichtigste Befehle.*
+
+[source,bash]
+----
+python3 sharecard/sharecard.py Repair-Café-Statistik.ods --date 2026-11-07
+python3 eval/restarters/backfill.py --exports "../tickets-Repair Café-Created *.xlsx" \
+  --targets ../tickets-kontrolle-d3.xlsx --statistics Repair-Café-Statistik.ods \
+  --laufzettel ../Laufzettel-Download-Makerspace-Guetersloh-e-V-.csv --out VORSCHAU.tsv
+----
+====
+
 Dieses Kapitel beschreibt, wie die Ergebnisse eines Termins gezählt, als Sharecard geteilt und an die Open Repair Alliance gemeldet werden. Grundlage sind der Standard, die Werkzeuge der Partner und die Vereinheitlichung der Kategorien aus <<reparaturdaten>>. Es schließt die Lücke, mit der Kapitel 2 endet.
 
 .Beispiel k01, der Wasserkocher

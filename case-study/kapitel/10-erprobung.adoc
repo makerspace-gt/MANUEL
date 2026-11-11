@@ -3,16 +3,25 @@
 
 _Teilfrage T8. Was bewirkt MANUEL im Repair Café?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Was MANUEL im Repair Café bewirkt, gemessen an den vier Kennzahlen aus dem Antrag bei der DSEE.
+
+*Ergebnis.*
+
+* Steht aus. Die Erprobung läuft vom 05.12.2026 bis Februar 2027 mit fünf Terminen.
+* Gemessen wird an den vier Kennzahlen aus dem Antrag bei der DSEE <<adr-0032>>.
+* Die Vergleichswerte stammen aus der Zeit vor MANUEL.
+* Drei Monate mit rund zwei Terminen im Monat ergeben kleine Zahlen. Jede Quote bekommt deshalb ein Intervall nach Wilson cite:[wiki-wilson].
+
+*Wichtigste Befehle.* Keine, dieses Kapitel hat noch keine eigenen Aufrufe.
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====
 Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 2027.
 ====
-
-.Kernaussagen
-* Gemessen wird an den vier Kennzahlen aus dem Antrag bei der DSEE <<adr-0032>>.
-* Die Vergleichswerte stammen aus der Zeit vor MANUEL.
-* Drei Monate mit rund zwei Terminen im Monat ergeben kleine Zahlen. Jede Quote bekommt deshalb ein Intervall nach Wilson cite:[wiki-wilson].
 
 === Zeitraum und Termine
 

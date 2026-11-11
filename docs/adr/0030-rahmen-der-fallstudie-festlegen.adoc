@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht, und 2026-11-11, Kasten „Auf einen Blick“ und feste Kopf- und Fußzeile
 
 == Kontext und Problem
 
@@ -51,7 +51,9 @@ Die Leitfrage lautet "Wie kann ein lokales Sprachmodell die Engagierten des Repa
 | |T12 |Was können andere Initiativen nachnutzen? |13
 |===
 
-Teil II folgt dem Weg einer Anfrage. Ein erfundenes Ticket aus dem öffentlichen Testsatz, k01 mit einem Wasserkocher, begleitet die Lesenden durch alle Stationen. Was dabei mit k01 passiert, stammt aus echten Läufen. Die Kapitel erzählen die Wendepunkte und nicht jeden Schritt. Jedes Kapitel beginnt mit seiner Teilfrage und endet mit einem Ergebnis und einem Kasten zum Nachvollziehen mit Skripten, Daten, Läufen und ADRs.
+Teil II folgt dem Weg einer Anfrage. Ein erfundenes Ticket aus dem öffentlichen Testsatz, k01 mit einem Wasserkocher, begleitet die Lesenden durch alle Stationen. Was dabei mit k01 passiert, stammt aus echten Läufen. Die Kapitel erzählen die Wendepunkte und nicht jeden Schritt. Jedes Kapitel beginnt mit seiner Teilfrage. Direkt danach folgt der Kasten „Auf einen Blick“ mit drei Teilen, nämlich worum es geht, was herauskam und die wichtigsten Befehle. Wer nur einen Überblick will, liest nur diese Kästen. Danach kommt der ausführliche Teil, der mit einem Kasten zum Nachvollziehen mit Skripten, Daten, Läufen und ADRs endet.
+
+Die HTML-Fassung zeigt beim Scrollen immer eine Kopfzeile mit dem Logo und eine Fußzeile mit dem Link „Auf GitHub bearbeiten“. Im PDF stehen beide auf jeder Seite.
 
 Die Arbeit entsteht vom Groben zum Feinen in vier Stufen:
 

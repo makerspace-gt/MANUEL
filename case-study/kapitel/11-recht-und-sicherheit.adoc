@@ -3,16 +3,31 @@
 
 _Teilfrage T9. Welche Pflichten aus DSGVO und KI-Verordnung hat ein Verein, der MANUEL betreibt, und wie schützt er sich vor Missbrauch?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Welche Pflichten aus DSGVO und KI-Verordnung den Verein treffen und wie MANUEL vor Missbrauch geschützt ist.
+
+*Ergebnis.*
+
+* Der Betrieb auf eigener Hardware vermeidet die Weitergabe von Ticketdaten an Dritte.
+* Auch ein Verein braucht Löschfristen, ein Verzeichnis der Verarbeitungen und Engagierte, die mit KI umgehen können.
+* Ticketinhalte und Webseiten sind Daten, keine Anweisungen. Die Agenten haben keine Aktionen, mit denen sie Schaden anrichten könnten.
+* Nach außen lauschen auf MANUEL nur SSH und die Namensauflösung des Systems, Ollama nur auf `127.0.0.1`.
+
+*Wichtigste Befehle.*
+
+[source,bash]
+----
+sudo ss -tln
+tailscale status
+----
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====
 Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist keine Rechtsberatung.
 ====
-
-.Kernaussagen
-* Der Betrieb auf eigener Hardware vermeidet die Weitergabe von Ticketdaten an Dritte.
-* Auch ein Verein braucht Löschfristen, ein Verzeichnis der Verarbeitungen und Engagierte, die mit KI umgehen können.
-* Ticketinhalte und Webseiten sind Daten, keine Anweisungen. Die Agenten haben keine Aktionen, mit denen sie Schaden anrichten könnten.
 
 === Datenschutz
 

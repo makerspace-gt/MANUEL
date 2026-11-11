@@ -3,16 +3,25 @@
 
 _Teilfrage T2. Welche Aufgaben kann ein lokales Modell übernehmen, welche bleiben bei Menschen oder festen Regeln?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Welche Aufgaben MANUEL übernimmt und welche bei Menschen oder festen Regeln bleiben. Das Ablaufdiagramm zeigt den Weg einer Anfrage vom Eingang bis zur Meldung.
+
+*Ergebnis.*
+
+* MANUEL bereitet vor, ein Mensch entscheidet.
+* Code rechnet, das Modell formuliert. Zählen, Zuordnen, Termine planen und Daten übertragen laufen nach festen Regeln.
+* Die Prüfung der Daten in Kapitel 2 bringt vier neue Aufgaben zur Erfassung.
+* Zum Start ordnet der Ticket Categorizer von Zammad ein, ohne Angabe der Sicherheit <<adr-0040>>.
+
+*Wichtigste Befehle.* Keine.
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====
 Dieses Kapitel steht noch in Stichpunkten.
 ====
-
-.Kernaussagen
-* MANUEL bereitet vor, ein Mensch entscheidet.
-* Code rechnet, das Modell formuliert. Zählen, Zuordnen, Termine planen und Daten übertragen laufen nach festen Regeln.
-* Die Prüfung der Daten in Kapitel 2 bringt vier neue Aufgaben zur Erfassung.
 
 === Aufgaben im Repair Café
 

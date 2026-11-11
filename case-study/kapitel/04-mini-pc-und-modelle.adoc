@@ -3,16 +3,34 @@
 
 _Teilfrage T3. Reicht ein Mini-PC für den Betrieb und welche Modelle passen?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Der Mini-PC, seine Schichten von der Hardware bis zur Anwendung und die Messungen, nach denen wir Engines und Modelle gewählt haben.
+
+*Ergebnis.*
+
+* Ein Mini-PC mit 64 GB gemeinsamem Speicher hält Sprachmodell, Decision-Modell und Embedding-Modell gleichzeitig geladen.
+* Ein Reparaturansatz ist in knapp 30 Sekunden fertig, eine Einordnung in Sekundenbruchteilen.
+* Im Echtbetrieb bleibt der Mini-PC ein Rechenknecht, Zammad und n8n laufen auf der Helpdesk-VM. Vorher läuft eine Testumgebung auf MANUEL <<adr-0043>>.
+* Das Sprachmodell läuft mit llama.cpp, `d3:9b` und `bge-m3` mit Ollama <<adr-0025>>.
+
+*Wichtigste Befehle.*
+
+[source,bash]
+----
+sudo podman run -d --name ollama --restart=always --device /dev/dri \
+  -e OLLAMA_IGPU_ENABLE=1 -v ollama:/root/.ollama -p 127.0.0.1:11434:11434 \
+  docker.io/ollama/ollama:latest
+ollama run qwen3.6:35b-a3b "Mein Wasserkocher schaltet sich nicht mehr ein."
+./bench.sh lang-qwen36-mtp llamacpp-vulkan
+----
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====
 Dieses Kapitel steht noch in Stichpunkten.
 ====
-
-.Kernaussagen
-* Ein Mini-PC mit 64 GB gemeinsamem Speicher hält Sprachmodell, Decision-Modell und Embedding-Modell gleichzeitig geladen.
-* Ein Reparaturansatz ist in knapp 30 Sekunden fertig, eine Einordnung in Sekundenbruchteilen.
-* Der Mini-PC bleibt ein reiner Rechenknecht. Zammad und n8n laufen auf der Helpdesk-VM im Rechenzentrum.
 
 .Beispiel k01, der Wasserkocher
 ****

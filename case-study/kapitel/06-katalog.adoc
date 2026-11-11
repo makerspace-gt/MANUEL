@@ -3,16 +3,31 @@
 
 _Teilfrage T4. Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Mensch entscheiden? Dieses Kapitel zeigt die Liste, auf der die Einordnung beruht._
 
+.Auf einen Blick
+====
+*Worum es geht.* Die Liste der Gegenstände, auf der die Einordnung beruht, und wie sie aus den Listen der anstiftung und der Open Repair Alliance entstand.
+
+*Ergebnis.*
+
+* Der Katalog vereint die feine Liste der anstiftung mit den Gruppen der Open Repair Alliance.
+* Jeder Eintrag hat einen Schlüssel, der seine ORA-Gruppe schon enthält.
+* Der Katalog steht offen unter CC BY-SA 4.0 und lässt sich von anderen Initiativen nachnutzen.
+* Der Katalog hat 1.089 Einträge. Englische Namen fehlen noch bei 863 davon.
+
+*Wichtigste Befehle.*
+
+[source,bash]
+----
+python3 katalog/check.py
+python3 katalog/entries.py quellen/anstiftung/kategorien.csv eintraege.json
+----
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====
 Dieses Kapitel steht noch in Stichpunkten.
 ====
-
-.Kernaussagen
-* Der Katalog vereint die feine Liste der anstiftung mit den Gruppen der Open Repair Alliance.
-* Jeder Eintrag hat einen Schlüssel, der seine ORA-Gruppe schon enthält.
-* Der Katalog steht offen unter CC BY-SA 4.0 und lässt sich von anderen Initiativen nachnutzen.
 
 .Beispiel k01, der Wasserkocher
 ****

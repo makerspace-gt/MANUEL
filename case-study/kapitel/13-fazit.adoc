@@ -3,6 +3,18 @@
 
 _Teilfrage T12. Was können andere Initiativen nachnutzen?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Die Antworten auf alle Teilfragen, die Grenzen der Fallstudie, Erfahrungen mit der Arbeitsweise und was andere Initiativen nachnutzen können.
+
+*Ergebnis.*
+
+* Steht aus. Das Kapitel entsteht zum Schluss aus den Ergebnissen der anderen Kapitel.
+* Schon jetzt zeigt sich, dass Fallstudie und ADRs Entscheidungen nachvollziehbar machen. Die KI einfach machen zu lassen war es nicht.
+
+*Wichtigste Befehle.* Keine.
+====
+
 [NOTE]
 .Entwurf in Stichpunkten, Stand 2026-11-08
 ====

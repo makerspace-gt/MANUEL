@@ -3,6 +3,25 @@
 
 _Teilfrage T1. Wie wird eine Reparatur erfasst und wie machen das andere Initiativen?_
 
+.Auf einen Blick
+====
+*Worum es geht.* Wie das Repair Café und andere Initiativen Reparaturen erfassen, welche Felder der Open Repair Data Standard kennt und wo unsere Daten Lücken haben.
+
+*Ergebnis.*
+
+* In den Tickets von 2024 bis 2026 steht die Marke bei rund 25 Prozent, das Baujahr bei keinem.
+* Den 941 bearbeiteten Geräten stehen 791 Tickets gegenüber, weil spontane Gäste lange kein Ticket bekamen.
+* Bei der Open Repair Alliance kamen 30 von 1.485 Geräten an, rund 2 Prozent.
+
+*Wichtigste Befehle.*
+
+[source,bash]
+----
+python3 eval/ora/charts.py quellen/openrepair-data
+python3 eval/ora/category_matrix.py quellen/openrepair-data
+----
+====
+
 Reparaturdaten sind mehr als eine Statistik für den eigenen Verein. Zusammengeführt zeigen sie, welche Geräte kaputtgehen, woran Reparaturen scheitern und wo Hersteller nachbessern müssten. Damit das gelingt, müssen Daten aus vielen Initiativen und Werkzeugen vergleichbar werden. Dieses Kapitel beschreibt, wie eine Reparatur erfasst wird, im Repair Café Gütersloh und bei anderen Initiativen, wie die Open Repair Alliance die Daten vereinheitlicht und wie viel davon bei ihr ankommt. Von dort stammen auch die Gruppen, nach denen der Katalog in <<katalog>> geordnet ist.
 
 [[erfassung-am-tisch]]

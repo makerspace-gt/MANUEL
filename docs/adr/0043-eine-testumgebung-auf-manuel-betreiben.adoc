@@ -31,6 +31,7 @@ Auf MANUEL läuft eine Testumgebung mit Zammad aus `zammad-docker-compose`, n8n,
 
 * Elasticsearch läuft nicht. Das spart Speicher für die Modelle, und Zammad sucht nur in der Datenbank. Für die Ähnlichkeitssuche der Wissensdatenbank bräuchte es Elasticsearch später doch.
 * Es gibt kein TLS und keinen Reverse Proxy wie Traefik, weil die Testumgebung nur lokal genutzt wird.
+* Im Netz des Stapels gibt sich Mailpit als `mail.lima-city.de` aus, mit SMTP über SSL und jeder Anmeldung. So landet auch eine Mail, für die Zammad die echten Einstellungen von lima-city nutzt, in Mailpit. Das schützt nur vor lima-city, andere Mailserver fängt es nicht ab. Der Abruf per IMAP von lima-city geht dann nur über die IP-Adresse.
 * Zammad nutzt unser Ollama mit GPU. Der Container hängt dafür zusätzlich im Netz des Stapels und heißt dort `ollama`. Das Szenario `add-ollama.yml` von Zammad entfällt, weil es eine zweite Ollama ohne GPU startet.
 * Zuerst läuft ein frisches Zammad ohne Daten. Erst wenn eine Testmail sicher in Mailpit landet, kommt das Backup dazu.
 * Zammad bekommt ein Backup, das die Admins als Datei liefern. Direkt nach dem Einspielen und vor dem Start des Schedulers schaltet `testumgebung/disable_outbound.rb` alle Kanäle und Webhooks ab. Benachrichtigungen gehen nur noch an Mailpit, das jede Mail abfängt.

@@ -3,7 +3,7 @@
 # Use it to test with a real test mailbox. Never with the mailbox of the Repair Café and never after
 # restoring a backup, there disable_outbound.rb switches fetching off as well.
 
-mailpit = { adapter: 'smtp', options: { host: 'mailpit', port: 1025, ssl: false, enable_starttls_auto: false } }
+mailpit = { adapter: 'smtp', options: { host: 'mailpit', port: 465, ssl: true, ssl_verify: false } }
 
 Channel.where(area: ['Email::Account', 'Email::Notification']).find_each do |channel|
   channel.update!(options: channel.options.merge(outbound: mailpit))

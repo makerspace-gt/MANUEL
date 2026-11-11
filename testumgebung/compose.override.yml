@@ -16,10 +16,23 @@ services:
     profiles:
       - do-not-start
 
-  # Catches every mail of the test instance, nothing reaches real guests
+  # Catches every mail of the test instance, nothing reaches real guests. Inside the network of the
+  # stack Mailpit also answers as mail.lima-city.de, with SMTP over TLS on port 465 and any login,
+  # so Zammad sends to Mailpit even with the real settings of lima-city. Fetching by IMAP from
+  # mail.lima-city.de does not work then, use the IP address of lima-city for that.
   mailpit:
     image: docker.io/axllent/mailpit:v1.33.1
     restart: always
+    environment:
+      MP_SMTP_BIND_ADDR: 0.0.0.0:465
+      MP_SMTP_REQUIRE_TLS: "true"
+      MP_SMTP_TLS_CERT: sans:mail.lima-city.de,mailpit
+      MP_SMTP_TLS_KEY: sans:mail.lima-city.de,mailpit
+      MP_SMTP_AUTH_ACCEPT_ANY: "true"
+    networks:
+      default:
+        aliases:
+          - mail.lima-city.de
     ports:
       - "8025:8025"
 

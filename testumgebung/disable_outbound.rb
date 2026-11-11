@@ -10,7 +10,7 @@ if notification
   notification.update!(
     active:  true,
     options: notification.options.merge(
-      outbound: { adapter: 'smtp', options: { host: 'mailpit', port: 1025, ssl: false, enable_starttls_auto: false } }
+      outbound: { adapter: 'smtp', options: { host: 'mailpit', port: 465, ssl: true, ssl_verify: false } }
     )
   )
 end

@@ -254,8 +254,8 @@ Ollama bleibt an `127.0.0.1` gebunden und ist über Tailscale nicht erreichbar. 
 Die Entscheidung steht in [ADR 43](adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc). Das Image bringt die Compose-Datei von Zammad aus dem Submodul `quellen/zammad-docker-compose` und die Ergänzungen aus `testumgebung/` unter `/usr/share/manuel` mit. Der Befehl `zammad-compose` startet alles damit.
 
 - Elasticsearch läuft nicht, das spart Speicher für die Modelle. Zammad sucht dann nur in der Datenbank.
-- Alle Dienste sind nur an `127.0.0.1` gebunden, ohne TLS und ohne Reverse Proxy, weil die Testumgebung nur lokal genutzt wird.
-- Admins arbeiten über einen SSH-Tunnel. Nach außen gibt es nur SSH und später Open WebUI über `tailscale serve`.
+- Zammad, Mailpit und n8n sind an alle Schnittstellen gebunden, ohne TLS und ohne Reverse Proxy. Admins öffnen sie über Tailscale im Browser, etwa http://manuel:8080.
+- Weil Podman die Firewall des Hosts umgeht, sind die Ports auch im lokalen Netz offen. Das gilt nur, solange Zammad Testdaten hat. Vor 7.2 die Ports in `testumgebung/compose.override.yml` wieder auf `127.0.0.1` beschränken.
 
 ### 7.1 Frisches Zammad und Test mit Mailpit
 
@@ -291,15 +291,11 @@ zammad 'require "net/http"; puts Net::HTTP.get(URI("http://ollama:11434/api/vers
    Am 11.11.2026 lief so Zammad 7.2.2 ohne Elasticsearch. Nach `disable_outbound.rb` war nur der Kanal für Benachrichtigungen aktiv, die Testmail lag in Mailpit, und Zammad erreichte Ollama 0.40.14.
 
 5. Gegenprobe mit einem echten Testpostfach, nie dem Postfach des Repair Café. Den Kanal in Zammad einrichten und mit einer Mail „Test 1“ prüfen, dass Zammad abruft. Dann `disable_outbound.rb` ausführen, eine Mail „Test 2“ schicken und einige Minuten warten. „Test 2“ muss im Postfach bleiben, und eine Antwort im Ticket „Test 1“ darf außen nicht ankommen.
-6. Als Admin über einen SSH-Tunnel arbeiten. Zammad liegt dann unter http://localhost:8080, Mailpit unter http://localhost:8025 und n8n unter http://localhost:5678. Beim ersten Aufruf richtet Zammad ein Admin-Konto ein.
-
-```bash
-ssh -L 8080:127.0.0.1:8080 -L 8025:127.0.0.1:8025 -L 5678:127.0.0.1:5678 core@manuel
-```
+6. Im Browser über Tailscale arbeiten. Zammad liegt unter http://manuel:8080, Mailpit unter http://manuel:8025 und n8n unter http://manuel:5678. Beim ersten Aufruf richtet Zammad ein Admin-Konto ein. Als Adresse des Systems dort `http://manuel:8080` angeben, sonst lehnt Zammad die Verbindung für Live-Updates ab.
 
 ### 7.2 Backup einspielen
 
-Erst wenn 7.1 funktioniert. Die beiden Dateien `*_zammad_db.psql.gz` und `*_zammad_files.tar.gz` liefert ein Admin aus der Sicherung. Niemand greift dafür auf das laufende Zammad zu.
+Erst wenn 7.1 funktioniert und die Ports wieder auf `127.0.0.1` beschränkt sind. Die beiden Dateien `*_zammad_db.psql.gz` und `*_zammad_files.tar.gz` liefert ein Admin aus der Sicherung. Niemand greift dafür auf das laufende Zammad zu.
 
 1. Die frische Instanz löschen und das Backup bereitlegen.
 

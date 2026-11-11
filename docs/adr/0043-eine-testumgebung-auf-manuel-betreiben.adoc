@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-10
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-11, Compose im Image, ohne Elasticsearch und TLS, erst ein frisches Zammad
+Überarbeitet:: 2026-11-11, Compose im Image, ohne Elasticsearch und TLS, erst ein frisches Zammad, Ports für Tailscale offen
 
 == Kontext und Problem
 
@@ -34,7 +34,7 @@ Auf MANUEL läuft eine Testumgebung mit Zammad aus `zammad-docker-compose`, n8n,
 * Zammad nutzt unser Ollama mit GPU. Der Container hängt dafür zusätzlich im Netz des Stapels und heißt dort `ollama`. Das Szenario `add-ollama.yml` von Zammad entfällt, weil es eine zweite Ollama ohne GPU startet.
 * Zuerst läuft ein frisches Zammad ohne Daten. Erst wenn eine Testmail sicher in Mailpit landet, kommt das Backup dazu.
 * Zammad bekommt ein Backup, das die Admins als Datei liefern. Direkt nach dem Einspielen und vor dem Start des Schedulers schaltet `testumgebung/disable_outbound.rb` alle Kanäle und Webhooks ab. Benachrichtigungen gehen nur noch an Mailpit, das jede Mail abfängt.
-* Alle Dienste sind nur an `127.0.0.1` gebunden. Admins erreichen Zammad, n8n und Mailpit über einen SSH-Tunnel.
+* Zammad, Mailpit und n8n sind an alle Schnittstellen gebunden, damit Admins sie über Tailscale im Browser öffnen, etwa unter http://manuel:8080. Podman umgeht dabei die Firewall des Hosts, die Ports sind also auch im lokalen Netz erreichbar. Das ist nur mit Testdaten vertretbar. Bevor ein Backup mit echten Tickets eingespielt wird, werden die Ports wieder auf `127.0.0.1` oder die Adresse von Tailscale beschränkt.
 * Testende bekommen nur Open WebUI. Es erscheint über `tailscale serve` im Tailnet, und MANUEL wird mit ihnen geteilt. Die Richtlinie des Tailnets erlaubt ihnen nur diesen Dienst. Echte Daten sehen sie nicht.
 * Die Befehle `ollama`, `zammad` und `n8n` funktionieren im Terminal, obwohl die Dienste im Container laufen.
 

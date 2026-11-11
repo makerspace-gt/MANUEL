@@ -86,8 +86,15 @@ def notify(findings):
     message["From"] = sender
     message["To"] = recipients
     message.set_content("\n".join(f"- {f}" for f in findings) or "Keine offenen Punkte mehr.")
-    with smtplib.SMTP(host, int(os.environ.get("SMTP_PORT", "587")), timeout=30) as smtp:
-        smtp.starttls()
+    port = int(os.environ.get("SMTP_PORT", "587"))
+    # Port 465 speaks TLS from the start, as at lima-city, port 587 upgrades with STARTTLS
+    if port == 465:
+        smtp_session = smtplib.SMTP_SSL(host, port, timeout=30)
+    else:
+        smtp_session = smtplib.SMTP(host, port, timeout=30)
+    with smtp_session as smtp:
+        if port != 465:
+            smtp.starttls()
         if os.environ.get("SMTP_USER"):
             smtp.login(os.environ["SMTP_USER"], os.environ.get("SMTP_PASSWORD", ""))
         smtp.send_message(message)

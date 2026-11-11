@@ -1,5 +1,16 @@
 <!-- Kopfzeile der Fallstudie mit dem Logo von MANUEL, eingebunden über :docinfo: shared -->
-<div id="manuel-kopf" style="max-width:62.5em;margin:0 auto;padding:0.75em 1em 0;">
+<style>
+#manuel-kopf{position:sticky;top:0;z-index:900;background:#fff;border-bottom:1px solid #e7e7e9;padding:0.4em 1em;}
+#manuel-kopf svg{height:36px;width:auto;display:block;}
+#manuel-fuss{position:fixed;left:0;right:0;bottom:0;z-index:900;background:#fff;border-top:1px solid #e7e7e9;padding:0.5em 1em;text-align:center;font-size:0.9em;}
+body{padding-bottom:3em;}
+html{scroll-padding-top:60px;}
+#toc.toc2{padding-bottom:3em;}
+@media screen and (min-width:768px){#manuel-fuss{left:15em;}}
+@media screen and (min-width:1280px){#manuel-fuss{left:20em;}}
+@media print{#manuel-kopf,#manuel-fuss{position:static;}}
+</style>
+<div id="manuel-kopf">
 <a href="https://github.com/makerspace-gt/MANUEL" title="MANUEL auf GitHub">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" width="180" height="48" role="img" aria-label="MANUEL">
   <title>MANUEL</title>

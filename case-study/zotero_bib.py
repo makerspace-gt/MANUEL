@@ -314,6 +314,26 @@ def same_source(new, old):
             and (a.startswith(b) or b.startswith(a)))
 
 
+def best_match(new, pinned, inbox):
+    """The pinned item a Connector save belongs to.
+
+    Saves are made for items in the Inbox, so an Inbox item on the same domain wins
+    over an exact URL match elsewhere. Redirects like ifixit.com/api to /api-docs
+    would otherwise attach the snapshot to an unused neighbour where it gets pruned.
+    """
+    if not new.get("url"):
+        return None
+    waiting = [o for o in pinned if inbox in o.get("collections", []) and o.get("url")
+               and domain(o["url"]) == domain(new["url"])]
+    exact = [o for o in pinned if o.get("url") and norm_url(o["url"]) == norm_url(new["url"])]
+    for group in ([o for o in waiting if o in exact], [o for o in waiting if same_source(new, o)],
+                  waiting if len(waiting) == 1 else [], exact,
+                  [o for o in pinned if same_source(new, o)]):
+        if group:
+            return group[0]
+    return None
+
+
 def fold(dup, old, key):
     """Move the attachments of dup to old, fill empty fields of old and delete dup."""
     for child in fetch_all(f"/items/{dup['key']}/children", key):
@@ -335,11 +355,12 @@ def merge(key):
     items = [d for d in fetch_all("/items/top", key) if d["itemType"] not in ("attachment", "note")]
     pinned = [d for d in items if "Citation Key:" in d.get("extra", "")]
     used = {pinned_key(d) for d in pinned}
+    inbox = collection_keys(key)[0]
     moved, changed, deleted, keyed, waiting = [], {}, [], [], []
     for d in items:
         if d in pinned:
             continue
-        old = next((o for o in pinned if same_source(d, o)), None)
+        old = best_match(d, pinned, inbox)
         if old is None:
             pin(d, new_key(d, used))
             keyed.append(d)

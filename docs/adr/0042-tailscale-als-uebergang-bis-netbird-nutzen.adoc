@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-10
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-11, Tailscale SSH wieder abgeschaltet
+Überarbeitet:: 2026-11-11, Tailscale SSH wieder abgeschaltet, und 2026-11-12, Open WebUI direkt auf Port 3000 statt über `tailscale serve`
 
 == Kontext und Problem
 
@@ -31,7 +31,7 @@ Bis NetBird läuft, verbindet Tailscale den Mini-PC. Tailscale ist in uCore enth
 
 Tailscale SSH bleibt abgeschaltet. Am 10.11.2026 war es kurz eingeschaltet. Ein Admin, mit dem MANUEL geteilt war, kam dann nicht hinein, weil die SSH-Regeln des Tailnets geteilte Geräte erst mit eigenen Regeln zulassen. Über Tailscale nimmt deshalb der normale SSH-Dienst die Verbindungen an, mit den Schlüsseln aus `build_files/github-users`. So gibt es nur eine Liste der Admins. Die Netzregel des Tailnets muss Port 22 für sie erlauben.
 
-Ollama und llama.cpp bleiben an `127.0.0.1` oder später an die Adresse von NetBird gebunden. Über Tailscale sind am 10.11.2026 nur SSH und die Namensauflösung LLMNR des Systems auf Port 5355 erreichbar. Für die Testumgebung nach xref:0043-eine-testumgebung-auf-manuel-betreiben.adoc[ADR 43] kommt Open WebUI über `tailscale serve` dazu. Testende bekommen MANUEL geteilt und dürfen nur diesen Dienst nutzen. Sobald NetBird läuft, wird das Gerät aus dem Tailnet entfernt und `tailscaled` im Image wieder deaktiviert. ADR 20 bleibt das Ziel.
+Ollama und llama.cpp bleiben an `127.0.0.1` oder später an die Adresse von NetBird gebunden. Über Tailscale sind am 10.11.2026 nur SSH und die Namensauflösung LLMNR des Systems auf Port 5355 erreichbar. Für die Testumgebung nach xref:0043-eine-testumgebung-auf-manuel-betreiben.adoc[ADR 43] kommt Open WebUI auf Port 3000 dazu, ohne `tailscale serve`. Alle im Tailnet erreichen es unter http://manuel:3000. Testende bekommen MANUEL geteilt und dürfen nur diesen Port nutzen. Sobald NetBird läuft, wird das Gerät aus dem Tailnet entfernt und `tailscaled` im Image wieder deaktiviert. ADR 20 bleibt das Ziel.
 
 === Konsequenzen
 

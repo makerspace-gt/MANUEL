@@ -330,17 +330,18 @@ zammad "$(cat /usr/share/manuel/testumgebung/mail_test.rb)"
 
 ### 7.3 Open WebUI für Testende
 
-Open WebUI nutzt das Netz des Hosts, um Ollama auf `127.0.0.1` zu erreichen, und hört selbst nur auf `127.0.0.1:3000`. `tailscale serve` stellt es im Tailnet bereit.
+Open WebUI und Ollama hängen gemeinsam im Netz `manuel`. Open WebUI erreicht Ollama dort unter `http://ollama:11434`, ohne dass Ollama einen Port nach außen öffnet. Port 3000 ist veröffentlicht. Weil Podman die Firewall des Hosts umgeht, ist er über Tailscale und im lokalen Netz offen, etwa unter http://manuel:3000. Open WebUI verlangt eine Anmeldung, und wer sich zuerst registriert, wird Admin.
 
 ```bash
-sudo podman run -d --name open-webui --restart=always --network host \
-  -e PORT=3000 -e HOST=127.0.0.1 -e OLLAMA_BASE_URL=http://127.0.0.1:11434 \
+sudo podman network create manuel
+sudo podman network connect manuel ollama
+sudo podman run -d --name open-webui --restart=always --network manuel -p 3000:8080 \
+  -e OLLAMA_BASE_URL=http://ollama:11434 \
   -v open-webui:/app/backend/data \
   ghcr.io/open-webui/open-webui:v0.13.3
-sudo tailscale serve --bg 3000
 ```
 
-In der Verwaltung des Tailnets MANUEL mit den Testenden teilen und in der Richtlinie für sie nur Port 443 erlauben.
+Gleich danach das eigene Konto als Admin anlegen. In der Verwaltung des Tailnets MANUEL mit den Testenden teilen und in der Richtlinie für sie nur Port 3000 erlauben.
 
 ### 7.4 Aufräumen
 

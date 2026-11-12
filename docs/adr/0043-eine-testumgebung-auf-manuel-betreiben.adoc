@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-10
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-11, Compose im Image, ohne Elasticsearch und TLS, erst ein frisches Zammad, Ports für Tailscale offen
+Überarbeitet:: 2026-11-11, Compose im Image, ohne Elasticsearch und TLS, erst ein frisches Zammad, Ports für Tailscale offen, und 2026-11-12, Open WebUI auf Port 3000 ohne `tailscale serve`
 
 == Kontext und Problem
 
@@ -36,7 +36,7 @@ Auf MANUEL läuft eine Testumgebung mit Zammad aus `zammad-docker-compose`, n8n,
 * Zuerst läuft ein frisches Zammad ohne Daten. Erst wenn eine Testmail sicher in Mailpit landet, kommt das Backup dazu.
 * Zammad bekommt ein Backup, das die Admins als Datei liefern. Direkt nach dem Einspielen und vor dem Start des Schedulers schaltet `testumgebung/disable_outbound.rb` alle Kanäle und Webhooks ab. Benachrichtigungen gehen nur noch an Mailpit, das jede Mail abfängt.
 * Zammad, Mailpit und n8n sind an alle Schnittstellen gebunden, damit Admins sie über Tailscale im Browser öffnen, etwa unter http://manuel:8080. Podman umgeht dabei die Firewall des Hosts, die Ports sind also auch im lokalen Netz erreichbar. Das ist nur mit Testdaten vertretbar. Bevor ein Backup mit echten Tickets eingespielt wird, werden die Ports wieder auf `127.0.0.1` oder die Adresse von Tailscale beschränkt.
-* Testende bekommen nur Open WebUI. Es erscheint über `tailscale serve` im Tailnet, und MANUEL wird mit ihnen geteilt. Die Richtlinie des Tailnets erlaubt ihnen nur diesen Dienst. Echte Daten sehen sie nicht.
+* Testende bekommen nur Open WebUI. Es ist wie Zammad an alle Schnittstellen gebunden, auf Port 3000, und erreicht Ollama über das gemeinsame Podman-Netz `manuel`. So können alle im Tailnet es ohne `tailscale serve` unter http://manuel:3000 öffnen. MANUEL wird mit den Testenden geteilt, und die Richtlinie des Tailnets erlaubt ihnen nur diesen Port. Echte Daten sehen sie nicht.
 * Die Befehle `ollama`, `zammad` und `n8n` funktionieren im Terminal, obwohl die Dienste im Container laufen.
 
 Echte Tickets auf MANUEL sind nach xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2] erlaubt. Vor dem Umzug in den Makerspace braucht die SSD aber die Verschlüsselung nach xref:0016-eigenes-image-auf-basis-von-ucore-bauen.adoc[ADR 16]. Die Testinstanz kommt ins Verzeichnis von Verarbeitungstätigkeiten.
@@ -69,5 +69,5 @@ Echte Tickets auf MANUEL sind nach xref:0002-echte-ticketdaten-nur-lokal-auswert
 
 * https://github.com/zammad/zammad-docker-compose[zammad-docker-compose], im IT-Plan als Submodul unter `upstream/`
 * https://mailpit.axllent.org/[Mailpit]
-* https://tailscale.com/kb/1312/serve[Tailscale Serve] und https://tailscale.com/kb/1084/sharing[Geräte teilen]
+* https://tailscale.com/kb/1084/sharing[Geräte teilen]
 * {repo}/docs/inbetriebnahme.md[Inbetriebnahme des Mini-PCs], Schritt 7

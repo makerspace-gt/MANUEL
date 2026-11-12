@@ -6,6 +6,12 @@ The group leads, see docs/adr/0046-literatur-in-einer-zotero-gruppe-pflegen.adoc
     python3 zotero_bib.py export          # group -> literatur.bib (default)
     python3 zotero_bib.py export --check  # exit 1 if literatur.bib differs from the group
     python3 zotero_bib.py seed            # literatur.bib -> empty group, run once
+    python3 zotero_bib.py merge           # fold items saved with the Zotero Connector into the group
+
+merge looks at every item without a pinned key. If an item with the same URL exists, its
+attachments such as the snapshot move there, empty fields are filled, the tag "Snapshot fehlt"
+is removed and the duplicate is deleted. A duplicate without attachments waits for the next run,
+because the Connector may still be uploading. Otherwise the item gets a key of its own.
 
 Reading works without a key because the group is public. Writing needs ZOTERO_API_KEY,
 taken from the environment or from ~/.config/manuel/zotero.env. Every item needs a
@@ -21,6 +27,7 @@ import os
 import re
 import secrets
 import sys
+import unicodedata
 import urllib.request
 from pathlib import Path
 
@@ -65,8 +72,8 @@ def api_key():
     return key
 
 
-def request(path, data=None, key=None):
-    headers = {"Zotero-API-Version": "3"}
+def request(path, data=None, key=None, method=None, extra_headers=None):
+    headers = {"Zotero-API-Version": "3", **(extra_headers or {})}
     if key:
         headers["Zotero-API-Key"] = key
     body = None
@@ -74,9 +81,22 @@ def request(path, data=None, key=None):
         body = json.dumps(data).encode()
         headers["Content-Type"] = "application/json"
         headers["Zotero-Write-Token"] = secrets.token_hex(16)
-    req = urllib.request.Request(API + path, data=body, headers=headers)
+    req = urllib.request.Request(API + path, data=body, headers=headers, method=method)
     with urllib.request.urlopen(req, timeout=60) as response:
-        return json.load(response), response.headers
+        raw = response.read()
+        return (json.loads(raw) if raw else {}), response.headers
+
+
+def fetch_all(path, key=None):
+    """All raw item data from a listing such as /items/top, page by page."""
+    items, start = [], 0
+    sep = "&" if "?" in path else "?"
+    while True:
+        page, headers = request(f"{path}{sep}format=json&limit=100&start={start}", key=key)
+        items += [i["data"] for i in page]
+        start += 100
+        if start >= int(headers.get("Total-Results", 0)):
+            return items
 
 
 def pinned_key(item):
@@ -209,11 +229,104 @@ def post(items, key):
         print(f"{len(result['successful'])} Einträge angelegt")
 
 
+# --- Items from the Zotero Connector --------------------------------------------------
+
+FILL = ("abstractNote", "websiteTitle", "blogTitle", "publicationTitle", "date", "language",
+        "shortTitle", "websiteType", "publisher")
+TAG = "Snapshot fehlt"
+
+
+def norm_url(url):
+    url = re.sub(r"^https?://(www\.)?", "", url.split("#")[0]).rstrip("/")
+    return url.lower()
+
+
+def slug(text, words=3):
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode().lower()
+    skip = {"the", "a", "an", "and", "of", "for", "der", "die", "das", "und", "im", "in", "mit"}
+    return "-".join([w for w in re.split(r"[^a-z0-9]+", text) if w and w not in skip][:words])
+
+
+def new_key(item, used):
+    host = re.sub(r"^https?://(www\.)?", "", item.get("url", "")).split("/")[0].split(".")
+    site = host[-2] if len(host) > 1 else (host[0] or "quelle")
+    base = re.sub(r"-+", "-", f"{site}-{slug(item.get('title', ''))}").strip("-")
+    key, n = base, 2
+    while key in used:
+        key, n = f"{base}-{n}", n + 1
+    used.add(key)
+    return key
+
+
+def pin(item, citation_key):
+    extra = [l for l in item.get("extra", "").splitlines() if not l.startswith("Citation Key:")]
+    item["extra"] = "\n".join([f"Citation Key: {citation_key}"] + extra)
+    item["citationKey"] = citation_key
+
+
+def merge(key):
+    items = [d for d in fetch_all("/items/top", key) if d["itemType"] not in ("attachment", "note")]
+    pinned = [d for d in items if "Citation Key:" in d.get("extra", "")]
+    by_url = {norm_url(d["url"]): d for d in pinned if d.get("url")}
+    used = {pinned_key(d) for d in pinned}
+    moved, changed, deleted, keyed, waiting = [], {}, [], [], []
+    for d in items:
+        if d in pinned:
+            continue
+        old = by_url.get(norm_url(d.get("url", ""))) if d.get("url") else None
+        if old is None:
+            pin(d, new_key(d, used))
+            keyed.append(d)
+            continue
+        children = fetch_all(f"/items/{d['key']}/children", key)
+        if not children:
+            # The Connector may still be uploading the snapshot, try again later
+            waiting.append(d)
+            continue
+        for child in children:
+            child["parentItem"] = old["key"]
+            moved.append(child)
+        for field in FILL:
+            if d.get(field) and field in old and not old[field]:
+                old[field] = d[field]
+        if not old.get("creators") and d.get("creators"):
+            old["creators"] = d["creators"]
+        tags = {t["tag"] for t in old.get("tags", [])}
+        old["tags"] += [t for t in d.get("tags", []) if t["tag"] not in tags and t["tag"] != TAG]
+        if any(c["itemType"] == "attachment" for c in children):
+            old["tags"] = [t for t in old["tags"] if t["tag"] != TAG]
+        changed[old["key"]] = old
+        deleted.append(d)
+    for batch in (moved, list(changed.values()), keyed):
+        for start in range(0, len(batch), 50):
+            result, _ = request("/items", batch[start:start + 50], key=key)
+            if result.get("failed"):
+                sys.exit(json.dumps(result["failed"], ensure_ascii=False, indent=1))
+    for d in deleted:
+        request(f"/items/{d['key']}", key=key, method="DELETE",
+                extra_headers={"If-Unmodified-Since-Version": str(d["version"])})
+    for d in deleted:
+        print(f"zusammengeführt: {d.get('title', '')[:60]} -> {pinned_key(by_url[norm_url(d['url'])])}")
+    for d in keyed:
+        print(f"neu: {d['citationKey']} {d.get('title', '')[:60]}")
+    for d in waiting:
+        print(f"wartet, noch ohne Anhang: {d.get('title', '')[:60]}")
+    if not deleted and not keyed and not waiting:
+        print("nichts zusammenzuführen")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("command", nargs="?", default="export", choices=["export", "seed"])
+    parser.add_argument("command", nargs="?", default="export", choices=["export", "seed", "merge"])
     parser.add_argument("--check", action="store_true", help="nur vergleichen, nichts schreiben")
     args = parser.parse_args()
+
+    if args.command == "merge":
+        key = api_key()
+        if not key:
+            sys.exit("ZOTERO_API_KEY fehlt")
+        merge(key)
+        return
 
     if args.command == "seed":
         key = api_key()

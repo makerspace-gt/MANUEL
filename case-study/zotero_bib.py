@@ -9,11 +9,14 @@ The group leads, see docs/adr/0046-literatur-in-einer-zotero-gruppe-pflegen.adoc
     python3 zotero_bib.py merge           # fold items saved with the Zotero Connector into the group
 
 merge looks at every item without a pinned key. If an item with the same URL exists, its
-attachments such as the snapshot move there, empty fields are filled and the duplicate is deleted. A duplicate without attachments waits for the next run,
-because the Connector may still be uploading. Otherwise the item gets a key of its own.
-Afterwards every item is sorted into a collection. "Mit Anhang" holds items with a snapshot or
-another attachment, "Inbox" holds the rest, which a member still has to save with the Connector.
-Repositories stay out of the Inbox, their commit is the snapshot.
+attachments such as the snapshot move there, empty fields are filled and the duplicate is deleted. A duplicate without attachments waits ten minutes,
+because the Connector may still be uploading, and is folded without attachments afterwards. Otherwise the item gets a key of its own.
+Afterwards every item is sorted into a collection. Snapshots are kept only for sources the repo
+uses, cited in the Fallstudie or linked in ADRs, PLAN and docs. Other sources keep their link to
+the Internet Archive, and their HTML snapshots are deleted to save storage. PDFs and other
+attachments stay. "Mit Anhang" holds items with an attachment, "Inbox" holds used sources still
+without one, which a member saves with the Connector. Repositories and the collection
+"IT-Infrastruktur" stay out of both.
 
 Reading works without a key because the group is public. Writing needs ZOTERO_API_KEY,
 taken from the environment or from ~/.config/manuel/zotero.env. Every item needs a
@@ -28,7 +31,9 @@ import json
 import os
 import re
 import secrets
+import subprocess
 import sys
+import time
 import unicodedata
 import urllib.request
 from pathlib import Path
@@ -151,6 +156,9 @@ def to_entry(item):
         fields["eprint"] = item["archiveID"].split(":", 1)[-1]
         fields["eprinttype"] = item.get("repository") or "arXiv"
     date = item.get("date", "")
+    # The Connector stores timestamps like 2024-01-08T20:39:55+00:00, biblatex wants the date only
+    match = re.match(r"\d{4}(-\d{2}(-\d{2})?)?", date)
+    date = match.group(0) if match else (re.findall(r"\b(\d{4})\b", date) or [""])[-1]
     if re.fullmatch(r"\d{4}", date):
         fields["year"] = date
     elif date:
@@ -236,7 +244,30 @@ def post(items, key):
 FILL = ("abstractNote", "websiteTitle", "blogTitle", "publicationTitle", "date", "language",
         "shortTitle", "websiteType", "publisher")
 TAG = "Snapshot fehlt"  # replaced by the collections below, removed on every merge
-INBOX, ATTACHED = "Inbox", "Mit Anhang"
+INBOX, ATTACHED, IT = "Inbox", "Mit Anhang", "IT-Infrastruktur"
+REPO = Path(__file__).resolve().parent.parent
+KEEP_SNAPSHOT = {"wolf-ki-impuls"}  # the snapshot is the document itself
+
+
+def repo_usage():
+    """Cited keys and the text of all files in the repo that may link a source."""
+    files = subprocess.run(["git", "-C", str(REPO), "ls-files"], capture_output=True,
+                           text=True, check=True).stdout.split()
+    text = ""
+    for name in files:
+        if name.startswith("quellen/") or name.endswith("literatur.bib"):
+            continue
+        if re.search(r"\.(adoc|md|py|yml|json|sh)$", name):
+            text += (REPO / name).read_text(encoding="utf-8", errors="ignore")
+    cited = {k.strip().split("(")[0] for group in re.findall(r"cite[pt]?:\[([^\]]+)\]", text)
+             for k in group.split(",")}
+    return cited, norm_url(text)
+
+
+def needed(item, usage):
+    cited, text = usage
+    url = norm_url(item.get("url", ""))
+    return pinned_key(item) in cited or pinned_key(item) in KEEP_SNAPSHOT or (url and url in text)
 
 
 def norm_url(url):
@@ -314,7 +345,8 @@ def merge(key):
             keyed.append(d)
             continue
         children = fetch_all(f"/items/{d['key']}/children", key)
-        if not children:
+        age = time.time() - time.mktime(time.strptime(d["dateModified"], "%Y-%m-%dT%H:%M:%SZ")) + time.timezone
+        if not children and age < 600:
             # The Connector may still be uploading the snapshot, try again later
             waiting.append(d)
             continue
@@ -360,17 +392,36 @@ def collection_keys(key):
     return found[INBOX], found[ATTACHED]
 
 
+def prune_snapshots(items, usage, key):
+    """Delete HTML snapshots of sources the repo does not use."""
+    unused = {d["key"] for d in items if not needed(d, usage)}
+    doomed = [a for a in fetch_all("/items?itemType=attachment", key)
+              if a.get("parentItem") in unused and a.get("contentType") == "text/html"
+              and a.get("linkMode") in ("imported_url", "imported_file")]
+    for start in range(0, len(doomed), 50):
+        _, headers = request("/items?limit=1", key=key)
+        request("/items?itemKey=" + ",".join(a["key"] for a in doomed[start:start + 50]), key=key,
+                method="DELETE", extra_headers={"If-Unmodified-Since-Version":
+                                                headers["Last-Modified-Version"]})
+    if doomed:
+        print(f"{len(doomed)} Snapshots ungenutzter Quellen gelöscht")
+
+
 def sort_collections(key):
     inbox, attached = collection_keys(key)
+    it = {c["name"]: c["key"] for c in fetch_all("/collections", key)}.get(IT)
+    usage = repo_usage()
+    items = [d for d in fetch_all("/items/top", key) if d["itemType"] not in ("attachment", "note")]
+    prune_snapshots(items, usage, key)
     parents = {a.get("parentItem") for a in fetch_all("/items?itemType=attachment", key)}
     updates = []
-    for d in fetch_all("/items/top", key):
-        if d["itemType"] in ("attachment", "note"):
+    for d in items:
+        if it in d.get("collections", []):
             continue
         cols = set(d.get("collections", [])) - {inbox, attached}
         if d["key"] in parents:
             cols.add(attached)
-        elif d["itemType"] != "computerProgram":
+        elif d["itemType"] != "computerProgram" and needed(d, usage):
             cols.add(inbox)
         tags = [t for t in d.get("tags", []) if t["tag"] != TAG]
         if cols != set(d.get("collections", [])) or tags != d.get("tags", []):

@@ -37,7 +37,7 @@ HEADER = """% Literatur der Fallstudie. Diese Datei wird erzeugt, bitte nicht vo
 ENTRY = {
     "webpage": "online", "blogPost": "online", "preprint": "online", "document": "misc",
     "report": "report", "book": "book", "journalArticle": "article",
-    "conferencePaper": "inproceedings", "thesis": "thesis",
+    "conferencePaper": "inproceedings", "thesis": "thesis", "computerProgram": "software",
 }
 # biblatex field -> Zotero field, per Zotero item type
 FIELDS = {
@@ -48,6 +48,7 @@ FIELDS = {
                        "pages": "pages", "doi": "DOI"},
     "conferencePaper": {"booktitle": "proceedingsTitle", "series": "series", "volume": "volume",
                         "pages": "pages", "doi": "DOI"},
+    "computerProgram": {"version": "versionNumber"},
 }
 ORDER = ["author", "title", "subtitle", "type", "version", "booktitle", "journal", "series",
          "volume", "number", "pages", "publisher", "institution", "address", "howpublished",
@@ -113,7 +114,7 @@ def creator(c):
 def to_entry(item):
     kind = item["itemType"]
     fields = {}
-    authors = [c for c in item.get("creators", []) if c["creatorType"] == "author"]
+    authors = [c for c in item.get("creators", []) if c["creatorType"] in ("author", "programmer")]
     if authors:
         fields["author"] = " and ".join(creator(c) for c in authors)
     title, _, subtitle = item["title"].partition(": ")

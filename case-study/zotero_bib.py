@@ -9,9 +9,11 @@ The group leads, see docs/adr/0046-literatur-in-einer-zotero-gruppe-pflegen.adoc
     python3 zotero_bib.py merge           # fold items saved with the Zotero Connector into the group
 
 merge looks at every item without a pinned key. If an item with the same URL exists, its
-attachments such as the snapshot move there, empty fields are filled, the tag "Snapshot fehlt"
-is removed and the duplicate is deleted. A duplicate without attachments waits for the next run,
+attachments such as the snapshot move there, empty fields are filled and the duplicate is deleted. A duplicate without attachments waits for the next run,
 because the Connector may still be uploading. Otherwise the item gets a key of its own.
+Afterwards every item is sorted into a collection. "Mit Anhang" holds items with a snapshot or
+another attachment, "Inbox" holds the rest, which a member still has to save with the Connector.
+Repositories stay out of the Inbox, their commit is the snapshot.
 
 Reading works without a key because the group is public. Writing needs ZOTERO_API_KEY,
 taken from the environment or from ~/.config/manuel/zotero.env. Every item needs a
@@ -233,7 +235,8 @@ def post(items, key):
 
 FILL = ("abstractNote", "websiteTitle", "blogTitle", "publicationTitle", "date", "language",
         "shortTitle", "websiteType", "publisher")
-TAG = "Snapshot fehlt"
+TAG = "Snapshot fehlt"  # replaced by the collections below, removed on every merge
+INBOX, ATTACHED = "Inbox", "Mit Anhang"
 
 
 def norm_url(url):
@@ -264,16 +267,48 @@ def pin(item, citation_key):
     item["citationKey"] = citation_key
 
 
+def domain(url):
+    host = re.sub(r"^https?://", "", url).split("/")[0].split(":")[0]
+    return ".".join(host.split(".")[-2:]).lower()
+
+
+def same_source(new, old):
+    """Same URL, or same domain with one title starting like the other."""
+    if not new.get("url") or not old.get("url"):
+        return False
+    if norm_url(new["url"]) == norm_url(old["url"]):
+        return True
+    a, b = slug(new.get("title", ""), 99), slug(old.get("title", ""), 99)
+    return (domain(new["url"]) == domain(old["url"]) and min(len(a), len(b)) >= 6
+            and (a.startswith(b) or b.startswith(a)))
+
+
+def fold(dup, old, key):
+    """Move the attachments of dup to old, fill empty fields of old and delete dup."""
+    for child in fetch_all(f"/items/{dup['key']}/children", key):
+        child["parentItem"] = old["key"]
+        request("/items", [child], key=key)
+    for field in FILL:
+        if dup.get(field) and field in old and not old[field]:
+            old[field] = dup[field]
+    if not old.get("creators") and dup.get("creators"):
+        old["creators"] = dup["creators"]
+    tags = {t["tag"] for t in old.get("tags", [])}
+    old["tags"] = old.get("tags", []) + [t for t in dup.get("tags", []) if t["tag"] not in tags]
+    request("/items", [old], key=key)
+    request(f"/items/{dup['key']}", key=key, method="DELETE",
+            extra_headers={"If-Unmodified-Since-Version": str(dup["version"])})
+
+
 def merge(key):
     items = [d for d in fetch_all("/items/top", key) if d["itemType"] not in ("attachment", "note")]
     pinned = [d for d in items if "Citation Key:" in d.get("extra", "")]
-    by_url = {norm_url(d["url"]): d for d in pinned if d.get("url")}
     used = {pinned_key(d) for d in pinned}
     moved, changed, deleted, keyed, waiting = [], {}, [], [], []
     for d in items:
         if d in pinned:
             continue
-        old = by_url.get(norm_url(d.get("url", ""))) if d.get("url") else None
+        old = next((o for o in pinned if same_source(d, o)), None)
         if old is None:
             pin(d, new_key(d, used))
             keyed.append(d)
@@ -293,9 +328,8 @@ def merge(key):
             old["creators"] = d["creators"]
         tags = {t["tag"] for t in old.get("tags", [])}
         old["tags"] += [t for t in d.get("tags", []) if t["tag"] not in tags and t["tag"] != TAG]
-        if any(c["itemType"] == "attachment" for c in children):
-            old["tags"] = [t for t in old["tags"] if t["tag"] != TAG]
         changed[old["key"]] = old
+        d["target"] = pinned_key(old)
         deleted.append(d)
     for batch in (moved, list(changed.values()), keyed):
         for start in range(0, len(batch), 50):
@@ -306,13 +340,49 @@ def merge(key):
         request(f"/items/{d['key']}", key=key, method="DELETE",
                 extra_headers={"If-Unmodified-Since-Version": str(d["version"])})
     for d in deleted:
-        print(f"zusammengeführt: {d.get('title', '')[:60]} -> {pinned_key(by_url[norm_url(d['url'])])}")
+        print(f"zusammengeführt: {d.get('title', '')[:60]} -> {d['target']}")
     for d in keyed:
         print(f"neu: {d['citationKey']} {d.get('title', '')[:60]}")
     for d in waiting:
         print(f"wartet, noch ohne Anhang: {d.get('title', '')[:60]}")
     if not deleted and not keyed and not waiting:
         print("nichts zusammenzuführen")
+    sort_collections(key)
+
+
+def collection_keys(key):
+    found = {c["name"]: c["key"] for c in fetch_all("/collections", key)}
+    missing = [{"name": n} for n in (INBOX, ATTACHED) if n not in found]
+    if missing:
+        result, _ = request("/collections", missing, key=key)
+        for c in result["successful"].values():
+            found[c["data"]["name"]] = c["key"]
+    return found[INBOX], found[ATTACHED]
+
+
+def sort_collections(key):
+    inbox, attached = collection_keys(key)
+    parents = {a.get("parentItem") for a in fetch_all("/items?itemType=attachment", key)}
+    updates = []
+    for d in fetch_all("/items/top", key):
+        if d["itemType"] in ("attachment", "note"):
+            continue
+        cols = set(d.get("collections", [])) - {inbox, attached}
+        if d["key"] in parents:
+            cols.add(attached)
+        elif d["itemType"] != "computerProgram":
+            cols.add(inbox)
+        tags = [t for t in d.get("tags", []) if t["tag"] != TAG]
+        if cols != set(d.get("collections", [])) or tags != d.get("tags", []):
+            d["collections"], d["tags"] = sorted(cols), tags
+            updates.append(d)
+    for start in range(0, len(updates), 50):
+        result, _ = request("/items", updates[start:start + 50], key=key)
+        if result.get("failed"):
+            sys.exit(json.dumps(result["failed"], ensure_ascii=False, indent=1))
+    in_inbox = sum(1 for d in fetch_all(f"/collections/{inbox}/items/top", key))
+    in_attached = sum(1 for d in fetch_all(f"/collections/{attached}/items/top", key))
+    print(f"{len(updates)} Einträge einsortiert, {INBOX} {in_inbox}, {ATTACHED} {in_attached}")
 
 
 def main():

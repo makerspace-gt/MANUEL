@@ -261,7 +261,7 @@ def repo_usage():
             text += (REPO / name).read_text(encoding="utf-8", errors="ignore")
     cited = {k.strip().split("(")[0] for group in re.findall(r"cite[pt]?:\[([^\]]+)\]", text)
              for k in group.split(",")}
-    return cited, norm_url(text)
+    return cited, re.sub(r"https?://(www\.)?", "", text).lower()
 
 
 def needed(item, usage):

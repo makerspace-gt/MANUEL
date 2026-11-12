@@ -47,7 +47,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |28 |xref:0028-quellen-im-repo-ablegen.adoc[Die Quellen im Repo ablegen] |angenommen |2026-11-08
 |29 |xref:0029-zielgruppe-und-sprache-festlegen.adoc[Zielgruppe und Sprache festlegen] |angenommen, ergänzt durch 30 |2026-11-08
 |30 |xref:0030-rahmen-der-fallstudie-festlegen.adoc[Den Rahmen der Fallstudie festlegen] |angenommen |2026-11-08
-|31 |xref:0031-literatur-mit-zotero-und-bibtex-verwalten.adoc[Die Literatur mit Zotero und BibTeX verwalten] |angenommen, Zitierstil abgelöst durch 37 |2026-11-08
+|31 |xref:0031-literatur-mit-zotero-und-bibtex-verwalten.adoc[Die Literatur mit Zotero und BibTeX verwalten] |angenommen, Zitierstil abgelöst durch 37, Pflege durch 46 |2026-11-08
 |32 |xref:0032-kennzahlen-der-erprobung-erheben.adoc[Die Kennzahlen der Erprobung erheben] |angenommen |2026-11-08
 |33 |xref:0033-resuemee-als-sharecard-teilen.adoc[Das Resümee eines Termins als Sharecard teilen] |vorgeschlagen |2026-11-08
 |34 |xref:0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[Jedes Gerät mit Ticket und Typenschild erfassen] |angenommen |2026-11-08
@@ -62,6 +62,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |43 |xref:0043-eine-testumgebung-auf-manuel-betreiben.adoc[Eine Testumgebung auf MANUEL betreiben] |angenommen |2026-11-10
 |44 |xref:0044-admins-ueber-wartung-informieren.adoc[Die Admins über Wartung informieren] |vorgeschlagen |2026-11-11
 |45 |xref:0045-weitere-dienste-an-ollama-anbinden.adoc[Weitere Dienste des Vereins an Ollama anbinden] |vorgeschlagen |2026-11-11
+|46 |xref:0046-literatur-in-einer-zotero-gruppe-pflegen.adoc[Die Literatur in einer Zotero-Gruppe pflegen] |angenommen |2026-11-12
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

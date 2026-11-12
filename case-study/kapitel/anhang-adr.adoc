@@ -97,5 +97,7 @@ include::../../docs/adr/0044-admins-ueber-wartung-informieren.adoc[]
 
 include::../../docs/adr/0045-weitere-dienste-an-ollama-anbinden.adoc[]
 
+include::../../docs/adr/0046-literatur-in-einer-zotero-gruppe-pflegen.adoc[]
+
 :leveloffset: -2
 :sectnums:

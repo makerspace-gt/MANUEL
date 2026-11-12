@@ -1,0 +1,68 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0046]]
+= 0046 Die Literatur in einer Zotero-Gruppe pflegen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-12
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Nach xref:0031-literatur-mit-zotero-und-bibtex-verwalten.adoc[ADR 31] liest ein persönliches Zotero die Datei `literatur.bib` ein und exportiert sie mit Better BibTeX wieder. Beim Versuch am 08.11.2026 hat der Import die Titel kleingeschrieben und Better BibTeX die Schlüssel überschrieben. Die lokale Schnittstelle von Zotero kann nur lesen, Claude Code konnte die Einträge also nicht selbst korrigieren. Außerdem hing die Literatur des Vereins am persönlichen Konto eines Mitglieds.
+
+== Entscheidungskriterien
+
+* Die Literatur gehört dem Verein und nicht einem Mitglied
+* Mitglieder pflegen Quellen in der gewohnten Oberfläche von Zotero
+* Claude Code kann Quellen ohne Umweg über die Oberfläche eintragen
+* Die Schlüssel wie `ora-standard` bleiben stabil
+* Der Bau der Fallstudie braucht weiter nur die Datei im Repo
+
+== Betrachtete Optionen
+
+* Nur `literatur.bib` im Repo, ohne Zotero
+* Eine Zotero-Gruppe führt, `literatur.bib` wird daraus erzeugt
+* Abgleich in beide Richtungen
+
+== Entscheidung
+
+Die Literatur steht in der Zotero-Gruppe https://www.zotero.org/groups/6759593[makerspace-gt-MANUEL]. Sie gehört dem Konto `makerspace-gt` des Vereins. Lesen darf jeder, schreiben nur Mitglieder der Gruppe.
+
+* *Die Gruppe führt.* Jede Quelle trägt ihren Schlüssel als Zeile `Citation Key: ora-standard` im Feld Extra. Better BibTeX in einem synchronisierten Zotero überschreibt sonst das eigene Feld für den Schlüssel, das ist am 12.11.2026 gleich nach dem Befüllen passiert. Biblatex-Felder ohne eigenes Feld in Zotero stehen im Feld Extra als Zeile wie `tex.note: …`.
+* *Erzeugte Datei.* `case-study/zotero_bib.py export` schreibt daraus `case-study/literatur.bib`. Die Datei wird nicht mehr von Hand bearbeitet. Mit `--check` meldet das Skript, ob sie vom Stand der Gruppe abweicht.
+* *Schreiben per API.* Claude Code trägt neue Quellen über die Web-API von Zotero ein. Der API-Key liegt nur in `~/.config/manuel/zotero.env` auf dem Laptop und nie im Repo oder im Chat. Zum Lesen braucht das Skript keinen Key, weil die Gruppe öffentlich ist.
+* *Öffentlich.* Was in der Gruppe steht, kann jeder sehen. Persönliche Links wie die aus Mailings mit Kontakt-ID kommen deshalb nur gekürzt hinein, Freigaben mit unklarem Status gar nicht.
+* *Erste Befüllung.* Am 12.11.2026 kamen die 33 Einträge aus `literatur.bib` per `seed` in die Gruppe. Der Export daraus ergab dieselbe Datei, und die Fallstudie blieb Zeichen für Zeichen gleich. Dazu kamen 13 weitere Quellen aus dem persönlichen Zotero, darunter die Masterarbeit von 2023.
+
+Dieses ADR löst den Teil von ADR 31 zur Pflege in Zotero und mit Better BibTeX ab. Das Zitieren mit dem Makro `cite` und asciidoctor-bibtex bleibt, ebenso der Zitierstil nach xref:0037-zitierstil-chicago-nach-autor-und-jahr-nutzen.adoc[ADR 37].
+
+=== Konsequenzen
+
+* Gut, weil die Literatur dem Verein gehört und andere sie ohne Konto ansehen können.
+* Gut, weil Claude Code Quellen selbst eintragen kann und der Export prüfbar ist.
+* Schlecht, weil nach jeder Änderung in der Gruppe ein Export und ein Commit nötig sind.
+* Schlecht, weil Better BibTeX nicht mehr hilft und das Skript nur die Felder kennt, die wir nutzen.
+
+== Vor- und Nachteile der Optionen
+
+=== Nur literatur.bib
+
+* Gut, weil es nichts außerhalb des Repos braucht.
+* Schlecht, weil Mitglieder Quellen nur als Text im Format BibTeX pflegen könnten.
+
+=== Die Gruppe führt
+
+* Gut, weil Mitglieder die Oberfläche von Zotero nutzen und das Repo nur ein Abbild hat.
+* Schlecht, weil die Felder für biblatex in Zotero sauber gepflegt sein müssen.
+
+=== Abgleich in beide Richtungen
+
+* Gut, weil beide Seiten bearbeitet werden dürften.
+* Schlecht, weil Konflikte erkannt und gelöst werden müssten. Das ist für eine Fallstudie zu aufwendig.
+
+== Quellen
+
+* https://www.zotero.org/support/dev/web_api/v3/basics[Zotero Web API v3]
+* https://www.zotero.org/support/dev/web_api/v3/write_requests[Write Requests]
+* {repo}/case-study/zotero_bib.py[zotero_bib.py]

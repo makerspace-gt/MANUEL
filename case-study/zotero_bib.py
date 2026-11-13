@@ -248,6 +248,8 @@ INBOX, ATTACHED, IT = "Inbox", "Mit Anhang", "IT-Infrastruktur"
 REPO = Path(__file__).resolve().parent.parent
 # Pages that only exist after login, never attach their snapshots in the public group
 PRIVATE = {"restarters.net/dashboard"}
+# Domains or pages the Connector cannot save as snapshot, they stay out of the Inbox
+NO_SNAPSHOT = {"youtube.com", "restarters.net"}
 KEEP_SNAPSHOT = {"wolf-ki-impuls"}  # the snapshot is the document itself
 
 
@@ -257,7 +259,7 @@ def repo_usage():
                            text=True, check=True).stdout.split()
     text = ""
     for name in files:
-        if name.startswith("quellen/") or name.endswith("literatur.bib"):
+        if name.startswith("quellen/") or name.endswith(("literatur.bib", "zotero_bib.py")):
             continue
         if re.search(r"\.(adoc|md|py|yml|json|sh)$", name):
             text += (REPO / name).read_text(encoding="utf-8", errors="ignore")
@@ -452,7 +454,9 @@ def sort_collections(key):
         cols = set(d.get("collections", [])) - {inbox, attached}
         if d["key"] in parents:
             cols.add(attached)
-        elif d["itemType"] != "computerProgram" and needed(d, usage):
+        elif (d["itemType"] != "computerProgram" and needed(d, usage)
+              and domain(d.get("url", "")) not in NO_SNAPSHOT
+              and norm_url(d.get("url", "")) not in NO_SNAPSHOT):
             cols.add(inbox)
         tags = [t for t in d.get("tags", []) if t["tag"] != TAG]
         if cols != set(d.get("collections", [])) or tags != d.get("tags", []):

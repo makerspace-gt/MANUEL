@@ -1,0 +1,1090 @@
+key	name	class	repairs_deu
+1.35.601	Luftentfeuchter	B	47
+1.35.660	Luftbefeuchter /Diffuser	B	31
+1.35.777	Nebelmaschine	C	11
+1.35.780	Luftkühler	C	8
+1.35.896	Klimagerät	B	15
+1.35.994	Luftreiniger	B	21
+1.35.1104	Verdampfer	C	4
+1.35.1189	Zimmerbrunnen	C	10
+1.35.1214	Aroma Diffuser	C	11
+1.35.1218	Wasserionisierer	C	2
+2.46.498	Autobatterie-Ladegerät	B	30
+2.46.500	Akku, mechanisch	B	14
+2.46.556	Kabeltrommel	B	49
+2.46.565	Netzteil	A	172
+2.46.578	Kabel	A	133
+2.46.589	Steckdosenleiste /Steckerleiste	B	58
+2.46.638	Adapter	B	14
+2.46.649	Labornetzgerät	C	6
+2.46.673	Ladegerät	A	193
+2.46.689	Powerbank	B	40
+2.46.754	Transformator	C	11
+2.46.806	Mehrfachsteckdose	B	39
+2.46.910	E-Bike-Akku	B	33
+2.46.926	Verlängerungskabel	A	109
+2.46.949	Trafo	B	13
+2.46.952	Stecker	C	5
+2.46.969	Akku	B	45
+2.46.1072	Batterietester	C	6
+2.46.1131	Ladegerät E-Bike	B	23
+2.46.1152	Induktive Ladeschale	C	3
+2.46.1158	E-Ladekabel	B	14
+2.46.1394	Akku Ladegerät	B	70
+2.46.1407	Umformer	C	1
+2.46.1496	Spannungswandler	C	1
+2.46.1498	Powerstation	C	3
+2.46.1562	USB-Ladestation	C	6
+2.46.1676	USB-C Ladekabel	C	7
+2.46.1726	USB-Ladegerät	C	3
+3.36.461	Beleuchtung	B	14
+3.36.490	Taschenlampe	A	169
+3.36.557	Lichterkette	A	349
+3.36.712	Fahrradlicht	A	157
+3.36.831	Schwibbogen	A	163
+3.36.859	Outdoor	C	2
+3.36.892	Holzfigur beleuchtet	B	15
+3.36.1058	Stirnlampe	B	39
+3.36.1089	Solarleuchte	A	86
+3.36.1143	Weihnachtsbaum aus Kunststoff mit Motoren	C	4
+3.36.1156	Weihnachtspyramide	B	23
+3.36.1159	Weihnachtsbeleuchtung	A	99
+3.36.1188	Laterne	C	8
+3.36.1253	Notfallgerät	C	2
+3.36.1284	Akku-Leuchte	B	16
+3.36.1340	Lampe (Fahrrad)	C	9
+3.36.1625	Blinklicht	C	2
+3.36.1697	Weihnachtsstern	C	6
+3.36.1746	Adventskalender, elektrisch	C	1
+3.36.1757	Leuchtball / Leuchtkugel	C	2
+3.36.1850	Campinglampe	C	0
+4.11.405	Desktopcomputer	A	204
+4.11.702	Single-Board-Computer	B	18
+4.11.1048	Schachcomputer	B	13
+4.11.1838	All-in-One-PC	C	1
+5.21.419	Digitalkamera	A	215
+5.21.934	Fotoapparat	B	44
+6.22.482	Videokamera	B	73
+6.22.1278	Überwachungskamera	C	5
+7.37.473	Heizlüfter	A	162
+7.37.549	Heizung	B	41
+7.37.611	Lüfter	B	28
+7.37.713	Ventilator	A	171
+7.37.797	Standlüfter	C	5
+7.37.901	Fächer	C	7
+7.37.1356	Konvektomat	C	1
+7.37.1609	Deckenlüfter	C	1
+7.37.1634	Ofen-Ventilator	C	3
+8.0.403	Fernseher	A	595
+8.0.590	Autodisplay	C	3
+8.0.965	Monitor	A	136
+8.0.1255	Anzeigetafel	C	5
+8.0.1502	Smart-TV	C	8
+9.38.412	Lockenstab	B	58
+9.38.417	Zahnbürste, elektrisch	A	249
+9.38.472	Glätteisen	B	37
+9.38.474	Elektrorasierer	A	314
+9.38.538	Körperpflege	B	14
+9.38.624	Haarschneidemaschine	B	79
+9.38.725	Kosmetikgerät	B	14
+9.38.823	Hornhautentferner	C	4
+9.38.917	Manikürgerät	C	11
+9.38.1019	Zahnbürstenstation	C	3
+9.38.1074	Elektrische Bürste	C	12
+9.38.1095	Nagelfräser	C	5
+9.38.1161	Pediküre-Set	B	13
+9.38.1231	Epilierer	C	9
+9.38.1268	Nasenhaartrimmer	C	4
+9.38.1342	Mundspülgerät	C	5
+9.38.1426	IPL Laserhaarentferner	C	2
+9.38.1737	Munddusche	B	70
+10.23.438	Walkman	A	143
+10.23.439	Discman	B	22
+10.23.440	MP3-Player	B	54
+10.23.648	Gameboy	B	46
+10.23.690	Audiorecorder	B	16
+10.23.832	Multiboy	C	13
+10.23.1060	MiniDisc-Player	C	9
+10.23.1301	Sampler	C	1
+10.23.1785	Musikstreamer	C	1
+11.24.459	Kopfhörer	A	466
+11.24.459.1	Kopfhörer, In-Ear	C	0
+11.24.459.2	Kopfhörer, On-/Over-Ear	C	0
+11.24.646	Headset	B	35
+11.24.887	Funkkopfhörer	A	82
+11.24.908	Hörgerät	C	11
+12.29.444	Jukebox	C	8
+12.29.704	Multimedia-Center	C	9
+12.29.867	DVD Micro-Audio System	B	14
+12.29.881	Musikanlage	A	1562
+12.29.907	ELA-Anlage	C	1
+12.29.982	Karaoke-Anlage/CD-Spieler	B	14
+12.29.1046	Minifernseher mit Radio	C	4
+12.29.1205	Music System	C	12
+13.30.433	Kassettenrekorder	A	399
+13.30.436	CD-Player	A	990
+13.30.441	Lautsprecher(boxen)	A	302
+13.30.443	Plattenspieler	A	549
+13.30.544	Verstärker	A	507
+13.30.573	Spulentonbandgerät	A	110
+13.30.714	Mischpult	B	26
+13.30.781	Kassette	C	3
+13.30.804	Bluetooth Musikbox	A	149
+13.30.894	Kassetten Tape Deck	A	110
+13.30.931	CD Wechsler	B	34
+13.30.957	Soundschaltung	C	3
+13.30.970	Equalizer	C	4
+13.30.1006	Grammophon	C	7
+13.30.1229	Aktivlautsprecher	A	98
+13.30.1315	Geräuschmodul	C	2
+13.30.1369	Subwoofer	B	24
+13.30.1629	Audiointerface	C	2
+13.30.1717	Frequenzweiche	C	1
+13.30.1728	Bluetooth-Lautsprecher	B	21
+14.39.401	Wasserkocher	A	966
+14.39.845	Teekanne	C	7
+14.39.1055	Teekocher	C	8
+14.39.1059	Boiler	C	1
+14.39.1275	Braukessel	C	1
+14.39.1543	Wärmebehälter	C	2
+15.40.399	Lampe	A	1531
+15.40.539	LED-Licht/LED-Leuchte	A	220
+15.40.827	Scheinwerfer	B	14
+15.40.829	Deckenbeleuchtung / Deckenfluter	B	77
+15.40.872	Rotlichtlampe	B	13
+15.40.889	Tischlampe	A	593
+15.40.1023	Glaskugel elektrisch	C	4
+15.40.1088	Außenstrahler	B	16
+15.40.1132	LED-Spiegel	C	9
+15.40.1153	Leuchter	C	12
+15.40.1167	Nachtlicht	B	14
+15.40.1172	Nachttischlampe	A	82
+15.40.1178	Wandlampe	B	31
+15.40.1198	Stehlampe	A	509
+15.40.1288	Hängeleuchte	C	11
+15.40.1299	Leuchtreklame	C	3
+15.40.1307	Leselampe	B	58
+15.40.1314	Ringlicht	C	3
+15.40.1422	UV Lampe	C	3
+15.40.1509	Schreibtischlampe	B	21
+15.40.1521	USB Klemmlampe	C	5
+15.40.1584	Kerze, elektrisch	C	5
+15.40.1599	Gartenlampe	C	10
+15.40.1756	Leuchtstoffröhre	C	3
+15.40.1836	Lava Lampe	C	1
+15.40.1861	Tauchlampe	C	0
+16.0.406	Laptop / Notebook	A	1619
+17.46.491	Venenwalker	C	1
+17.46.528	Rasenmäher	A	234
+17.46.587	Kühltruhe	C	4
+17.46.588	E-Fahrrad / E-Bike	A	134
+17.46.599	Waschmaschine	B	53
+17.46.605	Spülmaschine	B	22
+17.46.632	Kühlschrank	B	40
+17.46.641	Kühlbox	B	64
+17.46.642	Pelletofen	C	2
+17.46.710	E-Roller	B	45
+17.46.729	Wäschetrockner	B	17
+17.46.736	Ofen	B	14
+17.46.748	Dunstabzugshaube	B	25
+17.46.766	Fitnesstrainer	B	15
+17.46.791	Induktionsgerät	C	5
+17.46.824	Gasofen	C	3
+17.46.844	Laufband	C	5
+17.46.996	Gefrierfach	C	1
+17.46.1061	Backofen	B	18
+17.46.1065	Durchlauferhitzer	C	8
+17.46.1252	Gaskocher	C	7
+17.46.1329	Sportgerät (mit Strom)	C	3
+17.46.1335	Ceranfeld	C	3
+17.46.1404	Ergometer	C	1
+17.46.1441	Geschirrspüler	C	7
+17.46.1495	Brutschrank	C	1
+17.46.1583	Wäscheschleuder	C	1
+17.46.1587	Pizza-Ofen	C	5
+17.46.1615	Kochfeld	C	2
+17.46.1727	Herd	C	2
+17.46.1843	Lattenrost, elektrisch	C	1
+17.46.1849	Gefrierschrank	C	0
+17.46.1856	Saunaofen	C	0
+18.46.521	Wechselrichter	C	11
+18.46.555	Scheibenwischer	C	3
+18.46.562	Schalter	B	22
+18.46.569	Seifenspender	C	11
+18.46.575	Metronom	C	4
+18.46.607	Diktiergerät	B	21
+18.46.625	Blitzgerät	C	11
+18.46.644	Thermostat	C	10
+18.46.655	Frequenzumrichter	C	3
+18.46.666	Münzzählautomat	C	6
+18.46.677	Inhalator	B	16
+18.46.678	Messerschärfer	C	7
+18.46.696	Leiterplatte	C	8
+18.46.699	Katzenklappe	C	4
+18.46.718	Sicherungskasten	C	2
+18.46.728	Megafon	C	7
+18.46.730	E-Auto	B	13
+18.46.778	Mikroskop	B	17
+18.46.787	Tresor	C	6
+18.46.794	Marderschreck	C	1
+18.46.800	Bootsmotor	C	2
+18.46.801	Funksteckdose	B	22
+18.46.811	Desinfektionsgerät	C	3
+18.46.817	Bewegungsmelder	B	21
+18.46.846	Folienschweißgerät	C	13
+18.46.848	Tischrechner	C	11
+18.46.856	Otoskop	C	1
+18.46.864	Heizstein	C	1
+18.46.878	Zigarettenautomat	C	6
+18.46.882	Lawinenpipsgerät	C	1
+18.46.895	Zündschloss	C	1
+18.46.899	Poolfilter	C	3
+18.46.935	Teichpumpe	B	23
+18.46.939	Rolladenmotor	B	13
+18.46.941	Garagenöffner	B	16
+18.46.943	Magnetfeldmatte	C	7
+18.46.947	Katzenfutterautomat	C	7
+18.46.954	Elektrische Höhenverstellung	C	7
+18.46.958	Elektrokamin	C	7
+18.46.960	Inverter	C	5
+18.46.961	E-Zigarette	C	3
+18.46.963	Rechenmaschine	C	6
+18.46.971	Nagelset	C	2
+18.46.975	Laser	C	9
+18.46.985	Schukostecker	C	4
+18.46.987	TAN Generator	C	3
+18.46.988	Poolreiniger	C	10
+18.46.989	Heißklebemaschine	C	1
+18.46.992	Malstift, elektrisch	C	4
+18.46.995	Wireless Microphone System	C	2
+18.46.1005	Fußpflegegerät	B	23
+18.46.1012	Wärmedecke	C	11
+18.46.1014	Spannungsregler	C	3
+18.46.1016	Oszilloskop	C	5
+18.46.1022	Teppichauffrischer	C	4
+18.46.1027	Krankenbett-Schalttafel	C	4
+18.46.1032	Heiz-Socken	C	5
+18.46.1036	Lötstation	C	12
+18.46.1043	Frostwächter	C	4
+18.46.1052	Solarpanel	C	11
+18.46.1053	Mückenbrennstab	C	2
+18.46.1054	Zapfanlage	C	10
+18.46.1057	Lautstärkeregler	C	1
+18.46.1063	Pyrometer	C	1
+18.46.1086	Nagellack-Abfüllmaschine	C	1
+18.46.1094	Dimmerpack	C	4
+18.46.1115	Beatmungsgerät	C	1
+18.46.1138	Tennisschläger Spannmaschine	C	2
+18.46.1148	Etikettiergerät	C	7
+18.46.1151	Badewannenlifter	C	3
+18.46.1155	Blumenstecker	C	2
+18.46.1176	Händetrockner	C	1
+18.46.1183	Spiegelschrank	C	6
+18.46.1206	Hupe	C	3
+18.46.1207	Fledermausdetektor	C	2
+18.46.1210	Stoffschere	B	15
+18.46.1213	Servomotor	C	1
+18.46.1219	Stromverteiler Zigarettenanzünder	C	1
+18.46.1245	Labortechnikgerät	C	1
+18.46.1258	Gasheizung Regelung	C	4
+18.46.1262	Universal Streugerät	C	2
+18.46.1269	Elektrischer Fliegenfänger	C	3
+18.46.1273	Fußschalter	C	3
+18.46.1274	Medizintechnik	B	18
+18.46.1287	Wildkamera	B	19
+18.46.1291	Blinkerrelais	C	3
+18.46.1293	Effektgerät	C	4
+18.46.1298	Brandmalgerät	C	2
+18.46.1323	Milchpumpe	C	2
+18.46.1338	Sprudelbad	C	3
+18.46.1339	Entlötstation	C	2
+18.46.1348	Wassermelder	C	1
+18.46.1361	Heizschuh	C	2
+18.46.1364	Stromgenerator	C	2
+18.46.1383	Antenne	C	4
+18.46.1385	Stabanzünder	C	4
+18.46.1400	Vogelerkennungsstift	C	1
+18.46.1406	Tattoomaschine	C	1
+18.46.1409	Hochentaster	C	4
+18.46.1455	Braillezeile	C	2
+18.46.1459	Rückfahrkamera	C	1
+18.46.1466	Heizungsregler	C	7
+18.46.1470	Probengeber /Probennehmer	C	1
+18.46.1474	Maulwurfschreck	C	2
+18.46.1489	Leitungssucher	C	2
+18.46.1511	KFZ-Sitzheizung (Nachrüstung)	C	1
+18.46.1518	Akku-Luftpumpe	C	2
+18.46.1533	Steckdosensicherung	C	2
+18.46.1570	Netzstromverteiler	C	3
+18.46.1572	Springbrunnen	C	3
+18.46.1574	Kleinzentrifuge	C	1
+18.46.1594	Rolladensteuerung	C	1
+18.46.1601	Braille-Lesegerät	C	2
+18.46.1605	Arduino	C	1
+18.46.1606	TV-LED-Tester	C	1
+18.46.1608	Braille-Schreibmaschine	C	2
+18.46.1630	Geigerzähler	C	1
+18.46.1643	Unifix	C	1
+18.46.1645	Metalldetektor	C	2
+18.46.1659	Dritte Hand	C	1
+18.46.1663	Umschaltmotor	C	1
+18.46.1666	Pumpe	C	8
+18.46.1667	Poolpumpe	C	2
+18.46.1671	Beschriftungsgerät	C	3
+18.46.1677	Drehstrommotor	C	1
+18.46.1687	Transmitter	C	1
+18.46.1693	Bingo Maschine	C	1
+18.46.1695	Smartmirror	C	2
+18.46.1702	Sterilisator	C	2
+18.46.1714	Bluetooth-Transmitter	C	3
+18.46.1730	Solarkonverter	C	2
+18.46.1741	Starthilfe	C	4
+18.46.1742	Anspitzer, elektrisch	C	1
+18.46.1745	Alexa	C	1
+18.46.1747	Digitaler Bilderrahmen	C	7
+18.46.1750	Endoskop	C	1
+18.46.1763	Steckdose	C	3
+18.46.1783	Einschaltmodul / Umschaltbox	C	1
+18.46.1793	Badewannen-Sprudler / Sprudelmatte	C	2
+18.46.1796	Kartenlesegerät	C	1
+18.46.1810	Brillenreinigungsgerät	C	1
+18.46.1811	Katzenschreck	C	1
+18.46.1827	Rollo, elektrisch	C	1
+18.46.1839	Kilometerzähler	C	1
+18.46.1842	Sonnensegel	C	1
+18.46.1848	Schuhputzgerät	C	3
+18.46.1883	Fieberthermometer	C	0
+19.25.407	Handy	A	981
+19.25.773	Funkgerät Walkie Talkie	B	20
+19.25.1656	Funktelefon	C	10
+20.31.418	Musikinstrument	B	55
+20.31.543	Keyboard	B	59
+20.31.595	Gitarre	C	6
+20.31.830	DJ Controller	B	16
+20.31.929	E-Piano	B	15
+20.31.979	Rollpiano	C	1
+20.31.991	Drumcomputer	C	2
+20.31.1028	Loop Station	C	1
+20.31.1073	Synthesizer	C	9
+20.31.1375	E-Gitarre	C	9
+20.31.1723	Faltpiano	C	1
+20.31.1767	Musikalien	C	1
+20.31.1813	Guitarren-Pedal-Board	C	1
+20.31.1818	Schlagzeug, elektronisch	C	1
+20.31.1884	Heimorgel	C	0
+21.18.530	Schleuder	C	1
+21.18.593	Aktenvernichter	A	275
+21.18.668	Locher	B	16
+21.18.951	Durchschlag	C	1
+22.19.446	Tastatur	B	33
+22.19.447	Computermaus	B	78
+22.19.458	Mikrofon	B	19
+22.19.580	Festplatte	B	64
+22.19.631	Webcam	C	2
+22.19.639	USB-Hub	C	4
+22.19.654	USB-Stick	B	13
+22.19.671	Router / Modem	B	31
+22.19.691	Diskettenlaufwerk	C	7
+22.19.743	USB-Soundkarte	C	4
+22.19.744	Mainboard	C	5
+22.19.862	Time Capsule	C	1
+22.19.1031	NAS / Netzwerkspeicher	C	5
+22.19.1098	Grafiktablet / Maltablet / Zeichentablet	B	13
+22.19.1186	SD-Karte	C	3
+22.19.1217	DVD Laufwerk	C	12
+22.19.1238	Platine	B	15
+22.19.1263	WLAN Verstärker	C	3
+22.19.1391	Software	C	5
+22.19.1604	Trackball	C	1
+22.19.1673	Lan-Kabel	C	1
+22.19.1715	WLAN-Repeater	C	3
+22.19.1722	Grafikkarte	C	5
+22.19.1782	Dockingstation	C	1
+22.19.1790	SmartHub	C	1
+22.19.1814	Digitalisierer	C	2
+23.32.404	Radio	A	1994
+23.32.1686	Funkempfänger	C	1
+23.32.1820	Weltempfänger	C	5
+24.41.476	Bohrmaschine	A	404
+24.41.477	Akkuschrauber / Akkubohrer	A	291
+24.41.492	Heckenschere	A	292
+24.41.533	Garten	B	52
+24.41.546	Schleifgerät / Schleifer	B	71
+24.41.554	Werkzeug	B	48
+24.41.571	Stichsäge	B	74
+24.41.577	Kettensäge	A	92
+24.41.608	Wasserpumpe	B	63
+24.41.620	Dampfreiniger	B	81
+24.41.637	Heißluftpistole	B	15
+24.41.640	Heißklebepistole	C	13
+24.41.651	Graviergerät	C	5
+24.41.662	Schwertsäge	C	7
+24.41.692	Dremel	B	17
+24.41.697	Fensterreiniger	B	75
+24.41.698	Betonmischer	C	4
+24.41.715	Hochdruckreiniger	A	126
+24.41.722	Bohrhammer	B	59
+24.41.761	Fusselfräse	B	15
+24.41.772	Bandsäge	C	4
+24.41.776	Kappsäge	B	17
+24.41.784	Multifunktionswerkzeug	B	18
+24.41.789	Kreissäge	B	25
+24.41.798	Deltaschleifer	C	9
+24.41.805	Trennschleifer	C	10
+24.41.808	Winkelschleifer	A	114
+24.41.818	Hobelmaschine	C	6
+24.41.819	Kompressor	B	40
+24.41.820	Rasentrimmer	A	105
+24.41.822	Holzspalter	C	7
+24.41.825	Motor	B	22
+24.41.826	Motorsäge	B	22
+24.41.847	Elektrohobel	C	10
+24.41.853	Tauchsäge	C	2
+24.41.858	Astschere	B	25
+24.41.868	Tauchpumpe	B	44
+24.41.875	Vertikutierer	B	27
+24.41.898	Motorsense/Freischneider	B	16
+24.41.900	Weidezaungerät	C	9
+24.41.928	Lötkolben	B	13
+24.41.944	Laubbläser	B	53
+24.41.946	Handkreissäge	B	52
+24.41.948	Schwingschleifer	B	47
+24.41.956	Schleifmaus	C	5
+24.41.959	Bandschleifer	B	35
+24.41.972	E-Gehrungssäge	C	1
+24.41.976	Gartenhäcksler	B	54
+24.41.986	Strauchschere	C	7
+24.41.1083	Nivelliergerät	C	3
+24.41.1107	Poliergerät	C	6
+24.41.1136	Säge	C	6
+24.41.1140	Dekopiersäge	C	1
+24.41.1144	Dickenhobel	C	1
+24.41.1173	Unkrautbrenner	C	1
+24.41.1179	Dreieckschleifer	C	12
+24.41.1247	Schweißgerät	C	6
+24.41.1259	Haushaltsgerät (Metallbearbeitung)	B	14
+24.41.1320	Gartenpumpe	C	10
+24.41.1326	Bewässerungspumpe	B	18
+24.41.1351	Unkrautjäter	C	1
+24.41.1360	Einhandsäge	C	1
+24.41.1393	Glasschleifer	C	1
+24.41.1464	Motorhacke	C	2
+24.41.1492	Schlagschrauber	C	3
+24.41.1540	Säge (Metallbearbeitung)	C	2
+24.41.1544	Türautomat	C	1
+24.41.1552	Akkuschere	C	6
+24.41.1636	Schlagbohrmaschine	C	12
+24.41.1642	Kunststoffschweißgerät	C	1
+24.41.1735	Elektroseilwinde	C	1
+24.41.1779	Oberfräse	C	3
+24.41.1780	Akkukompressor	C	2
+24.41.1792	Apfelpflücker	C	1
+24.41.1825	Rasensprenger	C	2
+24.41.1855	Stepper	C	2
+25.20.445	Tintenstrahldrucker	A	867
+25.20.449	Scanner	C	13
+25.20.584	Faxgerät	B	32
+25.20.670	Kopierer	C	5
+25.20.873	Laserdrucker	B	68
+25.20.1236	3D-Drucker	C	9
+25.20.1330	Schneideplotter	C	1
+25.20.1678	Flachbettscanner	C	2
+26.33.497	Diabetrachter	B	24
+26.33.570	Beamer	B	82
+26.33.647	Projektor	B	20
+26.33.902	Diaprojektor	A	86
+26.33.924	Filmprojektor	B	35
+26.33.1300	Vergrößerungsgerät	C	2
+26.33.1753	Space-Projektor	C	1
+27.8.420	Nähmaschine	A	1787
+27.8.684	Prägemaschine	C	6
+27.8.685	Strickmaschine	C	13
+27.8.893	Stickmaschine	C	4
+27.8.974	Falzmaschine	C	1
+27.8.1047	Spitzmaschine elektrisch	C	2
+27.8.1190	Stopfmaschine	C	4
+27.8.1191	Handnähmaschine	B	43
+28.46.422	Telefon	A	164
+28.46.467	Waage, elektrisch	B	63
+28.46.475	Heizdecke / Heizkissen	A	134
+28.46.495	Wetterstation	B	46
+28.46.496	Blutdruckmessgerät	B	59
+28.46.527	Massagegerät	A	91
+28.46.547	Multimeter	B	18
+28.46.558	Babyphone	B	35
+28.46.560	Spannungsmesser	C	3
+28.46.594	Schreibmaschine	A	108
+28.46.636	Ultraschallreiniger	B	36
+28.46.687	Laminiergerät	B	47
+28.46.688	Türsprechanlage	C	9
+28.46.701	Messgerät	B	38
+28.46.750	Taschenrechner	B	30
+28.46.863	Alarmanlage	C	7
+28.46.877	Elektroheizung	B	51
+28.46.918	Anrufbeantworter	C	12
+28.46.978	Digitalthermometer	C	12
+28.46.1011	Massageball	C	1
+28.46.1041	Türgong	C	7
+28.46.1130	Funkfernbedienung	B	57
+28.46.1134	Massagesessel	C	2
+28.46.1150	Uhrenbeweger	C	8
+28.46.1157	Zeitschaltuhr	B	18
+28.46.1267	Haushaltsgerät	A	150
+28.46.1286	Türklingel	B	13
+28.46.1316	Vibrationskissen	C	1
+28.46.1333	Telefonregister	C	1
+28.46.1365	Rauchmelder / Brandmelder	C	4
+28.46.1454	Massagekissen	C	8
+28.46.1478	Muskelstimulator	C	2
+28.46.1571	Hygrometer	C	2
+28.46.1585	Vibrationsgerät	C	1
+28.46.1592	Stromzähler	C	2
+28.46.1760	Insektenstichheiler	C	1
+28.46.1853	Backofen Timer	C	1
+29.42.426	Waffeleisen	A	115
+29.42.469	Brotschneidemaschine	A	178
+29.42.470	Milchaufschäumer	A	200
+29.42.471	Eierkocher	B	55
+29.42.489	Mikrowelle	A	246
+29.42.502	Minibackofen	B	61
+29.42.520	Dampfgarer	B	17
+29.42.525	Einweckkocher	C	10
+29.42.526	Kochthermometer	C	4
+29.42.534	Induktionsplatte	B	70
+29.42.542	Grill	B	60
+29.42.597	Raclette	B	67
+29.42.606	Dörrgerät / Dehydriergerät	B	32
+29.42.619	Fritteuse	B	39
+29.42.652	Wassersprudler	A	113
+29.42.679	Reibe, elektrisch	C	9
+29.42.703	Allesschneider	B	49
+29.42.727	Kochplatte	A	100
+29.42.807	Reiskocher	B	22
+29.42.841	Crepesgerät	C	12
+29.42.913	Eismaschine	B	18
+29.42.923	Küchenwaage	A	105
+29.42.938	Grillofen	C	9
+29.42.1013	Joghurtbereiter	C	10
+29.42.1018	Brotbackautomat	B	61
+29.42.1020	Einkochautomat	B	16
+29.42.1030	Popcornmaschine	C	11
+29.42.1070	Silikonpresse	C	2
+29.42.1100	Elektrokochtopf	B	15
+29.42.1181	Elektromesser	B	16
+29.42.1209	Elektrogrill	A	97
+29.42.1223	Heißluftfritteuse	B	62
+29.42.1226	Warmhalteplatte / Wärmplatte	C	6
+29.42.1227	Wärmeschublade	C	3
+29.42.1242	Küchengerät	B	22
+29.42.1306	Kontaktgrill	B	20
+29.42.1332	Wasserdestilierer	C	4
+29.42.1372	Eispotionierer	C	1
+29.42.1386	Fondue	C	2
+29.42.1417	Haferflockenspender	C	2
+29.42.1517	Slusheismaschine	C	2
+29.42.1586	Gasgrill	C	2
+29.42.1729	Glühweinerhitzer / Glühweinzapfanlage	C	5
+29.42.1740	Zuckerwattenmaschine	C	1
+29.42.1768	Flaschenwärmer	C	3
+29.42.1826	Eiswürfelmaschine	C	3
+30.26.409	Tablet	A	292
+30.26.450	E-Book-Reader	B	50
+30.26.483	Navigationsgerät	A	83
+30.26.567	Display	C	11
+30.26.1733	GPS-Gerät	C	1
+31.43.432	Toaster	A	941
+31.43.1141	Sandwichtoaster	B	24
+32.44.421	Spielzeug	A	579
+32.44.623	Drohne	B	29
+32.44.816	Ferngesteuertes Auto	B	67
+32.44.840	Hoverboard	B	17
+32.44.849	Lokomotive	B	15
+32.44.854	Playmobil Eisenbahn	C	9
+32.44.866	Puppenstube	C	2
+32.44.1050	TV Simulator	C	1
+32.44.1062	Lichtorgel	C	4
+32.44.1064	Action Figur	C	1
+32.44.1110	Globus	C	12
+32.44.1174	Puppenwagen	C	7
+32.44.1228	Schaukasten mit Motor	C	1
+32.44.1240	Kinderklavier	C	3
+32.44.1325	Carrerabahn	C	3
+32.44.1345	Weihnachtsfigur, musikalisch	C	11
+32.44.1357	Modelleisenbahn	B	35
+32.44.1389	elektronischer Schweif	C	1
+32.44.1390	Pinnenpilot	C	1
+32.44.1460	VW-Bus	C	1
+32.44.1475	Hörbox (z.B. Tonie, Tiger, Hörbert)	C	9
+32.44.1499	Kinder-Elektromotorrad	C	1
+32.44.1530	Plastikfigur	C	4
+32.44.1537	Seifenblasenmaschine	C	3
+32.44.1549	Interaktives Lernspielzeug	C	4
+32.44.1561	Kinder-Elektroauto	C	8
+32.44.1569	Zwitscherbox	C	3
+32.44.1612	Spielzeugauto	B	51
+32.44.1665	Funkboot /Modellboot	C	1
+32.44.1685	3D-Stift	C	2
+32.44.1738	Modellflugzeug	C	2
+32.44.1755	Modellbau-Bausatz	C	3
+32.44.1765	tiptoi Stift	C	1
+32.44.1794	Lego Batteriebox	C	1
+32.44.1795	Puppenbadewanne	C	1
+32.44.1802	Domino-Aufstellapparat	C	2
+32.44.1806	Kinderherd	C	4
+32.44.1815	Wasserpistole, elektisch	C	2
+32.44.1828	Babyschaukel	C	1
+32.44.1830	Kunstoffkatze	C	1
+33.34.434	Videorekorder	A	258
+33.34.435	DVD-/Blu-ray-Player	A	393
+33.34.448	Fernbedienung	A	179
+33.34.484	Receiver (Sat, Kabel, Antenne, Audio)	A	239
+33.34.653	Steuergerät	B	29
+33.34.742	Heimkinosystem	C	7
+33.34.843	Festplattenrekorder	B	34
+33.34.852	Soundbar	B	58
+33.34.927	Controller	B	42
+33.34.964	Multirekorder	C	2
+33.34.1026	DVD-Recorder	B	36
+33.34.1097	Time Base Corrector	C	1
+33.34.1101	Aufnahmegerät	C	5
+33.34.1261	Steuerung	C	6
+33.34.1600	Kabeltuner	C	4
+34.45.402	Staubsauger	A	2699
+34.45.583	Reinigungszubehör	C	9
+34.45.610	Roboter	C	8
+34.45.763	Kehrmaschine	C	5
+34.45.786	Saugroboter	A	218
+34.45.904	Nass-Sauger / Saug-Wischer /Waschsauger	B	43
+34.45.909	Bodenwischer	C	8
+34.45.1039	Bodenreiniger	B	17
+34.45.1045	Handstaubsauger	A	374
+34.45.1125	Vakuumierer	B	28
+34.45.1169	Wischroboter	C	6
+34.45.1194	Elektrischer Handbesen	C	5
+34.45.1232	Staubsauger (Metallbearbeitung)	B	52
+34.45.1234	Mähroboter	C	8
+34.45.1526	Aschesauger	C	3
+34.45.1593	Poolsauger	C	2
+34.45.1713	Vakuumpumpe	C	2
+34.45.1844	Staubroller	C	1
+35.7.478	Wecker	A	232
+35.7.551	Spieluhr	A	83
+35.7.622	Uhr	A	620
+35.7.726	Schrittzähler	C	2
+35.7.793	Armbanduhr	A	299
+35.7.795	Kurzzeitwecker (Eieruhr)	B	27
+35.7.838	Eieruhr	B	22
+35.7.871	Smartwatch	B	21
+35.7.1133	Fitnesstracker / Pulsuhr	C	10
+35.7.1154	Schrankuhr	C	7
+35.7.1353	Taschenuhr	C	6
+35.7.1465	Uhrenanlage	C	3
+35.7.1522	Küchenwecker	C	7
+35.7.1833	Zahnputztimer	C	1
+35.7.1882	Schachuhr	C	0
+36.10.430	Kaffeemaschine	A	1422
+36.10.431	Kaffeevollautomat	A	901
+36.10.545	Espressokocher	B	78
+36.10.911	Pad-/Kapsel-Kaffeemaschine	A	168
+36.10.942	Siebträgermaschine	A	120
+36.10.967	Kaffeekanne	B	14
+36.10.1033	Kaffeefilter	C	2
+36.10.1250	Hörnchenautomat	C	2
+36.10.1501	Heißgetränkespender	C	1
+36.10.1840	Kaffeeröster	C	1
+37.42.423	Standmixer	A	331
+37.42.424	Stabmixer / Pürierstab	A	389
+37.42.425	Handmixer	A	745
+37.42.427	Kaffeemühle	A	305
+37.42.428	Saftpresse	B	27
+37.42.429	Küchenmaschine	A	767
+37.42.468	Entsafter	B	72
+37.42.700	Gewürzmühle	B	47
+37.42.735	Mühle	B	14
+37.42.916	Zerkleinerer	B	51
+37.42.953	Tischschleuder	C	3
+37.42.973	Getreidemühle	B	29
+37.42.980	Nudelmaschine	C	4
+37.42.1029	Fleischwolf	C	11
+37.42.1093	Kartenmischgerät	C	4
+37.42.1534	Mixer	A	114
+37.42.1576	Pflanzenmilchbereiter	C	1
+37.42.1591	Knoblauchmühle	C	1
+37.42.1626	Smoothie Maker	C	6
+37.42.1664	Mixeraufsatz	C	1
+37.42.1720	Kartoffelschählmaschine	C	3
+38.6.442	Spielkonsole	A	139
+39.38.663	Föhn	A	613
+39.38.1124	Hutweiter	C	1
+39.38.1280	Trockenhaube	C	10
+39.38.1739	Heißluftföhn / Heißluftgebläse	C	10
+40.9.466	Bügeleisen	A	627
+40.9.501	Bügelstation	A	133
+40.9.785	Wäschemangel	C	6
+40.9.879	Steamer	B	23
+40.9.903	Bügelbrett	C	11
+40.9.1222	Hemdenbügler	C	8
+40.9.1380	Bügelpresse	C	2
+40.9.1520	Transferpresse	C	1
+101.49.451	Kleidungsstück	A	1662
+101.49.452	Wohntextilie	A	206
+101.49.453	Tasche / Koffer	A	401
+101.49.454	Bekleidung / Kleidungsstück	A	283
+101.49.485	Gürtel	B	35
+101.49.486	Schirm	A	102
+101.49.552	Puppe	B	42
+101.49.576	Schuhe	B	63
+101.49.855	Vorhang	B	42
+101.49.915	Bettwäsche	B	69
+101.49.945	Gardinen	B	16
+101.49.1076	Kinderbody	C	1
+101.49.1077	Hose	A	810
+101.49.1078	Pullover	A	159
+101.49.1091	Handtuch	B	36
+101.49.1099	Tarp / Zeltplane	C	9
+101.49.1119	Geldbörse	B	17
+101.49.1123	Beutel	B	21
+101.49.1162	Fahrradtasche (Textilien)	C	9
+101.49.1164	Spannbetttuch	C	3
+101.49.1165	Jacke	A	254
+101.49.1170	Hemd	B	59
+101.49.1177	Rucksack	A	115
+101.49.1180	T-Shirt	A	86
+101.49.1235	Hundeleine	C	2
+101.49.1239	Halstuch	B	16
+101.49.1244	Unterwäsche	C	9
+101.49.1260	Reißverschluss	C	10
+101.49.1279	Aktenkoffer	C	6
+101.49.1289	Tischdecke	C	9
+101.49.1292	Bluse	B	37
+101.49.1302	Orthopädie	C	2
+101.49.1310	Seil	C	1
+101.49.1354	Weste	C	12
+101.49.1362	Handschuhe	B	14
+101.49.1366	Rock	B	17
+101.49.1367	Jeans	B	26
+101.49.1412	Kissen	B	17
+101.49.1419	Badebekleidung	C	11
+101.49.1440	Schlafsack	C	9
+101.49.1442	Stiefel	C	1
+101.49.1449	Kleid	B	37
+101.49.1450	Hundehalsband	C	2
+101.49.1480	Gurte	C	2
+101.49.1497	Topflappen	C	1
+101.49.1504	Textilien	A	160
+101.49.1516	Fahne	C	4
+101.49.1538	Socken/Strümpfe	C	13
+101.49.1554	Bienenkästen-Abdeckungen	C	2
+101.49.1556	Jeansjacke	C	4
+101.49.1573	Schonbezug	C	1
+101.49.1579	Handtasche	C	13
+101.49.1580	Mantel	C	8
+101.49.1581	Stofftier	B	17
+101.49.1595	Strickjacke	C	10
+101.49.1597	Matratzenbezug	C	2
+101.49.1598	Winterhose	C	3
+101.49.1611	Wolldecke	C	5
+101.49.1620	Schlappen	C	1
+101.49.1621	Mütze	C	3
+101.49.1623	Oberteil	C	13
+101.49.1633	Kissenbezug / Kissenhülle	B	16
+101.49.1648	Lederhose	C	1
+101.49.1651	Anzug	C	5
+101.49.1657	Fahrradhelm	C	5
+101.49.1658	Leggings	C	8
+101.49.1680	Regenschutz	C	1
+101.49.1682	Krawatte	C	1
+101.49.1683	Handyhülle	C	2
+101.49.1684	Bauchtasche / Gürteltasche	C	1
+101.49.1691	Wickelunterlage	C	1
+101.49.1696	Lederjacke	C	5
+101.49.1703	Turnschuhe	C	2
+101.49.1708	Imker-Hut	C	2
+101.49.1721	Duschvorhang	C	1
+101.49.1736	Schlafanzug	C	2
+101.49.1744	Handytasche	C	2
+101.49.1774	Strumpfhose	C	2
+101.49.1788	Arbeitshose	C	11
+101.49.1816	Schoner	C	1
+101.49.1821	Schlafmaske	C	1
+101.49.1822	Bademantel	C	2
+101.49.1837	Imkeranzug	C	6
+101.49.1847	Warnweste	C	1
+102.50.457	Spielzeug (Möbel/Holz)	B	57
+102.50.529	Messer und Scheren schärfen/schleifen	A	209
+102.50.536	Teesieb	C	11
+102.51.537	Greifzange	C	5
+102.50.559	Dekoration	B	72
+102.51.563	Schraubstock	C	3
+102.50.566	Kerzenhalter	B	18
+102.50.579	Topf	B	30
+102.50.586	Geschirr	B	21
+102.50.602	Dekoration (Möbel/Holz)	B	36
+102.50.633	Kamera, analog	B	72
+102.50.643	Kinderwagen	B	41
+102.50.676	Kleiderbügel	C	3
+102.50.681	Salatschleuder	C	7
+102.50.686	Tacker	B	34
+102.51.705	Werkzeug - ohne Strom	B	18
+102.50.706	Besteck	C	5
+102.50.733	Modellauto	B	35
+102.50.738	Teigrolle	C	3
+102.50.782	Messer	A	270
+102.50.837	Ordner	C	1
+102.50.860	Tasse	C	10
+102.51.861	Stemmhammer	C	4
+102.50.886	Standuhr/Regulator	B	40
+102.50.922	Brotzeitbrett	C	1
+102.50.925	Personenwaage	A	104
+102.51.930	Hebelschere	C	3
+102.50.940	Eierschalensollbruchverursacher	C	1
+102.50.966	Bratpfanne	B	21
+102.50.993	Salzstreuer	C	5
+102.51.1017	Zwinge	C	1
+102.50.1034	Reibe	C	3
+102.50.1035	Pizzastein	C	2
+102.51.1106	Schraubendreher	C	4
+102.50.1114	Kuckucksuhr	B	14
+102.50.1135	Haushaltsschere	B	50
+102.50.1145	Mehlsieb	C	7
+102.51.1184	Wagenheber, hydraulisch	C	1
+102.51.1187	Gartenschere	B	73
+102.50.1215	Backform, Springform	C	2
+102.50.1241	Trinkglas	C	2
+102.50.1295	Nussknacker	C	3
+102.51.1305	Beil	C	6
+102.50.1352	Schneidemesser	C	13
+102.50.1425	Petroleumlampe	C	2
+102.50.1451	Stopenheber	C	1
+102.50.1473	Kaminuhr	C	8
+102.51.1545	Schlosserhammer	C	1
+102.50.1546	Sparschäler	C	2
+102.51.1547	Seitenschneider	C	2
+102.50.1590	Cocktailshaker	C	1
+102.50.1610	Löffel	C	1
+102.50.1613	Backblech	C	2
+102.51.1655	Schraubzwinge	C	1
+102.50.1679	Drehpendeluhr	C	4
+102.50.1725	Schnellkochtopf	B	32
+102.50.1781	Teller	C	1
+102.51.1797	Spaten	C	2
+102.51.1798	Axt	C	1
+102.50.1819	Dosenöffner	C	2
+102.50.1874	Buttonpresse, mechanisch	C	0
+103.48.460	Reifen	B	17
+103.48.462	Bremsen	B	15
+103.48.463	Rahmen	C	1
+103.48.464	Gangschaltung	B	28
+103.48.465	Antrieb	C	6
+103.48.494	Sonstiges	C	1
+103.48.531	Herrenfahrrad	A	345
+103.48.532	Damenfahrrad	A	487
+103.48.694	Inlineskater	C	6
+103.48.708	Kindersitz	C	4
+103.48.716	Kinderfahrrad	B	81
+103.48.724	Luftpumpe	B	28
+103.48.741	Schloss	B	16
+103.48.779	Fahrradcomputer	B	18
+103.48.835	Skateboardachse	C	3
+103.48.839	Gokart	C	4
+103.48.869	Fahrradklingel	C	7
+103.48.936	Lastenrad	C	3
+103.48.981	Roller (mechanisch)	B	32
+103.48.1002	Fahrradanhänger	C	5
+103.48.1007	Scooter / E-Scooter	B	30
+103.48.1068	Fahrradkorb	C	7
+103.48.1084	Rollator	B	28
+103.48.1087	Fahrradsattel	C	8
+103.48.1120	Skateboard	C	2
+103.48.1128	Fahrraddynamo	C	6
+103.48.1129	Gepäckträger	C	1
+103.48.1146	Schlauch	C	10
+103.48.1171	Fahrradtasche	C	6
+103.48.1197	Rollstuhl	C	6
+103.48.1246	MTB	C	2
+103.48.1251	Pedalantrieb	C	1
+103.48.1254	Felgen	C	1
+103.48.1311	Dreirad mit E-Antrieb	C	1
+103.48.1337	Fahrrad, allgemein	A	400
+103.48.1350	Kettcar	C	9
+103.48.1568	Einrad, elektrisch	C	1
+103.48.1616	Fahrradpedal	C	1
+103.48.1647	Naben-Abstandhalter	C	1
+103.48.1650	Fahrradkette	C	5
+103.48.1743	Fahrradaufhängung	C	1
+104.52.499	Brille	B	49
+104.52.659	Brosche	C	4
+104.52.675	Ohrring	B	14
+104.52.746	Halskette	B	43
+104.52.1216	Haarreifen	C	1
+104.52.1296	Armband	C	5
+104.52.1297	Schlüsselanhänger	C	6
+104.52.1377	Medaillon	C	1
+104.52.1784	Modeschmuck	C	3
+104.52.1812	Haarklammer	C	1
+105.47.456	Möbelstück	A	118
+105.47.541	Stuhl	A	84
+105.47.612	Vogelhäuschen	B	14
+105.47.680	Regal	C	12
+105.47.740	Boot	C	2
+105.47.870	Servierwagen	C	5
+105.47.876	Bilderrahmen	B	22
+105.47.977	Liegestuhl	C	9
+105.47.997	Holzuntersetzer	C	2
+105.47.998	Holzbrett	B	19
+105.47.1000	Campingtisch	C	1
+105.47.1067	Schublade	B	17
+105.47.1069	Blumentopfständer	C	1
+105.47.1071	Tisch	B	22
+105.47.1079	Campinghocker	C	4
+105.47.1080	Kiste / Kasten	C	8
+105.47.1102	Bierbank	C	1
+105.47.1105	Holzschale	C	4
+105.47.1147	Metallsessel	C	2
+105.47.1168	Kinderstuhl	C	8
+105.47.1175	Holzstuhl	B	47
+105.47.1208	Jalousien	C	5
+105.47.1233	Holzfigur	C	6
+105.47.1282	Kleiderständer	C	3
+105.47.1285	Spieltisch	C	2
+105.47.1331	Glasregal	C	1
+105.47.1334	Webstuhl	C	1
+105.47.1418	Gartenstuhl	C	5
+105.47.1432	Barhocker	C	9
+105.47.1434	Sitzbank	C	4
+105.47.1452	Moderationstafel	C	1
+105.47.1456	Bürostuhl	C	6
+105.47.1542	Kleinmöbel	B	14
+105.47.1551	Nähkasten	C	3
+105.47.1557	Türgriff	C	1
+105.47.1559	Sitzmöbel	C	4
+105.47.1560	Schneidebrett	C	2
+105.47.1565	Küchenvitrine	C	2
+105.47.1635	Drehstuhl	C	1
+105.47.1669	Hunde-Transport-Brett	C	1
+105.47.1694	Adventskranz Holz	C	2
+105.47.1701	Holz-Figuren	C	11
+105.47.1704	Sessel	C	6
+105.47.1709	Schrank	C	2
+105.47.1731	Bogenständer	C	1
+105.47.1762	Schlitten	C	1
+105.47.1769	Notenständer	C	1
+105.47.1789	Holzplatte	C	3
+105.47.1791	Kästchen	C	1
+105.47.1801	Wohnzimmerstuhl	C	1
+105.47.1858	Deckchair	C	0
+106.50.540	Wanderstöcke	C	7
+106.50.568	Feuerzeug	B	15
+106.50.581	Töpferscheibe	C	7
+106.50.582	Sprühflasche	C	6
+106.50.592	Wäscheständer	B	19
+106.50.614	Flyerhalter	C	2
+106.50.626	Klobürste	C	1
+106.50.627	Untersetzer	C	4
+106.50.628	Wasserhahn	C	8
+106.50.629	Schild	C	6
+106.50.634	Insektenhotel	C	2
+106.50.635	Hochbeet	C	3
+106.50.645	Transportwagen	C	13
+106.50.656	Autoschlüssel	B	25
+106.50.665	Schnapprollo	C	4
+106.50.667	Pillenbox	C	1
+106.50.669	Lupe	C	6
+106.50.683	Postkartenautomat	C	1
+106.50.695	Halterung	B	19
+106.50.752	Fernglas	C	8
+106.50.774	Stöpsel	C	2
+106.50.775	Safe	C	1
+106.50.783	Barometer	C	5
+106.50.792	Türschloss	C	5
+106.50.834	Metallplatte	C	3
+106.50.836	Gewindestange	C	1
+106.50.857	Gymnastikball	C	2
+106.50.874	Spiegel	C	13
+106.50.888	Mülleimer	B	20
+106.50.912	Thermoskanne / Thermosflasche	B	16
+106.50.921	Trolley	B	23
+106.50.932	Teppichbürste	C	4
+106.50.933	Metalldose	C	5
+106.50.937	Kugelschreiber	C	7
+106.50.950	Trinkflasche	C	1
+106.50.968	Sparschwein	C	3
+106.50.984	Leselupe	C	11
+106.50.999	Metallstab	C	3
+106.50.1001	Münzen	C	2
+106.50.1003	Stativ	C	7
+106.50.1024	Harke	C	3
+106.50.1037	Porzellanfigur	C	13
+106.50.1038	Gießkanne	C	8
+106.50.1056	Briefwaage	C	3
+106.50.1066	Schutzblech	C	4
+106.50.1075	Duschschlauch	C	4
+106.50.1081	Blumentopf	C	2
+106.50.1082	Faltrollo	C	2
+106.50.1103	Putzeimer mit Wringerfunktion	C	2
+106.50.1117	Pavillon	C	1
+106.50.1118	Box	C	2
+106.50.1142	Schutzhülle	C	2
+106.50.1149	Wischmopp	C	7
+106.50.1166	Bleistiftspitzer	C	3
+106.50.1195	Handbesen	C	5
+106.50.1199	Korb	C	7
+106.50.1200	Tortenring	C	1
+106.50.1211	Kerzenlöscher	C	1
+106.50.1220	Angel	C	1
+106.50.1221	Wärmflasche	C	1
+106.50.1224	Fliegengitter	C	2
+106.50.1225	Sackkarre	C	4
+106.50.1230	Luftbett/Luftmatratze	C	2
+106.50.1237	Kette	C	6
+106.50.1294	Mistgabel / Grabegabel	C	1
+106.50.1304	Toilette	C	4
+106.50.1308	Gehäuse	C	4
+106.50.1309	Fallrohrfilter / Regendieb	C	1
+106.50.1312	Visible Repair Technique	C	1
+106.50.1317	Füllfederhalter	C	2
+106.50.1318	Türschließer	C	3
+106.50.1324	Kompass	C	1
+106.50.1327	Lostrommel / Tombola	C	1
+106.50.1355	Haken	C	1
+106.50.1363	Hüpfstange	C	2
+106.50.1374	Bollerwagen	C	5
+106.50.1378	Kuchengitter	C	1
+106.50.1379	Sportgerät (ohne Strom)	C	2
+106.50.1392	Siphon	C	1
+106.50.1423	Regentonne	C	1
+106.50.1433	Teleskopstange	C	2
+106.50.1447	Papierröhre	C	1
+106.50.1458	Stahlgestell	C	2
+106.50.1467	Hoftor	C	1
+106.50.1469	Fensterheber	C	1
+106.50.1487	Dartscheibe	C	5
+106.50.1491	Fensterbild	C	2
+106.50.1500	Vergaserreparatur	C	1
+106.50.1503	Süßigkeitenspender	C	1
+106.50.1539	Zahlenschloss	C	1
+106.50.1541	Motorrad	C	4
+106.50.1548	Besteckkasten	C	2
+106.50.1550	Akkordeon	C	2
+106.50.1566	Sprinkler, nicht-elektrisch	C	1
+106.50.1618	Schwenkarm	C	1
+106.50.1644	Teleskop	C	1
+106.50.1668	KFZ - Rücksitz	C	1
+106.50.1670	Stricknadel-Verbindungsteil	C	1
+106.50.1692	Zuckerdose	C	2
+106.50.1698	Hängematte	C	1
+106.50.1699	Feinwaage	C	1
+106.50.1712	Zeltstange	C	1
+106.50.1719	Weihnachtskrippe	C	4
+106.50.1749	Gehstock	C	1
+106.50.1764	Wasserfilter	C	2
+106.50.1778	mechanische Spieldose	C	1
+106.50.1787	PKW	C	1
+106.50.1799	Auto-Kindersitz	C	1
+106.50.1800	Spülkasten	C	1
+106.50.1809	Briefkasten	C	1
+106.50.1823	Saugnapf	C	2
+106.50.1824	Handyhalterung	C	1
+106.50.1832	Außenthermometer	C	7
+106.50.1851	Fliegenklatsche	C	1
+106.50.1852	Pop Socket	C	1

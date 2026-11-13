@@ -7,7 +7,7 @@ Status:: angenommen
 Datum:: 2026-10-22
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht, und 2026-11-13, Entwürfe direkt absenden, selbst antworten im Ausblick
 
 == Kontext und Problem
 
@@ -29,6 +29,8 @@ MANUEL soll den Engagierten Arbeit abnehmen. Ein Sprachmodell kann sich aber irr
 MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
 
 Ein Beispiel ist der Hinweis bei mehreren Geräten nach xref:0041-ein-geraet-je-gast-und-repair-cafe-bearbeiten.adoc[ADR 41]. MANUEL entwirft den Text, ein Mensch prüft ihn und schickt ihn ab.
+
+Entwürfe sollen so gut sein, dass Engagierte sie nach dem Lesen direkt absenden können, ohne sie neu zu schreiben. Ist MANUEL in einem Bereich nachweislich sehr sicher, könnte es dort später selbst antworten. Das ist nicht entschieden und steht im Ausblick des PLAN. Bis dahin gilt, dass ein Mensch jeden Text an Gäste abschickt.
 
 === Konsequenzen
 

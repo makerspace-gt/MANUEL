@@ -359,8 +359,8 @@ git push
 - [ ] Auslesen von Fotos vom Typenschild mit dem Hauptmodell an Beispielfotos testen, ein Mensch bestätigt die Felder, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
 - [ ] Spalte „spontan“ im Blatt Eingabe der Statistik anlegen, damit die [Sharecard](sharecard/README.md) spontane Gäste zeigt
 - [x] Gemeinsame Hilfsfunktion für `lauf.json` schreiben, bevor der Vorabtest läuft, siehe [ADR 27](docs/adr/0027-laeufe-reproduzierbar-festhalten.adoc) und [eval/lauf.py](eval/lauf.py)
-- [ ] Vorabtest des Ticket Categorizer. Seinen Prompt aus `quellen/zammad` lokal an den 745 geprüften Tickets nachstellen und kürzere Listen vergleichen, etwa A-Einträge, A- und B-Einträge und ORA-Gruppen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)
-- [ ] Liste für den Categorizer nach dem Vorabtest festlegen
+- [x] Vorabtest des Ticket Categorizer. Seinen Prompt aus `quellen/zammad` lokal an den geprüften Tickets nachstellen und kürzere Listen vergleichen, etwa A-Einträge, A- und B-Einträge und ORA-Gruppen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc). Ergebnis vom 13.11.2026 in Schritt 17 von [docs/einordnung.md](docs/einordnung.md), mit der besten Liste A und B sind 17,5 Prozent der Einträge falsch
+- [ ] Das Team entscheidet über den Umstieg nach ADR 40, weil der Vorabtest über der Grenze von 5 Prozent liegt. Dazu gehört, ob die Einordnung am 05.12. schon über n8n mit `d3:9b` und Rückfrage läuft, ob der Categorizer mit A und B trotzdem startet, weil am Termin jemand jede Art prüft, oder ob die Art bis dahin von Hand eingetragen wird
 
 ### Phase 4 Anbindung an Zammad
 
@@ -452,7 +452,7 @@ Stand der Planung mit fünf Engagierten am 09.11.2026. Der Echtbetrieb und damit
 |---|---|
 | bis 21.11.2026 | Helpdesk-VM mit Zammad und NetBird aus Stufe 1 des IT-Plans steht, die Version von Zammad ist geprüft |
 | 21.11.2026 | Repair Café, Vorschläge in Open WebUI unter http://manuel:3000 im Tailnet zeigen, mit anonymisierten Tickets |
-| bis 28.11.2026 | Felder in Zammad, Vorabtest und Liste für den Categorizer, Datenschutzhinweis, Löschfristen und SSD-Verschlüsselung |
+| bis 28.11.2026 | Felder in Zammad, Entscheidung über den Umstieg nach dem Vorabtest, Datenschutzhinweis, Löschfristen und SSD-Verschlüsselung |
 | 05.12.2026 | Start des Echtbetriebs und der Erprobung |
 | 19.12.2026 | zweiter Termin, danach Entscheidung über den Umstieg auf n8n nach [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc) |
 | 31.12.2026 | Ende des Projektzeitraums, alle Ausgaben sind bezahlt |

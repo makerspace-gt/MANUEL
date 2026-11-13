@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-10
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-11, Compose im Image, ohne Elasticsearch und TLS, erst ein frisches Zammad, Ports für Tailscale offen, und 2026-11-12, Open WebUI auf Port 3000 ohne `tailscale serve`, und 2026-11-13, Ollama über Tailscale und LAN
+Überarbeitet:: 2026-11-11, Compose im Image, ohne Elasticsearch und TLS, erst ein frisches Zammad, Ports für Tailscale offen, und 2026-11-13, Zugang zu den Diensten nach ADR 47
 
 == Kontext und Problem
 
@@ -35,8 +35,8 @@ Auf MANUEL läuft eine Testumgebung mit Zammad aus `zammad-docker-compose`, n8n,
 * Zammad nutzt unser Ollama mit GPU. Der Container hängt dafür zusätzlich im Netz des Stapels und heißt dort `ollama`. Das Szenario `add-ollama.yml` von Zammad entfällt, weil es eine zweite Ollama ohne GPU startet.
 * Zuerst läuft ein frisches Zammad ohne Daten. Erst wenn eine Testmail sicher in Mailpit landet, kommt das Backup dazu.
 * Zammad bekommt ein Backup, das die Admins als Datei liefern. Direkt nach dem Einspielen und vor dem Start des Schedulers schaltet `testumgebung/disable_outbound.rb` alle Kanäle und Webhooks ab. Benachrichtigungen gehen nur noch an Mailpit, das jede Mail abfängt.
-* Zammad, Mailpit und n8n sind an alle Schnittstellen gebunden, damit Admins sie über Tailscale im Browser öffnen, etwa unter http://manuel:8080. Podman umgeht dabei die Firewall des Hosts, die Ports sind also auch im lokalen Netz erreichbar. Das ist nur mit Testdaten vertretbar. Bevor ein Backup mit echten Tickets eingespielt wird, werden die Ports wieder auf `127.0.0.1` oder die Adresse von Tailscale beschränkt.
-* Testende bekommen Open WebUI auf Port 3000 und Ollama auf Port 11434, beide wie Zammad an alle Schnittstellen gebunden. Open WebUI und n8n erreichen Ollama über das gemeinsame Podman-Netz `manuel`. Mit Ollama direkt können Engagierte eigene Harnesses wie opencode testen. Open WebUI läuft ohne Anmeldung und Ollama kennt keine, also gehören keine Angaben von Gästen hinein. MANUEL wird mit den Testenden geteilt, und die Richtlinie des Tailnets erlaubt ihnen nur diese beiden Ports. Echte Daten sehen sie nicht.
+* Zammad, Mailpit, n8n, Open WebUI und Ollama hören nur auf der Adresse von Tailscale. Wer welchen Dienst erreicht, regelt xref:0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[ADR 47]. Admins öffnen Zammad etwa unter http://manuel:8080, Testende sehen nur Open WebUI und Ollama und keine echten Daten.
+* Open WebUI erreicht Ollama über das Podman-Netz `manuel`, Zammad und n8n über das Netz des Stapels.
 * Die Befehle `ollama`, `zammad` und `n8n` funktionieren im Terminal, obwohl die Dienste im Container laufen.
 
 Echte Tickets auf MANUEL sind nach xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2] erlaubt. Vor dem Umzug in den Makerspace braucht die SSD aber die Verschlüsselung nach xref:0016-eigenes-image-auf-basis-von-ucore-bauen.adoc[ADR 16]. Die Testinstanz kommt ins Verzeichnis von Verarbeitungstätigkeiten.

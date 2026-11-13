@@ -3,7 +3,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0020 Über NetBird vernetzen
 
 [horizontal]
-Status:: angenommen, bis NetBird läuft, gilt der Übergang aus xref:0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc[ADR 42]
+Status:: angenommen, bis NetBird läuft, gilt der Übergang aus xref:0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc[ADR 42] und für Tests xref:0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[ADR 47]
 Datum:: 2026-10-22
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange

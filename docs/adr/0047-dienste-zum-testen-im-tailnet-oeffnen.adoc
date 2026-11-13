@@ -1,0 +1,68 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0047]]
+= 0047 Dienste zum Testen im Tailnet öffnen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-13
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Nach xref:0020-ueber-netbird-vernetzen.adoc[ADR 20] erreicht nur die Helpdesk-VM Ollama, und Open WebUI ist nur für Engagierte mit Konto über NetBird erreichbar. NetBird läuft noch nicht, bis dahin verbindet Tailscale den Mini-PC nach xref:0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc[ADR 42]. Engagierte sollen die Modelle aber schon jetzt ausprobieren, im Browser mit Open WebUI und mit eigenen Werkzeugen wie opencode. Am 12. und 13.11.2026 waren dafür kurz alle Dienste auch im lokalen Netz offen. Wer soll welche Dienste erreichen, bis NetBird läuft?
+
+== Entscheidungskriterien
+
+* Engagierte testen ohne Hürden, auch mit eigenen Harnesses
+* Keine Angaben von Gästen in Diensten ohne Anmeldung
+* Aus dem lokalen Netz und dem Gäste-WLAN ist nichts erreichbar
+* Der Weg zu NetBird nach ADR 20 bleibt offen
+
+== Betrachtete Optionen
+
+* Nur Admins über Tailscale
+* Alle Dienste im Tailnet, gebunden an die Adresse von Tailscale
+* Alle Dienste im Tailnet und im lokalen Netz
+
+== Entscheidung
+
+Gewählt wird die zweite Option. Bis NetBird läuft, hören Ollama auf Port 11434, Open WebUI auf 3000, Zammad auf 8080, Mailpit auf 8025 und n8n auf 5678 nur auf der Adresse von Tailscale. Die Adresse liest `tailscale ip -4` beim Start, sie steht nicht im Repo.
+
+* *Open WebUI ohne Anmeldung.* Alle arbeiten mit demselben Admin-Konto. Sie sehen also die Chats der anderen und können Einstellungen ändern.
+* *Keine Angaben von Gästen.* In Open WebUI und in eigene Prompts an Ollama kommen keine echten Ticketdaten und keine Angaben von Gästen. Zum Vorführen dienen die anonymisierten Tickets nach xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38] und xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[ADR 39].
+* *Geteilte Testende.* Wer MANUEL nur geteilt bekommt, erreicht laut Richtlinie des Tailnets nur Open WebUI und Ollama. Zammad, Mailpit und n8n bleiben den Admins vorbehalten.
+* *Keine Websuche.* Die Websuche in Open WebUI bleibt aus, bis SearXNG nach xref:0035-anleitungen-ueber-eine-eigene-suche-finden.adoc[ADR 35] läuft.
+* *Start nach Tailscale.* Podman bindet die Ports selbst und kann das erst, wenn Tailscale eine Adresse hat. Ein Drop-in für `podman-restart.service` wartet deshalb bis zu 60 Sekunden darauf.
+
+ADR 20 bleibt das Ziel. Mit NetBird hören die Dienste auf dessen Adresse, und Open WebUI bekommt die Anmeldung über authentik. ADR 42 und xref:0043-eine-testumgebung-auf-manuel-betreiben.adoc[ADR 43] verweisen für den Zugang auf dieses ADR.
+
+=== Konsequenzen
+
+* Gut, weil Engagierte Modelle im Browser und mit eigenen Werkzeugen ausprobieren können.
+* Gut, weil aus dem lokalen Netz und dem Gäste-WLAN nichts erreichbar ist, auch nach dem Umzug in den Makerspace.
+* Schlecht, weil Open WebUI ohne Anmeldung keine Chats trennt und alle Admin sind.
+* Schlecht, weil die Dienste ohne Tailscale nicht starten.
+
+== Vor- und Nachteile der Optionen
+
+=== Nur Admins über Tailscale
+
+* Gut, weil am wenigsten erreichbar ist.
+* Schlecht, weil Engagierte erst mit NetBird testen könnten.
+
+=== Alle Dienste im Tailnet
+
+* Gut, weil alle im Tailnet testen können, ohne das lokale Netz zu öffnen.
+* Schlecht, weil die Richtlinie des Tailnets sauber gepflegt sein muss.
+
+=== Tailnet und lokales Netz
+
+* Gut, weil auch Engagierte ohne Tailscale im Makerspace testen könnten.
+* Schlecht, weil Ollama keine Anmeldung kennt und im Makerspace auch das Gäste-WLAN darauf käme. Phase 2 des PLAN schließt das aus.
+
+== Quellen
+
+* https://tailscale.com/kb/1018/acls[Richtlinien in Tailscale] und https://tailscale.com/kb/1084/sharing[Geräte teilen]
+* https://github.com/open-webui/docs/blob/main/docs/reference/env-configuration.mdx[Umgebungsvariablen von Open WebUI], `WEBUI_AUTH`
+* https://github.com/anomalyco/opencode/blob/dev/services/site/src/docs/content/providers.mdx[Ollama als Anbieter in opencode]
+* {repo}/docs/inbetriebnahme.md[Inbetriebnahme], Schritt 7

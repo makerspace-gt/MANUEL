@@ -13,7 +13,7 @@ Dieser Plan beschreibt, wie wir MANUEL vom Kauf der Hardware bis zum Verwendungs
 
 ## Architektur
 
-Die gesamte Infrastruktur wird neu aufgesetzt, bestehende VMs übernehmen wir nicht. Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf der Helpdesk-VM. Beide sind über NetBird verbunden, sodass wir im Makerspace keine Ports öffnen müssen. Zammad nutzt Ollama als Anbieter für seine eingebauten KI-Funktionen. KI-Agenten in Zammad füllen die Felder im Ticket und schreiben interne Notizen. Die Wissensdatenbank von Zammad sammelt Reparaturanleitungen und zeigt passende Artikel direkt am Ticket an. n8n auf der Helpdesk-VM übernimmt nur, was außerhalb von Zammad liegt, also Nuudel, reparatur-initiativen.org und die Statistik. Der Mini-PC bleibt damit ein reiner Rechenknecht für Ollama und Open WebUI.
+Die gesamte Infrastruktur wird neu aufgesetzt, bestehende VMs übernehmen wir nicht. Der Mini-PC steht im Makerspace hinter NAT. Zammad läuft auf der Helpdesk-VM. Beide sind über NetBird verbunden, sodass wir im Makerspace keine Ports öffnen müssen. Zammad nutzt Ollama als Anbieter für seine eingebauten KI-Funktionen. KI-Agenten in Zammad füllen die Felder im Ticket und schreiben interne Notizen. Die Wissensdatenbank von Zammad sammelt Reparaturanleitungen und zeigt passende Artikel direkt am Ticket an. n8n auf der Helpdesk-VM übernimmt nur, was außerhalb von Zammad liegt, also Nuudel, reparatur-initiativen.org und die Statistik. Auf dem Mini-PC laufen damit im Echtbetrieb nur Ollama und Open WebUI.
 
 ```
                  Makerspace (LAN)                              Internet
@@ -37,10 +37,10 @@ Die gesamte Infrastruktur wird neu aufgesetzt, bestehende VMs übernehmen wir ni
 
 Grundsätze für den Betrieb:
 
-- **Ein Mensch entscheidet.** MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. Das ist zugleich die Qualitätskontrolle, die die Datenpotenzialanalyse empfiehlt. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
-- **Ollama nur per VPN, Open WebUI über den NetBird-Proxy.** Ollama ist nur über NetBird für die Helpdesk-VM und Open WebUI erreichbar. Open WebUI ist über den Reverse Proxy von NetBird mit Anmeldung über authentik erreichbar, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
+- **Ein Mensch entscheidet.** MANUEL füllt Felder vor, schreibt interne Notizen und schlägt Texte vor. Die Engagierten prüfen und korrigieren die Felder während des Termins. Das ist zugleich die Qualitätskontrolle, die die Datenpotenzialanalyse empfiehlt. MANUEL antwortet nie selbst an Gäste und speichert Kontaktdaten nicht ohne Bestätigung. Seine Entwürfe sollen so gut sein, dass Engagierte sie nach dem Lesen direkt absenden können, siehe [ADR 17](docs/adr/0017-einen-menschen-entscheiden-lassen.adoc). KI-Agenten in Zammad bekommen deshalb nie die Aktion zum Versand von E-Mails oder SMS.
+- **Ollama nur per VPN, Open WebUI über den NetBird-Proxy.** Ollama ist nur über NetBird für die Helpdesk-VM und Open WebUI erreichbar. Open WebUI ist über den Reverse Proxy von NetBird mit Anmeldung über authentik erreichbar, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md). Bis NetBird läuft, hören alle Dienste des Mini-PCs nur auf seiner Adresse im Tailnet, und Open WebUI läuft dort zum Testen ohne Anmeldung, siehe [ADR 42](docs/adr/0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc) und [ADR 47](docs/adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc).
 - **Datenschutz von Anfang an.** Löschfristen, Datenschutzhinweis und Verzeichnis von Verarbeitungstätigkeiten entstehen zusammen mit den Feldern in Zammad, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
-- **Daten bleiben lokal.** Ticketinhalte verlassen nie unsere Systeme. Es gibt drei Ausnahmen:
+- **Keine personenbezogenen Daten nach außen.** Personenbezogene Daten verlassen nie unsere Systeme. Inhalte ohne Personenbezug dürfen hinaus, wenn es einen Zweck gibt, siehe [ADR 48](docs/adr/0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc). Bisher gibt es drei Wege nach außen:
   - Marke und Modellbezeichnung des Geräts für die Suche nach Anleitungen über eine eigene SearXNG-Instanz und iFixit, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc)
   - die Reparaturen ohne Personenbezug an Restarters.net, den Defekt erst nach der Anonymisierung, siehe [ADR 36](docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc)
   - die von Hand anonymisierten und geprüften Tickets von 2025 und 2026, siehe [ADR 38](docs/adr/0038-ticketdaten-anonymisiert-veroeffentlichen.adoc) und [ADR 39](docs/adr/0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc)
@@ -249,11 +249,15 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [x] DSEE über die Variante mit 1 TB statt 2 TB informieren, die Abweichung ist geklärt, siehe Rahmenbedingungen
 - [x] Gerät bestellen und Rechnung vor dem 31.12.2026 bezahlen
 - [x] Offene Entscheidungen oben treffen, festgehalten als ADR
-- [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren
+- [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren. Die Testinstanz auf MANUEL läuft mit 7.2.2, dort lässt sich das schon prüfen
 - [ ] Termin als eigenes Datumsfeld anlegen und beim Umzug bestehende Wartezeiten übernehmen, die angepasste ticket.rb kommt nicht mit, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md)
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
 - [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl, die Marke als Textfeld
+- [ ] Felder, Auswahlwerte und Makros als Ruby-Dateien unter zammad/ ablegen, damit sie sich in der Testinstanz und bei anderen Initiativen einspielen lassen
+- [ ] Feld „VDE 0701/0702 geprüft“ von ja und nein auf leer, empfohlen, ja und nein umstellen. Es steht bisher per Standard auf nein, sein Wert belegt also keine Prüfung
+- [ ] Felder für Spenden und Bedarf im Statistik-Ticket jedes Termins anlegen
+- [ ] Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“ mit Tags anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
 - [ ] Für jeden Auswahlwert eine kurze Beschreibung hinterlegen, weil die Agenten sie als Kontext nutzen
 - [ ] Zusätzliche Felder aus der Datenpotenzialanalyse anlegen, also wer repariert hat, Dauer der Reparatur, wieder aufgenommen und Werbung durch
 - [ ] Mit der anstiftung klären, ob database.sql dem aktuellen Stand der Kategorien und Marken auf reparatur-initiativen.org entspricht
@@ -342,14 +346,15 @@ git push
 
 ### Phase 3 Prompts und Tests
 
-- [ ] Rolle open-webui anlegen und Konten für die beteiligten Engagierten einrichten
+- [ ] Rolle open-webui anlegen und Konten über authentik einrichten, sobald NetBird läuft. Bis dahin läuft Open WebUI im Tailnet ohne Anmeldung, siehe [ADR 47](docs/adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc)
 - [ ] Testsatz aus abgeschlossenen Repair-Café-Tickets exportieren und pseudonymisieren, nur lokal speichern
 - [ ] Extraktionsregeln und Anweisungen für die Agenten sowie die Textwerkzeuge nach den Gedanken oben in prompts/ ablegen
 - [x] Skript in eval/ schreiben, das Modelle und Prompts gegen den Testsatz laufen lässt
 - [ ] Bewertungskriterien festlegen, zum Beispiel richtige Kategorie und Nützlichkeit des Vorschlags aus Sicht der Engagierten
 - [x] Decision-Modell d3 an deutschen Beispiel-Tickets prüfen, vor allem das Kriterium sicherheitsrelevant. Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt
 - [ ] Schnelles und großes Modell am Testsatz vergleichen und entscheiden, ob sich die Eskalation lohnt
-- [ ] Beim Repair Café im November Vorschläge live in Open WebUI testen und Rückmeldungen sammeln
+- [ ] Beim Repair Café im November Vorschläge live in Open WebUI unter http://manuel:3000 testen und Rückmeldungen sammeln, mit den anonymisierten Tickets nach [ADR 39](docs/adr/0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc) und nie mit Angaben von Gästen
+- [ ] Einordnung der Gefahren überarbeiten. Das Repair Café schaut sich alles an, was Gäste bringen. Die Markierung als sicherheitsrelevant ist ein Hinweis für die Engagierten und keine eigene Kategorie
 - [ ] Bildverständnis des Hauptmodells mit llama.cpp einrichten, dafür braucht es eine Projektor-Datei (mmproj), siehe [ADR 23](docs/adr/0023-qwen3-6-als-hauptmodell-nutzen.adoc)
 - [ ] Auslesen von Fotos vom Typenschild mit dem Hauptmodell an Beispielfotos testen, ein Mensch bestätigt die Felder, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
 - [ ] Spalte „spontan“ im Blatt Eingabe der Statistik anlegen, damit die [Sharecard](sharecard/README.md) spontane Gäste zeigt
@@ -380,9 +385,9 @@ git push
 
 ### Phase 5 Wissensdatenbank und n8n
 
-- [ ] Wissensdatenbank in Zammad für Reparaturanleitungen einrichten und aus erfolgreichen Reparaturen Artikel erzeugen, die Engagierte vor der Veröffentlichung prüfen
+- [ ] Wissensdatenbank in Zammad für Reparaturanleitungen einrichten und aus erfolgreichen Reparaturen Artikel erzeugen, die Engagierte vor der Veröffentlichung prüfen. Weitere Artikel entstehen aus der Statistik der Open Repair Alliance, aus anderen Quellen und aus dem Wissen des Modells. Jeder nennt seine Quellen, und jede Änderung gibt ein Mensch frei. Erstdiagnose und Reparaturansatz speisen sich vorrangig aus diesen Artikeln, siehe [ADR 22](docs/adr/0022-reparaturanleitungen-in-der-wissensdatenbank-von-zammad-sammeln.adoc)
 - [ ] Rolle n8n in it-infrastructure für die Helpdesk-VM anlegen, siehe [n8n-Doku zum Selbsthosten](https://docs.n8n.io/hosting/), hinter Traefik mit Anmeldung und mit Sicherung per resticker
-- [ ] Workflow für Statistik bauen, der Ergebnisse zählt und Freitexte zu fehlendem Werkzeug zusammenfasst
+- [ ] Workflow für Statistik bauen, der Ergebnisse zählt, Freitexte zu fehlendem Werkzeug zusammenfasst, Spenden und Bedarf aus dem Statistik-Ticket liest und die Reparierenden je Termin aus den Bearbeitenden in Zammad zählt
 - [ ] Workflows als JSON nach n8n-workflows/ exportieren
 - [ ] Mit der anstiftung per Issue in mapped-repair-events klären, ob sie schreibende Endpunkte für Laufzettel und Neuigkeiten annehmen würde
 - [ ] Felder in Zammad auf die Felder der Laufzettel abbilden, damit die Daten ohne Nacharbeit übertragbar sind
@@ -397,7 +402,8 @@ git push
 ### Phase 6 Abschluss und Veröffentlichung
 
 - [ ] Kennzahlen aus dem Antrag erheben, also Reparaturquote, Reparaturen durch Gäste und neue Engagierte, Rückmeldungen zu Vorschlägen und gemeldete Reparaturen
-- [ ] Weitere Zahlen über die Zeit erheben, also Geräte je reparierender Person und Termin sowie Geräte je Gast, und vertagte Geräte über die Tags der Termine verfolgen
+- [ ] Weitere Zahlen über die Zeit erheben, also Geräte je reparierender Person und Termin sowie Geräte je Gast, und vertagte Geräte über die Tags der Termine verfolgen, also wie viele wiederkommen, nach wie vielen Terminen und mit welchem Ergebnis
+- [ ] Alle paar Monate die Läufe mit neuen Modellen wiederholen und mit den Messungen von [Artificial Analysis](https://artificialanalysis.ai/) einordnen, damit MANUEL laufend besser wird
 - [ ] Dokumentation in docs/ vervollständigen, sodass andere Reparaturinitiativen MANUEL nachbauen können
 - [ ] MANUEL als Fallstudie in [case-study](case-study/manuel.adoc) dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt/src/commit/cf02f276f6a473529921b643a62e77b6ec245550/README.md), siehe [ADR 30](docs/adr/0030-rahmen-der-fallstudie-festlegen.adoc). Sie entsteht vom Groben zum Feinen
   - [x] Stufe 1 im November 2026, Gliederung, Stichpunkte je Kapitel und Quellen. Die Durchsicht durch das Team steht aus
@@ -421,12 +427,14 @@ Im Antrag haben wir angekündigt, MANUEL später auch für Fragen wie »Wer verf
 
 - **Tags für Techniken.** Vorrang hat die Wissensdatenbank. Tickets werden nach drei Jahren gelöscht, Artikel bleiben und wachsen weiter, deshalb verlinkt MANUEL zuerst passende Artikel. Tags wie löten oder 3d-druck dienen danach vor allem als Ordnung für die Artikel. An Tickets bleiben sie optional, zum Beispiel um zu sehen, wie viele Tickets eines Termins Löten brauchen.
 - **Weitere Dienste an Ollama, Entwurf in [ADR 45](docs/adr/0045-weitere-dienste-an-ollama-anbinden.adoc).** Nach dem Start am 05.12.2026, in dieser Reihenfolge:
-  - [ ] Port von Ollama für Discourse freigeben, bis NetBird läuft über `tailscale serve` mit einer Regel nur für Discourse
+  - [ ] Discourse ins Tailnet holen und dort den Port von Ollama freigeben, bis NetBird läuft, siehe [ADR 47](docs/adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc)
   - [ ] In Discourse AI Ollama als Anbieter anlegen und die Adresse von MANUEL als erlaubte interne Adresse eintragen
   - [ ] Zusammenfassungen und ähnliche Themen testen, Embeddings für alle Beiträge nachts erzeugen
   - [ ] Workflow in n8n für Vikunja, der Vorschläge erst nach Freigabe schreibt
   - [ ] Discourse und Vikunja ins Verzeichnis von Verarbeitungstätigkeiten aufnehmen
 - **Discourse als Wissensbasis und Chatbot.** Für das Forum gibt es im alten Repo die Rolle [discourse](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/discourse). Das mitgelieferte Plugin [discourse-ai](https://github.com/discourse/discourse/tree/main/plugins/discourse-ai) kann Ollama [direkt ansprechen](https://github.com/discourse/discourse/blob/main/plugins/discourse-ai/lib/completions/endpoints/ollama.rb). Es bringt einen KI-Bot mit eigenen Rollen und hinterlegten Dokumenten, Zusammenfassungen, semantische Suche und ähnliche Themen per Embedding mit. Ein Bot im Forum könnte Fragen zu Kenntnissen der Mitglieder und zu Werkzeugen beantworten, gestützt auf Beiträge und Dokumente des Vereins.
+- **Schwierige Fälle an große Modelle.** Kommt das lokale Modell nicht weiter, könnte ein großes Modell in der Cloud helfen, etwa über [OpenRouter](https://openrouter.ai/). Nach [ADR 48](docs/adr/0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc) ginge dafür nur ein Ausschnitt ohne Personenbezug hinaus. Entschieden ist das nicht.
+- **Selbst antworten.** Ist MANUEL in einem Bereich nachweislich sehr sicher, könnte es dort Gästen selbst antworten. Bis dahin schreibt es nur Entwürfe, siehe [ADR 17](docs/adr/0017-einen-menschen-entscheiden-lassen.adoc).
 - **Signal als Kanal für Benachrichtigungen.** Für [signal-cli-rest-api](https://github.com/bbernhard/signal-cli-rest-api) auf Basis von [signal-cli](https://github.com/AsamK/signal-cli) gibt es im alten Repo die Rolle [signal-cli-rest-api](https://github.com/makerspace-gt/docker-compose-server/tree/main/roles/signal-cli-rest-api). n8n könnte darüber Engagierte an Termine erinnern oder über neue Anmeldungen informieren. Später wäre auch ein Signal-Bot denkbar, der Fragen an MANUEL weiterleitet. Gäste schreiben wir nur mit ihrer Einwilligung an.
 
 Beide Dienste würden denselben Ollama-Server über NetBird nutzen. Weitere Dienste wie Vikunja und LanguageTool beschreibt der [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md).
@@ -438,7 +446,7 @@ Stand der Planung mit fünf Engagierten am 09.11.2026. Der Echtbetrieb und damit
 | Datum | Ziel |
 |---|---|
 | bis 21.11.2026 | Helpdesk-VM mit Zammad und NetBird aus Stufe 1 des IT-Plans steht, die Version von Zammad ist geprüft |
-| 21.11.2026 | Repair Café, Vorschläge in Open WebUI zeigen, falls eingerichtet |
+| 21.11.2026 | Repair Café, Vorschläge in Open WebUI unter http://manuel:3000 im Tailnet zeigen, mit anonymisierten Tickets |
 | bis 28.11.2026 | Felder in Zammad, Vorabtest und Liste für den Categorizer, Datenschutzhinweis, Löschfristen und SSD-Verschlüsselung |
 | 05.12.2026 | Start des Echtbetriebs und der Erprobung |
 | 19.12.2026 | zweiter Termin, danach Entscheidung über den Umstieg auf n8n nach [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc) |

@@ -12,7 +12,7 @@ _Teilfrage T4. Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Men
 * Am Ende sind 98,7 Prozent der 745 Tickets richtig eingeordnet oder führen zu einer Rückfrage, nur 10 sind sicher falsch.
 * Die meisten Fehler lagen nicht am Modell, sondern an der Liste der Kategorien.
 * Eine Rückfrage ist besser als ein Fehler, deshalb fragt MANUEL bei Sammelbegriffen und Unsicherheit nach.
-* Zum Start am 05.12.2026 ordnet der Ticket Categorizer von Zammad ohne Sicherheit ein. Ein Vorabtest zeigt vorher, wie viele Einträge falsch wären <<adr-0040>>.
+* Zum Start am 05.12.2026 sollte der Ticket Categorizer von Zammad ohne Sicherheit einordnen. Im Vorabtest wären mit der besten Liste 17,5 Prozent der Einträge falsch, die Grenze für den Umstieg liegt bei 5 Prozent <<adr-0040>>.
 
 *Wichtigste Befehle.*
 
@@ -25,7 +25,7 @@ python3 evaluate.py
 ====
 
 [NOTE]
-.Entwurf in Stichpunkten, Stand 2026-11-08
+.Entwurf in Stichpunkten, Stand 2026-11-13
 ====
 Dieses Kapitel steht noch in Stichpunkten. Es erzählt fünf Wendepunkte, alle 16 Schritte stehen in {repo}/docs/einordnung.md[docs/einordnung.md].
 ====
@@ -86,8 +86,20 @@ image::../../docs/grafiken/einordnung-verfahren-hell.svg[Trefferquote der Verfah
 
 * Der gemessene Weg braucht die Sicherheit von `d3:9b`. Der Ticket Categorizer von Zammad liefert sie nicht <<adr-0040>>.
 * Zum Start am 05.12.2026 ordnet trotzdem der Categorizer mit dem Sprachmodell ein, mit einer kürzeren Liste und einem festen Namen je Eintrag. Vertreter-Namen gibt es erst mit dem Weg über n8n. Alle 1.089 Einträge sind zu viele.
-* Ein Vorabtest an den 745 geprüften Tickets zeigt vorher, wie viele falsche Einträge zu erwarten sind und welche Liste am besten passt.
+* Ein Vorabtest an den geprüften Tickets zeigt vorher, wie viele falsche Einträge zu erwarten sind und welche Liste am besten passt.
 * Ab 5 Prozent falscher Einträge oder auf Wunsch des Teams folgt der Umstieg auf n8n mit Sicherheit und Rückfrage.
+* Der Vorabtest vom 13.11.2026 stellt den Prompt des Categorizer aus dem Quellcode von Zammad nach und lässt ihn an 739 Tickets laufen. Als falsch zählt jede eingetragene Art, die nicht dem Sollwert entspricht.
++
+[cols="4,2,2,2,2,3",options="header"]
+|===
+|Liste |Optionen |richtig |leer |falsch |falsch von allen Einträgen
+|A-Einträge |114 |454 |163 |122 |21,2 %
+|A- und B-Einträge |365 |539 |86 |114 |17,5 %
+|ORA-Gruppen |46 |539 |14 |186 |25,7 %
+|===
+* Ein Teil der Fehler ist harmlos für die Meldung an die ORA. Bei A und B landen 64 Einträge in der richtigen Gruppe, oft als Sammelbegriff wie Kaffeemaschine statt Vollautomat. Ohne sie bleiben 7,7 Prozent, also immer noch über der Grenze.
+* Ohne Rückfrage fehlt der Weg, unsichere Fälle abzufangen. Der gemessene Weg mit `d3:9b` liegt bei 1,8 Prozent falscher Einträge.
+* Damit ist der Umstieg nach <<adr-0040>> fällig. Wann und wie, entscheidet das Team. Alle Zahlen stehen in Schritt 17 von {repo}/docs/einordnung.md[docs/einordnung.md].
 
 === Wirkung der Aufbereitung
 
@@ -99,6 +111,7 @@ image::../../docs/grafiken/einordnung-verfahren-hell.svg[Trefferquote der Verfah
 ****
 * Alle Schritte mit Zahlen in {repo}/docs/einordnung.md[docs/einordnung.md]
 * Skripte in {repo}/eval/decision[eval/decision], darunter {repo}/eval/decision/follow_up.py[follow_up.py] für die Regeln
+* Vorabtest des Ticket Categorizer mit {repo}/eval/categorizer/vorabtest.py[vorabtest.py], die Ergebnisse liegen nur lokal
 * Grafik aus {repo}/eval/decision/chart_classification.py[chart_classification.py]
 * Ein Lauf mit Vertreter-Namen, im Ordner `eval/decision`. Die Tickets liegen nur lokal.
 +

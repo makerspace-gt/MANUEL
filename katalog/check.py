@@ -12,7 +12,8 @@ form, at the end our own distinction where we split a category of anstiftung. Th
 means that the size of the device decides, as for laptops and flat screens. The column
 restarters_category must be the name of that id, and the id must have power exactly when the ORA
 group has. Each ID of the form belongs to exactly one entry without its own distinction. The
-preferred names in gleichwertig.tsv must be entries in the catalog.
+preferred names in gleichwertig.tsv must be entries in the catalog. A confirmed entry needs
+name_en, ora_group, restarters_category and power.
 
 Run in the repository root:
     python3 katalog/check.py [--warnungen]
@@ -78,6 +79,10 @@ def main():
         if line and not line.startswith("#") and line.split("\t")[0] not in names_all:
             problems.append(f"gleichwertig.tsv: {line.split(chr(9))[0]} ist kein Eintrag im Katalog")
     for row in rows:
+        if row["status"].startswith("bestätigt"):
+            missing = [f for f in ("name_en", "ora_group", "restarters_category", "power") if not row[f].strip()]
+            if missing:
+                problems.append(f"{row['name']}: bestätigt, aber ohne {', '.join(missing)}")
         if row["ora_group"] not in groups:
             problems.append(f"{row['name']}: unbekannte ORA-Gruppe {row['ora_group']}")
         for value in [v for v in row["power"].split(" | ") if v]:

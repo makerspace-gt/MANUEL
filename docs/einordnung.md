@@ -2,7 +2,7 @@
 
 Hier halten wir fest, wie wir Schritt für Schritt zu einer brauchbaren Einordnung von Repair-Café-Tickets gekommen sind. Die Reihenfolge ist Absicht. Jeder Schritt zeigt, was wir ausprobiert haben, was dabei herauskam und warum wir den nächsten Schritt gegangen sind. Die Dokumentation dient als Grundlage für die Fallstudie in [case-study](../case-study/manuel.adoc).
 
-Alle Zahlen stammen vom 06. und 07.11.2026, die Sollwerte aus der Kontrolle durch das Team vom 07.11.2026. Rohdaten zu den erfundenen Tickets und zum öffentlichen Datensatz liegen in [eval/results/decision](../eval/results/decision), die Tabellen stehen in den [Benchmarks](benchmarks.md). Echte Tickets und daraus abgeleitete Ergebnisse liegen nur lokal und gehören nicht in dieses Repo. Hier stehen deshalb nur Summen und allgemeine Gerätebezeichnungen.
+Die Zahlen stammen vom 06. bis 13.11.2026, die Sollwerte aus der Kontrolle durch das Team vom 07.11.2026. Rohdaten zu den erfundenen Tickets und zum öffentlichen Datensatz liegen in [eval/results/decision](../eval/results/decision), die Tabellen stehen in den [Benchmarks](benchmarks.md). Echte Tickets und daraus abgeleitete Ergebnisse liegen nur lokal und gehören nicht in dieses Repo. Hier stehen deshalb nur Summen und allgemeine Gerätebezeichnungen.
 
 ## Vorgehen
 
@@ -43,6 +43,7 @@ Drei Grundsätze übernehmen wir direkt:
 | 14 | 746 echte Betreffe | Katalog mit Zusammenfassungen, Synonymen und Beschreibungen, Kaskade nach ABC | Vertreter-Namen fast gleich gut bei weniger Nachfragen, Beschreibungen und Kaskade schaden |
 | 15 | 746 echte Nachrichten | Kette mit vollständigem Text und Titel der Notizen | Titel hilft bei Notizen, mit Rückfall 546 statt 529 Treffer |
 | 16 | 746 echte Betreffe | Ursachen der sicheren Fehler, Regeln für Rückfragen | Mit zwei Regeln, den Entscheidungen des Teams und der Nachricht 98,7 Prozent richtig oder nachgefragt, 10 sichere Fehler |
+| 17 | 739 echte Tickets | Prompt des Ticket Categorizer von Zammad mit drei kürzeren Listen | Mindestens 17,5 Prozent der Einträge falsch, deutlich über der Grenze von 5 Prozent |
 
 ## Schritt 1 Erfundene Tickets
 
@@ -428,6 +429,31 @@ Die Nachricht klärt 6 der 29 Rückfragen bei Sammelbegriffen, alle richtig. Die
 Danach wurde der Katalog auf alle 1.089 Einträge erweitert. Jeder bekommt einen Schlüssel der Form `ORA.anstiftung.eigene`, seit dem 13.11.2026 mit der Kategorie von Restarters an zweiter Stelle. Die Optionen für das Modell baut [entries.py](../katalog/entries.py) direkt aus dem Katalog. Ein Prüflauf ergab dieselben 10 sicheren Fehler und 98,7 Prozent, mit Nachricht 179 statt 181 Rückfragen.
 
 Auch diese Werte stammen aus denselben Daten, aus denen die Regeln abgeleitet sind, und müssen an neuen Tickets bestätigt werden.
+
+## Schritt 17 Vorabtest des Ticket Categorizer
+
+Zum Start am 05.12.2026 soll der Ticket Categorizer von Zammad die Art des Geräts eintragen, ohne Sicherheit und ohne Rückfrage ([ADR 40](adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)). [vorabtest.py](../eval/categorizer/vorabtest.py) baut seinen Prompt so nach, wie ihn Zammad im Code von `quellen/zammad` bei Commit `3b0c2ed` zusammensetzt. Rolle, Anweisung, Optionen und Antwortformat stehen im Systemprompt, Titel und erste Nachricht im Ticket. Wie Zammad ruft das Skript `/api/generate` ohne Nachdenken, mit Temperatur 0 und JSON auf, mit `qwen3.6:35b-a3b` auf MANUEL. Die Testinstanz mit Zammad 7.2.2 nutzt denselben Code für den Categorizer.
+
+Getestet wurden am 13.11.2026 drei Listen an 739 Tickets. Das sind alle geprüften Tickets mit einem Sollwert im Katalog, die es in Zammad noch gibt. Jeder Lauf hat eine `lauf.json` nach [ADR 27](adr/0027-laeufe-reproduzierbar-festhalten.adoc). Als falsch zählt wie in ADR 40 jede eingetragene Art, die nicht dem Sollwert entspricht, auch eine andere Art aus derselben ORA-Gruppe. In Klammern steht das 95-Prozent-Intervall nach Wilson.
+
+| Liste | Optionen | richtig | gleiche ORA-Gruppe | leer | falsch | falsch von allen Einträgen | Sekunden je Ticket |
+|---|---|---|---|---|---|---|---|
+| A-Einträge | 114 | 454 | 54 | 163 | 68 | 21,2 % (18,0 bis 24,7) | 2,8 |
+| A- und B-Einträge | 365 | 539 | 64 | 86 | 50 | 17,5 % (14,7 bis 20,6) | 3,5 |
+| ORA-Gruppen | 46 | 539 | entfällt | 14 | 186 | 25,7 % (22,6 bis 29,0) | 2,5 |
+
+Alle drei Listen liegen klar über der Grenze von 5 Prozent, auch mit der unteren Grenze des Intervalls. Zählt man die gleiche ORA-Gruppe nicht als Fehler, bleiben bei den A-Einträgen 11,8 Prozent (9,4 bis 14,7) und bei A und B 7,7 Prozent (5,9 bis 10,0). Zum Vergleich trägt der gemessene Weg aus Schritt 16 bei 564 Tickets selbst ein und liegt dabei 10-mal falsch, das sind 1,8 Prozent.
+
+- **Leere Felder.** Steht der Sollwert nicht in der Liste, wäre ein leeres Feld die richtige Antwort. Bei den A-Einträgen betrifft das 201 Tickets, 127 bleiben leer und 74 bekommen trotzdem einen Eintrag. Bei A und B sind es 64 Tickets, 37 bleiben leer und 27 bekommen einen Eintrag. Umgekehrt bleiben 36 und 49 Felder leer, obwohl der Sollwert in der Liste steht.
+- **ORA-Gruppe.** Für die Meldung an die ORA genügt die Gruppe. Mit A und B stimmt sie bei 603 von 739 Tickets, also 81,6 Prozent. Mit der Liste der 46 Gruppen selbst sind es nur 539, also 72,9 Prozent. Konkrete Geräte als Optionen helfen dem Modell also auch bei der Gruppe. In Schritt 13 lag `d3:9b` bei der Gruppe am Betreff bei 88 Prozent.
+- **Sammelbegriffe.** In derselben Gruppe wählt das Modell oft den Sammelbegriff statt der Bauart. Bei A und B sind das etwa Kaffeemaschine statt Vollautomat oder Kapselmaschine (9-mal), Mixer statt Hand- oder Standmixer (8-mal) und Handstaubsauger statt Staubsauger (4-mal). Das ist dieselbe Ursache wie bei R1 in Schritt 16, nur ohne Rückfrage.
+- **Echte Fehler.** Die häufigsten sind Fahrradlampen als Lampe, Tischlampe oder LED-Leuchte (11-mal), Musikanlagen als CD-Player (4-mal) und Radios als Wecker (4-mal).
+- **Ungültige Werte.** Bei den A-Einträgen und bei A und B gab das Modell je zweimal einen Wert zurück, der nicht in der Liste steht.
+- **Zeit.** Im Median dauert ein Ticket 2,5 bis 3,5 Sekunden. Der Prompt mit A und B hat im Median rund 14.600 Tokens.
+
+Nach ADR 40 ist damit der Umstieg auf n8n mit `d3:9b`, Sicherheit und Rückfrage fällig. Wann und wie, entscheidet das Team.
+
+Zu den Grenzen dieses Tests gehört, dass unsere Tickets nur Titel und erste Nachricht pseudonymisiert enthalten. Zammad schickt auch spätere Artikel und den Namen des Absenders mit. Die Sollwerte stammen aus der Kontrolle in Schritt 11 mit den Entscheidungen aus Schritt 16. Die ABC-Klassen stammen aus den deutschen Open Repair Data und nicht aus unseren Tickets.
 
 ## Wirkung der Aufbereitung
 

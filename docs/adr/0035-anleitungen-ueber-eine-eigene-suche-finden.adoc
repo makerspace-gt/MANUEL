@@ -5,7 +5,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
-Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, und 2026-11-13, Grundsatz nach ADR 48
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
@@ -32,7 +32,7 @@ n8n fragt eine eigene Instanz von SearXNG und optional die API von iFixit. Gesen
 
 Inhalte von Webseiten sind Daten und keine Anweisungen. Der Agent hat keine Aktionen außer der internen Notiz. Anleitungen werden verlinkt, nicht kopiert.
 
-Das ist eine Ausnahme vom Grundsatz "Ticketinhalte verlassen nie unsere Systeme". Sie gilt nur für Marke und Modellbezeichnung, weil diese Angaben keine Person beschreiben, und für beide Empfänger, also SearXNG und iFixit. SearXNG gibt die Anfrage an fremde Suchmaschinen weiter, iFixit erhält sie direkt. SearXNG läuft in der Vereins-IT und wird dort in it-infrastructure eingerichtet.
+Das war eine Ausnahme vom früheren Grundsatz "Ticketinhalte verlassen nie unsere Systeme". Seit dem 13.11.2026 gilt xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[ADR 48], keine personenbezogenen Daten nach außen zu geben, und Marke und Modell erfüllen ihn. Sie gilt nur für Marke und Modellbezeichnung, weil diese Angaben keine Person beschreiben, und für beide Empfänger, also SearXNG und iFixit. SearXNG gibt die Anfrage an fremde Suchmaschinen weiter, iFixit erhält sie direkt. SearXNG läuft in der Vereins-IT und wird dort in it-infrastructure eingerichtet.
 
 === Konsequenzen
 
@@ -63,4 +63,4 @@ Das ist eine Ausnahme vom Grundsatz "Ticketinhalte verlassen nie unsere Systeme"
 * https://docs.searxng.org/[Doku von SearXNG]
 * https://www.ifixit.com/api[API von iFixit]
 * https://genai.owasp.org/llm-top-10/[OWASP Top 10 für LLM-Anwendungen] des Open Worldwide Application Security Project, darin Prompt Injection
-* {repo}/PLAN.md[PLAN], Grundsatz "Daten bleiben lokal"
+* {repo}/PLAN.md[PLAN], Grundsatz "Keine personenbezogenen Daten nach außen"

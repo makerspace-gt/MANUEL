@@ -1,0 +1,64 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0048]]
+= 0048 Keine personenbezogenen Daten nach außen geben
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-13
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Der PLAN sagte bisher „Ticketinhalte verlassen nie unsere Systeme“ und kannte drei Ausnahmen, nämlich Marke und Modell für die Suche nach xref:0035-anleitungen-ueber-eine-eigene-suche-finden.adoc[ADR 35], die Reparaturen an Restarters nach xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[ADR 36] und die anonymisierten Tickets nach xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38]. Bei der Durchsicht der Fallstudie am 13.11.2026 zeigte sich, dass der Grundsatz das Falsche schützt. Schützen wollen wir Personen, nicht das Wissen über eine Reparatur. Jede neue Idee, etwa schwierige Fälle an ein großes Modell in der Cloud zu geben, wäre sonst eine weitere Ausnahme. Was genau darf unsere Systeme verlassen?
+
+== Entscheidungskriterien
+
+* Kein Personenbezug außerhalb unserer Systeme, wie es die DSGVO verlangt
+* Wissen über Reparaturen darf geteilt werden
+* Eine Regel, die Engagierte ohne Fachwissen anwenden können
+* Jeder Weg nach außen ist nachvollziehbar
+
+== Betrachtete Optionen
+
+* Ticketinhalte bleiben lokal, mit einzelnen Ausnahmen wie bisher
+* Keine personenbezogenen Daten nach außen
+* Alles nach außen, was ein Vertrag zur Auftragsverarbeitung erlaubt
+
+== Entscheidung
+
+Gewählt wird die zweite Option. Der Grundsatz lautet „Keine personenbezogenen Daten verlassen unsere Systeme“. Inhalte ohne Personenbezug dürfen hinaus, wenn es einen Zweck dafür gibt.
+
+* *Vorher prüfen.* Was hinausgeht, ist vorher nach ADR 38 anonymisiert oder ein Ausschnitt ohne Personenbezug, etwa Marke und Modell nach ADR 35.
+* *Freitext gilt als persönlich.* Ein Freitext wie der Defekt gilt als personenbezogen, bis er geprüft ist. Gäste schreiben darin auch Namen, Adressen oder Telefonnummern.
+* *Jeder Weg hat ein ADR.* Jeder Weg nach außen steht in einem ADR mit Empfänger und Feldern. Bisher sind das ADR 35 für SearXNG und iFixit, ADR 36 für Restarters sowie ADR 38 und xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[ADR 39] für die Veröffentlichung.
+* *Auswertung bleibt lokal.* Echte Ticketdaten werden weiter nur lokal ausgewertet, xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2] gilt.
+* *Frontier-Modelle.* Schwierige Fälle an große Modelle in der Cloud zu geben, etwa über OpenRouter, ist damit denkbar, aber nicht entschieden. Die Idee steht im Ausblick des PLAN.
+
+=== Konsequenzen
+
+* Gut, weil die Regel schützt, worum es geht, nämlich Personen.
+* Gut, weil Wissen über Reparaturen mit anderen Initiativen und der Open Repair Alliance geteilt werden kann.
+* Schlecht, weil Anonymisieren Aufwand ist und Fehler möglich sind.
+* Schlecht, weil die Grenze im Einzelfall geprüft werden muss.
+
+== Vor- und Nachteile der Optionen
+
+=== Ticketinhalte bleiben lokal
+
+* Gut, weil die Regel einfach ist.
+* Schlecht, weil sie auch Wissen ohne Personenbezug festhält und jede neue Idee eine Ausnahme braucht.
+
+=== Keine personenbezogenen Daten nach außen
+
+* Gut, weil sie Personen schützt und Wissen teilen lässt.
+* Schlecht, weil sie eine Prüfung vor jedem Weg nach außen braucht.
+
+=== Alles mit Vertrag zur Auftragsverarbeitung
+
+* Gut, weil viele Dienste nutzbar wären.
+* Schlecht, weil Angaben von Gästen dann doch bei fremden Anbietern lägen und der Verein dafür haftet.
+
+== Quellen
+
+* https://eur-lex.europa.eu/eli/reg/2016/679/oj/deu[Datenschutz-Grundverordnung], Art. 4 Nr. 1 zu personenbezogenen Daten und https://dsgvo-gesetz.de/art-5-dsgvo/[Art. 5] zu den Grundsätzen der Verarbeitung
+* xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38] zum Vorgehen beim Anonymisieren

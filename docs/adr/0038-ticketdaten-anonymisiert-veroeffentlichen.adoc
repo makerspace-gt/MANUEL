@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen, Menge der Tickets und Frist abgelöst durch xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[ADR 39]
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-13, Verweis auf ADR 48
 
 == Kontext und Problem
 
@@ -26,7 +27,7 @@ Nach xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2] liegen echte Ti
 
 == Entscheidung
 
-Alle rund 790 Tickets von 2024 bis 2026 werden von Hand anonymisiert und danach veröffentlicht. Das gilt für die Felder aus den Exporten und für die Texte der Nachrichten, die `messages.py` aus Zammad holt.
+Alle rund 790 Tickets von 2024 bis 2026 werden von Hand anonymisiert und danach veröffentlicht. Die Anonymisierung ist zugleich das Vorgehen, mit dem Inhalte nach xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[ADR 48] unsere Systeme verlassen dürfen. Das gilt für die Felder aus den Exporten und für die Texte der Nachrichten, die `messages.py` aus Zammad holt.
 
 * Namen, Adressen, Telefonnummern, E-Mail-Adressen und Orte werden durch Platzhalter wie [Name] oder [Ort] ersetzt.
 * Angaben, die eine Person über Umwege erkennbar machen, werden verallgemeinert, etwa ein seltenes Gerät mit Hinweis auf den Besitzer oder genaue Daten zu Wohnung und Familie.

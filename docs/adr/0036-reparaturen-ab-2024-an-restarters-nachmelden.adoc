@@ -5,7 +5,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
-Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, und 2026-11-13, Verweis auf ADR 48
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
@@ -28,7 +28,7 @@ Das Team hat seit 2019 1.485 Geräte bearbeitet. Bei der Open Repair Alliance ko
 
 == Entscheidung
 
-Die Geräte von 2024 bis 2026 werden über die API von Restarters nachgemeldet. Das sind die Tickets mit Ergebnis und ohne No-Show, 150 aus 2024, 277 aus 2025 und 270 aus 2026.
+Die Geräte von 2024 bis 2026 werden über die API von Restarters nachgemeldet. Was dabei hinausgeht, folgt dem Grundsatz aus xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[ADR 48], keine personenbezogenen Daten nach außen zu geben. Das sind die Tickets mit Ergebnis und ohne No-Show, 150 aus 2024, 277 aus 2025 und 270 aus 2026.
 
 * Die Kategorie ist der Sollwert des Teams. Neuere Tickets ohne Sollwert ordnet MANUEL ein, und das Team prüft sie.
 * Die Kategorie bei Restarters folgt aus der Gruppe der Open Repair Alliance (ORA) im Katalog, der Gegenstand aus dem englischen Namen des Eintrags. Die englischen Namen erarbeiten wir noch, bis dahin bleiben die Geräte ohne Namen offen.

@@ -131,6 +131,14 @@ Die Alliance empfiehlt, Reparaturen mit dem Werkzeug eines Partners zu erfassen,
 
 Nur Restarters.net erlaubt es, Reparaturen über eine Schnittstelle anzulegen. Die API der anstiftung liefert Initiativen und Statistiken und braucht ein Token, ein Endpunkt für Laufzettel fehlt.
 
+Daraus folgt unser Vorgehen.
+
+* Jede Kategorie muss sich einer ORA-Gruppe zuordnen lassen, sonst kommt eine Reparatur nicht vergleichbar bei der Alliance an.
+* Gemeldet wird zuerst über Restarters.net, weil es als einziges Werkzeug Reparaturen über eine API annimmt <<adr-0014>>. Oberfläche und Kategorien gibt es auch auf Deutsch, aus Kettle wird etwa https://github.com/TheRestartProject/restarters.net/blob/d46501cb20a0/lang/de.json#L82[Wasserkocher].
+* Bei der anstiftung bleibt die Hoffnung auf eine API zum Anlegen von Laufzetteln.
+* Die übrigen Werkzeuge haben wir nur aus Interesse angeschaut, um zu sehen, wie andere Initiativen erfassen.
+* Ideal ist ein Gegenstand, der eindeutig einer ORA-Gruppe, einer Kategorie bei Restarters und den Kategorien der anstiftung zugeordnet ist. Der Schlüssel im Katalog trägt deshalb alle drei <<adr-0013>>.
+
 [[vereinheitlichung]]
 === Vereinheitlichung der Kategorien
 
@@ -147,7 +155,7 @@ Die Matrix in <<anhang-kategorien>> stellt für jede ORA-Gruppe nebeneinander, m
 * *Grobe Listen brauchen den Freitext.* Restarters erfasst etwa Ladegeräte zu 70 Prozent unter Misc. Erst der Freitext im Feld für den Gegenstand erlaubt der Alliance die Zuordnung zu Battery/charger/adapter. Beim Repair Monitor verteilt sich fast jede dritte Unterkategorie auf mehrere Gruppen.
 * *Freitext allein ist schwer auszuwerten.* Bei Toronto und Fixit Clinic decken selbst die 60 häufigsten Werte nur 57 bzw. 29 Prozent der Einträge ab, Schreibfehler und Mehrzahl inklusive.
 
-MANUEL verbindet den zweiten Weg mit dem ersten. Der Katalog nutzt die feine Liste der anstiftung und trägt die ORA-Gruppe schon im Schlüssel <<adr-0013>>. Die Zuordnung geschieht damit einmal im Katalog statt bei jeder Meldung. Der Wortlaut der Anfrage bleibt im Ticket erhalten, so wie es die Datenpotenzialanalyse für jeden Rohwert empfohlen hat cite:[prange-2022].
+MANUEL verbindet den zweiten Weg mit dem ersten. Der Katalog nutzt die feine Liste der anstiftung und trägt die ORA-Gruppe und die Kategorie bei Restarters schon im Schlüssel <<adr-0013>>. Die Zuordnung geschieht damit einmal im Katalog statt bei jeder Meldung. Der Wortlaut der Anfrage bleibt im Ticket erhalten, so wie es die Datenpotenzialanalyse für jeden Rohwert empfohlen hat cite:[prange-2022].
 
 [[datensatz]]
 === Der Datensatz im Überblick

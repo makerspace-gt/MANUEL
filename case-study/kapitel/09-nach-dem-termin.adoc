@@ -43,6 +43,8 @@ Dieser Abschnitt wird noch ausformuliert.
 
 * Das Ergebnis wird je Ticket eingetragen, also gelungen, teilweise gelungen, vertagt, nicht erfolgt mit Grund, abgebrochen oder No-Show.
 * Code zählt daraus die Statistik des Termins, das Modell fasst nur Freitexte zusammen, etwa zu fehlendem Werkzeug.
+* Jeder Termin hat in Zammad ein Statistik-Ticket. Dort trägt das Team auch die Spenden ein und was im Repair Café gebraucht wird, etwa Werkzeug oder Verbrauchsmaterial.
+* Wer repariert hat, steht ebenfalls in Zammad, denn jede reparierende Person ist mit Namen einer Reparatur zugeordnet <<adr-0032>>.
 
 [[sharecard]]
 === Das Resümee als Sharecard

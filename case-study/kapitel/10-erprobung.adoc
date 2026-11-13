@@ -48,12 +48,14 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 === Reparaturen durch Gäste und neue Engagierte
 
 * Neues Feld „repariert von“ mit den Werten Gast selbst, Gast mit Hilfe und Engagierte
-* Als neu gilt, wer seit dem 15.09.2026 dabei ist, gezählt aus Nuudel. Die Abgrenzung stimmt das Team ab.
+* Wer repariert hat, steht in Zammad. Jede reparierende Person ist dort mit Namen als Bearbeiterin oder Bearbeiter einer Reparatur eingetragen und gehört zur Gruppe Repair Café Agents.
+* Als neu gilt, wer seit dem 15.09.2026 dabei ist. Die Abgrenzung stimmt das Team ab.
 
 === Rückmeldungen zu den Vorschlägen
 
-* Daumen nach oben oder unten in der KI-Rückmeldung von Zammad, beim Daumen nach unten mit Kommentar cite:[zammad-feedback]
-* Stimmen und Beispiele aus den Kommentaren, ohne Personenbezug
+* Zwei Makros, „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“, setzen mit einem Klick einen Tag, beim zweiten mit einer kurzen Notiz <<adr-0032>>.
+* Die KI-Rückmeldung von Zammad reicht nicht. Nach dem Erzeugen eines Textes lässt er sich dort nicht mehr bewerten, nur noch per Notiz kommentieren cite:[zammad-feedback].
+* Stimmen und Beispiele aus den Notizen, ohne Personenbezug
 * Das Fehlerprotokoll zeigt, wie oft Anfragen ausgefallen sind.
 
 === Gemeldete Reparaturen
@@ -63,13 +65,13 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 
 === Weitere Zahlen über die Zeit
 
-* Bearbeitete Geräte je reparierender Person und Termin, über die Jahre. Die Zahl der Reparierenden kommt aus Nuudel oder der Statistik.
+* Bearbeitete Geräte je reparierender Person und Termin, über die Jahre. Die Reparierenden zählen wir aus Zammad, wo jede Person einer Reparatur zugeordnet ist.
 * Geräte je Gast, also wie viele Geräte eine Person im Schnitt mitbringt. Gezählt wird lokal, in die Fallstudie kommen nur Summen.
 * Diese Zahlen gehören nicht zu den Kennzahlen des Antrags, sie ordnen die Erprobung aber ein.
 
 === Vertagte Geräte
 
-* Vertagte Geräte verfolgen. Wie viele kommen wieder, nach wie vielen Terminen, und wie geht es aus?
+* Wie viele vertagte Geräte kommen wieder, nach wie vielen Terminen, und wie geht es aus? Wir wollen wissen, ob Geräte am Ende repariert werden oder ob Gäste das Interesse verlieren, wenn es zu lange dauert.
 * Die Grundlage sind die Tags mit dem Datum je Termin <<adr-0036>>. 2025 und 2026 tragen 44 Tickets mehr als ein Datum.
 
 === Sharecards der Termine
@@ -89,5 +91,5 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 ====
 * cite:[wiki-wilson], cite:[zammad-feedback]
 * Noch zu suchen sind Hinweise zur Auswertung kleiner Stichproben über die Intervalle hinaus.
-* Offen ist, ob die KI-Rückmeldung von Zammad auch für die KI-Agenten gilt.
+* Offen ist, wie zuverlässig die Makros genutzt werden. Das zeigen die ersten Termine.
 ====

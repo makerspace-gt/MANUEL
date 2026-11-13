@@ -101,7 +101,7 @@ rpm-ostree status
 
 Dieser Test zeigt, dass Ollama im Container die GPU nutzt. Das kleine Modell `gemma3:4b` ist schnell geladen und nur für diesen Test gedacht.
 
-1. Ollama im Container starten. Seit dem 13.11.2026 ist der Port an alle Schnittstellen gebunden, damit Engagierte Ollama über Tailscale oder im LAN testen können, etwa mit opencode nach 7.4. Ollama kennt keine Anmeldung. Wer MANUEL erreicht, kann also Modelle nutzen, laden und löschen. `OLLAMA_IGPU_ENABLE=1` ist nötig, weil Ollama die iGPU sonst verwirft und unbemerkt auf der CPU rechnet.
+1. Ollama im Container starten. Der Port hört nur auf der Adresse von Tailscale, damit Engagierte Ollama im Tailnet testen können, etwa mit opencode nach 7.4, siehe [ADR 47](adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc). Ollama kennt keine Anmeldung. Wer MANUEL im Tailnet erreicht, kann also Modelle nutzen, laden und löschen. `OLLAMA_IGPU_ENABLE=1` ist nötig, weil Ollama die iGPU sonst verwirft und unbemerkt auf der CPU rechnet.
 
 ```bash
 sudo podman run -d --name ollama \
@@ -110,7 +110,7 @@ sudo podman run -d --name ollama \
   -e OLLAMA_IGPU_ENABLE=1 \
   -e OLLAMA_CONTEXT_LENGTH=32768 \
   -v ollama:/root/.ollama \
-  -p 11434:11434 --restart=always \
+  -p "$(tailscale ip -4):11434:11434" --restart=always \
   docker.io/ollama/ollama:latest
 ```
 
@@ -254,7 +254,7 @@ Ollama bleibt an `127.0.0.1` gebunden und ist über Tailscale nicht erreichbar. 
 Die Entscheidung steht in [ADR 43](adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc). Das Image bringt die Compose-Datei von Zammad aus dem Submodul `quellen/zammad-docker-compose` und die Ergänzungen aus `testumgebung/` unter `/usr/share/manuel` mit. Der Befehl `zammad-compose` startet alles damit.
 
 - Elasticsearch läuft nicht, das spart Speicher für die Modelle. Zammad sucht dann nur in der Datenbank.
-- Alle Dienste sind an alle Schnittstellen gebunden, ohne TLS und ohne Reverse Proxy. Engagierte öffnen sie über Tailscale oder im LAN des Makerspace.
+- Alle Dienste hören nur auf der Adresse von Tailscale, ohne TLS und ohne Reverse Proxy, siehe [ADR 47](adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc). `zammad-compose` setzt dafür `MANUEL_BIND_IP` aus `tailscale ip -4`. Aus dem lokalen Netz ist nichts erreichbar.
 
 | Dienst | Adresse |
 |---|---|
@@ -264,7 +264,18 @@ Die Entscheidung steht in [ADR 43](adr/0043-eine-testumgebung-auf-manuel-betreib
 | Zammad | http://manuel:8080 |
 | Ollama | http://manuel:11434 |
 
-- Weil Podman die Firewall des Hosts umgeht, sind die Ports auch im lokalen Netz offen. Das gilt nur, solange Zammad Testdaten hat. Vor 7.2 die Ports in `testumgebung/compose.override.yml` wieder auf `127.0.0.1` beschränken.
+- Podman bindet die Ports selbst und kann das erst, wenn Tailscale eine Adresse hat. Beim Hochfahren wartet `podman-restart.service` deshalb bis zu 60 Sekunden. Fehlt ein Container danach, ihn mit `sudo podman start <name>` starten, sobald Tailscale läuft.
+- In der Richtlinie des Tailnets bekommen Admins alle Ports, wer MANUEL nur geteilt bekommt, erreicht nur Open WebUI und Ollama. Ein Beispiel mit Grants, bei dem MANUEL in der Verwaltung des Tailnets den Tag `tag:manuel` trägt. Vor dem Einsatz mit einem geteilten Konto testen, siehe https://tailscale.com/kb/1324/acl-grants.
+
+```json
+{
+  "tagOwners": { "tag:manuel": ["autogroup:admin"] },
+  "grants": [
+    { "src": ["autogroup:admin"], "dst": ["tag:manuel"], "ip": ["*"] },
+    { "src": ["autogroup:shared"], "dst": ["tag:manuel"], "ip": ["tcp:3000", "tcp:11434"] }
+  ]
+}
+```
 
 ### 7.1 Frisches Zammad und Test mit Mailpit
 
@@ -339,27 +350,20 @@ zammad "$(cat /usr/share/manuel/testumgebung/mail_test.rb)"
 
 ### 7.3 Open WebUI für Testende
 
-Open WebUI, n8n und Ollama hängen gemeinsam im Netz `manuel` und erreichen Ollama dort unter `http://ollama:11434`. Port 3000 ist veröffentlicht. Weil Podman die Firewall des Hosts umgeht, ist er über Tailscale und im lokalen Netz offen, etwa unter http://manuel:3000. Seit dem 12.11.2026 läuft Open WebUI ohne Anmeldung mit `WEBUI_AUTH=False`. Alle arbeiten dann mit demselben Admin-Konto, können also Einstellungen ändern und die Chats der anderen lesen. Deshalb gehören keine Angaben von Gästen in Open WebUI. Das Login lässt sich nur bei einer frischen Installation abschalten. Zum Wiedereinschalten den Container mit `WEBUI_AUTH=True` neu starten, danach wird das erste Konto Admin.
+Open WebUI und Ollama hängen gemeinsam im Netz `manuel`, dort erreicht Open WebUI Ollama unter `http://ollama:11434`. Port 3000 hört nur auf der Adresse von Tailscale, im Tailnet also unter http://manuel:3000. Seit dem 12.11.2026 läuft Open WebUI ohne Anmeldung mit `WEBUI_AUTH=False`. Alle arbeiten dann mit demselben Admin-Konto, können also Einstellungen ändern und die Chats der anderen lesen. Deshalb gehören keine Angaben von Gästen in Open WebUI. Das Login lässt sich nur bei einer frischen Installation abschalten. Zum Wiedereinschalten den Container mit `WEBUI_AUTH=True` neu starten, danach wird das erste Konto Admin.
 
 ```bash
 sudo podman network create manuel
 sudo podman network connect manuel ollama
-sudo podman run -d --name open-webui --restart=always --network manuel -p 3000:8080 \
+sudo podman run -d --name open-webui --restart=always --network manuel -p "$(tailscale ip -4):3000:8080" \
   -e OLLAMA_BASE_URL=http://ollama:11434 -e WEBUI_AUTH=False \
   -v open-webui:/app/backend/data \
   ghcr.io/open-webui/open-webui:v0.13.3
 ```
 
-In der Verwaltung des Tailnets MANUEL mit den Testenden teilen und in der Richtlinie für sie die Ports 3000 und 11434 erlauben.
+In der Verwaltung des Tailnets MANUEL mit den Testenden teilen. Die Richtlinie lässt sie nur auf die Ports 3000 und 11434, siehe Beispiel am Anfang von Schritt 7. Keine echten Ticketdaten und keine Angaben von Gästen in Open WebUI, zum Vorführen dienen die anonymisierten Tickets nach [ADR 39](adr/0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc). Die Websuche bleibt aus, bis SearXNG nach [ADR 35](adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc) läuft.
 
-`podman-compose` brach am 13.11.2026 beim Einlesen der Compose-Dateien ab. n8n läuft deshalb vorerst als eigener Container im Netz `manuel`, mit denselben Einstellungen wie in `testumgebung/compose.override.yml`.
-
-```bash
-sudo podman run -d --name n8n --restart=always --network manuel -p 5678:5678 \
-  -e GENERIC_TIMEZONE=Europe/Berlin -e TZ=Europe/Berlin -e N8N_SECURE_COOKIE=false \
-  -v n8n-data:/home/node/.n8n \
-  docker.n8n.io/n8nio/n8n:2.45.0
-```
+n8n gehört zum Stapel und startet mit `zammad-compose`. `podman-compose` taugt dafür nicht, Version 1.6.0 scheitert an verschachtelten Variablen in der Compose-Datei von Zammad. `zammad-compose` nutzt deshalb `docker-compose` über den Socket von Podman.
 
 ### 7.4 Ollama mit opencode testen
 

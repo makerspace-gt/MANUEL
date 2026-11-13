@@ -7,6 +7,7 @@ The group leads, see docs/adr/0046-literatur-in-einer-zotero-gruppe-pflegen.adoc
     python3 zotero_bib.py export --check  # exit 1 if literatur.bib differs from the group
     python3 zotero_bib.py seed            # literatur.bib -> empty group, run once
     python3 zotero_bib.py merge           # fold items saved with the Zotero Connector into the group
+    python3 zotero_bib.py archive         # add a link to the Internet Archive to every website
 
 merge looks at every item without a pinned key. If an item with the same URL exists, its
 attachments such as the snapshot move there, empty fields are filled and the duplicate is deleted. A duplicate without attachments waits ten minutes,
@@ -17,6 +18,10 @@ the Internet Archive, and their HTML snapshots are deleted to save storage. PDFs
 attachments stay. "Mit Anhang" holds items with an attachment, "Inbox" holds used sources still
 without one, which a member saves with the Connector. Repositories and the collection
 "IT-Infrastruktur" stay out of both.
+
+archive writes the latest snapshot of the Internet Archive as a line "Archiv: ..." into Extra. If
+the archive has none yet, it asks it to save the page first. Items that already have the line and
+repositories are skipped. The line is not exported to literatur.bib.
 
 Reading works without a key because the group is public. Writing needs ZOTERO_API_KEY,
 taken from the environment or from ~/.config/manuel/zotero.env. Every item needs a
@@ -35,6 +40,8 @@ import subprocess
 import sys
 import time
 import unicodedata
+import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -471,17 +478,58 @@ def sort_collections(key):
     print(f"{len(updates)} Einträge einsortiert, {INBOX} {in_inbox}, {ATTACHED} {in_attached}")
 
 
+ARCHIVE_LINE = "Archiv:"
+
+
+def wayback(url, save=True):
+    """Latest snapshot of url in the Internet Archive, saved first if there is none and save is set."""
+    def available():
+        query = urllib.parse.quote(url, safe="")
+        with urllib.request.urlopen(f"https://archive.org/wayback/available?url={query}", timeout=60) as response:
+            closest = json.load(response).get("archived_snapshots", {}).get("closest", {})
+        return closest["url"].replace("http://", "https://", 1) if closest.get("available") else None
+
+    found = available()
+    if found or not save:
+        return found
+    req = urllib.request.Request("https://web.archive.org/save/" + url, headers={"User-Agent": "zotero_bib.py"})
+    try:
+        with urllib.request.urlopen(req, timeout=300) as response:
+            final = response.geturl()
+    except (urllib.error.URLError, TimeoutError) as error:
+        print(f"nicht gespeichert, {error}: {url}")
+        return None
+    return final if "/web/" in final else available()
+
+
+def archive(key):
+    """Write the link to the Internet Archive into Extra of every website that has none yet."""
+    items = [d for d in fetch_all("/items/top", key) if d["itemType"] not in ("attachment", "note", "computerProgram")]
+    todo = [d for d in items if d.get("url") and ARCHIVE_LINE not in d.get("extra", "")]
+    print(f"{len(todo)} von {len(items)} Quellen ohne Link ins Internet Archive")
+    for number, d in enumerate(todo, 1):
+        link = wayback(d["url"])
+        if not link:
+            continue
+        fresh, _ = request(f"/items/{d['key']}?format=json", key=key)
+        item = fresh["data"]
+        item["extra"] = "\n".join([line for line in item.get("extra", "").splitlines() if line] + [f"{ARCHIVE_LINE} {link}"])
+        result, _ = request("/items", [item], key=key)
+        print(f"{number}/{len(todo)} {pinned_key(item)} {'ok' if result.get('successful') else result.get('failed')}")
+        time.sleep(10)  # the Internet Archive limits saves without an account
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("command", nargs="?", default="export", choices=["export", "seed", "merge"])
+    parser.add_argument("command", nargs="?", default="export", choices=["export", "seed", "merge", "archive"])
     parser.add_argument("--check", action="store_true", help="nur vergleichen, nichts schreiben")
     args = parser.parse_args()
 
-    if args.command == "merge":
+    if args.command in ("merge", "archive"):
         key = api_key()
         if not key:
             sys.exit("ZOTERO_API_KEY fehlt")
-        merge(key)
+        (merge if args.command == "merge" else archive)(key)
         return
 
     if args.command == "seed":

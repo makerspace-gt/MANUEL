@@ -254,7 +254,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
 - [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl, die Marke als Textfeld
-- [ ] Felder, Auswahlwerte und Makros als Ruby-Dateien unter zammad/ ablegen, damit sie sich in der Testinstanz und bei anderen Initiativen einspielen lassen
+- [x] Felder, Auswahlwerte und Makros als Ruby-Dateien unter [zammad/](zammad/README.md) ablegen, damit sie sich in der Testinstanz und bei anderen Initiativen einspielen lassen. Am 13.11.2026 in der Testinstanz geprüft
 - [ ] Feld „VDE 0701/0702 geprüft“ von ja und nein auf leer, empfohlen, ja und nein umstellen. Es steht bisher per Standard auf nein, sein Wert belegt also keine Prüfung
 - [ ] Felder für Spenden und Bedarf im Statistik-Ticket jedes Termins anlegen
 - [ ] Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“ mit Tags anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
@@ -491,6 +491,7 @@ MANUEL/
 ├── docs/            Einrichtung, Betrieb, Datenschutz, Benchmarks
 ├── prompts/         Kopien der Agenten-Konfiguration aus Zammad und Prompts für n8n
 ├── eval/            Skripte zum Testen, ohne echte Ticketdaten
+├── zammad/          Felder und Makros für Zammad als Ruby-Dateien
 ├── n8n-workflows/   exportierte n8n-Workflows
 ├── mapped-repair-events/  Submodul mit der Plattform der anstiftung, GPL-3.0
 ├── datenpotenzialanalyse-repairc-cafe-gt/  Submodul mit der Hausarbeit zu unseren Laufzetteln, CC BY 4.0

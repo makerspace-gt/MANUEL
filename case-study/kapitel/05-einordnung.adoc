@@ -46,6 +46,7 @@ Dieses Kapitel steht noch in Stichpunkten. Es erzählt fünf Wendepunkte, alle 1
 === Wendepunkt 1, Gefahren zuerst
 
 * 83 erfundene Tickets zeigen, dass `d3:9b` sicherheitsrelevante Fälle fast perfekt trennt.
+* Die Markierung ist ein Hinweis für die Engagierten und keine Kategorie. Das Repair Café schaut sich alles an, was Gäste bringen, und weist niemanden wegen einer Gefahr ab. Wie Gefahren eingeordnet werden, überarbeiten wir noch.
 * Die Formulierung der Optionen entscheidet über das Ergebnis.
 * Eine Übersetzung ins Englische hilft kleinen Modellen, bringt aber neue Fehler. Aus „funkt innen“ wurde „leaking radiation“.
 
@@ -115,4 +116,6 @@ python3 evaluate.py
 * cite:[wiki-wilson], cite:[guo-2017], cite:[geifman-2017]
 * Noch zu suchen ist Literatur zur Einordnung mit Sprachmodellen ohne eigenes Training.
 * Offen ist die Bestätigung an neuen Tickets, denn Sollwerte und Regeln stammen aus denselben Daten.
+* Offen ist die Überarbeitung der Gefahren, siehe Wendepunkt 1.
+* Je Wendepunkt soll eine Grafik zeigen, was versucht wurde und was es brachte.
 ====

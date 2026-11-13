@@ -38,14 +38,17 @@ Dieses Kapitel steht noch in Stichpunkten. Die Prompts und Tests dazu entstehen 
 
 * Ein Custom AI Agent in Zammad schreibt eine interne Notiz, nie eine Antwort an Gäste.
 * Inhalt sind eine erste Vermutung zur Ursache, Schritte zum Mitmachen, Werkzeug und Ersatzteile.
-* Passende Artikel aus der Wissensdatenbank zeigt Zammad am Ticket an <<adr-0022>>.
+* Erstdiagnose und Reparaturansatz speisen sich vorrangig aus Artikeln der Wissensdatenbank, die Zammad am Ticket anzeigt <<adr-0022>>. Was das Modell selbst weiß, kommt erst danach.
+* Artikel entstehen aus erfolgreichen Reparaturen, aus der Statistik der Open Repair Alliance, aus weiteren Quellen und aus dem Wissen des Modells. Jeder nennt seine Quellen, und jede Anleitung und jede Änderung gibt ein Mensch frei.
+* Eine schematische Grafik zeigt bei einer Anleitung, welche Bauteile typischerweise ausfallen. Bei einer Filterkaffeemaschine sind das Kabel, Schalter, Thermosicherung, Thermoschalter, Heizung und je nach Gerät Füllstandsanzeige oder Kannenerkennung.
 
 === Sicherheit
 
-* `d3:9b` markiert sicherheitsrelevante Tickets <<adr-0003>>.
+* `d3:9b` markiert sicherheitsrelevante Tickets <<adr-0003>>. Die Markierung ist ein Hinweis, das Repair Café schaut sich trotzdem alles an.
 * Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt.
 * Im Zweifel verweist MANUEL an eine Fachperson.
-* Das Feld „VDE 0701/0702 geprüft“ hat in allen Tickets von 2024 bis 2026 einen Wert. Die Prüfung nach einer Reparatur ist also Teil des Ablaufs.
+* Das Feld „VDE 0701/0702 geprüft“ hat in allen Tickets von 2024 bis 2026 einen Wert. Das sagt aber wenig, denn das Feld kennt nur ja und nein und steht per Standard auf nein.
+* Besser sind die Werte leer, empfohlen, ja und nein. Dann zeigt das Feld, ob eine Prüfung nötig war und ob sie stattfand.
 * Das Feld ist nach DIN VDE 0701-0702 benannt. Diese Norm ist ersetzt, für die Prüfung nach einer Reparatur gilt jetzt DIN EN 50678 (VDE 0701) cite:[din-vde-0701-0702].
 
 === Anleitungen und Angaben zum Gerät
@@ -58,7 +61,7 @@ Dieses Kapitel steht noch in Stichpunkten. Die Prompts und Tests dazu entstehen 
 
 * Kriterien aus Phase 3 sind Nützlichkeit aus Sicht der Engagierten, Sicherheitshinweis wo nötig, nichts erfunden und Hilfe zur Selbsthilfe.
 * Getestet wird am pseudonymisierten Testsatz, der nur lokal liegt.
-* Im Betrieb kommen die Rückmeldungen aus der KI-Rückmeldung von Zammad <<adr-0032>>.
+* Im Betrieb bewerten Engagierte Vorschläge mit den Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“, die einen Tag setzen <<adr-0032>>.
 
 // Ergebnis folgt in Stufe 3, Antwort auf T5.
 

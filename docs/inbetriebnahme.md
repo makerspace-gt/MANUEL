@@ -101,7 +101,7 @@ rpm-ostree status
 
 Dieser Test zeigt, dass Ollama im Container die GPU nutzt. Das kleine Modell `gemma3:4b` ist schnell geladen und nur für diesen Test gedacht.
 
-1. Ollama im Container starten. Der Port ist nur an `127.0.0.1` gebunden, weil Ollama keine Anmeldung kennt. `OLLAMA_IGPU_ENABLE=1` ist nötig, weil Ollama die iGPU sonst verwirft und unbemerkt auf der CPU rechnet.
+1. Ollama im Container starten. Seit dem 13.11.2026 ist der Port an alle Schnittstellen gebunden, damit Engagierte Ollama über Tailscale oder im LAN testen können, etwa mit opencode nach 7.4. Ollama kennt keine Anmeldung. Wer MANUEL erreicht, kann also Modelle nutzen, laden und löschen. `OLLAMA_IGPU_ENABLE=1` ist nötig, weil Ollama die iGPU sonst verwirft und unbemerkt auf der CPU rechnet.
 
 ```bash
 sudo podman run -d --name ollama \
@@ -110,7 +110,7 @@ sudo podman run -d --name ollama \
   -e OLLAMA_IGPU_ENABLE=1 \
   -e OLLAMA_CONTEXT_LENGTH=32768 \
   -v ollama:/root/.ollama \
-  -p 127.0.0.1:11434:11434 \
+  -p 11434:11434 --restart=always \
   docker.io/ollama/ollama:latest
 ```
 
@@ -254,7 +254,16 @@ Ollama bleibt an `127.0.0.1` gebunden und ist über Tailscale nicht erreichbar. 
 Die Entscheidung steht in [ADR 43](adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc). Das Image bringt die Compose-Datei von Zammad aus dem Submodul `quellen/zammad-docker-compose` und die Ergänzungen aus `testumgebung/` unter `/usr/share/manuel` mit. Der Befehl `zammad-compose` startet alles damit.
 
 - Elasticsearch läuft nicht, das spart Speicher für die Modelle. Zammad sucht dann nur in der Datenbank.
-- Zammad, Mailpit und n8n sind an alle Schnittstellen gebunden, ohne TLS und ohne Reverse Proxy. Admins öffnen sie über Tailscale im Browser, etwa http://manuel:8080.
+- Alle Dienste sind an alle Schnittstellen gebunden, ohne TLS und ohne Reverse Proxy. Engagierte öffnen sie über Tailscale oder im LAN des Makerspace.
+
+| Dienst | Adresse |
+|---|---|
+| Open WebUI | http://manuel:3000 |
+| n8n | http://manuel:5678 |
+| Mailpit | http://manuel:8025 |
+| Zammad | http://manuel:8080 |
+| Ollama | http://manuel:11434 |
+
 - Weil Podman die Firewall des Hosts umgeht, sind die Ports auch im lokalen Netz offen. Das gilt nur, solange Zammad Testdaten hat. Vor 7.2 die Ports in `testumgebung/compose.override.yml` wieder auf `127.0.0.1` beschränken.
 
 ### 7.1 Frisches Zammad und Test mit Mailpit
@@ -330,7 +339,7 @@ zammad "$(cat /usr/share/manuel/testumgebung/mail_test.rb)"
 
 ### 7.3 Open WebUI für Testende
 
-Open WebUI und Ollama hängen gemeinsam im Netz `manuel`. Open WebUI erreicht Ollama dort unter `http://ollama:11434`, ohne dass Ollama einen Port nach außen öffnet. Port 3000 ist veröffentlicht. Weil Podman die Firewall des Hosts umgeht, ist er über Tailscale und im lokalen Netz offen, etwa unter http://manuel:3000. Seit dem 12.11.2026 läuft Open WebUI ohne Anmeldung mit `WEBUI_AUTH=False`. Alle arbeiten dann mit demselben Admin-Konto, können also Einstellungen ändern und die Chats der anderen lesen. Deshalb gehören keine Angaben von Gästen in Open WebUI. Das Login lässt sich nur bei einer frischen Installation abschalten. Zum Wiedereinschalten den Container mit `WEBUI_AUTH=True` neu starten, danach wird das erste Konto Admin.
+Open WebUI, n8n und Ollama hängen gemeinsam im Netz `manuel` und erreichen Ollama dort unter `http://ollama:11434`. Port 3000 ist veröffentlicht. Weil Podman die Firewall des Hosts umgeht, ist er über Tailscale und im lokalen Netz offen, etwa unter http://manuel:3000. Seit dem 12.11.2026 läuft Open WebUI ohne Anmeldung mit `WEBUI_AUTH=False`. Alle arbeiten dann mit demselben Admin-Konto, können also Einstellungen ändern und die Chats der anderen lesen. Deshalb gehören keine Angaben von Gästen in Open WebUI. Das Login lässt sich nur bei einer frischen Installation abschalten. Zum Wiedereinschalten den Container mit `WEBUI_AUTH=True` neu starten, danach wird das erste Konto Admin.
 
 ```bash
 sudo podman network create manuel
@@ -341,9 +350,37 @@ sudo podman run -d --name open-webui --restart=always --network manuel -p 3000:8
   ghcr.io/open-webui/open-webui:v0.13.3
 ```
 
-In der Verwaltung des Tailnets MANUEL mit den Testenden teilen und in der Richtlinie für sie nur Port 3000 erlauben.
+In der Verwaltung des Tailnets MANUEL mit den Testenden teilen und in der Richtlinie für sie die Ports 3000 und 11434 erlauben.
 
-### 7.4 Aufräumen
+`podman-compose` brach am 13.11.2026 beim Einlesen der Compose-Dateien ab. n8n läuft deshalb vorerst als eigener Container im Netz `manuel`, mit denselben Einstellungen wie in `testumgebung/compose.override.yml`.
+
+```bash
+sudo podman run -d --name n8n --restart=always --network manuel -p 5678:5678 \
+  -e GENERIC_TIMEZONE=Europe/Berlin -e TZ=Europe/Berlin -e N8N_SECURE_COOKIE=false \
+  -v n8n-data:/home/node/.n8n \
+  docker.n8n.io/n8nio/n8n:2.45.0
+```
+
+### 7.4 Ollama mit opencode testen
+
+[opencode](https://opencode.ai) ist ein Harness für das Terminal. Ab Version 2 findet es Modelle von Ollama selbst. Für MANUEL im Projekt oder unter `~/.config/opencode/` eine Datei `opencode.jsonc` anlegen. Die Adresse endet auf `/v1`, opencode leitet daraus die Abfrage der Modelle ab. Modelle nur für Embeddings wie `bge-m3` erscheinen nicht.
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "providers": {
+    "ollama": {
+      "settings": {
+        "baseURL": "http://manuel:11434/v1"
+      }
+    }
+  }
+}
+```
+
+In opencode mit `/models` ein Modell wählen. Für Werkzeugaufrufe eignen sich größere Modelle wie `qwen3.6:35b-a3b`. Ollama begrenzt den Kontext auf 32768 Token. Quelle ist https://github.com/anomalyco/opencode/blob/dev/services/site/src/docs/content/providers.mdx.
+
+### 7.5 Aufräumen
 
 Nach dem Test die Instanz mit allen Daten löschen.
 

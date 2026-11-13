@@ -37,6 +37,14 @@ Wo die Zuordnung zu Restarters offen ist, nennt die Spalte `status` den Grund, e
 
 Bis MANUEL in Zammad läuft, kann sich ein Schlüssel noch ändern, etwa wenn wir eine ORA-Gruppe korrigieren. Danach bleibt er fest. Ändert sich dann doch eine Gruppe, bekommt der Eintrag einen neuen Schlüssel, und der alte bleibt als Verweis stehen, damit alte Tickets zugeordnet bleiben.
 
+## Hinweise für die Arbeit am Katalog
+
+Stand 13.11.2026, als Vorlage für die Gruppe, die den Katalog für die Meldung an die Open Repair Alliance erarbeitet.
+
+- **Was gemeldet wird.** Bei Restarters.net sind nur `category` und `item_type` Pflicht. In den Open Repair Data erscheint ein Gerät als „Kategorie ~ Gegenstand“, etwa „Misc ~ Telephone“. Bei groben Kategorien wie Misc ordnet die Alliance das Gerät über diesen Freitext einer Gruppe zu, aus „Misc ~ Telephone“ wird Mobile.
+- **Kann `item_type` schon die Kategorie der anstiftung tragen?** Technisch ja, es ist Freitext. In den offenen Daten stünde dann etwa „Kettle ~ Wasserkocher“, und die Alliance müsste Deutsch verstehen, um Geräte unter Misc zuzuordnen. Wir empfehlen deshalb den englischen Namen des Katalogs als `item_type`. Kategorie der anstiftung und Schlüssel des Katalogs passen ins Feld `notes` bei Restarters. Der Open Repair Data Standard exportiert dieses Feld nicht, die Zuordnung bleibt so bei uns, ohne die offenen Daten zu vermischen. Im Zweifel fragen wir bei Restarters oder der Alliance nach.
+- **Was ein bestätigter Eintrag braucht.** `name_en`, `ora_group`, `restarters_category` und `power`. Danach setzt die Gruppe `status` auf bestätigt.
+
 ## Für MANUEL
 
 [entries.py](entries.py) baut aus dem Katalog die Optionen für die Einordnung. Dafür braucht es die Liste der Kategorien des Laufzettels, die nicht in diesem Repo liegt. [check.py](check.py) prüft Schlüssel, Synonyme, ORA-Gruppen und die Stromversorgung.

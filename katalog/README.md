@@ -16,6 +16,7 @@ Die Spalten haben nach [ADR 29](../docs/adr/0029-zielgruppe-und-sprache-festlege
 | synonyms | andere Wörter für denselben Gegenstand, getrennt durch einen senkrechten Strich |
 | name_en, description_en, synonyms_en | dasselbe auf Englisch |
 | ora_group | Produktkategorie nach dem Open Repair Data Standard |
+| restarters_category | Kategorie auf Restarters.net, leer, wo die Größe entscheidet |
 | intermediate_category | eigene feinere Gruppe, wo die ORA-Gruppe zu grob ist |
 | power | übliche Stromversorgung mit den Werten des Laufzettels |
 | form_ids | IDs der Kategorien im Laufzettel auf reparatur-initiativen.org, die zu diesem Eintrag gehören |
@@ -23,13 +24,16 @@ Die Spalten haben nach [ADR 29](../docs/adr/0029-zielgruppe-und-sprache-festlege
 
 ## Schlüssel
 
-Der Schlüssel hat die Form `ORA.anstiftung` oder `ORA.anstiftung.eigene`.
+Der Schlüssel hat die Form `ORA.Restarters.anstiftung` oder `ORA.Restarters.anstiftung.eigene`. Jeder Gegenstand soll damit eindeutig einer Gruppe der Open Repair Alliance, einer Kategorie auf Restarters.net und den Kategorien der anstiftung zugeordnet sein.
 
 - Vorne steht die Nummer der ORA-Gruppe aus [ora-gruppen.tsv](../eval/decision/ora-gruppen.tsv). Die Gruppen ohne Strom haben in den Open Repair Data keine Nummer, sie bekommen 101 bis 106.
-- In der Mitte steht die führende ID im Laufzettel. Fasst ein Eintrag mehrere Kategorien zusammen, ist es die ID der Kategorie mit dem bevorzugten Namen oder die zuerst genannte. Synonyme und zusammengefasste Kategorien haben keinen eigenen Schlüssel, sie gehören zu ihrem Eintrag.
-- Hinten steht eine eigene Unterscheidung, wo wir eine Kategorie der anstiftung aufteilen. Die Kopfhörer der anstiftung haben `11.459`, darunter liegen `11.459.1` für In-Ear und `11.459.2` für On- und Over-Ear. Beim allgemeinen Eintrag fragt MANUEL nach.
+- Als Zweites steht die ID der Kategorie auf Restarters.net aus [kategorien.csv](../quellen/restarters/kategorien.csv). Sie folgt aus der ORA-Gruppe nach [ora_to_restarters.tsv](../eval/restarters/ora_to_restarters.tsv). Bei Laptop und Flat screen entscheidet die Größe des Geräts, dort steht eine 0. Gegenstände ohne Strom aus Werkzeug und Garten bekommen Hand tool statt Misc.
+- Als Drittes steht die führende ID im Laufzettel. Fasst ein Eintrag mehrere Kategorien zusammen, ist es die ID der Kategorie mit dem bevorzugten Namen oder die zuerst genannte. Synonyme und zusammengefasste Kategorien haben keinen eigenen Schlüssel, sie gehören zu ihrem Eintrag.
+- Hinten steht eine eigene Unterscheidung, wo wir eine Kategorie der anstiftung aufteilen. Die Kopfhörer der anstiftung haben `11.24.459`, darunter liegen `11.24.459.1` für In-Ear und `11.24.459.2` für On- und Over-Ear. Beim allgemeinen Eintrag fragt MANUEL nach.
 
-Beispiele sind `37.424` für Stabmixer mit dem Synonym Zauberstab, `23.404` für Radio mit Radiowecker und Kofferradio sowie `29.1209` für Elektrogrill mit Tischgrill und Partygrill.
+Beispiele sind `37.42.424` für Stabmixer mit dem Synonym Zauberstab, `23.32.404` für Radio mit Radiowecker und Kofferradio sowie `29.42.1209` für Elektrogrill mit Tischgrill und Partygrill.
+
+Wo die Zuordnung zu Restarters offen ist, nennt die Spalte `status` den Grund, etwa „Entwurf, Größe für Restarters klären“.
 
 Bis MANUEL in Zammad läuft, kann sich ein Schlüssel noch ändern, etwa wenn wir eine ORA-Gruppe korrigieren. Danach bleibt er fest. Ändert sich dann doch eine Gruppe, bekommt der Eintrag einen neuen Schlüssel, und der alte bleibt als Verweis stehen, damit alte Tickets zugeordnet bleiben.
 

@@ -32,9 +32,9 @@ def main():
             for row in csv.DictReader(open(form_file, encoding="utf-8"))}
     entries, seen = [], set()
     for row in csv.DictReader(CATALOG.open(encoding="utf-8"), delimiter="\t"):
-        parts = row["key"].split(".")
-        lead = int(parts[1])
-        own = len(parts) == 3
+        parts = row["key"].split(".")  # ORA.Restarters.anstiftung, optionally .eigene
+        lead = int(parts[2])
+        own = len(parts) == 4
         ids = [] if own else [int(i) for i in row["form_ids"].split(" | ") if i]
         upper = form[lead][0]
         labels = []

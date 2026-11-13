@@ -409,7 +409,8 @@ git push
 - [ ] Dateien nach [REUSE](https://reuse.software/) mit SPDX-Angaben zu Lizenz und Urheber kennzeichnen, weil das Repo CC0 und Apache 2.0 mischt
 - [ ] DSEE-Logo mit »Gefördert durch« in die README aufnehmen
 - [ ] Ergebnisse veröffentlichen, zum Beispiel auf unserer Website, im Netzwerk Reparatur-Initiativen der anstiftung und in den sozialen Medien
-- [ ] Belege der Veröffentlichung für den Sachbericht sammeln
+  - [x] MANUEL auf der Mitgliederversammlung des FSuB e.V. am 12.11.2026 vorgestellt
+- [ ] Belege der Veröffentlichung für den Sachbericht sammeln, für die Vorstellung beim FSuB e.V. etwa Einladung, Tagesordnung oder Protokoll
 - [ ] Verwendungsnachweis bis 31.03.2027 im Förderportal einreichen
 
 ## Ausblick

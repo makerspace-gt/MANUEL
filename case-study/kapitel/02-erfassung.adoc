@@ -10,7 +10,7 @@ _Teilfrage T1. Wie wird eine Reparatur erfasst und wie machen das andere Initiat
 *Ergebnis.*
 
 * In den Tickets von 2024 bis 2026 steht die Marke bei rund 25 Prozent, das Baujahr bei keinem.
-* Den 941 bearbeiteten Geräten stehen 791 Tickets gegenüber, weil spontane Gäste lange kein Ticket bekamen.
+* Den 941 bearbeiteten Geräten stehen 791 Tickets gegenüber. Ein vertagtes Gerät zählt in der Statistik an jedem Termin, hat aber nur ein Ticket.
 * Bei der Open Repair Alliance kamen 30 von 1.485 Geräten an, rund 2 Prozent.
 
 *Wichtigste Befehle.*
@@ -70,7 +70,9 @@ Wie vollständig die Tickets sind, zeigt eine Zählung der Exporte. Gezählt wur
 |Termin |3 % |70 % |99 %
 |===
 
-* Von 2024 bis 2026 stehen 941 bearbeitete Geräte 791 Tickets gegenüber. Für spontane Gäste gibt es meist kein Ticket.
+* Von 2024 bis 2026 stehen 941 bearbeitete Geräte 791 Tickets gegenüber. Spontane Gäste bekommen seit jeher einen Laufzettel oder ein Ticket, der Unterschied hat andere Gründe.
+* Ein vertagtes Gerät zählt in der Statistik an jedem Termin, an dem es bearbeitet wird, hat aber nur ein Ticket. Zählt man je Ticket die Termine aus den Tags und lässt nicht erschienene Gäste weg, kommen 2025 auf 316 bearbeitete Geräte 307 Besuche und 2026 auf 337 Geräte 302 Besuche.
+* 2024 tragen die Tickets noch keine Termine. Dort stehen 150 Tickets mit Ergebnis 288 bearbeiteten Geräten gegenüber. Woher diese Lücke kommt, ist offen.
 * Das Ergebnis trägt oft einen Grund, etwa „nicht erfolgt::Ersatzteil zu teuer“. Sechs dieser Gründe entsprechen genau den sechs Hindernissen des Standards.
 * Marke, Bezeichnung, Stromversorgung und Baujahr fehlen meist. Daraus folgen die Verbesserungen in <<adr-0034>>.
 

@@ -5,12 +5,12 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
-Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, und 2026-11-09, Texterkennung von Zammad und Nachfrage beim Gast
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, und 2026-11-09, Texterkennung von Zammad und Nachfrage beim Gast, und 2026-11-13, Grund für den Unterschied zwischen Tickets und Statistik
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
 
-Die Exporte aus Zammad von 2024 bis 2026 enthalten 791 Tickets. Die Statistik zählt für dieselbe Zeit 941 bearbeitete Geräte, denn für spontane Gäste gab es lange kein Ticket. Inzwischen legt der Empfang auch für sie eines an. In den Tickets ist die Marke bei rund 25 Prozent gefüllt, die Bezeichnung bei rund 12 Prozent, die Stromversorgung bei 4 bis 9 Prozent und das Baujahr bei keinem. Für die Open Repair Alliance und für gute Vorschläge fehlen damit wichtige Angaben.
+Die Exporte aus Zammad von 2024 bis 2026 enthalten 791 Tickets. Die Statistik zählt für dieselbe Zeit 941 bearbeitete Geräte. Spontane Gäste bekommen seit jeher einen Laufzettel oder ein Ticket. Der Unterschied kommt vor allem daher, dass ein vertagtes Gerät in der Statistik an jedem seiner Termine zählt, aber nur ein Ticket hat. 2025 und 2026 passen Tickets und Statistik damit gut zusammen, für 2024 fehlen rund 140 Geräte, deren Grund offen ist. In den Tickets ist die Marke bei rund 25 Prozent gefüllt, die Bezeichnung bei rund 12 Prozent, die Stromversorgung bei 4 bis 9 Prozent und das Baujahr bei keinem. Für die Open Repair Alliance und für gute Vorschläge fehlen damit wichtige Angaben.
 
 == Entscheidungskriterien
 

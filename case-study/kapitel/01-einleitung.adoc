@@ -23,7 +23,8 @@ Dieses Kapitel steht noch in Stichpunkten. Die Tabellen zu Fragen und Lesewegen 
 
 * Repair Cafés allgemein, Hilfe zur Selbsthilfe, nicht kommerziell, Gäste reparieren mit Unterstützung von Engagierten, nach Kapitel 1.1 von cite:[prange-2022]
 * Das Repair Café im Makerspace Gütersloh gibt es seit März 2019. Bis zum 7. November 2026 waren es 85 Termine mit 1.485 bearbeiteten Geräten.
-* Ablauf heute, Anfrage per Mail, Telefon oder Formular, Ticket in Zammad seit November 2022, Termin am ersten oder dritten Samstag, Slots von 11 bis 14 Uhr
+* Ablauf heute, Anmeldung per Mail, Telefon oder Formular oder spontan am Tag des Termins, Ticket in Zammad seit November 2022, Termin am ersten oder dritten Samstag, Slots von 11 bis 14 Uhr
+* Spontane Gäste bekommen seit jeher einen Laufzettel, heute ein Ticket.
 * Wer mitmacht, Empfang, Reparierende, Orga
 * Weltweit erhebt das Centre for Sustainable Design in Umfragen, wer Repair Cafés betreibt und wie sie arbeiten, zuerst 2014 und zuletzt 2026 cite:[charter-keiller-2014] cite:[quinton-counter-2026].
 
@@ -36,6 +37,8 @@ Dieses Kapitel steht noch in Stichpunkten. Die Tabellen zu Fragen und Lesewegen 
 * Förderung durch die DSEE im Mikroförderprogramm cite:[dsee-2026], Bewilligungszeitraum vom 15.09. bis 31.12.2026, Zweckbindung bis 2028
 * Die EU stärkt mit dem Recht auf Reparatur die Reparatur von Waren cite:[eu-2024-1799]. Reparaturdaten zeigen, wo das nötig ist.
 * Warum ein eigener Mini-PC statt eines Cloud-Dienstes, Daten bleiben im Haus, keine laufenden Kosten für die Nutzung, Unabhängigkeit, auf das Repair Café zugeschnitten
+* Digitale Souveränität heißt, im Digitalen unabhängig handeln zu können cite:[madiega-2020]. Für einen Verein heißt das, nicht von den Bedingungen eines Anbieters abzuhängen.
+* Plattformen werden für ihre Nutzenden oft schlechter, sobald diese nicht mehr wechseln können. Cory Doctorow nennt das Enshittification cite:[doctorow-2023]. Ein eigener Mini-PC mit offenen Modellen entzieht sich dem.
 
 [[fragen]]
 === Fragen und Aufbau
@@ -84,16 +87,20 @@ Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Re
 * Die Arbeit ist eine Einzelfallstudie. Eine Fallstudie untersucht ein aktuelles Phänomen in seinem realen Umfeld cite:[mit-yin], hier MANUEL im laufenden Repair Café.
 * Für Daten und Einordnung gelten die Schritte einer Datenanalyse nach cite:[wickham] wie 2022. Die Gegenüberstellung von 2022 und 2026 steht als Tabelle in {repo}/docs/einordnung.md[docs/einordnung.md].
 * Jeder Versuch hält Vorgehen, Ergebnis und Erkenntnis fest. Gemessen wird an Sollwerten, die das Team geprüft hat. Die Trefferquote bekommt ein Intervall nach Wilson, und eine Rückfrage zählt als ohne Fehler.
-* Die Erprobung im Repair Café läuft von Dezember 2026 bis Februar 2027 mit den vier Kennzahlen aus dem Antrag, siehe <<adr-0032>>.
+* Die Erprobung im Repair Café läuft von Dezember 2026 bis Februar 2027 mit den vier Kennzahlen aus dem Antrag <<adr-0032>>:
+** Reparaturquote
+** Reparaturen durch Gäste und neue Engagierte
+** Rückmeldungen zu den Vorschlägen von MANUEL
+** an die Open Repair Alliance gemeldete Reparaturen
 * Ein Vergleich mit einem Cloud-Modell nutzt nur öffentliche oder erfundene Daten.
 * Entscheidungen stehen als ADR in Anhang A, Läufe werden nach <<adr-0027>> mit `lauf.json` festgehalten.
 * Welche Daten es gibt und welche nur lokal liegen, zeigt Anhang C.
 * Texte sind deutsch, Code ist englisch, dazu kommt ein Abstract auf Englisch, siehe <<adr-0029>> und <<adr-0030>>.
 * Werkzeuge beim Schreiben sind Claude Opus 5.5 für große Teile von Text, Skripten und Auswertungen sowie DeepL Write und LanguageTool für Sprache und Rechtschreibung. Ein Mensch prüft alles, siehe den Hinweis zur Entstehung am Anfang.
-* Zitiert werden nur öffentlich zugängliche Quellen. Quellen, die nur nach Anmeldung oder gegen Bezahlung zugänglich sind, kommen nicht ins Verzeichnis. Sekundärquellen wie Blogbeiträge, Kursnotizen oder Wikipedia sind erlaubt, etwa für Yin und Wilson, deren Originale nicht frei zugänglich sind.
+* Zitiert werden nur Quellen, die wir gelesen haben. Das dürfen auch Fachbücher oder wissenschaftliche Artikel hinter einer Bezahlschranke sein. Gibt es eine frei zugängliche Fassung, verlinken wir sie. Sekundärquellen wie Blogbeiträge, Kursnotizen oder Wikipedia sind erlaubt, etwa für Yin und Wilson, solange wir die Originale nicht gelesen haben. Die Literatur steht in einer öffentlichen Zotero-Gruppe <<adr-0046>>.
 
 .Quellen für dieses Kapitel
-* cite:[mit-yin], cite:[charter-keiller-2014], cite:[quinton-counter-2026], cite:[dsee-2026], cite:[eu-2024-1799], cite:[prange-2022], cite:[wickham]
+* cite:[mit-yin], cite:[charter-keiller-2014], cite:[quinton-counter-2026], cite:[dsee-2026], cite:[eu-2024-1799], cite:[prange-2022], cite:[wickham], cite:[madiega-2020], cite:[doctorow-2023]
 * Noch zu suchen sind die Seiten von Stichting Repair Café und Netzwerk Reparatur-Initiativen und die Ergebnisse der Umfrage von 2026 im Einzelnen.
 
 .Offen

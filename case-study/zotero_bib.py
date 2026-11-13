@@ -246,6 +246,8 @@ FILL = ("abstractNote", "websiteTitle", "blogTitle", "publicationTitle", "date",
 TAG = "Snapshot fehlt"  # replaced by the collections below, removed on every merge
 INBOX, ATTACHED, IT = "Inbox", "Mit Anhang", "IT-Infrastruktur"
 REPO = Path(__file__).resolve().parent.parent
+# Pages that only exist after login, never attach their snapshots in the public group
+PRIVATE = {"restarters.net/dashboard"}
 KEEP_SNAPSHOT = {"wolf-ki-impuls"}  # the snapshot is the document itself
 
 
@@ -334,6 +336,11 @@ def best_match(new, pinned, inbox):
     return None
 
 
+def as_authors(creators):
+    """Creator types differ between item types, e.g. a video has "creator", a webpage only "author"."""
+    return [dict(c, creatorType="author") for c in creators]
+
+
 def fold(dup, old, key):
     """Move the attachments of dup to old, fill empty fields of old and delete dup."""
     for child in fetch_all(f"/items/{dup['key']}/children", key):
@@ -343,7 +350,7 @@ def fold(dup, old, key):
         if dup.get(field) and field in old and not old[field]:
             old[field] = dup[field]
     if not old.get("creators") and dup.get("creators"):
-        old["creators"] = dup["creators"]
+        old["creators"] = as_authors(dup["creators"])
     tags = {t["tag"] for t in old.get("tags", [])}
     old["tags"] = old.get("tags", []) + [t for t in dup.get("tags", []) if t["tag"] not in tags]
     request("/items", [old], key=key)
@@ -359,6 +366,9 @@ def merge(key):
     moved, changed, deleted, keyed, waiting = [], {}, [], [], []
     for d in items:
         if d in pinned:
+            continue
+        if norm_url(d.get("url", "")) in PRIVATE:
+            print(f"persönliche Seite, bitte in Zotero löschen: {d.get('url')}")
             continue
         old = best_match(d, pinned, inbox)
         if old is None:
@@ -378,7 +388,7 @@ def merge(key):
             if d.get(field) and field in old and not old[field]:
                 old[field] = d[field]
         if not old.get("creators") and d.get("creators"):
-            old["creators"] = d["creators"]
+            old["creators"] = as_authors(d["creators"])
         tags = {t["tag"] for t in old.get("tags", [])}
         old["tags"] += [t for t in d.get("tags", []) if t["tag"] not in tags and t["tag"] != TAG]
         changed[old["key"]] = old

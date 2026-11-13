@@ -10,7 +10,7 @@ _Teilfrage T11. Was verlieren wir durch den lokalen Betrieb?_
 
 *Ergebnis.*
 
-* Steht aus. Ab Dezember misst eine Steckdose NOUS A1T den Strom, ein Logger hält jede Minute die Werte fest.
+* Seit dem 11.11.2026 misst eine Steckdose NOUS A1T den Strom, ein Logger hält jede Minute die Werte fest. Im Leerlauf braucht MANUEL rund 8 W, in den ersten 2,5 Tagen zusammen 0,51 kWh, also rund 0,2 kWh am Tag.
 * Die Kosten bestehen aus Anschaffung, Strom und der Zeit für die Pflege.
 * Ein Cloud-Modell bekommt zum Vergleich nur öffentliche oder erfundene Daten, echte Tickets bleiben lokal.
 
@@ -33,6 +33,13 @@ Dieses Kapitel entsteht mit den Messungen während der Erprobung.
 
 * Anschaffung laut Antrag bei der DSEE
 * Strom im Leerlauf und unter Last an der Steckdose gemessen, auf ein Jahr hochgerechnet
+
+.Strom und Last von MANUEL, gemessen an der Steckdose
+image::../../docs/grafiken/strom-verlauf-hell.svg[Leistung an der Steckdose und Auslastung der GPU über die Zeit,width=100%]
+
+* Vom 11. bis 13.11.2026 lag die Leistung im Leerlauf im Median bei 8,3 W. Spitzen bis 80 W entstehen, wenn ein Modell rechnet, gut zu sehen an der Auslastung der GPU darunter.
+* Hochgerechnet ergibt der Leerlauf rund 75 kWh im Jahr. Wie viel die Termine des Repair Café dazu beitragen, zeigen die Messungen während der Erprobung.
+* Die Messwerte liegen in {repo}/docs/messungen/metrics-2026-11.csv[docs/messungen], die Grafik entsteht mit {repo}/eval/strom/power_chart.py[power_chart.py].
 * Gemessen wird mit einer Steckdose NOUS A1T mit Tasmota. Ein Logger auf MANUEL hält jede Minute Strom, Auslastung, Speicher und Temperaturen fest, siehe {repo}/docs/inbetriebnahme.md[Inbetriebnahme], Schritt 8. Über Beginn und Ende in `lauf.json` lassen sich Strom und Last einem Lauf zuordnen.
 * Strompreis am Tag der Messung
 * Generative Modelle brauchen für dieselbe Aufgabe deutlich mehr Energie als spezialisierte Modelle cite:[luccioni-2024]. Das spricht dafür, kleine Modelle wie `d3:9b` für das Einordnen zu nutzen.

@@ -15,7 +15,7 @@ python3 eval/restarters/backfill.py --exports "../tickets-Repair Café-Created *
 | Feld bei Restarters | Quelle |
 |---|---|
 | Event | letzter Tag mit Datum am Ticket, bei älteren Tickets der Termin im Monat aus dem Tag, sonst der letzte Termin der Statistik zwischen Anlegen und Schließen oder Pending till |
-| `category` | ORA-Gruppe des Eintrags im Katalog nach [ora_to_restarters.tsv](ora_to_restarters.tsv) |
+| `category` | Spalte `restarters_category` und zweite Stelle des Schlüssels im Katalog, gefüllt nach [ora_to_restarters.tsv](ora_to_restarters.tsv) |
 | `item_type` | englischer Name des Eintrags im Katalog |
 | `brand` | Feld Marke |
 | `repair_status`, `barrier` | Feld Ergebnis, siehe ADR 36 |

@@ -1,5 +1,6 @@
 # ORA group of our catalog and the category id on Restarters.net, see PLAN.md, section "Anbindung an Restarters.net".
 # Ids from quellen/restarters/kategorien.csv. An empty id means the size of the device decides, the team clarifies it.
+# This table filled the column restarters_category and the second part of the key in katalog/kategorien.tsv on 13.11.2026.
 ora_group	restarters_id	restarters_category	note
 Aircon/dehumidifier	35	Aircon/dehumidifier
 Battery/charger/adapter	46	Misc

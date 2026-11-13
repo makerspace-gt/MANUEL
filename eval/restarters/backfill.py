@@ -34,7 +34,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / "katalog" / "kategorien.tsv"
 FORM = ROOT / "quellen" / "anstiftung" / "kategorien.csv"
-MAPPING = Path(__file__).resolve().parent / "ora_to_restarters.tsv"
 SHEET = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
 REL = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
 
@@ -93,16 +92,19 @@ def catalog_index():
     index = {}
     for row in csv.DictReader(CATALOG.open(encoding="utf-8"), delimiter="\t"):
         names = [row["name"], row["name"].split(" (")[0]] + [s for s in row["synonyms"].split(" | ") if s]
-        if row["key"].count(".") == 1:
+        if row["key"].count(".") == 2:  # no own distinction, the categories of the form belong to it
             names += [form[i] for i in row["form_ids"].split(" | ") if i in form]
         for name in names:
             index.setdefault(name.lower(), row)
     return index
 
 
-def restarters_index():
-    lines = [line for line in MAPPING.read_text(encoding="utf-8").splitlines() if line and not line.startswith("#")]
-    return {row["ora_group"]: row for row in csv.DictReader(lines, delimiter="\t")}
+def restarters_category(entry):
+    """Category on Restarters.net from the catalog. The id is the second part of the key, 0 means the size decides."""
+    restarters_id = entry["key"].split(".")[1]
+    note = "Größe klären" if restarters_id == "0" else entry["status"].partition(", ")[2]
+    return {"restarters_id": "" if restarters_id == "0" else restarters_id,
+            "restarters_category": entry["restarters_category"], "note": note}
 
 
 def event_dates(statistics):
@@ -184,7 +186,7 @@ def main():
     parser.add_argument("--out", required=True, type=Path)
     args = parser.parse_args()
 
-    catalog, restarters = catalog_index(), restarters_index()
+    catalog = catalog_index()
     dates, moved = event_dates(args.statistics)
     targets = {}
     for row in xlsx_rows(args.targets, TARGET_COLUMNS, "Kontrolle"):
@@ -218,7 +220,7 @@ def main():
             repair_status, barrier, action, note = status(ticket.get("Ergebnis", ""))
             target = targets.get(number, "")
             entry = catalog.get(target.lower()) if target and target != "??" else None
-            mapped = restarters.get(entry["ora_group"]) if entry else None
+            mapped = restarters_category(entry) if entry else None
             notes = [n for n in (note, tag_note) if n]
             if action != "nicht melden":
                 if entry is None:

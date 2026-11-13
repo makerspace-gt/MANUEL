@@ -249,7 +249,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [x] DSEE über die Variante mit 1 TB statt 2 TB informieren, die Abweichung ist geklärt, siehe Rahmenbedingungen
 - [x] Gerät bestellen und Rechnung vor dem 31.12.2026 bezahlen
 - [x] Offene Entscheidungen oben treffen, festgehalten als ADR
-- [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren. Die Testinstanz auf MANUEL läuft mit 7.2.2, dort lässt sich das schon prüfen
+- [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren. Die Testinstanz auf MANUEL läuft mit 7.2.2. Dort sind am 13.11.2026 der Anbieter Ollama, Ticket Categorizer und Ticket Text Extractor vorhanden, und Categorizer, Prompt-Vorlagen und Anbieter gleichen `quellen/zammad`
 - [ ] Termin als eigenes Datumsfeld anlegen und beim Umzug bestehende Wartezeiten übernehmen, die angepasste ticket.rb kommt nicht mit, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md)
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
@@ -358,7 +358,7 @@ git push
 - [ ] Bildverständnis des Hauptmodells mit llama.cpp einrichten, dafür braucht es eine Projektor-Datei (mmproj), siehe [ADR 23](docs/adr/0023-qwen3-6-als-hauptmodell-nutzen.adoc)
 - [ ] Auslesen von Fotos vom Typenschild mit dem Hauptmodell an Beispielfotos testen, ein Mensch bestätigt die Felder, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
 - [ ] Spalte „spontan“ im Blatt Eingabe der Statistik anlegen, damit die [Sharecard](sharecard/README.md) spontane Gäste zeigt
-- [ ] Gemeinsame Hilfsfunktion für `lauf.json` schreiben, bevor der Vorabtest läuft, siehe [ADR 27](docs/adr/0027-laeufe-reproduzierbar-festhalten.adoc)
+- [x] Gemeinsame Hilfsfunktion für `lauf.json` schreiben, bevor der Vorabtest läuft, siehe [ADR 27](docs/adr/0027-laeufe-reproduzierbar-festhalten.adoc) und [eval/lauf.py](eval/lauf.py)
 - [ ] Vorabtest des Ticket Categorizer. Seinen Prompt aus `quellen/zammad` lokal an den 745 geprüften Tickets nachstellen und kürzere Listen vergleichen, etwa A-Einträge, A- und B-Einträge und ORA-Gruppen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)
 - [ ] Liste für den Categorizer nach dem Vorabtest festlegen
 

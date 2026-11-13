@@ -44,12 +44,14 @@ Dieses Kapitel steht noch in Stichpunkten.
 * Jede Änderung durch einen Agenten steht mit seinem Namen im Verlauf des Tickets.
 * Ist ein Modell mit Bildverständnis eingerichtet, liest Zammad Bilder in Nachrichten per Texterkennung und gibt den Text an die Agenten weiter. Das passt zum Foto vom Typenschild <<adr-0034>>.
 * Der Categorizer gibt nur einen Wert zurück und keine Sicherheit. Zum Start am 05.12.2026 nutzen wir ihn trotzdem und steigen bei Bedarf um <<adr-0040>>.
+* Zammad kennt je Anbieter ein Sprachmodell und ein Embedding-Modell. Alle Agenten nutzen dasselbe Sprachmodell, ein Decision-Modell wie `d3:9b` lässt sich dem Categorizer nicht zuweisen. Das zeigt der Anbieter für Ollama im https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/lib/ai/provider/ollama.rb#L22-L58[Quellcode].
+* Seit Version 7.0 können Webhooks ein Bearer-Token senden. Damit kann Zammad über die eigene API Dinge tun, die Trigger und Makros nicht können, etwa Folgetickets anlegen cite:[zammad-7-0]. Gezeigt wurde das auch im Webinar zu Zammad 7.0 am 06.03.2026.
 * Ob unsere Version von Zammad all das schon kann, ist noch zu prüfen.
 
 === Grundsätze
 
-* Ein Mensch entscheidet <<adr-0017>>. MANUEL antwortet nie selbst an Gäste.
-* Daten bleiben lokal <<adr-0002>>. Einzige Ausnahme sind Marke und Modell für die Websuche <<adr-0035>>.
+* Ein Mensch entscheidet <<adr-0017>>. MANUEL antwortet nie selbst an Gäste, seine Entwürfe können Engagierte aber direkt absenden.
+* Keine personenbezogenen Daten nach außen <<adr-0048>>. Echte Ticketdaten werden nur lokal ausgewertet <<adr-0002>>, nach außen gehen etwa Marke und Modell für die Websuche <<adr-0035>>.
 * Code rechnet und das Modell formuliert.
 * Alles ist Code, also Image, Prompts, Workflows und Auswertungen im Repo.
 

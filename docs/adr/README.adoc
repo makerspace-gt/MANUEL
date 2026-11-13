@@ -36,7 +36,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |17 |xref:0017-einen-menschen-entscheiden-lassen.adoc[Einen Menschen entscheiden lassen] |angenommen |2026-10-22
 |18 |xref:0018-felder-mit-ki-agenten-von-zammad-fuellen.adoc[Felder mit den KI-Agenten von Zammad füllen] |angenommen |2026-10-22
 |19 |xref:0019-n8n-auf-der-helpdesk-vm-betreiben.adoc[n8n auf der Helpdesk-VM betreiben] |angenommen |2026-10-22
-|20 |xref:0020-ueber-netbird-vernetzen.adoc[Über NetBird vernetzen] |angenommen, Übergang durch 42 |2026-10-22
+|20 |xref:0020-ueber-netbird-vernetzen.adoc[Über NetBird vernetzen] |angenommen, Übergang durch 42, Tests nach 47 |2026-10-22
 |21 |xref:0021-bge-m3-als-embedding-modell-nutzen.adoc[bge-m3 als Embedding-Modell nutzen] |angenommen |2026-10-22
 |22 |xref:0022-reparaturanleitungen-in-der-wissensdatenbank-von-zammad-sammeln.adoc[Reparaturanleitungen in der Wissensdatenbank von Zammad sammeln] |angenommen |2026-10-22
 |23 |xref:0023-qwen3-6-als-hauptmodell-nutzen.adoc[qwen3.6:35b-a3b als Hauptmodell nutzen] |angenommen |2026-11-06
@@ -63,6 +63,8 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |44 |xref:0044-admins-ueber-wartung-informieren.adoc[Die Admins über Wartung informieren] |vorgeschlagen |2026-11-11
 |45 |xref:0045-weitere-dienste-an-ollama-anbinden.adoc[Weitere Dienste des Vereins an Ollama anbinden] |vorgeschlagen |2026-11-11
 |46 |xref:0046-literatur-in-einer-zotero-gruppe-pflegen.adoc[Die Literatur in einer Zotero-Gruppe pflegen] |angenommen |2026-11-12
+|47 |xref:0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[Dienste zum Testen im Tailnet öffnen] |angenommen |2026-11-13
+|48 |xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[Keine personenbezogenen Daten nach außen geben] |angenommen |2026-11-13
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

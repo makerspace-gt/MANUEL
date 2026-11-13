@@ -99,5 +99,9 @@ include::../../docs/adr/0045-weitere-dienste-an-ollama-anbinden.adoc[]
 
 include::../../docs/adr/0046-literatur-in-einer-zotero-gruppe-pflegen.adoc[]
 
+include::../../docs/adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[]
+
+include::../../docs/adr/0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[]
+
 :leveloffset: -2
 :sectnums:

@@ -58,6 +58,10 @@ Dieser Abschnitt wird noch ausformuliert, sobald die erste Karte erzeugt ist.
 * Bisher schreibt das Team nach jedem Termin ein Resümee als Text. Die Sharecard zeigt dasselbe als Bild für Forum, soziale Medien, Messenger, Website und Newsletter <<adr-0033>>.
 * Auf der Karte stehen angemeldet, bearbeitet, nicht erschienen und spontan, ein Raster mit einem Feld je Gerät, die Verteilung der letzten drei Jahre, die Spenden, ein Highlight und der nächste Termin.
 * Am 7. November 2026 waren 17 Geräte angemeldet. Bei 33 von 48 Terminen der letzten drei Jahre waren es mehr.
+
+.Sharecard vom 7. November 2026, Entwurf
+image::sharecard/2026-11-07.png["Sharecard des Repair Café Gütersloh vom Samstag, 7. November 2026. 17 angemeldet, 16 bearbeitet, 1 nicht erschienen. Ergebnisse 6 gelungen, 1 teilweise gelungen, 6 vertagt, 3 nicht erfolgt. 31 Prozent der 48 Termine der letzten drei Jahre hatten höchstens 17 angemeldete Geräte. Spenden 100,46 €, 6,28 € je Gerät. Nächster Termin Samstag, 21. November 2026. Gefördert durch die Deutsche Stiftung für Engagement und Ehrenamt.",width=60%]
+
 * Die Verteilung zeigt ein Punktdiagramm, denn Lagen auf einer gemeinsamen Achse lassen sich genauer vergleichen als Flächen oder Winkel.
 * Die Idee stammt aus der Datenpotenzialanalyse, die ein teilbares Bild mit den Infos zum nächsten Termin vorgeschlagen hat cite:[prange-2022].
 

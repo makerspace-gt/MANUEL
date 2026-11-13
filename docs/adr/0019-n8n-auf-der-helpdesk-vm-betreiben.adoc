@@ -7,7 +7,7 @@ Status:: angenommen
 Datum:: 2026-10-22
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht, und 2026-11-13, Wortwahl
 
 == Kontext und Problem
 
@@ -30,7 +30,7 @@ n8n läuft selbst gehostet auf der Helpdesk-VM neben Zammad. Dort liegen die Zug
 
 === Konsequenzen
 
-* Gut, weil der Mini-PC ein reiner Rechenknecht für die Modelle bleibt.
+* Gut, weil auf dem Mini-PC nur die Modelle laufen.
 * Schlecht, weil n8n unter der Sustainable Use License steht. Sie erlaubt den Betrieb für eigene Zwecke, ist aber keine Open-Source-Lizenz.
 
 == Vor- und Nachteile der Optionen

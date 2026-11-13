@@ -2,6 +2,8 @@
 # Runs the n8n CLI inside the container "n8n" of the test environment, see docs/inbetriebnahme.md step 7.
 set -euo pipefail
 container=$(sudo podman ps --filter label=com.docker.compose.service=n8n --format '{{.Names}}' | head -n 1)
+# Fall back to a standalone container named n8n
+[[ -z "$container" ]] && container=$(sudo podman ps --filter name='^n8n$' --format '{{.Names}}')
 if [[ -z "$container" ]]; then
     echo "Der Container n8n läuft nicht. Die Testumgebung startet wie in docs/inbetriebnahme.md, Schritt 7." >&2
     exit 1

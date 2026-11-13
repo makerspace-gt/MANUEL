@@ -9,10 +9,10 @@ _Teilfrage T9. Welche Pflichten aus DSGVO und KI-Verordnung hat ein Verein, der 
 
 *Ergebnis.*
 
-* Der Betrieb auf eigener Hardware vermeidet die Weitergabe von Ticketdaten an Dritte.
+* Der Betrieb auf eigener Hardware vermeidet die Weitergabe von Ticketdaten an Dritte. Nach außen gehen keine personenbezogenen Daten <<adr-0048>>.
 * Auch ein Verein braucht Löschfristen, ein Verzeichnis der Verarbeitungen und Engagierte, die mit KI umgehen können.
 * Ticketinhalte und Webseiten sind Daten, keine Anweisungen. Die Agenten haben keine Aktionen, mit denen sie Schaden anrichten könnten.
-* Nach außen lauschen auf MANUEL nur SSH und die Namensauflösung des Systems, Ollama nur auf `127.0.0.1`.
+* Aus dem lokalen Netz ist auf MANUEL nur SSH erreichbar. Ollama, Open WebUI und die Testumgebung hören nur auf der Adresse im Tailnet <<adr-0047>>.
 
 *Wichtigste Befehle.*
 
@@ -50,7 +50,7 @@ Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist kein
 * Gäste schreiben frei, ein Text kann wie eine Anweisung an das Modell aussehen. Diese Prompt Injection steht an erster Stelle der Risiken für Anwendungen mit Sprachmodellen cite:[owasp-llm-2025]. Der Testsatz enthält dafür eigene erfundene Tickets der Gruppe „angriff“.
 * Agenten in Zammad bekommen nie die Aktion zum Versand von E-Mails oder SMS.
 * Bei der Websuche gehen nur Marke und Modell über eine eigene Instanz von SearXNG nach außen cite:[searxng], Inhalte von Webseiten steuern das Modell nicht <<adr-0035>>.
-* Zugang zu Ollama nur über NetBird <<adr-0020>>
+* Zugang zu Ollama nur über NetBird <<adr-0020>>, bis dahin nur im Tailnet <<adr-0047>>. Open WebUI läuft dort ohne Anmeldung, deshalb kommen keine Angaben von Gästen hinein.
 
 === Haftung und Urheberrecht
 

@@ -6,7 +6,13 @@
 #   zammad-compose down -v
 set -euo pipefail
 base=/usr/share/manuel
-exec sudo DOCKER_HOST=unix:///run/podman/podman.sock docker-compose -p zammad \
+# The ports listen only on the Tailscale address, see docs/adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc
+bind_ip=$(tailscale ip -4 2>/dev/null | head -n 1 || true)
+if [[ -z "$bind_ip" ]]; then
+    echo "Tailscale hat keine Adresse, die Ports der Testumgebung hören deshalb nur auf 127.0.0.1." >&2
+    bind_ip=127.0.0.1
+fi
+exec sudo DOCKER_HOST=unix:///run/podman/podman.sock MANUEL_BIND_IP="$bind_ip" docker-compose -p zammad \
     --project-directory "$base/zammad-docker-compose" \
     --env-file "$base/testumgebung/zammad.env" \
     -f "$base/zammad-docker-compose/docker-compose.yml" \

@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht, und 2026-11-13, Kategorie von Restarters als zweite Stelle
 
 == Kontext und Problem
 
@@ -26,7 +26,9 @@ Zammad, die Statistik und spätere Rückfragen brauchen für jeden Eintrag des K
 
 == Entscheidung
 
-Jeder Eintrag bekommt den Schlüssel `ORA.anstiftung.eigene`. Vorne steht die Nummer der ORA-Gruppe, die Gruppen ohne Strom bekommen 101 bis 106. In der Mitte steht die führende ID des Laufzettels, hinten eine eigene Unterscheidung, wo wir eine Kategorie aufteilen. Beispiele sind `37.424` für den Stabmixer mit dem Synonym Zauberstab und `11.459.1` für In-Ear-Kopfhörer.
+Jeder Eintrag bekommt den Schlüssel `ORA.Restarters.anstiftung.eigene`. Vorne steht die Nummer der ORA-Gruppe, die Gruppen ohne Strom bekommen 101 bis 106. Danach folgt die ID der Kategorie auf Restarters.net, bei Laptop und Flat screen eine 0, weil dort die Größe entscheidet. Dann kommt die führende ID des Laufzettels, hinten eine eigene Unterscheidung, wo wir eine Kategorie aufteilen. Beispiele sind `37.42.424` für den Stabmixer mit dem Synonym Zauberstab und `11.24.459.1` für In-Ear-Kopfhörer.
+
+Die Kategorie von Restarters kam am 13.11.2026 dazu. Jeder Gegenstand soll eindeutig einer Gruppe der Open Repair Alliance, einer Kategorie auf Restarters.net und den Kategorien der anstiftung zugeordnet sein, denn gemeldet wird über Restarters nach xref:0014-reparaturen-ueber-restarters-melden.adoc[ADR 14]. Bis dahin stand sie nur in einer Tabelle zur ORA-Gruppe.
 
 Bis MANUEL in Zammad läuft, darf sich ein Schlüssel noch ändern. Ab dem Echtbetrieb am 05.12.2026 bleibt er fest. Ändert sich dann eine ORA-Gruppe, bekommt der Eintrag einen neuen Schlüssel, und der alte bleibt als Verweis stehen.
 

@@ -43,8 +43,9 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 === Schlüssel
 
-* Form `ORA.anstiftung.eigene`, etwa 14.401 für den Wasserkocher
-* Eigene Aufteilungen bekommen eine dritte Stelle, etwa 11.459.1 und 11.459.2 für zwei Arten von Kopfhörern <<adr-0013>>
+* Form `ORA.Restarters.anstiftung.eigene`, etwa 14.39.401 für den Wasserkocher. Jeder Gegenstand gehört damit eindeutig zu einer Gruppe der ORA, einer Kategorie bei Restarters und den Kategorien der anstiftung.
+* Eigene Aufteilungen bekommen eine vierte Stelle, etwa 11.24.459.1 und 11.24.459.2 für zwei Arten von Kopfhörern <<adr-0013>>
+* Bei Laptop und Flat screen steht für Restarters eine 0, dort entscheidet die Größe des Geräts.
 * Mit dem Start in Zammad werden die Schlüssel eingefroren.
 
 === Sprache

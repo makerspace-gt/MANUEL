@@ -11,7 +11,7 @@ _Teilfrage T3. Reicht ein Mini-PC für den Betrieb und welche Modelle passen?_
 
 * Ein Mini-PC mit 64 GB gemeinsamem Speicher hält Sprachmodell, Decision-Modell und Embedding-Modell gleichzeitig geladen.
 * Ein Reparaturansatz ist in knapp 30 Sekunden fertig, eine Einordnung in Sekundenbruchteilen.
-* Im Echtbetrieb bleibt der Mini-PC ein Rechenknecht, Zammad und n8n laufen auf der Helpdesk-VM. Vorher läuft eine Testumgebung auf MANUEL <<adr-0043>>.
+* Im Echtbetrieb laufen auf dem Mini-PC nur die Modelle und Open WebUI, Zammad und n8n laufen auf der Helpdesk-VM. Vorher läuft eine Testumgebung auf MANUEL <<adr-0043>>.
 * Das Sprachmodell läuft mit llama.cpp, `d3:9b` und `bge-m3` mit Ollama <<adr-0025>>.
 
 *Wichtigste Befehle.*
@@ -19,7 +19,7 @@ _Teilfrage T3. Reicht ein Mini-PC für den Betrieb und welche Modelle passen?_
 [source,bash]
 ----
 sudo podman run -d --name ollama --restart=always --device /dev/dri \
-  -e OLLAMA_IGPU_ENABLE=1 -v ollama:/root/.ollama -p 127.0.0.1:11434:11434 \
+  -e OLLAMA_IGPU_ENABLE=1 -v ollama:/root/.ollama -p "$(tailscale ip -4):11434:11434" \
   docker.io/ollama/ollama:latest
 ollama run qwen3.6:35b-a3b "Mein Wasserkocher schaltet sich nicht mehr ein."
 ./bench.sh lang-qwen36-mtp llamacpp-vulkan
@@ -40,10 +40,10 @@ Dieses Kapitel steht noch in Stichpunkten.
 === Überblick
 
 * Diagramm aus dem PLAN, Mini-PC im Makerspace hinter NAT, Helpdesk-VM im Rechenzentrum
-* Verbindung über NetBird, im Makerspace werden keine Ports geöffnet <<adr-0020>>
+* Verbindung über NetBird, im Makerspace werden keine Ports geöffnet <<adr-0020>>. Bis NetBird läuft, verbindet Tailscale, und alle Dienste von MANUEL hören nur auf seiner Adresse im Tailnet <<adr-0042>>, <<adr-0047>>.
 * Zammad nutzt KI-Agenten und füllt die Felder selbst <<adr-0018>>, die Wissensdatenbank sammelt Anleitungen <<adr-0022>>
 * n8n übernimmt nur, was außerhalb von Zammad liegt <<adr-0019>>
-* Open WebUI hinter authentik für Tests und später den Chat
+* Open WebUI für Tests und später den Chat. Bis NetBird läuft, steht es im Tailnet ohne Anmeldung bereit, und Engagierte können Ollama auch mit eigenen Werkzeugen wie opencode ansprechen <<adr-0047>>. Später kommt die Anmeldung über authentik.
 
 [[schichten]]
 === Die Schichten von MANUEL
@@ -77,14 +77,14 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 === So laufen die Modelle
 
-* Ollama läuft im Container, nur an `127.0.0.1` gebunden. `OLLAMA_IGPU_ENABLE=1` ist nötig, sonst rechnet Ollama auf der CPU.
+* Ollama läuft im Container und hört nur auf der Adresse von Tailscale <<adr-0047>>. `OLLAMA_IGPU_ENABLE=1` ist nötig, sonst rechnet Ollama auf der CPU.
 
 [source,bash]
 ----
 sudo podman run -d --name ollama --restart=always \
   --device /dev/dri --cap-add PERFMON --security-opt label=disable \
   -e OLLAMA_IGPU_ENABLE=1 -e OLLAMA_CONTEXT_LENGTH=32768 \
-  -v ollama:/root/.ollama -p 127.0.0.1:11434:11434 \
+  -v ollama:/root/.ollama -p "$(tailscale ip -4):11434:11434" \
   docker.io/ollama/ollama:latest
 ----
 
@@ -146,4 +146,5 @@ sudo podman run -d --name llamacpp-vulkan --security-opt label=disable \
 * cite:[chen-2024]
 * Noch zu suchen sind Angaben des Herstellers zum Ryzen AI 9 HX 370, die Doku von Ollama und llama.cpp, die Modellkarten von qwen3.6 und d3 und die Doku von uCore.
 * Offen sind die Messung für k01 und die Ladezeit nach einem Neustart.
+* Alle paar Monate wiederholen wir die Läufe mit neuen Modellen, damit MANUEL laufend besser wird. Eingeordnet werden sie mit den Messungen von https://artificialanalysis.ai/[Artificial Analysis].
 ====

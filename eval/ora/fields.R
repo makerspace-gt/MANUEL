@@ -5,7 +5,12 @@
 # all columns are read as text and an empty field stays empty. For each field the script writes a
 # table with every distinct value and how often it occurs in each file, sorted by the total. A
 # summary lists for each field the number of rows, distinct values and empty values.
-# The tables for id and problem are large, so docs/ora/felder/.gitignore keeps them out of the repo.
+# At the end werte.csv has the same columns in the same order as the input files. Each column lists
+# the distinct values of its field from the most to the least common, so the columns have different
+# lengths and shorter ones end in empty cells. The empty value itself is left out, it cannot be told
+# apart from the padding. The column id stays empty because every id occurs once.
+# The tables for id and problem and werte.csv are large, so docs/ora/felder/.gitignore keeps them
+# out of the repo.
 #
 # Run in the repository root, see docs/adr/0049-daten-mit-r-auswerten.adoc:
 #   toolbox run -c manuel-r Rscript eval/ora/fields.R [quellen/openrepair-data] [docs/ora/felder]
@@ -46,8 +51,10 @@ count_field <- function(field) {
 }
 
 outputs <- character()
+all_values <- list()
 summary <- map(fields, \(field) {
   counts <- count_field(field)
+  all_values[[field]] <<- if (field == "id") character() else counts$value[counts$value != ""]
   path <- file.path(out_dir, paste0(field, ".tsv"))
   write_tsv(counts, path, na = "")
   outputs <<- c(outputs, path)
@@ -65,5 +72,10 @@ summary <- map(fields, \(field) {
 
 summary_path <- file.path(out_dir, "uebersicht.tsv")
 write_tsv(summary, summary_path)
+values_path <- file.path(out_dir, "werte.csv")
+longest <- max(lengths(all_values))
+wide <- as_tibble(lapply(all_values[fields], \(v) c(v, rep(NA_character_, longest - length(v)))))
+write_csv(wide, values_path, na = "")
+outputs <- c(outputs, values_path)
 write_run(summary_path, inputs = unname(files), outputs = c(summary_path, outputs))
 print(summary, n = Inf, width = Inf)

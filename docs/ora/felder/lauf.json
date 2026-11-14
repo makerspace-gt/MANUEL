@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-14T08:45:30+0100",
+  "date": "2026-11-14T09:08:58+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/ora/fields.R",
-  "commit": "f479ed9f027027e3b4c207ecb2f97930da6d773e",
+  "commit": "6b4d23dad91bf066d75b8ec1ffca57644ea8afa0",
   "dirty": true,
   "inputs": [
     {
@@ -73,6 +73,10 @@
     {
       "path": "docs/ora/felder/problem.tsv",
       "sha256": "2034cdcbd33bf7d6fcbbbc947454853595cad0b10e85cb7b5a5250985c1d1c8c"
+    },
+    {
+      "path": "docs/ora/felder/werte.csv",
+      "sha256": "eb6f32451bf97b0761b2e555476383f67d35a588283ec904cb3ea199251291e8"
     }
   ],
   "r": {

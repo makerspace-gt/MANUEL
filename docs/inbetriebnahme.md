@@ -319,11 +319,10 @@ zammad "$(cat /usr/share/manuel/testumgebung/redirect_outbound.rb)"
    Danach die Gegenprobe für den Fall mit Backup. Mit einer Mail „Test 1“ prüfen, dass Zammad abruft. Dann `disable_outbound.rb` ausführen, eine Mail „Test 2“ schicken und einige Minuten warten. „Test 2“ muss im Postfach bleiben, und eine Antwort im Ticket „Test 1“ darf außen nicht ankommen.
 6. Im Browser über Tailscale arbeiten. Zammad liegt unter http://manuel:8080, Mailpit unter http://manuel:8025 und n8n unter http://manuel:5678. Beim ersten Aufruf richtet Zammad ein Admin-Konto ein. Als Adresse des Systems dort `http://manuel:8080` angeben, sonst lehnt Zammad die Verbindung für Live-Updates ab.
 
-7. Die Felder und Makros für MANUEL anlegen, siehe [zammad/README.md](../zammad/README.md). Beide Dateien lassen sich wiederholen.
+7. Gruppe, Rollen, Felder, Makros und Übersetzungen für MANUEL legt der Dienst `manuel-setup` beim Start selbst an, siehe [zammad/README.md](../zammad/README.md). Nach Änderungen am Katalog läuft er erneut.
 
 ```bash
-zammad "$(cat zammad/objekte.rb)" < katalog/kategorien.tsv
-zammad "$(cat zammad/makros.rb)"
+zammad-compose run --rm manuel-setup
 ```
 
 ### 7.2 Backup einspielen

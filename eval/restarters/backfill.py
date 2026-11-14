@@ -39,15 +39,9 @@ REL = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
 
 EXPORT_COLUMNS = ["#", "Tags", "Ergebnis", "Marke", "Pending till", "Created At", "Closed At"]
 TARGET_COLUMNS = ["Ticket", "Kategorie", "Kategorie richtig"]
-# Reasons of "nicht erfolgt" with a barrier Restarters accepts. "Abnutzung zu groß" matches the standard's
-# "Item too worn out", which the API of Restarters does not accept, so it goes without a barrier.
-BARRIERS = {
-    "Ersatzteil nicht erhältlich": "Spare parts not available",
-    "Ersatzteil zu teuer": "Spare parts too expensive",
-    "Öffnung des Gerätes nicht möglich": "No way to open the product",
-    "Reparaturinformationen nicht verfügbar": "Repair information not available",
-    "Hilfsmittel oder Zubehör fehlt": "Lack of equipment",
-}
+# Status and barrier of every result in Zammad, shared with eval/ora/ords_export.R
+RESULTS = {row["result"]: row for row in csv.DictReader(
+    (ROOT / "eval" / "ora" / "result_mapping.tsv").open(encoding="utf-8"), delimiter="\t")}
 
 
 def xlsx_rows(path, columns, sheet_name=None):
@@ -167,25 +161,21 @@ def tag_date(tags, dates):
 
 
 def status(result):
-    """Status and barrier for Restarters, the action and a note for the team."""
+    """Status and barrier for Restarters, the action and a note for the team.
+
+    The mapping comes from eval/ora/result_mapping.tsv, which follows the table form_field_options_extra_infos
+    of the anstiftung. Restarters does not accept the barrier Item too worn out and has no Unknown."""
     if not result or result == "No-Show":
         return "", "", "nicht melden", "ohne Ergebnis" if not result else "nicht erschienen"
-    main, _, reason = result.partition("::")
-    if main == "gelungen":
-        return "Fixed", "", "melden", ""
-    if main == "teilweise gelungen":
-        return "", "", "klären", "teilweise gelungen"
-    if main == "vertagt":
-        return "Repairable", "", "melden", reason
-    if main.startswith("abgebrochen"):
-        return "End of life", "", "melden", "abgebrochen"
-    if main == "nicht erfolgt":
-        if reason in BARRIERS:
-            return "End of life", BARRIERS[reason], "melden", ""
-        if reason == "Abnutzung zu groß":
-            return "End of life", "", "melden", "Hindernis Item too worn out nimmt Restarters nicht an"
-        return "", "", "klären", f"nicht erfolgt, {reason or 'ohne Grund'}"
-    return "", "", "klären", f"unbekanntes Ergebnis {result}"
+    mapped = RESULTS.get(result)
+    if mapped is None:
+        return "", "", "klären", f"unbekanntes Ergebnis {result}"
+    repair_status, barrier = mapped["repair_status"], mapped["repair_barrier_if_end_of_life"]
+    if repair_status == "Unknown":
+        return "", "", "klären", f"Ergebnis {result} ist bei ORDS Unknown"
+    if barrier == "Product too worn out":
+        return repair_status, "", "melden", "Hindernis Item too worn out nimmt Restarters nicht an"
+    return repair_status, barrier, "melden", result.partition("::")[2] if repair_status == "Repairable" else ""
 
 
 def main():

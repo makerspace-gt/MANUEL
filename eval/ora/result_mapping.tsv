@@ -1,0 +1,24 @@
+result	repair_status	repair_barrier_if_end_of_life	anstiftung_form_field_option_id	source
+gelungen	Fixed		11	anstiftung, erfolgreich abgeschlossen
+teilweise gelungen	Fixed			Entscheidung vom 14.11.2026, die anstiftung kennt den Wert nicht
+vertagt	Repairable		12	anstiftung, vertagt weil
+vertagt::Ersatzteilbesorgung durch Gast	Repairable		9	anstiftung, Ersatzteilbesorgung durch Besucher
+vertagt::Ersatzteilbesorgung durch Repair Café	Repairable		10	anstiftung, Ersatzteilbesorgung durch Reparateur
+vertagt::Hilfsmittel oder Zubehör fehlt	Repairable		8	anstiftung
+vertagt::Gerät nicht komplett	Repairable			wie alle Gründe für vertagt bei der anstiftung
+vertagt::zu lange Wartezeit	Repairable			wie alle Gründe für vertagt bei der anstiftung
+nicht erfolgt	End of life		13	eigene Annahme, die anstiftung verlangt einen Grund
+nicht erfolgt::hat noch Garantie	Repairable		15	anstiftung
+nicht erfolgt::Hilfsmittel oder Zubehör fehlt	End of life	Lack of equipment	16	anstiftung
+nicht erfolgt::Gerät nicht komplett	End of life		17	anstiftung
+nicht erfolgt::Ersatzteil nicht erhältlich	End of life	Spare parts not available	18	anstiftung
+nicht erfolgt::Teilnutzung möglich	Repairable		19	anstiftung
+nicht erfolgt::Gesamtaufwand zu hoch	End of life		20	anstiftung
+nicht erfolgt::zu lange Wartezeit	Repairable		23	anstiftung
+nicht erfolgt::Öffnung des Gerätes nicht möglich	End of life	No way to open the product	25	anstiftung
+nicht erfolgt::Ersatzteil zu teuer	End of life	Spare parts too expensive	26	anstiftung
+nicht erfolgt::Reparaturinformationen nicht verfügbar	End of life	Repair information not available	27	anstiftung
+nicht erfolgt::Abnutzung zu groß	End of life	Product too worn out	28	anstiftung
+nicht erfolgt::Fehler nicht gefunden	Unknown		7	anstiftung, Fehler gefunden nein
+abgebrochen: Gerät darf nicht mehr genutzt werden	End of life		14	anstiftung, Abbruch
+abgebrochen::Gerät darf nicht mehr genutzt werden	End of life		14	anstiftung, Abbruch

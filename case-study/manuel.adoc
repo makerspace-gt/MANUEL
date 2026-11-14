@@ -54,7 +54,7 @@ Ein Großteil dieser Arbeit ist mit dem Sprachmodell Claude Opus 5.5 von Anthrop
 
 Wir lernen den Einsatz von KI selbst erst. Dazu gehört auch die Versuchung, einen gut klingenden Vorschlag einfach durchzuwinken, nach dem Motto https://www.youtube.com/watch?v=3TNpOD6bov8[„Looks Good to Me“].
 
-Zitiert werden nur öffentlich zugängliche Quellen, dazu gehören auch Sekundärquellen wie Blogbeiträge. Eigene Daten des Repair Café wie Tickets und Statistik liegen nur lokal, in die Arbeit gehen davon nur Summen.
+Zitiert werden nur Quellen, die gelesen wurden. Das können auch Fachbücher oder Artikel hinter einer Bezahlschranke sein, dazu kommen Sekundärquellen wie Blogbeiträge. Eigene Daten des Repair Café wie Tickets und Statistik liegen nur lokal, in die Arbeit gehen davon nur Summen.
 ====
 
 include::kapitel/00-vorspann.adoc[]
@@ -99,6 +99,7 @@ include::kapitel/13-fazit.adoc[]
 include::kapitel/anhang-adr.adoc[]
 
 include::kapitel/anhang-kategorien.adoc[]
+include::kapitel/anhang-ords.adoc[]
 
 include::kapitel/anhang-daten.adoc[]
 

@@ -88,7 +88,7 @@ Wie vollständig die Tickets sind, zeigt eine Zählung der Exporte. Gezählt wur
 Die Open Repair Alliance wurde von der anstiftung, Fixit Clinic, iFixit, der Repair Café Foundation und The Restart Project gegründet. The Restart Project koordiniert sie seit November 2017 cite:[ora-standard]. Die Alliance führt die Daten ihrer Partner zweimal im Jahr zu einem gemeinsamen Datensatz zusammen und veröffentlicht ihn unter CC BY-SA 4.0 cite:[ora-datasets]. Ausgewertet ist hier die Version 0.3 vom Juli 2026 cite:[ora-data].
 
 [[ords]]
-Der Standard legt fest, welche Felder ein Eintrag hat und welche Werte erlaubt sind cite:[ora-standard].
+Der Standard legt fest, welche Felder ein Eintrag hat und welche Werte erlaubt sind cite:[ora-standard]. Bedeutung, Zweck und Erfassung jedes Felds und woher der Wert bei uns kommt, stehen in <<anhang-ords>>.
 
 [cols="2,3,4",options="header"]
 |===

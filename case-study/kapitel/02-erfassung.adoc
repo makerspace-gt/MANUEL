@@ -85,7 +85,7 @@ Wie vollständig die Tickets sind, zeigt eine Zählung der Exporte. Gezählt wur
 [[ora]]
 === Open Repair Alliance und der Standard
 
-Die Open Repair Alliance wurde von der anstiftung, Fixit Clinic, iFixit, der Repair Café Foundation und The Restart Project gegründet. The Restart Project koordiniert sie seit November 2017 cite:[ora-standard]. Die Alliance führt die Daten ihrer Partner zweimal im Jahr zu einem gemeinsamen Datensatz zusammen und veröffentlicht ihn unter CC BY-SA 4.0 cite:[ora-datasets]. Ausgewertet ist hier die Version 0.3 vom Juli 2026 cite:[ora-data].
+Die Open Repair Alliance wurde von der anstiftung, Fixit Clinic, iFixit, der Repair Café Foundation und The Restart Project gegründet. The Restart Project koordiniert sie seit November 2017 cite:[ora-standard]. Die Alliance führt die Daten ihrer Partner alle 6 bis 12 Monate zu einem gemeinsamen Datensatz zusammen und veröffentlicht ihn unter CC BY-SA 4.0 cite:[ora-datasets]. An anderer Stelle derselben Seite heißt es, der Datensatz werde jährlich aktualisiert. Daten in Echtzeit über eine API sind ausdrücklich nicht geplant. Ausgewertet ist hier die Version 0.3 vom Juli 2026 cite:[ora-data].
 
 [[ords]]
 Der Standard legt fest, welche Felder ein Eintrag hat und welche Werte erlaubt sind cite:[ora-standard]. Bedeutung, Zweck und Erfassung jedes Felds und woher der Wert bei uns kommt, stehen in <<anhang-ords>>.
@@ -108,7 +108,7 @@ Für Gegenstände ohne Strom legt der Standard keine Werte fest. Er ist nach eig
 
 Pflicht ist im Standard nur die Kategorie des Partners, die ORDS-Kategorie ist optional https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L62-L77[(Standard, Zeile 62 bis 77)]. Jeder Partner liefert also seine eigene Kategorie, und die Open Repair Alliance ordnet sie einer ORDS-Kategorie zu. Die Kategorie des Partners bleibt dabei erhalten, damit sich Fehler, Übersetzungsprobleme und Ermessensfragen in der Zuordnung später finden lassen. Am wertvollsten sind laut Standard Kategorien aus einer festen Werteliste, die schon bei der Erfassung geprüft und im besten Fall bereits einer ORDS-Kategorie zugeordnet sind. Genau das soll der Katalog in <<katalog>> leisten.
 
-Entscheidend für diese Arbeit ist das Verhältnis der ersten beiden Kategoriefelder. Jeder Partner erfasst mit seiner eigenen Liste. Die Alliance ordnet jede dieser Kategorien einer Produktkategorie des Standards zu und prüft die Zuordnung bei jedem neuen Datensatz cite:[ora-datasets]. Die Produktkategorien des Standards heißen in dieser Arbeit ORA-Gruppen.
+Entscheidend für diese Arbeit ist das Verhältnis der ersten beiden Kategoriefelder. Jeder Partner erfasst mit seiner eigenen Liste. Die Alliance ordnet jede dieser Kategorien einer Produktkategorie des Standards zu und prüft die Zuordnung bei jedem neuen Datensatz cite:[ora-datasets]. Das ist Handarbeit des technischen Teams in Google Sheets. Neue Werte in den Daten eines Partners lösen eine Anpassung aus, und die Kategorie des Partners entsteht meist aus zwei verketteten Stufen. Jeder neue Freitext macht also Arbeit bei der Alliance. Die Produktkategorien des Standards heißen in dieser Arbeit ORA-Gruppen.
 
 [[partner]]
 === Andere Initiativen und ihre Werkzeuge
@@ -178,7 +178,7 @@ image::../../docs/grafiken/ora-jahre-partner-hell.svg[Gemeldete Reparaturen je J
 .Gemeldete Reparaturen je Monat
 image::../../docs/grafiken/ora-monate-hell.svg[Gemeldete Reparaturen je Monat,width=100%]
 
-Auch die Mischung der Geräte hat sich verschoben. Textilien und Gegenstände ohne Strom aus dem Haushalt machen 2026 zusammen fast ein Drittel aus, 2015 waren es 7 Prozent. Laptops fielen von 12 auf 2 Prozent. Das liegt vermutlich weniger an den Geräten als an den Partnern. Anfangs meldete fast nur The Restart Project, dessen Veranstaltungen sich auf Elektronik konzentrieren.
+Auch die Mischung der Geräte hat sich verschoben. Textilien und Gegenstände ohne Strom aus dem Haushalt machen 2026 zusammen fast ein Drittel aus, 2015 waren es 7 Prozent. Laptops fielen von 12 auf 2 Prozent. Das liegt vermutlich weniger an den Geräten als an den Partnern. Anfangs meldete fast nur The Restart Project, dessen Veranstaltungen sich auf Elektronik konzentrieren. Nach einer Schätzung der Alliance sind 30 bis 40 Prozent der Gegenstände bei Reparaturveranstaltungen nicht elektrisch cite:[ora-report-2024-data].
 
 .Die 15 häufigsten ORA-Gruppen je Jahr
 image::../../docs/grafiken/ora-gruppen-jahre-hell.svg[Die 15 häufigsten ORA-Gruppen je Jahr,width=100%]
@@ -195,7 +195,7 @@ include::../../docs/ora/events_by_partner.tsv[lines=2..-1]
 [[eigene-daten]]
 === Wie viel bei der Alliance ankommt
 
-Der Datensatz der Alliance zeigt nur, was gemeldet wird. Beim Repair Café Gütersloh ist das ein kleiner Teil. Die eigene Statistik zählt seit 2019 1.485 bearbeitete Geräte an 85 Terminen. Auf reparatur-initiativen.org stehen für dieselbe Zeit 30 Laufzettel, das sind rund 2 Prozent. Alle 30 finden sich in den Open Repair Data wieder, unter der Gruppe 17503 mit denselben Terminen und Kategorien. Der Weg über die anstiftung funktioniert also. Es wird nur fast nichts gemeldet, weil jeder Laufzettel von Hand abgetippt werden muss.
+Der Datensatz der Alliance zeigt nur, was gemeldet wird. Beim Repair Café Gütersloh ist das ein kleiner Teil. Die eigene Statistik zählt seit 2019 1.485 bearbeitete Geräte an 85 Terminen. Auf reparatur-initiativen.org stehen für dieselbe Zeit 30 Laufzettel, das sind rund 2 Prozent. Alle 30 finden sich in den Open Repair Data wieder, unter der Gruppe 17503 mit denselben Terminen und Kategorien. Der Weg über die anstiftung funktioniert also. Es wird nur fast nichts gemeldet, weil jeder Laufzettel von Hand abgetippt werden muss. Papier allein reicht dafür nicht. Die Alliance nimmt nur Daten von Partnern, die elektronisch erfassen cite:[ora-datasets]. Auch Szpak und Mather halten Papier am Tisch für sinnvoll, aber erst digitale Daten für nutzbar cite:[szpak-mather].
 
 .Bearbeitete Geräte und gemeldete Laufzettel des Repair Café Gütersloh
 [cols="1,1,1,1",options="header"]
@@ -212,7 +212,7 @@ Der Datensatz der Alliance zeigt nur, was gemeldet wird. Beim Repair Café Güte
 |Summe |85 |1.485 |30
 |===
 
-Bei anderen Initiativen dürfte es ähnlich sein. Für die Auswertungen der Alliance heißt das, dass die Zahlen die Vielfalt der Geräte zeigen, aber nicht den Umfang der Reparaturen. Für MANUEL ist es der wichtigste Grund, die Übertragung zu automatisieren. <<weitergabe>> zeigt, wie sich die Lücke für die Jahre ab 2024 schließen lässt.
+Bei anderen Initiativen dürfte es ähnlich sein. Die Alliance schätzt selbst, dass ihr Datensatz nur rund 20 Prozent der Reparaturen an Elektrogeräten bei Reparaturveranstaltungen erfasst cite:[ora-report-2024-data]. Für die Auswertungen der Alliance heißt das, dass die Zahlen die Vielfalt der Geräte zeigen, aber nicht den Umfang der Reparaturen. Für MANUEL ist es der wichtigste Grund, die Übertragung zu automatisieren. <<weitergabe>> zeigt, wie sich die Lücke für die Jahre ab 2024 schließen lässt.
 
 // Ergebnis folgt in Stufe 3, Antwort auf T1.
 
@@ -227,7 +227,7 @@ Bei anderen Initiativen dürfte es ähnlich sein. Für die Auswertungen der Alli
 [NOTE]
 .Quellen und offene Punkte für dieses Kapitel
 ====
-* cite:[ora-standard], cite:[ora-datasets], cite:[ora-record], cite:[ora-members], cite:[ora-data], cite:[szpak-mather], cite:[prange-2022]
+* cite:[ora-standard], cite:[ora-datasets], cite:[ora-record], cite:[ora-members], cite:[ora-data], cite:[szpak-mather], cite:[ora-report-2024-data], cite:[prange-2022]
 * Noch zu suchen sind die Reparatur-Statistik der anstiftung, Beschreibungen von Fixometer und Repair Monitor und Studien zur Erfassung bei Repair Cafés.
 * Offen ist, ob die Tabelle der Felder auch die Laufzettel von 2019 bis 2021 zum Vergleich zeigen soll.
 ====

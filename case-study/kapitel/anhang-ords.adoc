@@ -15,7 +15,7 @@ Pflicht und optional stehen in der Übersicht des Standards {ords}#L62-L117[(Zei
 [horizontal]
 Bedeutung:: Die ursprüngliche Kategorie aus den Daten des Partners, also die Kategorie, die einer ORDS-Kategorie zugeordnet wird. Eine Option aus der Liste des Partners oder Freitext.
 Zweck:: Neben der ORDS-Kategorie erlaubt sie andere Auswertungen. Außerdem lassen sich Fehler, Übersetzungsprobleme, Mehrdeutigkeiten und Ermessensfragen in der Zuordnung finden und die Qualität der Daten verbessern.
-Erfassung:: Die Partner haben schon immer eigene Kategorien geliefert. Am wertvollsten sind einheitliche Kategorien aus einer festen Werteliste, die schon bei der Erfassung geprüft und im besten Fall bereits einer ORDS-Kategorie zugeordnet sind. Manche kommen als Freitext oder nicht auf Englisch. Oft wird die Kategorie mit einem weiteren Feld wie `item_type` verkettet, etwa „Household appliances electric ~ Coffee maker“. Das hilft bei der Zuordnung.
+Erfassung:: Die Partner haben schon immer eigene Kategorien geliefert. Die Alliance ordnet sie von Hand in Google Sheets zu cite:[ora-datasets]. Am wertvollsten sind einheitliche Kategorien aus einer festen Werteliste, die schon bei der Erfassung geprüft und im besten Fall bereits einer ORDS-Kategorie zugeordnet sind. Manche kommen als Freitext oder nicht auf Englisch. Oft wird die Kategorie mit einem weiteren Feld wie `item_type` verkettet, etwa „Household appliances electric ~ Coffee maker“. Das hilft bei der Zuordnung.
 Bei uns:: Die Kategorie bei Restarters und der englische Name des Gegenstands als `item_type`, in den Daten etwa „Kettle ~ Electric kettle“. Beides kommt aus den Spalten `restarters_category` und `name_en` des Katalogs <<adr-0013>>. Bis 2025 kamen unsere 30 Laufzettel über die anstiftung, dort in der Form „Haushaltsgeräte ~ Waschmaschine“.
 Fundstelle:: {ords}#L159-L181[Zeile 159 bis 181]
 
@@ -48,7 +48,7 @@ Fundstelle:: {ords}#L195-L214[Zeile 195 bis 214]
 
 In den Open Repair Data vom Juli 2026 sind Alter und Baujahr immer gemeinsam gefüllt und passen immer zum Jahr des Termins. Eines der beiden Felder ist also aus dem anderen berechnet, wie es die Feldreferenz erlaubt. Nur 192.902 von 619.873 Einträgen haben ein Alter, drei Partner liefern nie eines. Das mittlere Alter liegt bei 7 Jahren.
 
-Dass die Werte Schätzungen sind, zeigt die Verteilung. Von 5 bis 60 Jahren fallen 57 Prozent der Alter auf Vielfache von 5, bei gleichmäßiger Verteilung wären es 21 Prozent. Gäste sagen also eher „etwa 10 Jahre“ als „9 Jahre“. 396 Einträge sind älter als 100 Jahre. Viele davon sind plausibel, etwa Pendeluhren, Familienbibeln, Möbel oder Nähmaschinen. Andere sind es nicht, etwa ein Toaster von 1869, ein Verstärker von 1771 oder ein Elektrogerät von 1671. Für Auswertungen des Alters sollten solche Ausreißer deshalb begrenzt oder einzeln geprüft werden.
+Dass die Werte Schätzungen sind, zeigt die Verteilung. Von 5 bis 60 Jahren fallen 57 Prozent der Alter auf Vielfache von 5, bei gleichmäßiger Verteilung wären es 21 Prozent. Gäste sagen also eher „etwa 10 Jahre“ als „9 Jahre“. 396 Einträge sind älter als 100 Jahre. Viele davon sind plausibel, etwa Pendeluhren, Familienbibeln, Möbel oder Nähmaschinen. Andere sind es nicht, etwa ein Toaster von 1869, ein Verstärker von 1771 oder ein Elektrogerät von 1671. Die Alliance prüft das Baujahr nach eigener Aussage auf negative Alter, Tippfehler und verdächtige Werte cite:[ora-datasets]. Die Werte von 1671 und 1771 haben diese Prüfung trotzdem überstanden. Für Auswertungen des Alters sollten solche Ausreißer deshalb begrenzt oder einzeln geprüft werden.
 
 .Alter der Gegenstände in den Open Repair Data
 image::../../docs/grafiken/ora-age-hell.svg[Balken je Jahr des Alters bis 60 Jahre, getrennt nach Elektrogeräten und Gegenständen ohne Strom, mit deutlichen Spitzen bei 5, 10, 15, 20 und weiteren Vielfachen von 5,width=100%]
@@ -75,7 +75,7 @@ Fundstelle:: {ords}#L219-L242[Zeile 219 bis 242]
 Bedeutung:: Eine Beschreibung des Problems, das bei der Reparatur am Gerät festgestellt wurde. Freitext ohne personenbezogene Daten wie Mailadressen.
 Zweck:: Häufige Probleme zeigen, wo Hersteller nachbessern könnten oder welche Ersatzteile am dringendsten gebraucht werden.
 Erfassung:: Alle Partner erfassen Probleme, bisher als Freitext. Das macht die Auswertung schwer. Eine Liste von Fehlerarten soll in einer späteren Version folgen.
-Bei uns:: Felder Defekt und Lösung in Zammad. Bei der Meldung wird die Lösung an den Defekt angehängt, die Anonymisierung entfernt persönliche Angaben <<adr-0036>>. Gemeint ist laut Standard der festgestellte Fehler und nicht die Schilderung des Gastes vor dem Termin. Die Datenpotenzialanalyse hat 2022 eine Liste von 22 Defektwerten bestimmt cite:[prange-2022].
+Bei uns:: Felder Defekt und Lösung in Zammad. Bei der Meldung wird die Lösung an den Defekt angehängt, die Anonymisierung entfernt persönliche Angaben <<adr-0036>>. Die Alliance nennt Namen und Mailadressen in den Daten der Partner als gefundenes Problem, beschreibt aber kein Verfahren dagegen cite:[ora-datasets]. Die eigene Anonymisierung vor der Meldung bleibt deshalb nötig <<adr-0048>>. Gemeint ist laut Standard der festgestellte Fehler und nicht die Schilderung des Gastes vor dem Termin. Die Datenpotenzialanalyse hat 2022 eine Liste von 22 Defektwerten bestimmt cite:[prange-2022].
 Fundstelle:: {ords}#L244-L258[Zeile 244 bis 258]
 
 ==== Hindernis, `repair_barrier_if_end_of_life`, optional
@@ -95,7 +95,7 @@ Fundstelle:: {ords}#L260-L286[Zeile 260 bis 286]
 Bedeutung:: Eindeutige Kennung des Eintrags beim Partner. Sie muss nicht über alle Partner eindeutig sein.
 Zweck:: Unverzichtbar für das Zusammenführen und für Auswertungen.
 Erfassung:: Die meisten Partner haben eindeutige Kennungen. Ein Zeitstempel als Kennung war in wenigen Fällen nicht eindeutig, besser ist eine Kennung unabhängig vom Datum.
-Bei uns:: Restarters vergibt die Kennung beim Anlegen des Geräts.
+Bei uns:: Restarters vergibt die Kennung beim Anlegen des Geräts. Die Alliance fordert bei jeder Lieferung alle Daten seit Beginn an, weil Partner alte Einträge ändern oder löschen, und die Kennung bleibt dabei gleich cite:[ora-datasets]. Fehler in der Nachmeldung lassen sich also auch später noch korrigieren.
 Fundstelle:: {ords}#L291-L302[Zeile 291 bis 302]
 
 ==== Datum des Termins, `event_date`, Pflicht

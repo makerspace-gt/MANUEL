@@ -1,0 +1,71 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-ticket: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/app/models/ticket.rb
+[[adr-0053]]
+= 0053 Den Termin in der Wartezeit behalten
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-14
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Im Repair Café ist der Termin eines Gastes die Wartezeit des Tickets, also „Warten bis“ mit Datum und Uhrzeit. Antwortet der Gast, setzt Zammad das Ticket auf offen und leert dabei die Wartezeit {zammad-ticket}#L729-L747[(ticket.rb, Zeile 729 bis 747)]. Der Termin wäre weg. Das Helpdesk verhindert das bisher mit einer Kopie der ganzen `ticket.rb` aus Zammad 7.1, in der eine Zeile auskommentiert ist. Wie behalten wir den Termin, ohne das Modell von Zammad zu ersetzen, und so, dass andere Initiativen es genauso machen können?
+
+== Entscheidungskriterien
+
+* Der Termin bleibt erhalten, wenn eine Antwort kommt
+* Zammad bleibt bei Updates so unverändert wie möglich
+* Für das Team ändert sich im Alltag nichts
+* Andere Initiativen bekommen die Lösung ohne eigene Einstellung
+
+== Betrachtete Optionen
+
+* Kopie der ganzen `ticket.rb`, wie bisher im Helpdesk
+* Kleiner Initializer, der nur `reset_pending_time` überschreibt
+* Eigenes Feld Termin mit Datum und Uhrzeit, wie es der Plan für den Neuaufbau der IT empfiehlt
+
+== Entscheidung
+
+Gewählt wird der Initializer {repo}/zammad/keep_pending_time.rb[keep_pending_time.rb]. Er stellt `Ticket` ein Modul voran, in dem `reset_pending_time` nichts tut. Alles andere bleibt von Zammad. {repo}/zammad/compose.yml[compose.yml] bindet ihn in railsserver und scheduler ein, denn der scheduler holt die Mails der Gäste ab. Der Termin bleibt die Wartezeit, das Feld `event_date` in {repo}/zammad/objects.rb[objects.rb] entfällt.
+
+In der Testinstanz mit Zammad 7.2.2 war am 14.11.2026 nach einer Antwort per Mail das Ticket offen und die Wartezeit leer. Mit dem Initializer blieb sie erhalten, und die Erinnerung zur Wartezeit kam weiterhin.
+
+=== Konsequenzen
+
+* Gut, weil das Team weiterarbeitet wie bisher und keine Wartezeiten umgezogen werden müssen.
+* Gut, weil nur eine Methode abweicht und Zammad sonst bei jedem Update vollständig bleibt.
+* Gut, weil andere Initiativen die Lösung über `zammad/compose.yml` ohne eigene Einstellung bekommen.
+* Schlecht, weil die Wartezeit in allen Gruppen des Zammad erhalten bleibt, nicht nur bei Reparaturen. Im Helpdesk ist das heute schon so.
+* Schlecht, weil die Erinnerung an den Termin gebunden bleibt. Eine Erinnerung zu einem anderen Zeitpunkt braucht ein anderes Mittel.
+* Schlecht, weil nach jedem Update von Zammad zu prüfen ist, ob es `reset_pending_time` noch gibt. Fehlt die Methode, schreibt der Initializer einen Fehler ins Log, und die Wartezeit wird wieder geleert.
+
+== Vor- und Nachteile der Optionen
+
+=== Kopie der ganzen ticket.rb
+
+* Gut, weil sie im Helpdesk seit Zammad 7.1 läuft.
+* Schlecht, weil sie bei jedem Update ganz abgeglichen werden muss. Das Helpdesk läuft laut Rolle inzwischen mit 7.2. Gegenüber der `ticket.rb` aus 7.2.2 fehlen der Kopie diese Teile:
+** `include HasRecentViews` für die zuletzt angesehenen Tickets
+** `core_workflow_permission 'ticket.agent', 'ticket.customer'` für Core Workflows
+** `taskbar_live_user_pundit_method :show?` für die Liste der Personen, die ein Ticket gerade offen haben
+** eine Korrektur der automatischen Zuweisung
+** das Aufräumen von Links beim Zusammenführen von Tickets
+
+=== Initializer
+
+* Gut, weil er nur die eine Methode betrifft.
+* Schlecht, weil er vom Namen einer privaten Methode in Zammad abhängt.
+
+=== Eigenes Feld Termin
+
+* Gut, weil Zammad unverändert bleibt und die Wartezeit wieder als Erinnerung dient.
+* Schlecht, weil sich Übersichten und Gewohnheiten des Teams ändern und alle Wartezeiten einmal umgezogen werden müssen.
+
+== Quellen
+
+* {zammad-ticket}#L729-L747[ticket.rb von Zammad, Methode reset_pending_time], aufgerufen vor jedem Speichern in {zammad-ticket}#L42[Zeile 42]
+* https://github.com/makerspace-gt/docker-compose-server/blob/5be0c36511b8bab7f83e8dd6e8713486c09971f9/roles/zammad/files/app/models/ticket.rb#L714-L732[Kopie der ticket.rb im Repo docker-compose-server], dort in railsserver und scheduler eingebunden
+* https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md#angepasste-ticketrb[Plan für den Neuaufbau der IT, Abschnitt Angepasste ticket.rb], mit dem eigenen Feld und dem Initializer als Lösungen
+* Vergleich der Kopie mit der `ticket.rb` im Image `ghcr.io/zammad/zammad:7.2.2-0012` der Testinstanz am 14.11.2026
+* Festlegung von Michael Prange am 14.11.2026, der Termin ist die Wartezeit mit Uhrzeit

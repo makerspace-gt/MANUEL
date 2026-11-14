@@ -106,6 +106,7 @@ include::../../docs/adr/0049-daten-mit-r-auswerten.adoc[]
 include::../../docs/adr/0050-problem-loesung-und-befund-mit-drei-agenten-erfassen.adoc[]
 include::../../docs/adr/0051-reparaturdaten-nach-ords-oeffentlich-bereitstellen.adoc[]
 include::../../docs/adr/0052-erfasste-daten-festlegen.adoc[]
+include::../../docs/adr/0053-termin-in-der-wartezeit-behalten.adoc[]
 
 :leveloffset: -2
 :sectnums:

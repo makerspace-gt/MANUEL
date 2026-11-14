@@ -10,7 +10,7 @@ The date of a repair comes from the ticket's tags. The team tags each ticket wit
 event, a postponed ticket gets one tag per event and the last one counts. Older tickets only carry the
 month, then the one date of the statistics in that month counts. Without a usable tag the date is the last
 date of the statistics between creating and closing the ticket, or Pending till if it is a date of the
-statistics. The one Laufzettel of 2025 already reached the Open
+statistics. Earlier date tags of a reused ticket go to the column earlier_dates. The one Laufzettel of 2025 already reached the Open
 Repair Alliance via anstiftung and is left out.
 
 Run in the repository root:
@@ -129,6 +129,17 @@ def event_dates(statistics):
     return sorted(dates), moved
 
 
+def earlier_dates(tags, date):
+    """Event dates in the tags before the counted one, a reused ticket was at each of these events."""
+    days = set()
+    for tag in (t.strip() for t in tags.split(",")):
+        try:
+            days.add(dt.date.fromisoformat(tag))
+        except ValueError:
+            pass
+    return sorted(d for d in days if date and d < date)
+
+
 def tag_date(tags, dates):
     """Date of the event from the tags, the source of that date and a note for the team."""
     days, months, others = [], [], []
@@ -243,6 +254,7 @@ def main():
             rows.append({
                 "ticket": number, "created": created.isoformat() if ticket.get("Created At") else "",
                 "closed": closed, "event_date": date.isoformat() if date else "",
+                "earlier_dates": ",".join(d.isoformat() for d in earlier_dates(ticket.get("Tags", ""), date)),
                 "date_source": source, "target_category": target,
                 "catalog_key": entry["key"] if entry else "", "item_type": entry["name_en"] if entry else "",
                 "ora_group": entry["ora_group"] if entry else "",

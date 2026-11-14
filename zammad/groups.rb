@@ -35,4 +35,15 @@ ROLES.each do |name, spec|
   role.save!
 end
 
-puts "Gruppen #{Group.where(name: GROUPS).pluck(:name).join(', ')}, Rollen #{Role.where(name: ROLES.keys).pluck(:name).join(', ')}"
+# Who repaired is the owner of the ticket. A guest who repairs alone cannot be owner, so the agent
+# Gast stands for them, see docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc. It has no password
+# and no email address and cannot log in. User names are not translated, the login stays guest.
+GUEST_AGENT = { login: 'guest', firstname: 'Gast' }.freeze
+
+guest = User.find_or_initialize_by(login: GUEST_AGENT[:login])
+guest.assign_attributes(firstname: GUEST_AGENT[:firstname], active: true, updated_by_id: 1)
+guest.created_by_id ||= 1
+guest.role_ids = guest.role_ids | [Role.find_by!(name: 'Repair agents').id]
+guest.save! if guest.changed? || guest.new_record?
+
+puts "Gruppen #{Group.where(name: GROUPS).pluck(:name).join(', ')}, Rollen #{Role.where(name: ROLES.keys).pluck(:name).join(', ')}, Agent für Gäste #{guest.fullname}"

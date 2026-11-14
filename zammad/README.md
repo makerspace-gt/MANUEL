@@ -4,13 +4,14 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet. Sie enthalten n
 
 | Datei | Inhalt |
 |---|---|
-| [compose.yml](compose.yml) | Dienst `manuel-setup` zusätzlich zu `docker-compose.yml` aus [zammad-docker-compose](../quellen/zammad-docker-compose). Er wartet auf `zammad-init`, führt `setup.rb` aus und beendet sich |
+| [compose.yml](compose.yml) | Dienst `manuel-setup` zusätzlich zu `docker-compose.yml` aus [zammad-docker-compose](../quellen/zammad-docker-compose). Er wartet auf `zammad-init`, führt `setup.rb` aus und beendet sich. Außerdem bindet die Datei `keep_pending_time.rb` in railsserver und scheduler ein |
 | [setup.rb](setup.rb) | Lädt die folgenden Dateien in dieser Reihenfolge und ändert zuletzt das Schema der Datenbank, weil Zammad danach neu startet |
-| [groups.rb](groups.rb) | Gruppe Repairs mit der Untergruppe Requests sowie die Rollen Repair agents und Repair moderators |
-| [objects.rb](objects.rb) | Felder im Ticket, also Art des Geräts aus dem [Katalog](../katalog/), Marke, Bezeichnung, Baujahr, Alter und Angabe zum Alter, Stromversorgung, Defekt laut Anmeldung, festgestellter Defekt, Lösung, Ergebnis als Baum, Repariert von, VDE-Prüfung, Termin sowie Spenden und Bedarf für das Statistik-Ticket |
+| [groups.rb](groups.rb) | Gruppe Repairs mit der Untergruppe Requests, die Rollen Repair agents und Repair moderators und der Agent Gast |
+| [objects.rb](objects.rb) | Felder im Ticket, also Art des Geräts aus dem [Katalog](../katalog/), Marke, Bezeichnung, Baujahr, Alter und Angabe zum Alter, Stromversorgung, Defekt laut Anmeldung, festgestellter Defekt, Lösung, Ergebnis als Baum, VDE-Prüfung sowie Spenden und Bedarf für das Statistik-Ticket |
 | [macros.rb](macros.rb) | Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“, die je einen Tag setzen, siehe [ADR 32](../docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc) |
 | [translations.rb](translations.rb) | Deutsche Übersetzungen aller Bezeichnungen als eigene Übersetzungen in Zammad und die Wörter aus guest_wording.tsv |
 | [guest_wording.tsv](guest_wording.tsv) | Gast statt Kunde in 52 Texten von Zammad, englisch und deutsch |
+| [keep_pending_time.rb](keep_pending_time.rb) | Initializer, der die Wartezeit behält, wenn ein Ticket den Status warten verlässt, siehe [ADR 53](../docs/adr/0053-termin-in-der-wartezeit-behalten.adoc) |
 
 ## Start
 
@@ -41,6 +42,8 @@ Namen, Werte und Bezeichnungen sind englisch. Deutsch kommt als eigene Übersetz
 - Repair agents bearbeiten die Tickets beider Gruppen. Repair moderators pflegen zusätzlich Makros, Textbausteine und die Wissensdatenbank und sehen die Berichte. Die Rechte sind ein Vorschlag.
 - Ein vorhandenes Zammad mit anderen Namen für Gruppe oder Felder vorher anpassen, sonst entsteht ein zweites Feld oder eine zweite Gruppe. Bei uns wird die Gruppe Repair Café Anfragen zur Untergruppe Requests einer neuen Gruppe Repairs, und die Rollen Repair Café Agents und Repair Café Moderators heißen künftig Repair agents und Repair moderators.
 - Die VDE-Prüfung kennt leer, empfohlen, ja und nein. Leer heißt, es ist noch nicht entschieden.
+- Wer repariert hat, ist der Owner des Tickets. Hat der Gast selbst repariert, wird der Agent Gast Owner, siehe [ADR 32](../docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc). Er hat den Login `guest`, kein Passwort und keine E-Mail-Adresse und kann sich nicht anmelden. Ein vorhandener Agent für Gäste bekommt vorher den Login `guest`, sonst entsteht ein zweiter.
+- Der Termin ist die Wartezeit mit Datum und Uhrzeit. Antwortet ein Gast, würde Zammad sie leeren. `keep_pending_time.rb` überschreibt dafür nur die Methode `reset_pending_time` statt die ganze `ticket.rb` zu ersetzen. Nach jedem Update von Zammad prüfen, ob es die Methode noch gibt, sonst steht ein Fehler im Log.
 - Welche Felder wann sichtbar sind, etwa Spenden nur im Statistik-Ticket, regeln Core Workflows. Die fehlen hier noch.
 
-Am 14.11.2026 lief `setup.rb` neunmal in der Testinstanz mit Zammad 7.2.2. Fehler und doppelte Einträge gab es nicht, beim letzten Lauf änderte sich nichts mehr. Der Dienst `manuel-setup` selbst ist noch nicht gelaufen, nur seine Konfiguration ist mit `docker compose config` geprüft.
+Am 14.11.2026 lief `setup.rb` neunmal in der Testinstanz mit Zammad 7.2.2. Fehler und doppelte Einträge gab es nicht, beim letzten Lauf änderte sich nichts mehr. Danach lief der Dienst `manuel-setup` zweimal auf MANUEL, beim zweiten Mal ohne Änderung. Eine Antwort per Mail auf ein Ticket mit Wartezeit ließ diese ohne `keep_pending_time.rb` leer, mit der Datei blieb sie erhalten, und die Erinnerung zur Wartezeit kam weiterhin.

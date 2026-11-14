@@ -115,14 +115,13 @@ field('problem_found', tr('Problem found', 'Festgestellter Defekt'), 'textarea',
 field('solution', tr('Solution', 'Lösung'), 'textarea', text, 1160)
 field('repair_result', tr('Result', 'Ergebnis'), 'tree_select',
       { options: result_tree, default: '', nulloption: true, multiple: false, translate: true, maxlength: 255 }, 1170)
-field('repaired_by', tr('Repaired by', 'Repariert von'), 'select',
-      choice({ 'visitor'      => ['Visitor alone', 'Gast selbst'],
-               'visitor_help' => ['Visitor with help', 'Gast mit Hilfe'],
-               'volunteers'   => %w[Volunteers Engagierte] }), 1180)
+# Who repaired is the owner of the ticket, the agent Gast from groups.rb when the guest repaired alone.
+# The appointment is the pending time with date and time, kept by keep_pending_time.rb. Neither needs
+# a field, see docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc and
+# docs/adr/0053-termin-in-der-wartezeit-behalten.adoc.
 # Empty means not decided yet, recommended means a check is due, see case-study chapter 7
 field('safety_test', tr('Safety test VDE 0701/0702', 'VDE 0701/0702 geprüft'), 'select',
       choice({ 'recommended' => %w[Recommended empfohlen], 'yes' => %w[Yes Ja], 'no' => %w[No Nein] }), 1190)
-field('event_date', tr('Event date', 'Termin'), 'date', { future: true, past: true, diff: 0, default: nil }, 1200)
 # Only filled in the statistics ticket of each date, see PLAN.md, phase 0
 field('donations', tr('Donations in euros', 'Spenden in Euro'), 'integer', { min: 0, max: 100_000, default: nil }, 1210)
 field('needs', tr('Needs of the repair group', 'Bedarf der Initiative'), 'textarea', text(maxlength: 2000), 1220)

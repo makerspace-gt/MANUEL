@@ -31,3 +31,17 @@ services:
     depends_on:
       zammad-init:
         condition: service_completed_successfully
+
+  # The appointment is the pending time, which a reply of a guest would clear, see
+  # zammad/keep_pending_time.rb. The scheduler fetches the emails, the railsserver serves the interface.
+  zammad-railsserver:
+    volumes:
+      - ./zammad/keep_pending_time.rb:/opt/zammad/config/initializers/zz_keep_pending_time.rb:ro
+    security_opt:
+      - label=disable
+
+  zammad-scheduler:
+    volumes:
+      - ./zammad/keep_pending_time.rb:/opt/zammad/config/initializers/zz_keep_pending_time.rb:ro
+    security_opt:
+      - label=disable

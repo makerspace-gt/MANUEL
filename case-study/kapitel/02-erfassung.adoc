@@ -37,6 +37,12 @@ Dieser Abschnitt wird noch ausformuliert.
 * Typische Felder sind Gegenstand, Marke, Alter, Fehler, Ergebnis und bei einem Fehlschlag der Grund.
 * Lücken entstehen durch Zeitdruck am Tisch, wenig Platz auf dem Zettel und Abtippen im Nachhinein. Die Datenpotenzialanalyse hat das 2022 an 266 Laufzetteln gezeigt cite:[prange-2022].
 * Szpak und Mather haben untersucht, wie Initiativen bei Veranstaltungen Daten aufnehmen cite:[szpak-mather].
+* Auch der Open Repair Data Standard benennt diese Spannung zwischen den Daten, die man gern hätte, und dem, was Ehrenamtliche an einem vollen Termin erfassen können. Genau hier setzt MANUEL an, indem es Felder aus der Anfrage vorschlägt und Menschen nur noch prüfen.
+
+[quote,"Open Repair Data Standard v0.3, https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L35-L40[Collected data, Zeile 35 bis 40]"]
+____
+There is a wide variety of data that can be and is being collected on the topic of repair. We recognise that not all organisations have the need or capacity to collect all of this data, and further we recognise the tension between the ideal data we would like to collect and the ability to collect that data in busy repair environments, usually by volunteers.
+____
 
 [[erfassung-guetersloh]]
 === Erfassung im Repair Café Gütersloh
@@ -99,6 +105,8 @@ Der Standard legt fest, welche Felder ein Eintrag hat und welche Werte erlaubt s
 |===
 
 Die Gruppen ohne Strom stehen nicht im Standard. Er ist nach eigener Aussage für die Reparatur kleiner Elektrogeräte und Unterhaltungselektronik gemacht und könnte später für andere Bereiche angepasst werden https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L25-L28[(Standard, Zeile 25 bis 28)]. Die sechs Gruppen „Unpowered“ für Fahrräder, Möbel, Haushalt, Schmuck, Textilien und Sonstiges gibt es nur in den veröffentlichten Daten. Dabei machen Textilien und Gegenstände ohne Strom aus dem Haushalt 2026 fast ein Drittel der Daten aus, siehe <<datensatz>>.
+
+Pflicht ist im Standard nur die Kategorie des Partners, die ORDS-Kategorie ist optional https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L62-L77[(Standard, Zeile 62 bis 77)]. Jeder Partner liefert also seine eigene Kategorie, und die Open Repair Alliance ordnet sie einer ORDS-Kategorie zu. Die Kategorie des Partners bleibt dabei erhalten, damit sich Fehler, Übersetzungsprobleme und Ermessensfragen in der Zuordnung später finden lassen. Am wertvollsten sind laut Standard Kategorien aus einer festen Werteliste, die schon bei der Erfassung geprüft und im besten Fall bereits einer ORDS-Kategorie zugeordnet sind. Genau das soll der Katalog in <<katalog>> leisten.
 
 Entscheidend für diese Arbeit ist das Verhältnis der ersten beiden Kategoriefelder. Jeder Partner erfasst mit seiner eigenen Liste. Die Alliance ordnet jede dieser Kategorien einer Produktkategorie des Standards zu und prüft die Zuordnung bei jedem neuen Datensatz cite:[ora-datasets]. Die Produktkategorien des Standards heißen in dieser Arbeit ORA-Gruppen.
 

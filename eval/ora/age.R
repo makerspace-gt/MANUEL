@@ -4,7 +4,7 @@
 # event, so one is derived from the other and only the age is drawn. Ages with a fraction are
 # rounded down to whole years. The first chart shows the share of items per year of age up to 60,
 # split into electrical items and unpowered items, and marks multiples of 5. The second shows
-# for each partner how many entries carry an age. The numbers for the text go to docs/ora/alter/alter.tsv.
+# for each partner how many entries carry an age. The numbers for the text go to docs/ora/age/age.tsv.
 #
 # Run in the repository root, see docs/adr/0049-daten-mit-r-auswerten.adoc:
 #   toolbox run -c manuel-r Rscript eval/ora/age.R
@@ -50,8 +50,8 @@ facts <- tibble(
             median(aged$age),
             with(filter(aged, years >= 5, years <= limit), mean(years %% 5 == 0)), 12 / 56)
 )
-dir.create("docs/ora/alter", showWarnings = FALSE)
-write_tsv(facts, "docs/ora/alter/alter.tsv")
+dir.create("docs/ora/age", showWarnings = FALSE)
+write_tsv(facts, "docs/ora/age/age.tsv")
 
 per_year <- aged |>
   filter(years <= limit) |>
@@ -79,7 +79,7 @@ plot_age <- ggplot(per_year, aes(years, share, fill = round)) +
                         " Einträge. Quelle: Open Repair Data 0.3, Juli 2026, CC BY-SA 4.0")) +
   theme_manuel() +
   theme(panel.spacing.y = unit(18, "pt"))
-out_age <- save_chart(plot_age, "ora-alter", height = 560)
+out_age <- save_chart(plot_age, "ora-age", height = 560)
 
 partners <- data |>
   group_by(data_provider) |>
@@ -101,9 +101,9 @@ plot_partner <- ggplot(partners, aes(filled, data_provider)) +
   theme(panel.grid.major.y = element_blank(),
         panel.grid.major.x = element_line(colour = light[["grid"]], linewidth = 0.4),
         axis.line.x = element_blank(), axis.text.y = element_text(colour = light[["primary"]]))
-out_partner <- save_chart(plot_partner, "ora-alter-partner", height = 400)
+out_partner <- save_chart(plot_partner, "ora-age-partner", height = 400)
 
-write_run("docs/ora/alter/alter.tsv", inputs = unname(files),
-          outputs = c("docs/ora/alter/alter.tsv", out_age, out_partner))
+write_run("docs/ora/age/age.tsv", inputs = unname(files),
+          outputs = c("docs/ora/age/age.tsv", out_age, out_partner))
 print(facts, width = Inf)
 print(partners)

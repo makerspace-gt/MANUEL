@@ -51,12 +51,12 @@ In den Open Repair Data vom Juli 2026 sind Alter und Baujahr immer gemeinsam gef
 Dass die Werte Schätzungen sind, zeigt die Verteilung. Von 5 bis 60 Jahren fallen 57 Prozent der Alter auf Vielfache von 5, bei gleichmäßiger Verteilung wären es 21 Prozent. Gäste sagen also eher „etwa 10 Jahre“ als „9 Jahre“. 396 Einträge sind älter als 100 Jahre. Viele davon sind plausibel, etwa Pendeluhren, Familienbibeln, Möbel oder Nähmaschinen. Andere sind es nicht, etwa ein Toaster von 1869, ein Verstärker von 1771 oder ein Elektrogerät von 1671. Für Auswertungen des Alters sollten solche Ausreißer deshalb begrenzt oder einzeln geprüft werden.
 
 .Alter der Gegenstände in den Open Repair Data
-image::../../docs/grafiken/ora-alter-hell.svg[Balken je Jahr des Alters bis 60 Jahre, getrennt nach Elektrogeräten und Gegenständen ohne Strom, mit deutlichen Spitzen bei 5, 10, 15, 20 und weiteren Vielfachen von 5,width=100%]
+image::../../docs/grafiken/ora-age-hell.svg[Balken je Jahr des Alters bis 60 Jahre, getrennt nach Elektrogeräten und Gegenständen ohne Strom, mit deutlichen Spitzen bei 5, 10, 15, 20 und weiteren Vielfachen von 5,width=100%]
 
 .Einträge mit Alter je Partner
-image::../../docs/grafiken/ora-alter-partner-hell.svg[Anteil der Einträge mit Alter je Partner, iFixit 86 Prozent, The Restart Project 44 Prozent, anstiftung 31 Prozent, Repair Café Denmark, Wales und Toronto 0 Prozent,width=100%]
+image::../../docs/grafiken/ora-age-partner-hell.svg[Anteil der Einträge mit Alter je Partner, iFixit 86 Prozent, The Restart Project 44 Prozent, anstiftung 31 Prozent, Repair Café Denmark, Wales und Toronto 0 Prozent,width=100%]
 
-Die Zahlen stammen aus {repo}/eval/ora/age.R[age.R], ausgewertet in R nach <<adr-0049>>. Alle Werte des Felds mit Anzahl stehen in {repo}/docs/ora/felder/product_age.tsv[product_age.tsv].
+Die Zahlen stammen aus {repo}/eval/ora/age.R[age.R], ausgewertet in R nach <<adr-0049>>. Alle Werte des Felds mit Anzahl stehen in {repo}/docs/ora/fields/product_age.tsv[product_age.tsv].
 
 === Zur Reparatur
 

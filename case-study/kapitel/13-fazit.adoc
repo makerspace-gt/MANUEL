@@ -39,6 +39,7 @@ Dieses Kapitel entsteht zum Schluss aus den Ergebnissen der Kapitel.
 * Als Gruppe zu planen war schwierig, weil nicht alle auf demselben Stand waren. Ein Rundgang durch die Stationen und das Ablaufdiagramm in <<landkarte>> haben geholfen.
 * Die KI einfach machen zu lassen war nicht sinnvoll. Am 09.11.2026 erfasste der Agent Hermes Nachrichten weitgehend allein. Die Ergebnisse brauchten trotzdem eine Durchsicht, und der Weg ließ sich schlecht nachvollziehen, siehe {repo}/hermes/README.md[hermes/README.md].
 * Fallstudie und ADRs haben sich bewährt, weil sie Entscheidungen und Irrwege nachvollziehbar machen.
+* Idee für den Abschluss. Eine kleine zweite Dokumentation anhand der Commits zeigt, wie die Fallstudie entstanden ist und wie oft wir zwischen Themen gesprungen sind, etwa zwischen Katalog, Zammad und Literatur. Vielleicht als kurzes Video.
 
 === Nachnutzung durch andere Initiativen
 

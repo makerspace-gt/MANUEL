@@ -10,7 +10,7 @@ Hier liegen die Quellen, auf denen Katalog, Einordnung und Fallstudie beruhen. J
 | [openrepair-datastandard](https://github.com/openrepair/datastandard/tree/c1a1f2979937a3a481782d3afbde1b62f9b24b58) | Submodul mit dem Open Repair Data Standard samt PDFs der Versionen 0.1 bis 0.3 | CC BY-SA 4.0 | Commit `c1a1f29` vom 30.05.2024 |
 | [ords-extra](https://codeberg.org/zenlan/ords-extra/src/commit/08e185b8289094ae31c19437a3e86a1248e96635) | Submodul mit Zusatzdaten zu den Open Repair Data von Monique Szpak, verknüpft über `id`. Englische Übersetzungen der Gegenstände und der Problemtexte, einheitliche Marken, UNU-Keys und unter `dat/misc/fault_types` Listen von Fehlerarten mit Suchmustern für Desktop, Laptop, Handy, Drucker, Tablet und Staubsauger. Die Daten liegen in Git LFS | CC BY-NC-ND 4.0 | Commit `08e185b` vom 08.11.2026 |
 
-Die Lizenz von ords-extra erlaubt keine Bearbeitungen und keine kommerzielle Nutzung. Wir lesen die Daten für Auswertungen und verweisen darauf. Abgeleitete Tabellen daraus veröffentlichen wir erst nach Rücksprache mit der Autorin.
+Die Lizenz von ords-extra erlaubt keine Bearbeitungen und keine kommerzielle Nutzung. Wir wenden die Daten auf unsere eigenen Daten an, etwa die Tabelle der Marken, und nennen ords-extra dabei, siehe [ADR 52](../docs/adr/0052-erfasste-daten-festlegen.adoc). Eine eigene Liste, die im Kern eine Tabelle aus ords-extra ist, veröffentlichen wir nicht.
 
 ## anstiftung
 

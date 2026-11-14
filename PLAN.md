@@ -394,7 +394,9 @@ git push
 - [ ] Felder in Zammad auf die Felder der Laufzettel abbilden, damit die Daten ohne Nacharbeit übertragbar sind
 - [ ] Endpunkte in mapped-repair-events umsetzen und als Pull Request einreichen
 - [ ] Workflow bauen, der nach dem Repair Café die Geräte über die API von Restarters.net meldet, siehe [ADR 14](docs/adr/0014-reparaturen-ueber-restarters-melden.adoc)
-- [ ] Nachmeldung der Geräte von 2024 bis 2026 an Restarters nach Freigabe der Vorschau senden, siehe [ADR 36](docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc)
+- [ ] Bei der Open Repair Alliance unter openrepair@therestartproject.org anfragen, ob wir als eigener Datenpartner direkt im Format von ORDS liefern können, wie Repair Café Denmark und Toronto. Wir würden gern als eigener Partner in den Daten erscheinen. Gefragt wird auch nach Takt, nach dem Weg über Restarters, nach den 30 alten Einträgen über die anstiftung und ob eine Zuordnungstabelle von `item_type` zur ORA-Gruppe hilft. Je nach Antwort werden [ADR 14](docs/adr/0014-reparaturen-ueber-restarters-melden.adoc) und ADR 36 überarbeitet
+- [ ] Export je Termin als CSV mit den Spalten des Standards bauen, unabhängig vom Weg der Meldung, als Archiv und Vorlage
+- [ ] Nachmeldung der Geräte von 2024 bis 2026 an Restarters nach Freigabe der Vorschau senden, aber erst nach der Antwort der ORA, damit nichts doppelt gezählt wird, siehe [ADR 36](docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc)
 - [ ] SearXNG in it-infrastructure auf der Helpdesk-VM einrichten und den Workflow für die Suche nach Anleitungen bauen, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc)
 - [ ] Workflow für die Sharecard bauen, der die Zahlen aus Zammad holt, Highlights über den Tag `highlight` findet und die Karte als Entwurf ans Team schickt
 - [ ] Workflow für Terminvorschläge bauen, der Anmeldungen in Nuudel auswertet

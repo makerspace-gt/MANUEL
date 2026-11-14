@@ -10,11 +10,11 @@
 GROUPS = ['Repairs', 'Repairs::Requests'].freeze
 
 ROLES = {
-  'Repair agents'     => {
+  'Repair Agent'     => {
     note:        'Works on repairs and requests',
     permissions: %w[ticket.agent knowledge_base.reader user_preferences],
   },
-  'Repair moderators' => {
+  'Repair Moderator' => {
     note:        'Works on repairs and requests and maintains macros, text modules and the knowledge base',
     permissions: %w[ticket.agent knowledge_base.editor admin.macro admin.text_module report user_preferences],
   },
@@ -43,7 +43,7 @@ GUEST_AGENT = { login: 'guest', firstname: 'Gast' }.freeze
 guest = User.find_or_initialize_by(login: GUEST_AGENT[:login])
 guest.assign_attributes(firstname: GUEST_AGENT[:firstname], active: true, updated_by_id: 1)
 guest.created_by_id ||= 1
-guest.role_ids = guest.role_ids | [Role.find_by!(name: 'Repair agents').id]
+guest.role_ids = guest.role_ids | [Role.find_by!(name: 'Repair Agent').id]
 guest.save! if guest.changed? || guest.new_record?
 
 puts "Gruppen #{Group.where(name: GROUPS).pluck(:name).join(', ')}, Rollen #{Role.where(name: ROLES.keys).pluck(:name).join(', ')}, Agent für Gäste #{guest.fullname}"

@@ -1,0 +1,21 @@
+# R for the data analysis of MANUEL, see docs/adr/0049-daten-mit-r-auswerten.adoc
+# The base is pinned by digest. rocker/tidyverse 4.6.1 is superseded by 4.6.2, so its CRAN
+# snapshot stays frozen at p3m.dev 2026-10-28 and every package installed here has a fixed version.
+# Build and create the toolbox in the repository root:
+#   podman build -t localhost/manuel-r:4.6.1 eval/r
+#   toolbox create --image localhost/manuel-r:4.6.1 manuel-r
+#   toolbox run -c manuel-r Rscript eval/ora/example.R
+FROM docker.io/rocker/tidyverse@sha256:6b8523ae3b6a948b5d71c9ac3994026aeac2d79d7f1e7421102207e84534ceae
+
+LABEL com.github.containers.toolbox="true" \
+      org.opencontainers.image.description="R 4.6.1 with tidyverse for the data analysis of MANUEL"
+
+# Toolbx creates the user with the host UID, rocker already uses 1000 for rstudio
+RUN userdel --remove rstudio 2>/dev/null || true \
+ && apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+      sudo libcap2-bin passwd procps util-linux less locales \
+ && sed -i 's/^# *de_DE.UTF-8/de_DE.UTF-8/' /etc/locale.gen && locale-gen \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN install2.r --error --skipinstalled svglite binom

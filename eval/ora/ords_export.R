@@ -6,7 +6,8 @@
 # in the same order. A reused ticket, for example a postponed device, gets one row per event. The earlier
 # events count as Repairable, the last one carries the result of the ticket.
 #   id                            msg_, ticket number and date of the event, unique per repair attempt
-#   data_provider, group          Makerspace Gütersloh e.V.
+#   data_provider                 Makerspace Gütersloh e.V.
+#   group_identifier              17503, our initiative on reparatur-initiativen.org, as in the anstiftung rows
 #   partner_product_category      English name of the catalog entry
 #   product_category(_id)         ORA group of the catalog entry, 0 for unpowered groups as in the data
 #   brand                         as recorded, Unknown if empty as in the data
@@ -14,6 +15,10 @@
 #   repair_status, barrier        from the result, "Abnutzung zu groß" becomes Product too worn out,
 #                                 which the standard knows even though Restarters does not
 #   problem                       empty until the tickets are anonymised, see docs/adr/0038
+# The standard allows additional fields if a manifest describes them, see docs/ora/ords-export.md. After
+# the 14 columns follow anstiftung_event_id from docs/ora/anstiftung/events.tsv, anstiftung_category_id
+# and anstiftung_category as "top category ~ category" of the form, and catalog_key, so the anstiftung
+# could take over the same rows.
 # The output is derived from real tickets and stays local like the preview.
 #
 # Run in the repository root:
@@ -35,6 +40,11 @@ columns <- names(read_csv("quellen/openrepair-data/OpenRepairData_v0.3_aggregate
 category_ids <- read_csv("quellen/openrepair-data/OpenRepairData_v0.3_Product_Categories_eee.csv",
                          col_types = cols(.default = col_character()))
 
+events <- read_tsv("docs/ora/anstiftung/events.tsv", col_types = cols(.default = col_character()))
+form <- read_csv("quellen/anstiftung/kategorien.csv", col_types = cols(.default = col_character())) |>
+  transmute(anstiftung_category_id = id, anstiftung_category = paste(top_category, "~", category)) |>
+  distinct(anstiftung_category_id, .keep_all = TRUE)
+
 preview <- read_tsv(preview_path, col_types = cols(.default = col_character()), na = character())
 
 attempts <- preview |>
@@ -49,6 +59,9 @@ attempts <- preview |>
 
 ords <- attempts |>
   left_join(category_ids, by = c("ora_group" = "product_category")) |>
+  mutate(anstiftung_category_id = sapply(strsplit(catalog_key, ".", fixed = TRUE), `[`, 3)) |>
+  left_join(form, by = "anstiftung_category_id") |>
+  left_join(select(events, event_date, anstiftung_event_id = event_id), by = "event_date") |>
   transmute(
     id = paste0("msg_", ticket, "_", gsub("-", "", event_date)),
     data_provider = "Makerspace Gütersloh e.V.",
@@ -65,14 +78,20 @@ ords <- attempts |>
       result == "nicht erfolgt::Abnutzung zu groß" ~ "Product too worn out",
       .default = ""
     ),
-    group_identifier = "Makerspace Gütersloh e.V.",
+    group_identifier = "17503",
     event_date = event_date,
-    problem = ""
+    problem = "",
+    anstiftung_event_id = coalesce(anstiftung_event_id, ""),
+    anstiftung_category_id,
+    anstiftung_category = coalesce(anstiftung_category, ""),
+    catalog_key
   ) |>
   arrange(event_date, id)
 
-stopifnot(identical(names(ords), columns), !anyNA(ords$product_category_id), !anyDuplicated(ords$id))
+stopifnot(identical(names(ords)[seq_along(columns)], columns), !anyNA(ords$product_category_id), !anyDuplicated(ords$id))
 write_csv(ords, out_path, na = "")
 cat(nrow(ords), "Zeilen nach", out_path, "\n")
+cat("Event-ID der anstiftung bei", sum(ords$anstiftung_event_id != ""), "von", nrow(ords), "Zeilen,",
+    "Kategorie der anstiftung bei", sum(ords$anstiftung_category != ""), "\n")
 print(count(ords, repair_status))
 print(count(ords, product_category, sort = TRUE), n = 12)

@@ -265,14 +265,15 @@ Die Entscheidung steht in [ADR 43](adr/0043-eine-testumgebung-auf-manuel-betreib
 | Ollama | http://manuel:11434 |
 
 - Podman bindet die Ports selbst und kann das erst, wenn Tailscale eine Adresse hat. Beim Hochfahren wartet `podman-restart.service` deshalb bis zu 60 Sekunden. Fehlt ein Container danach, ihn mit `sudo podman start <name>` starten, sobald Tailscale läuft.
-- In der Richtlinie des Tailnets bekommen Admins alle Ports, wer MANUEL nur geteilt bekommt, erreicht nur Open WebUI und Ollama. Ein Beispiel mit Grants, bei dem MANUEL in der Verwaltung des Tailnets den Tag `tag:manuel` trägt. Vor dem Einsatz mit einem geteilten Konto testen, siehe https://tailscale.com/kb/1324/acl-grants.
+- In der Richtlinie des Tailnets bekommen die Mitglieder alles, wer MANUEL nur geteilt bekommt, erreicht nur Open WebUI und Ollama. Entscheidend ist die Regel, die alles erlaubt. Die Quelle `"*"` umfasst laut Tailscale auch Geteilte, also `autogroup:shared`, und Regeln können nur erlauben, siehe https://tailscale.com/kb/1337/policy-syntax und https://tailscale.com/kb/1084/sharing. Solange eine Regel mit `"*"` alles erlaubt, schränkt die Regel für Geteilte nichts ein. Die Quelle muss deshalb `autogroup:member` heißen, das sind nur die Mitglieder des eigenen Tailnets. In einer Richtlinie mit `acls` statt `grants` gilt dasselbe. Geräte mit Tag sind keine Mitglieder und brauchen eigene Regeln.
+- MANUEL steht in der Richtlinie als Alias unter `hosts`, mit der Adresse aus `tailscale ip -4` statt des Platzhalters. Ein Tag ginge auch, nimmt dem Gerät aber seinen Besitzer, und ob sich ein Gerät mit Tag noch teilen lässt, sagt die Doku nicht eindeutig, siehe https://tailscale.com/kb/1068/tags. Danach mit einem geteilten Konto testen, ob Open WebUI antwortet und Zammad nicht.
 
 ```json
 {
-  "tagOwners": { "tag:manuel": ["autogroup:admin"] },
+  "hosts": { "manuel": "100.x.y.z" },
   "grants": [
-    { "src": ["autogroup:admin"], "dst": ["tag:manuel"], "ip": ["*"] },
-    { "src": ["autogroup:shared"], "dst": ["tag:manuel"], "ip": ["tcp:3000", "tcp:11434"] }
+    { "src": ["autogroup:member"], "dst": ["*"], "ip": ["*"] },
+    { "src": ["autogroup:shared"], "dst": ["manuel"], "ip": ["tcp:3000", "tcp:11434"] }
   ]
 }
 ```

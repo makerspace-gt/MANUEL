@@ -1,0 +1,73 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0051]]
+= 0051 Reparaturdaten nach ORDS in einem eigenen Repo veröffentlichen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-14
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Wir wollen bei der Open Repair Alliance anfragen, ob wir als eigener Datenpartner direkt im Format von ORDS liefern können. Dafür erzeugt {repo}/eval/ora/ords_export.R[ords_export.R] aus den Tickets eine CSV mit den 14 Spalten der Open Repair Data, eine Zeile je Reparaturversuch. Der Standard nennt Daten konform, wenn sie unter anderem wie vereinbart lizenziert und öffentlich herunterladbar sind https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L622-L635[(Standard, Zeile 622 bis 635)]. Nach xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2] kommen aus echten Tickets bisher nur Summen in öffentliche Repos. Dürfen wir die Zeilen je Reparatur veröffentlichen, und wo?
+
+== Entscheidungskriterien
+
+* Unsere Daten sind konform zum Standard, auch öffentlich herunterladbar
+* Keine Person ist aus den Daten zu erkennen xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[ADR 48]
+* Die Alliance und andere können die Daten ohne Umweg abholen
+* Daten und Code bleiben getrennt und überdauern das Projekt MANUEL
+
+== Betrachtete Optionen
+
+* Export nur lokal und auf Anfrage an die Alliance schicken
+* Ordner im Repo MANUEL
+* Eigenes Repo nur für die Daten, sofort ohne Problemtext
+* Eigenes Repo nur für die Daten, erst mit anonymisiertem Problemtext
+
+== Entscheidung
+
+Gewählt wird ein eigenes Repo nur für die Daten, das erst mit anonymisiertem Problemtext veröffentlicht wird.
+
+* *Ort.* Ein neues Repo der Organisation, etwa `makerspace-gt/repair-data`. Es enthält die CSV, eine `tableschema.json` und ein README wie das Repo `openrepair/data`, unter CC BY-SA 4.0 wie die Open Repair Data.
+* *Inhalt.* Eine Zeile je Reparaturversuch mit den Spalten des Standards. Die ID hat die Form `msg_<Ticket>_<Datum>`, Partner und Gruppe heißen Makerspace Gütersloh e.V. Ein Ticket, das an mehreren Terminen war, steht einmal je Termin, die früheren als Repairable.
+* *Zeitpunkt.* Veröffentlicht wird erst, wenn das Feld `problem` anonymisiert gefüllt werden kann, nach den Regeln von xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38]. Bis dahin bleibt der Export lokal. Danach kommt nach jedem Termin ein Stand dazu.
+* *Prüfung.* Vor jeder Veröffentlichung sieht ein Mensch die neuen Zeilen durch, vor allem die Freitexte Marke, Gegenstand und Problem.
+
+ADR 2 gilt weiter für Tickets und Nachrichten. Diese Entscheidung erlaubt nur die Zeilen nach ORDS.
+
+=== Konsequenzen
+
+* Gut, weil unsere Daten konform zum Standard sind, unabhängig davon, ob die Alliance uns als Partner aufnimmt.
+* Gut, weil wir alle Daten selbst in einem offenen Format haben und jeder Stand im Verlauf von Git nachvollziehbar bleibt.
+* Gut, weil der Problemtext die wichtigste Angabe für Auswertungen ist und von Anfang an dabei ist.
+* Schlecht, weil die Veröffentlichung auf die Anonymisierung wartet.
+* Schlecht, weil nach xref:0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc[ADR 39] nur die Tickets von 2025 und 2026 anonymisiert werden. Für 2024 bleibt `problem` leer, oder das Team anonymisiert dort nur das Feld Defekt.
+
+== Vor- und Nachteile der Optionen
+
+=== Nur lokal
+
+* Gut, weil nichts nach außen geht.
+* Schlecht, weil die Daten nicht öffentlich herunterladbar und damit nicht konform sind.
+
+=== Ordner im Repo MANUEL
+
+* Gut, weil kein weiteres Repo nötig ist.
+* Schlecht, weil Daten und Code sich mischen und die Daten an der Laufzeit des Projekts hängen.
+
+=== Eigenes Repo sofort ohne Problemtext
+
+* Gut, weil die Daten schnell öffentlich sind.
+* Schlecht, weil das Pflichtfeld Problem fehlt.
+
+=== Eigenes Repo erst mit Problemtext
+
+* Gut, weil die Daten vollständig und konform erscheinen.
+* Schlecht, weil es länger dauert.
+
+== Quellen
+
+* https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L622-L635[Open Repair Data Standard, Producing and sharing compliant data]
+* https://github.com/openrepair/data[Repo openrepair/data] als Vorbild für Aufbau und Lizenz
+* Entscheidung von Michael Prange am 14.11.2026

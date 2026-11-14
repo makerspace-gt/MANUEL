@@ -104,6 +104,7 @@ include::../../docs/adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[]
 include::../../docs/adr/0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[]
 include::../../docs/adr/0049-daten-mit-r-auswerten.adoc[]
 include::../../docs/adr/0050-problem-loesung-und-befund-mit-drei-agenten-erfassen.adoc[]
+include::../../docs/adr/0051-reparaturdaten-nach-ords-in-einem-eigenen-repo-veroeffentlichen.adoc[]
 
 :leveloffset: -2
 :sectnums:

@@ -67,6 +67,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |48 |xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[Keine personenbezogenen Daten nach außen geben] |angenommen |2026-11-13
 |49 |xref:0049-daten-mit-r-auswerten.adoc[Daten mit R auswerten] |angenommen |2026-11-14
 |50 |xref:0050-problem-loesung-und-befund-mit-drei-agenten-erfassen.adoc[Problem, Lösung und Befund mit drei Agenten erfassen] |vorgeschlagen |2026-11-14
+|51 |xref:0051-reparaturdaten-nach-ords-in-einem-eigenen-repo-veroeffentlichen.adoc[Reparaturdaten nach ORDS in einem eigenen Repo veröffentlichen] |angenommen |2026-11-14
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

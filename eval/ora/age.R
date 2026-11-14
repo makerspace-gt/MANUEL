@@ -4,7 +4,7 @@
 # event, so one is derived from the other and only the age is drawn. Ages with a fraction are
 # rounded down to whole years. The first chart shows the share of items per year of age up to 60,
 # split into electrical items and unpowered items, and marks multiples of 5. The second shows
-# for each partner how many entries carry an age. The numbers for the text go to docs/ora/alter.tsv.
+# for each partner how many entries carry an age. The numbers for the text go to docs/ora/alter/alter.tsv.
 #
 # Run in the repository root, see docs/adr/0049-daten-mit-r-auswerten.adoc:
 #   toolbox run -c manuel-r Rscript eval/ora/age.R
@@ -50,7 +50,8 @@ facts <- tibble(
             median(aged$age),
             with(filter(aged, years >= 5, years <= limit), mean(years %% 5 == 0)), 12 / 56)
 )
-write_tsv(facts, "docs/ora/alter.tsv")
+dir.create("docs/ora/alter", showWarnings = FALSE)
+write_tsv(facts, "docs/ora/alter/alter.tsv")
 
 per_year <- aged |>
   filter(years <= limit) |>
@@ -87,7 +88,8 @@ partners <- data |>
   mutate(data_provider = factor(data_provider, levels = data_provider))
 
 plot_partner <- ggplot(partners, aes(filled, data_provider)) +
-  geom_col(width = 0.7, fill = light[["s1"]]) +
+  # Bars of width 0 break the PDF, partners without any age only get their label
+  geom_col(data = \(d) filter(d, filled > 0), width = 0.7, fill = light[["s1"]]) +
   geom_text(aes(label = paste0(pct(filled, 0), " von ", de(n, 0))), hjust = -0.08,
             colour = light[["secondary"]], size = 3.6) +
   scale_x_continuous(labels = \(x) paste0(de(100 * x, 0), " %"), limits = c(0, 1.2),
@@ -101,7 +103,7 @@ plot_partner <- ggplot(partners, aes(filled, data_provider)) +
         axis.line.x = element_blank(), axis.text.y = element_text(colour = light[["primary"]]))
 out_partner <- save_chart(plot_partner, "ora-alter-partner", height = 400)
 
-write_run("docs/ora/alter.tsv", inputs = unname(files),
-          outputs = c("docs/ora/alter.tsv", out_age, out_partner))
+write_run("docs/ora/alter/alter.tsv", inputs = unname(files),
+          outputs = c("docs/ora/alter/alter.tsv", out_age, out_partner))
 print(facts, width = Inf)
 print(partners)

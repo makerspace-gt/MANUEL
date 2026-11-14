@@ -391,7 +391,7 @@ git push
 - [ ] Workflow für Statistik bauen, der Ergebnisse zählt, Freitexte zu fehlendem Werkzeug zusammenfasst, Spenden und Bedarf aus dem Statistik-Ticket liest und die Reparierenden je Termin aus den Bearbeitenden in Zammad zählt
 - [ ] Workflows als JSON nach n8n-workflows/ exportieren
 - [ ] Mit der anstiftung per Issue in mapped-repair-events klären, ob sie schreibende Endpunkte für Laufzettel und Neuigkeiten annehmen würde. Dazu fragen, ob die API auch vergangene Termine einer Initiative mit Event-ID liefern kann, bisher gibt es nur kommende
-- [ ] Event-IDs der anstiftung vor jedem Termin mit [anstiftung_events.py](eval/ora/anstiftung_events.py) sichern, die Karte zeigt nur Termine ab dem laufenden Monat. Für 2024 bis Oktober 2026 fehlen 39 IDs, das Team kann sie angemeldet unter „Meine Termine“ nachschlagen
+- [ ] Event-IDs der anstiftung vor jedem Termin mit [anstiftung_events.py](eval/ora/anstiftung_events.py) sichern, die Karte zeigt nur Termine ab dem laufenden Monat. Für 43 Termine von 2024 bis Oktober 2026 fehlen die IDs, sie lassen sich angemeldet im Webinterface nachschlagen und mit der Quelle Webinterface in docs/ora/anstiftung/events.tsv eintragen
 - [ ] Felder in Zammad auf die Felder der Laufzettel abbilden, damit die Daten ohne Nacharbeit übertragbar sind
 - [ ] Endpunkte in mapped-repair-events umsetzen und als Pull Request einreichen
 - [ ] Workflow bauen, der nach dem Repair Café die Geräte über die API von Restarters.net meldet, siehe [ADR 14](docs/adr/0014-reparaturen-ueber-restarters-melden.adoc)

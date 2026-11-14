@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-14T13:11:26+0100",
+  "date": "2026-11-14T13:14:12+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/categorizer/coverage.R",
-  "commit": "e2eda204823a00d54614e122b765f362de1616e3",
+  "commit": "3e30acbe37e06f7296983c1a5e5a2c9cf109220b",
   "dirty": true,
   "inputs": [
     {
@@ -16,11 +16,19 @@
     },
     {
       "path": "docs/grafiken/catalog-coverage.svg",
-      "sha256": "e98c8dfc4fc4f876956b4ea29a5c799bc75cdbb21914ea3043f14be2d591231a"
+      "sha256": "056c5be3ee22bf0424cd40d3a584f89f3980408c68094037ecd880945ee2e985"
     },
     {
       "path": "docs/grafiken/catalog-coverage-hell.svg",
-      "sha256": "bd21f0e67b78ac5cf7edd34096271aa7f4ca3408bde9faf5b3af3ff4b7fe9648"
+      "sha256": "2e9747b2e638a42b40febd1887e5db3453f61f1612c3a072fb405eb850efbd86"
+    },
+    {
+      "path": "docs/grafiken/catalog-coverage-square.svg",
+      "sha256": "cd1822fe877203e6d3d1374e083d55cd475f4b8eca351f019310a4205c67a586"
+    },
+    {
+      "path": "docs/grafiken/catalog-coverage-square-hell.svg",
+      "sha256": "b744da531cd98972c393655c5e8a9bb2c6c4f7b491b4360a1219b03d15669f6a"
     }
   ],
   "r": {

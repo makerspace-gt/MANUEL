@@ -48,7 +48,7 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 === Reparaturen durch Gäste und neue Engagierte
 
 * Neues Feld „repariert von“ mit den Werten Gast selbst, Gast mit Hilfe und Engagierte
-* Wer repariert hat, steht in Zammad. Jede reparierende Person ist dort mit Namen als Bearbeiterin oder Bearbeiter einer Reparatur eingetragen und hat die Rolle Repair Agents.
+* Wer repariert hat, steht in Zammad. Jede reparierende Person ist dort mit Namen als Bearbeiterin oder Bearbeiter einer Reparatur eingetragen und hat die Rolle Repair agents.
 * Als neu gilt, wer seit dem 15.09.2026 dabei ist. Die Abgrenzung stimmt das Team ab.
 
 === Rückmeldungen zu den Vorschlägen

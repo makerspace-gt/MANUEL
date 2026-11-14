@@ -258,8 +258,8 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
 - [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl, die Marke als Textfeld
 - [x] Felder, Auswahlwerte und Makros als Ruby-Dateien unter [zammad/](zammad/README.md) ablegen, damit sie sich in der Testinstanz und bei anderen Initiativen einspielen lassen. Am 13.11.2026 in der Testinstanz geprüft
-- [x] Einrichtung englisch mit deutscher Übersetzung, mit Gruppe Repairs und Untergruppe Requests und den Rollen Repair Agents und Repair Moderators, ohne den Namen Repair Café, nachnutzbar per docker compose ohne eigene Einstellungen, siehe [zammad/README.md](zammad/README.md). Am 14.11.2026 in der Testinstanz geprüft
-- [ ] Im echten Zammad die Gruppe Repairs anlegen, Repair Café Anfragen als Untergruppe Requests darunter verschieben, die Rollen in Repair Agents und Repair Moderators umbenennen und ihre Rechte mit dem Team abstimmen
+- [x] Einrichtung englisch mit deutscher Übersetzung, mit Gruppe Repairs und Untergruppe Requests und den Rollen Repair agents und Repair moderators, ohne den Namen Repair Café, nachnutzbar per docker compose ohne eigene Einstellungen, siehe [zammad/README.md](zammad/README.md). Am 14.11.2026 in der Testinstanz geprüft
+- [ ] Im echten Zammad die Gruppe Repairs anlegen, Repair Café Anfragen als Untergruppe Requests darunter verschieben, die Rollen in Repair agents und Repair moderators umbenennen und ihre Rechte mit dem Team abstimmen
 - [ ] Feld „VDE 0701/0702 geprüft“ von ja und nein auf leer, empfohlen, ja und nein umstellen. Es steht bisher per Standard auf nein, sein Wert belegt also keine Prüfung
 - [ ] Felder für Spenden und Bedarf im Statistik-Ticket jedes Termins anlegen
 - [ ] Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“ mit Tags anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)

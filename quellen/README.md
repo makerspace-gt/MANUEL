@@ -29,9 +29,12 @@ Die Liste in `database.sql` ist nicht aktuell, das Formular enthält deutlich me
 | Ort | Inhalt | Stand |
 |---|---|---|
 | [restarters/kategorien.csv](restarters/kategorien.csv) | 47 Kategorien aus der öffentlichen API, mit Kennung und Strom | 08.11.2026 |
-| [restarters/Device.php](restarters/Device.php) | Beschreibung eines Geräts in der API mit Feldern und festen Werten, aus [app/Http/Resources/Device.php](https://github.com/TheRestartProject/restarters.net/blob/d46501cb20a0bda1216ffb2e48a19f074e86f776/app/Http/Resources/Device.php), GPL-3.0 | Commit `d46501c`, 14.11.2026 |
 
-[fetch_categories.py](restarters/fetch_categories.py) ruft die Liste neu ab. Der Quellcode liegt unter [TheRestartProject/restarters.net](https://github.com/TheRestartProject/restarters.net).
+[fetch_categories.py](restarters/fetch_categories.py) ruft die Liste neu ab.
+
+| Ordner | Inhalt | Lizenz | Stand |
+|---|---|---|---|
+| [restarters.net](https://github.com/TheRestartProject/restarters.net/tree/d46501cb20a0bda1216ffb2e48a19f074e86f776) | Submodul mit dem Quellcode von Restarters.net, flach geklont, Zweig `develop`. Die Felder eines Geräts in der API beschreibt `app/Http/Resources/Device.php` | GPL-3.0 | Commit `d46501c` vom 12.11.2026 |
 
 ## Zammad
 

@@ -32,3 +32,8 @@
 [submodule "repair-cafe"]
 	path = repair-cafe
 	url = https://github.com/makerspace-gt/repair-cafe.git
+[submodule "quellen/restarters.net"]
+	path = quellen/restarters.net
+	url = https://github.com/TheRestartProject/restarters.net.git
+	branch = develop
+	shallow = true

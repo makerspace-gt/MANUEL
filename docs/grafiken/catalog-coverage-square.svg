@@ -77,37 +77,37 @@
 <text x='558.40' y='596.21' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='111.67px' lengthAdjust='spacingAndGlyphs'>80 % mit 114 Kategorien</text>
 <text x='620.77' y='543.38' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='111.67px' lengthAdjust='spacingAndGlyphs'>90 % mit 221 Kategorien</text>
 <text x='682.30' y='120.28' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='125.89px' lengthAdjust='spacingAndGlyphs'>100 % mit 1.078 Kategorien</text>
-<rect x='66.08' y='109.70' width='180.89' height='385.09' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #FCFCFB;' />
-<text x='122.22' y='130.71' text-anchor='end' style='font-size: 10.24px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='28.38px' lengthAdjust='spacingAndGlyphs'>Anteil</text>
-<text x='234.50' y='130.71' text-anchor='end' style='font-size: 10.24px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='53.22px' lengthAdjust='spacingAndGlyphs'>Kategorien</text>
-<text x='122.22' y='167.74' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>90 %</text>
-<text x='122.22' y='198.35' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>91 %</text>
-<text x='122.22' y='228.96' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>92 %</text>
-<text x='122.22' y='259.57' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>93 %</text>
-<text x='122.22' y='290.18' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>94 %</text>
-<text x='122.22' y='320.79' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>95 %</text>
-<text x='122.22' y='351.40' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>96 %</text>
-<text x='122.22' y='382.01' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>97 %</text>
-<text x='122.22' y='412.62' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>98 %</text>
-<text x='122.22' y='443.23' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>99 %</text>
-<text x='122.22' y='473.84' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='29.00px' lengthAdjust='spacingAndGlyphs'>100 %</text>
-<text x='234.50' y='167.74' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>221</text>
-<text x='234.50' y='198.35' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>240</text>
-<text x='234.50' y='228.96' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>264</text>
-<text x='234.50' y='259.57' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>292</text>
-<text x='234.50' y='290.18' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>326</text>
-<text x='234.50' y='320.79' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>365</text>
-<text x='234.50' y='351.40' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>413</text>
-<text x='234.50' y='382.01' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>475</text>
-<text x='234.50' y='412.62' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>563</text>
-<text x='234.50' y='443.23' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>705</text>
-<text x='234.50' y='473.84' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='25.59px' lengthAdjust='spacingAndGlyphs'>1.078</text>
-<text x='84.79' y='583.77' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='163.97px' lengthAdjust='spacingAndGlyphs'>Am häufigsten sind Staubsauger mit</text>
-<text x='84.79' y='597.29' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='188.00px' lengthAdjust='spacingAndGlyphs'>2.699, Radio mit 1.994 und Nähmaschine</text>
-<text x='84.79' y='610.81' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='101.36px' lengthAdjust='spacingAndGlyphs'>mit 1.787 Reparaturen</text>
-<text x='674.26' y='213.46' text-anchor='end' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='180.52px' lengthAdjust='spacingAndGlyphs'>217 Kategorien kommen nur einmal vor,</text>
-<text x='674.26' y='226.98' text-anchor='end' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='150.62px' lengthAdjust='spacingAndGlyphs'>etwa Braukessel, Marderschreck,</text>
-<text x='674.26' y='240.51' text-anchor='end' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='139.14px' lengthAdjust='spacingAndGlyphs'>Schlafmaske und Wagenheber</text>
+<rect x='66.08' y='109.47' width='180.89' height='385.25' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #FCFCFB;' />
+<text x='122.22' y='131.43' text-anchor='end' style='font-size: 10.24px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='28.38px' lengthAdjust='spacingAndGlyphs'>Anteil</text>
+<text x='234.50' y='131.43' text-anchor='end' style='font-size: 10.24px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='53.22px' lengthAdjust='spacingAndGlyphs'>Kategorien</text>
+<text x='122.22' y='167.34' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>90 %</text>
+<text x='122.22' y='197.94' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>91 %</text>
+<text x='122.22' y='228.55' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>92 %</text>
+<text x='122.22' y='259.15' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>93 %</text>
+<text x='122.22' y='289.75' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>94 %</text>
+<text x='122.22' y='320.36' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>95 %</text>
+<text x='122.22' y='350.96' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>96 %</text>
+<text x='122.22' y='381.56' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>97 %</text>
+<text x='122.22' y='412.17' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>98 %</text>
+<text x='122.22' y='442.77' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>99 %</text>
+<text x='122.22' y='473.38' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='29.00px' lengthAdjust='spacingAndGlyphs'>100 %</text>
+<text x='234.50' y='167.34' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>221</text>
+<text x='234.50' y='197.94' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>240</text>
+<text x='234.50' y='228.55' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>264</text>
+<text x='234.50' y='259.15' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>292</text>
+<text x='234.50' y='289.75' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>326</text>
+<text x='234.50' y='320.36' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>365</text>
+<text x='234.50' y='350.96' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>413</text>
+<text x='234.50' y='381.56' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>475</text>
+<text x='234.50' y='412.17' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>563</text>
+<text x='234.50' y='442.77' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>705</text>
+<text x='234.50' y='473.38' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='25.59px' lengthAdjust='spacingAndGlyphs'>1.078</text>
+<text x='84.79' y='583.94' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='163.97px' lengthAdjust='spacingAndGlyphs'>Am häufigsten sind Staubsauger mit</text>
+<text x='84.79' y='597.46' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='188.00px' lengthAdjust='spacingAndGlyphs'>2.699, Radio mit 1.994 und Nähmaschine</text>
+<text x='84.79' y='610.98' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='101.36px' lengthAdjust='spacingAndGlyphs'>mit 1.787 Reparaturen</text>
+<text x='652.43' y='213.09' text-anchor='end' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='180.52px' lengthAdjust='spacingAndGlyphs'>217 Kategorien kommen nur einmal vor,</text>
+<text x='652.43' y='226.61' text-anchor='end' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='150.62px' lengthAdjust='spacingAndGlyphs'>etwa Braukessel, Marderschreck,</text>
+<text x='652.43' y='240.13' text-anchor='end' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='139.14px' lengthAdjust='spacingAndGlyphs'>Schlafmaske und Wagenheber</text>
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw3MjAuMDA=)'>
 <text x='61.15' y='661.36' text-anchor='end' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='5.56px' lengthAdjust='spacingAndGlyphs'>0</text>

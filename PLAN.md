@@ -258,8 +258,8 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
 - [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl, die Marke als Textfeld
 - [x] Felder, Auswahlwerte und Makros als Ruby-Dateien unter [zammad/](zammad/README.md) ablegen, damit sie sich in der Testinstanz und bei anderen Initiativen einspielen lassen. Am 13.11.2026 in der Testinstanz geprüft
-- [x] Einrichtung englisch mit deutscher Übersetzung, mit Gruppe Repair Café und Untergruppe Anfragen und den Rollen Repair Café Agents und Repair Café Moderators, nachnutzbar per docker compose ohne eigene Einstellungen, siehe [zammad/README.md](zammad/README.md). Am 14.11.2026 in der Testinstanz geprüft
-- [ ] Im echten Zammad die Gruppe Repair Café anlegen, Repair Café Anfragen als Untergruppe Anfragen darunter verschieben und die Rechte der Rollen mit dem Team abstimmen
+- [x] Einrichtung englisch mit deutscher Übersetzung, mit Gruppe Repairs und Untergruppe Requests und den Rollen Repair Agents und Repair Moderators, ohne den Namen Repair Café, nachnutzbar per docker compose ohne eigene Einstellungen, siehe [zammad/README.md](zammad/README.md). Am 14.11.2026 in der Testinstanz geprüft
+- [ ] Im echten Zammad die Gruppe Repairs anlegen, Repair Café Anfragen als Untergruppe Requests darunter verschieben, die Rollen in Repair Agents und Repair Moderators umbenennen und ihre Rechte mit dem Team abstimmen
 - [ ] Feld „VDE 0701/0702 geprüft“ von ja und nein auf leer, empfohlen, ja und nein umstellen. Es steht bisher per Standard auf nein, sein Wert belegt also keine Prüfung
 - [ ] Felder für Spenden und Bedarf im Statistik-Ticket jedes Termins anlegen
 - [ ] Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“ mit Tags anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
@@ -377,7 +377,7 @@ git push
 - [ ] Agenten Ticket Categorizer für die Art des Geräts mit der Liste aus dem Vorabtest und Ticket Text Extractor für die übrigen Felder anlegen
 - [ ] Nach den ersten zwei Terminen den Anteil falscher Kategorien zählen. Ab 5 Prozent oder auf Wunsch des Teams auf n8n mit `d3:9b` und Rückfrage umsteigen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)
 - [ ] Custom AI Agent für den Reparaturansatz und einen für erkannte Kontaktdaten anlegen, beide schreiben nur interne Notizen
-- [ ] Trigger anlegen, die die Agenten bei neuen Tickets der Gruppe Repair Café auslösen
+- [ ] Trigger anlegen, die die Agenten bei neuen Tickets der Gruppe Repairs auslösen
 - [ ] Prüfen, dass kein Agent und kein Trigger E-Mails oder SMS an Gäste verschickt
 - [ ] Gegen die Testinstanz auf der Test-VM testen
 - [ ] Ollama in Zammad auf der Helpdesk-VM als Anbieter eintragen und Agenten und Trigger ins Echtsystem übernehmen

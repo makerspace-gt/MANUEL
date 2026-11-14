@@ -51,7 +51,7 @@ Grundsätze für den Betrieb:
 
 ## Offene Entscheidungen
 
-Die Empfehlungen dieser Tabelle sind inzwischen entschieden und als ADR in [docs/adr](docs/adr/README.adoc) festgehalten. Die Tabelle bleibt als Stand vom 22.10.2026 stehen. Abweichend von der Empfehlung läuft das Sprachmodell mit llama.cpp, `d3:9b` und `bge-m3` mit Ollama, siehe [ADR 25](docs/adr/0025-sprachmodell-mit-llama-cpp-und-decision-modell-mit-ollama-betreiben.adoc).
+Die Empfehlungen dieser Tabelle sind inzwischen entschieden und als ADR in [docs/adr](docs/adr/README.adoc) festgehalten. Die Tabelle bleibt als Stand vom 22.10.2026 stehen. Abweichend von der Empfehlung läuft das Sprachmodell mit llama.cpp, `d3:9b` und `bge-m3` mit Ollama, siehe [ADR 25](docs/adr/0025-sprachmodell-mit-llama-cpp-und-decision-modell-mit-ollama-betreiben.adoc). Der Termin bleibt abweichend die Wartezeit des Tickets, siehe [ADR 53](docs/adr/0053-termin-in-der-wartezeit-behalten.adoc).
 
 | Frage | Empfehlung | Alternative |
 |---|---|---|
@@ -223,7 +223,7 @@ Die Datei ist ein Stand zur Installation der Plattform. Ob sie mit den Listen au
 
 Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt) aus dem Wintersemester 2021/22 hat unsere Laufzettel ausgewertet. Sie liegt als Submodul in diesem Repo und steht unter CC BY 4.0. Für MANUEL sind vor allem diese Punkte aus Kapitel 4.2 und 5 wichtig:
 
-- **Zusätzliche Felder.** Bisher wird nicht erfasst, wer repariert hat, also der Gast selbst oder mit Hilfe, ob eine Reparatur wieder aufgenommen wurde und wie lange sie gedauert hat. Wer repariert hat, brauchen wir für die Erfolgskennzahl aus dem Antrag zu Reparaturen durch Gäste und neue Engagierte.
+- **Zusätzliche Felder.** Bisher wird nicht erfasst, ob eine Reparatur wieder aufgenommen wurde und wie lange sie gedauert hat. Wer repariert hat, brauchen wir für die Erfolgskennzahl aus dem Antrag zu Reparaturen durch Gäste und neue Engagierte. Das steht im Owner des Tickets, bei Reparaturen durch den Gast selbst ist es der Agent Gast, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc).
 - **Werbung durch.** Ein Feld, wie Gäste vom Repair Café erfahren haben, zeigt, welche Werbung wirkt.
 - **Datensparsamkeit.** Eine Adresse der Gäste ist nie nötig. Eine Kontaktmöglichkeit per E-Mail oder Telefon reicht, wenn ein neuer Termin nötig ist oder ein Newsletter gewünscht wird. Falls das Geschlecht abgefragt wird, dann mit mehr als zwei Möglichkeiten.
 - **Qualitätskontrolle.** Die Laufzettel wurden oft unvollständig oder falsch ausgefüllt. Wenn die Daten schon während des Termins erfasst werden, lassen sich Lücken sofort nachfragen. Genau dabei kann MANUEL mit Vorschlägen für die Felder helfen.
@@ -252,7 +252,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [x] Gerät bestellen und Rechnung vor dem 31.12.2026 bezahlen
 - [x] Offene Entscheidungen oben treffen, festgehalten als ADR
 - [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren. Die Testinstanz auf MANUEL läuft mit 7.2.2. Dort sind am 13.11.2026 der Anbieter Ollama, Ticket Categorizer und Ticket Text Extractor vorhanden, und Categorizer, Prompt-Vorlagen und Anbieter gleichen `quellen/zammad`
-- [ ] Termin als eigenes Datumsfeld anlegen und beim Umzug bestehende Wartezeiten übernehmen, die angepasste ticket.rb kommt nicht mit, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md)
+- [ ] Im neuen Zammad die Kopie der ticket.rb durch den Initializer [keep_pending_time.rb](zammad/keep_pending_time.rb) ersetzen, damit der Termin in der Wartezeit bei einer Antwort erhalten bleibt, siehe [ADR 53](docs/adr/0053-termin-in-der-wartezeit-behalten.adoc). Der Kopie im Helpdesk aus Zammad 7.1 fehlen Teile von 7.2
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
 - [ ] Neue Felder Alter in Jahren, Angabe zum Alter und Festgestellter Defekt nach [ADR 52](docs/adr/0052-erfasste-daten-festlegen.adoc) in der Testinstanz mit `zammad/setup.rb` anlegen, Defekt heißt dort künftig Defekt laut Anmeldung. Für Ware ohne Marke steht `Generic`
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
@@ -264,7 +264,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Felder für Spenden und Bedarf im Statistik-Ticket jedes Termins anlegen
 - [ ] Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“ mit Tags anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
 - [ ] Für jeden Auswahlwert eine kurze Beschreibung hinterlegen, weil die Agenten sie als Kontext nutzen
-- [ ] Zusätzliche Felder aus der Datenpotenzialanalyse anlegen, also wer repariert hat, Dauer der Reparatur, wieder aufgenommen und Werbung durch
+- [ ] Zusätzliche Felder aus der Datenpotenzialanalyse anlegen, also Dauer der Reparatur, wieder aufgenommen und Werbung durch. Wer repariert hat, steht im Owner
 - [ ] Mit der anstiftung klären, ob database.sql dem aktuellen Stand der Kategorien und Marken auf reparatur-initiativen.org entspricht
 - [ ] Der anstiftung vorschlagen, die Kategorie mit dem abwertenden Namen in Radiorekorder umzubenennen, siehe [ADR 12](docs/adr/0012-keine-abwertenden-begriffe-verwenden.adoc)
 - [ ] Feld für die Einwilligung in den Newsletter anlegen
@@ -386,14 +386,14 @@ git push
 - [ ] Falls sich die Eskalation lohnt, Auslöser in Zammad anlegen und Anfragen in n8n in eine Warteschlange stellen, weil immer nur eine Anfrage gleichzeitig läuft
 - [ ] Ablauf am Empfang anpassen, jedes Gerät bekommt ein Ticket mit dem Tag des Termins, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
 - [ ] Stromversorgung aus der Kategorie im Katalog setzen und das ungefähre Alter in der Nachfrage beim Gast erfragen
-- [ ] Feld „repariert von“ mit den Werten Gast selbst, Gast mit Hilfe und Engagierte anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
+- [ ] Im echten Zammad dem vorhandenen Agenten Gast den Login `guest` geben, bevor `zammad/setup.rb` läuft, sonst legt die Einrichtung einen zweiten an. Wer repariert hat, ist der Owner, bei Reparaturen durch den Gast selbst der Agent Gast, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
 - [ ] KI-Rückmeldung von Zammad an den KI-Agenten prüfen und den Export unter KI, Feedback & Logs testen. Die Doku nennt sie nur für KI-Funktionen wie den Schreibassistenten, davon hängt Kennzahl 3 ab, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
 
 ### Phase 5 Wissensdatenbank und n8n
 
 - [ ] Wissensdatenbank in Zammad für Reparaturanleitungen einrichten und aus erfolgreichen Reparaturen Artikel erzeugen, die Engagierte vor der Veröffentlichung prüfen. Weitere Artikel entstehen aus der Statistik der Open Repair Alliance, aus anderen Quellen und aus dem Wissen des Modells. Jeder nennt seine Quellen, und jede Änderung gibt ein Mensch frei. Erstdiagnose und Reparaturansatz speisen sich vorrangig aus diesen Artikeln, siehe [ADR 22](docs/adr/0022-reparaturanleitungen-in-der-wissensdatenbank-von-zammad-sammeln.adoc)
 - [ ] Rolle n8n in it-infrastructure für die Helpdesk-VM anlegen, siehe [n8n-Doku zum Selbsthosten](https://docs.n8n.io/hosting/), hinter Traefik mit Anmeldung und mit Sicherung per resticker
-- [ ] Workflow für Statistik bauen, der Ergebnisse zählt, Freitexte zu fehlendem Werkzeug zusammenfasst, Spenden und Bedarf aus dem Statistik-Ticket liest und die Reparierenden je Termin aus den Bearbeitenden in Zammad zählt
+- [ ] Workflow für Statistik bauen, der Ergebnisse zählt, Freitexte zu fehlendem Werkzeug zusammenfasst, Spenden und Bedarf aus dem Statistik-Ticket liest und die Reparierenden je Termin aus den Ownern in Zammad zählt, ohne den Agenten Gast, der die Reparaturen durch Gäste zählt
 - [ ] Workflows als JSON nach n8n-workflows/ exportieren
 - [ ] Mit der anstiftung per Issue in mapped-repair-events klären, ob sie schreibende Endpunkte für Laufzettel und Neuigkeiten annehmen würde. Dazu fragen, ob die API auch vergangene Termine einer Initiative mit Event-ID liefern kann, bisher gibt es nur kommende
 - [ ] Event-IDs der anstiftung vor jedem Termin mit [anstiftung_events.py](eval/ora/anstiftung_events.py) sichern, die Karte zeigt nur Termine ab dem laufenden Monat. Die IDs von 2019 bis Dezember 2026 sind am 14.11.2026 aus dem Webinterface übernommen

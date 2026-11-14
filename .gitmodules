@@ -26,3 +26,6 @@
 	path = quellen/zammad-docker-compose
 	url = https://github.com/zammad/zammad-docker-compose.git
 	shallow = true
+[submodule "quellen/ords-extra"]
+	path = quellen/ords-extra
+	url = https://codeberg.org/zenlan/ords-extra.git

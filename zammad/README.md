@@ -6,7 +6,7 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet. Sie enthalten n
 |---|---|
 | [compose.yml](compose.yml) | Dienst `manuel-setup` zusätzlich zu `docker-compose.yml` aus [zammad-docker-compose](../quellen/zammad-docker-compose). Er wartet auf `zammad-init`, führt `setup.rb` aus und beendet sich |
 | [setup.rb](setup.rb) | Lädt die folgenden Dateien in dieser Reihenfolge und ändert zuletzt das Schema der Datenbank, weil Zammad danach neu startet |
-| [groups.rb](groups.rb) | Gruppe Repairs mit der Untergruppe Requests sowie die Rollen Repair Agents und Repair Moderators |
+| [groups.rb](groups.rb) | Gruppe Repairs mit der Untergruppe Requests sowie die Rollen Repair agents und Repair moderators |
 | [objects.rb](objects.rb) | Felder im Ticket, also Art des Geräts aus dem [Katalog](../katalog/), Marke, Bezeichnung, Baujahr, Alter und Angabe zum Alter, Stromversorgung, Defekt laut Anmeldung, festgestellter Defekt, Lösung, Ergebnis als Baum, Repariert von, VDE-Prüfung, Termin sowie Spenden und Bedarf für das Statistik-Ticket |
 | [macros.rb](macros.rb) | Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“, die je einen Tag setzen, siehe [ADR 32](../docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc) |
 | [translations.rb](translations.rb) | Deutsche Übersetzungen aller Bezeichnungen als eigene Übersetzungen in Zammad |
@@ -36,8 +36,8 @@ Namen, Werte und Bezeichnungen sind englisch. Deutsch kommt als eigene Übersetz
 - Die Art des Geräts ist ein Auswahlfeld mit dem Schlüssel des Katalogs als Wert und dem englischen Namen als Bezeichnung, wo er fehlt dem deutschen. So bleibt der Schlüssel im Ticket, auch wenn sich ein Name ändert, siehe [ADR 13](../docs/adr/0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc).
 - Die Namen der Felder folgen dem Open Repair Data Standard, wo er ein Feld hat, siehe [ADR 52](../docs/adr/0052-erfasste-daten-festlegen.adoc).
 - Anfragen ohne Termin liegen in der Untergruppe Repairs › Requests, mit Termin wandert das Ticket in die Gruppe Repairs. Zammad übersetzt Namen von Gruppen nicht, sie stehen für alle englisch da.
-- Repair Agents bearbeiten die Tickets beider Gruppen. Repair Moderators pflegen zusätzlich Makros, Textbausteine und die Wissensdatenbank und sehen die Berichte. Die Rechte sind ein Vorschlag.
-- Ein vorhandenes Zammad mit anderen Namen für Gruppe oder Felder vorher anpassen, sonst entsteht ein zweites Feld oder eine zweite Gruppe. Bei uns wird die Gruppe Repair Café Anfragen zur Untergruppe Requests einer neuen Gruppe Repairs, und die Rollen Repair Café Agents und Repair Café Moderators heißen künftig Repair Agents und Repair Moderators.
+- Repair agents bearbeiten die Tickets beider Gruppen. Repair moderators pflegen zusätzlich Makros, Textbausteine und die Wissensdatenbank und sehen die Berichte. Die Rechte sind ein Vorschlag.
+- Ein vorhandenes Zammad mit anderen Namen für Gruppe oder Felder vorher anpassen, sonst entsteht ein zweites Feld oder eine zweite Gruppe. Bei uns wird die Gruppe Repair Café Anfragen zur Untergruppe Requests einer neuen Gruppe Repairs, und die Rollen Repair Café Agents und Repair Café Moderators heißen künftig Repair agents und Repair moderators.
 - Die VDE-Prüfung kennt leer, empfohlen, ja und nein. Leer heißt, es ist noch nicht entschieden.
 - Welche Felder wann sichtbar sind, etwa Spenden nur im Statistik-Ticket, regeln Core Workflows. Die fehlen hier noch.
 

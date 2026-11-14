@@ -10,11 +10,11 @@
 GROUPS = ['Repairs', 'Repairs::Requests'].freeze
 
 ROLES = {
-  'Repair Agents'     => {
+  'Repair agents'     => {
     note:        'Works on repairs and requests',
     permissions: %w[ticket.agent knowledge_base.reader user_preferences],
   },
-  'Repair Moderators' => {
+  'Repair moderators' => {
     note:        'Works on repairs and requests and maintains macros, text modules and the knowledge base',
     permissions: %w[ticket.agent knowledge_base.editor admin.macro admin.text_module report user_preferences],
   },

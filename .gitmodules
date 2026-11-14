@@ -29,3 +29,6 @@
 [submodule "quellen/ords-extra"]
 	path = quellen/ords-extra
 	url = https://codeberg.org/zenlan/ords-extra.git
+[submodule "repair-cafe"]
+	path = repair-cafe
+	url = https://github.com/makerspace-gt/repair-cafe.git

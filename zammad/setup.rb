@@ -1,4 +1,4 @@
-# Sets up a fresh or existing Zammad for a Repair Café as MANUEL expects it, see zammad/README.md.
+# Sets up a fresh or existing Zammad for a repair group as MANUEL expects it, see zammad/README.md.
 # Runs with rails runner and can run again, existing records are updated instead of added twice.
 # With docker compose it runs as the service manuel-setup from zammad/compose.yml:
 #   docker compose --project-directory . -f quellen/zammad-docker-compose/docker-compose.yml \

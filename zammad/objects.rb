@@ -46,7 +46,7 @@ RESULT_TREE = {
   ['Partly fixed', 'teilweise gelungen']    => [],
   %w[Postponed vertagt]                     => [
     ['Spare part ordered by the visitor', 'Ersatzteilbesorgung durch Gast'],
-    ['Spare part ordered by the Repair Café', 'Ersatzteilbesorgung durch Repair Café'],
+    ['Spare part ordered by the repair group', 'Ersatzteilbesorgung durch die Initiative'],
     ['Item incomplete', 'Gerät nicht komplett'],
     ['Tool or accessory missing', 'Hilfsmittel oder Zubehör fehlt'],
     ['Waiting time too long', 'zu lange Wartezeit'],
@@ -125,4 +125,4 @@ field('safety_test', tr('Safety test VDE 0701/0702', 'VDE 0701/0702 geprüft'), 
 field('event_date', tr('Event date', 'Termin'), 'date', { future: true, past: true, diff: 0, default: nil }, 1200)
 # Only filled in the statistics ticket of each date, see PLAN.md, phase 0
 field('donations', tr('Donations in euros', 'Spenden in Euro'), 'integer', { min: 0, max: 100_000, default: nil }, 1210)
-field('needs', tr('Needs of the Repair Café', 'Bedarf im Repair Café'), 'textarea', text(maxlength: 2000), 1220)
+field('needs', tr('Needs of the repair group', 'Bedarf der Initiative'), 'textarea', text(maxlength: 2000), 1220)

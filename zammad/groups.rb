@@ -1,21 +1,21 @@
-# Group and roles of the Repair Café, loaded by zammad/setup.rb.
+# Groups and roles of a repair group, loaded by zammad/setup.rb. The names are neutral, because
+# Repair Café is the name of one network and initiatives call themselves differently.
 # Agents work on the tickets of both groups. Moderators also maintain macros, text modules and the
-# knowledge base and see the reports. Admins keep the roles Zammad brings. The names stay English,
-# as in our Zammad.
-# Requests that have no date yet wait in the subgroup Anfragen, tickets with a date move to Repair Café.
-# Zammad does not translate group names, so the subgroup keeps the German name our team uses.
+# knowledge base and see the reports. Admins keep the roles Zammad brings.
+# Requests that have no date yet wait in the subgroup Requests, tickets with a date move to Repairs.
+# Zammad does not translate group names, they show in English for everyone.
 # An existing group with another name, for example Repair Café Anfragen, should be renamed and moved
 # before the first run, otherwise a second group is created.
 
-GROUPS = ['Repair Café', 'Repair Café::Anfragen'].freeze
+GROUPS = ['Repairs', 'Repairs::Requests'].freeze
 
 ROLES = {
-  'Repair Café Agents'     => {
-    note:        'Works on the tickets of the Repair Café',
+  'Repair Agents'     => {
+    note:        'Works on repairs and requests',
     permissions: %w[ticket.agent knowledge_base.reader user_preferences],
   },
-  'Repair Café Moderators' => {
-    note:        'Works on the tickets of the Repair Café and maintains macros, text modules and the knowledge base',
+  'Repair Moderators' => {
+    note:        'Works on repairs and requests and maintains macros, text modules and the knowledge base',
     permissions: %w[ticket.agent knowledge_base.editor admin.macro admin.text_module report user_preferences],
   },
 }.freeze

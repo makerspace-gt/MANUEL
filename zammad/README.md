@@ -1,23 +1,43 @@
-# Felder und Makros für Zammad
+# Zammad für ein Repair Café einrichten
 
-Diese Dateien legen in Zammad an, was MANUEL braucht. Sie laufen mit `rails runner` und lassen sich wiederholen, vorhandene Felder und Makros werden aktualisiert statt doppelt angelegt. Andere Initiativen können sie so in ihr eigenes Zammad einspielen.
+Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet. Sie enthalten nichts, was nur für das Repair Café des Makerspace Gütersloh gilt, und lassen sich mit docker compose bei jeder Initiative nachnutzen. Alle Läufe lassen sich wiederholen, vorhandene Einträge werden aktualisiert statt doppelt angelegt.
 
 | Datei | Inhalt |
 |---|---|
-| [objekte.rb](objekte.rb) | Felder im Ticket, also Art des Geräts aus dem [Katalog](../katalog/), Marke, Bezeichnung, Baujahr, Stromversorgung, Defekt, Lösung, Ergebnis als Baum, Repariert von, VDE-Prüfung, Termin sowie Spenden und Bedarf für das Statistik-Ticket |
-| [makros.rb](makros.rb) | Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“, die je einen Tag setzen, siehe [ADR 32](../docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc) |
+| [compose.yml](compose.yml) | Dienst `manuel-setup` zusätzlich zu `docker-compose.yml` aus [zammad-docker-compose](../quellen/zammad-docker-compose). Er wartet auf `zammad-init`, führt `setup.rb` aus und beendet sich |
+| [setup.rb](setup.rb) | Lädt die folgenden Dateien in dieser Reihenfolge und ändert zuletzt das Schema der Datenbank, weil Zammad danach neu startet |
+| [groups.rb](groups.rb) | Gruppe Repair Café sowie die Rollen Repair Café Agents und Repair Café Moderators |
+| [objects.rb](objects.rb) | Felder im Ticket, also Art des Geräts aus dem [Katalog](../katalog/), Marke, Bezeichnung, Baujahr, Alter und Angabe zum Alter, Stromversorgung, Defekt laut Anmeldung, festgestellter Defekt, Lösung, Ergebnis als Baum, Repariert von, VDE-Prüfung, Termin sowie Spenden und Bedarf für das Statistik-Ticket |
+| [macros.rb](macros.rb) | Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“, die je einen Tag setzen, siehe [ADR 32](../docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc) |
+| [translations.rb](translations.rb) | Deutsche Übersetzungen aller Bezeichnungen als eigene Übersetzungen in Zammad |
 
-Auf MANUEL laufen sie mit dem Befehl `zammad` in der Testinstanz, aus dem Wurzelverzeichnis des Repos:
+## Start
+
+Aus dem Wurzelverzeichnis dieses Repos, mit den Submodulen:
 
 ```bash
-zammad "$(cat zammad/objekte.rb)" < katalog/kategorien.tsv
-zammad "$(cat zammad/makros.rb)"
+docker compose --project-directory . \
+  -f quellen/zammad-docker-compose/docker-compose.yml \
+  -f zammad/compose.yml up -d
 ```
 
-- Die Art des Geräts ist ein einfaches Auswahlfeld mit dem Schlüssel des Katalogs als Wert und dem Namen als Bezeichnung. So bleibt der Schlüssel im Ticket, auch wenn sich ein Name ändert, und der Ticket Categorizer sieht Wert und Bezeichnung, siehe [ADR 13](../docs/adr/0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc).
-- Das Ergebnis folgt dem Baum unseres Zammad, wie er am 13.11.2026 in den Exporten stand.
+Nach Änderungen am Katalog oder an den Dateien läuft die Einrichtung erneut mit demselben Aufruf und `run --rm manuel-setup` statt `up -d`. Auf MANUEL übernimmt das `zammad-compose`, das zusätzlich die Testumgebung aus [testumgebung/](../testumgebung/) einbindet.
+
+## Sprache
+
+Namen, Werte und Bezeichnungen sind englisch. Deutsch kommt als eigene Übersetzung mit, wie unter Admin, Übersetzungen. Zammad zeigt jedem Benutzer die Felder, Auswahlwerte und Makros in der Sprache, die er eingestellt hat. Andere Sprachen lassen sich in `tr()` ergänzen.
+
+- Wo Zammad einen Begriff schon selbst übersetzt, etwa Yes oder Result, bleibt dessen Übersetzung. Deshalb heißt das Feld für das Modell „Model or type“, denn „Model“ übersetzt Zammad mit Modell.
+- Eine Übersetzung gilt in Zammad für jeden gleichen Text. Ein Name im Katalog darf deshalb nicht wie die Bezeichnung eines Felds lauten. Das Feld heißt darum „Power source“, weil der Katalog „Power supply“ für Netzteil nutzt.
+- Die Werte in den Tickets bleiben englisch, etwa `Not repaired::Fault not found`. Die alten deutschen Werte unseres Zammad stehen in [result_mapping.tsv](../eval/ora/result_mapping.tsv).
+
+## Hinweise
+
+- Die Art des Geräts ist ein Auswahlfeld mit dem Schlüssel des Katalogs als Wert und dem englischen Namen als Bezeichnung, wo er fehlt dem deutschen. So bleibt der Schlüssel im Ticket, auch wenn sich ein Name ändert, siehe [ADR 13](../docs/adr/0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc).
+- Die Namen der Felder folgen dem Open Repair Data Standard, wo er ein Feld hat, siehe [ADR 52](../docs/adr/0052-erfasste-daten-festlegen.adoc).
+- Repair Café Agents bearbeiten die Tickets der Gruppe. Repair Café Moderators pflegen zusätzlich Makros, Textbausteine und die Wissensdatenbank und sehen die Berichte. Die Rechte sind ein Vorschlag.
+- Ein vorhandenes Zammad mit anderen Namen für Gruppe oder Felder vorher anpassen, sonst entsteht ein zweites Feld oder eine zweite Gruppe. Bei uns wird aus der Gruppe Repair Café Anfragen die Gruppe Repair Café.
 - Die VDE-Prüfung kennt leer, empfohlen, ja und nein. Leer heißt, es ist noch nicht entschieden.
-- Die Namen der Felder sind ein Vorschlag. Heißen sie in einem vorhandenen Zammad anders, vorher `FIELDS` in `objekte.rb` anpassen, sonst entsteht ein zweites Feld.
 - Welche Felder wann sichtbar sind, etwa Spenden nur im Statistik-Ticket, regeln Core Workflows. Die fehlen hier noch.
 
-Am 13.11.2026 liefen beide Dateien zweimal in der Testinstanz mit Zammad 7.2.2, ohne Fehler und ohne doppelte Felder oder Makros.
+Am 14.11.2026 lief `setup.rb` dreimal in der Testinstanz mit Zammad 7.2.2. Fehler und doppelte Einträge gab es nicht, beim letzten Lauf änderte sich nichts mehr. Der Dienst `manuel-setup` selbst ist noch nicht gelaufen, nur seine Konfiguration ist mit `docker compose config` geprüft.

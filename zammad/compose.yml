@@ -1,0 +1,33 @@
+# Sets up Zammad for a Repair Café as MANUEL expects it, on top of docker-compose.yml of
+# zammad-docker-compose, see zammad/README.md. Run from the root of the MANUEL repository:
+#   docker compose --project-directory . -f quellen/zammad-docker-compose/docker-compose.yml \
+#     -f zammad/compose.yml up -d
+# The service waits for zammad-init, runs zammad/setup.rb once and exits. It holds nothing specific to
+# one Repair Café. Run it again after changes with the same command and "run --rm manuel-setup".
+
+services:
+  manuel-setup:
+    image: ${IMAGE_REPO:-ghcr.io/zammad/zammad}:${VERSION:-7.2.2-0012}
+    command: ["bundle", "exec", "rails", "runner", "/opt/manuel/zammad/setup.rb"]
+    restart: on-failure
+    # Same defaults as zammad-docker-compose, which keeps them in an anchor only its own file can use
+    environment:
+      MEMCACHE_SERVERS: ${MEMCACHE_SERVERS:-zammad-memcached:11211}
+      POSTGRESQL_DB: ${POSTGRES_DB:-zammad_production}
+      POSTGRESQL_HOST: ${POSTGRES_HOST:-zammad-postgresql}
+      POSTGRESQL_USER: ${POSTGRES_USER:-zammad}
+      POSTGRESQL_PASS: ${POSTGRES_PASS:-zammad}
+      POSTGRESQL_PORT: ${POSTGRES_PORT:-5432}
+      POSTGRESQL_OPTIONS: ${POSTGRESQL_OPTIONS:-?pool=50}
+      REDIS_URL: ${REDIS_URL:-redis://zammad-redis:6379}
+      TZ: ${TZ:-Europe/Berlin}
+    volumes:
+      - ./zammad:/opt/manuel/zammad:ro
+      - ./katalog/kategorien.tsv:/opt/manuel/katalog/kategorien.tsv:ro
+    # The files may lie on a read-only system path, for example /usr/share/manuel on MANUEL, where
+    # SELinux labels cannot be changed with :z
+    security_opt:
+      - label=disable
+    depends_on:
+      zammad-init:
+        condition: service_completed_successfully

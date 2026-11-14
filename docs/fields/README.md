@@ -13,9 +13,10 @@ Die Dateien entstehen bisher in einem Schritt mit [platform_values.py](../../eva
      - die Felder eines Geräts und einer Kategorie aus der API von Restarters
      - die Abbildung nach ORDS aus `config/ords.php`
      - alle Texte der deutschen Sprachdateien von Restarters als zweite Übersetzungstabelle `restarters_translations.csv`
-   - [import_partners.R](../../eval/fields/import_partners.R) schreibt aus den aggregierten Open Repair Data je Partner eine Datei mit jeder Kategorie des Partners, der ORA-Gruppe, die die Alliance zugeordnet hat, und der Zahl der Einträge.
+   - [import_partners.R](../../eval/fields/import_partners.R) schreibt aus den aggregierten Open Repair Data je Partner zwei Dateien. `ora_partner_<partner>.csv` enthält jede Kategorie des Partners mit der ORA-Gruppe, die die Alliance zugeordnet hat, und der Zahl der Einträge. `ora_partner_<partner>_brands.csv` enthält jede Schreibweise einer Marke mit ihrer Häufigkeit, weil die Marke bei Restarters und in den Open Repair Data Freitext ist.
    - Tabellen wie die Kategorien des Laufzettels in [quellen/anstiftung](../../quellen/anstiftung) liest der nächste Schritt direkt. Dazu gehören auch die 21 unbestätigten Kategorien, die Spalte `confirmed` bleibt erhalten.
 2. **Tidy.** Steht noch aus.
+   - ords-extra wird nicht importiert, sondern im Schritt Transform direkt aus dem Submodul angewendet, etwa die Tabelle der Marken mit einer eigenen Liste der Ausnahmen, siehe [ADR 52](../adr/0052-erfasste-daten-festlegen.adoc).
 3. **Transform.** Steht noch aus. Danach ersetzt es `platform_values.py`.
 
 | Datei | Plattform | Felder | Quelle |

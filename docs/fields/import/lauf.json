@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-14T14:45:11+0100",
+  "date": "2026-11-14T15:32:32+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/fields/import_partners.R",
-  "commit": "0c9fdb3b316af76e3a0b54ec595f8cdaa613e601",
+  "commit": "2f4e3a44851568f604e7fef99b280f173349b782",
   "dirty": true,
   "inputs": [
     {
@@ -21,6 +21,14 @@
     {
       "path": "docs/fields/import/ora_partner_restarters.csv",
       "sha256": "5727f044f936f59dda611a46c88a2d23912e77ae560a620463922ff77938462a"
+    },
+    {
+      "path": "docs/fields/import/ora_partner_anstiftung_brands.csv",
+      "sha256": "894963ae20e6bc3bbc9c46720a0aaae13961554e1cefd998871c9d17950ba0c9"
+    },
+    {
+      "path": "docs/fields/import/ora_partner_restarters_brands.csv",
+      "sha256": "2bdfac68a24d7c2dd451c75016c79e5d0e9701032e4c9d56a86269c8382d2a7b"
     }
   ],
   "r": {

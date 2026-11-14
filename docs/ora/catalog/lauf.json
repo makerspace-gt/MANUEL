@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-14T13:07:54+0100",
+  "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/categorizer/coverage.R",
+  "commit": "0043febe1b229fb320335e9c06f3ba59dcacb562",
+  "dirty": true,
+  "inputs": [
+    {
+      "path": "eval/categorizer/abc.tsv",
+      "sha256": "bc651acc8c986edc71b6c3d17619de90e4776af5c15b0caf4e70c9e26fa2b4c8"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/ora/catalog/coverage.tsv",
+      "sha256": "c5b9d9c52bc3be356fabae79fbd01d0e8408b2e5bb4dedb222480e27ac5025a7"
+    },
+    {
+      "path": "docs/grafiken/catalog-coverage.svg",
+      "sha256": "4e336ac3b3858f1ef9d9067c709f9808066c477201f2f15638fb384f149db81c"
+    },
+    {
+      "path": "docs/grafiken/catalog-coverage-hell.svg",
+      "sha256": "320f60dfb197c64d8406ef3ca7fcf08ef5fbc245b3d3bb00062ace415300d121"
+    }
+  ],
+  "r": {
+    "version": "R version 4.6.1 (2026-06-24)",
+    "repos": "https://p3m.dev/cran/__linux__/noble/2026-10-28",
+    "image": "localhost/manuel-r:4.6.1",
+    "packages": {
+      "bit": "4.6.0",
+      "bit64": "4.8.6",
+      "cli": "3.6.6",
+      "compiler": "4.6.1",
+      "crayon": "1.5.3",
+      "dplyr": "1.2.1",
+      "farver": "2.1.2",
+      "generics": "0.1.4",
+      "ggplot2": "4.0.3",
+      "glue": "1.8.1",
+      "grid": "4.6.1",
+      "gtable": "0.3.6",
+      "hms": "1.1.4",
+      "lifecycle": "1.0.5",
+      "magrittr": "2.0.5",
+      "parallel": "4.6.1",
+      "pillar": "1.11.1",
+      "pkgconfig": "2.0.3",
+      "R6": "2.6.1",
+      "RColorBrewer": "1.1-3",
+      "readr": "2.2.0",
+      "rlang": "1.3.0",
+      "S7": "0.2.2",
+      "scales": "1.4.0",
+      "svglite": "2.2.2",
+      "systemfonts": "1.3.2",
+      "textshaping": "1.0.5",
+      "tibble": "3.3.1",
+      "tidyselect": "1.2.1",
+      "tools": "4.6.1",
+      "tzdb": "0.5.0",
+      "vctrs": "0.7.3",
+      "vroom": "1.7.1",
+      "withr": "3.0.3"
+    }
+  },
+  "host": {
+    "kernel": "7.2.11-200.fc44.x86_64",
+    "machine": "x86_64"
+  }
+}

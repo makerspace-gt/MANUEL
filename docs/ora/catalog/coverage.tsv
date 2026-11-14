@@ -1,0 +1,9 @@
+measure	value
+entries	1089
+repairs	55926
+entries_without_repairs	11
+entries_below_10_repairs	659
+entries_for_80_percent	114
+entries_for_90_percent	221
+entries_for_95_percent	365
+entries_for_100_percent	1078

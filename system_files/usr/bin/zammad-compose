@@ -1,6 +1,8 @@
 #!/bin/bash
 # Runs docker compose for the Zammad test environment with the files baked into the image,
-# see docs/inbetriebnahme.md step 7. All arguments go to docker compose, for example
+# see docs/inbetriebnahme.md step 7. zammad/compose.yml sets up fields, group, roles and macros,
+# testumgebung/compose.override.yml adds what only the test environment needs.
+# All arguments go to docker compose, for example
 #   zammad-compose up -d
 #   zammad-compose ps
 #   zammad-compose down -v
@@ -13,7 +15,8 @@ if [[ -z "$bind_ip" ]]; then
     bind_ip=127.0.0.1
 fi
 exec sudo DOCKER_HOST=unix:///run/podman/podman.sock MANUEL_BIND_IP="$bind_ip" docker-compose -p zammad \
-    --project-directory "$base/zammad-docker-compose" \
+    --project-directory "$base" \
     --env-file "$base/testumgebung/zammad.env" \
     -f "$base/zammad-docker-compose/docker-compose.yml" \
+    -f "$base/zammad/compose.yml" \
     -f "$base/testumgebung/compose.override.yml" "$@"

@@ -32,6 +32,10 @@ install -d /usr/share/manuel/zammad-docker-compose /usr/share/manuel/testumgebun
 cp -a /ctx/zammad-docker-compose/docker-compose.yml /ctx/zammad-docker-compose/scenarios /ctx/zammad-docker-compose/LICENSE \
     /usr/share/manuel/zammad-docker-compose/
 cp -a /ctx/testumgebung/. /usr/share/manuel/testumgebung/
+# Setup for Zammad as in zammad/compose.yml, with the paths relative to /usr/share/manuel
+install -d /usr/share/manuel/zammad /usr/share/manuel/katalog
+cp -a /ctx/zammad/. /usr/share/manuel/zammad/
+cp -a /ctx/katalog/kategorien.tsv /usr/share/manuel/katalog/
 test -s /usr/share/manuel/zammad-docker-compose/docker-compose.yml
 
 # Tailscale is part of uCore. It connects the mini PC until NetBird runs, see docs/adr/0042-tailscale-als-uebergang-bis-netbird-nutzen.adoc

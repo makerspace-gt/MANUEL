@@ -5,6 +5,9 @@ COPY system_files /system_files
 # Compose file of Zammad and the test environment on top, see docs/adr/0043
 COPY quellen/zammad-docker-compose /zammad-docker-compose
 COPY testumgebung /testumgebung
+# Setup of fields, group, roles and macros for Zammad, see zammad/README.md
+COPY zammad /zammad
+COPY katalog/kategorien.tsv /katalog/kategorien.tsv
 # Public signing key, so the image can verify its own updates
 COPY cosign.pub /system_files/etc/pki/containers/makerspace-gt.pub
 

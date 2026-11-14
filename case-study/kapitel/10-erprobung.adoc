@@ -47,7 +47,7 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 
 === Reparaturen durch Gäste und neue Engagierte
 
-* Wer repariert hat, ist in Zammad Owner der Reparatur und hat die Rolle Repair agents.
+* Wer repariert hat, ist in Zammad Owner der Reparatur und hat die Rolle Repair Agent.
 * Hat der Gast selbst repariert, ist der Agent Gast Owner. Er zählt nicht als reparierende Person. Eine Reparatur mit Hilfe ist nicht eigens erkennbar.
 * Als neu gilt, wer seit dem 15.09.2026 dabei ist. Die Abgrenzung stimmt das Team ab.
 

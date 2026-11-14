@@ -122,7 +122,7 @@ Partner	Einträge	Länder	Jahre	feste Stufe	Werte Stufe 1	Werte gesamt	Marke gef
 include::../../docs/ora/partner.tsv[lines=2..-1]
 |===
 
-Die Spalte „feste Stufe“ zeigt, welcher Teil der Kategorie eines Partners aus einer festen Liste stammt. Eine 1 heißt, die erste Stufe ist fest und die zweite Freitext. Eine 2 heißt, beide Stufen sind fest. Eine 0 heißt, es gibt nur Freitext.
+Die Spalte „feste Stufe“ zeigt, welcher Teil der Kategorie eines Partners aus einer festen Liste stammt. Eine 1 heißt, die erste Stufe ist fest und die zweite Freitext. Eine 2 heißt, beide Stufen sind fest. Eine 0 heißt, es gibt nur Freitext. Ob eine Stufe wirklich fest ist, zeigt auch, wie viele Gruppen einen Wert nutzen. Einen Wert, den nur eine Gruppe nutzt, hat sie meist selbst eingetippt.
 
 [[werkzeuge]]
 Die Alliance empfiehlt, Reparaturen mit dem Werkzeug eines Partners zu erfassen, und bittet, nur ein Werkzeug zu nutzen, weil sonst doppelt gezählt wird cite:[ora-record].
@@ -132,7 +132,7 @@ Die Alliance empfiehlt, Reparaturen mit dem Werkzeug eines Partners zu erfassen,
 |===
 |Werkzeug |Partner |Kategorien |Schnittstelle
 |Restarters.net mit Fixometer |The Restart Project, auch iFixit |47 feste Kategorien, dazu der Gegenstand als Freitext |API mit Lesen und Schreiben
-|Repair Monitor |Repair Café International |16 Hauptkategorien mit festen Unterkategorien |keine öffentliche gefunden
+|Repair Monitor |Repair Café International |16 Hauptkategorien mit Unterkategorien aus einer Liste, daneben etwas Freitext |keine öffentliche gefunden
 |Laufzettel auf reparatur-initiativen.org |anstiftung |13 Ober- und rund 1.190 Unterkategorien, Initiativen können neue vorschlagen |API nur zum Lesen von Statistiken
 |Online-Formulare |Repair Cafe Wales, Fixit Clinic |grobe Liste bzw. Freitext |keine
 |Tabellen |Repair Café Denmark, Repair Café Toronto |Freitext |keine
@@ -169,6 +169,7 @@ Wie viele Kategorien ein Partner braucht, um den Großteil seiner Einträge abzu
 
 * Restarters kommt mit 25 seiner 47 Kategorien auf 90 Prozent, Repair Cafe Wales mit 7 von 23.
 * Die anstiftung braucht dafür 279 ihrer 1.187 Kategorien aus Ober- und Unterkategorie, Repair Café International 469 von 4.321.
+* Die vielen Kategorien von Repair Café International kommen von Freitext in der zweiten Stufe. 1.793 der 4.321 Kategorien nutzt nur eine der 471 Gruppen, zusammen nur 1.900 Einträge, darunter Schreibfehler wie „Cordless vaccuum cleaner“ und niederländische Wörter wie „electrische sokken“. Die 992 Kategorien, die mindestens zehn Gruppen nutzen, tragen 95,5 Prozent der Einträge. Bei der anstiftung nutzt nur eine Gruppe 264 Kategorien, denn dort können Initiativen neue vorschlagen. Die Zahlen stehen in {repo}/docs/ora/coverage/partners.tsv[partners.tsv].
 * Bei Freitext sind es Tausende. Denmark braucht 12.800 verschiedene Werte für 90 Prozent, 15.102 Werte kommen nur einmal vor.
 * Über alle Partner hinweg decken 27 der 46 ORA-Gruppen 90 Prozent ab. Am häufigsten sind Textilien, Haushalt ohne Strom und Staubsauger.
 

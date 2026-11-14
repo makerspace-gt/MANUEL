@@ -73,5 +73,5 @@ image::../../docs/grafiken/strom-verlauf-hell.svg[Leistung an der Steckdose und 
 ====
 * cite:[luccioni-2024]
 * Noch zu suchen sind aktuelle Strompreise und die Preise der Cloud-Anbieter am Tag der Messung.
-* Offen sind die Messung des Stroms und die Wahl des Cloud-Modells.
+* Der Strom wird seit dem 11.11.2026 gemessen. Offen sind die Last während der Erprobung und die Wahl des Cloud-Modells.
 ====

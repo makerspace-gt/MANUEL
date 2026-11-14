@@ -11,7 +11,9 @@
 # German names from docs/fields/import/restarters_translations.csv.
 #
 # Writes to docs/ora/coverage
-#   partners.tsv     per partner the number of categories needed for 80 and 90 to 100 percent
+#   partners.tsv     per partner the number of categories needed for 80 and 90 to 100 percent, and how
+#                    many groups use a category. A category only one group uses is mostly free text,
+#                    for example in the second level of Repair Café International
 #   restarters.tsv   and groups.tsv, the same measures as docs/ora/catalog/coverage.tsv
 # and the charts ora-coverage-partners, ora-coverage-restarters and ora-coverage-groups in docs/grafiken.
 #
@@ -39,7 +41,7 @@ source_note <- "Quelle: Open Repair Data 0.3, Juli 2026, CC BY-SA 4.0"
 
 data <- imap(files, \(path, kind) {
   read_csv(path, col_types = cols(.default = col_character()), na = character(), progress = FALSE) |>
-    select(data_provider, partner_product_category, product_category) |>
+    select(data_provider, group_identifier, partner_product_category, product_category) |>
     mutate(file = kind)
 }) |>
   bind_rows()
@@ -55,12 +57,25 @@ fixed_part <- function(value, level) {
   })
 }
 
-partner_counts <- data |>
+named <- data |>
   inner_join(levels, by = "data_provider") |>
   group_by(data_provider, fixed_level) |>
   group_modify(\(d, k) mutate(d, name = fixed_part(d$partner_product_category, k$fixed_level))) |>
-  ungroup() |>
-  count(data_provider, fixed_level, name)
+  ungroup()
+partner_counts <- count(named, data_provider, fixed_level, name)
+
+# How many groups use each category. Partners without group_identifier get NA
+spread <- named |>
+  group_by(data_provider) |>
+  mutate(groups = n_distinct(group_identifier[group_identifier != ""])) |>
+  group_by(data_provider, groups, name) |>
+  summarise(n = n(), users = n_distinct(group_identifier), .groups = "drop") |>
+  group_by(data_provider) |>
+  summarise(groups = first(groups),
+            values_one_group = sum(users == 1), entries_one_group = sum(n[users == 1]),
+            values_10_groups = sum(users >= 10), share_10_groups = round(sum(n[users >= 10]) / sum(n), 3)) |>
+  mutate(across(c(values_one_group, entries_one_group, values_10_groups, share_10_groups),
+                \(x) if_else(groups > 1, x, NA)))
 
 dir.create("docs/ora/coverage", recursive = TRUE, showWarnings = FALSE)
 outputs <- character()
@@ -79,8 +94,9 @@ partners |>
   mutate(level = paste0("for_", 100 * level, "_percent")) |>
   pivot_wider(names_from = level, values_from = needed) |>
   arrange(desc(entries)) |>
+  left_join(spread, by = "data_provider") |>
   rename(partner = data_provider) |>
-  write_tsv("docs/ora/coverage/partners.tsv")
+  write_tsv("docs/ora/coverage/partners.tsv", na = "")
 outputs <- c(outputs, "docs/ora/coverage/partners.tsv")
 
 kind_of <- c("0" = "nur Freitext", "1" = "eine feste Stufe", "2" = "zwei feste Stufen")

@@ -13,12 +13,18 @@ _Teilfrage T2. Welche Aufgaben kann ein lokales Modell übernehmen, welche bleib
 * Code rechnet, das Modell formuliert. Zählen, Zuordnen, Termine planen und Daten übertragen laufen nach festen Regeln.
 * Die Prüfung der Daten in Kapitel 2 bringt vier neue Aufgaben zur Erfassung.
 * Zum Start ordnet der Ticket Categorizer von Zammad ein, ohne Angabe der Sicherheit <<adr-0040>>.
+* Gruppen, Rollen, Felder, Makros und Übersetzungen für Zammad legt ein Dienst per docker compose an, ohne Einstellungen für eine bestimmte Initiative.
 
-*Wichtigste Befehle.* Keine.
+*Wichtigste Befehle.*
+
+[source,bash]
+----
+docker compose --project-directory . -f quellen/zammad-docker-compose/docker-compose.yml -f zammad/compose.yml up -d
+----
 ====
 
 [NOTE]
-.Entwurf in Stichpunkten, Stand 2026-11-08
+.Entwurf in Stichpunkten, Stand 2026-11-14
 ====
 Dieses Kapitel steht noch in Stichpunkten.
 ====
@@ -47,6 +53,21 @@ Dieses Kapitel steht noch in Stichpunkten.
 * Zammad kennt je Anbieter ein Sprachmodell und ein Embedding-Modell. Alle Agenten nutzen dasselbe Sprachmodell, ein Decision-Modell wie `d3:9b` lässt sich dem Categorizer nicht zuweisen. Das zeigt der Anbieter für Ollama im https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/lib/ai/provider/ollama.rb#L22-L58[Quellcode].
 * Seit Version 7.0 können Webhooks ein Bearer-Token senden. Damit kann Zammad über die eigene API Dinge tun, die Trigger und Makros nicht können, etwa Folgetickets anlegen cite:[zammad-7-0]. Gezeigt wurde das auch im Webinar zu Zammad 7.0 am 06.03.2026.
 * Ob unsere Version von Zammad all das schon kann, ist noch zu prüfen.
+
+[[zammad-einrichten]]
+=== Zammad einrichten
+
+* Die Einrichtung ist Code. Ein Dienst `manuel-setup` in {repo}/zammad/compose.yml[zammad/compose.yml] läuft zusätzlich zu den Diensten von zammad-docker-compose. Er wartet, bis Zammad bereit ist, legt alles an und beendet sich. Jeder Lauf lässt sich wiederholen, vorhandene Einträge werden aktualisiert statt doppelt angelegt.
+* Angelegt werden die Gruppe Repairs mit der Untergruppe Requests für Anfragen ohne Termin, die Rollen Repair agents und Repair moderators, die Felder für die Reparatur, die beiden Makros für Kennzahl 3 und die Übersetzungen.
+* Andere Initiativen sollen das ohne eigene Einstellungen nachnutzen können. Deshalb steht nirgends Repair Café, denn so heißt nur ein Teil der Initiativen. Bei uns bleibt der Termin das Repair Café.
+* Namen, Werte und Bezeichnungen sind englisch, die Felder heißen wie im Open Repair Data Standard, etwa `brand` und `year_of_manufacture` <<adr-0052>>. Deutsch kommt als eigene Übersetzung in Zammad mit. Jeder sieht die Felder in der Sprache, die er eingestellt hat.
+* Zwischen der Initiative und den Menschen, die ihre Geräte bringen, gibt es kein Geschäft. Deshalb ändert die Einrichtung 52 Texte von Zammad, aus Customer wird Guest und aus Kunde Gast. Für Geld gibt es nur Spenden.
+* Beim Einrichten fiel einiges auf.
+** Eine Übersetzung gilt in Zammad für jeden gleichen Text. Model übersetzt Zammad selbst mit Modell, das Feld heißt deshalb Model or type. Power supply ist im Katalog das Netzteil, das Feld heißt deshalb Power source.
+** Namen von Gruppen übersetzt Zammad nicht, sie stehen für alle englisch da.
+** Der Name `alter` für das Alter ist in Zammad verboten, das Feld heißt `product_age`.
+** Nach jeder Änderung am Schema startet Zammad neu. Die Einrichtung ändert das Schema deshalb zuletzt.
+* In der Testinstanz lief die Einrichtung am 14.11.2026 mehrfach ohne Fehler, beim letzten Lauf änderte sich nichts mehr.
 
 === Grundsätze
 
@@ -80,6 +101,7 @@ image::../../docs/grafiken/weg-einer-anfrage.svg[Ablauf vom Eingang über Einord
 ****
 * {repo}/PLAN.md[PLAN] mit Aufgaben, Grundsätzen und Phasen
 * Entscheidungen <<adr-0002>>, <<adr-0017>>, <<adr-0018>>, <<adr-0034>>, <<adr-0035>>, <<adr-0040>>
+* Einrichtung von Zammad in {repo}/zammad/README.md[zammad], mit {repo}/zammad/guest_wording.tsv[guest_wording.tsv] für Gast statt Kunde
 * Quellcode von Zammad als Submodul `quellen/zammad`, die Agenten unter https://github.com/zammad/zammad/tree/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/app/models/ai/agent/type[app/models/ai/agent/type]
 ****
 

@@ -144,7 +144,7 @@ Nur Restarters.net erlaubt es, Reparaturen über eine Schnittstelle anzulegen. D
 Daraus folgt unser Vorgehen.
 
 * Jede Kategorie muss sich einer ORA-Gruppe zuordnen lassen, sonst kommt eine Reparatur nicht vergleichbar bei der Alliance an.
-* Gemeldet wird zuerst über Restarters.net, weil es als einziges Werkzeug Reparaturen über eine API annimmt <<adr-0014>>. Oberfläche und Kategorien gibt es auch auf Deutsch, aus Kettle wird etwa https://github.com/TheRestartProject/restarters.net/blob/d46501cb20a0/lang/de.json#L82[Wasserkocher].
+* Gemeldet wird zuerst über Restarters.net, weil es als einziges Werkzeug Reparaturen über eine API annimmt <<adr-0014>>. Oberfläche und Kategorien gibt es auch auf Deutsch, aus Coffee maker wird etwa https://github.com/TheRestartProject/restarters.net/blob/d46501cb20a0/lang/de.json#L156[Kaffeemaschine].
 * Bei der anstiftung bleibt die Hoffnung auf eine API zum Anlegen von Laufzetteln.
 * Die übrigen Werkzeuge haben wir nur aus Interesse angeschaut, um zu sehen, wie andere Initiativen erfassen.
 * Ideal ist ein Gegenstand, der eindeutig einer ORA-Gruppe, einer Kategorie bei Restarters und den Kategorien der anstiftung zugeordnet ist. Der Schlüssel im Katalog trägt deshalb alle drei <<adr-0013>>.

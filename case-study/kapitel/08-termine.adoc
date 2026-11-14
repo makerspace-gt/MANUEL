@@ -23,7 +23,7 @@ _Teilfrage T6. Wie lassen sich Termine so vergeben, dass Helfende und Gäste zus
 Dieses Kapitel steht noch in Stichpunkten. Der Workflow dazu entsteht in Phase 5 des PLAN.
 ====
 
-.Beispiel k01, der Wasserkocher
+.Beispiel k04, die Kaffeemaschine
 ****
 * Vorschlag für einen Slot am nächsten Termin, aus einem Lauf des Workflows
 ****

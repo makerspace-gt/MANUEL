@@ -63,7 +63,7 @@ Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Re
 | |T12 |Was können andere Initiativen nachnutzen? |<<fazit,13>>
 |===
 
-* Teil II folgt dem Weg einer Anfrage. Ein erfundenes Ticket mit einem Wasserkocher begleitet ihn.
+* Teil II folgt dem Weg einer Anfrage. Ein erfundenes Ticket mit einer Kaffeemaschine begleitet ihn.
 * Abgrenzung in drei Sätzen. Kapitel 11 gibt einen Überblick über Pflichten, aber keine Rechtsberatung. Der Aufbau der Vereins-IT steht in it-infrastructure. Chatbot, Discourse und Signal kommen nur im Ausblick vor.
 
 [[lesewege]]

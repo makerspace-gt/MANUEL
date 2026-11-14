@@ -13,7 +13,7 @@ Laufzettel:: Ein Formular, auf dem eine Reparatur erfasst wird, auf Papier oder 
 Mixture of Experts:: Ein Sprachmodell, das aus vielen Teilnetzen besteht und für jedes Token nur einige davon nutzt. Es rechnet dadurch schneller, als seine Größe vermuten lässt.
 Nachfrage beim Gast:: Eine Frage an den Gast, wenn Angaben fehlen, etwa Alter, Bauart oder Größe des Geräts. MANUEL entwirft den Text, ein Mensch schickt ihn ab.
 Open Repair Data Standard:: Das gemeinsame Format der Open Repair Alliance für Reparaturdaten.
-ORA-Gruppe:: Eine Produktkategorie des Open Repair Data Standard, etwa Kettle für Wasserkocher.
+ORA-Gruppe:: Eine Produktkategorie des Open Repair Data Standard, etwa Coffee maker für Kaffeemaschinen.
 Prompt Injection:: Ein Angriff, bei dem Text von außen, etwa auf einer Webseite, Anweisungen an ein Sprachmodell enthält, die es vom eigentlichen Auftrag abbringen sollen.
 Rückfrage:: Eine interne Notiz an das Team. MANUEL macht nummerierte Vorschläge, statt zu raten, etwa wenn nur ein Sammelbegriff wie Kopfhörer genannt ist. Die Engagierten antworten mit der Nummer.
 SearXNG:: Eine freie Metasuchmaschine, die Anfragen ohne Konto und ohne Profil an mehrere Suchmaschinen weitergibt. Sie läuft als eigener Dienst.

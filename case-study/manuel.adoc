@@ -70,7 +70,7 @@ include::kapitel/03-aufgaben.adoc[]
 = Teil II Der Weg einer Anfrage
 
 [partintro]
-Dieser Teil folgt einer Anfrage vom Eingang bis zur Meldung an die Open Repair Alliance. Ein erfundenes Ticket aus dem öffentlichen Testsatz begleitet ihn. Es lautet „Mein Wasserkocher schaltet sich nicht mehr ein. Die Kontrollleuchte bleibt aus, obwohl er eingesteckt ist.“ Jedes Kapitel zeigt in einem Kasten, was an seiner Station mit diesem Ticket passiert.
+Dieser Teil folgt einer Anfrage vom Eingang bis zur Meldung an die Open Repair Alliance. Ein erfundenes Ticket aus dem öffentlichen Testsatz begleitet ihn. Es lautet „Die Kaffeemaschine zieht kein Wasser mehr und macht laute Pumpgeräusche.“ Jedes Kapitel zeigt in einem Kasten, was an seiner Station mit diesem Ticket passiert.
 
 include::kapitel/04-mini-pc-und-modelle.adoc[]
 

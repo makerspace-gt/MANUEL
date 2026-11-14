@@ -30,7 +30,7 @@ python3 evaluate.py
 Dieses Kapitel steht noch in Stichpunkten. Es erzählt fünf Wendepunkte, alle 16 Schritte stehen in {repo}/docs/einordnung.md[docs/einordnung.md].
 ====
 
-.Beispiel k01, der Wasserkocher
+.Beispiel k04, die Kaffeemaschine
 ****
 * Einordnung des Betreffs und der Nachricht mit Sicherheit des Modells, aus einem Lauf mit `lauf.json`
 ****

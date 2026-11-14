@@ -26,9 +26,9 @@ python3 eval/restarters/backfill.py --exports "../tickets-Repair Café-Created *
 
 Dieses Kapitel beschreibt, wie die Ergebnisse eines Termins gezählt, als Sharecard geteilt und an die Open Repair Alliance gemeldet werden. Grundlage sind der Standard, die Werkzeuge der Partner und die Vereinheitlichung der Kategorien aus <<reparaturdaten>>. Es schließt die Lücke, mit der Kapitel 2 endet.
 
-.Beispiel k01, der Wasserkocher
+.Beispiel k04, die Kaffeemaschine
 ****
-* Das Gerät landet bei Restarters in der Kategorie Kettle mit dem Gegenstand „Electric kettle“ aus dem Katalog.
+* Das Gerät landet bei Restarters in der Kategorie Coffee maker. Als Gegenstand steht der englische Name des Eintrags aus dem Katalog, etwa „Coffee maker“.
 * Auf der Sharecard des Termins zählt es als ein Feld im Raster.
 ****
 

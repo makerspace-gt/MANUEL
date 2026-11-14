@@ -34,10 +34,11 @@ toolbox run -c manuel-r Rscript eval/fields/import_partners.R
 Dieses Kapitel steht noch in Stichpunkten.
 ====
 
-.Beispiel k01, der Wasserkocher
+.Beispiel k04, die Kaffeemaschine
 ****
-* Der Eintrag Wasserkocher hat den Schlüssel 14.401. Die 14 steht für die ORA-Gruppe Kettle, die 401 für die Kategorie im Laufzettel der anstiftung.
-* Englischer Name „Electric kettle“, Stromversorgung 230 V, Synonym „Wasserkessel, elektrisch“
+* Der Eintrag Kaffeemaschine hat den Schlüssel 36.10.430. Die 36 steht für die ORA-Gruppe Coffee maker, die 10 für die Kategorie Coffee maker bei Restarters und die 430 für die Kategorie im Laufzettel der anstiftung.
+* Englischer Name „Coffee maker“, Stromversorgung 230 V, Synonyme Filterkaffeemaschine und Filtermaschine
+* Kaffeevollautomat mit 36.10.431 und Pad-/Kapsel-Kaffeemaschine mit 36.10.911 unterscheiden sich nur im letzten Teil. Fragt MANUEL nach der Art der Maschine, zählt die Antwort also nur für die anstiftung.
 ****
 
 === Aufbau und Quellen
@@ -48,7 +49,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 === Schlüssel
 
-* Form `ORA.Restarters.anstiftung.eigene`, etwa 14.39.401 für den Wasserkocher. Jeder Gegenstand gehört damit eindeutig zu einer Gruppe der ORA, einer Kategorie bei Restarters und den Kategorien der anstiftung.
+* Form `ORA.Restarters.anstiftung.eigene`, etwa 36.10.430 für die Kaffeemaschine. Jeder Gegenstand gehört damit eindeutig zu einer Gruppe der ORA, einer Kategorie bei Restarters und den Kategorien der anstiftung.
 * Eigene Aufteilungen bekommen eine vierte Stelle, etwa 11.24.459.1 und 11.24.459.2 für zwei Arten von Kopfhörern <<adr-0013>>
 * Bei Laptop und Flat screen steht für Restarters eine 0, dort entscheidet die Größe des Geräts.
 * Mit dem Start in Zammad werden die Schlüssel eingefroren.

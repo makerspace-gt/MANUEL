@@ -422,7 +422,7 @@ git push
 - [ ] Dokumentation in docs/ vervollständigen, sodass andere Reparaturinitiativen MANUEL nachbauen können
 - [ ] MANUEL als Fallstudie in [case-study](case-study/manuel.adoc) dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt/src/commit/cf02f276f6a473529921b643a62e77b6ec245550/README.md), siehe [ADR 30](docs/adr/0030-rahmen-der-fallstudie-festlegen.adoc). Sie entsteht vom Groben zum Feinen
   - [x] Stufe 1 im November 2026, Gliederung, Stichpunkte je Kapitel und Quellen. Die Durchsicht durch das Team steht aus
-  - [ ] Stufe 2 im November und Dezember 2026, Reihenfolge der Absätze, Abbildungen und fehlende Daten wie Läufe für das Beispiel k01 und die Strommessung
+  - [ ] Stufe 2 im November und Dezember 2026, Reihenfolge der Absätze, Abbildungen und fehlende Daten wie Läufe für das Beispiel k04 und die Strommessung
   - [ ] Stufe 3 von Dezember 2026 bis Februar 2027, ausformulieren, zuerst die Kapitel 2, 5, 6 und 9, dann parallel zur Erprobung die Kapitel 7 bis 10
   - [ ] Stufe 4 im März 2027, Zusammenfassung, Abstract auf Englisch, Gegenlesen durch das Team und Version 1.0 mit dem Sachbericht
 - [ ] Eigenständige compose.yaml als Beispiel für Nachnutzende bereitstellen

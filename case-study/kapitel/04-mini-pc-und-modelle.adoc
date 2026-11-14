@@ -21,7 +21,7 @@ _Teilfrage T3. Reicht ein Mini-PC für den Betrieb und welche Modelle passen?_
 sudo podman run -d --name ollama --restart=always --device /dev/dri \
   -e OLLAMA_IGPU_ENABLE=1 -v ollama:/root/.ollama -p "$(tailscale ip -4):11434:11434" \
   docker.io/ollama/ollama:latest
-ollama run qwen3.6:35b-a3b "Mein Wasserkocher schaltet sich nicht mehr ein."
+ollama run qwen3.6:35b-a3b "Meine Kaffeemaschine zieht kein Wasser mehr und macht laute Pumpgeräusche."
 ./bench.sh lang-qwen36-mtp llamacpp-vulkan
 ----
 ====
@@ -32,7 +32,7 @@ ollama run qwen3.6:35b-a3b "Mein Wasserkocher schaltet sich nicht mehr ein."
 Dieses Kapitel steht noch in Stichpunkten.
 ====
 
-.Beispiel k01, der Wasserkocher
+.Beispiel k04, die Kaffeemaschine
 ****
 * Wo das Ticket verarbeitet wird und wie lange jede Station dauert, gemessen in einem Lauf mit `lauf.json`
 ****
@@ -92,7 +92,7 @@ sudo podman run -d --name ollama --restart=always \
 
 [source,bash]
 ----
-ollama run qwen3.6:35b-a3b "Mein Wasserkocher schaltet sich nicht mehr ein. Was prüfe ich zuerst?"
+ollama run qwen3.6:35b-a3b "Meine Kaffeemaschine zieht kein Wasser mehr und macht laute Pumpgeräusche. Was prüfe ich zuerst?"
 ollama run hf.co/<benutzer>/<repo>:<quantisierung>
 ----
 
@@ -145,6 +145,6 @@ sudo podman run -d --name llamacpp-vulkan --security-opt label=disable \
 ====
 * cite:[chen-2024]
 * Noch zu suchen sind Angaben des Herstellers zum Ryzen AI 9 HX 370, die Doku von Ollama und llama.cpp, die Modellkarten von qwen3.6 und d3 und die Doku von uCore.
-* Offen sind die Messung für k01 und die Ladezeit nach einem Neustart.
+* Offen sind die Messung für k04 und die Ladezeit nach einem Neustart.
 * Alle paar Monate wiederholen wir die Läufe mit neuen Modellen, damit MANUEL laufend besser wird. Eingeordnet werden sie mit den Messungen von https://artificialanalysis.ai/[Artificial Analysis].
 ====

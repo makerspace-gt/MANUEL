@@ -398,6 +398,9 @@ git push
 - [ ] SearXNG in it-infrastructure auf der Helpdesk-VM einrichten und den Workflow für die Suche nach Anleitungen bauen, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc)
 - [ ] Workflow für die Sharecard bauen, der die Zahlen aus Zammad holt, Highlights über den Tag `highlight` findet und die Karte als Entwurf ans Team schickt
 - [ ] Workflow für Terminvorschläge bauen, der Anmeldungen in Nuudel auswertet
+- [ ] Problem, Lösung und Befund nach [ADR 50](docs/adr/0050-problem-loesung-und-befund-mit-drei-agenten-erfassen.adoc) erfassen, sobald das Team den Vorschlag annimmt. Stufe 1, das Problem aus der Anmeldung, geht schon ohne n8n
+- [ ] Spracherkennung wie whisper.cpp auf MANUEL testen, Tempo und Speicher neben Sprach- und Embedding-Modell, Aufnahmen bleiben lokal und werden nach der Umwandlung gelöscht
+- [ ] Workflow bauen, der eine Sprachnachricht der Engagierten in Text umwandelt und daraus die Lösung als Vorschlag schreibt, danach den Befund mit Einordnung der Schilderung und, wo es eine Liste gibt, der Fehlerart aus den Quests der Open Repair Data
 - [ ] Workflow für den Newsletter bauen, der nur Gäste anmeldet, für die Engagierte den Wunsch im Feld zur Einwilligung vermerkt haben. Die KI-Agenten dürfen dieses Feld nie setzen. Übermittelt wird nur die E-Mail-Adresse, der Endpunkt löst die Bestätigungsmail aus, jede Übermittlung erscheint einmalig als interne Notiz im Ticket und Fehler werden gemeldet
 
 ### Phase 6 Abschluss und Veröffentlichung

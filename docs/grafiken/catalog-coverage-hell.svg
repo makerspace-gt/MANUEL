@@ -56,12 +56,12 @@
 <circle cx='832.62' cy='248.44' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
 <circle cx='840.45' cy='206.76' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
 <circle cx='848.27' cy='97.26' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
-<text x='685.48' y='375.03' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='105.89px' lengthAdjust='spacingAndGlyphs'>80 % mit 114 Einträgen</text>
-<text x='763.70' y='343.62' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='105.89px' lengthAdjust='spacingAndGlyphs'>90 % mit 221 Einträgen</text>
-<text x='841.06' y='92.04' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='120.11px' lengthAdjust='spacingAndGlyphs'>100 % mit 1.078 Einträgen</text>
+<text x='685.13' y='375.03' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='111.67px' lengthAdjust='spacingAndGlyphs'>80 % mit 114 Kategorien</text>
+<text x='763.35' y='343.62' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='111.67px' lengthAdjust='spacingAndGlyphs'>90 % mit 221 Kategorien</text>
+<text x='840.71' y='92.04' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='125.89px' lengthAdjust='spacingAndGlyphs'>100 % mit 1.078 Kategorien</text>
 <rect x='66.08' y='87.87' width='148.62' height='228.97' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #FCFCFB;' />
 <text x='113.01' y='101.87' text-anchor='end' style='font-size: 10.24px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='28.38px' lengthAdjust='spacingAndGlyphs'>Anteil</text>
-<text x='199.05' y='101.87' text-anchor='end' style='font-size: 10.24px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='40.89px' lengthAdjust='spacingAndGlyphs'>Einträge</text>
+<text x='199.05' y='101.87' text-anchor='end' style='font-size: 10.24px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='53.22px' lengthAdjust='spacingAndGlyphs'>Kategorien</text>
 <text x='113.01' y='123.89' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>90 %</text>
 <text x='113.01' y='142.09' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>91 %</text>
 <text x='113.01' y='160.29' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>92 %</text>
@@ -84,6 +84,10 @@
 <text x='199.05' y='269.49' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>563</text>
 <text x='199.05' y='287.69' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.06px' lengthAdjust='spacingAndGlyphs'>705</text>
 <text x='199.05' y='305.89' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='25.59px' lengthAdjust='spacingAndGlyphs'>1.078</text>
+<text x='89.55' y='372.30' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='269.59px' lengthAdjust='spacingAndGlyphs'>Am häufigsten sind Staubsauger mit 2.699, Radio mit 1.994</text>
+<text x='89.55' y='385.83' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='186.58px' lengthAdjust='spacingAndGlyphs'>und Nähmaschine mit 1.787 Reparaturen</text>
+<text x='828.71' y='152.36' text-anchor='end' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='180.52px' lengthAdjust='spacingAndGlyphs'>217 Kategorien kommen nur einmal vor,</text>
+<text x='828.71' y='165.88' text-anchor='end' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='292.61px' lengthAdjust='spacingAndGlyphs'>etwa Braukessel, Marderschreck, Schlafmaske und Wagenheber</text>
 </g>
 <g clip-path='url(#cpMC4wMHw4ODAuMDB8MC4wMHw0NzYuMDA=)'>
 <text x='61.15' y='417.36' text-anchor='end' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='5.56px' lengthAdjust='spacingAndGlyphs'>0</text>
@@ -100,11 +104,11 @@
 <text x='691.83' y='425.93' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='22.80px' lengthAdjust='spacingAndGlyphs'>80 %</text>
 <text x='848.27' y='425.93' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='28.36px' lengthAdjust='spacingAndGlyphs'>100 %</text>
 <text x='461.09' y='438.14' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='100.09px' lengthAdjust='spacingAndGlyphs'>Anteil der Reparaturen</text>
-<text transform='translate(31.20,244.28) rotate(-90)' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='86.62px' lengthAdjust='spacingAndGlyphs'>Einträge im Katalog</text>
-<text x='23.91' y='47.32' style='font-size: 12.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='729.80px' lengthAdjust='spacingAndGlyphs'>Einträge, die nötig sind, um einen Anteil der 55.926 deutschen Reparaturen abzudecken, die häufigsten zuerst. 1 % sind rund 560 Geräte.</text>
-<text x='23.91' y='60.28' style='font-size: 12.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='380.73px' lengthAdjust='spacingAndGlyphs'>659 der 1.089 Einträge haben weniger als 10 Reparaturen, 11 gar keine</text>
-<text x='23.91' y='29.60' style='font-size: 16.00px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='370.02px' lengthAdjust='spacingAndGlyphs'>Wenige Einträge decken fast alle Reparaturen ab</text>
-<text x='23.91' y='452.36' style='font-size: 9.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='438.36px' lengthAdjust='spacingAndGlyphs'>Gezählt sind die Reparaturen der anstiftung in Deutschland, die sich eindeutig einem Eintrag zuordnen lassen.</text>
+<text transform='translate(31.20,244.28) rotate(-90)' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='97.83px' lengthAdjust='spacingAndGlyphs'>Kategorien im Katalog</text>
+<text x='23.91' y='47.32' style='font-size: 12.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='803.05px' lengthAdjust='spacingAndGlyphs'>Kategorien im Katalog, die nötig sind, um einen Anteil der 55.926 deutschen Reparaturen abzudecken, die häufigsten zuerst. 1 % sind rund 560 Geräte.</text>
+<text x='23.91' y='60.28' style='font-size: 12.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='394.19px' lengthAdjust='spacingAndGlyphs'>659 der 1.089 Kategorien haben weniger als 10 Reparaturen, 11 gar keine</text>
+<text x='23.91' y='29.60' style='font-size: 16.00px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='389.30px' lengthAdjust='spacingAndGlyphs'>Wenige Kategorien decken fast alle Reparaturen ab</text>
+<text x='23.91' y='452.36' style='font-size: 9.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='443.91px' lengthAdjust='spacingAndGlyphs'>Gezählt sind die Reparaturen der anstiftung in Deutschland, die sich eindeutig einer Kategorie zuordnen lassen.</text>
 <text x='23.91' y='462.08' style='font-size: 9.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='220.27px' lengthAdjust='spacingAndGlyphs'>Quelle: Open Repair Data 0.3, Juli 2026, CC BY-SA 4.0</text>
 </g>
 </g>

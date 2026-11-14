@@ -1,0 +1,76 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:ords: https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst
+[[adr-0052]]
+= 0052 Erfasste Daten festlegen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-14
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Wir wollen unsere Reparaturen im Format des Open Repair Data Standard bereitstellen, für die Open Repair Alliance und so, dass auch die anstiftung sie übernehmen könnte xref:0051-reparaturdaten-nach-ords-oeffentlich-bereitstellen.adoc[ADR 51]. Die Felder in Zammad sind über die Jahre gewachsen. Marke steht in rund einem Viertel der Tickets, das Baujahr in keinem, und als Defekt steht die Schilderung des Gastes. Welche Daten erfassen wir je Gerät, und wie werden sie zu den Spalten des Standards?
+
+== Entscheidungskriterien
+
+* Alle 14 Felder des Standards lassen sich füllen, die Pflichtfelder immer
+* Die anstiftung kann dieselben Zeilen übernehmen, mit ihren eigenen Kennungen
+* Unsicherheit wird festgehalten, nicht versteckt
+* Am Tisch entsteht so wenig Schreibarbeit wie möglich
+
+== Betrachtete Optionen
+
+* Nur die Pflichtfelder des Standards
+* Alle Felder des Standards und Zusatzspalten für die anstiftung und uns
+
+== Entscheidung
+
+Erfasst werden alle Felder des Standards. Zusatzspalten kommen dazu, wo der Standard sie erlaubt {ords}#L637-L665[(Data format)]. Jede Spalte ist im Manifest {repo}/docs/ora/ords-export.md[ords-export.md] mit der Beschreibung aus dem Standard und der Angabe Pflicht oder optional beschrieben.
+
+[cols="2,3,3",options="header"]
+|===
+|Feld in Zammad |Spalte im Export |Festlegung
+|Art des Geräts |partner_product_category, product_category, product_category_id, anstiftung_category_id, anstiftung_category, anstiftung_parent_category, catalog_key |Schlüssel aus dem Katalog <<adr-0013>>. Die übrigen Werte folgen daraus
+|Marke |brand |Wie erfasst. `Generic` für Ware ohne Marke, wie der Standard sie nennt {ords}#L183-L193[(Brand)]. Leer wird zu `Unknown`
+|Bezeichnung |nur intern |Modell oder Typ, für Suche und Restarters
+|Baujahr |year_of_manufacture |Vom Typenschild oder vom Gast
+|Alter und Angabe zum Alter |product_age, product_age_qualifier |Beides wird erfasst. Die Unsicherheit steht in der Angabe, etwa `mindestens` bei „mindestens 12 Jahre“. Fehlt eines von Baujahr und Alter, folgt es aus dem anderen und dem Termin
+|Defekt laut Anmeldung, festgestellter Defekt, Lösung |problem_de, problem |Erst der gemeldete oder vermutete Defekt, dann der tatsächliche Defekt, dann die Lösung, auf Deutsch. `problem` ist die automatische Übersetzung ins Englische, lokal nach <<adr-0048>>. Gibt es einen Artikel in der Wissensdatenbank, steht sein Link in knowledge_base_url
+|Ergebnis |repair_status, repair_barrier_if_end_of_life |Abgebildet nach der Tabelle der anstiftung, siehe {repo}/eval/ora/result_mapping.tsv[result_mapping.tsv]. Teilweise gelungen zählt als Fixed, weil der Gegenstand weiter genutzt werden kann
+|Termin und Tags der Termine |event_date, anstiftung_event_uid, repair_attempt |Ein Ticket an mehreren Terminen ergibt eine Zeile je Termin, mit der Nummer des Versuchs
+|fest |id, data_provider, country, group_identifier |`msg_<Ticket>_<Datum>`, Makerspace Gütersloh e.V., DEU, 17503
+|===
+
+Stromversorgung, VDE-Prüfung, Repariert von, Spenden und Bedarf bleiben Felder nur für uns.
+
+Die Spalten der anstiftung tragen die Namen aus ihrer eigenen Datenbank, etwa `event_uid`, `category_id` und `parent_id` für die Oberkategorie. Englische Namen der Kategorien hat die anstiftung nicht, nur eine Zuordnung zur ORDS-Kategorie.
+
+Aus ords-extra nutzen wir die Tabelle der Marken und die Muster für Produkte und Fehlerarten nur als Vorschlag und Prüfung, nicht als automatische Korrektur. Die Markentabelle ordnet nach Ähnlichkeit der Buchstaben zu und macht etwa aus Teufel Tefal und aus Canton Canon. Die Lizenz CC BY-NC-ND erlaubt keine Bearbeitung, deshalb veröffentlichen wir daraus keine eigenen Listen.
+
+=== Konsequenzen
+
+* Gut, weil alle Felder des Standards eine Quelle haben und die anstiftung die Zeilen ohne zweite Erfassung übernehmen kann.
+* Gut, weil Unsicherheit beim Alter und der Unterschied zwischen gemeldetem und festgestelltem Defekt sichtbar bleiben.
+* Gut, weil eine Tabelle die Ergebnisse für den Export und für Restarters gleich abbildet.
+* Schlecht, weil Zammad die neuen Felder Alter, Angabe zum Alter und festgestellter Defekt braucht.
+* Schlecht, weil die Übersetzung und der Link zur Wissensdatenbank erst mit n8n und der Wissensdatenbank kommen.
+
+== Vor- und Nachteile der Optionen
+
+=== Nur die Pflichtfelder
+
+* Gut, weil es wenig Aufwand macht.
+* Schlecht, weil Marke, Alter und Hindernis fehlen, die für Auswertungen am wichtigsten sind.
+
+=== Alle Felder und Zusatzspalten
+
+* Gut, weil die Daten vollständig und für mehrere Abnehmer nutzbar sind.
+* Schlecht, weil mehr Felder gepflegt werden müssen.
+
+== Quellen
+
+* {ords}#L62-L117[Open Repair Data Standard, Übersicht der Felder], {ords}#L118-L377[Beschreibung der Felder] und {ords}#L637-L665[Data format]
+* https://github.com/anstiftung/mapped-repair-events/blob/a507956b91fca2f30dd372e847f015a24138abf7/config/sql/init/database.sql[database.sql der anstiftung], Tabellen `info_sheets`, `categories` und `form_field_options_extra_infos`
+* https://codeberg.org/zenlan/ords-extra/src/commit/08e185b8289094ae31c19437a3e86a1248e96635[ords-extra], Markentabelle und Muster
+* Festlegungen von Michael Prange am 14.11.2026

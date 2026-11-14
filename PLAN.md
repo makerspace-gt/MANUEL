@@ -173,6 +173,8 @@ Die Zuordnung stammt aus den Open Repair Data vom Juli 2026. Dort steht bei jede
 
 ### Stammdaten für die Felder im Ticket
 
+Welche Daten wir je Gerät erfassen und wie sie zu den Spalten des Open Repair Data Standard werden, legt [ADR 52](docs/adr/0052-erfasste-daten-festlegen.adoc) fest. Das Manifest [ords-export.md](docs/ora/ords-export.md) beschreibt jede Spalte, die Ergebnisse bildet [result_mapping.tsv](eval/ora/result_mapping.tsv) nach der Tabelle der anstiftung ab. Die Tabelle unten bleibt als Stand vom 06.11.2026.
+
 Die Datei [config/sql/init/database.sql](https://github.com/anstiftung/mapped-repair-events/blob/a507956b91fca2f30dd372e847f015a24138abf7/config/sql/init/database.sql) enthält die Wertelisten der Laufzettel. Sie ist die verbindliche Quelle für die Auswahlwerte in Zammad und für das JSON-Schema der Prompts. Wenn wir dieselben Werte und IDs nutzen, lassen sich Tickets ohne Nacharbeit als Laufzettel übertragen.
 
 | Feld in Zammad | Feld im Laufzettel | Werte aus der Datenbank |
@@ -252,6 +254,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren. Die Testinstanz auf MANUEL läuft mit 7.2.2. Dort sind am 13.11.2026 der Anbieter Ollama, Ticket Categorizer und Ticket Text Extractor vorhanden, und Categorizer, Prompt-Vorlagen und Anbieter gleichen `quellen/zammad`
 - [ ] Termin als eigenes Datumsfeld anlegen und beim Umzug bestehende Wartezeiten übernehmen, die angepasste ticket.rb kommt nicht mit, siehe [Plan für den Neuaufbau der IT](https://github.com/makerspace-gt/it-infrastructure/blob/main/PLAN.md)
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
+- [ ] Neue Felder Alter in Jahren, Angabe zum Alter und Festgestellter Defekt nach [ADR 52](docs/adr/0052-erfasste-daten-festlegen.adoc) in der Testinstanz mit `zammad/objekte.rb` anlegen, Defekt heißt dort künftig Defekt laut Anmeldung. Für Ware ohne Marke steht `Generic`
 - [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
 - [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl, die Marke als Textfeld
 - [x] Felder, Auswahlwerte und Makros als Ruby-Dateien unter [zammad/](zammad/README.md) ablegen, damit sie sich in der Testinstanz und bei anderen Initiativen einspielen lassen. Am 13.11.2026 in der Testinstanz geprüft
@@ -397,6 +400,8 @@ git push
 - [ ] Workflow bauen, der nach dem Repair Café die Geräte über die API von Restarters.net meldet, siehe [ADR 14](docs/adr/0014-reparaturen-ueber-restarters-melden.adoc)
 - [ ] Bei der Open Repair Alliance unter openrepair@therestartproject.org anfragen, ob wir als eigener Datenpartner direkt im Format von ORDS liefern können, wie Repair Café Denmark und Toronto. Wir würden gern als eigener Partner in den Daten erscheinen. Gefragt wird auch nach Takt, nach dem Weg über Restarters, nach den 30 alten Einträgen über die anstiftung und ob eine Zuordnungstabelle von `item_type` zur ORA-Gruppe hilft. Je nach Antwort werden [ADR 14](docs/adr/0014-reparaturen-ueber-restarters-melden.adoc) und ADR 36 überarbeitet
 - [x] Export als CSV mit den Spalten des Standards bauen, unabhängig vom Weg der Meldung, siehe [ords_export.R](eval/ora/ords_export.R). Muster mit 469 Reparaturversuchen von 2024 bis 2026 liegt lokal
+- [ ] Problem auf Deutsch aus Defekt laut Anmeldung, festgestelltem Defekt und Lösung zusammensetzen, lokal ins Englische übersetzen und den Link zum Artikel der Wissensdatenbank anhängen, nach [ADR 52](docs/adr/0052-erfasste-daten-festlegen.adoc)
+- [ ] Marken mit der Tabelle aus ords-extra als Vorschlag abgleichen, ein Mensch bestätigt jede Änderung. Die Muster für Produkte aus ords-extra nutzt die Gruppe als Prüfung, wo sie nicht zur ORA-Gruppe im Katalog passen
 - [ ] Zustimmung des Teams einholen und im Repo [repair-cafe](repair-cafe) des Teams den Ordner `Statistik/ords` mit CSV, Manifest, `tableschema.json` und `LICENSE` mit CC BY-SA 4.0 anlegen und veröffentlichen, sobald das Feld problem anonymisiert gefüllt ist, siehe [ADR 51](docs/adr/0051-reparaturdaten-nach-ords-oeffentlich-bereitstellen.adoc). Klären, ob für 2024 nur das Feld Defekt anonymisiert wird
 - [ ] Nachmeldung der Geräte von 2024 bis 2026 an Restarters nach Freigabe der Vorschau senden, aber erst nach der Antwort der ORA, damit nichts doppelt gezählt wird, siehe [ADR 36](docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc)
 - [ ] SearXNG in it-infrastructure auf der Helpdesk-VM einrichten und den Workflow für die Suche nach Anleitungen bauen, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc)

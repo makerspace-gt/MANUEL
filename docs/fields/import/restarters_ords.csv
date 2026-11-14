@@ -1,0 +1,53 @@
+map,restarters,ords,ords_id
+categories_powered,Desktop computer,Desktop computer,4
+categories_powered,"Flat screen 15-17""",Flat screen,8
+categories_powered,"Flat screen 19-20""",Flat screen,8
+categories_powered,"Flat screen 22-24""",Flat screen,8
+categories_powered,"Flat screen 26-30""",Flat screen,8
+categories_powered,"Flat screen 32-37""",Flat screen,8
+categories_powered,Laptop large,Laptop,16
+categories_powered,Laptop medium,Laptop,16
+categories_powered,Laptop small,Laptop,16
+categories_powered,Paper shredder,Paper shredder,21
+categories_powered,PC accessory,PC accessory,22
+categories_powered,Printer/scanner,Printer/scanner,25
+categories_powered,Digital compact camera,Digital compact camera,5
+categories_powered,DSLR/video camera,DSLR/video camera,6
+categories_powered,Handheld entertainment device,Handheld entertainment device,10
+categories_powered,Headphones,Headphones,11
+categories_powered,Mobile,Mobile,19
+categories_powered,Tablet,Tablet,30
+categories_powered,Hi-Fi integrated,Hi-Fi integrated,12
+categories_powered,Hi-Fi separates,Hi-Fi separates,13
+categories_powered,Musical instrument,Musical instrument,20
+categories_powered,Portable radio,Portable radio,23
+categories_powered,Projector,Projector,26
+categories_powered,TV and gaming-related accessories,TV and gaming-related accessories,33
+categories_powered,Aircon/dehumidifier,Aircon/dehumidifier,1
+categories_powered,Decorative or safety lights,Decorative or safety lights,3
+categories_powered,Fan,Fan,7
+categories_powered,Hair & beauty item,Hair & beauty item,9
+categories_powered,Kettle,Kettle,14
+categories_powered,Lamp,Lamp,15
+categories_powered,Power tool,Power tool,24
+categories_powered,Small kitchen item,Small kitchen item,29
+categories_powered,Toaster,Toaster,31
+categories_powered,Toy,Toy,32
+categories_powered,Vacuum,Vacuum,34
+categories_powered,Misc,Misc,18
+categories_powered,Games console,Games console,38
+categories_powered,Watch/clock,Watch/clock,35
+categories_powered,Sewing machine,Sewing machine,27
+categories_powered,Iron,Iron,40
+categories_powered,Coffee maker,Coffee maker,36
+categories_unpowered,Furniture,Unpowered - Furniture,
+categories_unpowered,Bicycle,Unpowered - Bicycle,
+categories_unpowered,Clothing/textile,Unpowered - Textile,
+categories_unpowered,Jewellery,Unpowered - Jewellery,
+categories_unpowered,Misc,Unpowered - Other,
+categories_unpowered,Hand tool,Unpowered - Other,
+barriers,Spare parts not available,Spare parts not available,
+barriers,Spare parts too expensive,Spare parts too expensive,
+barriers,No way to open the product,No way to open product,
+barriers,Repair information not available,Repair information not available,
+barriers,Lack of equipment,Lack of equipment,

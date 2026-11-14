@@ -1,0 +1,11 @@
+field,code,text
+repair_status,0,Unknown
+repair_status,1,Fixed
+repair_status,2,Repairable
+repair_status,3,End of life
+repair_barrier_if_end_of_life,1,Spare parts not available
+repair_barrier_if_end_of_life,2,Spare parts too expensive
+repair_barrier_if_end_of_life,3,No way to open product
+repair_barrier_if_end_of_life,4,Repair information not available
+repair_barrier_if_end_of_life,5,Lack of equipment
+repair_barrier_if_end_of_life,6,Item too worn out

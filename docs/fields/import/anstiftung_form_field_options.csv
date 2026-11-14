@@ -1,0 +1,29 @@
+id,form_field_id,value,name,rank,status
+1,1,1,mit Netzteil,10,1
+2,1,2,230 V,20,1
+3,1,3,Batterie,30,1
+4,1,4,Akku,40,1
+5,1,5,ohne Kabel (Mechanik),50,1
+6,2,1,ja,10,1
+7,2,0,nein,20,1
+8,4,1,Hilfsmittel oder Zubehör fehlt,10,1
+9,4,2,Ersatzteilbesorgung durch Besucher,20,1
+10,4,3,Ersatzteilbesorgung durch Reparateur,30,1
+11,3,1,erfolgreich abgeschlossen,10,1
+12,3,2,"vertagt, weil...",20,1
+13,3,3,"nicht erfolgt, weil...",30,1
+14,3,4,Abbruch: Gerät darf nicht mehr genutzt werden,40,1
+15,5,1,hat noch Garantie,10,1
+16,5,2,Hilfsmittel oder Zubehör fehlt,20,1
+17,5,3,Gerät nicht komplett,30,1
+18,5,4,Ersatzteil nicht erhältlich,40,1
+19,5,5,Teilnutzung möglich,50,1
+20,5,6,Gesamtaufwand zu hoch,60,1
+21,6,7,technisch nicht möglich,70,1
+22,6,8,nicht betriebssicher,80,1
+23,5,9,zu lange Wartezeit,90,1
+24,5,10,Sonstiges,100,1
+25,5,11,Öffnung des Gerätes nicht möglich,25,1
+26,5,12,Ersatzteil zu teuer,45,1
+27,5,13,Reparaturinformationen nicht verfügbar,47,1
+28,5,14,Abnutzung zu groß,55,1

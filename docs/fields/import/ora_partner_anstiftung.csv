@@ -1,0 +1,1188 @@
+file,partner_product_category,product_category,product_category_id,entries
+eee,3D-Reparatur ~ Kleinzentrifuge,Small home electrical,28,1
+eee,3D-Reparatur ~ Naben-Abstandhalter,Misc,18,1
+eee,3D-Reparatur ~ Pavillon,Small home electrical,28,1
+eee,Computer ~ Adapter,Battery/charger/adapter,2,14
+eee,Computer ~ All-in-One-PC,Desktop computer,4,1
+eee,Computer ~ Beamer,Projector,26,81
+eee,Computer ~ Bildschirm,Flat screen,8,74
+eee,Computer ~ Computermaus,PC accessory,22,78
+eee,Computer ~ DVD Laufwerk,PC accessory,22,13
+eee,Computer ~ Desktopcomputer,Desktop computer,4,199
+eee,Computer ~ Diskettenlaufwerk,PC accessory,22,7
+eee,Computer ~ Dockingstation,PC accessory,22,1
+eee,Computer ~ Drucker,Printer/scanner,25,873
+eee,Computer ~ Festplatte,PC accessory,22,68
+eee,Computer ~ Flachbettscanner,Printer/scanner,25,2
+eee,Computer ~ Gameboy,Handheld entertainment device,10,46
+eee,Computer ~ Grafikkarte,PC accessory,22,5
+eee,Computer ~ Grafiktablet / Maltablet / Zeichentablet,PC accessory,22,13
+eee,Computer ~ Kopierer,Printer/scanner,25,5
+eee,Computer ~ Laptop / Notebook,Laptop,16,1639
+eee,Computer ~ Mainboard,PC accessory,22,5
+eee,Computer ~ Mini-PC,Desktop computer,4,5
+eee,Computer ~ Monitor,Flat screen,8,63
+eee,Computer ~ NAS / Netzwerkspeicher,PC accessory,22,5
+eee,Computer ~ Netzteil,Battery/charger/adapter,2,107
+eee,Computer ~ Platine,PC accessory,22,15
+eee,Computer ~ Router / Modem,PC accessory,22,32
+eee,Computer ~ Scanner,Printer/scanner,25,13
+eee,Computer ~ Schachcomputer,Desktop computer,4,13
+eee,Computer ~ Schneideplotter,PC accessory,22,1
+eee,Computer ~ Schrittzähler,Small home electrical,28,2
+eee,Computer ~ Single-Board-Computer,Desktop computer,4,18
+eee,Computer ~ Smartwatch,Watch/clock,35,21
+eee,Computer ~ Software,PC accessory,22,5
+eee,Computer ~ Taschenrechner,Small home electrical,28,31
+eee,Computer ~ Tastatur,PC accessory,22,33
+eee,Computer ~ Time Capsule,PC accessory,22,1
+eee,Computer ~ Tintenstrahldrucker,Printer/scanner,25,9
+eee,Computer ~ Trackball,PC accessory,22,1
+eee,Computer ~ USB Klemmlampe,PC accessory,22,5
+eee,Computer ~ USB-Hub,PC accessory,22,4
+eee,Computer ~ USB-Soundkarte,PC accessory,22,4
+eee,Computer ~ USB-Stick,PC accessory,22,13
+eee,Elektro divers ~ 3D-Drucker,Large home electrical,17,9
+eee,Elektro divers ~ 3D-Stift,PC accessory,22,2
+eee,"Elektro divers ~ Adventskalender, elektrisch",Small home electrical,28,1
+eee,Elektro divers ~ Akku,Battery/charger/adapter,2,45
+eee,Elektro divers ~ Akku Ladegerät,Battery/charger/adapter,2,70
+eee,"Elektro divers ~ Akku, mechanisch",Battery/charger/adapter,2,14
+eee,Elektro divers ~ Akku-Leuchte,Decorative or safety lights,3,16
+eee,Elektro divers ~ Akkukompressor,Power tool,24,2
+eee,Elektro divers ~ Akkuschrauber / Akkubohrer,Power tool,24,292
+eee,Elektro divers ~ Alarmanlage,Small home electrical,28,7
+eee,Elektro divers ~ Anrufbeantworter,Mobile,19,12
+eee,Elektro divers ~ Antenne,TV and gaming-related accessories,33,4
+eee,Elektro divers ~ Anzeigetafel,Small home electrical,28,5
+eee,Elektro divers ~ Arduino,PC accessory,22,1
+eee,Elektro divers ~ Armbanduhr,Watch/clock,35,299
+eee,Elektro divers ~ Autobatterie-Ladegerät,Large home electrical,17,30
+eee,Elektro divers ~ Autodisplay,Tablet,30,3
+eee,Elektro divers ~ Autoschlüssel,Small home electrical,28,25
+eee,Elektro divers ~ Außenstrahler,Decorative or safety lights,3,16
+eee,Elektro divers ~ Babyphone,Small home electrical,28,35
+eee,Elektro divers ~ Badewannenlifter,Small home electrical,28,3
+eee,Elektro divers ~ Bandschleifer,Power tool,24,35
+eee,Elektro divers ~ Bandsäge,Power tool,24,4
+eee,Elektro divers ~ Batterietester,Battery/charger/adapter,2,6
+eee,Elektro divers ~ Beatmungsgerät,Small home electrical,28,1
+eee,Elektro divers ~ Betonmischer,Large home electrical,17,4
+eee,Elektro divers ~ Bewegungsmelder,Small home electrical,28,21
+eee,Elektro divers ~ Bewässerungspumpe,Power tool,24,18
+eee,Elektro divers ~ Blinkerrelais,Small home electrical,28,3
+eee,Elektro divers ~ Blinklicht,Decorative or safety lights,3,2
+eee,Elektro divers ~ Blitzgerät,Decorative or safety lights,3,11
+eee,Elektro divers ~ Blutdruckmessgerät,Small home electrical,28,59
+eee,Elektro divers ~ Bohrhammer,Power tool,24,59
+eee,Elektro divers ~ Bohrmaschine,Power tool,24,406
+eee,Elektro divers ~ Bootsmotor,Large home electrical,17,2
+eee,Elektro divers ~ Braille-Lesegerät,Small home electrical,28,2
+eee,Elektro divers ~ Braille-Schreibmaschine,Small home electrical,28,2
+eee,Elektro divers ~ Braillezeile,Small home electrical,28,2
+eee,Elektro divers ~ Brandmalgerät,Small home electrical,28,2
+eee,Elektro divers ~ Braukessel,Kettle,14,1
+eee,Elektro divers ~ Brillenreinigungsgerät,Small home electrical,28,1
+eee,Elektro divers ~ Brutschrank,Small kitchen item,29,1
+eee,Elektro divers ~ Carrerabahn,Toy,32,3
+eee,Elektro divers ~ Ceranfeld,Small kitchen item,29,3
+eee,Elektro divers ~ Deckenbeleuchtung / Deckenfluter,Decorative or safety lights,3,77
+eee,Elektro divers ~ Dekopiersäge,Power tool,24,1
+eee,Elektro divers ~ Deltaschleifer,Power tool,24,9
+eee,Elektro divers ~ Desinfektionsgerät,Small home electrical,28,3
+eee,Elektro divers ~ Dickenhobel,Power tool,24,1
+eee,Elektro divers ~ Diktiergerät,PC accessory,22,21
+eee,Elektro divers ~ Dimmerpack,Decorative or safety lights,3,4
+eee,Elektro divers ~ Drehmel,Hi-Fi separates,13,1
+eee,Elektro divers ~ Drehstrommotor,Small home electrical,28,1
+eee,Elektro divers ~ Dreieckschleifer,Power tool,24,12
+eee,Elektro divers ~ Dremel,Power tool,24,17
+eee,Elektro divers ~ Drumcomputer,Musical instrument,20,2
+eee,Elektro divers ~ E-Auto,Large home electrical,17,13
+eee,Elektro divers ~ E-Gehrungssäge,Power tool,24,1
+eee,Elektro divers ~ E-Gitarre,Musical instrument,20,9
+eee,Elektro divers ~ E-Ladegerät,Large home electrical,17,29
+eee,Elektro divers ~ E-Ladekabel,Battery/charger/adapter,2,14
+eee,Elektro divers ~ E-Piano,Musical instrument,20,15
+eee,Elektro divers ~ E-Zigarette,Small home electrical,28,3
+eee,Elektro divers ~ Effektgerät,Small home electrical,28,4
+eee,Elektro divers ~ Elektrische Höhenverstellung,Small home electrical,28,7
+eee,Elektro divers ~ Elektrohobel,Power tool,24,10
+eee,Elektro divers ~ Elektrorasierer,Hair & beauty item,9,301
+eee,Elektro divers ~ Elektroseilwinde,Large home electrical,17,1
+eee,Elektro divers ~ Endoskop,Small home electrical,28,1
+eee,Elektro divers ~ Entlötstation,Power tool,24,2
+eee,Elektro divers ~ Epilierer,Hair & beauty item,9,9
+eee,Elektro divers ~ Etikettiergerät,Small home electrical,28,7
+eee,Elektro divers ~ Falzmaschine,Small home electrical,28,1
+eee,Elektro divers ~ Faxgerät,Printer/scanner,25,32
+eee,Elektro divers ~ Fitnesstracker / Pulsuhr,Watch/clock,35,10
+eee,Elektro divers ~ Fitnesstrainer,Small home electrical,28,15
+eee,Elektro divers ~ Fledermausdetektor,Small home electrical,28,2
+eee,Elektro divers ~ Flex,Power tool,24,36
+eee,Elektro divers ~ Frequenzumrichter,Small home electrical,28,3
+eee,Elektro divers ~ Funkboot /Modellboot,Toy,32,1
+eee,Elektro divers ~ Funkgerät Walkie Talkie,Toy,32,20
+eee,Elektro divers ~ Funkglocke /Funkklingel,Small home electrical,28,3
+eee,Elektro divers ~ Funksteckdose,Battery/charger/adapter,2,22
+eee,Elektro divers ~ Funkuhr,Watch/clock,35,31
+eee,Elektro divers ~ Fußpflegegerät,Hair & beauty item,9,23
+eee,Elektro divers ~ Fußschalter,Small home electrical,28,3
+eee,Elektro divers ~ Fön,Hair dryer,39,384
+eee,Elektro divers ~ Garagenöffner,Small home electrical,28,16
+eee,Elektro divers ~ Garten,Small home electrical,28,36
+eee,Elektro divers ~ Gartenhäcksler,Power tool,24,54
+eee,Elektro divers ~ Gartenlampe,Lamp,15,10
+eee,Elektro divers ~ Gasheizung Regelung,Small home electrical,28,4
+eee,Elektro divers ~ Gasofen,Large home electrical,17,3
+eee,Elektro divers ~ Geigerzähler,Small home electrical,28,1
+eee,Elektro divers ~ Getreidemühle,Food processor,37,29
+eee,Elektro divers ~ Glasschleifer,Power tool,24,1
+eee,Elektro divers ~ Globus,Lamp,15,12
+eee,Elektro divers ~ Graviergerät,Small home electrical,28,5
+eee,Elektro divers ~ Guitarren-Pedal-Board,Small home electrical,28,1
+eee,Elektro divers ~ Handkreissäge,Power tool,24,52
+eee,Elektro divers ~ Haussprechanlage,Small home electrical,28,2
+eee,Elektro divers ~ Heckenschere,Power tool,24,292
+eee,Elektro divers ~ Heiz-Socken,Small home electrical,28,5
+eee,Elektro divers ~ Heizschuh,Small home electrical,28,2
+eee,Elektro divers ~ Heizstein,Small home electrical,28,1
+eee,Elektro divers ~ Heizstrahler,Large home electrical,17,34
+eee,Elektro divers ~ Heizung,Large home electrical,17,41
+eee,Elektro divers ~ Heizungsregler,Small home electrical,28,7
+eee,Elektro divers ~ Heißklebemaschine,Small home electrical,28,1
+eee,Elektro divers ~ Heißklebepistole,Small home electrical,28,13
+eee,Elektro divers ~ Heißluftföhn / Heißluftgebläse,Power tool,24,10
+eee,Elektro divers ~ Heißluftpistole,Small home electrical,28,15
+eee,Elektro divers ~ Hochentaster,Small home electrical,28,4
+eee,Elektro divers ~ Holzfigur beleuchtet,Small home electrical,28,15
+eee,Elektro divers ~ Holzspalter,Power tool,24,7
+eee,Elektro divers ~ Hornhautentferner,Hair & beauty item,9,4
+eee,Elektro divers ~ Hoverboard,Toy,32,17
+eee,Elektro divers ~ Hupe,Small home electrical,28,3
+eee,Elektro divers ~ Hängeleuchte,Decorative or safety lights,3,11
+eee,Elektro divers ~ Hörgerät,Small home electrical,28,11
+eee,Elektro divers ~ IPL Laserhaarentferner,Hair & beauty item,9,2
+eee,Elektro divers ~ Induktive Ladeschale,Battery/charger/adapter,2,3
+eee,Elektro divers ~ Interaktives Lernspielzeug,Toy,32,4
+eee,Elektro divers ~ Inverter,Battery/charger/adapter,2,5
+eee,Elektro divers ~ KFZ-Sitzheizung (Nachrüstung),Small home electrical,28,1
+eee,Elektro divers ~ Kabel,Small home electrical,28,134
+eee,Elektro divers ~ Kabeltrommel,Small home electrical,28,49
+eee,Elektro divers ~ Kappsäge,Power tool,24,17
+eee,Elektro divers ~ Kartenlesegerät,PC accessory,22,1
+eee,Elektro divers ~ Kartenmischmaschine,Small home electrical,28,1
+eee,Elektro divers ~ Katzenklappe,Small home electrical,28,4
+eee,Elektro divers ~ Katzenschreck,Small home electrical,28,1
+eee,Elektro divers ~ Kehrmaschine,Small home electrical,28,5
+eee,Elektro divers ~ Kettensäge,Power tool,24,92
+eee,Elektro divers ~ Kilometerzähler,Small home electrical,28,1
+eee,Elektro divers ~ Kinder-Elektroauto,Toy,32,8
+eee,Elektro divers ~ Kinder-Elektromotorrad,Toy,32,1
+eee,Elektro divers ~ Kinderherd,Toy,32,4
+eee,Elektro divers ~ Kompressor,Power tool,24,40
+eee,Elektro divers ~ Krankenbett-Schalttafel,Small home electrical,28,4
+eee,Elektro divers ~ Kreissäge,Power tool,24,25
+eee,Elektro divers ~ Kunststoffschweißgerät,Power tool,24,1
+eee,Elektro divers ~ Kärcher,Power tool,24,17
+eee,Elektro divers ~ Körperpflege,Hair & beauty item,9,14
+eee,Elektro divers ~ LED-Licht/LED-Leuchte,Decorative or safety lights,3,221
+eee,Elektro divers ~ LED-Spiegel,Decorative or safety lights,3,9
+eee,Elektro divers ~ Labornetzgerät,Battery/charger/adapter,2,6
+eee,Elektro divers ~ Labortechnikgerät,Small home electrical,28,1
+eee,Elektro divers ~ Ladegerät,Battery/charger/adapter,2,164
+eee,Elektro divers ~ Lampe,Lamp,15,1533
+eee,Elektro divers ~ Lan-Kabel,PC accessory,22,1
+eee,Elektro divers ~ Laser,Small home electrical,28,9
+eee,Elektro divers ~ Laserdrucker,Printer/scanner,25,70
+eee,Elektro divers ~ Laterne,Decorative or safety lights,3,8
+eee,Elektro divers ~ Laubbläser,Power tool,24,35
+eee,Elektro divers ~ Laubsauger,Power tool,24,18
+eee,Elektro divers ~ Laufband,Large home electrical,17,5
+eee,Elektro divers ~ Lautstärkeregler,Hi-Fi separates,13,1
+eee,Elektro divers ~ Lawinenpipsgerät,Small home electrical,28,1
+eee,Elektro divers ~ Leitungssucher,Small home electrical,28,2
+eee,Elektro divers ~ Leselampe,Lamp,15,58
+eee,Elektro divers ~ Leselupe,Small home electrical,28,11
+eee,Elektro divers ~ Leuchtball / Leuchtkugel,Decorative or safety lights,3,2
+eee,Elektro divers ~ Leuchtreklame,Decorative or safety lights,3,3
+eee,Elektro divers ~ Lichterbogen,Decorative or safety lights,3,31
+eee,Elektro divers ~ Lichterkette,Decorative or safety lights,3,349
+eee,Elektro divers ~ Lockenstab,Hair & beauty item,9,58
+eee,Elektro divers ~ Lokomotive,Toy,32,15
+eee,Elektro divers ~ Loop Station,Hi-Fi separates,13,1
+eee,Elektro divers ~ Luftkühler,Aircon/dehumidifier,1,8
+eee,Elektro divers ~ Luftreiniger,Small home electrical,28,21
+eee,Elektro divers ~ Lötkolben,Power tool,24,13
+eee,Elektro divers ~ Lötstation,Power tool,24,12
+eee,Elektro divers ~ Lüfter,Fan,7,28
+eee,Elektro divers ~ Magnetfeldmatte,Small home electrical,28,7
+eee,"Elektro divers ~ Malstift, elektrisch",Small home electrical,28,4
+eee,Elektro divers ~ Manikürgerät,Hair & beauty item,9,11
+eee,Elektro divers ~ Marderschreck,Small home electrical,28,1
+eee,Elektro divers ~ Massageball,Small home electrical,28,1
+eee,Elektro divers ~ Massagegerät,Small home electrical,28,91
+eee,Elektro divers ~ Massagekissen,Small home electrical,28,8
+eee,Elektro divers ~ Medizintechnik,Small home electrical,28,18
+eee,Elektro divers ~ Megafon,Small home electrical,28,7
+eee,Elektro divers ~ Mehrfachsteckdose,Battery/charger/adapter,2,39
+eee,Elektro divers ~ Messgerät,Small home electrical,28,38
+eee,Elektro divers ~ Metalldetektor,Large home electrical,17,2
+eee,Elektro divers ~ Metronom,Small home electrical,28,4
+eee,Elektro divers ~ Mikroskop,Small home electrical,28,18
+eee,Elektro divers ~ Milchpumpe,Small home electrical,28,2
+eee,Elektro divers ~ Modellbau-Bausatz,Toy,32,3
+eee,Elektro divers ~ Modelleisenbahn,Toy,32,35
+eee,Elektro divers ~ Modellflugzeug,Toy,32,2
+eee,Elektro divers ~ Motor,Power tool,24,22
+eee,Elektro divers ~ Motorhacke,Power tool,24,2
+eee,Elektro divers ~ Motorsense/Freischneider,Power tool,24,16
+eee,Elektro divers ~ Motorsäge,Power tool,24,22
+eee,Elektro divers ~ Multiboy,Small kitchen item,29,13
+eee,Elektro divers ~ Multifunktionswerkzeug,Power tool,24,18
+eee,Elektro divers ~ Multimeter,Battery/charger/adapter,2,18
+eee,Elektro divers ~ Mundspülgerät,Hair & beauty item,9,5
+eee,Elektro divers ~ Musikinstrument,Musical instrument,20,38
+eee,Elektro divers ~ Muskelstimulator,Small home electrical,28,2
+eee,Elektro divers ~ Mähroboter,Large home electrical,17,8
+eee,Elektro divers ~ Mückenbrennstab,Small home electrical,28,2
+eee,Elektro divers ~ Münzzählautomat,Small home electrical,28,6
+eee,Elektro divers ~ Nachttischlampe,Lamp,15,82
+eee,Elektro divers ~ Nagellack-Abfüllmaschine,Hair & beauty item,9,1
+eee,Elektro divers ~ Nagelset,Hair & beauty item,9,2
+eee,Elektro divers ~ Nasenhaartrimmer,Hair & beauty item,9,4
+eee,Elektro divers ~ Nebelmaschine,Small home electrical,28,11
+eee,Elektro divers ~ Netzstromverteiler,Battery/charger/adapter,2,3
+eee,Elektro divers ~ Netzteil,Battery/charger/adapter,2,65
+eee,Elektro divers ~ Notfallgerät,Small home electrical,28,2
+eee,Elektro divers ~ Nähmaschine,Sewing machine,27,1789
+eee,Elektro divers ~ Oberfräse,Power tool,24,3
+eee,Elektro divers ~ Oszilloskop,Power tool,24,5
+eee,Elektro divers ~ Otoskop,Small home electrical,28,1
+eee,Elektro divers ~ Papierschredderer,Paper shredder,21,66
+eee,Elektro divers ~ Pedalantrieb,Battery/charger/adapter,2,1
+eee,Elektro divers ~ Personenwaage,Hair & beauty item,9,104
+eee,Elektro divers ~ Pinnenpilot,Large home electrical,17,1
+eee,Elektro divers ~ Pixel Bilderrahmen,Small home electrical,28,3
+eee,Elektro divers ~ Plastikfigur,Small home electrical,28,4
+eee,Elektro divers ~ Playmobil Eisenbahn,Toy,32,9
+eee,Elektro divers ~ Poliergerät,Large home electrical,17,6
+eee,Elektro divers ~ Poolfilter,Small home electrical,28,3
+eee,Elektro divers ~ Poolreiniger,Small home electrical,28,10
+eee,Elektro divers ~ Powerstation,Battery/charger/adapter,2,3
+eee,Elektro divers ~ Probengeber /Probennehmer,Small home electrical,28,1
+eee,Elektro divers ~ Pumpe,Power tool,24,9
+eee,Elektro divers ~ Pyrometer,Small home electrical,28,1
+eee,Elektro divers ~ Rasenkantenschere,Power tool,24,16
+eee,Elektro divers ~ Rasenkantenschneider,Power tool,24,14
+eee,Elektro divers ~ Rasenmäher,Large home electrical,17,235
+eee,"Elektro divers ~ Rasenschere, elektrisch",Large home electrical,17,6
+eee,Elektro divers ~ Rasentrimmer,Power tool,24,69
+eee,Elektro divers ~ Rauchmelder,Small home electrical,28,2
+eee,Elektro divers ~ Rechenmaschine,Small home electrical,28,7
+eee,Elektro divers ~ Ringlicht,Decorative or safety lights,3,3
+eee,Elektro divers ~ Rolladenmotor,Small home electrical,28,13
+eee,Elektro divers ~ Rollpiano,Musical instrument,20,1
+eee,Elektro divers ~ Rotlichtlampe,Decorative or safety lights,3,13
+eee,Elektro divers ~ Rückfahrkamera,Digital compact camera,5,1
+eee,Elektro divers ~ SD-Karte,PC accessory,22,3
+eee,Elektro divers ~ Saturn,Small home electrical,28,1
+eee,Elektro divers ~ Saugroboter,Vacuum,34,170
+eee,Elektro divers ~ Schalter,Small home electrical,28,22
+eee,Elektro divers ~ Scheibenwischer,Small home electrical,28,3
+eee,Elektro divers ~ Scheinwerfer,Decorative or safety lights,3,14
+eee,Elektro divers ~ Schlagbohrmaschine,Power tool,24,12
+eee,"Elektro divers ~ Schlagzeug, elektronisch",Musical instrument,20,1
+eee,Elektro divers ~ Schleifgerät / Schleifer,Power tool,24,71
+eee,Elektro divers ~ Schleifmaus,Power tool,24,5
+eee,Elektro divers ~ Schukostecker,Power tool,24,4
+eee,Elektro divers ~ Schweißgerät,Power tool,24,6
+eee,Elektro divers ~ Schwertsäge,Power tool,24,7
+eee,Elektro divers ~ Schwibbogen,Decorative or safety lights,3,112
+eee,Elektro divers ~ Schwingschleifer,Power tool,24,47
+eee,Elektro divers ~ Schwippbogen,Decorative or safety lights,3,21
+eee,Elektro divers ~ Seifenblasenmaschine,Small home electrical,28,3
+eee,Elektro divers ~ Servomotor,Small home electrical,28,1
+eee,Elektro divers ~ Sicherungskasten,Small home electrical,28,2
+eee,Elektro divers ~ Solarkonverter,Battery/charger/adapter,2,2
+eee,Elektro divers ~ Solarleuchte,Decorative or safety lights,3,87
+eee,Elektro divers ~ Solarpanel,Battery/charger/adapter,2,12
+eee,Elektro divers ~ Sonstiges,Misc,18,8
+eee,Elektro divers ~ Spannungsmesser,Power tool,24,3
+eee,Elektro divers ~ Spannungsregler,Power tool,24,3
+eee,Elektro divers ~ Spannungswandler,Battery/charger/adapter,2,1
+eee,Elektro divers ~ Spiegelschrank,Large home electrical,17,6
+eee,Elektro divers ~ Spielzeug,Toy,32,581
+eee,Elektro divers ~ Spielzeugauto,Toy,32,51
+eee,Elektro divers ~ Spitzmaschine elektrisch,Power tool,24,2
+eee,Elektro divers ~ Sprechanlage,Small home electrical,28,2
+eee,Elektro divers ~ Standlüfter,Aircon/dehumidifier,1,5
+eee,Elektro divers ~ Starthilfe,Battery/charger/adapter,2,4
+eee,Elektro divers ~ Steamer,Small home electrical,28,9
+eee,Elektro divers ~ Steckdose,Battery/charger/adapter,2,3
+eee,Elektro divers ~ Steckdosenleiste /Steckerleiste,Battery/charger/adapter,2,58
+eee,Elektro divers ~ Steckdosensicherung,Battery/charger/adapter,2,2
+eee,Elektro divers ~ Stecker,Battery/charger/adapter,2,5
+eee,Elektro divers ~ Stehleuchte,Lamp,15,208
+eee,Elektro divers ~ Steuergerät,Small home electrical,28,29
+eee,Elektro divers ~ Steuerung,Small home electrical,28,6
+eee,Elektro divers ~ Stichsäge,Power tool,24,74
+eee,Elektro divers ~ Stirnlampe,Decorative or safety lights,3,41
+eee,Elektro divers ~ Stoffschere,Small home electrical,28,15
+eee,Elektro divers ~ Stromverteiler Zigarettenanzünder,Small home electrical,28,1
+eee,Elektro divers ~ Stromzähler,Battery/charger/adapter,2,2
+eee,Elektro divers ~ Säge,Power tool,24,6
+eee,Elektro divers ~ TAN Generator,Small home electrical,28,3
+eee,Elektro divers ~ TV-LED-Tester,TV and gaming-related accessories,33,1
+eee,Elektro divers ~ Taschenlampe,Decorative or safety lights,3,169
+eee,Elektro divers ~ Tattoomaschine,Small home electrical,28,1
+eee,Elektro divers ~ Tauchpumpe,Power tool,24,44
+eee,Elektro divers ~ Tauchsäge,Power tool,24,2
+eee,Elektro divers ~ Teichpumpe,Power tool,24,23
+eee,Elektro divers ~ Telefon,Mobile,19,164
+eee,Elektro divers ~ Tennisschläger Spannmaschine,Small home electrical,28,2
+eee,Elektro divers ~ Thermostat,Small home electrical,28,10
+eee,Elektro divers ~ Tischlampe,Lamp,15,542
+eee,Elektro divers ~ Tischleuchte,Lamp,15,51
+eee,Elektro divers ~ Tischrechner,Small home electrical,28,11
+eee,Elektro divers ~ Trafo,Small home electrical,28,13
+eee,Elektro divers ~ Transferpresse,Small home electrical,28,1
+eee,Elektro divers ~ Transformator,Battery/charger/adapter,2,11
+eee,Elektro divers ~ Transmitter,Small home electrical,28,1
+eee,Elektro divers ~ Trennschleifer,Power tool,24,10
+eee,Elektro divers ~ Tresor,Small home electrical,28,6
+eee,Elektro divers ~ Türgong,Small home electrical,28,4
+eee,Elektro divers ~ Türsprechanlage,Small home electrical,28,5
+eee,Elektro divers ~ USB-C Ladekabel,Battery/charger/adapter,2,7
+eee,Elektro divers ~ USB-Ladegerät,Battery/charger/adapter,2,2
+eee,Elektro divers ~ USB-Ladestation,Battery/charger/adapter,2,6
+eee,Elektro divers ~ USB-Netzteil,Battery/charger/adapter,2,1
+eee,Elektro divers ~ Uhr,Watch/clock,35,353
+eee,Elektro divers ~ Uhrenanlage,Watch/clock,35,3
+eee,Elektro divers ~ Uhrenbeweger,Watch/clock,35,8
+eee,Elektro divers ~ Umformer,Battery/charger/adapter,2,1
+eee,Elektro divers ~ Umschaltmotor,Battery/charger/adapter,2,1
+eee,Elektro divers ~ Universal Streugerät,Small home electrical,28,2
+eee,Elektro divers ~ Unkrautbrenner,Power tool,24,1
+eee,Elektro divers ~ VW-Bus,Toy,32,1
+eee,Elektro divers ~ Vakumiergerät,Small kitchen item,29,16
+eee,Elektro divers ~ Vakuumpumpe,Power tool,24,2
+eee,Elektro divers ~ Venenwalker,Small home electrical,28,1
+eee,Elektro divers ~ Vergrößerungsgerät,Small home electrical,28,2
+eee,Elektro divers ~ Verlängerungskabel,Battery/charger/adapter,2,109
+eee,Elektro divers ~ Vertikutierer,Power tool,24,27
+eee,Elektro divers ~ Vibrationskissen,Small home electrical,28,1
+eee,Elektro divers ~ Vogelerkennungsstift,Small home electrical,28,1
+eee,Elektro divers ~ WLAN Verstärker,Small home electrical,28,3
+eee,Elektro divers ~ WLAN-Repeater,PC accessory,22,3
+eee,Elektro divers ~ Wandlampe,Lamp,15,31
+eee,Elektro divers ~ Wassermelder,Small home electrical,28,1
+eee,Elektro divers ~ Wechselrichter,Battery/charger/adapter,2,11
+eee,Elektro divers ~ Wecker,Watch/clock,35,232
+eee,Elektro divers ~ Weidezaungerät,Small home electrical,28,9
+eee,Elektro divers ~ Weihnachtsbaum aus Kunststoff mit Motoren,Small home electrical,28,4
+eee,Elektro divers ~ Weihnachtsbeleuchtung,Decorative or safety lights,3,100
+eee,"Elektro divers ~ Weihnachtsfigur, musikalisch",Small home electrical,28,11
+eee,Elektro divers ~ Weihnachtsstern,Decorative or safety lights,3,6
+eee,Elektro divers ~ Werkzeug,Power tool,24,48
+eee,Elektro divers ~ Wetterstation,Tablet,30,46
+eee,Elektro divers ~ Wildkamera,Digital compact camera,5,19
+eee,Elektro divers ~ Winkelschleifer,Power tool,24,78
+eee,Elektro divers ~ Wärmedecke,Small home electrical,28,11
+eee,Elektro divers ~ Zauberstab,Toy,32,18
+eee,Elektro divers ~ Zigarettenautomat,Small home electrical,28,6
+eee,Elektro divers ~ Zündschloss,Small home electrical,28,1
+eee,Elektro divers ~ elektronischer Schweif,Small home electrical,28,1
+eee,Elektro divers ~ Überwachungskamera,DSLR/video camera,6,5
+eee,Fahrrad ~ Akku-Luftpumpe,Power tool,24,2
+eee,Fahrrad ~ Beleuchtung,Decorative or safety lights,3,14
+eee,Fahrrad ~ Dreirad mit E-Antrieb,Large home electrical,17,1
+eee,Fahrrad ~ E-Bike-Akku,Large home electrical,17,33
+eee,Fahrrad ~ E-Fahrrad / E-Bike,Large home electrical,17,134
+eee,Fahrrad ~ E-Roller,Large home electrical,17,45
+eee,"Fahrrad ~ Einrad, elektrisch",Large home electrical,17,1
+eee,Fahrrad ~ Fahrradcomputer,Large home electrical,17,19
+eee,Fahrrad ~ Fahrradlicht,Decorative or safety lights,3,157
+eee,Fahrrad ~ Rücklicht,Decorative or safety lights,3,1
+eee,Haushaltsgeräte ~ Akku-Sauger,Vacuum,34,106
+eee,Haushaltsgeräte ~ Akkuschere,Power tool,24,6
+eee,Haushaltsgeräte ~ Akkustaubsauger,Vacuum,34,140
+eee,Haushaltsgeräte ~ Aktenvernichter,Paper shredder,21,186
+eee,Haushaltsgeräte ~ Allesschneider,Small kitchen item,29,49
+eee,"Haushaltsgeräte ~ Anspitzer, elektrisch",Small home electrical,28,1
+eee,Haushaltsgeräte ~ Aroma Diffuser,Small home electrical,28,11
+eee,Haushaltsgeräte ~ Aschesauger,Vacuum,34,3
+eee,Haushaltsgeräte ~ Astschere,Power tool,24,25
+eee,Haushaltsgeräte ~ Außentemperaturfühler,Small home electrical,28,6
+eee,Haushaltsgeräte ~ Axt,Misc,18,1
+eee,Haushaltsgeräte ~ Backautomat,Small kitchen item,29,22
+eee,Haushaltsgeräte ~ Backofen,Large home electrical,17,19
+eee,Haushaltsgeräte ~ Backofen Timer,Watch/clock,35,1
+eee,Haushaltsgeräte ~ Badewannen-Sprudler / Sprudelmatte,Small home electrical,28,2
+eee,Haushaltsgeräte ~ Bartschneider,Hair & beauty item,9,15
+eee,Haushaltsgeräte ~ Beschriftungsgerät,Small home electrical,28,3
+eee,Haushaltsgeräte ~ Bleistiftspitzer,Small home electrical,28,3
+eee,Haushaltsgeräte ~ Bodenreiniger,Small home electrical,28,17
+eee,Haushaltsgeräte ~ Boiler,Kettle,14,1
+eee,Haushaltsgeräte ~ Brandmelder,Small home electrical,28,2
+eee,Haushaltsgeräte ~ Bratpfanne,Small kitchen item,29,21
+eee,Haushaltsgeräte ~ Briefwaage,Small home electrical,28,3
+eee,Haushaltsgeräte ~ Brotbackautomat,Small kitchen item,29,38
+eee,Haushaltsgeräte ~ Brotschneidemaschine,Small kitchen item,29,179
+eee,Haushaltsgeräte ~ Bügeleisen,Iron,40,450
+eee,Haushaltsgeräte ~ Bügelpresse,Iron,40,2
+eee,Haushaltsgeräte ~ Bügelstation,Iron,40,106
+eee,Haushaltsgeräte ~ Crepesgerät,Small kitchen item,29,12
+eee,Haushaltsgeräte ~ Dampfbügeleisen,Iron,40,178
+eee,Haushaltsgeräte ~ Dampfbügelstation,Iron,40,28
+eee,Haushaltsgeräte ~ Dampfbügler,Iron,40,14
+eee,Haushaltsgeräte ~ Dampfgarer,Small kitchen item,29,18
+eee,Haushaltsgeräte ~ Dampfkochtopf,Small kitchen item,29,25
+eee,Haushaltsgeräte ~ Dampfreiniger,Power tool,24,82
+eee,Haushaltsgeräte ~ Deckenlüfter,Fan,7,1
+eee,Haushaltsgeräte ~ Digitalthermometer,Small home electrical,28,12
+eee,Haushaltsgeräte ~ Dunstabzugshaube,Small kitchen item,29,25
+eee,Haushaltsgeräte ~ Durchlauferhitzer,Large home electrical,17,8
+eee,Haushaltsgeräte ~ Dörrgerät / Dehydriergerät,Small kitchen item,29,32
+eee,Haushaltsgeräte ~ E-Grill /Elektrogrill,Small kitchen item,29,47
+eee,Haushaltsgeräte ~ Eierkocher,Small kitchen item,29,55
+eee,Haushaltsgeräte ~ Eierschalensollbruchverursacher,Small kitchen item,29,1
+eee,Haushaltsgeräte ~ Eieruhr,Watch/clock,35,23
+eee,Haushaltsgeräte ~ Einkochautomat,Small kitchen item,29,16
+eee,Haushaltsgeräte ~ Einweckkocher,Small kitchen item,29,10
+eee,Haushaltsgeräte ~ Eismaschine,Small kitchen item,29,18
+eee,Haushaltsgeräte ~ Eiswürfelmaschine,Small kitchen item,29,3
+eee,Haushaltsgeräte ~ Elektrische Bürste,Small home electrical,28,12
+eee,Haushaltsgeräte ~ Elektrischer Fliegenfänger,Small home electrical,28,4
+eee,Haushaltsgeräte ~ Elektrischer Handbesen,Small home electrical,28,5
+eee,Haushaltsgeräte ~ Elektrokamin,Large home electrical,17,7
+eee,Haushaltsgeräte ~ Elektrokochtopf,Small kitchen item,29,16
+eee,Haushaltsgeräte ~ Elektromesser,Small kitchen item,29,16
+eee,Haushaltsgeräte ~ Entsafter,Food processor,37,72
+eee,Haushaltsgeräte ~ Ergometer,Small home electrical,28,1
+eee,Haushaltsgeräte ~ Espressokocher,Coffee maker,36,78
+eee,Haushaltsgeräte ~ Espressomaschine,Coffee maker,36,48
+eee,Haushaltsgeräte ~ Feinwaage,Small home electrical,28,1
+eee,Haushaltsgeräte ~ Fensterheber,Small home electrical,28,1
+eee,Haushaltsgeräte ~ Fensterreiniger,Power tool,24,75
+eee,Haushaltsgeräte ~ Flaschenwärmer,Small kitchen item,29,3
+eee,Haushaltsgeräte ~ Fleischwolf,Food processor,37,11
+eee,Haushaltsgeräte ~ Fliegenklatsche,Small home electrical,28,1
+eee,Haushaltsgeräte ~ Folienschweißgerät,Small kitchen item,29,13
+eee,Haushaltsgeräte ~ Fondue,Small kitchen item,29,2
+eee,Haushaltsgeräte ~ Fotoapparat,Digital compact camera,5,44
+eee,Haushaltsgeräte ~ Fritteuse,Small kitchen item,29,39
+eee,Haushaltsgeräte ~ Frostwächter,Small home electrical,28,4
+eee,Haushaltsgeräte ~ Fusselfräse,Power tool,24,15
+eee,Haushaltsgeräte ~ Fächer,Fan,7,7
+eee,Haushaltsgeräte ~ Föhn,Hair dryer,39,149
+eee,Haushaltsgeräte ~ Gartenpumpe,Small home electrical,28,10
+eee,Haushaltsgeräte ~ Gartenschere,Power tool,24,73
+eee,Haushaltsgeräte ~ Gaskocher,Small kitchen item,29,7
+eee,Haushaltsgeräte ~ Gefrierfach,Large home electrical,17,1
+eee,Haushaltsgeräte ~ Geschirrspüler,Large home electrical,17,7
+eee,Haushaltsgeräte ~ Gewürzmühle,Small kitchen item,29,14
+eee,Haushaltsgeräte ~ Glaskugel elektrisch,Small home electrical,28,4
+eee,Haushaltsgeräte ~ Glätteisen,Hair & beauty item,9,37
+eee,Haushaltsgeräte ~ Glühweinerhitzer / Glühweinzapfanlage,Small kitchen item,29,5
+eee,Haushaltsgeräte ~ Grill,Small kitchen item,29,60
+eee,Haushaltsgeräte ~ Grillofen,Small kitchen item,29,9
+eee,Haushaltsgeräte ~ Haarschneidemaschine,Hair & beauty item,9,79
+eee,Haushaltsgeräte ~ Haartrockner,Hair dryer,39,84
+eee,Haushaltsgeräte ~ Handmixer,Food processor,37,494
+eee,Haushaltsgeräte ~ Handnähmaschine,Sewing machine,27,43
+eee,Haushaltsgeräte ~ Handrührgerät,Food processor,37,253
+eee,Haushaltsgeräte ~ Handstaubsauger,Vacuum,34,377
+eee,Haushaltsgeräte ~ Haushaltsgerät,Small home electrical,28,150
+eee,Haushaltsgeräte ~ Hebelschere,Power tool,24,3
+eee,Haushaltsgeräte ~ Heizdecke / Heizkissen,Small home electrical,28,134
+eee,Haushaltsgeräte ~ Heizlüfter,Small home electrical,28,163
+eee,Haushaltsgeräte ~ Heizplatte,Small kitchen item,29,8
+eee,Haushaltsgeräte ~ Heißgetränkespender,Small kitchen item,29,1
+eee,Haushaltsgeräte ~ Heißluftfritteuse,Small kitchen item,29,63
+eee,Haushaltsgeräte ~ Hemdenbügler,Small home electrical,28,8
+eee,Haushaltsgeräte ~ Herd,Small kitchen item,29,2
+eee,Haushaltsgeräte ~ Herdplatte,Small kitchen item,29,26
+eee,Haushaltsgeräte ~ Hochdruckreiniger,Power tool,24,112
+eee,Haushaltsgeräte ~ Hygrometer,Small home electrical,28,2
+eee,Haushaltsgeräte ~ Händetrockner,Small home electrical,28,1
+eee,Haushaltsgeräte ~ Hörnchenautomat,Small kitchen item,29,2
+eee,Haushaltsgeräte ~ Induktionsgerät,Small kitchen item,29,6
+eee,Haushaltsgeräte ~ Induktionsplatte,Small kitchen item,29,70
+eee,Haushaltsgeräte ~ Infrarotheizung,Small home electrical,28,11
+eee,Haushaltsgeräte ~ Inhalator,Small home electrical,28,16
+eee,Haushaltsgeräte ~ Insektenstichheiler,Small home electrical,28,1
+eee,Haushaltsgeräte ~ Joghurtbereiter,Small kitchen item,29,10
+eee,Haushaltsgeräte ~ Kaffeefilter,Coffee maker,36,2
+eee,Haushaltsgeräte ~ Kaffeemaschine,Coffee maker,36,1424
+eee,Haushaltsgeräte ~ Kaffeemühle,Food processor,37,307
+eee,Haushaltsgeräte ~ Kaffeeröster,Small kitchen item,29,1
+eee,Haushaltsgeräte ~ Kaffeevollautomat,Coffee maker,36,903
+eee,Haushaltsgeräte ~ Kaminuhr,Watch/clock,35,7
+eee,Haushaltsgeräte ~ Kartenmischgerät,Small home electrical,28,3
+eee,Haushaltsgeräte ~ Kartoffelschählmaschine,Small kitchen item,29,3
+eee,Haushaltsgeräte ~ Katzenfutterautomat,Small kitchen item,29,7
+eee,"Haushaltsgeräte ~ Kerze, elektrisch",Decorative or safety lights,3,5
+eee,Haushaltsgeräte ~ Klimagerät,Aircon/dehumidifier,1,15
+eee,Haushaltsgeräte ~ Kochfeld,Small home electrical,28,2
+eee,Haushaltsgeräte ~ Kochplatte,Small kitchen item,29,66
+eee,Haushaltsgeräte ~ Kochthermometer,Small kitchen item,29,4
+eee,Haushaltsgeräte ~ Kontaktgrill,Small kitchen item,29,20
+eee,Haushaltsgeräte ~ Konvektomat,Small kitchen item,29,1
+eee,Haushaltsgeräte ~ Kosmetikgerät,Hair & beauty item,9,14
+eee,Haushaltsgeräte ~ Kuchenbackautomat,Small kitchen item,29,1
+eee,Haushaltsgeräte ~ Kurzzeitwecker (Eieruhr),Small kitchen item,29,27
+eee,Haushaltsgeräte ~ Küchenmaschine,Food processor,37,677
+eee,Haushaltsgeräte ~ Küchenwaage,Small home electrical,28,107
+eee,Haushaltsgeräte ~ Küchenwecker,Watch/clock,35,7
+eee,Haushaltsgeräte ~ Kühlschrank,Small kitchen item,29,40
+eee,Haushaltsgeräte ~ Kühltruhe,Large home electrical,17,4
+eee,Haushaltsgeräte ~ Laminiergerät,Small home electrical,28,47
+eee,"Haushaltsgeräte ~ Lattenrost, elektrisch",Large home electrical,17,1
+eee,Haushaltsgeräte ~ Lava Lampe,Decorative or safety lights,3,1
+eee,Haushaltsgeräte ~ Leuchter,Decorative or safety lights,3,12
+eee,Haushaltsgeräte ~ Leuchtstoffröhre,Decorative or safety lights,3,3
+eee,Haushaltsgeräte ~ Luftbefeuchter /Diffuser,Small home electrical,28,31
+eee,Haushaltsgeräte ~ Luftentfeuchter,Aircon/dehumidifier,1,47
+eee,Haushaltsgeräte ~ Maulwurfschreck,Small home electrical,28,2
+eee,Haushaltsgeräte ~ Mikrowelle,Large home electrical,17,246
+eee,Haushaltsgeräte ~ Milchaufschäumer,Small kitchen item,29,200
+eee,Haushaltsgeräte ~ Minibackofen,Large home electrical,17,62
+eee,Haushaltsgeräte ~ Mixer,Food processor,37,116
+eee,Haushaltsgeräte ~ Mixeraufsatz,Food processor,37,1
+eee,Haushaltsgeräte ~ Multikocher,Small kitchen item,29,5
+eee,Haushaltsgeräte ~ Multizerkleinerer,Small kitchen item,29,18
+eee,Haushaltsgeräte ~ Munddusche,Hair & beauty item,9,70
+eee,Haushaltsgeräte ~ Musikinstrument,Musical instrument,20,17
+eee,Haushaltsgeräte ~ Mühle,Small kitchen item,29,14
+eee,Haushaltsgeräte ~ Nachtlicht,Lamp,15,14
+eee,Haushaltsgeräte ~ Nagelfräser,Hair & beauty item,9,5
+eee,Haushaltsgeräte ~ Nass-Sauger / Saug-Wischer /Waschsauger,Vacuum,34,43
+eee,Haushaltsgeräte ~ Nivelliergerät,Power tool,24,3
+eee,Haushaltsgeräte ~ Ofen,Large home electrical,17,14
+eee,Haushaltsgeräte ~ Ofen-Ventilator,Small kitchen item,29,3
+eee,Haushaltsgeräte ~ Pad-/Kapsel-Kaffeemaschine,Coffee maker,36,170
+eee,Haushaltsgeräte ~ Partygrill,Small home electrical,28,2
+eee,Haushaltsgeräte ~ Pediküre-Set,Hair & beauty item,9,13
+eee,Haushaltsgeräte ~ Pfeffermühle,Food processor,37,33
+eee,Haushaltsgeräte ~ Pflanzenmilchbereiter,Small home electrical,28,1
+eee,Haushaltsgeräte ~ Pizza-Ofen,Large home electrical,17,5
+eee,Haushaltsgeräte ~ Poolpumpe,Power tool,24,2
+eee,Haushaltsgeräte ~ Poolsauger,Vacuum,34,2
+eee,Haushaltsgeräte ~ Pop Socket,Misc,18,1
+eee,Haushaltsgeräte ~ Popcornmaschine,Small kitchen item,29,11
+eee,Haushaltsgeräte ~ Postkartenautomat,Small home electrical,28,1
+eee,Haushaltsgeräte ~ Prägemaschine,Small home electrical,28,6
+eee,Haushaltsgeräte ~ Raclette,Small kitchen item,29,67
+eee,Haushaltsgeräte ~ Radiator,Large home electrical,17,5
+eee,"Haushaltsgeräte ~ Reibe, elektrisch",Small kitchen item,29,9
+eee,Haushaltsgeräte ~ Reiskocher,Small kitchen item,29,22
+eee,Haushaltsgeräte ~ Rolladensteuerung,Large home electrical,17,1
+eee,"Haushaltsgeräte ~ Rollo, elektrisch",Large home electrical,17,1
+eee,Haushaltsgeräte ~ Safe,Small home electrical,28,1
+eee,Haushaltsgeräte ~ Saftpresse,Food processor,37,27
+eee,Haushaltsgeräte ~ Sandwichtoaster,Small kitchen item,29,25
+eee,Haushaltsgeräte ~ Schnellkochtopf,Small kitchen item,29,7
+eee,Haushaltsgeräte ~ Schrankuhr,Watch/clock,35,7
+eee,Haushaltsgeräte ~ Schredder,Paper shredder,21,23
+eee,Haushaltsgeräte ~ Schreibmaschine,Small home electrical,28,110
+eee,Haushaltsgeräte ~ Schreibtischlampe,Lamp,15,21
+eee,Haushaltsgeräte ~ Schuhputzgerät,Power tool,24,3
+eee,Haushaltsgeräte ~ Siebträgermaschine,Coffee maker,36,72
+eee,Haushaltsgeräte ~ Siphon,Small kitchen item,29,1
+eee,Haushaltsgeräte ~ Slusheismaschine,Small kitchen item,29,2
+eee,Haushaltsgeräte ~ Smartmirror,Hair & beauty item,9,2
+eee,Haushaltsgeräte ~ Smoothie Maker,Small kitchen item,29,8
+eee,Haushaltsgeräte ~ Sodastream,Small kitchen item,29,46
+eee,Haushaltsgeräte ~ Spieluhr,Watch/clock,35,83
+eee,Haushaltsgeräte ~ Sportgerät (mit Strom),Large home electrical,17,3
+eee,Haushaltsgeräte ~ Springbrunnen,Large home electrical,17,3
+eee,Haushaltsgeräte ~ Sprudelbad,Large home electrical,17,3
+eee,Haushaltsgeräte ~ Spülmaschine,Large home electrical,17,22
+eee,Haushaltsgeräte ~ Stabanzünder,Small home electrical,28,4
+eee,Haushaltsgeräte ~ Stabmixer / Pürierstab,Food processor,37,375
+eee,Haushaltsgeräte ~ Standmixer,Food processor,37,331
+eee,Haushaltsgeräte ~ Staubsauger,Vacuum,34,2458
+eee,Haushaltsgeräte ~ Staubsaugerroboter,Vacuum,34,50
+eee,Haushaltsgeräte ~ Stehlampe,Lamp,15,301
+eee,Haushaltsgeräte ~ Stemmhammer,Power tool,24,4
+eee,Haushaltsgeräte ~ Sterilisator,Small home electrical,28,2
+eee,Haushaltsgeräte ~ Stickmaschine,Sewing machine,27,4
+eee,Haushaltsgeräte ~ Stopfmaschine,Small home electrical,28,4
+eee,Haushaltsgeräte ~ Strickmaschine,Small home electrical,28,13
+eee,Haushaltsgeräte ~ Stromgenerator,Power tool,24,2
+eee,Haushaltsgeräte ~ Stöpsel,Battery/charger/adapter,2,2
+eee,Haushaltsgeräte ~ Teekocher,Small kitchen item,29,8
+eee,Haushaltsgeräte ~ Teppichbürste,Small home electrical,28,4
+eee,Haushaltsgeräte ~ Thermomix,Food processor,37,88
+eee,Haushaltsgeräte ~ Tischgrill,Small kitchen item,29,48
+eee,Haushaltsgeräte ~ Tischschleuder,Small home electrical,28,3
+eee,Haushaltsgeräte ~ Toaster,Toaster,31,943
+eee,Haushaltsgeräte ~ Topf,Small kitchen item,29,30
+eee,Haushaltsgeräte ~ Trinkwassersprudler,Small kitchen item,29,2
+eee,Haushaltsgeräte ~ Trockenhaube,Hair dryer,39,10
+eee,Haushaltsgeräte ~ Turmventilator,Fan,7,2
+eee,Haushaltsgeräte ~ Türklingel,Small home electrical,28,13
+eee,Haushaltsgeräte ~ UV Lampe,Lamp,15,3
+eee,Haushaltsgeräte ~ Uhr,Watch/clock,35,74
+eee,Haushaltsgeräte ~ Ultraschallreiniger,Small home electrical,28,36
+eee,Haushaltsgeräte ~ Vakuumierer,Small kitchen item,29,12
+eee,Haushaltsgeräte ~ Ventilator,Fan,7,169
+eee,Haushaltsgeräte ~ Verdampfer,Small home electrical,28,4
+eee,Haushaltsgeräte ~ Vibrationsgerät,Small home electrical,28,1
+eee,"Haushaltsgeräte ~ Waage, elektrisch",Small home electrical,28,63
+eee,Haushaltsgeräte ~ Waffeleisen,Small kitchen item,29,115
+eee,"Haushaltsgeräte ~ Wagenheber, hydraulisch",Large home electrical,17,1
+eee,Haushaltsgeräte ~ Warmhalteplatte / Wärmplatte,Small kitchen item,29,6
+eee,Haushaltsgeräte ~ Waschmaschine,Large home electrical,17,53
+eee,Haushaltsgeräte ~ Wasserionisierer,Small kitchen item,29,2
+eee,Haushaltsgeräte ~ Wasserkocher,Kettle,14,970
+eee,Haushaltsgeräte ~ Wasserpumpe,Power tool,24,64
+eee,Haushaltsgeräte ~ Wassersprudler,Small kitchen item,29,67
+eee,Haushaltsgeräte ~ Weihnachtspyramide,Decorative or safety lights,3,23
+eee,Haushaltsgeräte ~ Weltempfänger,Portable radio,23,5
+eee,Haushaltsgeräte ~ Werkzeug - ohne Strom,Power tool,24,18
+eee,Haushaltsgeräte ~ Wischroboter,Small home electrical,28,6
+eee,Haushaltsgeräte ~ Wärmeschublade,Small kitchen item,29,3
+eee,Haushaltsgeräte ~ Wäschemangel,Large home electrical,17,6
+eee,Haushaltsgeräte ~ Wäscheschleuder,Large home electrical,17,1
+eee,Haushaltsgeräte ~ Wäschetrockner,Large home electrical,17,17
+eee,"Haushaltsgeräte ~ Zahnbürste, elektrisch",Hair & beauty item,9,249
+eee,Haushaltsgeräte ~ Zahnbürstenstation,Hair & beauty item,9,3
+eee,Haushaltsgeräte ~ Zahnputztimer,Hair & beauty item,9,1
+eee,Haushaltsgeräte ~ Zapfanlage,Small kitchen item,29,10
+eee,Haushaltsgeräte ~ Zeitschaltuhr,Watch/clock,35,18
+eee,Haushaltsgeräte ~ Zerkleinerer,Food processor,37,33
+eee,Haushaltsgeräte ~ Zimmerbrunnen,Small home electrical,28,10
+eee,Haushaltsgeräte ~ Zuckerwattenmaschine,Small kitchen item,29,1
+eee,Haushaltsgeräte ~ sonstiges,Misc,18,1
+eee,Haushaltsgeräte ~ Ölradiator,Large home electrical,17,1
+eee,Metallbearbeitung ~ Staubsauger,Vacuum,34,52
+eee,Smartphone/Tablet ~ Display,Tablet,30,11
+eee,Smartphone/Tablet ~ E-Book-Reader,Tablet,30,50
+eee,Smartphone/Tablet ~ Funktelefon,Small home electrical,28,10
+eee,Smartphone/Tablet ~ GPS-Gerät,Tablet,30,1
+eee,Smartphone/Tablet ~ Handy,Mobile,19,252
+eee,Smartphone/Tablet ~ Headset,Headphones,11,35
+eee,Smartphone/Tablet ~ Mobiltelefon,Mobile,19,70
+eee,Smartphone/Tablet ~ Navigationsgerät,Tablet,30,83
+eee,Smartphone/Tablet ~ Powerbank,Battery/charger/adapter,2,40
+eee,Smartphone/Tablet ~ Smartphone,Mobile,19,659
+eee,Smartphone/Tablet ~ Tablet,Tablet,30,284
+eee,Smartphone/Tablet ~ iPad,Tablet,30,9
+eee,Unterhaltungselektronik ~ Action Figur,Toy,32,1
+eee,Unterhaltungselektronik ~ Aktivlautsprecher,Hi-Fi separates,13,98
+eee,Unterhaltungselektronik ~ Alexa,PC accessory,22,1
+eee,Unterhaltungselektronik ~ Audiointerface,Small home electrical,28,2
+eee,Unterhaltungselektronik ~ Audiorecorder,PC accessory,22,16
+eee,Unterhaltungselektronik ~ Aufnahmegerät,Handheld entertainment device,10,5
+eee,Unterhaltungselektronik ~ Autoradio,Portable radio,23,43
+eee,Unterhaltungselektronik ~ Blueray Player,TV and gaming-related accessories,33,60
+eee,Unterhaltungselektronik ~ Bluetooth Musikbox,Hi-Fi separates,13,149
+eee,Unterhaltungselektronik ~ Bluetooth-Lautsprecher,Hi-Fi separates,13,21
+eee,Unterhaltungselektronik ~ Bluetooth-Radio,Portable radio,23,8
+eee,Unterhaltungselektronik ~ Bluetooth-Transmitter,PC accessory,22,3
+eee,Unterhaltungselektronik ~ CD Wechsler,Hi-Fi separates,13,34
+eee,Unterhaltungselektronik ~ CD-Player,Hi-Fi separates,13,993
+eee,Unterhaltungselektronik ~ CD-Radio,Portable radio,23,490
+eee,Unterhaltungselektronik ~ Controller,TV and gaming-related accessories,33,42
+eee,Unterhaltungselektronik ~ DAB-Radio,Portable radio,23,195
+eee,Unterhaltungselektronik ~ DJ Controller,Hi-Fi separates,13,16
+eee,Unterhaltungselektronik ~ DVD Micro-Audio System,TV and gaming-related accessories,33,14
+eee,Unterhaltungselektronik ~ DVD-Player,TV and gaming-related accessories,33,333
+eee,Unterhaltungselektronik ~ DVD-Recorder,TV and gaming-related accessories,33,36
+eee,Unterhaltungselektronik ~ DVD/ VIDEO Recorder,TV and gaming-related accessories,33,4
+eee,Unterhaltungselektronik ~ Diabetrachter,Handheld entertainment device,10,24
+eee,Unterhaltungselektronik ~ Diaprojektor,Projector,26,86
+eee,Unterhaltungselektronik ~ Digitaler Bilderrahmen,Small home electrical,28,4
+eee,Unterhaltungselektronik ~ Digitalisierer,Small home electrical,28,2
+eee,Unterhaltungselektronik ~ Digitalkamera,Digital compact camera,5,215
+eee,Unterhaltungselektronik ~ Discman,Handheld entertainment device,10,22
+eee,Unterhaltungselektronik ~ Domino-Aufstellapparat,Small home electrical,28,2
+eee,Unterhaltungselektronik ~ Drohne,Toy,32,25
+eee,Unterhaltungselektronik ~ ELA-Anlage,Handheld entertainment device,10,1
+eee,Unterhaltungselektronik ~ Einschaltmodul / Umschaltbox,Battery/charger/adapter,2,1
+eee,Unterhaltungselektronik ~ Equalizer,Hi-Fi separates,13,4
+eee,Unterhaltungselektronik ~ Fernbedienung,TV and gaming-related accessories,33,179
+eee,Unterhaltungselektronik ~ Ferngesteuertes Auto,Toy,32,67
+eee,Unterhaltungselektronik ~ Fernseher,Flat screen,8,559
+eee,Unterhaltungselektronik ~ Festplattenrekorder,TV and gaming-related accessories,33,34
+eee,Unterhaltungselektronik ~ Filmprojektor,Projector,26,35
+eee,Unterhaltungselektronik ~ Flachbildfernseher,Flat screen,8,37
+eee,Unterhaltungselektronik ~ Frequenzweiche,Misc,18,1
+eee,Unterhaltungselektronik ~ Funk-Radiowecker,Portable radio,23,32
+eee,Unterhaltungselektronik ~ Funkempfänger,Hi-Fi separates,13,1
+eee,Unterhaltungselektronik ~ Funkfernbedienung,Small home electrical,28,57
+eee,Unterhaltungselektronik ~ Funkkopfhörer,Headphones,11,82
+eee,Unterhaltungselektronik ~ Geräuschmodul,Hi-Fi separates,13,2
+eee,Unterhaltungselektronik ~ Ghettoblaster,Hi-Fi integrated,12,3
+eee,Unterhaltungselektronik ~ Grammophon,Hi-Fi integrated,12,7
+eee,Unterhaltungselektronik ~ Heimkinosystem,TV and gaming-related accessories,33,7
+eee,Unterhaltungselektronik ~ HiFi-Musik-Anlage,Hi-Fi integrated,12,348
+eee,"Unterhaltungselektronik ~ Hörbox (z.B. Tonie, Tiger, Hörbert)",Toy,32,9
+eee,Unterhaltungselektronik ~ Internet-Radio,Portable radio,23,55
+eee,Unterhaltungselektronik ~ Jukebox,Hi-Fi integrated,12,8
+eee,Unterhaltungselektronik ~ Kabeltuner,TV and gaming-related accessories,33,4
+eee,Unterhaltungselektronik ~ Karaoke-Anlage/CD-Spieler,Hi-Fi separates,13,14
+eee,Unterhaltungselektronik ~ Kassette,Handheld entertainment device,10,3
+eee,Unterhaltungselektronik ~ Kassetten Tape Deck,Hi-Fi separates,13,111
+eee,Unterhaltungselektronik ~ Kassetten-Radio,Hi-Fi separates,13,157
+eee,Unterhaltungselektronik ~ Kassettenrekorder,Handheld entertainment device,10,399
+eee,Unterhaltungselektronik ~ Keyboard,Musical instrument,20,59
+eee,Unterhaltungselektronik ~ Kinderklavier,Musical instrument,20,3
+eee,Unterhaltungselektronik ~ Kofferradio,Portable radio,23,178
+eee,Unterhaltungselektronik ~ Kopfhörer,Headphones,11,467
+eee,Unterhaltungselektronik ~ Küchenradio,Portable radio,23,127
+eee,Unterhaltungselektronik ~ Laserprojektor,Projector,26,1
+eee,Unterhaltungselektronik ~ Lautsprecher(boxen),Hi-Fi separates,13,303
+eee,Unterhaltungselektronik ~ Lego Batteriebox,Toy,32,1
+eee,Unterhaltungselektronik ~ Leiterplatte,Small home electrical,28,8
+eee,Unterhaltungselektronik ~ Lichtorgel,Decorative or safety lights,3,4
+eee,Unterhaltungselektronik ~ MP3-Player,Handheld entertainment device,10,49
+eee,Unterhaltungselektronik ~ Micro-HiFi-System,Hi-Fi integrated,12,12
+eee,Unterhaltungselektronik ~ Mikrofon,PC accessory,22,19
+eee,Unterhaltungselektronik ~ MiniDisc-Player,Handheld entertainment device,10,9
+eee,Unterhaltungselektronik ~ Minifernseher mit Radio,TV and gaming-related accessories,33,4
+eee,Unterhaltungselektronik ~ Mischpult,Hi-Fi separates,13,26
+eee,Unterhaltungselektronik ~ Multimedia-Center,Hi-Fi integrated,12,9
+eee,Unterhaltungselektronik ~ Multirekorder,Hi-Fi integrated,12,2
+eee,Unterhaltungselektronik ~ Music System,Hi-Fi integrated,12,12
+eee,Unterhaltungselektronik ~ Musikkompaktanlage,Hi-Fi integrated,12,47
+eee,Unterhaltungselektronik ~ Musikstreamer,PC accessory,22,1
+eee,Unterhaltungselektronik ~ Plattenspieler,Hi-Fi separates,13,552
+eee,Unterhaltungselektronik ~ Projektor,Projector,26,20
+eee,Unterhaltungselektronik ~ Quadrocopter,Toy,32,4
+eee,Unterhaltungselektronik ~ Radio,Portable radio,23,1074
+eee,Unterhaltungselektronik ~ Radiorecorder,Portable radio,23,126
+eee,Unterhaltungselektronik ~ Radiowecker,Portable radio,23,206
+eee,"Unterhaltungselektronik ~ Receiver (Sat, Kabel, Antenne, Audio)",Hi-Fi separates,13,239
+eee,Unterhaltungselektronik ~ Roboter,TV and gaming-related accessories,33,8
+eee,Unterhaltungselektronik ~ Röhren-Radio,Portable radio,23,64
+eee,Unterhaltungselektronik ~ Sampler,Hi-Fi separates,13,1
+eee,Unterhaltungselektronik ~ Smart-TV,Flat screen,8,8
+eee,Unterhaltungselektronik ~ SmartHub,Small home electrical,28,1
+eee,Unterhaltungselektronik ~ Sonstiges,Misc,18,4
+eee,Unterhaltungselektronik ~ Soundbar,TV and gaming-related accessories,33,58
+eee,Unterhaltungselektronik ~ Soundschaltung,Hi-Fi separates,13,3
+eee,Unterhaltungselektronik ~ Space-Projektor,Projector,26,1
+eee,Unterhaltungselektronik ~ Spielekonsole,Games console,38,85
+eee,Unterhaltungselektronik ~ Spielkonsole,Games console,38,54
+eee,Unterhaltungselektronik ~ Spulentonbandgerät,Hi-Fi separates,13,110
+eee,Unterhaltungselektronik ~ Stereoanlage,Hi-Fi integrated,12,382
+eee,Unterhaltungselektronik ~ Subwoofer,Hi-Fi separates,13,24
+eee,Unterhaltungselektronik ~ Surround Anlage,Hi-Fi separates,13,4
+eee,Unterhaltungselektronik ~ Synthesizer,Musical instrument,20,9
+eee,Unterhaltungselektronik ~ TV Simulator,TV and gaming-related accessories,33,1
+eee,Unterhaltungselektronik ~ Taschenradio,Portable radio,23,10
+eee,Unterhaltungselektronik ~ Time Base Corrector,TV and gaming-related accessories,33,1
+eee,Unterhaltungselektronik ~ Transistorradio,Portable radio,23,8
+eee,Unterhaltungselektronik ~ Verstärker,Hi-Fi separates,13,503
+eee,Unterhaltungselektronik ~ Videokamera,DSLR/video camera,6,73
+eee,Unterhaltungselektronik ~ Videorekorder,DSLR/video camera,6,258
+eee,Unterhaltungselektronik ~ Vorverstärker,Hi-Fi separates,13,2
+eee,Unterhaltungselektronik ~ Walkman,Handheld entertainment device,10,144
+eee,"Unterhaltungselektronik ~ Wasserpistole, elektisch",Toy,32,2
+eee,Unterhaltungselektronik ~ Webcam,PC accessory,22,2
+eee,Unterhaltungselektronik ~ Wireless Microphone System,Hi-Fi separates,13,2
+eee,Unterhaltungselektronik ~ Zwitscherbox,Small home electrical,28,3
+eee,Unterhaltungselektronik ~ iPod,Handheld entertainment device,10,5
+eee,Unterhaltungselektronik ~ tiptoi Stift,Toy,32,1
+eee,Upcycling/Basteln ~ Motorrad,Large home electrical,17,4
+eee,Upcycling/Basteln ~ Schaukasten mit Motor,Small home electrical,28,1
+non_eee,3D-Reparatur ~ Gehäuse,Unpowered - Other,0,4
+non_eee,3D-Reparatur ~ KFZ - Rücksitz,Unpowered - Furniture,0,1
+non_eee,Elektro divers ~ Sonnensegel,Unpowered - Textile,0,1
+non_eee,Fahrrad ~ Antrieb,Unpowered - Bicycle,0,6
+non_eee,Fahrrad ~ Bremsen,Unpowered - Bicycle,0,15
+non_eee,Fahrrad ~ Damenfahrrad,Unpowered - Bicycle,0,487
+non_eee,"Fahrrad ~ Fahrrad, allgemein",Unpowered - Bicycle,0,400
+non_eee,Fahrrad ~ Fahrradanhänger,Unpowered - Bicycle,0,5
+non_eee,Fahrrad ~ Fahrradaufhängung,Unpowered - Bicycle,0,1
+non_eee,Fahrrad ~ Fahrraddynamo,Unpowered - Bicycle,0,6
+non_eee,Fahrrad ~ Fahrradkette,Unpowered - Bicycle,0,5
+non_eee,Fahrrad ~ Fahrradklingel,Unpowered - Bicycle,0,7
+non_eee,Fahrrad ~ Fahrradkorb,Unpowered - Bicycle,0,7
+non_eee,Fahrrad ~ Fahrradpedal,Unpowered - Bicycle,0,1
+non_eee,Fahrrad ~ Fahrradsattel,Unpowered - Bicycle,0,8
+non_eee,Fahrrad ~ Fahrradtäschchen,Unpowered - Bicycle,0,6
+non_eee,Fahrrad ~ Gangschaltung,Unpowered - Bicycle,0,28
+non_eee,Fahrrad ~ Gepäckträger,Unpowered - Bicycle,0,1
+non_eee,Fahrrad ~ Gokart,Unpowered - Bicycle,0,4
+non_eee,Fahrrad ~ Herrenfahrrad,Unpowered - Bicycle,0,345
+non_eee,Fahrrad ~ Inlineskater,Unpowered - Bicycle,0,6
+non_eee,Fahrrad ~ Kettcar,Unpowered - Bicycle,0,9
+non_eee,Fahrrad ~ Kinderfahrrad,Unpowered - Bicycle,0,81
+non_eee,Fahrrad ~ Kindersitz,Unpowered - Bicycle,0,4
+non_eee,Fahrrad ~ Ladegerät E-Bike,Unpowered - Bicycle,0,23
+non_eee,Fahrrad ~ Lampe,Unpowered - Bicycle,0,9
+non_eee,Fahrrad ~ Lastenrad,Unpowered - Bicycle,0,3
+non_eee,Fahrrad ~ Luftpumpe,Unpowered - Bicycle,0,29
+non_eee,Fahrrad ~ MTB,Unpowered - Bicycle,0,2
+non_eee,Fahrrad ~ Rahmen,Unpowered - Bicycle,0,1
+non_eee,Fahrrad ~ Reifen,Unpowered - Bicycle,0,17
+non_eee,Fahrrad ~ Roller (mechanisch),Unpowered - Bicycle,0,32
+non_eee,Fahrrad ~ Rollstuhl,Unpowered - Bicycle,0,6
+non_eee,Fahrrad ~ Schlauch,Unpowered - Bicycle,0,10
+non_eee,Fahrrad ~ Schloss,Unpowered - Bicycle,0,16
+non_eee,Fahrrad ~ Scooter / E-Scooter,Unpowered - Bicycle,0,31
+non_eee,Fahrrad ~ Sonstiges,Unpowered - Bicycle,0,1
+non_eee,Haushaltsgeräte ~ Angel,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Apfelpflücker,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Außenthermometer,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Babyschaukel,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Backblech,Unpowered - Household,0,2
+non_eee,"Haushaltsgeräte ~ Backform, Springform",Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Barometer,Unpowered - Household,0,5
+non_eee,Haushaltsgeräte ~ Beil,Unpowered - Household,0,6
+non_eee,Haushaltsgeräte ~ Besteck,Unpowered - Household,0,5
+non_eee,Haushaltsgeräte ~ Besteckkasten,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Blumenstecker,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Bodenwischer,Unpowered - Household,0,8
+non_eee,Haushaltsgeräte ~ Box,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Brotzeitbrett,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Bügelbrett,Unpowered - Household,0,11
+non_eee,Haushaltsgeräte ~ Cocktailshaker,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Dartscheibe,Unpowered - Household,0,5
+non_eee,Haushaltsgeräte ~ Dekoration,Unpowered - Household,0,72
+non_eee,Haushaltsgeräte ~ Dosenöffner,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Dritte Hand,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Durchschlag,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Duschschlauch,Unpowered - Household,0,4
+non_eee,Haushaltsgeräte ~ Eispotionierer,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Fallrohrfilter / Regendieb,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Faltrollo,Unpowered - Furniture,0,2
+non_eee,Haushaltsgeräte ~ Fernglas,Unpowered - Household,0,8
+non_eee,Haushaltsgeräte ~ Feuerzeug,Unpowered - Household,0,15
+non_eee,Haushaltsgeräte ~ Füllfederhalter,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Garderobenständer,Unpowered - Furniture,0,1
+non_eee,Haushaltsgeräte ~ Garten,Unpowered - Household,0,16
+non_eee,Haushaltsgeräte ~ Gasgrill,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Geschirr,Unpowered - Household,0,21
+non_eee,Haushaltsgeräte ~ Gießkanne,Unpowered - Household,0,8
+non_eee,Haushaltsgeräte ~ Glasregal,Unpowered - Furniture,0,1
+non_eee,Haushaltsgeräte ~ Greifzange,Unpowered - Household,0,5
+non_eee,Haushaltsgeräte ~ Gymnastikball,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Haferflockenspender,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Handbesen,Unpowered - Household,0,5
+non_eee,Haushaltsgeräte ~ Harke,Unpowered - Household,0,3
+non_eee,Haushaltsgeräte ~ Haushaltsschere,Unpowered - Household,0,50
+non_eee,Haushaltsgeräte ~ Hutweiter,Unpowered - Textile,0,1
+non_eee,Haushaltsgeräte ~ Kaffeekanne,Unpowered - Household,0,14
+non_eee,Haushaltsgeräte ~ Kerzenhalter,Unpowered - Household,0,18
+non_eee,Haushaltsgeräte ~ Kinderwagen,Unpowered - Household,0,39
+non_eee,Haushaltsgeräte ~ Kleiderbügel,Unpowered - Household,0,3
+non_eee,Haushaltsgeräte ~ Kleiderständer,Unpowered - Furniture,0,2
+non_eee,Haushaltsgeräte ~ Klobürste,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Knoblauchmühle,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Kompass,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Korb,Unpowered - Household,0,7
+non_eee,Haushaltsgeräte ~ Kugelschreiber,Unpowered - Household,0,7
+non_eee,Haushaltsgeräte ~ Kühlbox,Unpowered - Household,0,64
+non_eee,Haushaltsgeräte ~ Locher,Unpowered - Household,0,16
+non_eee,Haushaltsgeräte ~ Lupe,Unpowered - Household,0,6
+non_eee,Haushaltsgeräte ~ Löffel,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Mehlsieb,Unpowered - Household,0,7
+non_eee,Haushaltsgeräte ~ Messer,Unpowered - Household,0,270
+non_eee,Haushaltsgeräte ~ Messerschärfer,Unpowered - Household,0,7
+non_eee,Haushaltsgeräte ~ Mülleimer,Unpowered - Household,0,20
+non_eee,Haushaltsgeräte ~ Nudelmaschine,Unpowered - Household,0,4
+non_eee,Haushaltsgeräte ~ Ordner,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Pelletofen,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Petroleumlampe,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Pillenbox,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Pizzastein,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Putzeimer mit Wringerfunktion,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Rasensprenger,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Reibe,Unpowered - Household,0,3
+non_eee,Haushaltsgeräte ~ Reinigungszubehör,Unpowered - Household,0,9
+non_eee,Haushaltsgeräte ~ Rollator,Unpowered - Household,0,28
+non_eee,Haushaltsgeräte ~ Sackkarre,Unpowered - Household,0,4
+non_eee,Haushaltsgeräte ~ Salatschleuder,Unpowered - Household,0,7
+non_eee,Haushaltsgeräte ~ Salzstreuer,Unpowered - Household,0,5
+non_eee,Haushaltsgeräte ~ Saugnapf,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Schleuder,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Schlosserhammer,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Schnapprollo,Unpowered - Furniture,0,4
+non_eee,Haushaltsgeräte ~ Schneidemesser,Unpowered - Household,0,13
+non_eee,Haushaltsgeräte ~ Schraubstock,Unpowered - Household,0,3
+non_eee,Haushaltsgeräte ~ Seifenspender,Unpowered - Household,0,11
+non_eee,Haushaltsgeräte ~ Silikonpresse,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Sparschwein,Unpowered - Household,0,3
+non_eee,Haushaltsgeräte ~ Sparschäler,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Spaten,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Spiegel,Unpowered - Household,0,13
+non_eee,Haushaltsgeräte ~ Sportgerät (ohne Strom),Unpowered - Household,0,2
+non_eee,"Haushaltsgeräte ~ Sprinkler, nicht-elektrisch",Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Sprühflasche,Unpowered - Household,0,6
+non_eee,Haushaltsgeräte ~ Spülkasten,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Staubroller,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Stopenheber,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Strauchschere,Unpowered - Household,0,7
+non_eee,Haushaltsgeräte ~ Stuhl,Unpowered - Furniture,0,84
+non_eee,Haushaltsgeräte ~ Süßigkeitenspender,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Tacker,Unpowered - Household,0,34
+non_eee,Haushaltsgeräte ~ Tasse,Unpowered - Household,0,10
+non_eee,Haushaltsgeräte ~ Teekanne,Unpowered - Household,0,7
+non_eee,Haushaltsgeräte ~ Teesieb,Unpowered - Household,0,11
+non_eee,Haushaltsgeräte ~ Teigrolle,Unpowered - Household,0,3
+non_eee,Haushaltsgeräte ~ Telefonregister,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Teleskop,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Teleskopstange,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Teppichauffrischer,Unpowered - Household,0,4
+non_eee,Haushaltsgeräte ~ Thermoskanne / Thermosflasche,Unpowered - Household,0,16
+non_eee,Haushaltsgeräte ~ Toilette,Unpowered - Household,0,4
+non_eee,Haushaltsgeräte ~ Tortenring,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Transportwagen,Unpowered - Household,0,13
+non_eee,Haushaltsgeräte ~ Trinkflasche,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Trolley,Unpowered - Household,0,23
+non_eee,Haushaltsgeräte ~ Töpferscheibe,Unpowered - Household,0,7
+non_eee,Haushaltsgeräte ~ Unifix,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Unkrautjäter,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Untersetzer,Unpowered - Household,0,4
+non_eee,Haushaltsgeräte ~ Wanderstöcke,Unpowered - Household,0,7
+non_eee,Haushaltsgeräte ~ Wasserdestilierer,Unpowered - Household,0,4
+non_eee,Haushaltsgeräte ~ Wasserfilter,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Wasserhahn,Unpowered - Household,0,8
+non_eee,Haushaltsgeräte ~ Weihnachtskrippe,Unpowered - Household,0,4
+non_eee,Haushaltsgeräte ~ Wischmopp,Unpowered - Household,0,7
+non_eee,Haushaltsgeräte ~ Wärmebehälter,Unpowered - Household,0,2
+non_eee,Haushaltsgeräte ~ Wärmflasche,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Wäscheständer,Unpowered - Furniture,0,19
+non_eee,Haushaltsgeräte ~ Zeltstange,Unpowered - Household,0,1
+non_eee,Haushaltsgeräte ~ Zuckerdose,Unpowered - Household,0,2
+non_eee,Leder ~ Aktenkoffer,Unpowered - Textile,0,6
+non_eee,Leder ~ Bekleidung / Kleidungsstück,Unpowered - Textile,0,283
+non_eee,Leder ~ Geldbörse,Unpowered - Textile,0,18
+non_eee,Leder ~ Gürtel,Unpowered - Textile,0,35
+non_eee,Leder ~ Lederjacke,Unpowered - Textile,0,5
+non_eee,Leder ~ Stiefel,Unpowered - Textile,0,1
+non_eee,Leder ~ Tasche / Koffer,Unpowered - Textile,0,162
+non_eee,Metallbearbeitung ~ Auto-Kindersitz,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Bingo Maschine,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Bollerwagen,Unpowered - Household,0,5
+non_eee,Metallbearbeitung ~ Briefkasten,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Felgen,Unpowered - Other,0,1
+non_eee,Metallbearbeitung ~ Gewindestange,Unpowered - Other,0,1
+non_eee,Metallbearbeitung ~ Haken,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Halterung,Unpowered - Household,0,11
+non_eee,Metallbearbeitung ~ Haushaltsgerät,Unpowered - Household,0,14
+non_eee,Metallbearbeitung ~ Hoftor,Unpowered - Furniture,0,1
+non_eee,Metallbearbeitung ~ Hängematte,Unpowered - Textile,0,1
+non_eee,Metallbearbeitung ~ Hüpfstange,Unpowered - Household,0,2
+non_eee,Metallbearbeitung ~ Kerzenlöscher,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Kette,Unpowered - Jewellery,0,6
+non_eee,Metallbearbeitung ~ Kinderwagen,Unpowered - Household,0,2
+non_eee,Metallbearbeitung ~ Kuchengitter,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Messer und Scheren schärfen/schleifen,Unpowered - Household,0,209
+non_eee,Metallbearbeitung ~ Metalldose,Unpowered - Other,0,5
+non_eee,Metallbearbeitung ~ Metallplatte,Unpowered - Household,0,3
+non_eee,Metallbearbeitung ~ Metallstab,Unpowered - Other,0,3
+non_eee,Metallbearbeitung ~ Mistgabel / Grabegabel,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Münzen,Unpowered - Other,0,2
+non_eee,Metallbearbeitung ~ Nussknacker,Unpowered - Household,0,3
+non_eee,Metallbearbeitung ~ PKW,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Schlagschrauber,Unpowered - Household,0,3
+non_eee,Metallbearbeitung ~ Schraubendreher,Unpowered - Household,0,4
+non_eee,Metallbearbeitung ~ Schraubzwinge,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Schutzblech,Unpowered - Household,0,4
+non_eee,Metallbearbeitung ~ Schwenkarm,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Seitenschneider,Unpowered - Household,0,2
+non_eee,Metallbearbeitung ~ Stahlgestell,Unpowered - Other,0,2
+non_eee,Metallbearbeitung ~ Stepper,Unpowered - Household,0,2
+non_eee,Metallbearbeitung ~ Säge,Unpowered - Household,0,2
+non_eee,Metallbearbeitung ~ Türautomat,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Türschloss,Unpowered - Household,0,5
+non_eee,Metallbearbeitung ~ Zahlenschloss,Unpowered - Household,0,1
+non_eee,Metallbearbeitung ~ Zwinge,Unpowered - Other,0,1
+non_eee,Möbel/Holz ~ Adventskranz Holz,Unpowered - Household,0,2
+non_eee,Möbel/Holz ~ Barhocker,Unpowered - Furniture,0,9
+non_eee,Möbel/Holz ~ Bierbank,Unpowered - Furniture,0,1
+non_eee,Möbel/Holz ~ Bilderrahmen,Unpowered - Household,0,22
+non_eee,Möbel/Holz ~ Blumentopf,Unpowered - Household,0,2
+non_eee,Möbel/Holz ~ Blumentopfständer,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Bogenständer,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Boot,Unpowered - Furniture,0,2
+non_eee,Möbel/Holz ~ Bürostuhl,Unpowered - Furniture,0,6
+non_eee,Möbel/Holz ~ Campinghocker,Unpowered - Furniture,0,4
+non_eee,Möbel/Holz ~ Campingtisch,Unpowered - Furniture,0,1
+non_eee,Möbel/Holz ~ Dekoration,Unpowered - Household,0,36
+non_eee,Möbel/Holz ~ Drehpendeluhr,Unpowered - Household,0,4
+non_eee,Möbel/Holz ~ Drehstuhl,Unpowered - Furniture,0,1
+non_eee,Möbel/Holz ~ Einhandsäge,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Gartenstuhl,Unpowered - Furniture,0,5
+non_eee,Möbel/Holz ~ Gehstock,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Gitarre,Unpowered - Household,0,6
+non_eee,Möbel/Holz ~ Hobelmaschine,Unpowered - Furniture,0,6
+non_eee,Möbel/Holz ~ Holz,Unpowered - Furniture,0,1
+non_eee,Möbel/Holz ~ Holz-Figuren,Unpowered - Household,0,11
+non_eee,Möbel/Holz ~ Holzbrett,Unpowered - Furniture,0,19
+non_eee,Möbel/Holz ~ Holzfigur,Unpowered - Furniture,0,6
+non_eee,Möbel/Holz ~ Holzplatte,Unpowered - Household,0,3
+non_eee,Möbel/Holz ~ Holzschale,Unpowered - Household,0,4
+non_eee,Möbel/Holz ~ Holzstuhl,Unpowered - Furniture,0,47
+non_eee,Möbel/Holz ~ Holzuntersetzer,Unpowered - Household,0,2
+non_eee,Möbel/Holz ~ Hunde-Transport-Brett,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Jalousien,Unpowered - Household,0,5
+non_eee,Möbel/Holz ~ Kaminuhr,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Kinderstuhl,Unpowered - Furniture,0,8
+non_eee,Möbel/Holz ~ Kiste / Kasten,Unpowered - Furniture,0,8
+non_eee,Möbel/Holz ~ Kleinmöbel,Unpowered - Furniture,0,14
+non_eee,Möbel/Holz ~ Kuckucksuhr,Unpowered - Furniture,0,14
+non_eee,Möbel/Holz ~ Kunstoffkatze,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Kästchen,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Küchengerät,Unpowered - Household,0,23
+non_eee,Möbel/Holz ~ Küchenvitrine,Unpowered - Furniture,0,2
+non_eee,Möbel/Holz ~ Liegestuhl,Unpowered - Furniture,0,9
+non_eee,Möbel/Holz ~ Lostrommel / Tombola,Unpowered - Furniture,0,1
+non_eee,Möbel/Holz ~ Luftbett/Luftmatratze,Unpowered - Household,0,2
+non_eee,Möbel/Holz ~ Massagesessel,Unpowered - Furniture,0,2
+non_eee,Möbel/Holz ~ Metallsessel,Unpowered - Furniture,0,2
+non_eee,Möbel/Holz ~ Moderationstafel,Unpowered - Furniture,0,1
+non_eee,Möbel/Holz ~ Möbelstück,Unpowered - Furniture,0,119
+non_eee,Möbel/Holz ~ Notenständer,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Nähkasten,Unpowered - Household,0,3
+non_eee,Möbel/Holz ~ Puppenstube,Unpowered - Furniture,0,2
+non_eee,Möbel/Holz ~ Puppenwagen,Unpowered - Furniture,0,7
+non_eee,Möbel/Holz ~ Regal,Unpowered - Furniture,0,12
+non_eee,Möbel/Holz ~ Regentonne,Unpowered - Furniture,0,1
+non_eee,Möbel/Holz ~ Schlitten,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Schneidebrett,Unpowered - Household,0,2
+non_eee,Möbel/Holz ~ Schrank,Unpowered - Furniture,0,2
+non_eee,Möbel/Holz ~ Schublade,Unpowered - Furniture,0,17
+non_eee,Möbel/Holz ~ Servierwagen,Unpowered - Furniture,0,5
+non_eee,Möbel/Holz ~ Sessel,Unpowered - Furniture,0,6
+non_eee,Möbel/Holz ~ Sitzbank,Unpowered - Furniture,0,4
+non_eee,Möbel/Holz ~ Sitzmöbel,Unpowered - Furniture,0,4
+non_eee,Möbel/Holz ~ Skateboard,Unpowered - Furniture,0,2
+non_eee,Möbel/Holz ~ Sonnenschirm,Unpowered - Furniture,0,29
+non_eee,Möbel/Holz ~ Spieltisch,Unpowered - Furniture,0,2
+non_eee,Möbel/Holz ~ Spielzeug,Unpowered - Household,0,57
+non_eee,Möbel/Holz ~ Standuhr/Regulator,Unpowered - Furniture,0,40
+non_eee,Möbel/Holz ~ Teller,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Tisch,Unpowered - Furniture,0,22
+non_eee,Möbel/Holz ~ Türgriff,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Türschließer,Unpowered - Furniture,0,3
+non_eee,Möbel/Holz ~ Vogelhäuschen,Unpowered - Household,0,14
+non_eee,Möbel/Holz ~ Wanduhr,Unpowered - Household,0,163
+non_eee,Möbel/Holz ~ Webstuhl,Unpowered - Household,0,1
+non_eee,Möbel/Holz ~ Wohnzimmerstuhl,Unpowered - Furniture,0,1
+non_eee,Schmuck ~ Armband,Unpowered - Jewellery,0,5
+non_eee,Schmuck ~ Brille,Unpowered - Jewellery,0,49
+non_eee,Schmuck ~ Brosche,Unpowered - Jewellery,0,4
+non_eee,Schmuck ~ Haarklammer,Unpowered - Jewellery,0,2
+non_eee,Schmuck ~ Haarreifen,Unpowered - Jewellery,0,2
+non_eee,Schmuck ~ Halskette,Unpowered - Jewellery,0,43
+non_eee,Schmuck ~ Handtasche,Unpowered - Textile,0,13
+non_eee,Schmuck ~ Medaillon,Unpowered - Jewellery,0,1
+non_eee,Schmuck ~ Modeschmuck,Unpowered - Jewellery,0,3
+non_eee,Schmuck ~ Ohrring,Unpowered - Jewellery,0,14
+non_eee,Schmuck ~ Schlüsselanhänger,Unpowered - Jewellery,0,6
+non_eee,Schmuck ~ Taschenuhr,Unpowered - Jewellery,0,6
+non_eee,Smartphone/Tablet ~ Handyhalterung,Unpowered - Household,0,1
+non_eee,Smartphone/Tablet ~ Schutzhülle,Unpowered - Household,0,2
+non_eee,Smartphone/Tablet ~ Stativ,Unpowered - Household,0,7
+non_eee,Textilien ~ Anzug,Unpowered - Textile,0,5
+non_eee,Textilien ~ Arbeitshose,Unpowered - Textile,0,11
+non_eee,Textilien ~ Badeanzug,Unpowered - Textile,0,1
+non_eee,Textilien ~ Badebekleidung,Unpowered - Textile,0,10
+non_eee,Textilien ~ Bademantel,Unpowered - Textile,0,2
+non_eee,Textilien ~ Bauchtasche / Gürteltasche,Unpowered - Textile,0,1
+non_eee,Textilien ~ Bettbezug,Unpowered - Textile,0,10
+non_eee,Textilien ~ Bettwäsche,Unpowered - Textile,0,59
+non_eee,Textilien ~ Beutel,Unpowered - Textile,0,21
+non_eee,Textilien ~ Bienenkästen-Abdeckungen,Unpowered - Textile,0,2
+non_eee,Textilien ~ Bluse,Unpowered - Textile,0,37
+non_eee,Textilien ~ Duschvorhang,Unpowered - Textile,0,1
+non_eee,Textilien ~ Fahne,Unpowered - Textile,0,4
+non_eee,Textilien ~ Fahrradhelm,Unpowered - Household,0,5
+non_eee,Textilien ~ Fahrradtasche,Unpowered - Textile,0,9
+non_eee,Textilien ~ Gardinen,Unpowered - Textile,0,16
+non_eee,Textilien ~ Gürteltasche,Unpowered - Textile,0,3
+non_eee,Textilien ~ Halstuch,Unpowered - Textile,0,16
+non_eee,Textilien ~ Handschuhe,Unpowered - Textile,0,14
+non_eee,Textilien ~ Handtuch,Unpowered - Textile,0,36
+non_eee,Textilien ~ Handyhülle,Unpowered - Textile,0,2
+non_eee,Textilien ~ Handytasche,Unpowered - Textile,0,2
+non_eee,Textilien ~ Hemd,Unpowered - Textile,0,59
+non_eee,Textilien ~ Hose,Unpowered - Textile,0,810
+non_eee,Textilien ~ Hundehalsband,Unpowered - Textile,0,3
+non_eee,Textilien ~ Hundeleine,Unpowered - Textile,0,2
+non_eee,Textilien ~ Imker-Anzug,Unpowered - Textile,0,4
+non_eee,Textilien ~ Imker-Hut,Unpowered - Textile,0,2
+non_eee,Textilien ~ Imkeranzug,Unpowered - Textile,0,2
+non_eee,Textilien ~ Jacke,Unpowered - Textile,0,254
+non_eee,Textilien ~ Jeans,Unpowered - Textile,0,26
+non_eee,Textilien ~ Jeansjacke,Unpowered - Textile,0,4
+non_eee,Textilien ~ Kinderbody,Unpowered - Textile,0,1
+non_eee,Textilien ~ Kissen,Unpowered - Textile,0,17
+non_eee,Textilien ~ Kissenbezug / Kissenhülle,Unpowered - Textile,0,16
+non_eee,Textilien ~ Kleid,Unpowered - Textile,0,37
+non_eee,Textilien ~ Kleidungsstück,Unpowered - Textile,0,1662
+non_eee,Textilien ~ Krawatte,Unpowered - Textile,0,1
+non_eee,Textilien ~ Lederhose,Unpowered - Textile,0,1
+non_eee,Textilien ~ Leggings,Unpowered - Textile,0,8
+non_eee,Textilien ~ Mantel,Unpowered - Textile,0,8
+non_eee,Textilien ~ Matratzenbezug,Unpowered - Textile,0,2
+non_eee,Textilien ~ Mütze,Unpowered - Textile,0,3
+non_eee,Textilien ~ Nähen,Unpowered - Textile,0,1
+non_eee,Textilien ~ Oberteil,Unpowered - Textile,0,13
+non_eee,Textilien ~ Orthopädie,Unpowered - Textile,0,2
+non_eee,Textilien ~ Pullover,Unpowered - Textile,0,159
+non_eee,Textilien ~ Puppe,Unpowered - Textile,0,42
+non_eee,Textilien ~ Regenschirm,Unpowered - Textile,0,51
+non_eee,Textilien ~ Regenschutz,Unpowered - Textile,0,1
+non_eee,Textilien ~ Reißverschluss,Unpowered - Textile,0,10
+non_eee,Textilien ~ Rock,Unpowered - Textile,0,17
+non_eee,Textilien ~ Rucksack,Unpowered - Textile,0,115
+non_eee,Textilien ~ Schirm,Unpowered - Textile,0,22
+non_eee,Textilien ~ Schlafanzug,Unpowered - Textile,0,2
+non_eee,Textilien ~ Schlafmaske,Unpowered - Textile,0,1
+non_eee,Textilien ~ Schlafsack,Unpowered - Textile,0,9
+non_eee,Textilien ~ Schlappen,Unpowered - Textile,0,1
+non_eee,Textilien ~ Schonbezug,Unpowered - Textile,0,1
+non_eee,Textilien ~ Schoner,Unpowered - Textile,0,1
+non_eee,Textilien ~ Schuhe,Unpowered - Textile,0,63
+non_eee,Textilien ~ Seil,Unpowered - Textile,0,1
+non_eee,Textilien ~ Socken/Strümpfe,Unpowered - Textile,0,13
+non_eee,Textilien ~ Spannbetttuch,Unpowered - Textile,0,3
+non_eee,Textilien ~ Stofftier,Unpowered - Textile,0,17
+non_eee,Textilien ~ Strickjacke,Unpowered - Textile,0,10
+non_eee,Textilien ~ Strumpfhose,Unpowered - Textile,0,2
+non_eee,Textilien ~ T-Shirt,Unpowered - Textile,0,86
+non_eee,Textilien ~ Tarp / Zeltplane,Unpowered - Textile,0,9
+non_eee,Textilien ~ Tasche / Koffer,Unpowered - Textile,0,240
+non_eee,Textilien ~ Textilien,Unpowered - Textile,0,160
+non_eee,Textilien ~ Tischdecke,Unpowered - Textile,0,9
+non_eee,Textilien ~ Topflappen,Unpowered - Textile,0,1
+non_eee,Textilien ~ Turnschuhe,Unpowered - Textile,0,2
+non_eee,Textilien ~ Unterwäsche,Unpowered - Textile,0,9
+non_eee,Textilien ~ Vorhang,Unpowered - Textile,0,42
+non_eee,Textilien ~ Warnweste,Unpowered - Textile,0,1
+non_eee,Textilien ~ Weste,Unpowered - Textile,0,12
+non_eee,Textilien ~ Wickelunterlage,Unpowered - Textile,0,1
+non_eee,Textilien ~ Winterhose,Unpowered - Textile,0,3
+non_eee,Textilien ~ Wohntextilie,Unpowered - Textile,0,206
+non_eee,Textilien ~ Wolldecke,Unpowered - Textile,0,5
+non_eee,Unterhaltungselektronik ~ Faltpiano,Unpowered - Household,0,1
+non_eee,"Unterhaltungselektronik ~ Kamera, analog",Unpowered - Household,0,72
+non_eee,Unterhaltungselektronik ~ Puppenbadewanne,Unpowered - Household,0,1
+non_eee,Upcycling/Basteln ~ Akkordeon,Unpowered - Household,0,2
+non_eee,Upcycling/Basteln ~ Fensterbild,Unpowered - Household,0,2
+non_eee,Upcycling/Basteln ~ Fliegengitter,Unpowered - Household,0,2
+non_eee,Upcycling/Basteln ~ Flyerhalter,Unpowered - Household,0,2
+non_eee,Upcycling/Basteln ~ Gurte,Unpowered - Textile,0,2
+non_eee,Upcycling/Basteln ~ Halterung,Unpowered - Household,0,8
+non_eee,Upcycling/Basteln ~ Hochbeet,Unpowered - Household,0,3
+non_eee,Upcycling/Basteln ~ Insektenhotel,Unpowered - Household,0,2
+non_eee,Upcycling/Basteln ~ Modellauto,Unpowered - Household,0,35
+non_eee,Upcycling/Basteln ~ Musikalien,Unpowered - Household,0,1
+non_eee,Upcycling/Basteln ~ Outdoor,Unpowered - Other,0,2
+non_eee,Upcycling/Basteln ~ Papierröhre,Unpowered - Other,0,1
+non_eee,Upcycling/Basteln ~ Porzellanfigur,Unpowered - Household,0,13
+non_eee,Upcycling/Basteln ~ Schild,Unpowered - Household,0,6
+non_eee,Upcycling/Basteln ~ Skateboardachse,Unpowered - Household,0,3
+non_eee,Upcycling/Basteln ~ Stricknadel-Verbindungsteil,Unpowered - Household,0,1
+non_eee,Upcycling/Basteln ~ Trinkglas,Unpowered - Household,0,2
+non_eee,Upcycling/Basteln ~ Vergaserreparatur,Unpowered - Other,0,1
+non_eee,Upcycling/Basteln ~ Visible Repair Technique,Unpowered - Textile,0,1
+non_eee,Upcycling/Basteln ~ mechanische Spieldose,Unpowered - Household,0,1

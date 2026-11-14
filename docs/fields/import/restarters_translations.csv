@@ -1,0 +1,1445 @@
+file,key,en,de
+de.json,Access issue,Access issue,Zugangsproblem
+de.json,Administrator,Admin,Administrator
+de.json,Aircon/dehumidifier,Aircon/dehumidifier,Klimaanlage/Luftentfeuchter
+de.json,All rights reserved.,All rights reserved.,Alle Rechte vorbehalten
+de.json,Battery is not the main problem,Battery is not the main problem,Akku ist nicht das Hauptproblem
+de.json,Battery not readily available,Battery not readily available,Ersatzakku schwer zu bekommen
+de.json,Battery/charger/adapter,Battery/charger/adapter,Akku/Ladegerät/Adapter
+de.json,Bicycle,Bicycle,Fahrrad
+de.json,Bluetooth,Bluetooth,Bluetooth
+de.json,"Built-in or soldered battery, cannot remove","Built-in or soldered battery, cannot remove","Eingebauter oder verlöteter Akku, kann nicht entfernt werden"
+de.json,Camera,Camera,Kamera
+de.json,Card reader,Card reader,Kartenleser
+de.json,Changing a fuse,Changing a fuse,Sicherung austauschen
+de.json,Charger,Charger,Ladegerät
+de.json,Charger not readily available,Charger not readily available,Ersatzladegerät schwer zu bekommen
+de.json,Clean battery contacts,Clean battery contacts,Kontakte reinigen
+de.json,Clothing/textile,Clothing/textile,Kleidung/Textilien
+de.json,Coffee maker,Coffee maker,Kaffeemaschine
+de.json,Computers and Home Office,Computers and Home Office,Computer und Büroartikel
+de.json,Configuration,Configuration,Konfiguration
+de.json,Confirm Password,Confirm Password,Passwort bestätigen
+de.json,Control buttons,Control buttons,Steuerungstasten
+de.json,DSLR/video camera,DSLR/video camera,Spiegelreflex-/Videokamera
+de.json,Damaged while replacing battery,Damaged while replacing battery,Beschädigt beim Austausch des Akkus
+de.json,Data volunteering,Data volunteering,Datenanalyse
+de.json,Decorative or safety lights,Decorative or safety lights,Beleuchtung
+de.json,Desktop computer,Desktop computer,Desktop-Computer
+de.json,Difficult to remove battery,Difficult to remove battery,Akku lässt sich nur schwer entfernen
+de.json,Digital compact camera,Digital compact camera,Digitale Kompaktkamera
+de.json,Display panel,Display panel,Bildschirm
+de.json,E-Mail Address,E-Mail Address,E-Mail-Adresse
+de.json,Electronic Gadgets,Electronic Gadgets,Elektronisches Gadget
+de.json,Electronics safety,Electronics safety,Sicherer Umgang mit Elektrizität
+de.json,End of life,End of life,Ende der Lebensdauer
+de.json,External damage,External damage,Externer Schaden
+de.json,Fan,Fan,Gebläse
+de.json,Finding venues,Finding venues,Veranstaltungsorte finden
+de.json,First aid,First aid,Erste Hilfe
+de.json,Fix connectors or casing,Fix connectors or casing,Stecker oder Gehäuse reparieren
+de.json,Fix the charging port,Fix the charging port,Ladeanschluss reparieren
+de.json,Fixed,Fixed,Repariert
+de.json,Flat screen,Flat screen,Flachbildschirm
+de.json,"Flat screen 15-17""","Flat screen 15-17""","Flachbildschirm 15–17"""
+de.json,"Flat screen 19-20""","Flat screen 19-20""","Flachbildschirm 19–20"""
+de.json,"Flat screen 22-24""","Flat screen 22-24""","Flachbildschirm 22–24"""
+de.json,"Flat screen 26-30""","Flat screen 26-30""","Flachbildschirm 26–30"""
+de.json,"Flat screen 32-37""","Flat screen 32-37""","Flachbildschirm 32–37"""
+de.json,Food processor,Food processor,Küchenmaschine
+de.json,Forgot Your Password?,Forgot Your Password?,Passwort vergessen?
+de.json,Furniture,Furniture,Möbel
+de.json,Games console,Games console,Spielkonsole
+de.json,Hair & beauty item,Hair & beauty item,Gerät für Haare und Körperpflege
+de.json,Hand tool,Hand tool,Handwerkzeug
+de.json,Handheld entertainment device,Handheld entertainment device,Tragbares Unterhaltungsgerät
+de.json,Headphone jack,Headphone jack,Kopfhöreranschluss
+de.json,Headphones,Headphones,Kopfhörer
+de.json,Hello!,Hello!,Hallo!
+de.json,Help/configuration,Help/configuration,Hilfe/Konfiguration
+de.json,Hi-Fi integrated,Hi-Fi integrated,Audiogerät integriert
+de.json,Hi-Fi separates,Hi-Fi separates,Audiogerät einzeln
+de.json,Home Entertainment,Home Entertainment,Unterhaltungsgeräte
+de.json,Host,Host,Gastgeber:in
+de.json,Imaging unit/drum,Imaging unit/drum,Abbildungseinheit/Trommel
+de.json,Ink cartridge,Ink cartridge,Tintenpatrone
+de.json,Internal damage,Internal damage,Interner Schaden
+de.json,Iron,Iron,Bügeleisen
+de.json,Jewellery,Jewellery,Schmuck
+de.json,Kettle,Kettle,Wasserkocher
+de.json,Kitchen and Household Items,Kitchen and Household Items,Küchen- und Haushaltsgeräte
+de.json,Lack of equipment,Lack of equipment,Mangel an Ausrüstung
+de.json,Lamp,Lamp,Lampe
+de.json,Laptop,Laptop,Laptop
+de.json,Laptop disassembly,Laptop disassembly,Auseinanderbau eines Laptops
+de.json,Laptop large,Laptop large,Laptop groß
+de.json,Laptop medium,Laptop medium,Laptop mittel
+de.json,Laptop small,Laptop small,Laptop klein
+de.json,Large home electrical,Large home electrical,Große Haushaltselektrogeräte
+de.json,Liquid damage,Liquid damage,Wasserschaden
+de.json,Managing events,Managing events,Veranstaltungen planen
+de.json,Memory card slot,Memory card slot,Speicherkartensteckplatz
+de.json,Microphone,Microphone,Mikrofon
+de.json,Misc,Misc,Verschiedenes
+de.json,Mobile,Mobile,Handy
+de.json,Musical instrument,Musical instrument,Musikinstrument
+de.json,Name,Name,Name
+de.json,NetworkCoordinator,Network Coordinator,Netzwerkkoordinator:in
+de.json,New battery too expensive,New battery too expensive,Neuer Akku zu teuer
+de.json,No way to open the product,No way to open the product,"Keine Möglichkeit, das Gerät zu öffnen"
+de.json,Non-Powered Items,Non-Powered Items,nicht-elektrische Gegenstände
+de.json,On/Off button,On/Off button,Ein/Aus-Knopf
+de.json,Organising skills - please select at least one if you'd like to host events,Organising skills - please select at least one if you'd like to host events,"Organisationsfähigkeiten – bitte mindestens eine auswählen, wenn Sie Veranstaltungen organisieren möchten."
+de.json,Organising skills - please select at least one if you’d like to host events,Organising skills - please select at least one if you’d like to host events,"Organisationsfähigkeiten – bitte mindestens eine auswählen, wenn Sie Veranstaltungen organisieren möchten."
+de.json,Other,Other,Andere
+de.json,Other buttons,Other buttons,Andere Knöpfe
+de.json,PC accessory,PC accessory,Computerzubehör
+de.json,Paper feed,Paper feed,Papiervorschub
+de.json,Paper output,Paper output,Papierausgabe
+de.json,Paper shredder,Paper shredder,Schredder
+de.json,Password,Password,Passwort
+de.json,Performance,Performance,Leistung
+de.json,Poor data,Poor data,Schlechte Daten
+de.json,Portable radio,Portable radio,Tragbares Radio
+de.json,Power supply/connectors,Power supply/connectors,Stromversorgung/Anschlüsse
+de.json,Power tool,Power tool,Elektrowerkzeug
+de.json,Power/battery,Power/battery,Stromversorgung/Batterie
+de.json,Print quality,Print quality,Druckqualität
+de.json,Printer/scanner,Printer/scanner,Drucker/Scanner
+de.json,Printhead cleaning,Printhead cleaning,Druckkopfreinigung
+de.json,Printhead failure,Printhead failure,Druckkopffehler
+de.json,Projector,Projector,Projektor
+de.json,Publicising events,Publicising events,Veranstaltungen bewerben
+de.json,Recruiting volunteers,Recruiting volunteers,Freiwillige anwerben
+de.json,Recruiting volunteers ,Recruiting volunteers,Freiwillige anwerben
+de.json,Regards,Regards,Grüße
+de.json,Register,Register,Registrieren
+de.json,Remember Me,Remember Me,Anmeldedaten speichern
+de.json,Repair information not available,Repair information not available,Reparaturinformationen nicht vorhanden
+de.json,Repairable,Repairable,Reparierbar
+de.json,Replace the charger or charging cable,Replace the charger or charging cable,Ladegerät oder Ladekabel austauschen
+de.json,Replace with new battery,Replace with new battery,Durch neuen Akku ersetzen
+de.json,Replacing PCB components,Replacing PCB components,PCB-Komponenten ersetzen
+de.json,Replacing screens,Replacing screens,Bildschirm ersetzen
+de.json,Reset Password,Reset Password,Passwort zurücksetzen
+de.json,Restarter,Repairer,Reparateur:in
+de.json,Scanner,Scanner,Scanner
+de.json,Screen,Screen,Bildschirm
+de.json,Send Password Reset Link,Send Password Reset Link,Link zum Zurücksetzen des Passworts senden
+de.json,Sewing machine,Sewing machine,Nähmaschine
+de.json,Sim card slot,SIM card slot,SIM-Kartenslot
+de.json,Small home electrical,Small home electrical,Kleine Haushaltselektrogeräte
+de.json,Small kitchen item,Small kitchen item,Kleines Küchengerät
+de.json,Software issue,Software issue,Softwareproblem
+de.json,Software issue/update,Software issue/update,Softwareproblem/Update
+de.json,Software update,Software update,Softwareupdate
+de.json,Software/OS,Software/OS,Software/Betriebssystem
+de.json,Spare parts not available,Spare parts not available,Keine Ersatzteile verfügbar
+de.json,Spare parts too expensive,Spare parts too expensive,Ersatzteile zu teuer
+de.json,Speaker/amplifier,Speaker/amplifier,Lautsprecher/Verstärker
+de.json,Storage Storage,Storage,Speicher
+de.json,Storage problem,Storage problem,Speicherproblem
+de.json,Stuck booting,Stuck booting,Steckt fest beim Hochfahren
+de.json,TV and gaming-related accessories,TV and gaming-related accessories,TV- und Gaming-Zubehör
+de.json,Tablet,Tablet,Tablet
+de.json,Technical skills,Technical skills,Technische Fähigkeiten
+de.json,Toaster,Toaster,Toaster
+de.json,Toner,Toner,Toner
+de.json,Toy,Toy,Spielzeug
+de.json,USB port/cable,USB port/cable,USB-Anschluss/Kabel
+de.json,USB/charging port,USB/charging port,USB/Ladeanschluss
+de.json,Unknown,Unknown,Unbekannt
+de.json,Unrepairable corrosion or leakage,Unrepairable corrosion or leakage,Unreparierbare Korrosion oder Akku ausgelaufen
+de.json,Using a multimeter,Using a multimeter,Benutzung eines Multimeters
+de.json,Vacuum,Vacuum,Staubsauger
+de.json,Vendor lock-in,Vendor lock-in,Herstellerbindung
+de.json,Volume buttons,Volume buttons,Lautstärketasten
+de.json,Waste toner/ink box,Waste toner/ink box,Tonerabfallbox
+de.json,Watch/clock,Watch/clock,Uhr
+de.json,Whoops!,Whoops!,Ups!
+de.json,WiFi,WiFi,WLAN
+de.json,non-existent,non-existent,nicht vorhanden
+admin.php,admin.categories,Categories,Kategorien
+admin.php,admin.skills,Skills,Fähigkeiten
+admin.php,admin.brand,Brand,Marke
+admin.php,admin.create-new-category,Create new category,Neue Kategorie erstellen
+admin.php,admin.category_name,Category name,Kategoriename
+admin.php,admin.skill_name,Skill name,Name der Fähigkeit
+admin.php,admin.delete-skill,Delete skill,Fähigkeit löschen
+admin.php,admin.create-new-skill,Create new skill,Neue Fähigkeit erstellen
+admin.php,admin.create-new-tag,Create new tag,Neues Tag erstellen
+admin.php,admin.create-new-brand,Create new brand,Neue Marke erstellen
+admin.php,admin.skills_modal_title,Add new skill,Neue Fähigkeit hinzufügen
+admin.php,admin.tags_modal_title,Add new tag,Neues Tag hinzufügen
+admin.php,admin.brand_modal_title,Add new brand,Neue Marke hinzufügen
+admin.php,admin.category_cluster,Category Cluster,Kategoriecluster
+admin.php,admin.weight,Weight (kg),Gewicht (kg)
+admin.php,admin.co2_footprint,CO<sub>2</sub> Footprint (kg),CO<sub>2</sub>-Fußabdruck (kg)
+admin.php,admin.reliability,Reliability,Zuverlässigkeit
+admin.php,admin.reliability-1,Very poor,Sehr schlecht
+admin.php,admin.reliability-2,Poor,Schlecht
+admin.php,admin.reliability-3,Fair,Befriedigend
+admin.php,admin.reliability-4,Good,Gut
+admin.php,admin.reliability-5,Very good,Sehr gut
+admin.php,admin.reliability-6,N/A,N/A
+admin.php,admin.description,Description,Beschreibung
+admin.php,admin.description_optional,Description (optional),Beschreibung (optional)
+admin.php,admin.save-category,Save category,Kategorie speichern
+admin.php,admin.edit-category,Edit category,Kategorie bearbeiten
+admin.php,admin.save-skill,Save skill,Fähigkeit speichern
+admin.php,admin.edit-skill,Edit skill,Fähigkeit bearbeiten
+admin.php,admin.edit-category-content,,
+admin.php,admin.edit-skill-content,,
+admin.php,admin.group-tags,Group tags,Gruppenmarkierungen
+admin.php,admin.delete-tag,Delete tag,Tag löschen
+admin.php,admin.save-tag,Save tag,Tag speichern
+admin.php,admin.save-brand,Save brand,Marke speichern
+admin.php,admin.tag-name,Tag name,Tagname
+admin.php,admin.brand-name,Brand name,Markenname
+admin.php,admin.edit-brand,Edit brand,Marke bearbeiten
+admin.php,admin.edit-brand-content,,
+auth.php,auth.email_address_validation,An account with this email address already exists. Have you tried logging in?,Ein Konto mit dieser E-Mail-Adresse existiert bereits. Haben Sie es schon mit dem Anmelden versucht?
+auth.php,auth.login,Login,Anmelden
+auth.php,auth.delete_account,Delete account,Konto löschen
+auth.php,auth.failed,Either this email address isn't registered on the system or the password is incorrect.,Diese E-Mail-Adresse ist nicht im System registriert oder das Passwort ist falsch.
+auth.php,auth.email_address,Email address,E-Mail-Adresse
+auth.php,auth.sign_in,I remembered.  Let me sign in,Ich erinnere mich. Jetzt anmelden
+auth.php,auth.forgotten_pw,Forgotten your password?,Passwort vergessen?
+auth.php,auth.forgotten_pw_text,It happens to all of us. Simply enter your email to receive a password reset message.,"Das passiert uns allen. Geben Sie einfach Ihre E-Mail-Adresse ein, um einen Link zum Zurücksetzen des Passworts zu erhalten."
+auth.php,auth.reset,Reset,Zurücksetzen
+auth.php,auth.password,Password,Passwort
+auth.php,auth.repeat_password,Repeat password,Passwort wiederholen
+auth.php,auth.repeat_password_validation,Passwords do not match or are fewer than six characters,Die Passwörter stimmen nicht überein oder sind kürzer als sechs Zeichen
+auth.php,auth.forgot_password,Forgot password,Passwort vergessen
+auth.php,auth.change_password,Change password,Passwort ändern
+auth.php,auth.change_password_text,Keep your account safe and regularly change your password.,Schützen Sie Ihr Konto und ändern Sie regelmäßig Ihr Passwort.
+auth.php,auth.reset_password,Reset password,Passwort zurücksetzen
+auth.php,auth.create_account,Create an account,Konto erstellen
+auth.php,auth.current_password,Current password,Aktuelles Passwort
+auth.php,auth.new_password,New password,Neues Passwort
+auth.php,auth.new_repeat_password,Repeat new password,Neues Passwort wiederholen
+auth.php,auth.save_preferences,Save preferences,Einstellungen speichern
+auth.php,auth.set_preferences,Click here to set your email preferences for our discussion platform,"Hier klicken, um die E-Mail-Einstellungen für unsere Diskussionsplattform festzulegen"
+auth.php,auth.profile_admin,Admin only,Nur für Administratoren
+auth.php,auth.profile_admin_text,Here admins have the ability to change a user's role or their associated groups,Hier können Administratoren die Rolle eines Nutzers oder die zugewiesenen Gruppen ändern
+auth.php,auth.user_role,User role,Nutzerrolle
+auth.php,auth.assigned_groups,Assigned to groups,Zugewiesene Gruppen
+auth.php,auth.save_user,Save user,Nutzer speichern
+auth.php,auth.login_before_using_shareable_link,"To complete your invitation please create an account below, or if you already have an account <a href="":login_url"">login here</a>.","Um Ihre Einladung abzuschließen, erstellen Sie bitte unten ein Konto, oder falls Sie bereits ein Konto haben, <a href="":login_url"">melden Sie sich hier an</a>."
+brands.php,brands.create_success,Brand successfully created!,Marke erfolgreich erstellt!
+brands.php,brands.update_success,Brand successfully updated!,Marke erfolgreich aktualisiert!
+brands.php,brands.delete_success,Brand deleted!,Marke gelöscht!
+calendars.php,calendars.find_out_more,Find out more,Mehr erfahren
+calendars.php,calendars.see_all_calendars,See all my calendars,Alle meine Kalender anzeigen
+calendars.php,calendars.add_to_calendar,Add to calendar,Zum Kalender hinzufügen
+category.php,category.update_success,Category updated!,Kategorie aktualisiert!
+category.php,category.update_error,Category could not be updated!,Kategorie konnte nicht aktualisiert werden!
+countries.php,countries.AF,Afghanistan,Afghanistan
+countries.php,countries.AX,Åland Islands,Ålandinseln
+countries.php,countries.AL,Albania,Albanien
+countries.php,countries.DZ,Algeria,Algerien
+countries.php,countries.AS,American Samoa,Amerikanisch-Samoa
+countries.php,countries.AD,Andorra,Andorra
+countries.php,countries.AO,Angola,Angola
+countries.php,countries.AI,Anguilla,Anguilla
+countries.php,countries.AQ,Antarctica,Antarktis
+countries.php,countries.AG,Antigua and Barbuda,Antigua und Barbuda
+countries.php,countries.AR,Argentina,Argentinien
+countries.php,countries.AM,Armenia,Armenien
+countries.php,countries.AW,Aruba,Aruba
+countries.php,countries.AU,Australia,Australien
+countries.php,countries.AT,Austria,Österreich
+countries.php,countries.AZ,Azerbaijan,Aserbaidschan
+countries.php,countries.BS,Bahamas,Bahamas
+countries.php,countries.BH,Bahrain,Bahrain
+countries.php,countries.BD,Bangladesh,Bangladesch
+countries.php,countries.BB,Barbados,Barbados
+countries.php,countries.BY,Belarus,Belarus
+countries.php,countries.BE,Belgium,Belgien
+countries.php,countries.BZ,Belize,Belize
+countries.php,countries.BJ,Benin,Benin
+countries.php,countries.BM,Bermuda,Bermuda
+countries.php,countries.BT,Bhutan,Bhutan
+countries.php,countries.BO,"Bolivia, Plurinational State of","Bolivien, Plurinationaler Staat"
+countries.php,countries.BQ,"Bonaire, Sint Eustatius and Saba","Bonaire, Sint Eustatius und Saba"
+countries.php,countries.BA,Bosnia and Herzegovina,Bosnien und Herzegowina
+countries.php,countries.BW,Botswana,Botswana
+countries.php,countries.BV,Bouvet Island,Bouvetinsel
+countries.php,countries.BR,Brazil,Brasilien
+countries.php,countries.IO,British Indian Ocean Territory,Britisches Territorium im Indischen Ozean
+countries.php,countries.BN,Brunei Darussalam,Brunei Darussalam
+countries.php,countries.BG,Bulgaria,Bulgarien
+countries.php,countries.BF,Burkina Faso,Burkina Faso
+countries.php,countries.BI,Burundi,Burundi
+countries.php,countries.KH,Cambodia,Kambodscha
+countries.php,countries.CM,Cameroon,Kamerun
+countries.php,countries.CA,Canada,Kanada
+countries.php,countries.CV,Cape Verde,Kap Verde
+countries.php,countries.KY,Cayman Islands,Kaimaninseln
+countries.php,countries.CF,Central African Republic,Zentralafrikanische Republik
+countries.php,countries.TD,Chad,Tschad
+countries.php,countries.CL,Chile,Chile
+countries.php,countries.CN,China,China
+countries.php,countries.CX,Christmas Island,Weihnachtsinsel
+countries.php,countries.CC,Cocos (Keeling) Islands,Kokosinseln (Keelinginseln)
+countries.php,countries.CO,Colombia,Kolumbien
+countries.php,countries.KM,Comoros,Komoren
+countries.php,countries.CG,Congo,Kongo
+countries.php,countries.CD,"Congo, the Democratic Republic of the","Kongo, Demokratische Republik"
+countries.php,countries.CK,Cook Islands,Cookinseln
+countries.php,countries.CR,Costa Rica,Costa Rica
+countries.php,countries.HR,Croatia,Kroatien
+countries.php,countries.CU,Cuba,Kuba
+countries.php,countries.CW,Curaçao,Curaçao
+countries.php,countries.CY,Cyprus,Zypern
+countries.php,countries.CZ,Czech Republic,Tschechische Republik
+countries.php,countries.DK,Denmark,Dänemark
+countries.php,countries.DJ,Djibouti,Dschibuti
+countries.php,countries.DM,Dominica,Dominica
+countries.php,countries.DO,Dominican Republic,Dominikanische Republik
+countries.php,countries.EC,Ecuador,Ecuador
+countries.php,countries.EG,Egypt,Ägypten
+countries.php,countries.SV,El Salvador,El Salvador
+countries.php,countries.GQ,Equatorial Guinea,Äquatorialguinea
+countries.php,countries.ER,Eritrea,Eritrea
+countries.php,countries.EE,Estonia,Estland
+countries.php,countries.ET,Ethiopia,Äthiopien
+countries.php,countries.FK,Falkland Islands (Malvinas),Falklandinseln (Malwinen)
+countries.php,countries.FO,Faroe Islands,Färöer
+countries.php,countries.FJ,Fiji,Fidschi
+countries.php,countries.FI,Finland,Finnland
+countries.php,countries.FR,France,Frankreich
+countries.php,countries.GF,French Guiana,Französisch-Guayana
+countries.php,countries.PF,French Polynesia,Französisch-Polynesien
+countries.php,countries.TF,French Southern Territories,Französische Südgebiete
+countries.php,countries.GA,Gabon,Gabun
+countries.php,countries.GM,Gambia,Gambia
+countries.php,countries.GE,Georgia,Georgien
+countries.php,countries.DE,Germany,Deutschland
+countries.php,countries.GH,Ghana,Ghana
+countries.php,countries.GI,Gibraltar,Gibraltar
+countries.php,countries.GR,Greece,Griechenland
+countries.php,countries.GL,Greenland,Grönland
+countries.php,countries.GD,Grenada,Grenada
+countries.php,countries.GP,Guadeloupe,Guadeloupe
+countries.php,countries.GU,Guam,Guam
+countries.php,countries.GT,Guatemala,Guatemala
+countries.php,countries.GG,Guernsey,Guernsey
+countries.php,countries.GN,Guinea,Guinea
+countries.php,countries.GW,Guinea-Bissau,Guinea-Bissau
+countries.php,countries.GY,Guyana,Guyana
+countries.php,countries.HT,Haiti,Haiti
+countries.php,countries.HM,Heard Island and McDonald Islands,Heard und McDonaldinseln
+countries.php,countries.VA,Holy See (Vatican City State),Heiliger Stuhl (Vatikanstadt)
+countries.php,countries.HN,Honduras,Honduras
+countries.php,countries.HK,Hong Kong,Hongkong
+countries.php,countries.HU,Hungary,Ungarn
+countries.php,countries.IS,Iceland,Island
+countries.php,countries.IN,India,Indien
+countries.php,countries.ID,Indonesia,Indonesien
+countries.php,countries.IR,"Iran, Islamic Republic of","Iran, Islamische Republik"
+countries.php,countries.IQ,Iraq,Irak
+countries.php,countries.IE,Ireland,Irland
+countries.php,countries.IM,Isle of Man,Isle of Man
+countries.php,countries.IL,Israel,Israel
+countries.php,countries.IT,Italy,Italien
+countries.php,countries.JM,Jamaica,Jamaika
+countries.php,countries.JP,Japan,Japan
+countries.php,countries.JE,Jersey,Jersey
+countries.php,countries.JO,Jordan,Jordanien
+countries.php,countries.KZ,Kazakhstan,Kasachstan
+countries.php,countries.KE,Kenya,Kenia
+countries.php,countries.KI,Kiribati,Kiribati
+countries.php,countries.KR,South Korea,Südkorea
+countries.php,countries.KW,Kuwait,Kuwait
+countries.php,countries.KG,Kyrgyzstan,Kirgisistan
+countries.php,countries.LV,Latvia,Lettland
+countries.php,countries.LB,Lebanon,Libanon
+countries.php,countries.LS,Lesotho,Lesotho
+countries.php,countries.LR,Liberia,Liberia
+countries.php,countries.LY,Libya,Libyen
+countries.php,countries.LI,Liechtenstein,Liechtenstein
+countries.php,countries.LT,Lithuania,Litauen
+countries.php,countries.LU,Luxembourg,Luxemburg
+countries.php,countries.MO,Macao,Macao
+countries.php,countries.MK,"Macedonia, the former Yugoslav Republic of",Nordmazedonien
+countries.php,countries.MG,Madagascar,Madagaskar
+countries.php,countries.MW,Malawi,Malawi
+countries.php,countries.MY,Malaysia,Malaysia
+countries.php,countries.MV,Maldives,Malediven
+countries.php,countries.ML,Mali,Mali
+countries.php,countries.MT,Malta,Malta
+countries.php,countries.MH,Marshall Islands,Marshallinseln
+countries.php,countries.MQ,Martinique,Martinique
+countries.php,countries.MR,Mauritania,Mauretanien
+countries.php,countries.MU,Mauritius,Mauritius
+countries.php,countries.YT,Mayotte,Mayotte
+countries.php,countries.MX,Mexico,Mexiko
+countries.php,countries.FM,"Micronesia, Federated States of","Mikronesien, Föderierte Staaten von"
+countries.php,countries.MD,"Moldova, Republic of","Moldau, Republik"
+countries.php,countries.MC,Monaco,Monaco
+countries.php,countries.MN,Mongolia,Mongolei
+countries.php,countries.ME,Montenegro,Montenegro
+countries.php,countries.MS,Montserrat,Montserrat
+countries.php,countries.MA,Morocco,Marokko
+countries.php,countries.MZ,Mozambique,Mosambik
+countries.php,countries.MM,Myanmar,Myanmar
+countries.php,countries.NA,Namibia,Namibia
+countries.php,countries.NR,Nauru,Nauru
+countries.php,countries.NP,Nepal,Nepal
+countries.php,countries.NL,Netherlands,Niederlande
+countries.php,countries.NC,New Caledonia,Neukaledonien
+countries.php,countries.NZ,Aotearoa New Zealand,Aotearoa Neuseeland
+countries.php,countries.NI,Nicaragua,Nicaragua
+countries.php,countries.NE,Niger,Niger
+countries.php,countries.NG,Nigeria,Nigeria
+countries.php,countries.NU,Niue,Niue
+countries.php,countries.NF,Norfolk Island,Norfolkinsel
+countries.php,countries.MP,Northern Mariana Islands,Nördliche Marianen
+countries.php,countries.NO,Norway,Norwegen
+countries.php,countries.OM,Oman,Oman
+countries.php,countries.PK,Pakistan,Pakistan
+countries.php,countries.PW,Palau,Palau
+countries.php,countries.PS,"Palestinian Territory, Occupied","Palästinensisches Gebiet, besetzt"
+countries.php,countries.PA,Panama,Panama
+countries.php,countries.PG,Papua New Guinea,Papua-Neuguinea
+countries.php,countries.PY,Paraguay,Paraguay
+countries.php,countries.PE,Peru,Peru
+countries.php,countries.PH,Philippines,Philippinen
+countries.php,countries.PN,Pitcairn,Pitcairn
+countries.php,countries.PL,Poland,Polen
+countries.php,countries.PT,Portugal,Portugal
+countries.php,countries.PR,Puerto Rico,Puerto Rico
+countries.php,countries.QA,Qatar,Katar
+countries.php,countries.RE,Réunion,Réunion
+countries.php,countries.RO,Romania,Rumänien
+countries.php,countries.RU,Russian Federation,Russische Föderation
+countries.php,countries.RW,Rwanda,Ruanda
+countries.php,countries.BL,Saint Barthélemy,Saint-Barthélemy
+countries.php,countries.SH,"Saint Helena, Ascension and Tristan da Cunha","St. Helena, Ascension und Tristan da Cunha"
+countries.php,countries.KN,Saint Kitts and Nevis,St. Kitts und Nevis
+countries.php,countries.LC,Saint Lucia,St. Lucia
+countries.php,countries.MF,Saint Martin (French part),Saint-Martin (französischer Teil)
+countries.php,countries.PM,Saint Pierre and Miquelon,St. Pierre und Miquelon
+countries.php,countries.VC,Saint Vincent and the Grenadines,St. Vincent und die Grenadinen
+countries.php,countries.WS,Samoa,Samoa
+countries.php,countries.SM,San Marino,San Marino
+countries.php,countries.ST,Sao Tome and Principe,São Tomé und Príncipe
+countries.php,countries.SA,Saudi Arabia,Saudi-Arabien
+countries.php,countries.SN,Senegal,Senegal
+countries.php,countries.RS,Serbia,Serbien
+countries.php,countries.SC,Seychelles,Seychellen
+countries.php,countries.SL,Sierra Leone,Sierra Leone
+countries.php,countries.SG,Singapore,Singapur
+countries.php,countries.SX,Sint Maarten (Dutch part),Sint Maarten (niederländischer Teil)
+countries.php,countries.SK,Slovakia,Slowakei
+countries.php,countries.SI,Slovenia,Slowenien
+countries.php,countries.SB,Solomon Islands,Salomonen
+countries.php,countries.SO,Somalia,Somalia
+countries.php,countries.ZA,South Africa,Südafrika
+countries.php,countries.GS,South Georgia and the South Sandwich Islands,Südgeorgien und die Südlichen Sandwichinseln
+countries.php,countries.SS,South Sudan,Südsudan
+countries.php,countries.ES,Spain,Spanien
+countries.php,countries.LK,Sri Lanka,Sri Lanka
+countries.php,countries.SD,Sudan,Sudan
+countries.php,countries.SR,Suriname,Suriname
+countries.php,countries.SJ,Svalbard and Jan Mayen,Spitzbergen und Jan Mayen
+countries.php,countries.SZ,Swaziland,Swasiland
+countries.php,countries.SE,Sweden,Schweden
+countries.php,countries.CH,Switzerland,Schweiz
+countries.php,countries.SY,Syrian Arab Republic,Arabische Republik Syrien
+countries.php,countries.TW,Taiwan,Taiwan
+countries.php,countries.TJ,Tajikistan,Tadschikistan
+countries.php,countries.TZ,"Tanzania, United Republic of","Tansania, Vereinigte Republik"
+countries.php,countries.TH,Thailand,Thailand
+countries.php,countries.TL,Timor-Leste,Timor-Leste
+countries.php,countries.TG,Togo,Togo
+countries.php,countries.TK,Tokelau,Tokelau
+countries.php,countries.TO,Tonga,Tonga
+countries.php,countries.TT,Trinidad and Tobago,Trinidad und Tobago
+countries.php,countries.TN,Tunisia,Tunesien
+countries.php,countries.TR,Turkey,Türkei
+countries.php,countries.TM,Turkmenistan,Turkmenistan
+countries.php,countries.TC,Turks and Caicos Islands,Turks- und Caicosinseln
+countries.php,countries.TV,Tuvalu,Tuvalu
+countries.php,countries.UG,Uganda,Uganda
+countries.php,countries.UA,Ukraine,Ukraine
+countries.php,countries.AE,United Arab Emirates,Vereinigte Arabische Emirate
+countries.php,countries.GB,United Kingdom,Vereinigtes Königreich
+countries.php,countries.US,United States,Vereinigte Staaten
+countries.php,countries.UM,United States Minor Outlying Islands,Kleinere Amerikanische Überseeinseln
+countries.php,countries.UY,Uruguay,Uruguay
+countries.php,countries.UZ,Uzbekistan,Usbekistan
+countries.php,countries.VU,Vanuatu,Vanuatu
+countries.php,countries.VE,"Venezuela, Bolivarian Republic of","Venezuela, Bolivarische Republik"
+countries.php,countries.VN,Viet Nam,Vietnam
+countries.php,countries.VG,"Virgin Islands, British",Britische Jungferninseln
+countries.php,countries.VI,"Virgin Islands, U.S.",Amerikanische Jungferninseln
+countries.php,countries.WF,Wallis and Futuna,Wallis und Futuna
+countries.php,countries.EH,Western Sahara,Westsahara
+countries.php,countries.YE,Yemen,Jemen
+countries.php,countries.ZM,Zambia,Sambia
+countries.php,countries.ZW,Zimbabwe,Simbabwe
+dashboard.php,dashboard.devices_logged,devices logged,Geräte erfasst
+dashboard.php,dashboard.getting_started_header,Getting started,Erste Schritte
+dashboard.php,dashboard.visit_wiki,Visit the wiki,Wiki besuchen
+dashboard.php,dashboard.discussion_header,Meet the community,Die Gemeinschaft kennenlernen
+dashboard.php,dashboard.log_devices,Log devices,Geräte erfassen
+dashboard.php,dashboard.title,Welcome to Restarters,Willkommen bei Restarters
+dashboard.php,dashboard.groups_near_you_header,Groups near you,Gruppen in Ihrer Nähe
+dashboard.php,dashboard.groups_near_you_text,Follow a repair group to find out more about community repair in your area.,"Folgen Sie einer Reparaturgruppe, um mehr über die Gemeinschaftsreparatur in Ihrer Region zu erfahren."
+dashboard.php,dashboard.groups_near_you_see_more,See more groups,Weitere Gruppen anzeigen
+dashboard.php,dashboard.groups_near_you_follow_action,Follow,Folgen
+dashboard.php,dashboard.groups_near_you_none_nearby,There are currently no groups near you that have been added to Restarters.net.,"Derzeit gibt es keine Gruppen in Ihrer Nähe, die zu Restarters.net hinzugefügt wurden."
+dashboard.php,dashboard.groups_near_you_start_a_group,"Would you like to start or add a group?  <a href="":resources_url"">Learn more</a>.","Möchten Sie eine Gruppe starten oder hinzufügen?  <a href="":resources_url"">Mehr erfahren</a>."
+dashboard.php,dashboard.groups_near_you_set_location,"<a href="":profile_url"">Set your town/city</a> to help us find groups near you.","<a href="":profile_url"">Legen Sie Ihren Ort/Ihre Stadt</a> fest, damit wir Gruppen in Ihrer Nähe finden können."
+dashboard.php,dashboard.groups_near_you_your_location_is,Your town/city is currently set to :location.,Ihr Ort/Ihre Stadt ist derzeit auf :location eingestellt.
+dashboard.php,dashboard.your_networks,Your networks,Deine Netzwerke
+dashboard.php,dashboard.networks_you_coordinate,View the networks that you coordinate.,"Sehen Sie die Netzwerke, die Sie koordinieren."
+dashboard.php,dashboard.catch_up,Catch up with your groups by clicking below.,"Bleiben Sie mit Ihren Gruppen auf dem neuesten Stand, indem Sie unten klicken."
+dashboard.php,dashboard.your_groups_heading,Your Groups,Ihre Gruppen
+dashboard.php,dashboard.groups_heading,Groups,Gruppen
+dashboard.php,dashboard.sidebar_intro_1,"We are a global community of people who run local repair events and campaign for our Right to Repair. Restarters.net is our free, open source toolkit.","Wir sind eine globale Gemeinschaft von Menschen, die lokale Reparatururanstaltungen organisieren und für unser Recht auf Reparatur eintreten. Restarters.net ist unser kostenloses Open-Source-Toolkit."
+dashboard.php,dashboard.sidebar_kit1,Check out our,Schauen Sie sich unser
+dashboard.php,dashboard.sidebar_kit2,free event planning kit!,kostenloses Veranstaltungsplanungskit an!
+dashboard.php,dashboard.sidebar_help,We're here to help with all your hosting questions.,Wir helfen Ihnen gerne bei allen Fragen rund ums Organisieren.
+dashboard.php,dashboard.sidebar_let_us_know,Just let us know,Schreiben Sie uns einfach
+dashboard.php,dashboard.getting_the_most,Getting started,Erste Schritte
+dashboard.php,dashboard.getting_the_most_intro,"Restarters.net is a free, open source platform for a global community of people making local repair events happen and campaigning for our Right to Repair.","Restarters.net ist eine kostenlose Open-Source-Plattform für eine globale Gemeinschaft von Menschen, die lokale Reparaturveranstaltungen organisieren und für unser Recht auf Reparatur eintreten."
+dashboard.php,dashboard.getting_the_most_bullet1,"<strong>Get fixing</strong>: <a href=""https://restarters.net/group"" target=""_blank"" rel=""noopener"">follow your nearest community repair group</a> and brush up or share your skills with our <a href=""https://wiki.restarters.net/"" target=""_blank"">repair wiki</a>.","<strong>Reparieren</strong>: <a href=""https://restarters.net/group"" target=""_blank"" rel=""noopener"">Folgen Sie der nächstgelegenen Gemeinschaftsreparaturgruppe</a> und vertiefen oder teilen Sie Ihre Fähigkeiten mit unserem <a href=""https://wiki.restarters.net/"" target=""_blank"">Reparatur-Wiki</a>."
+dashboard.php,dashboard.getting_the_most_bullet2,"<strong>Get organising</strong>: <a href=""https://talk.restarters.net/session/sso?return_path=https://talk.restarters.net/t/how-to-run-a-repair-event-the-restart-party-kit/324/"" target=""_blank"">learn how to run a repair event</a> and/or <a href=""https://talk.restarters.net/c/community-repair/5"" target=""_blank"">ask the community for help on Talk</a>.","<strong>Organisieren</strong>: <a href=""https://talk.restarters.net/session/sso?return_path=https://talk.restarters.net/t/how-to-run-a-repair-event-the-restart-party-kit/324/"" target=""_blank"">Erfahren Sie, wie man eine Reparaturveranstaltung durchführt</a> und/oder <a href=""https://talk.restarters.net/c/community-repair/5"" target=""_blank"">fragen Sie die Gemeinschaft um Hilfe auf Talk</a>."
+dashboard.php,dashboard.getting_the_most_bullet3,"<strong>Get chatting</strong>: <a href=""https://talk.restarters.net/session/sso?return_path=https://talk.restarters.net/"" target=""_blank"">catch up on the latest conversations</a> on our forum, Talk. Why not <a href=""https://talk.restarters.net/t/who-is-everyone-meet-and-greet/44"" target=""_blank"">introduce yourself</a> too?","<strong>Vernetzen</strong>: <a href=""https://talk.restarters.net/session/sso?return_path=https://talk.restarters.net/"" target=""_blank"">Lesen Sie die neuesten Beiträge</a> in unserem Forum Talk. Warum <a href=""https://talk.restarters.net/t/who-is-everyone-meet-and-greet/44"" target=""_blank"">stellen Sie sich nicht auch vor</a>?"
+dashboard.php,dashboard.getting_the_most_bullet4,"<strong>Get analytical</strong>: see our impact in <a href=""https://restarters.net/fixometer"" target=""_blank"">the Fixometer</a>.","<strong>Analysieren</strong>: Sehen Sie unsere Wirkung im <a href=""https://restarters.net/fixometer"" target=""_blank"">Fixometer</a>."
+dashboard.php,dashboard.upcoming_events_title,Upcoming events,Kommende Veranstaltungen
+dashboard.php,dashboard.upcoming_events_subtitle,Your groups' upcoming events:,Kommende Veranstaltungen Ihrer Gruppen:
+dashboard.php,dashboard.add_event,Add,Hinzufügen
+dashboard.php,dashboard.add_data_heading,Add Data,Daten hinzufügen
+dashboard.php,dashboard.see_your_impact,And see your impact in the Fixometer,Und sehen Sie Ihre Wirkung im Fixometer
+dashboard.php,dashboard.add_data_add,Add,Hinzufügen
+dashboard.php,dashboard.newly_added,Newly added: :count group in your area!|Newly added: :count groups in your area!,Neu hinzugefügt: :count Gruppe in Ihrer Nähe!|Neu hinzugefügt: :count Gruppen in Ihrer Nähe!
+dashboard.php,dashboard.no_groups,"<strong>There are no groups in your area, yet.</strong><br />",<strong>Es gibt noch keine Gruppen in Ihrer Nähe.</strong><br />
+dashboard.php,dashboard.interested_starting,Want to start your own community repair group?,Möchten Sie Ihre eigene Gemeinschaftsreparaturgruppe gründen?
+dashboard.php,dashboard.interested_details,"<p>Anyone with interest and some skills in organising can start a community repair group. Check out our <a href=""https://talk.restarters.net/t/how-to-run-a-repair-event-the-restart-party-kit/324"">event planning kit</a> or view our <a href=""https://talk.restarters.net/c/community-repair/school"">resources for schools</a>.</p><p>Once you're ready to start a group, simply create one on the <a href=""/group"">Groups page</a>.  And if you'd like some help, just ask over on the forum, <a href=""https://talk.restarters.net/c/community-repair/5"">Talk</a>.","<p>Jede Person mit Interesse und ein paar Organisationsfähigkeiten kann eine Gemeinschaftsreparaturgruppe gründen. Schauen Sie sich unser <a href=""https://talk.restarters.net/t/how-to-run-a-repair-event-the-restart-party-kit/324"">Veranstaltungsplanungskit</a> an oder sehen Sie unsere <a href=""https://talk.restarters.net/c/community-repair/school"">Ressourcen für Schulen</a>.</p><p>Wenn Sie bereit sind, eine Gruppe zu starten, erstellen Sie einfach eine auf der <a href=""/group"">Gruppenseite</a>. Und wenn Sie Hilfe möchten, fragen Sie einfach im Forum, <a href=""https://talk.restarters.net/c/community-repair/5"">Talk</a>."
+dashboard.php,dashboard.see_all_groups_near_you,See all groups near you →,Alle Gruppen in Ihrer Nähe anzeigen →
+dashboard.php,dashboard.see_all_groups,See all groups,Alle Gruppen anzeigen
+dashboard.php,dashboard.no_groups_intro,"There are community <a href=""/group/all"">groups all over the world</a>. You're welcome to follow any group to get notified when they organise events.","Es gibt Gemeinschafts-<a href=""/group/all"">Gruppen auf der ganzen Welt</a>. Sie können jeder Gruppe folgen, um benachrichtigt zu werden, wenn Veranstaltungen geplant werden."
+device-audits.php,device-audits.unavailable_audits,No changes have been made to this device!,An diesem Gerät wurden keine Änderungen vorgenommen!
+device-audits.php,device-audits.created.metadata,"On :audit_created_at, :user_name created record <strong>:audit_url</strong>",Am :audit_created_at hat :user_name den Datensatz <strong>:audit_url</strong> erstellt
+device-audits.php,device-audits.created.modified.event,"<strong>Event</strong> set as ""<strong>:new</strong>""","<strong>Veranstaltung</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.category,"<strong>Category</strong> set as ""<strong>:new</strong>""","<strong>Kategorie</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.category_creation,"<strong>Category Creation</strong> set as ""<strong>:new</strong>""","<strong>Kategorieerstellung</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.estimate,"<strong>Estimate</strong> set as ""<strong>:new</strong>""","<strong>Schätzung</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.repair_status,"<strong>Repair Status</strong> set as ""<strong>:new</strong>""","<strong>Reparaturstatus</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.spare_parts,"<strong>Spare Parts</strong> set as ""<strong>:new</strong>""","<strong>Ersatzteile</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.brand,"<strong>Brand</strong> set as ""<strong>:new</strong>""","<strong>Marke</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.model,"<strong>Model</strong> set as ""<strong>:new</strong>""","<strong>Modell</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.age,"<strong>Age</strong> set as ""<strong>:new</strong>""","<strong>Alter</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.problem,"<strong>Problem</strong> set as ""<strong>:new</strong>""","<strong>Problem</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.repaired_by,"<strong>Reparied by</strong> set as ""<strong>:new</strong>""","<strong>Repariert von</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.do_it_yourself,"<strong>Do it yourself</strong> set as ""<strong>:new</strong>""","<strong>Selbst reparieren</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.professional_help,"<strong>Professional Help</strong> set as ""<strong>:new</strong>""","<strong>Fachkundige Hilfe</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.more_time_needed,"<strong>More time needed</strong> set as ""<strong>:new</strong>""","<strong>Mehr Zeit benötigt</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.wiki,"<strong>Wiki</strong> set as ""<strong>:new</strong>""","<strong>Wiki</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.created.modified.iddevices,"<strong>Device ID</strong> set as ""<strong>:new</strong>""","<strong>Geräte-ID</strong> gesetzt als „<strong>:new</strong>"""
+device-audits.php,device-audits.updated.metadata,"On :audit_created_at, :user_name updated record <strong>:audit_url</strong>",Am :audit_created_at hat :user_name den Datensatz <strong>:audit_url</strong> aktualisiert
+device-audits.php,device-audits.updated.modified.event,"<strong>Event</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Veranstaltung</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.category,"<strong>Category</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Kategorie</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.category_creation,"<strong>Category Creation</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Kategorieerstellung</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.estimate,"<strong>Estimate</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Schätzung</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.repair_status,"<strong>Repair Status</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Reparaturstatus</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.spare_parts,"<strong>Spare Parts</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Ersatzteile</strong> wurden von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.brand,"<strong>Brand</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Marke</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.model,"<strong>Model</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Modell</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.age,"<strong>Age</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Alter</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.problem,"<strong>Problem</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Problem</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.repaired_by,"<strong>Reparied by</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Repariert von</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.do_it_yourself,"<strong>Do it yourself</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Selbst reparieren</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.professional_help,"<strong>Professional Help</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Fachkundige Hilfe</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.more_time_needed,"<strong>More time needed</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Mehr Zeit benötigt</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+device-audits.php,device-audits.updated.modified.wiki,"<strong>Wiki</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Wiki</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+devices.php,devices.devices,Repairs,Reparaturen
+devices.php,devices.export_device_data,Download all data,Alle Daten herunterladen
+devices.php,devices.export_filtered_data,Download filtered data,
+devices.php,devices.export_event_data,Download event data,Veranstaltungsdaten herunterladen
+devices.php,devices.export_group_data,Download repair data,Reparaturdaten herunterladen
+devices.php,devices.category,Category,Kategorie
+devices.php,devices.group,Group,Gruppe
+devices.php,devices.from_date,From date,Von Datum
+devices.php,devices.to_date,To date,Bis Datum
+devices.php,devices.brand,Brand,Marke
+devices.php,devices.brand_if_known,Brand (if known),Marke (falls bekannt)
+devices.php,devices.model,Model,Modell
+devices.php,devices.model_if_known,Model (if known),Modell (falls bekannt)
+devices.php,devices.repair,Repair date,Reparaturdatum
+devices.php,devices.repair_status,Repair status,Reparaturstatus
+devices.php,devices.repair_details,Next steps,Nächste Schritte
+devices.php,devices.graphic-comment,Comment,Kommentar
+devices.php,devices.graphic-camera,Camera,Kamera
+devices.php,devices.fixed,Fixed,Repariert
+devices.php,devices.repairable,Repairable,Reparierbar
+devices.php,devices.age,Age,Alter
+devices.php,devices.devices_description,Description of problem/solution,Beschreibung des Problems/der Lösung
+devices.php,devices.delete_device,Delete device,Gerät löschen
+devices.php,devices.devices_date,Date,Datum
+devices.php,devices.clear_filters,Clear filters,
+devices.php,devices.event_info,Event info,Veranstaltungsinfo
+devices.php,devices.fixometer,Fixometer,Fixometer
+devices.php,devices.global_impact,Our Global Impact,Unsere globale Wirkung
+devices.php,devices.group_prevented," prevented <a href=""/party/view/:idevents"">:amount kg</a> of waste!"," hat <a href=""/party/view/:idevents"">:amount kg</a> Abfall verhindert!"
+devices.php,devices.huge_impact,Repairers around the world are having a huge impact!,Reparateure auf der ganzen Welt haben eine enorme Wirkung!
+devices.php,devices.huge_impact_2,"Search your repair data below, and get a flavour of the impact of repair as well as the barriers we face when repairing.  You can help us understand what else this data tells us and what changes we should campaign for over at the <a href=""https://talk.restarters.net/c/right-to-repair/repair-data/25"">repair data discussion</a> in our forum.","Durchsuchen Sie die Reparaturdaten unten und erhalten Sie einen Eindruck von der Wirkung der Reparatur sowie den Hindernissen, auf die wir beim Reparieren stoßen. Sie können uns helfen zu verstehen, was uns diese Daten noch sagen und für welche Veränderungen wir uns in der <a href=""https://talk.restarters.net/c/right-to-repair/repair-data/25"">Reparaturdatendiskussion</a> in unserem Forum einsetzen sollten."
+devices.php,devices.add_data_button,Add Data,Daten hinzufügen
+devices.php,devices.add_data_title,Add Data,Daten hinzufügen
+devices.php,devices.add_data_description,Adding repair data helps show the impact of repair.,"Das Hinzufügen von Reparaturdaten hilft dabei, die Wirkung von Reparaturen zu zeigen."
+devices.php,devices.search_text,Browse or search our global database of repairs.,Durchsuchen oder durchsuchen Sie unsere globale Reparaturdatenbank.
+devices.php,devices.add_data_action_button,Go to event,Zur Veranstaltung
+devices.php,devices.repair_records,Repair Records,Reparaturaufzeichnungen
+devices.php,devices.images,Images,Bilder
+devices.php,devices.model_or_type,Item,Artikel
+devices.php,devices.repair_outcome,Repair outcome?,Reparaturergebnis?
+devices.php,devices.powered_items,powered items,elektrische Geräte
+devices.php,devices.unpowered_items,unpowered items,nicht-elektrische Gegenstände
+devices.php,devices.weight,Weight,Gewicht
+devices.php,devices.required_impact,kg - required to calculate environmental impact,kg – erforderlich zur Berechnung der Umweltwirkung
+devices.php,devices.optional_impact,kg - used to refine environmental impact calculation (optional),kg – wird zur Präzisierung der Umweltwirkungsberechnung verwendet (optional)
+devices.php,devices.age_approx,years (approximate if unknown),"Jahre (ungefähr, falls unbekannt)"
+devices.php,devices.tooltip_category,Choose the category that best fits this item. <a target='_blank' rel='noopener noreferrer' href='https://talk.restarters.net/t/fixometer-how-to-log-repair-data-from-your-event/1028#heading--category'>More information about these categories...</a>,"Wählen Sie die Kategorie, die am besten zu diesem Artikel passt. <a target='_blank' rel='noopener noreferrer' href='https://talk.restarters.net/t/fixometer-how-to-log-repair-data-from-your-event/1028#heading--category'>Weitere Informationen zu diesen Kategorien...</a>"
+devices.php,devices.tooltip_model,Add as much information about the specific model of device here as you can (e.g. 'Galaxy S10 5G'). Leave empty if you don't know the model.,"Geben Sie hier so viele Informationen zum spezifischen Modell des Geräts wie möglich ein (z. B. 'Galaxy S10 5G'). Lassen Sie das Feld leer, wenn Sie das Modell nicht kennen."
+devices.php,devices.tooltip_problem,"<p>Please provide as much detail as you can about the problem with the device and what was done to repair it. For example:</p><ul><li>How did it break?</li><li>What, specifically, was broken?</li><li>What steps were taken to fix it and did they work?</li></ul><p><a href='https://talk.restarters.net/t/fixometer-how-to-log-repair-data-from-your-event/1028#heading--comments' target='_blank' rel='noopener nofollower'>More information</a></p>","<p>Bitte geben Sie so viele Details wie möglich zum Problem des Geräts und der durchgeführten Reparatur an. Zum Beispiel:</p><ul><li>Wie ist es kaputt gegangen?</li><li>Was genau war defekt?</li><li>Welche Schritte wurden unternommen, um es zu reparieren, und haben sie funktioniert?</li></ul><p><a href='https://talk.restarters.net/t/fixometer-how-to-log-repair-data-from-your-event/1028#heading--comments' target='_blank' rel='noopener nofollower'>Weitere Informationen</a></p>"
+devices.php,devices.tooltip_notes,"<p>Add any additional detail here, for example:</p><ul><li>Did you encounter anything that made the repair more difficult?</li><li>Was the actual problem different to what the owner thought?</li></ul>","<p>Fügen Sie hier weitere Details hinzu, zum Beispiel:</p><ul><li>Gab es etwas, das die Reparatur erschwert hat?</li><li>War das eigentliche Problem anders als vom Besitzer gedacht?</li></ul>"
+devices.php,devices.placeholder_notes,"Notes.  Examples: repair difficulties, owner's perception of problem etc. Helping with the end of Windows 10? Add the #EndOf10 hashtag in the notes.","Anmerkungen. Beispiele: Reparaturschwierigkeiten, Wahrnehmung des Besitzers usw. Helfen Sie beim Ende von Windows 10? Fügen Sie den Hashtag #EndOf10 in die Anmerkungen ein."
+devices.php,devices.title_items,ITEM,ARTIKEL
+devices.php,devices.title_items_at_event,Items at this event,Artikel bei dieser Veranstaltung
+devices.php,devices.title_repair,REPAIR,REPARATUR
+devices.php,devices.title_assessment,ASSESSMENT,BEURTEILUNG
+devices.php,devices.title_powered,POWERED,ELEKTRISCH
+devices.php,devices.title_unpowered,UNPOWERED,NICHT-ELEKTRISCH
+devices.php,devices.description_powered,A <b>powered item</b> is anything that has or requires a power source.,"Ein <b>elektrisches Gerät</b> ist alles, das eine Stromquelle hat oder benötigt."
+devices.php,devices.description_unpowered,An <b>unpowered item</b> is anything that doesn't have or require a power source.,"Ein <b>nicht-elektrisches Gerät</b> ist alles, das keine Stromquelle hat oder benötigt."
+devices.php,devices.confirm_delete,Clicking confirm will delete this item from the event.,Durch Klicken auf Bestätigen wird dieser Artikel aus der Veranstaltung gelöscht.
+devices.php,devices.status,Status,Status
+devices.php,devices.spare_parts,Spare parts,Ersatzteile
+devices.php,devices.latest_data,Latest Data,Neueste Daten
+devices.php,devices.assessment,Assessment,Beurteilung
+devices.php,devices.item_and_repair_info,Item & Repair Info,Artikel- und Reparaturinfo
+devices.php,devices.search_assessment_comments,Assessment,Beurteilung
+devices.php,devices.tooltip_type,Add as much information about the type of item here as you can (e.g. `Denim jeans` or ‘Sofa’),"Geben Sie hier so viele Informationen zum Artikeltyp wie möglich ein (z. B. „Jeanshose"" oder „Sofa"")"
+devices.php,devices.add_data_group,Please select a group,Bitte eine Gruppe auswählen
+devices.php,devices.add_data_event,Please select an event,Bitte eine Veranstaltung auswählen
+devices.php,devices.item_type,What is it?,Was ist es?
+devices.php,devices.item_type_short,Item,Artikel
+devices.php,devices.tooltip_type_powered,What type of item is this? (e.g. 'Blender' or 'Drone' or 'Drill'),Was für ein Artikel ist das? (z. B. 'Mixer' oder 'Drohne' oder 'Bohrmaschine')
+devices.php,devices.tooltip_type_unpowered,Add as much information about the type of item here as you can (e.g. 'Sofa' or 'Denim jeans'),Geben Sie hier so viele Informationen zum Artikeltyp wie möglich ein (z. B. 'Sofa' oder 'Jeanshose')
+devices.php,devices.unknown_item_type,You're creating a new item type. Are you sure an existing item type is not suitable?,"Sie erstellen einen neuen Artikeltyp. Sind Sie sicher, dass kein bestehender Artikeltyp geeignet ist?"
+devices.php,devices.unknown_brand,You're creating a new brand. Are you sure an existing brand is not suitable?,"Sie erstellen eine neue Marke. Sind Sie sicher, dass keine bestehende Marke geeignet ist?"
+devices.php,devices.image_delete_success,"Thank you, the image has been deleted","Danke, das Bild wurde gelöscht"
+devices.php,devices.image_delete_error,"Sorry, but the image can't be deleted","Entschuldigung, das Bild konnte nicht gelöscht werden"
+devices.php,devices.image_upload_error,fail - image could not be uploaded,Fehler – das Bild konnte nicht hochgeladen werden
+devices.php,devices.powered_items_fixed,powered items fixed,
+devices.php,devices.unpowered_items_fixed,unpowered items fixed,
+devices.php,devices.events_held,events held,
+devices.php,devices.items_seen,items seen,
+devices.php,devices.powered_or_unpowered,Powered or unpowered,
+devices.php,devices.both,Both,
+devices.php,devices.view_event_for_repair,View the event for this repair,
+devices.php,devices.powered,Powered,
+devices.php,devices.unpowered,Unpowered,
+devices.php,devices.view_record,See the details of this repair,
+devices.php,devices.edit_record,See and edit the details of this repair,
+discourse.php,discourse.title,What's happening,Was passiert gerade
+discourse.php,discourse.number_of_comments,Number of comments,Anzahl der Kommentare
+discourse.php,discourse.topic_created_at,Topic created,Thema erstellt
+discourse.php,discourse.see_all,see all,alle anzeigen
+event-audits.php,event-audits.unavailable_audits,No changes have been made to this event!,An dieser Veranstaltung wurden keine Änderungen vorgenommen!
+event-audits.php,event-audits.created.metadata,"On :audit_created_at, :user_name created record <strong>:audit_url</strong>",Am :audit_created_at hat :user_name den Datensatz <strong>:audit_url</strong> erstellt
+event-audits.php,event-audits.created.modified.group,"<strong>Event Group ID</strong> set as ""<strong>:new</strong>""","<strong>Veranstaltungsgruppen-ID</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.event_date,"<strong>Event Date</strong> set as ""<strong>:new</strong>""","<strong>Veranstaltungsdatum</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.start,"<strong>Event Start Time</strong> set as ""<strong>:new</strong>""","<strong>Startzeit der Veranstaltung</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.end,"<strong>Event End Time</strong> set as ""<strong>:new</strong>""","<strong>Endzeit der Veranstaltung</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.venue,"<strong>Event Name</strong> set as ""<strong>:new</strong>""","<strong>Veranstaltungsname</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.location,"<strong>Event Location</strong> set as ""<strong>:new</strong>""","<strong>Veranstaltungsort</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.latitude,"<strong>Event Latitude</strong> set as ""<strong>:new</strong>""","<strong>Breitengrad der Veranstaltung</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.longitude,"<strong>Event Longitude</strong> set as ""<strong>:new</strong>""","<strong>Längengrad der Veranstaltung</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.free_text,"<strong>Free Text</strong> set as ""<strong>:new</strong>""","<strong>Freitext</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.pax,"<strong>pax</strong> set as ""<strong>:new</strong>""","<strong>Teilnehmerzahl</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.volunteers,"<strong>Quantity of Volunteers</strong> set as ""<strong>:new</strong>""","<strong>Anzahl der Freiwilligen</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.hours,"<strong>Event Hours</strong> set as ""<strong>:new</strong>""","<strong>Veranstaltungsstunden</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.idevents,"<strong>Event ID</strong> set as ""<strong>:new</strong>""","<strong>Veranstaltungs-ID</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.created.modified.wordpress_post_id,"<strong>Wordpress post ID</strong> set as ""<strong>:new</strong>""","<strong>WordPress-Beitrags-ID</strong> gesetzt als „<strong>:new</strong>"""
+event-audits.php,event-audits.updated.metadata,"On :audit_created_at, :user_name updated record <strong>:audit_url</strong>",Am :audit_created_at hat :user_name den Datensatz <strong>:audit_url</strong> aktualisiert
+event-audits.php,event-audits.updated.modified.group,"<strong>Event Group ID</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Veranstaltungsgruppen-ID</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.event_date,"<strong>Event Date</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Veranstaltungsdatum</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.start,"<strong>Event Start Time</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Startzeit der Veranstaltung</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.end,"<strong>Event End Time</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Endzeit der Veranstaltung</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.venue,"<strong>Event Name</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Veranstaltungsname</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.location,"<strong>Event Location</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Veranstaltungsort</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.latitude,"<strong>Event Latitude</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Breitengrad der Veranstaltung</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.longitude,"<strong>Event Longitude</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Längengrad der Veranstaltung</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.free_text,"<strong>Free Text</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Freitext</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.pax,"<strong>pax</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Teilnehmerzahl</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.volunteers,"<strong>Quantity of Volunteers</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Anzahl der Freiwilligen</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.hours,"<strong>Event Hours</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Veranstaltungsstunden</strong> wurden von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.wordpress_post_id,"<strong>Wordpress post ID</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>WordPress-Beitrags-ID</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+event-audits.php,event-audits.updated.modified.devices_updated_at,"<strong>Event Devices Updated At</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Geräte der Veranstaltung aktualisiert am</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+events.php,events.field_event_name_helper,Name of the venue or neighbourhood,Name des Veranstaltungsorts oder Stadtteils
+events.php,events.field_venue_helper,I.e. the place where the fixing happens!,"D.h. der Ort, an dem repariert wird!"
+events.php,events.endof10_helper,Are you helping with the end of Windows 10 at this event? Add the #EndOf10 hashtag somewhere in your event description to help track these events.,"Helfen Sie bei dieser Veranstaltung beim Ende von Windows 10? Fügen Sie den Hashtag #EndOf10 irgendwo in Ihrer Veranstaltungsbeschreibung hinzu, um diese Veranstaltungen zu verfolgen."
+events.php,events.create_event,Create event,Veranstaltung erstellen
+events.php,events.events_title_admin,Events to moderate,Zu moderierende Veranstaltungen
+events.php,events.approve_event,Approve Event,Veranstaltung genehmigen
+events.php,events.save_event,Save Event,Veranstaltung speichern
+events.php,events.field_event_images,Add event images here,Hier Veranstaltungsbilder hinzufügen
+events.php,events.field_event_images_2,Choose an image for your event,Wählen Sie ein Bild für Ihre Veranstaltung
+events.php,events.headline_stats_dropdown,Headline stats,Hauptstatistiken
+events.php,events.co2_equivalence_visualisation_dropdown,CO<sub>2</sub> equivalence visualisation,CO<sub>2</sub>-Äquivalenzvisualisierung
+events.php,events.full_name_helper,Leave field blank if anonymous,"Feld leer lassen, wenn anonym"
+events.php,events.send_invites_to_restarters_tickbox,Add invites for group members. Members marked with a ⚠ will be invited but won't be sent an email due to their notification settings.,"Einladungen für Gruppenmitglieder hinzufügen. Mit ⚠ markierte Mitglieder werden eingeladen, erhalten aber aufgrund ihrer Benachrichtigungseinstellungen keine E-Mail."
+events.php,events.sample_text_message_to_restarters,<add a custom message here if required>,<hier bei Bedarf eine persönliche Nachricht hinzufügen>
+events.php,events.event_time,Time,Uhrzeit
+events.php,events.stat-0,Participants,Teilnehmende
+events.php,events.stat-2,Volunteers,Freiwillige
+events.php,events.stat-7,Waste prevented,Vermiedener Abfall
+events.php,events.stat-6,CO2 emissions prevented,Verhinderte CO2-Emissionen
+events.php,events.stat-5,Fixed devices,Reparierte Geräte
+events.php,events.stat-3,Repairable devices,Reparierbare Geräte
+events.php,events.stat-4,End-of-life devices,Geräte am Ende ihres Lebens
+events.php,events.about_event_name_header,About :event,Über :event
+events.php,events.rsvp_message,Excellent! You are joining us at this event.,Ausgezeichnet! Sie nehmen an dieser Veranstaltung teil.
+events.php,events.rsvp_button,I can no longer attend,Ich kann leider nicht mehr teilnehmen
+events.php,events.pending_rsvp_message,You have an invite pending for this event,Sie haben eine ausstehende Einladung für diese Veranstaltung
+events.php,events.pending_rsvp_button,I am attending,Ich nehme teil
+events.php,events.share_stats_header,Share your stats,Statistiken teilen
+events.php,events.share_stats_message,Well done! On the :date at :event_name we were able to repair <strong>:number_devices items</strong>. Help us spread the message by sharing your impact on your website.,"Gut gemacht! Am :date bei :event_name konnten wir <strong>:number_devices Artikel</strong> reparieren. Helfen Sie uns, die Botschaft zu verbreiten, indem Sie Ihre Wirkung auf Ihrer Website teilen."
+events.php,events.embed_code_header,Embed code,Einbettungscode
+events.php,events.infographic_message,An infographic of an easy-to-understand equivalent of the CO<sub>2</sub> emissions that your group has prevented,"Eine Infografik mit einem leicht verständlichen Äquivalent der CO<sub>2</sub>-Emissionen, die Ihre Gruppe verhindert hat"
+events.php,events.headline_stats_message,This widget shows the headline stats for your event e.g. the number of participants; the hours volunteered,"Dieses Widget zeigt die wichtigsten Statistiken für Ihre Veranstaltung, z. B. die Anzahl der Teilnehmenden und die geleisteten Freiwilligenstunden"
+events.php,events.invite_restarters_modal_heading,Invite volunteers,Freiwillige einladen
+events.php,events.shareable_link,Invite via shareable link,Per teilbarem Link einladen
+events.php,events.email_invite,Invite via email,Per E-Mail einladen
+events.php,events.shareable_link_box,Shareable link,Teilbarer Link
+events.php,events.cancel_invites_link,Cancel,Abbrechen
+events.php,events.manual_invite_box,Send invites to,Einladungen senden an
+events.php,events.manual_invite_placeholder,Type email and press Enter or Tab,E-Mail eingeben und Enter oder Tab drücken
+events.php,events.select_group_members,Select group members,Gruppenmitglieder auswählen
+events.php,events.select_members_placeholder,Select members to invite,Mitglieder zum Einladen auswählen
+events.php,events.type_email_addresses_message,Note: you can also manually type in the email address of anyone else you would like to invite to this event. Press Tab or Enter after each email address.,"Hinweis: Sie können auch manuell die E-Mail-Adresse einer anderen Person eingeben, die Sie zu dieser Veranstaltung einladen möchten. Drücken Sie nach jeder E-Mail-Adresse Tab oder Enter."
+events.php,events.message_to_restarters,Invitation message,Einladungsnachricht
+events.php,events.send_invite_button,Send invites,Einladungen senden
+events.php,events.add_volunteer_modal_heading,Add volunteer,Freiwilligen hinzufügen
+events.php,events.group_member,Group member,Gruppenmitglied
+events.php,events.full_name,Full name,Vollständiger Name
+events.php,events.volunteer_email_address,Volunteer's email address (optional),E-Mail-Adresse des/der Freiwilligen (optional)
+events.php,events.message_volunteer_email_address,This field will invite the volunteer to join the group,"Dieses Feld lädt den/die Freiwillige(n) ein, der Gruppe beizutreten"
+events.php,events.volunteer_attended_button,Volunteer attended,Freiwillige(r) hat teilgenommen
+events.php,events.option_not_registered,Not registered on here,Hier nicht registriert
+events.php,events.option_default,-- Select --,-- Auswählen --
+events.php,events.events,Events,Veranstaltungen
+events.php,events.event,Event,Veranstaltung
+events.php,events.create_new_event,Create new event,Neue Veranstaltung erstellen
+events.php,events.edit_event,Edit event,Veranstaltung bearbeiten
+events.php,events.edit_event_content,You can keep your event details up-to-date here.,Sie können Ihre Veranstaltungsdetails hier aktuell halten.
+events.php,events.event_name,Event,Veranstaltung
+events.php,events.event_date,Date,Datum
+events.php,events.add_event,Add event,Veranstaltung hinzufügen
+events.php,events.field_event_name,Venue name,Name des Veranstaltungsorts
+events.php,events.field_event_group,Event group,Veranstaltungsgruppe
+events.php,events.field_event_desc,Event description,Veranstaltungsbeschreibung
+events.php,events.field_event_date,Date of event,Datum der Veranstaltung
+events.php,events.field_event_time,Start/end time,Start-/Endzeit
+events.php,events.field_event_venue,Venue address,Adresse des Veranstaltungsorts
+events.php,events.field_add_image,Add images,Bilder hinzufügen
+events.php,events.before_submit_text,"Once confirmed by a coordinator, your event will be made public.",Nach Bestätigung durch einen Koordinator wird Ihre Veranstaltung öffentlich gemacht.
+events.php,events.follow_hosting_group,This event is being hosted by :group.  Would you like to follow them?,Diese Veranstaltung wird von :group veranstaltet. Möchten Sie ihr folgen?
+events.php,events.request_review_message,<p>This will notify volunteers who attended this event that repair data has been added and that it could benefit from additional contributions and review.</p><p>It will also let volunteers know that photos (including of visitor book feedback) may have been posted.</p><p>Do you wish to send these notifications?</p>,"<p>Dadurch werden Freiwillige, die an dieser Veranstaltung teilgenommen haben, benachrichtigt, dass Reparaturdaten hinzugefügt wurden und weitere Beiträge und Überprüfungen nützlich wären.</p><p>Außerdem werden Freiwillige darüber informiert, dass Fotos (einschließlich des Besucherbuch-Feedbacks) möglicherweise gepostet wurden.</p><p>Möchten Sie diese Benachrichtigungen senden?</p>"
+events.php,events.request_review_modal_heading,Request review,Überprüfung anfordern
+events.php,events.send_requests,Send,Senden
+events.php,events.cancel_requests,Cancel,Abbrechen
+events.php,events.online_event,ONLINE EVENT,ONLINE-VERANSTALTUNG
+events.php,events.create_new_event_mobile,Create,Erstellen
+events.php,events.no_upcoming_for_your_groups,There are currently no upcoming events for your groups,Derzeit gibt es keine bevorstehenden Veranstaltungen für Ihre Gruppen
+events.php,events.youre_going,You're going!,Sie nehmen teil!
+events.php,events.online_event_question,Online event?,Online-Veranstaltung?
+events.php,events.organised_by,Organised by :group,Organisiert von :group
+events.php,events.event_actions,Event actions,Veranstaltungsaktionen
+events.php,events.request_review,Request review,Überprüfung anfordern
+events.php,events.share_event_stats,Share event stats,Veranstaltungsstatistiken teilen
+events.php,events.invite_volunteers,Invite volunteers,Freiwillige einladen
+events.php,events.event_details,Details,Details
+events.php,events.event_photos,Photos,Fotos
+events.php,events.environmental_impact,Environmental impact,Umweltwirkung
+events.php,events.event_description,Description,Beschreibung
+events.php,events.event_attendance,Attendance,Teilnahme
+events.php,events.confirmed,Confirmed,Bestätigt
+events.php,events.invited,Invited,Eingeladen
+events.php,events.invite_to_join,Invite to join event,Zur Veranstaltung einladen
+events.php,events.editing,Editing :event,:event bearbeiten
+events.php,events.event_log,Event log,Veranstaltungsprotokoll
+events.php,events.add_new_event,Add new event,Neue Veranstaltung hinzufügen
+events.php,events.created_success_message,Event created!  It will be approved by a coordinator shortly.  You can continue to edit it in the meantime.,Veranstaltung erstellt! Sie wird in Kürze von einem Koordinator genehmigt. In der Zwischenzeit können Sie sie weiter bearbeiten.
+events.php,events.items_fixed,Items fixed,Reparierte Artikel
+events.php,events.not_counting,Not counting toward this event's environmental impact is|Not counting toward this event's environmental impact are,Nicht in der Umweltwirkung dieser Veranstaltung enthalten ist|Nicht in der Umweltwirkung dieser Veranstaltung enthalten sind
+events.php,events.delete_event,Delete event,Veranstaltung löschen
+events.php,events.confirmed_none,There are no confirmed volunteers.,Es gibt keine bestätigten Freiwilligen.
+events.php,events.invited_none,There are no invited volunteers yet.,Es wurden noch keine Freiwilligen eingeladen.
+events.php,events.view_map,View map,Karte anzeigen
+events.php,events.read_more,"READ MORE&nbsp;<img class=""icon"" src=""/images/add-icon.svg"" style=""width: 20px;"" />","MEHR LESEN&nbsp;<img class=""icon"" src=""/images/add-icon.svg"" style=""width: 20px;"" />"
+events.php,events.read_less,"<img class=""icon"" src=""/images/minus-icon.svg"" style=""width: 20px;"" />&nbsp;READ LESS","<img class=""icon"" src=""/images/minus-icon.svg"" style=""width: 20px;"" />&nbsp;WENIGER ANZEIGEN"
+events.php,events.calendar_google,Google Calendar,Google Kalender
+events.php,events.calendar_outlook,Outlook,Outlook
+events.php,events.calendar_ical,iCal,iCal
+events.php,events.calendar_yahoo,Yahoo Calendar,Yahoo Kalender
+events.php,events.confirm_delete,Are you sure you want to delete this event?,Möchten Sie diese Veranstaltung wirklich löschen?
+events.php,events.RSVP,RSVP,Zusagen
+events.php,events.form_error,Please check the form above for errors.,Bitte überprüfen Sie das obige Formular auf Fehler.
+events.php,events.your_events,Your events,Ihre Veranstaltungen
+events.php,events.validate_location,Location must be present unless the event is online.,"Der Veranstaltungsort muss angegeben werden, es sei denn, die Veranstaltung findet online statt."
+events.php,events.other_events,Other events,Andere Veranstaltungen
+events.php,events.online,Online,Online
+events.php,events.duplicate_event,Duplicate event,Veranstaltung duplizieren
+events.php,events.discourse_invite,We've added you to a thread for this event.,Wir haben Sie zu einem Thread für diese Veranstaltung hinzugefügt.
+events.php,events.field_venue_placeholder,Enter your address,Adresse eingeben
+events.php,events.field_venue_use_group,Use group location,Gruppenstandort verwenden
+events.php,events.talk_thread,View event conversation,Veranstaltungsgespräch ansehen
+events.php,events.search_title_placeholder,Search title...,Titel suchen...
+events.php,events.search_country_placeholder,Country...,Land...
+events.php,events.search_start_placeholder,From...,Von...
+events.php,events.search_end_placeholder,To...,Bis...
+events.php,events.invite_when_approved,You can only invite volunteers when this event has been approved,"Sie können Freiwillige erst einladen, wenn diese Veranstaltung genehmigt wurde"
+events.php,events.field_event_link_helper,Optional web link,Optionaler Weblink
+events.php,events.field_event_link,Event link,Veranstaltungslink
+events.php,events.address_error,"The address you entered could not be found.  Please try a more general address, and enter any more specific address details in the event description.",Die eingegebene Adresse konnte nicht gefunden werden. Bitte versuchen Sie eine allgemeinere Adresse und geben Sie genauere Details in der Veranstaltungsbeschreibung an.
+events.php,events.before_submit_text_autoapproved,"When you create or save this event, it will be made public.","Wenn Sie diese Veranstaltung erstellen oder speichern, wird sie öffentlich gemacht."
+events.php,events.created_success_message_autoapproved,Event created! It is now public.,Veranstaltung erstellt! Sie ist jetzt öffentlich.
+events.php,events.no_location,"<b>You do not currently have a town/city set.  You can set one in <a href=""/profile/edit"">your profile</a>.</b>","<b>Sie haben derzeit keinen Ort/keine Stadt festgelegt. Sie können dies in <a href=""/profile/edit"">Ihrem Profil</a> einstellen.</b>"
+events.php,events.review_requested,Thanks - all Restarters that attended have been sent a notification,"Danke – alle Restarters, die teilgenommen haben, wurden benachrichtigt"
+events.php,events.review_requested_permissions,Sorry - you do not have the correct permissions for this action,Entschuldigung – Sie haben nicht die erforderlichen Berechtigungen für diese Aktion
+events.php,events.you_have_joined,"You have joined <a class=""plain-link"" href="":url"">:name</a>","Sie sind <a class=""plain-link"" href="":url"">:name</a> beigetreten"
+events.php,events.invite_invalid_emails,"Invalid emails were entered, so no notifications were sent - please send your invitation again.  The invalid emails were: :emails","Es wurden ungültige E-Mail-Adressen eingegeben, daher wurden keine Benachrichtigungen gesendet – bitte senden Sie Ihre Einladung erneut. Die ungültigen E-Mail-Adressen waren: :emails"
+events.php,events.invite_success,Invites sent!,Einladungen gesendet!
+events.php,events.invite_noemails,You have not entered any emails!,Sie haben keine E-Mail-Adressen eingegeben!
+events.php,events.invite_invalid,Something went wrong - this invite is invalid or has expired,Etwas ist schiefgelaufen – diese Einladung ist ungültig oder abgelaufen
+events.php,events.invite_cancelled,You are no longer attending this event.,Sie nehmen nicht mehr an dieser Veranstaltung teil.
+events.php,events.image_delete_success,"Thank you, the image has been deleted.","Danke, das Bild wurde gelöscht."
+events.php,events.image_delete_error,"Sorry, but the image can't be deleted.","Entschuldigung, das Bild konnte nicht gelöscht werden."
+events.php,events.delete_permission,You do not have permission to delete this event.,"Sie haben keine Berechtigung, diese Veranstaltung zu löschen."
+events.php,events.delete_success,Event has been deleted.,Veranstaltung wurde gelöscht.
+events.php,events.geocode_failed,"Location not found. If you are unable to find the location of your event, please try a more general location (such as village/town), or a specific street address, rather than a building name.","Standort nicht gefunden. Falls Sie den Standort Ihrer Veranstaltung nicht finden können, versuchen Sie bitte einen allgemeineren Standort (wie Ort/Stadt) oder eine spezifische Straßenadresse anstelle eines Gebäudenamens."
+events.php,events.create_failed,"Event could <strong>not</strong> be created. Please look at the reported errors, correct them, and try again.","Veranstaltung konnte <strong>nicht</strong> erstellt werden. Bitte überprüfen Sie die gemeldeten Fehler, korrigieren Sie diese und versuchen Sie es erneut."
+events.php,events.edit_failed,Event could not be edited.,Veranstaltung konnte nicht bearbeitet werden.
+general.php,general.general,General,Allgemein
+general.php,general.menu_tools,Community Tools,Community-Tools
+general.php,general.menu_other,Other Links,Weitere Links
+general.php,general.help_feedback_url,https://talk.restarters.net/c/help,https://talk.restarters.net/c/help
+general.php,general.faq_url,https://therestartproject.org/faq,https://therestartproject.org/faq
+general.php,general.restartproject_url,https://therestartproject.org,https://therestartproject.org
+general.php,general.other_profile,profile,Profil
+general.php,general.email_alerts_pref1,I would like to receive The Restart Project monthly newsletter,Ich möchte den monatlichen Newsletter von The Restart Project erhalten
+general.php,general.email_alerts_pref2,I would like to receive email notifications about events or groups near me,Ich möchte E-Mail-Benachrichtigungen über Veranstaltungen oder Gruppen in meiner Nähe erhalten
+general.php,general.login,Login,Anmelden
+general.php,general.profile,Your profile,Ihr Profil
+general.php,general.profile_content,"Please share some information about yourself, so you can connect with other organisers and fixers, and so we can understand the community better","Bitte teilen Sie einige Informationen über sich, damit Sie sich mit anderen Organisatoren und Reparateuren vernetzen können und wir die Community besser verstehen können"
+general.php,general.logout,Logout,Abmelden
+general.php,general.new_group,Create a new group,Neue Gruppe erstellen
+general.php,general.alert_uptodate,Thanks! You are up to date,Danke! Sie sind auf dem neuesten Stand
+general.php,general.alert_uptodate_text,"You have nothing to action now. When you do, we'll let you know.","Sie haben derzeit nichts zu erledigen. Wenn sich das ändert, informieren wir Sie."
+general.php,general.signmeup,Sign me up!,Jetzt anmelden!
+general.php,general.introduction_message,We are a global community of people who help others fix their electronics in community events. Join us!,"Wir sind eine globale Community von Menschen, die anderen dabei helfen, ihre Elektronikgeräte bei Gemeinschaftsveranstaltungen zu reparieren. Machen Sie mit!"
+general.php,general.your_name,Your name,Ihr Name
+general.php,general.your_name_validation,Please enter your name,Bitte geben Sie Ihren Namen ein
+general.php,general.repair_skills,Skills,Fähigkeiten
+general.php,general.repair_skills_content,This is optional but helps us improve your experience - which skills do you have and would like to share with others? Ctrl-click to select multiple skills.,"Dies ist optional, hilft uns aber, Ihre Erfahrung zu verbessern – welche Fähigkeiten haben Sie und möchten Sie mit anderen teilen? Strg+Klick, um mehrere Fähigkeiten auszuwählen."
+general.php,general.your_repair_skills,Your skills,Ihre Fähigkeiten
+general.php,general.save_repair_skills,Save skills,Fähigkeiten speichern
+general.php,general.email_alerts,Emails & alerts,E-Mails & Benachrichtigungen
+general.php,general.email_alerts_text,"Please choose what kind of email updates you would like to receive. You can change these at any time. Our Privacy Policy is available <a href=""https://therestartproject.org/data-and-privacy-policy/fixometer/"" rel=""noopener noreferrer"" target=""_blank"">here</a>","Bitte wählen Sie, welche Art von E-Mail-Updates Sie erhalten möchten. Sie können diese jederzeit ändern. Unsere Datenschutzrichtlinie finden Sie <a href=""https://therestartproject.org/data-and-privacy-policy/fixometer/"" rel=""noopener noreferrer"" target=""_blank"">hier</a>"
+general.php,general.menu_discourse,Talk,Talk
+general.php,general.menu_wiki,Wiki,Wiki
+general.php,general.menu_help_feedback,Help & Feedback,Hilfe & Feedback
+general.php,general.menu_faq,FAQs,FAQs
+general.php,general.therestartproject,The Restart Project,The Restart Project
+general.php,general.calendar_feed_help_url,/t/fixometer-how-to-subscribe-to-a-calendar,/t/fixometer-how-to-subscribe-to-a-calendar
+general.php,general.menu_fixometer,Fixometer,Fixometer
+general.php,general.menu_events,Events,Veranstaltungen
+general.php,general.menu_groups,Groups,Gruppen
+group-audits.php,group-audits.unavailable_audits,No changes have been made to this group!,An dieser Gruppe wurden keine Änderungen vorgenommen!
+group-audits.php,group-audits.created.metadata,"On :audit_created_at, :user_name created record <strong>:audit_url</strong>",Am :audit_created_at hat :user_name den Datensatz <strong>:audit_url</strong> erstellt
+group-audits.php,group-audits.created.modified.name,"<strong>Name</strong> set as ""<strong>:new</strong>""","<strong>Name</strong> gesetzt als „<strong>:new</strong>"""
+group-audits.php,group-audits.created.modified.website,"<strong>Website</strong> set as ""<strong>:new</strong>""","<strong>Website</strong> gesetzt als „<strong>:new</strong>"""
+group-audits.php,group-audits.created.modified.area,"<strong>Area</strong> set as ""<strong>:new</strong>""","<strong>Gebiet</strong> gesetzt als „<strong>:new</strong>"""
+group-audits.php,group-audits.created.modified.country,"<strong>Country</strong> set as ""<strong>:new</strong>""","<strong>Land</strong> gesetzt als „<strong>:new</strong>"""
+group-audits.php,group-audits.created.modified.location,"<strong>Location</strong> set as ""<strong>:new</strong>""","<strong>Standort</strong> gesetzt als „<strong>:new</strong>"""
+group-audits.php,group-audits.created.modified.latitude,"<strong>Latitude</strong> set as ""<strong>:new</strong>""","<strong>Breitengrad</strong> gesetzt als „<strong>:new</strong>"""
+group-audits.php,group-audits.created.modified.longitude,"<strong>Longitude</strong> set as ""<strong>:new</strong>""","<strong>Längengrad</strong> gesetzt als „<strong>:new</strong>"""
+group-audits.php,group-audits.created.modified.free_text,"<strong>Free Text</strong> set as ""<strong>:new</strong>""","<strong>Freitext</strong> gesetzt als „<strong>:new</strong>"""
+group-audits.php,group-audits.created.modified.idgroups,"<strong>Group ID</strong> set as ""<strong>:new</strong>""","<strong>Gruppen-ID</strong> gesetzt als „<strong>:new</strong>"""
+group-audits.php,group-audits.created.modified.wordpress_post_id,"<strong>Wordpress post ID</strong> set as ""<strong>:new</strong>""","<strong>WordPress-Beitrags-ID</strong> gesetzt als „<strong>:new</strong>"""
+group-audits.php,group-audits.updated.metadata,"On :audit_created_at, :user_name updated record <strong>:audit_url</strong>",Am :audit_created_at hat :user_name den Datensatz <strong>:audit_url</strong> aktualisiert
+group-audits.php,group-audits.updated.modified.name,"<strong>Name</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Name</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+group-audits.php,group-audits.updated.modified.website,"<strong>Website</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Website</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+group-audits.php,group-audits.updated.modified.area,"<strong>Area</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Gebiet</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+group-audits.php,group-audits.updated.modified.country,"<strong>Country</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Land</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+group-audits.php,group-audits.updated.modified.location,"<strong>Location</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Standort</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+group-audits.php,group-audits.updated.modified.latitude,"<strong>Latitude</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Breitengrad</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+group-audits.php,group-audits.updated.modified.longitude,"<strong>Longitude</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Längengrad</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+group-audits.php,group-audits.updated.modified.free_text,"<strong>Free Text</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>Freitext</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+group-audits.php,group-audits.updated.modified.wordpress_post_id,"<strong>Wordpress post ID</strong> was modified from ""<strong>:old</strong>"" to ""<strong>:new</strong>""","<strong>WordPress-Beitrags-ID</strong> wurde von „<strong>:old</strong>"" zu „<strong>:new</strong>"" geändert"
+group-tags.php,group-tags.create_success,Group Tag successfully created!,Gruppen-Tag erfolgreich erstellt!
+group-tags.php,group-tags.update_success,Group Tag successfully updated!,Gruppen-Tag erfolgreich aktualisiert!
+group-tags.php,group-tags.delete_success,Group Tag deleted!,Gruppen-Tag gelöscht!
+group-tags.php,group-tags.title,Group Tags,Gruppen-Tags
+group-tags.php,group-tags.edit_tag,Edit Group Tag,Gruppen-Tag bearbeiten
+groups.php,groups.message_example_text,<add a custom message here if required>,<hier bei Bedarf eine persönliche Nachricht hinzufügen>
+groups.php,groups.headline_stats_dropdown,Headline stats,Hauptstatistiken
+groups.php,groups.co2_equivalence_visualisation_dropdown,CO<sub>2</sub> equivalence visualisation,CO<sub>2</sub>-Äquivalenzvisualisierung
+groups.php,groups.group_admin_only,Admin only,Nur für Administratoren
+groups.php,groups.group,Group,Gruppe
+groups.php,groups.groups,Groups,Gruppen
+groups.php,groups.add_groups,Add a group,Gruppe hinzufügen
+groups.php,groups.add_groups_content,"Tell us more about your group, so we can create a page for you and help you publicise to potential volunteers and participants.","Erzählen Sie uns mehr über Ihre Gruppe, damit wir eine Seite für Sie erstellen und Ihnen helfen können, potenzielle Freiwillige und Teilnehmende zu gewinnen."
+groups.php,groups.create_groups,Add a new group,Neue Gruppe hinzufügen
+groups.php,groups.create_group,Create group,Gruppe erstellen
+groups.php,groups.groups_title1,Your Groups,Ihre Gruppen
+groups.php,groups.groups_title2,Find a group,Andere Gruppen in der Nähe
+groups.php,groups.groups_name,Name,Name
+groups.php,groups.groups_name_of,Name of group,Name der Gruppe
+groups.php,groups.groups_about_group,Tell us about your group,Erzählen Sie uns von Ihrer Gruppe
+groups.php,groups.groups_website,Your website,Ihre Website
+groups.php,groups.groups_website_small,Don't have a website? Feel free to add a Facebook group or similar,Keine Website? Fügen Sie gerne eine Facebook-Gruppe oder Ähnliches hinzu
+groups.php,groups.groups_website_invalid,Please enter a full website address starting with http:// or https://,"Bitte geben Sie eine vollständige Webadresse ein, die mit http:// oder https:// beginnt"
+groups.php,groups.groups_email,Email address,E-Mail-Adresse
+groups.php,groups.groups_email_small,A public contact email address for your group (optional),Eine öffentliche Kontakt-E-Mail-Adresse für Ihre Gruppe (optional)
+groups.php,groups.groups_group_small,e.g. 'Restarters Torino' or 'Nottingham Fixers',z. B. 'Restarters Torino' oder 'Nottingham Fixers'
+groups.php,groups.groups_location,Location,Standort
+groups.php,groups.location,Group location,Gruppenstandort
+groups.php,groups.area,Area,Gebiet
+groups.php,groups.groups_approval_text,Group submissions need to be approved by an administrator,Gruppenanmeldungen müssen von einem Administrator genehmigt werden
+groups.php,groups.group_tag,Tag,Tag
+groups.php,groups.group_tags,Group tags,Gruppenmarkierungen
+groups.php,groups.approve_group,Approve group,Gruppe genehmigen
+groups.php,groups.invite_group_header_link,Invite volunteers,Freiwillige einladen
+groups.php,groups.shareable_link,Invite via shareable link,Per teilbarem Link einladen
+groups.php,groups.email_addresses_field,Email addresses,E-Mail-Adressen
+groups.php,groups.type_email_addresses_message,Type in the email addresses of the people you would like to invite to this group.  Press the tab or comma key after each email address.,"Geben Sie die E-Mail-Adressen der Personen ein, die Sie zu dieser Gruppe einladen möchten. Drücken Sie nach jeder E-Mail-Adresse die Tab- oder Kommataste."
+groups.php,groups.shareable_link_box,Shareable link,Teilbarer Link
+groups.php,groups.email_invite,Invite via email,Per E-Mail einladen
+groups.php,groups.type_shareable_link_message,"Share the above link to invite people to join this group.  If a person you share the link with does not have an account yet, they will be prompted to register.","Teilen Sie den obigen Link, um Personen einzuladen, dieser Gruppe beizutreten. Wenn eine Person, mit der Sie den Link teilen, noch kein Konto hat, wird sie aufgefordert, sich zu registrieren."
+groups.php,groups.done_button,Done,Fertig
+groups.php,groups.message_header,Invitation message,Einladungsnachricht
+groups.php,groups.send_invite_button,Send invites,Einladungen senden
+groups.php,groups.cancel_invites_link,Cancel,Abbrechen
+groups.php,groups.about_group_name_header,About :group,Über :group
+groups.php,groups.join_group_button,Follow group,Gruppe folgen
+groups.php,groups.share_stats_header,Share your stats,Statistiken teilen
+groups.php,groups.share_stats_message,:group have made a real impact fixing electronics and preventing waste. Help share this on your website and get other people involved:,":group hat durch die Reparatur von Elektronik und die Vermeidung von Abfall eine echte Wirkung erzielt. Helfen Sie dabei, dies auf Ihrer Website zu teilen und weitere Personen einzubeziehen:"
+groups.php,groups.embed_code_header,Embed code,Einbettungscode
+groups.php,groups.infographic_message,An infographic of an easy-to-understand equivalent of the CO<sub>2</sub> emissions that your group has prevented.,"Eine Infografik mit einem leicht verständlichen Äquivalent der CO<sub>2</sub>-Emissionen, die Ihre Gruppe verhindert hat."
+groups.php,groups.headline_stats_message,This widget shows the headline stats for your group e.g. the number of participants at your parties; the hours volunteered,"Dieses Widget zeigt die wichtigsten Statistiken für Ihre Gruppe, z. B. die Anzahl der Teilnehmenden bei Ihren Veranstaltungen und die geleisteten Freiwilligenstunden"
+groups.php,groups.edit_group,Edit group,Gruppe bearbeiten
+groups.php,groups.edit_group_save_changes,Save changes,Änderungen speichern
+groups.php,groups.edit_group_text,Go ahead and change or improve your group's profile.,Passen Sie das Profil Ihrer Gruppe an oder verbessern Sie es.
+groups.php,groups.groups_location_small,The venue or area where your group operates,"Der Veranstaltungsort oder das Gebiet, in dem Ihre Gruppe tätig ist"
+groups.php,groups.group_image,Group image,Gruppenbild
+groups.php,groups.tag-1,Tag 1,Tag 1
+groups.php,groups.tag-2,Tag 2,Tag 2
+groups.php,groups.tag-3,Tag 3,Tag 3
+groups.php,groups.tag-4,Tag 4,Tag 4
+groups.php,groups.tag-5,Tag 5,Tag 5
+groups.php,groups.tag-6,Tag 6,Tag 6
+groups.php,groups.tag-7,Tag 7,Tag 7
+groups.php,groups.tag-8,Tag 8,Tag 8
+groups.php,groups.upcoming_none_planned,None planned,Keine geplant
+groups.php,groups.create_groups_mobile,Create,Erstellen
+groups.php,groups.group_actions,Group actions,Gruppenaktionen
+groups.php,groups.add_event,Add event,Veranstaltung hinzufügen
+groups.php,groups.invite_volunteers,Invite volunteers,Freiwillige einladen
+groups.php,groups.share_group_stats,Share group stats,Gruppenstatistiken teilen
+groups.php,groups.about,About,Über
+groups.php,groups.read_more,Read more,Mehr lesen
+groups.php,groups.volunteers,Volunteers,Freiwillige
+groups.php,groups.invite_to_group,Invite to group,Zur Gruppe einladen
+groups.php,groups.participants,participants,Teilnehmende
+groups.php,groups.parties_thrown,parties thrown,
+groups.php,groups.hours_volunteered,hours volunteered,geleistete Freiwilligenstunden
+groups.php,groups.waste_prevented,Waste prevented,Vermiedener Abfall
+groups.php,groups.upcoming_active,Upcoming & Active,Bevorstehend & Aktiv
+groups.php,groups.past,Past,Vergangen
+groups.php,groups.no_upcoming_events,There are currently no upcoming events.,Derzeit gibt es keine bevorstehenden Veranstaltungen.
+groups.php,groups.no_past_events,There are currently no past events for this group,Für diese Gruppe gibt es derzeit keine vergangenen Veranstaltungen
+groups.php,groups.total_devices,Total items worked on,Insgesamt bearbeitete Artikel
+groups.php,groups.most_repaired_devices,Most repaired items,Am häufigsten reparierte Geräte
+groups.php,groups.website,Website,Website
+groups.php,groups.about_none,There is no description for this group yet.,Es gibt noch keine Beschreibung für diese Gruppe.
+groups.php,groups.read_less,"<img class=""icon"" src=""/images/minus-icon.svg"" style=""width: 20px;"" />&nbsp;READ LESS","<img class=""icon"" src=""/images/minus-icon.svg"" style=""width: 20px;"" />&nbsp;WENIGER ANZEIGEN"
+groups.php,groups.group_facts,Group achievements,Gruppenleistungen
+groups.php,groups.events,event|events,Veranstaltung|Veranstaltungen
+groups.php,groups.no_volunteers,There are no volunteers in this group,Es gibt keine Freiwilligen in dieser Gruppe
+groups.php,groups.remove_volunteer,Remove Volunteer,Freiwillige(n) entfernen
+groups.php,groups.remove_host_role,Remove Host role,Host-Rolle entfernen
+groups.php,groups.make_host,Make Host,Zum Host machen
+groups.php,groups.not_counting,Not counting toward this group's environmental impact is|Not counting toward this group's environmental impact are,Nicht in der Umweltwirkung dieser Gruppe enthalten ist|Nicht in der Umweltwirkung dieser Gruppe enthalten sind
+groups.php,groups.calendar_copy_title,Access all group events in your personal calendar,Alle Gruppenveranstaltungen in Ihrem persönlichen Kalender aufrufen
+groups.php,groups.calendar_copy_description,Add all upcoming events for :group to your Google/Outlook/Yahoo/Apple calendar with the link below:,Fügen Sie alle bevorstehenden Veranstaltungen von :group mit dem folgenden Link zu Ihrem Google-/Outlook-/Yahoo-/Apple-Kalender hinzu:
+groups.php,groups.volunteers_invited,Volunteers invited,Eingeladene Freiwillige
+groups.php,groups.volunteers_confirmed,Volunteers confirmed,Bestätigte Freiwillige
+groups.php,groups.participants_attended,Participants attended,Teilnehmende anwesend
+groups.php,groups.volunteers_attended,Volunteers attended,Freiwillige anwesend
+groups.php,groups.co2_emissions_prevented,CO2 emissions prevented,Verhinderte CO2-Emissionen
+groups.php,groups.fixed_items,Fixed items,Reparierte Artikel
+groups.php,groups.repairable_items,Repairable items,Reparierbare Artikel
+groups.php,groups.end_of_life_items,End-of-life items,Artikel am Ende ihres Lebens
+groups.php,groups.create_groups_mobile2,Add new,Neu hinzufügen
+groups.php,groups.groups_title1_mobile,Yours,Meine
+groups.php,groups.groups_title2_mobile,Find,Nächste
+groups.php,groups.no_groups_mine,"<b>If you can't see any here yet, why not <a href=""/group/other"">find a group near you</a>?</b>","<b>Falls Sie noch keine Gruppen sehen, warum folgen Sie nicht <a href=""/group/nearby"">der nächstgelegenen Gruppe</a>, um von ihren bevorstehenden Reparaturveranstaltungen zu erfahren?</b>"
+groups.php,groups.no_groups_nearest_no_location,"<b><p>You do not currently have a town/city set.  You can set one in <a href=""/profile/edit"">your profile</a>.</p><p>You can also <a href=""/group/all"">view all groups</a>.</p></b>","<b><p>Sie haben derzeit keinen Ort/keine Stadt festgelegt. Sie können dies in <a href=""/profile/edit"">Ihrem Profil</a> einstellen.</p><p>Sie können auch <a href=""/group/all"">alle Gruppen anzeigen</a>.</p></b>"
+groups.php,groups.no_groups_nearest_with_location,"<p>There are no groups within 50 km of your location. You can <a href=""/group/all"">see all groups here</a>. Or why not start your own? <a href=""https://talk.restarters.net/t/how-to-run-a-repair-event-the-restart-party-kit/324"">Learn what running your own repair event involves.</a></p>","<p>Es gibt keine Gruppen innerhalb von 50 km von Ihrem Standort. Sie können <a href=""/group/all"">hier alle Gruppen sehen</a>. Oder warum starten Sie nicht Ihre eigene? <a href=""https://talk.restarters.net/t/how-to-run-a-repair-event-the-restart-party-kit/324"">Erfahren Sie, was das Durchführen einer eigenen Reparaturveranstaltung beinhaltet.</a></p>"
+groups.php,groups.distance,Distance,
+groups.php,groups.group_count,There is <b>:count group</b> in this area.  Search and zoom to find more.|There are <b>:count groups</b> in this area.  Search and zoom to find more.,Es gibt <b>:count Gruppe</b>.|Es gibt <b>:count Gruppen</b>.
+groups.php,groups.group_count_none,"If you can't see any here yet, why not <a href=""/group/nearby"">find a group</a> near you?",
+groups.php,groups.search_name_placeholder,Search by name,Name suchen...
+groups.php,groups.search_tags_placeholder,Filter by tags,Tag
+groups.php,groups.show_filters,Show filters,Filter anzeigen
+groups.php,groups.hide_filters,Hide filters,Filter ausblenden
+groups.php,groups.leave_group_button,Unfollow group,Gruppe nicht mehr folgen
+groups.php,groups.leave_group_confirm,Please confirm that you want to unfollow this group.,"Bitte bestätigen Sie, dass Sie dieser Gruppe nicht mehr folgen möchten."
+groups.php,groups.now_following,"You are now following <a href="":link"">:name</a>!","Sie folgen jetzt <a href="":link"">:name</a>!"
+groups.php,groups.now_unfollowed,"You have now unfollowed <a href="":link"">:name</a>.","Sie folgen jetzt <a href="":link"">:name</a> nicht mehr."
+groups.php,groups.nearby,Nearby,In der Nähe
+groups.php,groups.all,All,Alle
+groups.php,groups.no_other_events,There are currently no other upcoming events.,Derzeit gibt es keine weiteren bevorstehenden Veranstaltungen.
+groups.php,groups.no_other_nearby_events,There are currently no other upcoming nearby events.,Derzeit gibt es keine weiteren bevorstehenden Veranstaltungen in der Nähe.
+groups.php,groups.postcode,Group postcode,Postleitzahl der Gruppe
+groups.php,groups.groups_postcode_small,(Optional),(Optional)
+groups.php,groups.duplicate,"That group name (:name) already exists.  If it's yours, please go to the Groups page using the menu and edit it.","Dieser Gruppenname (:name) existiert bereits. Falls es Ihre Gruppe ist, gehen Sie bitte über das Menü zur Gruppenseite und bearbeiten Sie sie."
+groups.php,groups.create_failed,"Group could <strong>not</strong> be created. Please look at the reported errors, correct them, and try again.","Gruppe konnte <strong>nicht</strong> erstellt werden. Bitte überprüfen Sie die gemeldeten Fehler, korrigieren Sie diese und versuchen Sie es erneut."
+groups.php,groups.edit_failed,Group could not be edited.,Gruppe konnte nicht bearbeitet werden.
+groups.php,groups.delete_group,Delete group,Gruppe löschen
+groups.php,groups.archive_group,Archive group,Gruppe archivieren
+groups.php,groups.archived_group,Archived,Archiviert
+groups.php,groups.archived_group_title,This group was archived on :date.,Diese Gruppe wurde am :date archiviert.
+groups.php,groups.delete_group_confirm,Please confirm that you want to delete :name.,"Bitte bestätigen Sie, dass Sie :name löschen möchten."
+groups.php,groups.archive_group_confirm,Please confirm that you want to archive :name.,"Bitte bestätigen Sie, dass Sie :name archivieren möchten."
+groups.php,groups.delete_succeeded,Group <strong>:name</strong> has been deleted.,Gruppe <strong>:name</strong> wurde gelöscht.
+groups.php,groups.invitation_pending,"You have an invitation to this group.  Please click <a href="":accept"">here</a> if you would like to join.","Sie haben eine Einladung zu dieser Gruppe. Bitte klicken Sie <a href="":accept"">hier</a>, wenn Sie beitreten möchten."
+groups.php,groups.geocode_failed,"Location not found. If you are unable to find the location of your group, please try a more general location (such as village/town), or a specific street address, rather than a building name.","Standort nicht gefunden. Falls Sie den Standort Ihrer Gruppe nicht finden können, versuchen Sie bitte einen allgemeineren Standort (wie Ort/Stadt) oder eine spezifische Straßenadresse anstelle eines Gebäudenamens."
+groups.php,groups.talk_group,View group conversation,Gruppengespräch ansehen
+groups.php,groups.talk_group_add_title,Welcome to :group_name,Willkommen bei :group_name
+groups.php,groups.talk_group_add_body,"Thank you for following :group_name! You will now receive notifications when new events are planned and will be added to group messages. <a href=""https://talk.restarters.net/t/how-to-communicate-with-your-repair-group/6293"">Learn how group messages work and how to change your notification settings</a>.","Danke, dass Sie :group_name folgen! Sie werden ab jetzt benachrichtigt, wenn neue Veranstaltungen geplant werden, und werden zu Gruppennachrichten hinzugefügt. <a href=""https://talk.restarters.net/t/how-to-communicate-with-your-repair-group/6293"">Erfahren Sie, wie Gruppennachrichten funktionieren und wie Sie Ihre Benachrichtigungseinstellungen ändern können</a>."
+groups.php,groups.groups_location_placeholder,Enter your address,Adresse eingeben
+groups.php,groups.editing,Editing,Bearbeiten
+groups.php,groups.timezone,Timezone,Zeitzone
+groups.php,groups.timezone_placeholder,Leave this blank to inherit the value from the network.,"Leer lassen, um den Wert vom Netzwerk zu übernehmen."
+groups.php,groups.you_have_joined,"You have joined <a class=""plain-link"" href="":url"">:name</a>","Sie sind <a class=""plain-link"" href="":url"">:name</a> beigetreten"
+groups.php,groups.groups_title_admin,Groups to moderate,Zu moderierende Gruppen
+groups.php,groups.group_requires_moderation,Group requires moderation,Gruppe erfordert Moderation
+groups.php,groups.field_phone,Phone number,Telefonnummer
+groups.php,groups.phone_small,(Optional),(Optional)
+groups.php,groups.invite_success,Invites sent!,Einladungen gesendet!
+groups.php,groups.invite_success_apart_from,"Invites sent - apart from these (:emails) who have already joined the group, have already been sent an invite, or have not opted in to receive emails.","Einladungen gesendet – außer an diese (:emails), die der Gruppe bereits beigetreten sind, bereits eine Einladung erhalten haben oder dem Empfang von E-Mails nicht zugestimmt haben."
+groups.php,groups.invite_invalid,Something went wrong - this invite is invalid or has expired.,Etwas ist schiefgelaufen – diese Einladung ist ungültig oder abgelaufen.
+groups.php,groups.invite_confirmed,Excellent! You have joined the group.,Ausgezeichnet! Sie sind der Gruppe beigetreten.
+groups.php,groups.follow_group_error,Failed to follow this group.,Dieser Gruppe konnte nicht gefolgt werden.
+groups.php,groups.create_event_first,Please first create an event in order to add repair data.,"Bitte erstellen Sie zuerst eine Veranstaltung, um Reparaturdaten hinzuzufügen."
+groups.php,groups.follow_group_first,Repair data is added to community repair events. Please first follow a group and then choose an event in order to add repair data.,"Reparaturdaten werden zu Gemeinschaftsreparaturveranstaltungen hinzugefügt. Bitte folgen Sie zunächst einer Gruppe und wählen Sie dann eine Veranstaltung aus, um Reparaturdaten hinzuzufügen."
+groups.php,groups.export_event_list,Download event list,Veranstaltungsliste herunterladen
+groups.php,groups.export.events.date,Date,Datum
+groups.php,groups.export.events.event,Event,Veranstaltung
+groups.php,groups.export.events.group,Group,Gruppe
+groups.php,groups.export.events.volunteers,Volunteers,Freiwillige
+groups.php,groups.export.events.participants,Participants,Teilnehmende
+groups.php,groups.export.events.items_total,Items total,Artikel gesamt
+groups.php,groups.export.events.items_fixed,Items fixed,Reparierte Artikel
+groups.php,groups.export.events.items_repairable,Items repairable,Artikel reparierbar
+groups.php,groups.export.events.items_end_of_life,Items end-of-life,Artikel am Lebensende
+groups.php,groups.export.events.items_kg_waste_prevented,kg waste prevented,kg Abfall verhindert
+groups.php,groups.export.events.items_kg_co2_prevent,kg CO2 prevented,kg CO2 verhindert
+groups.php,groups.marker_title,Click for more information,
+groups.php,groups.search_place,Search for a place...,
+groups.php,groups.search_nothing_found,Nothing found.,
+groups.php,groups.goto_group,Go to group,
+groups.php,groups.next_event,Next event,
+groups.php,groups.years_of_time_volunteered,years of time volunteered,
+groups.php,groups.see_group_reports,See more in your group's reports,
+groups.php,groups.view_reports,View reports,
+groups.php,groups.show_all_groups,Show all :total groups,
+landing.php,landing.title,Welcome to Restarters!,Willkommen bei Restarters!
+landing.php,landing.intro,We are a global network of people who help others repair at community events.,"Wir sind ein globales Netzwerk von Menschen, die anderen bei gemeinschaftlichen Reparaturveranstaltungen helfen."
+landing.php,landing.join,Join us,Mitmachen
+landing.php,landing.login,Log in,Anmelden
+landing.php,landing.learn,Learn and share repair skills with others,Reparaturkenntnisse mit anderen lernen und teilen
+landing.php,landing.repair_skills,Brush up on your repair skills with our repair wiki,Frische deine Reparaturkenntnisse mit unserem Reparatur-Wiki auf
+landing.php,landing.repair_advice,Get or share repair advice on the forum,Reparaturtipps im Forum erhalten oder teilen
+landing.php,landing.repair_group,Follow your local community repair group,Deiner lokalen Gemeinschafts-Reparaturgruppe folgen
+landing.php,landing.repair_start,Start repairing,Jetzt reparieren
+landing.php,landing.organise,Organise community repair events,Gemeinschaftliche Reparaturveranstaltungen organisieren
+landing.php,landing.organise_advice,Get advice and support from other organisers,Beratung und Unterstützung von anderen Organisatoren erhalten
+landing.php,landing.organise_manage,Manage your group and find volunteers,Deine Gruppe verwalten und Freiwillige finden
+landing.php,landing.organise_publicise,Publicise repair events and measure your impact,Reparaturveranstaltungen bekannt machen und deine Wirkung messen
+landing.php,landing.organise_start,Start organising,Jetzt organisieren
+landing.php,landing.campaign,Bring down the barriers to repair,Hindernisse für Reparaturen abbauen
+landing.php,landing.campaign_join,Keep up with the global Right to Repair movement,Auf dem Laufenden bleiben mit der weltweiten Right-to-Repair-Bewegung
+landing.php,landing.campaign_barriers,Document the barriers to repair,Hindernisse für Reparaturen dokumentieren
+landing.php,landing.campaign_data,Analyse repair data,Reparaturdaten analysieren
+landing.php,landing.campaign_start,Join the movement,Der Bewegung beitreten
+landing.php,landing.need_more,Need more?,Mehr benötigt?
+landing.php,landing.network,Empower your network,Dein Netzwerk stärken
+landing.php,landing.network_blurb,"If you co-ordinate a network of community repair groups, we also offer affordable, custom packages to make your work easier.","Wenn du ein Netzwerk von Gemeinschafts-Reparaturgruppen koordinierst, bieten wir auch erschwingliche, maßgeschneiderte Pakete an, die deine Arbeit erleichtern."
+landing.php,landing.network_tools,Give your groups access to event management and GDPR-compliant communication tools,Deinen Gruppen Zugang zu Veranstaltungsmanagement und DSGVO-konformen Kommunikationstools geben
+landing.php,landing.network_events,Display your groups and events on your website automatically,Deine Gruppen und Veranstaltungen automatisch auf deiner Website anzeigen
+landing.php,landing.network_record,Allow your volunteers to easily record repair data,"Deinen Freiwilligen ermöglichen, Reparaturdaten einfach zu erfassen"
+landing.php,landing.network_impact,Measure and track your network's overall impact,Die Gesamtwirkung deines Netzwerks messen und verfolgen
+landing.php,landing.network_brand,Custom-branding and localisation: use your logo and language,Individuelles Branding und Lokalisierung: dein Logo und deine Sprache verwenden
+landing.php,landing.network_power,Help power the Right to Repair movement,Die Right-to-Repair-Bewegung unterstützen
+landing.php,landing.network_start,Get in touch,Kontakt aufnehmen
+login.php,login.whatis,Welcome to the Restarters community,Willkommen in der Restarters-Community
+login.php,login.more,Find out more,Mehr erfahren
+login.php,login.stat_1,Items fixed,Reparierte Artikel
+login.php,login.stat_2,CO<sub>2</sub>e emissions prevented,Verhinderte CO<sub>2</sub>e-Emissionen
+login.php,login.stat_3,Waste prevented,Vermiedener Abfall
+login.php,login.stat_4,Events held,Durchgeführte Veranstaltungen
+login.php,login.login_title,Sign in,Anmelden
+login.php,login.join_title,Join Restarters,Restarters beitreten
+login.php,login.join_title_short,Join,Beitreten
+networks.php,networks.networks,Networks,Netzwerke
+networks.php,networks.network,Network,Netzwerk
+networks.php,networks.general.view_reports,View reports,
+networks.php,networks.general.see_network_reports,See more in your network's reports,
+networks.php,networks.general.networks,Networks,Netzwerke
+networks.php,networks.general.network,Network,Netzwerk
+networks.php,networks.general.particular_network,:networkName network,:networkName-Netzwerk
+networks.php,networks.general.groups,Groups,Gruppen
+networks.php,networks.general.about,About,Über
+networks.php,networks.general.actions,Network Actions,Netzwerkaktionen
+networks.php,networks.general.coordinators,Network Coordinators,Netzwerkkoordinatoren
+networks.php,networks.general.impact,Impact,Wirkung
+networks.php,networks.stats.groups,"{1} Group|[0,*] Groups","{1} Gruppe|[0,*] Gruppen"
+networks.php,networks.stats.events,"{1} Event|[0,*] Events","{1} Veranstaltung|[0,*] Veranstaltungen"
+networks.php,networks.stats.waste_diverted,Waste Diverted,Vermiedener Abfall
+networks.php,networks.stats.co2_prevented,CO2 Prevented,Eingespartes CO2
+networks.php,networks.tags.title,Group Tags,Gruppen-Tags
+networks.php,networks.tags.no_tags,No tags created yet.,Noch keine Tags erstellt.
+networks.php,networks.tags.new_tag_placeholder,New tag name...,Neuer Tag-Name...
+networks.php,networks.tags.description_placeholder,Description (optional),Beschreibung (optional)
+networks.php,networks.tags.create,Create Tag,Tag erstellen
+networks.php,networks.tags.create_error,Failed to create tag. Please try again.,Tag konnte nicht erstellt werden. Bitte erneut versuchen.
+networks.php,networks.tags.edit,Edit,Bearbeiten
+networks.php,networks.tags.edit_title,Edit Tag,Tag bearbeiten
+networks.php,networks.tags.edit_error,Failed to update tag. Please try again.,Tag konnte nicht aktualisiert werden. Bitte erneut versuchen.
+networks.php,networks.tags.name_label,Name,Name
+networks.php,networks.tags.description_label,Description,Beschreibung
+networks.php,networks.tags.delete,Delete,Löschen
+networks.php,networks.tags.delete_confirm_title,Delete Tag,Tag löschen
+networks.php,networks.tags.delete_confirm_message,"Are you sure you want to delete the tag "":name""?","Möchtest du den Tag „:name"" wirklich löschen?"
+networks.php,networks.tags.delete_warning,"{1} This will remove the tag from :count group.|[2,*] This will remove the tag from :count groups.","{1} Dadurch wird der Tag aus :count Gruppe entfernt.|[2,*] Dadurch wird der Tag aus :count Gruppen entfernt."
+networks.php,networks.index.your_networks,Your networks,Deine Netzwerke
+networks.php,networks.index.your_networks_explainer,These are the networks for which you are a coordinator.,"Dies sind die Netzwerke, für die du Koordinator bist."
+networks.php,networks.index.your_networks_no_networks,You are not a coordinator of any networks.,Du bist kein Koordinator eines Netzwerks.
+networks.php,networks.index.all_networks,All networks,Alle Netzwerke
+networks.php,networks.index.all_networks_explainer,All networks in the system (admin-only).,Alle Netzwerke im System (nur für Administratoren).
+networks.php,networks.index.all_networks_no_networks,There are no networks in the system.,Es sind keine Netzwerke im System vorhanden.
+networks.php,networks.index.description,Description,Beschreibung
+networks.php,networks.show.add_groups_menuitem,Add groups,Gruppen hinzufügen
+networks.php,networks.show.add_groups_modal_header,Add groups to :name,Gruppen zu :name hinzufügen
+networks.php,networks.show.add_groups_select_label,Choose groups to add,"Gruppen auswählen, die hinzugefügt werden sollen"
+networks.php,networks.show.add_groups_save_button,Add,Hinzufügen
+networks.php,networks.show.add_groups_warning_none_selected,No groups selected.,Keine Gruppen ausgewählt.
+networks.php,networks.show.add_groups_success,"{1} :number group added.|[2,*] :number groups added.","{1} :number Gruppe hinzugefügt.|[2,*] :number Gruppen hinzugefügt."
+networks.php,networks.show.none,None,Keine
+networks.php,networks.edit.label_reporting_url,Reporting dashboard address,
+networks.php,networks.edit.help_reporting_url,Where this network's reports are published. Leave blank if the network has no reports.,
+networks.php,networks.edit.label_logo,Network logo,Netzwerk-Logo
+networks.php,networks.edit.button_save,Save changes,Änderungen speichern
+networks.php,networks.edit.add_new_field,Add new field,Neues Feld hinzufügen
+networks.php,networks.edit.new_field_name,New field name,Name des neuen Felds
+networks.php,networks.edit.add_field,Add field,Feld hinzufügen
+notifications.php,notifications.notifications,Notifications,Benachrichtigungen
+notifications.php,notifications.view_all,View all notifications,Alle Benachrichtigungen anzeigen
+notifications.php,notifications.mark_as_read,Mark as read,Als gelesen markieren
+notifications.php,notifications.marked_as_read,Marked as read,Als gelesen markiert
+notifications.php,notifications.mark_all_as_read,Mark all notifications as read,Alle Benachrichtigungen als gelesen markieren
+notifications.php,notifications.greeting,Hello!,Hallo!
+notifications.php,notifications.view_event,View event,Veranstaltung anzeigen
+notifications.php,notifications.view_group,View group,Gruppe anzeigen
+notifications.php,notifications.view_profile,View profile,Profil anzeigen
+notifications.php,notifications.email_footer,"If you have any questions or issues, please contact <a href=""mailto:community@therestartproject.org"">community@therestartproject.org</a>","Wenn du Fragen oder Probleme hast, wende dich bitte an <a href=""mailto:community@therestartproject.org"">community@therestartproject.org</a>"
+notifications.php,notifications.new_event_photos_subject,New event photos uploaded to event: :event,Neue Veranstaltungsfotos für das Event: :event
+notifications.php,notifications.email_preferences,"If you would like to stop receiving these emails, please visit <a href="":url#list-email-preferences"">your preferences</a> on your account.","Wenn du diese E-Mails nicht mehr erhalten möchtest, besuche bitte <a href="":url#list-email-preferences"">deine Einstellungen</a> in deinem Konto."
+notifications.php,notifications.event_confirmed_title,Event Confirmed,Veranstaltung bestätigt
+notifications.php,notifications.event_confirmed_subject,Event Confirmed :time,Veranstaltung bestätigt :time
+notifications.php,notifications.event_confirmed_line1,"Your event :name has been confirmed by an admin. This is now publicly available on <a href="":url"">:url.</a>","Deine Veranstaltung :name wurde von einem Administrator bestätigt. Sie ist jetzt öffentlich verfügbar unter <a href="":url"">:url.</a>"
+notifications.php,notifications.event_devices_title,Contribute Devices,Geräte beitragen
+notifications.php,notifications.event_devices_subject,Contribute Devices,Geräte beitragen
+notifications.php,notifications.event_devices_line1,"Thank you for hosting the event :event, please help us outline what devices were bought to the event and the status of their repair. This will help us improve the quality of our data.","Vielen Dank für die Organisation des Events :event. Bitte hilf uns, die Geräte zu erfassen, die zum Event gebracht wurden, und den Status ihrer Reparatur. Das hilft uns, die Qualität unserer Daten zu verbessern."
+notifications.php,notifications.event_devices_action,Contribute Data,Daten beitragen
+notifications.php,notifications.event_repairs_title,Help us log repair info for :name,"Hilf uns, Reparaturinfos für :name zu erfassen"
+notifications.php,notifications.event_repairs_subject,Help us log repair info for :name,"Hilf uns, Reparaturinfos für :name zu erfassen"
+notifications.php,notifications.event_repairs_line1,Thank you for fixing at the ':name' event. The host has posted photos of any feedback left by participants and repair data. Please help us to improve the details of the repairs you carried out by adding any useful information or photos you have. Any extra details you can add will help future repair attempts.,"Vielen Dank für deine Mitarbeit beim Event ':name'. Der Gastgeber hat Fotos von Feedback der Teilnehmenden und Reparaturdaten hochgeladen. Bitte hilf uns, die Details der von dir durchgeführten Reparaturen zu verbessern, indem du hilfreiche Informationen oder Fotos hinzufügst. Jede zusätzliche Information hilft bei künftigen Reparaturversuchen."
+notifications.php,notifications.event_repairs_action,Contribute repair info,Reparaturinfos beitragen
+notifications.php,notifications.group_confirmed_subject,Group Confirmed,Gruppe bestätigt
+notifications.php,notifications.group_confirmed_line1,Your group ':name' has been confirmed by an admin.,Deine Gruppe ':name' wurde von einem Administrator bestätigt.
+notifications.php,notifications.join_event_title,You've been invited to join an event: ,"Du wurdest eingeladen, einem Event beizutreten: "
+notifications.php,notifications.join_event_subject,You've been invited to an upcoming :groupname event,Du wurdest zu einem bevorstehenden :groupname-Event eingeladen
+notifications.php,notifications.join_event_line1,:inviter has invited you to join :groupname at an upcoming repair event.,":inviter hat dich eingeladen, bei einem bevorstehenden Reparaturevent bei :groupname mitzumachen."
+notifications.php,notifications.join_event_date,Date:,Datum:
+notifications.php,notifications.join_event_time,Time:,Uhrzeit:
+notifications.php,notifications.join_event_location,Location:,Ort:
+notifications.php,notifications.join_event_ignore,"If you think this invitation was not intended for you, please disregard this email.","Wenn du glaubst, dass diese Einladung nicht für dich bestimmt war, ignoriere bitte diese E-Mail."
+notifications.php,notifications.join_event_rsvp_now,RSVP now,Jetzt zusagen
+notifications.php,notifications.join_event_view,View event,Veranstaltung anzeigen
+notifications.php,notifications.join_group_title,Invitation from :name to follow :group,"Einladung von :name, :group zu folgen"
+notifications.php,notifications.join_group_intro,You have received this email because you have been invited by :name to follow the community repair group <b>:group</b> on restarters.net.,"Du hast diese E-Mail erhalten, weil du von :name eingeladen wurdest, der Gemeinschafts-Reparaturgruppe <b>:group</b> auf restarters.net zu folgen."
+notifications.php,notifications.join_group_action,Click to follow group,"Klicken, um der Gruppe zu folgen"
+notifications.php,notifications.join_group_ignore,"If you think this invitation was not intended for you, please disregard this email.","Wenn du glaubst, dass diese Einladung nicht für dich bestimmt war, ignoriere bitte diese E-Mail."
+notifications.php,notifications.join_group_attached,:name attached this message with the invite:,:name hat diese Nachricht zur Einladung beigefügt:
+notifications.php,notifications.join_group_more,"You can find out more about restarters.net <a href="":more"">here</a>.","Mehr über restarters.net erfährst du <a href="":more"">hier</a>."
+notifications.php,notifications.new_member_subject,New group member followed :name,Neues Gruppenmitglied folgt :name
+notifications.php,notifications.new_member_title,"A new volunteer, :name, has followed ","Ein neuer Freiwilliger, :name, folgt nun "
+notifications.php,notifications.new_member_line1,"A new volunteer, :user, has followed your group ':group'.","Ein neuer Freiwilliger, :user, folgt deiner Gruppe ':group'."
+notifications.php,notifications.new_member_action,Go to group,Zur Gruppe
+notifications.php,notifications.new_group_subject,There's a new repair group near to you,Es gibt eine neue Reparaturgruppe in deiner Nähe
+notifications.php,notifications.new_group_title,A new repair group near you:,Eine neue Reparaturgruppe in deiner Nähe:
+notifications.php,notifications.new_group_line1,"A new group near to you, :name, has just become active on Restarters.net.","Eine neue Gruppe in deiner Nähe, :name, ist gerade auf Restarters.net aktiv geworden."
+notifications.php,notifications.new_group_action,Find out more about :name,Mehr über :name erfahren
+notifications.php,notifications.new_event_subject,New event for :name at :time,Neues Event für :name am :time
+notifications.php,notifications.new_event_title,A new event has been created for group :name:,Ein neues Event wurde für die Gruppe :name erstellt:
+notifications.php,notifications.new_event_line1,There has been a new event added to your group: ':name'.,Deiner Gruppe wurde ein neues Event hinzugefügt: ':name'.
+notifications.php,notifications.password_reset_subject,Reset password,Passwort zurücksetzen
+notifications.php,notifications.password_reset_line1,You are receiving this email because we received a password reset request for your account.,"Du erhältst diese E-Mail, weil wir eine Anfrage zum Zurücksetzen des Passworts für dein Konto erhalten haben."
+notifications.php,notifications.password_reset_action,Reset password,Passwort zurücksetzen
+notifications.php,notifications.password_reset_noaction,"If you did not request a password reset, no further action is required.","Wenn du keine Anfrage zum Zurücksetzen des Passworts gestellt hast, ist keine weitere Aktion erforderlich."
+notifications.php,notifications.rsvp_subject,:name has RSVPed to your event,:name hat für dein Event zugesagt
+notifications.php,notifications.rsvp_title,: has RSVPed to your event:,: hat für dein Event zugesagt:
+notifications.php,notifications.rsvp_line1,"A volunteer, :user, has RSVPed to the ':event' event.","Ein Freiwilliger, :user, hat für das Event ':event' zugesagt."
+notifications.php,notifications.rsvp_action,View your event,Dein Event anzeigen
+notifications.php,notifications.abnormal_devices_subject,Abnormal number of miscellaneous devices,Ungewöhnlich viele sonstige Geräte
+notifications.php,notifications.abnormal_devices_title,Event has abnormal number of miscellaneous devices:,Event hat eine ungewöhnlich hohe Anzahl sonstiger Geräte:
+notifications.php,notifications.abnormal_devices_line1,The event ':name' has an abnormal number of miscellaneous devices. Please check the event and fix this issue.,Das Event ':name' hat eine ungewöhnlich hohe Anzahl sonstiger Geräte. Bitte überprüfe das Event und behebe dieses Problem.
+notifications.php,notifications.moderation_event_subject,New event for :name,Neues Event für :name
+notifications.php,notifications.moderation_event_line1,A new event has been created: ':name'.,Ein neues Event wurde erstellt: ':name'.
+notifications.php,notifications.moderation_event_line2,"This event might need your moderation, if your network moderates events and it hasn't yet been moderated by another administrator.","Dieses Event benötigt möglicherweise deine Moderation, wenn dein Netzwerk Events moderiert und es noch nicht von einem anderen Administrator moderiert wurde."
+notifications.php,notifications.moderation_event_photos_subject,New event photos uploaded to event: :event,Neue Veranstaltungsfotos für das Event: :event
+notifications.php,notifications.moderation_event_photos_line1,Photos have been uploaded to an event: ':name'.,Fotos wurden zu einem Event hochgeladen: ':name'.
+notifications.php,notifications.moderation_event_photos_line2,"These photos might need your moderation, if they haven't yet been moderated by another administrator.","Diese Fotos benötigen möglicherweise deine Moderation, wenn sie noch nicht von einem anderen Administrator moderiert wurden."
+notifications.php,notifications.moderation_group_subject,New group created: :name,Neue Gruppe erstellt: :name
+notifications.php,notifications.moderation_group_title,New group created:,Neue Gruppe erstellt:
+notifications.php,notifications.moderation_group_line1,A new group has been created: ':name'.,Eine neue Gruppe wurde erstellt: ':name'.
+notifications.php,notifications.moderation_group_line2,"This group might need your moderation, if it hasn't yet been moderated by another administrator.","Diese Gruppe benötigt möglicherweise deine Moderation, wenn sie noch nicht von einem anderen Administrator moderiert wurde."
+notifications.php,notifications.new_user_subject,New User Registration,Neue Benutzerregistrierung
+notifications.php,notifications.new_user_title,New user has joined the community:,Neuer Benutzer hat sich der Community angeschlossen:
+notifications.php,notifications.new_user_line1,"A new user "":name"" has joined the Restarters community.","Ein neuer Benutzer „:name"" hat sich der Restarters-Community angeschlossen."
+notifications.php,notifications.user_deleted_subject,User Deleted,Benutzer gelöscht
+notifications.php,notifications.user_deleted_title,User has deleted their account:,Benutzer hat sein Konto gelöscht:
+notifications.php,notifications.user_deleted_line1,"The user "":name"" has deleted their Restarters account.","Der Benutzer „:name"" hat sein Restarters-Konto gelöscht."
+notifications.php,notifications.wordpress_create_event_failure_subject,Event WordPress failure,Event-WordPress-Fehler
+notifications.php,notifications.wordpress_create_event_failure_title,Event failed to create a new WordPress post:,Event konnte keinen neuen WordPress-Beitrag erstellen:
+notifications.php,notifications.wordpress_create_event_failure_line1,Event ':name' failed to create a WordPress post during admin approval.,Das Event ':name' konnte während der Administrator-Genehmigung keinen WordPress-Beitrag erstellen.
+notifications.php,notifications.wordpress_create_group_failure_subject,Group WordPress failure,Gruppen-WordPress-Fehler
+notifications.php,notifications.wordpress_create_group_failure_title,Group failed to create a new WordPress post:,Gruppe konnte keinen neuen WordPress-Beitrag erstellen:
+notifications.php,notifications.wordpress_create_group_failure_line1,Error creating group page for ':name' on WordPress.,Fehler beim Erstellen der Gruppenseite für ':name' auf WordPress.
+notifications.php,notifications.wordpress_edit_event_failure_subject,Event WordPress failure,Event-WordPress-Fehler
+notifications.php,notifications.wordpress_edit_event_failure_title,Event failed to save to an existing WordPress post:,Event konnte nicht in einem vorhandenen WordPress-Beitrag gespeichert werden:
+notifications.php,notifications.wordpress_edit_event_failure_line1,Event ':name' failed to post to WordPress during an edit to the event.,Das Event ':name' konnte bei einer Bearbeitung nicht auf WordPress veröffentlicht werden.
+notifications.php,notifications.wordpress_edit_group_failure_subject,Group WordPress failure,Gruppen-WordPress-Fehler
+notifications.php,notifications.wordpress_edit_group_failure_title,Group failed to save to an existing WordPress post:,Gruppe konnte nicht in einem vorhandenen WordPress-Beitrag gespeichert werden:
+notifications.php,notifications.wordpress_edit_group_failure_line1,Group ':name' failed to post to WordPress during an edit to the group.,Die Gruppe ':name' konnte bei einer Bearbeitung nicht auf WordPress veröffentlicht werden.
+notifications.php,notifications.wordpress_delete_event_failed_subject,Failed to delete event from WordPress: :name,Event konnte nicht von WordPress gelöscht werden: :name
+notifications.php,notifications.wordpress_delete_event_failed_line2,Please find and delete this event manually from WordPress.,Bitte suche und lösche dieses Event manuell von WordPress.
+notifications.php,notifications.admin_no_devices_subject,Recent event with no devices added,Aktuelles Event ohne hinzugefügte Geräte
+notifications.php,notifications.admin_no_devices_title,Moderation needed on event with no devices:,Moderation erforderlich für Event ohne Geräte:
+notifications.php,notifications.admin_no_devices_line1,Your moderation is needed for ':name'.,Deine Moderation wird für ':name' benötigt.
+notifications.php,notifications.admin_no_devices_line2,No devices have been added against this event.,Für dieses Event wurden keine Geräte erfasst.
+onboarding.php,onboarding.slide1_content,<p>Thank you for joining our community space.</p>,"<p>Danke, dass Sie unserer Community beigetreten sind.</p>"
+onboarding.php,onboarding.slide2_content,<p>In the community space you can:</p> <ul><li>chat with other volunteers</li><li>join repair groups</li><li>share your repair knowledge</li><li>create and RSVP to events</li><li>log the devices you fix at events</li><li>help bring down the barriers to repair</li><p></p></ul>,"<p>In der Community können Sie:</p> <ul><li>Mit anderen Freiwilligen chatten</li><li>Reparaturgruppen beitreten</li><li>Ihr Reparaturwissen teilen</li><li>Veranstaltungen erstellen und zusagen</li><li>Geräte erfassen, die Sie bei Veranstaltungen reparieren</li><li>Dazu beitragen, Hindernisse bei der Reparatur abzubauen</li><p></p></ul>"
+onboarding.php,onboarding.slide3_content,"<p>Your starting point is the <strong>community dashboard</strong>.</p><p>Your dashboard gives you at a glance info on the latest happenings in the community, as well as quick access to common actions.</p><p>A good place to start is the <strong>Getting Started</strong> section.</p>",<p>Ihr Ausgangspunkt ist das <strong>Community-Dashboard</strong>.</p><p>Ihr Dashboard gibt Ihnen auf einen Blick Informationen über das Neueste in der Community sowie schnellen Zugriff auf häufige Aktionen.</p><p>Ein guter Startpunkt ist der Bereich <strong>Erste Schritte</strong>.</p>
+onboarding.php,onboarding.previous,Previous,Zurück
+onboarding.php,onboarding.slide1_heading,Welcome!,Willkommen!
+onboarding.php,onboarding.slide2_heading,Your gateway to community repair,Ihr Zugang zur Gemeinschaftsreparatur
+onboarding.php,onboarding.slide3_heading,Let's get started!,Los geht's!
+onboarding.php,onboarding.finishing_action,To the dashboard,Zum Dashboard
+onboarding.php,onboarding.next,Next,Weiter
+partials.php,partials.category,Category,Kategorie
+partials.php,partials.community_news,Community news,Community-News
+partials.php,partials.community_news_text,"The latest from our community blog - we are always looking for guest posts, send ideas to <a href=""mailto:janet@therestartproject.org"">janet@therestartproject.org</a>","Das Neueste aus unserem Community-Blog – wir suchen immer nach Gastbeiträgen, senden Sie Ideen an <a href=""mailto:janet@therestartproject.org"">janet@therestartproject.org</a>"
+partials.php,partials.see_more_posts,See more posts,Weitere Beiträge anzeigen
+partials.php,partials.see_all_events,See all events,Alle Veranstaltungen anzeigen
+partials.php,partials.discussion,Discussion,Diskussion
+partials.php,partials.discussion_text,"Meet other event organisers and repair volunteers, trade tips, get help, or discuss the system-level barriers to longer-lasting products","Lernen Sie andere Veranstaltungsorganisatoren und Reparaturfreiwillige kennen, tauschen Sie Tipps aus, holen Sie sich Hilfe oder diskutieren Sie über systemische Hindernisse für langlebigere Produkte"
+partials.php,partials.add_device,Add item,Artikel hinzufügen
+partials.php,partials.read_more,Read more,Mehr lesen
+partials.php,partials.how_to_host_an_event,How to host an event,Wie man eine Veranstaltung organisiert
+partials.php,partials.how_to_host_an_event_text,"We have years of experience hosting community repair events, and we offer materials on how to organise events them. We also offer peer to peer support on our forum.",Wir haben jahrelange Erfahrung in der Durchführung von Gemeinschaftsreparaturveranstaltungen und bieten Materialien zur Organisation von Veranstaltungen an. Wir bieten auch Peer-to-Peer-Unterstützung in unserem Forum.
+partials.php,partials.view_the_materials,View the materials,Materialien anzeigen
+partials.php,partials.waste_prevented,waste prevented,vermiedener Abfall
+partials.php,partials.co2,CO<sub>2</sub>e emissions prevented,geschätzte verhinderte CO<sub>2</sub>e-Emissionen
+partials.php,partials.restarters_in_your_area,Volunteers in your area,Freiwillige in Ihrer Nähe
+partials.php,partials.information_up_to_date,Keep your group information up to date!,Halten Sie Ihre Gruppeninformationen aktuell!
+partials.php,partials.information_up_to_date_text,A fresh profile helps recruit more volunteers. Make sure to link to your website or social media channels.,"Ein aktuelles Profil hilft dabei, mehr Freiwillige zu gewinnen. Verlinken Sie auf Ihre Website oder Social-Media-Kanäle."
+partials.php,partials.your_recent_events,Your recent events,Ihre letzten Veranstaltungen
+partials.php,partials.your_recent_events_txt1,"These are events you RSVP'ed to, or where a host logged your participation.","Dies sind Veranstaltungen, für die Sie zugesagt haben oder bei denen ein Host Ihre Teilnahme erfasst hat."
+partials.php,partials.your_recent_events_txt2,Here's a list of recent events you have been a part of - all important contributions to your community and the environment.,"Hier ist eine Liste der letzten Veranstaltungen, an denen Sie teilgenommen haben – alles wichtige Beiträge für Ihre Community und die Umwelt."
+partials.php,partials.no_past_events,No Past Events,Keine vergangenen Veranstaltungen
+partials.php,partials.area_text_1,"Through this community, potential volunteers self-register and share their location. The platform is designed to connect organisers and fixers.","Durch diese Community registrieren sich potenzielle Freiwillige selbst und teilen ihren Standort. Die Plattform ist darauf ausgelegt, Organisatoren und Reparateure zu verbinden."
+partials.php,partials.area_text_2,"Through this community, potential volunteers self-register and share their location. Here's a list of potential volunteers near you",Durch diese Community registrieren sich potenzielle Freiwillige selbst und teilen ihren Standort. Hier ist eine Liste potenzieller Freiwilliger in Ihrer Nähe
+partials.php,partials.host_getting_started_title,Getting started in community repair,Einstieg in die Gemeinschaftsreparatur
+partials.php,partials.host_getting_started_text,We offer materials on how to help organise repair events in your community.,"Wir bieten Materialien an, die beim Organisieren von Reparaturveranstaltungen in Ihrer Community helfen."
+partials.php,partials.getting_started_link,View the materials,Materialien anzeigen
+partials.php,partials.restarter_getting_started_title,Getting started in community repair,Einstieg in die Gemeinschaftsreparatur
+partials.php,partials.restarter_getting_started_text,We offer materials on how to help others fix their electronics at community events: on how to share your repair skills in your community and help organise events.,"Wir bieten Materialien an, wie Sie anderen helfen können, ihre Elektronikgeräte bei Gemeinschaftsveranstaltungen zu reparieren: wie Sie Ihre Reparaturfähigkeiten in Ihrer Community teilen und Veranstaltungen helfen zu organisieren."
+partials.php,partials.welcome_title,Getting started in community repair,Einstieg in die Gemeinschaftsreparatur
+partials.php,partials.welcome_text,We offer materials on how to help others fix their electronics at community events: on how to share your repair skills in your community and help organise events,"Wir bieten Materialien an, wie Sie anderen helfen können, ihre Elektronikgeräte bei Gemeinschaftsveranstaltungen zu reparieren: wie Sie Ihre Reparaturfähigkeiten in Ihrer Community teilen und Veranstaltungen helfen zu organisieren"
+partials.php,partials.wiki_title,Wiki,Wiki
+partials.php,partials.wiki_text,A changing selection of pages from our repair wiki.  Read and contribute advice for community repair!,Eine wechselnde Auswahl an Seiten aus unserem Reparatur-Wiki. Lesen und tragen Sie Ratschläge für die Gemeinschaftsreparatur bei!
+partials.php,partials.remove_volunteer,Remove volunteer,Freiwillige(n) entfernen
+partials.php,partials.host,Host,Host
+partials.php,partials.update,Update,Aktualisieren
+partials.php,partials.category_none,None of the above,Nichts davon
+partials.php,partials.fixed,Fixed,Repariert
+partials.php,partials.repairable,Repairable,Reparierbar
+partials.php,partials.end,End,Ende
+partials.php,partials.end_of_life,End-of-life,Lebensende
+partials.php,partials.more_time,More time needed,Mehr Zeit benötigt
+partials.php,partials.professional_help,Professional help,Fachkundige Hilfe
+partials.php,partials.diy,Do it yourself,Selbst reparieren
+partials.php,partials.yes,Yes,Ja
+partials.php,partials.yes_manufacturer,Parts required - from manufacturer,Ersatzteile benötigt – vom Hersteller
+partials.php,partials.yes_third_party,Parts required - from 3rd party,Ersatzteile benötigt – von Drittanbieter
+partials.php,partials.no,No spare parts required,Keine Ersatzteile benötigt
+partials.php,partials.n_a,N/A,N/A
+partials.php,partials.least_repaired,Least repaired,Am wenigsten repariert
+partials.php,partials.most_repaired,Most repaired,Am häufigsten repariert
+partials.php,partials.most_seen,Most seen,Am häufigsten gesehen
+partials.php,partials.no_devices_added,No devices added,Keine Geräte hinzugefügt
+partials.php,partials.add_a_device,Add a device,Gerät hinzufügen
+partials.php,partials.event_requires_moderation_by_an_admin,Event requires moderation by an admin,Veranstaltung erfordert Moderation durch einen Administrator
+partials.php,partials.save,Save item,Artikel speichern
+partials.php,partials.hot_topics,Hot topics,Aktuelle Themen
+partials.php,partials.hot_topics_text,Join in on the latest hot topics on repair at Restarters Talk.,Beteiligen Sie sich an den neuesten heißen Themen rund um Reparatur bei Restarters Talk.
+partials.php,partials.hot_topics_link,All weekly hot topics,Alle wöchentlichen Topthemen
+partials.php,partials.choose_barriers,Choose main barrier to repair,Haupthindernis für die Reparatur auswählen
+partials.php,partials.add_device_powered,Add Powered Item,Elektrischen Artikel hinzufügen
+partials.php,partials.add_device_unpowered,Add Unpowered Item,Nicht-elektrischen Artikel hinzufügen
+partials.php,partials.emissions_equivalent_consume_low_explanation,"Medium growth coniferous or deciduous trees, planted in an urban setting and grown for 10 years.","Mittelwüchsige Nadel- oder Laubbäume, in einer städtischen Umgebung gepflanzt und 10 Jahre lang gewachsen."
+partials.php,partials.emissions_equivalent_consume_high_explanation,Broadleaf tree seedlings grown in a plantation or woodlot in England for 1 year.,"Laubbaumsetzlinge, die in einer Plantage oder einem Gehölz in England 1 Jahr lang gewachsen sind."
+partials.php,partials.to_be_recycled,:value item to be recycled|:value items to be recycled,:value Artikel zum Recyceln|:value Artikel zum Recyceln
+partials.php,partials.to_be_repaired,:value item to be repaired|:value items to be repaired,:value Artikel zur Reparatur|:value Artikel zur Reparatur
+partials.php,partials.no_weight,:value misc or unpowered item with no weight estimate|:value misc or unpowered items with no weight estimate,:value sonstiger oder nicht-elektrischer Artikel ohne Gewichtsschätzung|:value sonstige oder nicht-elektrische Artikel ohne Gewichtsschätzung
+partials.php,partials.cancel,Cancel,Abbrechen
+partials.php,partials.loading,Loading,Wird geladen
+partials.php,partials.close,Close,Schließen
+partials.php,partials.skills,skill|skills,Fähigkeit|Fähigkeiten
+partials.php,partials.something_wrong,Something has gone wrong,Etwas ist schiefgelaufen
+partials.php,partials.are_you_sure,Are you sure?,Sind Sie sicher?
+partials.php,partials.please_confirm,Please confirm that you wish to proceed.,"Bitte bestätigen Sie, dass Sie fortfahren möchten."
+partials.php,partials.event_requires_moderation,Event requires moderation,Veranstaltung erfordert Moderation
+partials.php,partials.copied_to_clipboard,Copied to clipboard.,In die Zwischenablage kopiert.
+partials.php,partials.total,total,gesamt
+partials.php,partials.remove,remove,entfernen
+partials.php,partials.please_choose,Please choose...,Bitte auswählen...
+partials.php,partials.notification_greeting,Hello!,Hallo!
+partials.php,partials.confirm,Confirm,Bestätigen
+partials.php,partials.validate_timezone,Please select a valid timezone.,Bitte wählen Sie eine gültige Zeitzone aus.
+partials.php,partials.dragmap,Pin not quite in the right place?  Drag it to the right spot.,
+partials.php,partials.share_this,Share this,Teilen
+partials.php,partials.download,Download,Herunterladen
+partials.php,partials.share_modal_title,Shareable Statistics,Teilbare Statistiken
+partials.php,partials.share_modal_of_co2,of CO2e,CO2e eingespart
+partials.php,partials.share_modal_by_repairing,by repairing,durch die Reparatur von
+partials.php,partials.share_modal_broken_stuff,broken stuff.,defekten Geräten.
+partials.php,partials.impact_estimates,Impact figures are estimates based on data entered by groups into Restarters.net.,Wirkungszahlen sind Schätzungen auf Grundlage der von Gruppen in Restarters.net eingegebenen Daten.
+partials.php,partials.see_further_reports,See more analysis in our further reports.,
+passwords.php,passwords.sent,We have e-mailed your password reset link!,Wir haben Ihnen einen Link zum Zurücksetzen des Passworts per E-Mail geschickt!
+passwords.php,passwords.user,We can't find a user with that e-mail address.,Wir können keinen Benutzer mit dieser E-Mail-Adresse finden.
+passwords.php,passwords.invalid,Please input a valid email.,Bitte geben Sie eine gültige E-Mail-Adresse ein.
+passwords.php,passwords.recover_title,Account Recovery,Kontowiederherstellung
+passwords.php,passwords.match,The passwords do not match,Die Passwörter stimmen nicht überein
+passwords.php,passwords.updated,"Password updated, please login to continue.","Passwort aktualisiert. Bitte melden Sie sich an, um fortzufahren."
+passwords.php,passwords.failed,Could not update the password.,Das Passwort konnte nicht aktualisiert werden.
+profile.php,profile.skills,Skills,Fähigkeiten
+profile.php,profile.my_skills,My skills,Meine Fähigkeiten
+profile.php,profile.biography,Biography,Biografie
+profile.php,profile.no_bio,:name has not yet entered a biography.,:name hat noch keine Biografie eingegeben.
+profile.php,profile.edit_user,Edit user,Benutzer bearbeiten
+profile.php,profile.change_photo,Change my photo,Mein Foto ändern
+profile.php,profile.profile_picture,Profile picture,Profilbild
+profile.php,profile.skills_updated,Skills updated!,Fähigkeiten aktualisiert!
+profile.php,profile.notifications,Notifications,Benachrichtigungen
+profile.php,profile.language_panel_title,Language settings,Spracheinstellungen
+profile.php,profile.preferred_language,Preferred language,Bevorzugte Sprache
+profile.php,profile.language_updated,Language preference updated,Spracheinstellung aktualisiert
+profile.php,profile.page_title,Profile & Preferences,Profil & Einstellungen
+profile.php,profile.profile,Profile,Profil
+profile.php,profile.account,Account,Konto
+profile.php,profile.email_preferences,Email preferences,E-Mail-Einstellungen
+profile.php,profile.calendars.title,Calendars,Kalender
+profile.php,profile.calendars.explainer,You can now keep track of events using your personal calendar application by subscribing to the calendar feeds below. You can subscribe to as many calendars as you like.,"Sie können Veranstaltungen jetzt in Ihrer persönlichen Kalenderanwendung verfolgen, indem Sie die unten stehenden Kalender-Feeds abonnieren. Sie können so viele Kalender abonnieren, wie Sie möchten."
+profile.php,profile.calendars.find_out_more,Find out more,Mehr erfahren
+profile.php,profile.calendars.my_events,My events,Meine Veranstaltungen
+profile.php,profile.calendars.copy_link,Copy link,Link kopieren
+profile.php,profile.calendars.group_calendars,Group calendars,Gruppenkalender
+profile.php,profile.calendars.all_events,All events (admin only),Alle Veranstaltungen (nur Administratoren)
+profile.php,profile.calendars.events_by_area,Events by area,Veranstaltungen nach Gebiet
+profile.php,profile.name,Name,Name
+profile.php,profile.country,Country,Land
+profile.php,profile.email_address,Email address,E-Mail-Adresse
+profile.php,profile.save_profile,Save profile,Profil speichern
+profile.php,profile.view_profile,View profile,Profil anzeigen
+profile.php,profile.view_user_profile,View user profile,Benutzerprofil anzeigen
+profile.php,profile.repair_directory,Repair Directory,Reparaturverzeichnis
+profile.php,profile.repair_dir_role,Repair Directory Role,Rolle im Reparaturverzeichnis
+profile.php,profile.repair_dir_none,No access,Kein Zugang
+profile.php,profile.repair_dir_editor,Editor,Bearbeiter
+profile.php,profile.repair_dir_regional_admin,Regional Admin,Regionaler Administrator
+profile.php,profile.repair_dir_superadmin,SuperAdmin,Superadministrator
+profile.php,profile.password_old_mismatch,Current Password does not match!,Das aktuelle Passwort stimmt nicht überein!
+profile.php,profile.password_new_mismatch,New Passwords do not match!,Die neuen Passwörter stimmen nicht überein!
+profile.php,profile.password_changed,User Password Updated!,Benutzerpasswort aktualisiert!
+profile.php,profile.profile_updated,User Profile Updated!,Benutzerprofil aktualisiert!
+profile.php,profile.preferences_updated,User Preferences Updated!,Benutzereinstellungen aktualisiert!
+profile.php,profile.soft_deleted,:name's account has been soft deleted.,Das Konto von :name wurde deaktiviert.
+profile.php,profile.picture_success,Profile picture updated!,Profilbild aktualisiert!
+profile.php,profile.picture_error,Failed to upload profile picture!,Profilbild konnte nicht hochgeladen werden!
+profile.php,profile.admin_success,Admin settings updated,Administrator-Einstellungen aktualisiert
+profile.php,profile.create_success,User Successfully Created!,Benutzer erfolgreich erstellt!
+registration.php,registration.reg-step-1-heading,What skills would you like to share with others?,Welche Fähigkeiten möchten Sie mit anderen teilen?
+registration.php,registration.town-city-placeholder,"E.g. Paris, London, Brussels","z. B. Paris, London, Brüssel"
+registration.php,registration.reg-step-3-label1,I would like to receive The Restart Project monthly newsletter,Ich möchte den monatlichen Newsletter von The Restart Project erhalten
+registration.php,registration.reg-step-3-label2,I would like to receive email notifications about events or groups near me,Ich möchte E-Mail-Benachrichtigungen über Veranstaltungen oder Gruppen in meiner Nähe erhalten
+registration.php,registration.reg-step-4-label1,"<strong>Personal Data</strong>. I consent for The Restart Project to use my personal data internally for the purposes of registering me in the community, verifying the source of repair data and improving the volunteer experience. I understand that my personal profile will be visible to other community members, however personal data provided will never be shared with third parties without my consent. I understand I can delete my profile and all my personal data at any time - and access the community Privacy Policy <a href=""https://therestartproject.org/data-and-privacy-policy/fixometer/"" rel=""noopener noreferrer"" target=""_blank"">here</a>.","<strong>Persönliche Daten</strong>. Ich stimme zu, dass The Restart Project meine persönlichen Daten intern für die Zwecke der Registrierung in der Community, der Überprüfung der Quelle von Reparaturdaten und der Verbesserung der Freiwilligenerfahrung verwendet. Ich verstehe, dass mein persönliches Profil für andere Community-Mitglieder sichtbar sein wird, persönliche Daten jedoch niemals ohne meine Zustimmung an Dritte weitergegeben werden. Ich verstehe, dass ich mein Profil und alle meine persönlichen Daten jederzeit löschen kann – und die Datenschutzrichtlinie der Community <a href=""https://therestartproject.org/data-and-privacy-policy/fixometer/"" rel=""noopener noreferrer"" target=""_blank"">hier</a> abrufen kann."
+registration.php,registration.reg-step-4-label2,"<strong>Repair Data</strong>.  By contributing repair data to the Fixometer, I give The Restart Project a perpetual royalty-free license to use it. The license allows Restart to distribute the data under any open license and to retain any non-personal data even in case I request deletion of my personal profile on the Fixometer. (<i>Read more about how we use repair data <a href=""https://therestartproject.org/fixometer/why-we-collect-repair-data/"" rel=""noopener noreferrer"" target=""_blank"">here</a></i>.)","<strong>Reparaturdaten</strong>. Durch das Beitragen von Reparaturdaten zum Fixometer gewähre ich The Restart Project eine unbefristete, lizenzgebührenfreie Lizenz zur Nutzung. Die Lizenz erlaubt Restart, die Daten unter einer beliebigen offenen Lizenz zu verbreiten und alle nicht-personenbezogenen Daten auch dann zu behalten, wenn ich die Löschung meines persönlichen Profils im Fixometer beantrage. (<i>Lesen Sie hier mehr darüber, wie wir Reparaturdaten nutzen: <a href=""https://therestartproject.org/fixometer/why-we-collect-repair-data/"" rel=""noopener noreferrer"" target=""_blank"">hier</a></i>.)"
+registration.php,registration.reg-step-4-label3,"<strong>Historical Repair Data</strong>. I give a perpetual royalty-free license to any of my previous repair data contributions to The Restart Project. The license allows Restart to distribute the data under any open license and to retain any non-personal data even in case I request deletion of my personal profile on the Fixometer. (<i>Read more about how we use repair data <a href=""https://therestartproject.org/fixometer/why-we-collect-repair-data/"" rel=""noopener noreferrer"" target=""_blank"">here</a></i>.)","<strong>Historische Reparaturdaten</strong>. Ich gewähre The Restart Project eine unbefristete, lizenzgebührenfreie Lizenz für alle meine früheren Reparaturdatenbeiträge. Die Lizenz erlaubt Restart, die Daten unter einer beliebigen offenen Lizenz zu verbreiten und alle nicht-personenbezogenen Daten auch dann zu behalten, wenn ich die Löschung meines persönlichen Profils im Fixometer beantrage. (<i>Lesen Sie hier mehr darüber, wie wir Reparaturdaten nutzen: <a href=""https://therestartproject.org/fixometer/why-we-collect-repair-data/"" rel=""noopener noreferrer"" target=""_blank"">hier</a></i>.)"
+registration.php,registration.complete-profile,Complete my profile,Mein Profil vervollständigen
+registration.php,registration.age,Year of birth,Geburtsjahr
+registration.php,registration.age_help,"To help spread community repair, we need greater insights into intergenerational dynamics.","Um die Gemeinschaftsreparatur zu fördern, benötigen wir ein besseres Verständnis der generationsübergreifenden Dynamik."
+registration.php,registration.age_validation,Please add your year of birth.,Bitte geben Sie Ihr Geburtsjahr an.
+registration.php,registration.country,Country,Land
+registration.php,registration.country_help,Knowing where volunteers are based helps to grow the global community.,"Zu wissen, wo Freiwillige ansässig sind, hilft dabei, die globale Community zu wachsen."
+registration.php,registration.country_validation,Please add your country.,Bitte geben Sie Ihr Land an.
+registration.php,registration.gender,Gender (Optional),Geschlecht (optional)
+registration.php,registration.gender_help,"Sharing your gender identity can help the community learn how to promote diversity, but we understand not everybody wants to share.","Das Teilen Ihrer Geschlechtsidentität kann der Community helfen zu lernen, wie sie Vielfalt fördern kann, aber wir verstehen, dass nicht alle dies teilen möchten."
+registration.php,registration.town-city,Town/City (Optional),Ort/Stadt (optional)
+registration.php,registration.town-city_help,Town/city helps match volunteers to groups and to find local events.,"Ort/Stadt hilft dabei, Freiwillige mit Gruppen zusammenzubringen und lokale Veranstaltungen zu finden."
+registration.php,registration.reg-step-2-heading,Tell us a little bit about yourself,Erzählen Sie uns ein wenig über sich
+registration.php,registration.reg-step-3-heading,How would you like us to keep in touch?,"Wie möchten Sie, dass wir mit Ihnen in Kontakt bleiben?"
+registration.php,registration.reg-step-4-heading,Uses of the data you enter,Verwendung der von Ihnen eingegebenen Daten
+registration.php,registration.reg-step-1-1,This is optional but helps us to improve your experience and helps organise events.  You can change these later in your profile.,"Dies ist optional, hilft uns aber, Ihre Erfahrung zu verbessern und Veranstaltungen zu organisieren. Sie können diese Angaben später in Ihrem Profil ändern."
+registration.php,registration.reg-step-2-1,"This information is useful for us to serve the community better. Of your personal data, only your skills, town/city and name will be visible to other community members.","Diese Informationen helfen uns, die Community besser zu bedienen. Von Ihren persönlichen Daten werden nur Ihre Fähigkeiten, Ihr Ort/Ihre Stadt und Ihr Name für andere Community-Mitglieder sichtbar sein."
+registration.php,registration.reg-step-2-2,"To create an account, you must set a password","Um ein Konto zu erstellen, müssen Sie ein Passwort festlegen"
+registration.php,registration.reg-step-3-1a,"We can send you email updates about events and groups related to you, and about Restart Project activities in general.","Wir können Ihnen E-Mail-Updates über Veranstaltungen und Gruppen, die mit Ihnen in Zusammenhang stehen, sowie über allgemeine Aktivitäten des Restart Project senden."
+registration.php,registration.reg-step-3-2b,"Following registration, you will receive a short series of welcome emails. You can also opt-in to other communications below.",Nach der Registrierung erhalten Sie eine kurze Reihe von Willkommens-E-Mails. Sie können sich unten auch für weitere Mitteilungen anmelden.
+registration.php,registration.reg-step-4,Please give your consent to our uses of the data that you enter.,Bitte geben Sie Ihre Zustimmung zur Verwendung der von Ihnen eingegebenen Daten.
+registration.php,registration.next-step,Next step,Nächster Schritt
+registration.php,registration.previous-step,Previous step,Vorheriger Schritt
+registration.php,registration.step-1,Step 1 of 4,Schritt 1 von 4
+registration.php,registration.step-2,Step 2 of 4,Schritt 2 von 4
+registration.php,registration.step-3,Step 3 of 4,Schritt 3 von 4
+registration.php,registration.step-4,Step 4 of 4,Schritt 4 von 4
+reporting.php,reporting.breakdown_by_country,Breakdown by country,Aufschlüsselung nach Land
+reporting.php,reporting.breakdown_by_city,Breakdown by city,Aufschlüsselung nach Stadt
+reporting.php,reporting.breakdown_by_country_content,Volunteer hours grouped by volunteer country.,Freiwilligenstunden gruppiert nach dem Land der Freiwilligen.
+reporting.php,reporting.breakdown_by_city_content,Volunteer hours grouped by the volunteer town/city (note: town/country is optional so may not be set for all volunteers).,Freiwilligenstunden gruppiert nach dem Ort/der Stadt der Freiwilligen (Hinweis: Ort/Stadt ist optional und möglicherweise nicht für alle Freiwilligen angegeben).
+reporting.php,reporting.country_name,Country name,Ländername
+reporting.php,reporting.town_city_name,Town/city name,Ort-/Stadtname
+reporting.php,reporting.total_hours,Total hours,Gesamtstunden
+skills.php,skills.create_success,Skill successfully created!,Fähigkeit erfolgreich erstellt!
+skills.php,skills.update_success,Skill successfully updated!,Fähigkeit erfolgreich aktualisiert!
+skills.php,skills.delete_success,Skill successfully deleted!,Fähigkeit erfolgreich gelöscht!

@@ -1,0 +1,19 @@
+id,form_field_options_id,repair_status,repair_barrier_if_end_of_life
+1,11,fixed,
+2,8,repairable,
+3,9,repairable,
+4,10,repairable,
+5,15,repairable,
+6,16,end of life,lack of equipment
+7,17,end of life,
+8,18,end of life,spare parts not available
+9,19,repairable,
+10,20,end of life,
+11,23,repairable,
+12,24,unknown,
+13,25,end of life,no way to open the product
+14,26,end of life,spare parts too expensive
+15,27,end of life,repair information not available
+16,28,end of life,product too worn out
+17,7,unknown,
+18,14,end_of_life,

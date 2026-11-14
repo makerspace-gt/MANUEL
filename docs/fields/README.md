@@ -2,7 +2,21 @@
 
 Je Plattform eine CSV-Datei. Die Kopfzeile nennt die Felder so, wie die Plattform sie selbst nennt. Darunter stehen alle Werte, die ein Feld annehmen kann, je Zeile einer. Freitext und Zahlen haben keine festen Werte, ihre Spalte bleibt leer. Wo zwei Spalten zusammengehören, etwa eine Kategorie und ihre Oberkategorie, stehen sie in derselben Zeile.
 
-Die Dateien entstehen mit [platform_values.py](../../eval/fields/platform_values.py) aus den Quellen im Ordner [quellen](../../quellen).
+Die Dateien entstehen bisher in einem Schritt mit [platform_values.py](../../eval/fields/platform_values.py). Künftig folgen sie den drei Schritten Import, Tidy und Transform, damit sich eine Quelle einfach aktualisieren lässt und jeder Schritt nachvollziehbar bleibt.
+
+## Ablauf
+
+1. **Import.** Jede Quelle wird möglichst unverändert eine Tabelle in [import](import).
+   - [import_sources.py](../../eval/fields/import_sources.py) liest die Quellen, die noch keine Tabellen sind:
+     - die Codes für Status und Hindernis aus `standard.rst`
+     - fünf Tabellen aus `database.sql` der anstiftung
+     - die Felder eines Geräts und einer Kategorie aus der API von Restarters
+     - die Abbildung nach ORDS aus `config/ords.php`
+     - alle Texte der deutschen Sprachdateien von Restarters als zweite Übersetzungstabelle `restarters_translations.csv`
+   - [import_partners.R](../../eval/fields/import_partners.R) schreibt aus den aggregierten Open Repair Data je Partner eine Datei mit jeder Kategorie des Partners, der ORA-Gruppe, die die Alliance zugeordnet hat, und der Zahl der Einträge.
+   - Tabellen wie die Kategorien des Laufzettels in [quellen/anstiftung](../../quellen/anstiftung) liest der nächste Schritt direkt. Dazu gehören auch die 21 unbestätigten Kategorien, die Spalte `confirmed` bleibt erhalten.
+2. **Tidy.** Steht noch aus.
+3. **Transform.** Steht noch aus. Danach ersetzt es `platform_values.py`.
 
 | Datei | Plattform | Felder | Quelle |
 |---|---|---|---|

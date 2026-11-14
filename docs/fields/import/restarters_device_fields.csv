@@ -1,0 +1,34 @@
+field,format,description,enum
+id,int64,Unique identifier of this item.,
+eventid,int64,The event to which this device belongs.,
+eventtitle,string,Title of the event.  Provided for convenience to avoid extra API calls.,
+event_date,date-time,When the event started.  Provided for convenience to avoid extra API calls.,
+groupid,int64,The group to which this device belongs.,
+groupname,string,Name of the group. Provided for convenience to avoid extra API calls.,
+created_at,date-time,When this device was first added,
+updated_at,date-time,When this device was last updated,
+category,int64,The category to which this item belongs.,
+category_creation,int64,The id of the category to which this item belonged at the time of creation (if different).,
+item_type,string,The name of the item.,
+brand,string,The brand or manufacturer of this item.,
+model,string,The specific model of this item.,
+age,number,The age of this item in years.  0 means the age is not known.,
+estimate,float,The weight estimage for this item in kg.,
+problem,string,Description of the problem/solution.,
+shortProblem,string,Shortened version of the of the problem/solution field.,
+notes,string,"Notes - repair difficulties, owner's perception of problem etc",
+repair_status,string,"Whether the item was fixed, is repairable, or cannot be fixed.",Fixed
+repair_status,string,"Whether the item was fixed, is repairable, or cannot be fixed.",Repairable
+repair_status,string,"Whether the item was fixed, is repairable, or cannot be fixed.",End of life
+next_steps,string,"Iff repair_status is 'repairable', what the next steps are.",More time needed
+next_steps,string,"Iff repair_status is 'repairable', what the next steps are.",Professional help
+next_steps,string,"Iff repair_status is 'repairable', what the next steps are.",Do it yourself
+spare_parts,string,"Iff repair_status is 'repairable', whether any spare parts are needed.",No
+spare_parts,string,"Iff repair_status is 'repairable', whether any spare parts are needed.",Manufacturer
+spare_parts,string,"Iff repair_status is 'repairable', whether any spare parts are needed.",Third party
+barrier,string,"Iff repair_status is 'End of life',  the primary barrier to repair.",Spare parts not available
+barrier,string,"Iff repair_status is 'End of life',  the primary barrier to repair.",Spare parts too expensive
+barrier,string,"Iff repair_status is 'End of life',  the primary barrier to repair.",No way to open the product
+barrier,string,"Iff repair_status is 'End of life',  the primary barrier to repair.",Repair information not available
+barrier,string,"Iff repair_status is 'End of life',  the primary barrier to repair.",Lack of equipment
+images,,Any images associated with this devices,

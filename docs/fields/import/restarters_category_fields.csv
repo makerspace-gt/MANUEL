@@ -1,0 +1,4 @@
+field,format,description,enum
+id,int64,Unique identifier of this category,
+name,string,Unique name of this category,
+powered,boolean,Whether the item is powered (true) or unpowered (false),

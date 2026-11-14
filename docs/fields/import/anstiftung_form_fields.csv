@@ -1,0 +1,7 @@
+id,name,identifier,status
+1,Stromversorgung,power_supply,1
+2,Fehler gefunden?,defect_found,1
+3,Reparatur,defect_found_reason,1
+4,vertagt weil...,repair_postponed_reason,1
+5,nicht erfolgt weil...,no_repair_reason,1
+6,Abbruch: Gerät darf nicht mehr benutzt werden,device_must_not_be_used_anymore,1

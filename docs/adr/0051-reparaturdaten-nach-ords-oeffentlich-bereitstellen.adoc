@@ -1,11 +1,12 @@
 ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [[adr-0051]]
-= 0051 Reparaturdaten nach ORDS in einem eigenen Repo veröffentlichen
+= 0051 Reparaturdaten nach ORDS öffentlich bereitstellen
 
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-14
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-14, Ort ist der Ordner `Statistik/ords` im Repo `makerspace-gt/repair-cafe` des Teams statt eines neuen Repos
 
 == Kontext und Problem
 
@@ -23,13 +24,14 @@ Wir wollen bei der Open Repair Alliance anfragen, ob wir als eigener Datenpartne
 * Export nur lokal und auf Anfrage an die Alliance schicken
 * Ordner im Repo MANUEL
 * Eigenes Repo nur für die Daten, sofort ohne Problemtext
+* Ordner im Repo `makerspace-gt/repair-cafe` des Teams, erst mit anonymisiertem Problemtext
 * Eigenes Repo nur für die Daten, erst mit anonymisiertem Problemtext
 
 == Entscheidung
 
-Gewählt wird ein eigenes Repo nur für die Daten, das erst mit anonymisiertem Problemtext veröffentlicht wird.
+Gewählt wird ein eigener Ordner im Repo des Teams, der erst mit anonymisiertem Problemtext veröffentlicht wird. Ursprünglich war ein neues Repo nur für die Daten vorgesehen.
 
-* *Ort.* Ein neues Repo der Organisation, etwa `makerspace-gt/repair-data`. Es enthält die CSV, eine `tableschema.json` und ein README wie das Repo `openrepair/data`, unter CC BY-SA 4.0 wie die Open Repair Data.
+* *Ort.* Der Ordner `Statistik/ords` im öffentlichen Repo https://github.com/makerspace-gt/repair-cafe[makerspace-gt/repair-cafe], in dem das Team seit 2021 Statistik, Laufzettel, Flyer und Ersatzteile ablegt. Er enthält die CSV, das Manifest, eine `tableschema.json` und eine `LICENSE` mit CC BY-SA 4.0 nur für diesen Ordner, wie die Open Repair Data. Das Repo ist als Submodul `repair-cafe` in MANUEL eingebunden. Das Team stimmt der Ablage vorher zu, weil das Repo ihm gehört.
 * *Inhalt.* Eine Zeile je Reparaturversuch mit den Spalten des Standards. Die ID hat die Form `msg_<Ticket>_<Datum>`, Partner und Gruppe heißen Makerspace Gütersloh e.V. Ein Ticket, das an mehreren Terminen war, steht einmal je Termin, die früheren als Repairable.
 * *Zeitpunkt.* Veröffentlicht wird erst, wenn das Feld `problem` anonymisiert gefüllt werden kann, nach den Regeln von xref:0038-ticketdaten-anonymisiert-veroeffentlichen.adoc[ADR 38]. Bis dahin bleibt der Export lokal. Danach kommt nach jedem Termin ein Stand dazu.
 * *Prüfung.* Vor jeder Veröffentlichung sieht ein Mensch die neuen Zeilen durch, vor allem die Freitexte Marke, Gegenstand und Problem.
@@ -39,6 +41,7 @@ ADR 2 gilt weiter für Tickets und Nachrichten. Diese Entscheidung erlaubt nur d
 === Konsequenzen
 
 * Gut, weil unsere Daten konform zum Standard sind, unabhängig davon, ob die Alliance uns als Partner aufnimmt.
+* Gut, weil kein weiteres Repo gepflegt werden muss.
 * Gut, weil wir alle Daten selbst in einem offenen Format haben und jeder Stand im Verlauf von Git nachvollziehbar bleibt.
 * Gut, weil der Problemtext die wichtigste Angabe für Auswertungen ist und von Anfang an dabei ist.
 * Schlecht, weil die Veröffentlichung auf die Anonymisierung wartet.
@@ -64,6 +67,13 @@ ADR 2 gilt weiter für Tickets und Nachrichten. Diese Entscheidung erlaubt nur d
 === Eigenes Repo erst mit Problemtext
 
 * Gut, weil die Daten vollständig und konform erscheinen.
+* Schlecht, weil ein weiteres Repo gepflegt werden muss.
+
+=== Ordner im Repo des Teams erst mit Problemtext
+
+* Gut, weil alle Daten des Repair Café an einem Ort liegen, neben Statistik und Laufzetteln, und das Team das Repo schon kennt.
+* Gut, weil die Daten vollständig und konform erscheinen.
+* Schlecht, weil das Repo keine Lizenz hat und der Ordner eine eigene braucht.
 * Schlecht, weil es länger dauert.
 
 == Quellen

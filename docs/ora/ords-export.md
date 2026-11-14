@@ -1,6 +1,6 @@
 # Repair data of Makerspace Gütersloh e.V. in ORDS format
 
-Manifest for the export produced by [ords_export.R](../../eval/ora/ords_export.R), following the section "Data format" of the [Open Repair Data Standard v0.3](https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L637-L665). It describes where our data differs from or adds to the standard. The data itself is not public yet, see [ADR 51](../adr/0051-reparaturdaten-nach-ords-in-einem-eigenen-repo-veroeffentlichen.adoc).
+Manifest for the export produced by [ords_export.R](../../eval/ora/ords_export.R), following the section "Data format" of the [Open Repair Data Standard v0.3](https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L637-L665). It describes where our data differs from or adds to the standard. The data itself is not public yet. It will be published in the folder `Statistik/ords` of [makerspace-gt/repair-cafe](https://github.com/makerspace-gt/repair-cafe), see [ADR 51](../adr/0051-reparaturdaten-nach-ords-oeffentlich-bereitstellen.adoc).
 
 ## Source
 

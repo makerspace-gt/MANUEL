@@ -9,7 +9,8 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet. Sie enthalten n
 | [groups.rb](groups.rb) | Gruppe Repairs mit der Untergruppe Requests sowie die Rollen Repair agents und Repair moderators |
 | [objects.rb](objects.rb) | Felder im Ticket, also Art des Geräts aus dem [Katalog](../katalog/), Marke, Bezeichnung, Baujahr, Alter und Angabe zum Alter, Stromversorgung, Defekt laut Anmeldung, festgestellter Defekt, Lösung, Ergebnis als Baum, Repariert von, VDE-Prüfung, Termin sowie Spenden und Bedarf für das Statistik-Ticket |
 | [macros.rb](macros.rb) | Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“, die je einen Tag setzen, siehe [ADR 32](../docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc) |
-| [translations.rb](translations.rb) | Deutsche Übersetzungen aller Bezeichnungen als eigene Übersetzungen in Zammad |
+| [translations.rb](translations.rb) | Deutsche Übersetzungen aller Bezeichnungen als eigene Übersetzungen in Zammad und die Wörter aus guest_wording.tsv |
+| [guest_wording.tsv](guest_wording.tsv) | Gast statt Kunde in 52 Texten von Zammad, englisch und deutsch |
 
 ## Start
 
@@ -29,6 +30,7 @@ Namen, Werte und Bezeichnungen sind englisch. Deutsch kommt als eigene Übersetz
 
 - Wo Zammad einen Begriff schon selbst übersetzt, etwa Yes oder Result, bleibt dessen Übersetzung. Deshalb heißt das Feld für das Modell „Model or type“, denn „Model“ übersetzt Zammad mit Modell.
 - Eine Übersetzung gilt in Zammad für jeden gleichen Text. Ein Name im Katalog darf deshalb nicht wie die Bezeichnung eines Felds lauten. Das Feld heißt darum „Power source“, weil der Katalog „Power supply“ für Netzteil nutzt.
+- Zwischen der Initiative und den Menschen, die ihre Geräte bringen, gibt es kein Geschäft. Deshalb steht Guest und Gast statt Customer und Kunde, und für Geld gibt es nur Spenden. `guest_wording.tsv` ändert dafür 52 Texte von Zammad, etwa Customer, Edit customer und Waiting Customers. Das wirkt wie eine Änderung unter Admin, Übersetzungen. Zammad behält sie bei Updates, und Zurücksetzen holt den alten Text zurück. Ausgelassen sind lange Hilfetexte für Admins, die Vorlagen der Benachrichtigungen an Agenten und Begriffe der Technik wie Client ID.
 - Die Werte in den Tickets bleiben englisch, etwa `Not repaired::Fault not found`. Die alten deutschen Werte unseres Zammad stehen in [result_mapping.tsv](../eval/ora/result_mapping.tsv).
 
 ## Hinweise
@@ -41,4 +43,4 @@ Namen, Werte und Bezeichnungen sind englisch. Deutsch kommt als eigene Übersetz
 - Die VDE-Prüfung kennt leer, empfohlen, ja und nein. Leer heißt, es ist noch nicht entschieden.
 - Welche Felder wann sichtbar sind, etwa Spenden nur im Statistik-Ticket, regeln Core Workflows. Die fehlen hier noch.
 
-Am 14.11.2026 lief `setup.rb` siebenmal in der Testinstanz mit Zammad 7.2.2. Fehler und doppelte Einträge gab es nicht, beim letzten Lauf änderte sich nichts mehr. Der Dienst `manuel-setup` selbst ist noch nicht gelaufen, nur seine Konfiguration ist mit `docker compose config` geprüft.
+Am 14.11.2026 lief `setup.rb` neunmal in der Testinstanz mit Zammad 7.2.2. Fehler und doppelte Einträge gab es nicht, beim letzten Lauf änderte sich nichts mehr. Der Dienst `manuel-setup` selbst ist noch nicht gelaufen, nur seine Konfiguration ist mit `docker compose config` geprüft.

@@ -1,0 +1,53 @@
+source	en-us	de-de
+Customer	Guest	Gast
+Access tickets as customer.	Access tickets as guest.	Zugriff auf Tickets als Gast.
+A ticket's state is used to categorize and manage the lifecycle of a ticket or customer inquiry.	A ticket's state is used to categorize and manage the lifecycle of a ticket or guest inquiry.	Der Status eines Tickets wird verwendet, um den Lebenszyklus eines Tickets oder einer Anfrage zu kategorisieren und zu verwalten.
+CTI customer last activity	CTI guest last activity	CTI letzte Aktivität des Gastes
+Change Customer	Change Guest	Gast ändern
+Change customer	Change guest	Gast ändern
+Chatting Customers	Chatting Guests	Chattende Gäste
+Create new Customer	Create new Guest	Neuen Gast anlegen
+Create new customer	Create new guest	Neuen Gast anlegen
+Customer Chat	Guest Chat	Gäste-Chat
+Customer Intent	Guest Intent	Anliegen des Gastes
+Customer intent	Guest intent	Anliegen des Gastes
+Customer Sentiment	Guest Sentiment	Stimmung des Gastes
+Customer sentiment	Guest sentiment	Stimmung des Gastes
+Customer and agent ratio (role based user counts)	Guest and agent ratio (role based user counts)	Verhältnis zwischen Gästen und Agenten (rollenbasierte Zählung der Benutzer)
+Customer selection based on sender and receiver list	Guest selection based on sender and receiver list	Auswahl des Gastes basierend auf Sender- und Empfängerliste
+Customer tickets	Guest tickets	Tickets des Gastes
+Customer tickets of the user will get deleted on execution of the task. No rollback possible.	Guest tickets of the user will get deleted on execution of the task. No rollback possible.	Tickets des Benutzers als Gast werden bei Ausführung der Aufgabe entfernt. Dieser Vorgang kann nicht rückgängig gemacht werden.
+Customers in the organization can view each other's items.	Guests in the organization can view each other's items.	Gäste in einer Organisation können ihre Einträge untereinander einsehen.
+Defines groups for which a customer can create tickets via web interface. No selection means all groups are available.	Defines groups for which a guest can create tickets via web interface. No selection means all groups are available.	Definiert Gruppen, für die ein Gast Tickets über die Web-Oberfläche erstellen kann. Keine Auswahl bedeutet, dass alle Gruppen berechtigt sind.
+Defines how the last customer contact time of tickets should be calculated.	Defines how the last guest contact time of tickets should be calculated.	Definiert, wie die Zeit des letzten Kontakts mit dem Gast berechnet werden soll.
+Defines if a customer can create tickets via the web interface.	Defines if a guest can create tickets via the web interface.	Definiert, ob ein Gast Tickets über die Web-Oberfläche erstellen kann.
+Delete Customer	Delete Guest	Gast löschen
+Edit Customer	Edit Guest	Gast bearbeiten
+Edit customer	Edit guest	Gast bearbeiten
+Here you can create new tickets and customers.	Here you can create new tickets and guests.	Hier können Sie neue Tickets und Gäste anlegen.
+If the sender is an agent, set the first user in the recipient list as the customer.	If the sender is an agent, set the first user in the recipient list as the guest.	Wenn der Sender ein Agent ist, wird der erste Benutzer in der Empfängerliste als Gast eingestellt.
+Invite Customer	Invite Guest	Gast einladen
+Invite customers to create issues in Zammad	Invite guests to create issues in Zammad	Laden Sie Gäste ein, um in Zammad Tickets zu erstellen
+Last Contact Customer At	Last Contact Guest At	Letzter Kontakt (Gast) um
+Last contact (customer)	Last contact (guest)	Letzter Kontakt (Gast)
+Max. clients on waitlist	Max. guests on waitlist	Max. Gäste in Warteliste
+No customer assigned yet.	No guest assigned yet.	Noch kein Gast zugewiesen.
+Notes are visible to agents only, never to customers.	Notes are visible to agents only, never to guests.	Notizen sind nur für Agenten sichtbar, niemals für Gäste.
+Preview customer tickets	Preview guest tickets	Vorschau Tickets des Gastes
+Provide a summary of the conversation between customer and support agent.	Provide a summary of the conversation between guest and support agent.	Erstellt eine Zusammenfassung des Gesprächs zwischen Gast und Agent.
+Provide a summary of the problem the customer needs to get resolved.	Provide a summary of the problem the guest needs to get resolved.	Erstellt eine Zusammenfassung des Problems, das der Gast lösen möchte.
+Provide an assessment of the customer sentiment based on the conversation.	Provide an assessment of the guest sentiment based on the conversation.	Erstelle eine Einschätzung der Stimmung des Gastes auf der Grundlage der Konversation.
+Recent Customer Tickets	Recent Guest Tickets	Neueste Tickets des Gastes
+Recent customer tickets	Recent guest tickets	Neueste Tickets des Gastes
+Register as a new customer	Register as a new guest	Als neuer Gast registrieren
+Select the customer of the ticket or create one.	Select the guest of the ticket or create one.	Wählen Sie den Gast für das Ticket aus oder legen Sie einen neuen an.
+Ticket Customer	Ticket Guest	Gast des Tickets
+Ticket Last Contact Behaviour	Ticket Last Contact Behaviour	Verhalten bei der Aktualisierung des letzten Kontakts mit dem Gast
+Ticket customer updated successfully.	Ticket guest updated successfully.	Gast des Tickets erfolgreich aktualisiert.
+Use the start time of the last customer thread (which may consist of multiple articles).	Use the start time of the last guest thread (which may consist of multiple articles).	Verwenden Sie die Startzeit des letzten Threads des Gastes (der aus mehreren Artikeln bestehen kann).
+Use the time of the very last customer article.	Use the time of the very last guest article.	Verwenden Sie den Zeitpunkt des allerletzten Artikels des Gastes.
+Waiting Customers	Waiting Guests	Wartende Gäste
+You have no change permission or you are a customer for some of the selected tickets.	You have no change permission or you are a guest for some of the selected tickets.	Sie haben keine Änderungsberechtigung oder sind Gast bei einigen der ausgewählten Tickets.
+delivered to the customer	delivered to the guest	dem Gast zugestellt
+read by the customer	read by the guest	vom Gast gelesen
+sent to the customer	sent to the guest	an den Gast gesendet

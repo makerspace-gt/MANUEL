@@ -98,6 +98,8 @@ Der Standard legt fest, welche Felder ein Eintrag hat und welche Werte erlaubt s
 |Gruppe und Datum |`group_identifier`, `event_date` |wer wann repariert hat
 |===
 
+Die Gruppen ohne Strom stehen nicht im Standard. Er ist nach eigener Aussage für die Reparatur kleiner Elektrogeräte und Unterhaltungselektronik gemacht und könnte später für andere Bereiche angepasst werden https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L25-L28[(Standard, Zeile 25 bis 28)]. Die sechs Gruppen „Unpowered“ für Fahrräder, Möbel, Haushalt, Schmuck, Textilien und Sonstiges gibt es nur in den veröffentlichten Daten. Dabei machen Textilien und Gegenstände ohne Strom aus dem Haushalt 2026 fast ein Drittel der Daten aus, siehe <<datensatz>>.
+
 Entscheidend für diese Arbeit ist das Verhältnis der ersten beiden Kategoriefelder. Jeder Partner erfasst mit seiner eigenen Liste. Die Alliance ordnet jede dieser Kategorien einer Produktkategorie des Standards zu und prüft die Zuordnung bei jedem neuen Datensatz cite:[ora-datasets]. Die Produktkategorien des Standards heißen in dieser Arbeit ORA-Gruppen.
 
 [[partner]]

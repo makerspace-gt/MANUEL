@@ -3,8 +3,8 @@
 #
 # Reads eval/categorizer/abc.tsv from eval/categorizer/abc.py, sorts the entries by their repairs and
 # draws the number of entries needed against the cumulative share of repairs they cover. The marks
-# show the limits of the ABC classes at 80 and 95 percent and the 90 percent used for the catalog
-# work. The numbers for the text go to docs/ora/catalog/coverage.tsv.
+# show 80 percent, the limit of class A, and every percent from 90, also listed as a table.
+# The numbers for the text go to docs/ora/catalog/coverage.tsv.
 #
 # Run in the repository root, see docs/adr/0049-daten-mit-r-auswerten.adoc:
 #   toolbox run -c manuel-r Rscript eval/categorizer/coverage.R
@@ -24,9 +24,13 @@ entries <- read_tsv(input, col_types = cols(.default = col_character(), repairs_
 de <- function(x, digits = 0) formatC(x, format = "f", digits = digits, big.mark = ".", decimal.mark = ",")
 reach <- function(level) min(entries$rank[entries$share >= level])
 
-marks <- tibble(level = c(0.80, 0.90, 0.95, 1)) |>
+# From 90 percent every percent, all of them in the table, the curve only labels 80, 90 and 100
+marks <- tibble(level = c(0.80, seq(90, 100) / 100)) |>
   mutate(rank = vapply(level, reach, integer(1)),
          label = paste0(de(100 * level), " % mit ", de(rank), " Einträgen"))
+curve_labels <- filter(marks, level %in% c(0.80, 0.90, 1))
+table <- filter(marks, level >= 0.90) |>
+  mutate(y = 1000 - (row_number() - 1) * 62)
 
 facts <- bind_rows(
   tibble(measure = c("entries", "repairs", "entries_without_repairs", "entries_below_10_repairs"),
@@ -38,12 +42,20 @@ dir.create("docs/ora/catalog", recursive = TRUE, showWarnings = FALSE)
 write_tsv(facts, "docs/ora/catalog/coverage.tsv")
 
 plot <- ggplot(entries, aes(share, rank)) +
-  geom_vline(data = marks, aes(xintercept = level), colour = light[["grid"]], linewidth = 0.4) +
+  geom_vline(xintercept = c(0.8, 0.9, 1), colour = light[["grid"]], linewidth = 0.4) +
   geom_step(colour = light[["s1"]], linewidth = 0.9, direction = "vh") +
-  geom_point(data = marks, aes(level, rank), size = 2.6, colour = light[["s1"]], fill = light[["bg"]],
-             shape = 21, stroke = 1.6) +
-  geom_text(data = marks, aes(level, rank, label = label), hjust = 1.06, vjust = -0.7, size = 3.6,
+  geom_point(data = marks, aes(level, rank), size = 2.2, colour = light[["s1"]], fill = light[["bg"]],
+             shape = 21, stroke = 1.4) +
+  geom_text(data = curve_labels, aes(level, rank, label = label), hjust = 1.06, vjust = -0.7, size = 3.6,
             colour = light[["secondary"]]) +
+  annotate("rect", xmin = 0, xmax = 0.19, ymin = 330, ymax = 1110, fill = light[["bg"]]) +
+  annotate("text", x = 0.06, y = 1075, label = "Anteil", hjust = 1, size = 3.6, colour = light[["primary"]],
+           fontface = "bold") +
+  annotate("text", x = 0.17, y = 1075, label = "Einträge", hjust = 1, size = 3.6, colour = light[["primary"]],
+           fontface = "bold") +
+  geom_text(data = table, aes(0.06, y, label = paste0(de(100 * level), " %")), hjust = 1, size = 3.6,
+            colour = light[["secondary"]]) +
+  geom_text(data = table, aes(0.17, y, label = de(rank)), hjust = 1, size = 3.6, colour = light[["secondary"]]) +
   scale_x_continuous(labels = \(x) paste0(de(100 * x), " %"), breaks = seq(0, 1, 0.2),
                      limits = c(0, 1.01), expand = expansion(mult = c(0, 0))) +
   scale_y_continuous(breaks = seq(0, 1000, 200), labels = \(x) de(x),

@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-14T13:07:54+0100",
+  "date": "2026-11-14T13:09:21+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/categorizer/coverage.R",
-  "commit": "0043febe1b229fb320335e9c06f3ba59dcacb562",
+  "commit": "563bc888f57a0512f5c7de4106568f092861bc8f",
   "dirty": true,
   "inputs": [
     {
@@ -12,15 +12,15 @@
   "outputs": [
     {
       "path": "docs/ora/catalog/coverage.tsv",
-      "sha256": "c5b9d9c52bc3be356fabae79fbd01d0e8408b2e5bb4dedb222480e27ac5025a7"
+      "sha256": "74d4d13a57471b3e2acbcf0fe29d52ebe342024260ec0e6abfdb9219f0d60579"
     },
     {
       "path": "docs/grafiken/catalog-coverage.svg",
-      "sha256": "4e336ac3b3858f1ef9d9067c709f9808066c477201f2f15638fb384f149db81c"
+      "sha256": "d50bb6cb1793bc1a32753871c7f1702d8a5ff71e879878ce3de2c645544af381"
     },
     {
       "path": "docs/grafiken/catalog-coverage-hell.svg",
-      "sha256": "320f60dfb197c64d8406ef3ca7fcf08ef5fbc245b3d3bb00062ace415300d121"
+      "sha256": "292faa7fbe13365bac4bd65e56a3d22916620de8baf390430775d93537ea8718"
     }
   ],
   "r": {

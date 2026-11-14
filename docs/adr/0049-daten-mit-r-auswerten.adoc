@@ -1,0 +1,74 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0049]]
+= 0049 Daten mit R auswerten
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-14
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Die Auswertungen von MANUEL sind bisher Python-Skripte, die nur die Standardbibliothek nutzen. Sie zählen, rechnen Intervalle und zeichnen SVG-Grafiken von Hand. Die Datenpotenzialanalyse von 2022 hat dieselben Schritte in R mit readr, dplyr und ggplot2 gemacht, nach dem Ablauf von Wickham und Grolemund, auf den sich auch {repo}/docs/einordnung.md[docs/einordnung.md] beruft. Für die Auswertungen der Fallstudie stehen weitere Arbeiten mit Tabellen an, etwa zur Meldelücke, zu vertagten Geräten und zu den Open Repair Data. Womit werten wir Daten künftig aus, damit jede Zahl reproduzierbar bleibt?
+
+== Entscheidungskriterien
+
+* Jede Zahl und jede Grafik lässt sich später mit denselben Versionen wieder erzeugen, siehe xref:0027-laeufe-reproduzierbar-festhalten.adoc[ADR 27]
+* Auswertungen von Tabellen bleiben kurz und lesbar
+* Anschluss an die Datenpotenzialanalyse
+* Auf dem Laptop und auf MANUEL läuft dieselbe Umgebung
+* Bestehende Skripte müssen nicht sofort umgeschrieben werden
+
+== Betrachtete Optionen
+
+* Alles in Python mit der Standardbibliothek wie bisher
+* Python mit pandas und matplotlib
+* R für die Auswertung, Python für Modelle und Schnittstellen
+* Alles in R
+
+== Entscheidung
+
+Gewählt wird R für die Auswertung, Python für Modelle und Schnittstellen.
+
+* *Grenze.* R zählt, rechnet und zeichnet. Dazu gehören die Open Repair Data, die Statistik, die Meldelücke, die vertagten Geräte, die Auswertung der Modellläufe mit Intervallen nach Wilson und die Grafiken der Fallstudie. Was mit Ollama, Zammad, Restarters oder Zotero spricht, bleibt in Python.
+* *Bestand.* Vorhandene Python-Auswertungen bleiben, bis wir sie ohnehin anfassen. Neue Auswertungen entstehen in R.
+* *Umgebung.* R läuft in einer Toolbox, auf dem Laptop wie auf MANUEL. Das Image baut auf `rocker/tidyverse` 4.6.1 auf, festgelegt über den Digest, siehe {repo}/eval/r/Containerfile[eval/r/Containerfile]. Weil 4.6.1 durch 4.6.2 abgelöst ist, bleibt sein CRAN-Snapshot beim Stand vom 28.10.2026. Jedes Paket, auch die im Containerfile ergänzten, hat damit eine feste Version.
+* *Läufe.* Jede Auswertung schreibt eine `lauf.json` nach ADR 27 mit {repo}/eval/r/lauf.R[eval/r/lauf.R]. Sie hält zusätzlich die Version von R, den Snapshot und die Versionen aller geladenen Pakete fest.
+* *Sprache.* Code, Namen und Kommentare bleiben auf Englisch, siehe xref:0029-zielgruppe-und-sprache-festlegen.adoc[ADR 29].
+
+=== Konsequenzen
+
+* Gut, weil Import, Bereinigung, Umformung und Grafik mit dem tidyverse kurz und lesbar werden.
+* Gut, weil die Versionen strenger festliegen als 2022, als sie nicht festgehalten wurden.
+* Gut, weil die Datenpotenzialanalyse und MANUEL dieselbe Sprache für Auswertungen nutzen.
+* Schlecht, weil das Repo zwei Sprachen hat und wer mitarbeitet, beide lesen muss.
+* Schlecht, weil das Aussehen der bisherigen SVG-Grafiken in ggplot2 als eigenes Theme nachgebaut werden muss, mit hellem und dunklem Modus.
+* Schlecht, weil das Image rund 3,6 GB groß ist und einmal gebaut werden muss.
+
+== Vor- und Nachteile der Optionen
+
+=== Python mit der Standardbibliothek
+
+* Gut, weil es ohne Pakete auskommt und lange lauffähig bleibt.
+* Schlecht, weil Tabellen und Grafiken von Hand gebaut werden und die Skripte lang werden.
+
+=== Python mit pandas und matplotlib
+
+* Gut, weil es bei einer Sprache bleibt.
+* Schlecht, weil der Anschluss an die Datenpotenzialanalyse fehlt und die Versionen ebenfalls festgelegt werden müssten.
+
+=== R für die Auswertung, Python für Modelle und Schnittstellen
+
+* Gut, weil jede Sprache das macht, was sie gut kann, und laufender Code bleibt.
+* Schlecht, weil die Grenze zwischen beiden im Einzelfall entschieden werden muss.
+
+=== Alles in R
+
+* Gut, weil es nur eine Sprache gibt.
+* Schlecht, weil funktionierende Skripte für Ollama, Zammad, Restarters und Zotero neu geschrieben werden müssten.
+
+== Quellen
+
+* https://github.com/rocker-org/rocker-versioned2[Rocker, versionsstabile Images für R], `rocker/tidyverse` 4.6.1 mit Digest `sha256:6b8523ae3b6a`
+* {repo}/datenpotenzialanalyse-repairc-cafe-gt[Datenpotenzialanalyse von 2022] mit den Skripten `1 import.R`, `2 tidy.R` und `3 transform.R`
+* Entscheidung von Michael Prange am 14.11.2026

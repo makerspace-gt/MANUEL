@@ -12,13 +12,16 @@ platforms that store numbers instead (anstiftung, ORDS codes) are listed in docs
   the table info_sheets, values from the saved form in quellen/anstiftung
 * docs/fields/restarters.csv: fields of a device in the API of Restarters.net, values from the
   OpenAPI description in the submodule quellen/restarters.net and the categories in
-  quellen/restarters/kategorien.csv
+  quellen/restarters/kategorien.csv. Next to every column with fixed values stands its German
+  translation from the language files of Restarters (<field>_de), next to category and barrier the
+  values the ORDS export of Restarters maps them to (config/ords.php)
 
 Run in the repository root:
     python3 eval/fields/platform_values.py
 """
 
 import csv
+import json
 import re
 from itertools import zip_longest
 from pathlib import Path
@@ -28,7 +31,8 @@ ORA = Path("quellen/openrepair-data")
 STANDARD = Path("quellen/openrepair-datastandard/standard.rst")
 ANSTIFTUNG = Path("quellen/anstiftung")
 RESTARTERS = Path("quellen/restarters")
-RESTARTERS_SOURCE = Path("quellen/restarters.net/app/Http/Resources/Device.php")
+RESTARTERS_CODE = Path("quellen/restarters.net")
+RESTARTERS_SOURCE = RESTARTERS_CODE / "app/Http/Resources/Device.php"
 
 
 def unique(values):
@@ -94,15 +98,69 @@ def anstiftung():
     })
 
 
+def php_pairs(path):
+    """'key' => 'value' pairs of a Laravel language file, nested keys are ignored."""
+    text = path.read_text(encoding="utf-8")
+    return {k: v.replace("\\'", "'") for k, v in re.findall(r"^\s*'([^']+)'\s*=>\s*'((?:[^'\\]|\\.)*)'", text, re.M)}
+
+
+def ords_maps():
+    """Category and barrier maps of the ORDS export in config/ords.php of Restarters."""
+    text = (RESTARTERS_CODE / "config/ords.php").read_text(encoding="utf-8")
+
+    def block(name):
+        return text.split(f"'{name}' => [", 1)[1].split("\n    ],", 1)[0]
+
+    powered = {k: (v, i) for k, v, i in re.findall(r"'([^']+)' => \['([^']+)', (\d+)\]", block("categories_powered"))}
+    unpowered = dict(re.findall(r"'([^']+)' => '([^']+)'", block("categories_unpowered")))
+    barriers = dict(re.findall(r"'([^']+)' => '([^']+)'", block("barriers")))
+    return powered, unpowered, barriers
+
+
 def restarters():
     source = RESTARTERS_SOURCE.read_text(encoding="utf-8")
-    columns = {}
+    fields = {}
     for block in source.split("@OA\\Property(")[1:]:
         name = re.search(r'property="([^"]+)"', block).group(1)
         enum = re.search(r"enum=\{([^}]*)\}", block)
-        columns[name] = re.findall(r'"([^"]+)"', enum.group(1)) if enum else []
+        fields[name] = re.findall(r'"([^"]+)"', enum.group(1)) if enum else []
+
+    # German as shown on restarters.net. Categories, status and barriers are translated by their English
+    # text in de.json, next steps and spare parts by keys in partials.php, the type of item by the
+    # headings of the device form in devices.php.
+    de_json = json.loads((RESTARTERS_CODE / "lang/de.json").read_text(encoding="utf-8"))
+    partials = php_pairs(RESTARTERS_CODE / "lang/de/partials.php")
+    devices = php_pairs(RESTARTERS_CODE / "lang/de/devices.php")
+    partial_keys = {"More time needed": "more_time", "Professional help": "professional_help",
+                    "Do it yourself": "diy", "No": "no", "Manufacturer": "yes_manufacturer",
+                    "Third party": "yes_third_party"}
+
+    def german(value):
+        if value in partial_keys:
+            return partials[partial_keys[value]]
+        return de_json.get(value, "")
+
+    powered_map, unpowered_map, barrier_map = ords_maps()
     categories = list(csv.DictReader((RESTARTERS / "kategorien.csv").open(encoding="utf-8")))
-    columns["category"] = [row["category"] for row in categories]
+    is_powered = [row["power"] == "ja" for row in categories]
+    ords = [powered_map.get(row["category"], ("", "")) if p else (unpowered_map.get(row["category"], ""), "")
+            for row, p in zip(categories, is_powered)]
+
+    columns = {}
+    for name, values in fields.items():
+        if name == "category":
+            # Restarters asks first whether the item is powered, the category list follows from it
+            columns["powered"] = ["true" if p else "false" for p in is_powered]
+            columns["powered_de"] = [devices["title_powered" if p else "title_unpowered"].capitalize() for p in is_powered]
+            values = [row["category"] for row in categories]
+        columns[name] = values
+        if values:
+            columns[f"{name}_de"] = [german(v) for v in values]
+        if name == "category":
+            columns["ords_product_category"] = [o[0] for o in ords]
+            columns["ords_product_category_id"] = [o[1] for o in ords]
+        if name == "barrier":
+            columns["ords_repair_barrier_if_end_of_life"] = [barrier_map.get(v, "") for v in values]
     write("restarters.csv", columns)
 
 

@@ -8,7 +8,7 @@ Die Dateien entstehen mit [platform_values.py](../../eval/fields/platform_values
 |---|---|---|---|
 | [ora.csv](ora.csv) | Open Repair Data Standard | 14 Spalten der Open Repair Data | Werte für Status und Hindernis aus [standard.rst](../../quellen/openrepair-datastandard/standard.rst), Produktkategorien aus der Liste der Open Repair Data. Die sechs Gruppen ohne Strom nennt der Standard nicht, sie stammen aus den Daten und haben die Nummer 0 |
 | [anstiftung.csv](anstiftung.csv) | reparatur-initiativen.org | 12 Felder des Laufzettels mit den Namen der Tabelle `info_sheets` | Gespeicherter Laufzettel in [quellen/anstiftung](../../quellen/anstiftung). Die Oberkategorie heißt in der Datenbank `parent_id` der Tabelle `categories`, die Stromversorgung steht in `info_sheets_form_field_options` |
-| [restarters.csv](restarters.csv) | Restarters.net | 23 Felder eines Geräts in der API | Beschreibung der API in [Device.php](../../quellen/restarters.net/app/Http/Resources/Device.php) im Submodul, Kategorien aus [kategorien.csv](../../quellen/restarters/kategorien.csv) |
+| [restarters.csv](restarters.csv) | Restarters.net | 23 Felder eines Geräts in der API und `powered` der Kategorie, dazu deutsche Spalten und die Werte für ORDS | Beschreibung der API in [Device.php](../../quellen/restarters.net/app/Http/Resources/Device.php) im Submodul, Kategorien aus [kategorien.csv](../../quellen/restarters/kategorien.csv) |
 
 ## Hinweise
 
@@ -16,3 +16,6 @@ Die Dateien entstehen mit [platform_values.py](../../eval/fields/platform_values
 - Der Standard ist bei einem Hindernis uneinheitlich. Im Text heißt es „No way to open the product“, in der Tabelle der Werte „No way to open product“. Hier steht die Fassung der Tabelle, Restarters nutzt die andere. Die Tabelle des Standards kennt außerdem „Item too worn out“, das in der Aufzählung im Text und bei Restarters fehlt.
 - Bei Restarters gelten `next_steps` und `spare_parts` nur für Repairable und `barrier` nur für End of life.
 - Bei der anstiftung kommen manche Kategorien unter mehreren Oberkategorien vor, etwa „Sonstiges“. Marken mit gleichem Namen und verschiedener ID stehen nur einmal da.
+- In `restarters.csv` steht neben jeder Spalte mit festen Werten eine Spalte `_de` mit der deutschen Fassung, die restarters.net zeigt. Sie kommt aus `lang/de.json`, `lang/de/partials.php` und `lang/de/devices.php` im Submodul.
+- Beim Anlegen eines Geräts fragt Restarters zuerst, ob es elektrisch ist, und zeigt danach nur die passenden Kategorien. Deshalb steht `powered` vor `category`. „Misc“ gibt es einmal elektrisch und einmal nicht.
+- Restarters exportiert seine Daten selbst im Format von ORDS. Die Abbildung steht in `config/ords.php` im Submodul. Die Spalten `ords_product_category`, `ords_product_category_id` und `ords_repair_barrier_if_end_of_life` übernehmen sie. Bildschirme und Laptops fasst sie je zu einer ORA-Gruppe zusammen, „Hand tool“ und „Misc“ ohne Strom werden beide zu „Unpowered - Other“.

@@ -212,7 +212,7 @@ Der Datensatz der Alliance zeigt nur, was gemeldet wird. Beim Repair Café Güte
 |Summe |85 |1.485 |30
 |===
 
-Bei anderen Initiativen dürfte es ähnlich sein. Die Alliance schätzt selbst, dass ihr Datensatz nur rund 20 Prozent der Reparaturen an Elektrogeräten bei Reparaturveranstaltungen erfasst cite:[ora-report-2024-data]. Für die Auswertungen der Alliance heißt das, dass die Zahlen die Vielfalt der Geräte zeigen, aber nicht den Umfang der Reparaturen. Für MANUEL ist es der wichtigste Grund, die Übertragung zu automatisieren. <<weitergabe>> zeigt, wie sich die Lücke für die Jahre ab 2024 schließen lässt.
+Bei anderen Initiativen dürfte es ähnlich sein. Die Alliance schätzt selbst, dass ihr Datensatz nur rund 20 Prozent der Reparaturen an Elektrogeräten bei Reparaturveranstaltungen erfasst cite:[ora-report-2024-data]. Für die Auswertungen der Alliance heißt das, dass die Zahlen die Vielfalt der Geräte zeigen, aber nicht den Umfang der Reparaturen. Für MANUEL ist es der wichtigste Grund, die Übertragung zu automatisieren. Dabei zeigt sich, dass MANUEL viel größer ist als zu Beginn gedacht, wenn die Alliance mit unseren Daten später gut arbeiten soll, denn Kategorie, Marke, Alter und Problem müssen so erfasst werden, wie der Standard sie meint. <<weitergabe>> zeigt, wie sich die Lücke für die Jahre ab 2024 schließen lässt.
 
 // Ergebnis folgt in Stufe 3, Antwort auf T1.
 

@@ -52,7 +52,7 @@ Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Re
 |I Ausgangslage |T1 |Wie wird eine Reparatur erfasst und wie machen das andere Initiativen? |<<reparaturdaten,2>>
 | |T2 |Welche Aufgaben kann ein lokales Modell übernehmen, welche bleiben bei Menschen oder festen Regeln? |<<aufgaben,3>>
 |II Der Weg einer Anfrage |T3 |Reicht ein Mini-PC für den Betrieb und welche Modelle passen? |<<architektur,4>>
-| |T4 |Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Mensch entscheiden? |<<einordnung,5>>, <<katalog,6>>
+| |T4 |Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Mensch entscheiden? |<<katalog,5>>, <<einordnung,6>>
 | |T5 |Wie hilfreich und wie sicher sind Erstdiagnosen und Reparaturansätze? |<<reparaturansaetze,7>>
 | |T6 |Wie lassen sich Termine so vergeben, dass Helfende und Gäste zusammenpassen? |<<termine,8>>
 | |T7 |Wie gelangen die Ergebnisse eines Termins zur Open Repair Alliance und an die Öffentlichkeit? |<<weitergabe,9>>
@@ -73,12 +73,12 @@ Die Leitfrage lautet „Wie kann ein lokales Sprachmodell die Engagierten des Re
 [cols="2,4,3",options="header"]
 |===
 |Gruppe |braucht |Kapitel
-|Team des Repair Café |wie MANUEL vorschlägt, wann es nachfragt und was zu prüfen ist |Zusammenfassung, 3, 5, 7 bis 10, Anhang D
-|andere Initiativen |was sich nachnutzen lässt und mit welchem Aufwand |Zusammenfassung, 2, 3, 6, 9, 11 bis 13
+|Team des Repair Café |wie MANUEL vorschlägt, wann es nachfragt und was zu prüfen ist |Zusammenfassung, 3, 6 bis 10, Anhang D
+|andere Initiativen |was sich nachnutzen lässt und mit welchem Aufwand |Zusammenfassung, 2, 3, 5, 9, 11 bis 13
 |DSEE |Ziele, Kennzahlen und Ergebnis |Zusammenfassung, 1.2, 10, 13
-|Datenpartner |Erfassung, Zuordnung, Meldelücke und der Wunsch nach einer schreibenden API |Abstract, 2, 6, 9, Anhang B
+|Datenpartner |Erfassung, Zuordnung, Meldelücke und der Wunsch nach einer schreibenden API |Abstract, 2, 5, 9, Anhang B
 |Vorstand und Mitglieder |Recht, Betrieb, Kosten und Zweckbindung bis 2028 |Zusammenfassung, 1.2, 4, 11 bis 13
-|technisch Interessierte |Nachbau, Läufe und Benchmarks |4, 5, 12, Anhang A und C
+|technisch Interessierte |Nachbau, Läufe und Benchmarks |4, 6, 12, Anhang A und C
 |===
 
 [[vorgehen]]

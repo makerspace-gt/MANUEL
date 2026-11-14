@@ -74,9 +74,9 @@ Dieser Teil folgt einer Anfrage vom Eingang bis zur Meldung an die Open Repair A
 
 include::kapitel/04-mini-pc-und-modelle.adoc[]
 
-include::kapitel/05-einordnung.adoc[]
+include::kapitel/05-katalog.adoc[]
 
-include::kapitel/06-katalog.adoc[]
+include::kapitel/06-einordnung.adoc[]
 
 include::kapitel/07-reparaturansaetze.adoc[]
 

@@ -1,7 +1,7 @@
 [[katalog]]
 == Der Katalog der Gegenstände
 
-_Teilfrage T4. Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Mensch entscheiden? Dieses Kapitel zeigt die Liste, auf der die Einordnung beruht._
+_Teilfrage T4. Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Mensch entscheiden? Dieses Kapitel zeigt die Liste, auf der die Einordnung in <<einordnung>> beruht._
 
 .Auf einen Blick
 ====

@@ -7,6 +7,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-14
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-14, Marken aus ords-extra werden angewendet statt nur vorgeschlagen
 
 == Kontext und Problem
 
@@ -46,13 +47,15 @@ Stromversorgung, VDE-Prüfung, Repariert von, Spenden und Bedarf bleiben Felder 
 
 Die Spalten der anstiftung tragen die Namen aus ihrer eigenen Datenbank, etwa `event_uid`, `category_id` und `parent_id` für die Oberkategorie. Englische Namen der Kategorien hat die anstiftung nicht, nur eine Zuordnung zur ORDS-Kategorie.
 
-Aus ords-extra nutzen wir die Tabelle der Marken und die Muster für Produkte und Fehlerarten nur als Vorschlag und Prüfung, nicht als automatische Korrektur. Die Markentabelle ordnet nach Ähnlichkeit der Buchstaben zu und macht etwa aus Teufel Tefal und aus Canton Canon. Die Lizenz CC BY-NC-ND erlaubt keine Bearbeitung, deshalb veröffentlichen wir daraus keine eigenen Listen.
+Aus ords-extra wenden wir die Tabelle der Marken auf unsere eigenen Daten an, etwa Phillips zu Philips. Die Tabelle ordnet nach Ähnlichkeit der Buchstaben zu und macht dabei aus eigenständigen Marken andere, etwa aus Teufel Tefal, aus Canton Canon und aus Olympia Olympus. Solche Zuordnungen stehen in einer eigenen Liste der Ausnahmen und werden nicht angewendet, ebenso Schreibweisen, die zu mehr als einer Marke führen. Die Originalmarke bleibt neben der korrigierten erhalten. Die englischen Namen der Gegenstände aus ords-extra nutzen wir genauso als Vorschlag für den Katalog, die Muster für Produkte und Fehlerarten zur Prüfung. Die Lizenz CC BY-NC-ND erlaubt das Anwenden. Weitergeben dürfen wir die Tabelle nur unverändert, deshalb veröffentlichen wir nur unsere korrigierten Daten und keine eigene Liste, die im Kern die Tabelle aus ords-extra ist. ords-extra wird dabei genannt.
 
 === Konsequenzen
 
 * Gut, weil alle Felder des Standards eine Quelle haben und die anstiftung die Zeilen ohne zweite Erfassung übernehmen kann.
 * Gut, weil Unsicherheit beim Alter und der Unterschied zwischen gemeldetem und festgestelltem Defekt sichtbar bleiben.
 * Gut, weil eine Tabelle die Ergebnisse für den Export und für Restarters gleich abbildet.
+* Gut, weil häufige Schreibfehler bei Marken wie Phillips ohne Handarbeit verschwinden.
+* Schlecht, weil die Liste der Ausnahmen gepflegt werden muss, wenn ords-extra neue Fehlgriffe enthält.
 * Schlecht, weil Zammad die neuen Felder Alter, Angabe zum Alter und festgestellter Defekt braucht.
 * Schlecht, weil die Übersetzung und der Link zur Wissensdatenbank erst mit n8n und der Wissensdatenbank kommen.
 
@@ -72,5 +75,6 @@ Aus ords-extra nutzen wir die Tabelle der Marken und die Muster für Produkte un
 
 * {ords}#L62-L117[Open Repair Data Standard, Übersicht der Felder], {ords}#L118-L377[Beschreibung der Felder] und {ords}#L637-L665[Data format]
 * https://github.com/anstiftung/mapped-repair-events/blob/a507956b91fca2f30dd372e847f015a24138abf7/config/sql/init/database.sql[database.sql der anstiftung], Tabellen `info_sheets`, `categories` und `form_field_options_extra_infos`
-* https://codeberg.org/zenlan/ords-extra/src/commit/08e185b8289094ae31c19437a3e86a1248e96635[ords-extra], Markentabelle und Muster
+* https://codeberg.org/zenlan/ords-extra/src/commit/08e185b8289094ae31c19437a3e86a1248e96635[ords-extra], Markentabelle, englische Namen und Muster
+* https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.de[CC BY-NC-ND 4.0], Abschnitt 4 zu Datenbanken
 * Festlegungen von Michael Prange am 14.11.2026

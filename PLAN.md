@@ -324,6 +324,7 @@ git push
 - [ ] NetBird-Client auf dem Mini-PC einrichten, auf uCore per rpm-ostree oder als Container mit Host-Netzwerk
 - [ ] Startreihenfolge in systemd festlegen, sodass NetBird vor Docker läuft
 - [ ] Zugriffsregeln in NetBird anlegen, sodass die Helpdesk-VM nur den Port von Ollama und Admins nur SSH erreichen
+- [ ] Toolbox `manuel-r` für die Auswertung mit R auch auf MANUEL anlegen, wie im Kopf von [eval/r/Containerfile](eval/r/Containerfile), siehe [ADR 49](docs/adr/0049-daten-mit-r-auswerten.adoc). Auf dem Laptop läuft sie seit 14.11.2026
 
 ### Phase 2 Inferenz
 

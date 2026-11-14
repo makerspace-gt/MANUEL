@@ -10,3 +10,4 @@ Diese Tabellen entstehen mit [category_matrix.py](../../eval/ora/category_matrix
 | [kategorien-zuordnung.tsv](kategorien-zuordnung.tsv) | jede Kategorie eines Partners mit allen ORA-Gruppen, denen die Alliance sie zugeordnet hat, bei Freitext nur Werte ab 10 Einträgen |
 | [felder/uebersicht.tsv](felder/uebersicht.tsv) | je Feld Zahl der Zeilen, verschiedenen und leeren Werte und der häufigste Wert, aus [fields.R](../../eval/ora/fields.R) in R nach [ADR 49](../adr/0049-daten-mit-r-auswerten.adoc) |
 | [felder/](felder) | je Feld alle verschiedenen Werte mit Anzahl bei Elektrogeräten (`eee`) und Gegenständen ohne Strom (`non_eee`). `id.tsv` und `problem.tsv` sind mit 16 und 29 MB zu groß fürs Repo und entstehen nur lokal |
+| [alter/alter.tsv](alter/alter.tsv) | Kennzahlen zum Alter der Gegenstände für Anhang C der Fallstudie, aus [age.R](../../eval/ora/age.R), dazu die Grafiken `ora-alter.svg` und `ora-alter-partner.svg` in [docs/grafiken](../grafiken) |

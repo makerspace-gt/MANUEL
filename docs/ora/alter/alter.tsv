@@ -1,0 +1,11 @@
+measure	value
+rows	619873
+with_age	192902
+age_and_year_together	0.9999032059792893
+age_matches_year	1
+with_fraction	4177
+older_than_100	396
+older_than_limit	3945
+median_age	7
+share_multiple_of_5_from_5_to_60	0.5731861367794885
+expected_share_multiple_of_5	0.21428571428571427

@@ -103,6 +103,7 @@ include::../../docs/adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[]
 
 include::../../docs/adr/0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[]
 include::../../docs/adr/0049-daten-mit-r-auswerten.adoc[]
+include::../../docs/adr/0050-problem-loesung-und-befund-mit-drei-agenten-erfassen.adoc[]
 
 :leveloffset: -2
 :sectnums:

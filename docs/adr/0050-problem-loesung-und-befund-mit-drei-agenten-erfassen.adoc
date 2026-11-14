@@ -1,0 +1,78 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0050]]
+= 0050 Problem, Lösung und Befund mit drei Agenten erfassen
+
+[horizontal]
+Status:: vorgeschlagen
+Datum:: 2026-11-14
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Das Feld `problem` ist im Open Repair Data Standard Pflicht. Gemeint ist das Problem, das bei der Reparatur am Gerät festgestellt wurde, nicht die Schilderung des Gastes vorher https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L244-L258[(Standard, Zeile 244 bis 258)]. Bisher plant MANUEL ein Feld Defekt, das der Ticket Text Extractor aus der Anmeldung füllt, und ein Feld Lösung, das ein Textwerkzeug aus Stichworten der Engagierten schreibt. Bei der Meldung wird beides aneinandergehängt. So landet beim Standard die Schilderung des Gastes statt des Befunds, und ob die Schilderung stimmte, geht verloren. Am Tisch fehlt zudem die Zeit, eine Lösung sauber aufzuschreiben. Wie erfassen wir Problem, Lösung und Befund so, dass die Daten bei der Open Repair Alliance gut nutzbar sind und die Engagierten entlastet werden?
+
+== Entscheidungskriterien
+
+* Gemeldet wird der festgestellte Fehler, wie es der Standard meint
+* Engagierte schreiben am Tisch so wenig wie möglich
+* Sichtbar wird, wo die Schilderung vor dem Termin unvollständig oder falsch war
+* Fehler lassen sich auswerten, nicht nur als Freitext
+* Keine personenbezogenen Daten verlassen unsere Systeme, auch keine Stimmen xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[ADR 48]
+* Ein Mensch bestätigt jeden Vorschlag xref:0017-einen-menschen-entscheiden-lassen.adoc[ADR 17]
+
+== Betrachtete Optionen
+
+* Wie bisher geplant, Defekt aus der Anmeldung und Lösung aus Stichworten, beides aneinandergehängt
+* Engagierte tragen Befund und Fehlerart am Termin von Hand ein
+* Drei Agenten für Problem vor dem Termin, Lösung aus einer Sprachnachricht und Befund nach dem Termin
+
+== Entscheidung
+
+Vorgeschlagen sind drei Agenten.
+
+. *Problem vor dem Termin.* Ein Agent beschreibt das Problem aus der Anmeldung, also aus Betreff, Nachricht, Fotos und Typenschild. Fehlt etwas, entwirft er eine Nachfrage beim Gast, die ein Mensch absendet. Das geht mit dem Ticket Text Extractor oder einem Custom AI Agent direkt in Zammad. Das bisherige Feld Defekt heißt dann „Problem laut Anmeldung“.
+. *Lösung aus einer Sprachnachricht.* Nach der Reparatur sprechen die Engagierten kurz ein, was sie gefunden und gemacht haben, gern im Gespräch mit dem Gast. Eine Spracherkennung auf MANUEL macht daraus Text, ein Agent schreibt daraus die Lösung als Vorschlag. Zammad kann das nicht selbst, sein Quellcode schließt Modelle wie Whisper ausdrücklich aus der Liste der Modelle aus. Den Weg übernimmt deshalb n8n. Die Aufnahme bleibt auf MANUEL und wird nach der Umwandlung gelöscht.
+. *Befund nach dem Termin.* Aus Problem laut Anmeldung, Lösung und, wenn vorhanden, einem Foto der Fehlerursache leitet ein Agent den Befund ab. Dazu ordnet er die Schilderung ein, als zutreffend, unvollständig oder falsch. Wo es für die Art des Geräts eine Liste von Fehlerarten gibt, schlägt er auch die Fehlerart vor. Der Befund geht als `problem` an Restarters, die Schilderung nicht.
+
+Neue Felder in Zammad wären Befund als Text, Schilderung als Auswahl und später Fehlerart als Auswahl je Geräteart.
+
+Für die Fehlerarten nutzen wir die Listen aus den Quests von The Restart Project in den Open Repair Data, die unter CC BY-SA 4.0 stehen. Es gibt sie für Computer mit 20, Drucker mit 23, Tablets mit 26 und Staubsauger mit 17 Fehlerarten. Die Listen in ords-extra stehen unter CC BY-NC-ND 4.0 und dienen nur zum Vergleich.
+
+Stufe 1 kommt ohne n8n aus und kann nach dem Start am 05.12.2026 folgen. Die Stufen 2 und 3 brauchen n8n und folgen mit Stufe 2 des IT-Plans ab Januar 2027. Vorher ist zu prüfen, wie schnell eine Spracherkennung wie whisper.cpp auf der GPU von MANUEL läuft und ob sie neben Sprach- und Embedding-Modell in den Speicher passt.
+
+=== Konsequenzen
+
+* Gut, weil die Alliance den festgestellten Fehler bekommt und nicht die Vermutung des Gastes.
+* Gut, weil Engagierte sprechen statt schreiben. Szpak und Mather beschreiben Sprachaufnahmen als Weg, mit freien Händen bessere Daten zu erfassen.
+* Gut, weil der Vergleich von Schilderung und Befund zeigt, wo Nachfragen vor dem Termin besser werden müssen.
+* Gut, weil Fehlerarten aus den Quests Auswertungen erlauben, die mit Freitext kaum gehen.
+* Schlecht, weil drei Agenten und eine Spracherkennung mehr Aufwand machen als ein Textfeld.
+* Schlecht, weil Sprachaufnahmen Stimmen enthalten. Gast und Engagierte müssen zustimmen, und der Datenschutzhinweis muss die Aufnahme nennen.
+* Schlecht, weil Listen von Fehlerarten nur für wenige Gerätearten vorliegen.
+
+== Vor- und Nachteile der Optionen
+
+=== Wie bisher geplant
+
+* Gut, weil es am wenigsten Aufwand macht.
+* Schlecht, weil die Schilderung des Gastes als Problem gemeldet wird und der Abgleich mit dem Befund fehlt.
+
+=== Befund und Fehlerart von Hand
+
+* Gut, weil kein weiterer Dienst nötig ist.
+* Schlecht, weil am Tisch die Zeit fehlt und die Felder wie heute leer bleiben dürften. Marke, Baujahr und Stromversorgung zeigen das schon jetzt.
+
+=== Drei Agenten
+
+* Gut, weil jeder Schritt dort stattfindet, wo die Information entsteht, vor dem Termin, am Tisch und danach.
+* Schlecht, weil die Stufen 2 und 3 erst mit n8n gehen.
+
+== Quellen
+
+* https://github.com/openrepair/datastandard/blob/c1a1f2979937a3a481782d3afbde1b62f9b24b58/standard.rst#L244-L258[Open Repair Data Standard, Feld Problem], Pflicht, festgestellt bei der Reparatur, Freitext schwer auszuwerten, Liste von Fehlerarten angekündigt
+* https://docs.google.com/document/d/1s9MHVIdx2jMeMq0x3qGd80suHVdupLvYYOWaAi1jq3A/[Szpak und Mather, Repair data collection tips and tools], Abschnitte Audio recording und Photography
+* https://github.com/openrepair/data/tree/d1b2ab5a7b05c96645f5d4afec7951fc912639e1/quests[Quests in den Open Repair Data], Listen von Fehlerarten für Computer, Drucker, Tablets und Staubsauger, CC BY-SA 4.0
+* https://openrepair.org/open-data/insights/vacuum-cleaners/[Insights: Vacuum cleaners], über 3.000 Problemtexte von Freiwilligen Fehlerarten zugeordnet
+* https://codeberg.org/zenlan/ords-extra/src/commit/08e185b8289094ae31c19437a3e86a1248e96635[ords-extra], Fehlerarten mit Suchmustern, CC BY-NC-ND 4.0
+* https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/lib/ai/provider/concerns/lists_models.rb#L19-L24[Zammad, Liste der Modelle], Modelle wie Whisper sind ausgeschlossen
+* Idee von Michael Prange am 14.11.2026

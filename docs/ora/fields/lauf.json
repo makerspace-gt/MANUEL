@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-14T09:08:58+0100",
+  "date": "2026-11-14T09:11:04+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/ora/fields.R",
-  "commit": "6b4d23dad91bf066d75b8ec1ffca57644ea8afa0",
+  "commit": "abeb011c43e346c537bf769c88a58df93417ca3c",
   "dirty": true,
   "inputs": [
     {
@@ -15,67 +15,67 @@
   ],
   "outputs": [
     {
-      "path": "docs/ora/felder/uebersicht.tsv",
+      "path": "docs/ora/fields/summary.tsv",
       "sha256": "29bac1bb00d5b22d8d1b5c53cbd4f67ad7a3e77f522725f0f78f436eebca4169"
     },
     {
-      "path": "docs/ora/felder/id.tsv",
+      "path": "docs/ora/fields/id.tsv",
       "sha256": "551dfdda931174540557dcf733c33051d2bd01f9630b189dae56b49bd6d64359"
     },
     {
-      "path": "docs/ora/felder/data_provider.tsv",
+      "path": "docs/ora/fields/data_provider.tsv",
       "sha256": "107e0dc793896eb5d6292ed223bd5e2f63d4a716790efcf7ebdda26b61788c52"
     },
     {
-      "path": "docs/ora/felder/country.tsv",
+      "path": "docs/ora/fields/country.tsv",
       "sha256": "57a79b88d2651ebb8f1f5fa6319f76f2abfe9cab697371fbf71e2f14ea8862a7"
     },
     {
-      "path": "docs/ora/felder/partner_product_category.tsv",
+      "path": "docs/ora/fields/partner_product_category.tsv",
       "sha256": "011d7c47aed656a938aac2d9f884d09f5763cafd6d32e38eb1111e28d2d1d19c"
     },
     {
-      "path": "docs/ora/felder/product_category.tsv",
+      "path": "docs/ora/fields/product_category.tsv",
       "sha256": "615813be23813a928727870201c5d48fc309e672f878091fe6197dbfeb29d690"
     },
     {
-      "path": "docs/ora/felder/product_category_id.tsv",
+      "path": "docs/ora/fields/product_category_id.tsv",
       "sha256": "86fe92571a8d9573521aa395b4bb2e26f4a5e962d9153f549f4b71b0567e3424"
     },
     {
-      "path": "docs/ora/felder/brand.tsv",
+      "path": "docs/ora/fields/brand.tsv",
       "sha256": "3fdce5b2fc1c16a4bb18078d609488aa1859fd1a6b48059a1e6e59a1e1290f98"
     },
     {
-      "path": "docs/ora/felder/year_of_manufacture.tsv",
+      "path": "docs/ora/fields/year_of_manufacture.tsv",
       "sha256": "ec0f4179d6d2b89245484e47964250c590641aaae753df6a0694595ac8f001cc"
     },
     {
-      "path": "docs/ora/felder/product_age.tsv",
+      "path": "docs/ora/fields/product_age.tsv",
       "sha256": "930d851624e53fd29d97d071ba61611d3257abf63c17abc2f86e6787684c58f3"
     },
     {
-      "path": "docs/ora/felder/repair_status.tsv",
+      "path": "docs/ora/fields/repair_status.tsv",
       "sha256": "bd91d63aa4e5b5d13d5868df55af1a1655066abf579e9f26a74858f600dcbcfd"
     },
     {
-      "path": "docs/ora/felder/repair_barrier_if_end_of_life.tsv",
+      "path": "docs/ora/fields/repair_barrier_if_end_of_life.tsv",
       "sha256": "16afd3bb3eae32a71141f97dfddda0c594d732116f9400aba889f612e4e010b2"
     },
     {
-      "path": "docs/ora/felder/group_identifier.tsv",
+      "path": "docs/ora/fields/group_identifier.tsv",
       "sha256": "e9d268fd1be210b433631408029dde48ee67a56cbf66bb7bcac6f40fd1034021"
     },
     {
-      "path": "docs/ora/felder/event_date.tsv",
+      "path": "docs/ora/fields/event_date.tsv",
       "sha256": "9f559a41c0a90902dad169e16d6b826a8fe32e9aa6de838ac0845d6517e49f05"
     },
     {
-      "path": "docs/ora/felder/problem.tsv",
+      "path": "docs/ora/fields/problem.tsv",
       "sha256": "2034cdcbd33bf7d6fcbbbc947454853595cad0b10e85cb7b5a5250985c1d1c8c"
     },
     {
-      "path": "docs/ora/felder/werte.csv",
+      "path": "docs/ora/fields/values.csv",
       "sha256": "eb6f32451bf97b0761b2e555476383f67d35a588283ec904cb3ea199251291e8"
     }
   ],

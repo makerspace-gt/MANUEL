@@ -62,7 +62,8 @@ plot <- ggplot(entries, aes(share, rank)) +
                      limits = c(0, nrow(entries) * 1.06), expand = expansion(mult = c(0, 0))) +
   labs(title = "Wenige Einträge decken fast alle Reparaturen ab",
        subtitle = paste0("Einträge, die nötig sind, um einen Anteil der ", de(sum(entries$repairs_deu)),
-                         " deutschen Reparaturen abzudecken, die häufigsten zuerst.\n",
+                         " deutschen Reparaturen abzudecken, die häufigsten zuerst. 1 % sind rund ",
+                         de(round(sum(entries$repairs_deu) / 100, -1)), " Geräte.\n",
                          de(sum(entries$repairs_deu < 10)), " der ", de(nrow(entries)),
                          " Einträge haben weniger als 10 Reparaturen, ", de(sum(entries$repairs_deu == 0)), " gar keine"),
        x = "Anteil der Reparaturen", y = "Einträge im Katalog",

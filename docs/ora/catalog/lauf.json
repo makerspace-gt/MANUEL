@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-14T13:09:21+0100",
+  "date": "2026-11-14T13:10:12+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/categorizer/coverage.R",
-  "commit": "563bc888f57a0512f5c7de4106568f092861bc8f",
+  "commit": "83b54fcdce1064ee2f4e4777b44a5296597dd297",
   "dirty": true,
   "inputs": [
     {
@@ -16,11 +16,11 @@
     },
     {
       "path": "docs/grafiken/catalog-coverage.svg",
-      "sha256": "d50bb6cb1793bc1a32753871c7f1702d8a5ff71e879878ce3de2c645544af381"
+      "sha256": "9cd3a794aea97771994bcf502f2d1620a125302651bb1cf6c4363561ff7a11e4"
     },
     {
       "path": "docs/grafiken/catalog-coverage-hell.svg",
-      "sha256": "292faa7fbe13365bac4bd65e56a3d22916620de8baf390430775d93537ea8718"
+      "sha256": "650dc7b51ab80af4529c589c222ecd36c4ec59010769ea01c278244bd25358dd"
     }
   ],
   "r": {

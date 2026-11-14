@@ -1,0 +1,15 @@
+field	rows	distinct	empty	distinct_eee	distinct_non_eee	most_common	most_common_n
+id	619873	619873	0	416282	203591	anstiftung_1	1
+data_provider	619873	9	0	9	8	The Restart Project	231080
+country	619873	34	0	34	29	GBR	188950
+partner_product_category	619873	53385	0	30760	22625	Household appliances electric ~ Coffee maker	12027
+product_category	619873	46	0	40	6	Unpowered - Textile	102241
+product_category_id	619873	41	0	40	1	0	203591
+brand	619873	42961	0	31265	14736	Unknown	317482
+year_of_manufacture	619873	162	426937	136	156		426937
+product_age	619873	216	426971	192	194		426971
+repair_status	619873	4	0	4	4	Fixed	399776
+repair_barrier_if_end_of_life	619873	7	575691	7	1		575691
+group_identifier	619873	1729	0	1691	1478	Repair Café Toronto	11069
+event_date	619873	3586	0	3527	2822	2025-10-18	3393
+problem	619873	386738	158925	278329	109763		158925

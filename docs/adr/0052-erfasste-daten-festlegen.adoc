@@ -7,7 +7,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-14
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-14, Marken aus ords-extra werden angewendet statt nur vorgeschlagen
+Überarbeitet:: 2026-11-14, Marken aus ords-extra werden angewendet statt nur vorgeschlagen, und am selben Tag Repariert von über den Owner
 
 == Kontext und Problem
 
@@ -43,7 +43,7 @@ Erfasst werden alle Felder des Standards. Zusatzspalten kommen dazu, wo der Stan
 |fest |id, data_provider, country, group_identifier |`msg_<Ticket>_<Datum>`, Makerspace Gütersloh e.V., DEU, 17503
 |===
 
-Stromversorgung, VDE-Prüfung, Repariert von, Spenden und Bedarf bleiben Felder nur für uns.
+Stromversorgung, VDE-Prüfung, Spenden und Bedarf bleiben Felder nur für uns. Wer repariert hat, steht im Owner des Tickets, siehe xref:0032-kennzahlen-der-erprobung-erheben.adoc[ADR 32], und der Termin in der Wartezeit, siehe xref:0053-termin-in-der-wartezeit-behalten.adoc[ADR 53].
 
 Die Spalten der anstiftung tragen die Namen aus ihrer eigenen Datenbank, etwa `event_uid`, `category_id` und `parent_id` für die Oberkategorie. Englische Namen der Kategorien hat die anstiftung nicht, nur eine Zuordnung zur ORDS-Kategorie.
 

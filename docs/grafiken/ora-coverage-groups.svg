@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='880.00pt' height='476.00pt' viewBox='0 0 880.00 476.00'>
+<style>@media (prefers-color-scheme: dark) {
+[style*='fill: #FCFCFB'] { fill: #1A1A19 !important; }
+[style*='stroke: #FCFCFB'] { stroke: #1A1A19 !important; }
+[style*='fill: #0B0B0B'] { fill: #F0EFEC !important; }
+[style*='stroke: #0B0B0B'] { stroke: #F0EFEC !important; }
+[style*='fill: #52514E'] { fill: #C3C2B7 !important; }
+[style*='stroke: #52514E'] { stroke: #C3C2B7 !important; }
+[style*='fill: #E4E3DF'] { fill: #3A3A37 !important; }
+[style*='stroke: #E4E3DF'] { stroke: #3A3A37 !important; }
+[style*='fill: #B5B4AE'] { fill: #5C5B55 !important; }
+[style*='stroke: #B5B4AE'] { stroke: #5C5B55 !important; }
+[style*='fill: #9A9992'] { fill: #75746E !important; }
+[style*='stroke: #9A9992'] { stroke: #75746E !important; }
+[style*='fill: #2A78D6'] { fill: #3987E5 !important; }
+[style*='stroke: #2A78D6'] { stroke: #3987E5 !important; }
+[style*='fill: #EB6834'] { fill: #D95926 !important; }
+[style*='stroke: #EB6834'] { stroke: #D95926 !important; }
+}</style>
+<g class='svglite'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FCFCFB;'/>
+<defs>
+  <clipPath id='cpMC4wMHw4ODAuMDB8MC4wMHw0NzYuMDA='>
+    <rect x='0.00' y='0.00' width='880.00' height='476.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw4ODAuMDB8MC4wMHw0NzYuMDA=)'>
+<rect x='0.00' y='0.00' width='880.00' height='476.00' style='stroke-width: 1.07; stroke: none; fill: #FCFCFB;' />
+</g>
+<defs>
+  <clipPath id='cpNTIuMTd8ODU2LjA5fDc0Ljg1fDQxMy43MQ=='>
+    <rect x='52.17' y='74.85' width='803.92' height='338.86' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNTIuMTd8ODU2LjA5fDc0Ljg1fDQxMy43MQ==)'>
+<polyline points='52.17,413.71 856.09,413.71 ' style='stroke-width: 0.85; stroke: #E4E3DF; stroke-linecap: butt;' />
+<polyline points='52.17,344.22 856.09,344.22 ' style='stroke-width: 0.85; stroke: #E4E3DF; stroke-linecap: butt;' />
+<polyline points='52.17,274.72 856.09,274.72 ' style='stroke-width: 0.85; stroke: #E4E3DF; stroke-linecap: butt;' />
+<polyline points='52.17,205.23 856.09,205.23 ' style='stroke-width: 0.85; stroke: #E4E3DF; stroke-linecap: butt;' />
+<polyline points='52.17,135.73 856.09,135.73 ' style='stroke-width: 0.85; stroke: #E4E3DF; stroke-linecap: butt;' />
+<line x1='688.94' y1='413.71' x2='688.94' y2='74.85' style='stroke-width: 0.85; stroke: #E4E3DF; stroke-linecap: butt;' />
+<line x1='768.53' y1='413.71' x2='768.53' y2='74.85' style='stroke-width: 0.85; stroke: #E4E3DF; stroke-linecap: butt;' />
+<line x1='848.13' y1='413.71' x2='848.13' y2='74.85' style='stroke-width: 0.85; stroke: #E4E3DF; stroke-linecap: butt;' />
+<polyline points='183.46,406.76 183.46,399.81 260.86,399.81 260.86,392.86 305.59,392.86 305.59,385.92 343.03,385.92 343.03,378.97 379.36,378.97 379.36,372.02 411.01,372.02 411.01,365.07 441.64,365.07 441.64,358.12 471.75,358.12 471.75,351.17 499.02,351.17 499.02,344.22 524.02,344.22 524.02,337.27 547.64,337.27 547.64,330.32 570.96,330.32 570.96,323.37 592.73,323.37 592.73,316.42 613.77,316.42 613.77,309.47 632.69,309.47 632.69,302.52 649.70,302.52 649.70,295.57 665.96,295.57 665.96,288.62 679.22,288.62 679.22,281.67 691.64,281.67 691.64,274.72 703.31,274.72 703.31,267.77 714.96,267.77 714.96,260.82 726.41,260.82 726.41,253.87 737.38,253.87 737.38,246.92 747.06,246.92 747.06,239.97 756.40,239.97 756.40,233.02 765.71,233.02 765.71,226.07 774.88,226.07 774.88,219.13 783.45,219.13 783.45,212.18 791.52,212.18 791.52,205.23 797.67,205.23 797.67,198.28 803.69,198.28 803.69,191.33 809.63,191.33 809.63,184.38 815.37,184.38 815.37,177.43 820.58,177.43 820.58,170.48 824.73,170.48 824.73,163.53 828.02,163.53 828.02,156.58 831.01,156.58 831.01,149.63 833.43,149.63 833.43,142.68 835.80,142.68 835.80,135.73 838.06,135.73 838.06,128.78 840.19,128.78 840.19,121.83 842.09,121.83 842.09,114.88 843.87,114.88 843.87,107.93 845.35,107.93 845.35,100.98 846.75,100.98 846.75,94.03 848.13,94.03 ' style='stroke-width: 1.92; stroke: #2A78D6; stroke-linecap: butt;' />
+<circle cx='688.94' cy='281.67' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='768.53' cy='226.07' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='776.49' cy='219.13' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='784.45' cy='212.18' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='792.41' cy='205.23' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='800.37' cy='198.28' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='808.33' cy='191.33' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='816.29' cy='177.43' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='824.25' cy='170.48' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='832.21' cy='149.63' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='840.17' cy='128.78' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<circle cx='848.13' cy='94.03' r='3.34' style='stroke-width: 1.98; stroke: #2A78D6; fill: #FCFCFB;' />
+<text x='683.14' y='276.45' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='96.69px' lengthAdjust='spacingAndGlyphs'>80 % mit 19 Gruppen</text>
+<text x='762.73' y='220.85' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='96.69px' lengthAdjust='spacingAndGlyphs'>90 % mit 27 Gruppen</text>
+<text x='841.99' y='88.81' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='102.38px' lengthAdjust='spacingAndGlyphs'>100 % mit 46 Gruppen</text>
+<rect x='52.17' y='87.73' width='151.23' height='229.07' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #FCFCFB;' />
+<text x='99.93' y='102.30' text-anchor='end' style='font-size: 10.24px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='28.38px' lengthAdjust='spacingAndGlyphs'>Anteil</text>
+<text x='187.49' y='102.30' text-anchor='end' style='font-size: 10.24px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='42.64px' lengthAdjust='spacingAndGlyphs'>Gruppen</text>
+<text x='99.93' y='123.65' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>90 %</text>
+<text x='99.93' y='141.85' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>91 %</text>
+<text x='99.93' y='160.04' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>92 %</text>
+<text x='99.93' y='178.24' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>93 %</text>
+<text x='99.93' y='196.44' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>94 %</text>
+<text x='99.93' y='214.63' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>95 %</text>
+<text x='99.93' y='232.83' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>96 %</text>
+<text x='99.93' y='251.03' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>97 %</text>
+<text x='99.93' y='269.23' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>98 %</text>
+<text x='99.93' y='287.42' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='23.31px' lengthAdjust='spacingAndGlyphs'>99 %</text>
+<text x='99.93' y='305.62' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='29.00px' lengthAdjust='spacingAndGlyphs'>100 %</text>
+<text x='187.49' y='123.65' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>27</text>
+<text x='187.49' y='141.85' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>28</text>
+<text x='187.49' y='160.04' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>29</text>
+<text x='187.49' y='178.24' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>30</text>
+<text x='187.49' y='196.44' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>31</text>
+<text x='187.49' y='214.63' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>32</text>
+<text x='187.49' y='232.83' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>34</text>
+<text x='187.49' y='251.03' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>35</text>
+<text x='187.49' y='269.23' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>38</text>
+<text x='187.49' y='287.42' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>41</text>
+<text x='187.49' y='305.62' text-anchor='end' style='font-size: 10.24px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.38px' lengthAdjust='spacingAndGlyphs'>46</text>
+<text x='76.05' y='358.89' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='238.55px' lengthAdjust='spacingAndGlyphs'>Am häufigsten sind Unpowered - Textile mit 102.241,</text>
+<text x='76.05' y='372.41' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='270.75px' lengthAdjust='spacingAndGlyphs'>Unpowered - Household mit 60.275 und Vacuum mit 34.840</text>
+<text x='76.05' y='385.93' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='43.34px' lengthAdjust='spacingAndGlyphs'>Einträgen</text>
+<text x='800.37' y='152.13' text-anchor='end' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='268.56px' lengthAdjust='spacingAndGlyphs'>Am seltensten sind Misc mit 1.071, DSLR/video camera mit</text>
+<text x='800.37' y='165.65' text-anchor='end' style='font-size: 10.24px;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='225.97px' lengthAdjust='spacingAndGlyphs'>1.091 und Unpowered - Other mit 1.157 Einträgen</text>
+</g>
+<g clip-path='url(#cpMC4wMHw4ODAuMDB8MC4wMHw0NzYuMDA=)'>
+<text x='47.24' y='417.36' text-anchor='end' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='5.56px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='47.24' y='347.86' text-anchor='end' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.12px' lengthAdjust='spacingAndGlyphs'>10</text>
+<text x='47.24' y='278.37' text-anchor='end' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.12px' lengthAdjust='spacingAndGlyphs'>20</text>
+<text x='47.24' y='208.87' text-anchor='end' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.12px' lengthAdjust='spacingAndGlyphs'>30</text>
+<text x='47.24' y='139.37' text-anchor='end' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='11.12px' lengthAdjust='spacingAndGlyphs'>40</text>
+<polyline points='52.17,413.71 856.09,413.71 ' style='stroke-width: 1.07; stroke: #B5B4AE; stroke-linecap: butt;' />
+<text x='52.17' y='425.93' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='17.23px' lengthAdjust='spacingAndGlyphs'>0 %</text>
+<text x='211.37' y='425.93' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='22.80px' lengthAdjust='spacingAndGlyphs'>20 %</text>
+<text x='370.56' y='425.93' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='22.80px' lengthAdjust='spacingAndGlyphs'>40 %</text>
+<text x='529.75' y='425.93' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='22.80px' lengthAdjust='spacingAndGlyphs'>60 %</text>
+<text x='688.94' y='425.93' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='22.80px' lengthAdjust='spacingAndGlyphs'>80 %</text>
+<text x='848.13' y='425.93' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='28.36px' lengthAdjust='spacingAndGlyphs'>100 %</text>
+<text x='454.13' y='438.14' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='100.09px' lengthAdjust='spacingAndGlyphs'>Anteil der Reparaturen</text>
+<text transform='translate(31.20,244.28) rotate(-90)' text-anchor='middle' style='font-size: 10.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='64.22px' lengthAdjust='spacingAndGlyphs'>ORA-Gruppen</text>
+<text x='23.91' y='47.32' style='font-size: 12.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='671.61px' lengthAdjust='spacingAndGlyphs'>ORA-Gruppen, die nötig sind, um einen Anteil aller 619.873 Einträge der Open Repair Data abzudecken, die häufigsten zuerst.</text>
+<text x='23.91' y='60.28' style='font-size: 12.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='313.28px' lengthAdjust='spacingAndGlyphs'>1 % sind rund 6.200 Geräte, gezählt über alle neun Partner</text>
+<text x='23.91' y='29.60' style='font-size: 16.00px; font-weight: bold;fill: #0B0B0B; font-family: "Nimbus Sans";' textLength='423.36px' lengthAdjust='spacingAndGlyphs'>Auch bei den ORA-Gruppen tragen wenige den Großteil</text>
+<text x='23.91' y='452.36' style='font-size: 9.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='354.39px' lengthAdjust='spacingAndGlyphs'>Gruppen mit Strom nach dem Open Repair Data Standard, ohne Strom wie in den Daten.</text>
+<text x='23.91' y='462.08' style='font-size: 9.00px;fill: #52514E; font-family: "Nimbus Sans";' textLength='220.27px' lengthAdjust='spacingAndGlyphs'>Quelle: Open Repair Data 0.3, Juli 2026, CC BY-SA 4.0</text>
+</g>
+</g>
+</svg>

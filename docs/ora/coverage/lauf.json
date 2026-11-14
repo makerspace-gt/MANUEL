@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-14T15:58:48+0100",
+  "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/ora/coverage.R",
+  "commit": "2de63e7c204113d762c455142c85e99ff227b444",
+  "dirty": true,
+  "inputs": [
+    {
+      "path": "quellen/openrepair-data/OpenRepairData_v0.3_aggregate_202607_eee.csv",
+      "sha256": "c1362071b53405619e1fa89f8a0b6d0c6ebdfec71b6002e3458223654a29a157"
+    },
+    {
+      "path": "quellen/openrepair-data/OpenRepairData_v0.3_aggregate_202607_non-eee.csv",
+      "sha256": "e06c3bd161dae48f55d401837c44c25ed48ba46538b6dfd9a8f6b32da27b0008"
+    },
+    {
+      "path": "docs/ora/partner.tsv",
+      "sha256": "7d8e72572df527d412d87d766d01467c8f220f38939b2c3bbb2ae0c4e5f005a6"
+    },
+    {
+      "path": "docs/fields/import/restarters_translations.csv",
+      "sha256": "ab500460926a78dd5a0a24bbe279b95d489238d4a39fa4d551e25a215f1d57af"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/ora/coverage/partners.tsv",
+      "sha256": "6c8ff1a5e783bc10fe8c942324810e26d288e82bd5c4ac997b47aa10b6ea332b"
+    },
+    {
+      "path": "docs/grafiken/ora-coverage-partners.svg",
+      "sha256": "56912d42300e0c7046b53e4b6cfc49a50c969d96853560343b624c2f403a4feb"
+    },
+    {
+      "path": "docs/grafiken/ora-coverage-partners-hell.svg",
+      "sha256": "32a74989861d87c5c532163e62e114a519193f7610c6781e8cf168bb346665c7"
+    },
+    {
+      "path": "docs/ora/coverage/restarters.tsv",
+      "sha256": "460824e3def8b351dcac9c1c598e114c3941aa909e91d9c6609eedad61433d6b"
+    },
+    {
+      "path": "docs/grafiken/ora-coverage-restarters.svg",
+      "sha256": "180c0d171d8d2759e73085d449e5e1bebec020c2b213abda4efbff4ebb415900"
+    },
+    {
+      "path": "docs/grafiken/ora-coverage-restarters-hell.svg",
+      "sha256": "1166ff6b2e0a74f4291246176bb40d46a23d27c6503ab80d726adeca683eb3d3"
+    },
+    {
+      "path": "docs/ora/coverage/groups.tsv",
+      "sha256": "8586b7860c79ae3fbf5b335aa7f0a280344574b30134db7c95b8f0b5e0d04a34"
+    },
+    {
+      "path": "docs/grafiken/ora-coverage-groups.svg",
+      "sha256": "a53a1ba596f93499ab07751a6c2babdbdacacaf7849192c8187cd44acc250bc6"
+    },
+    {
+      "path": "docs/grafiken/ora-coverage-groups-hell.svg",
+      "sha256": "1b433c6f06ebaa05f36ccfbf208af78ebdb6227e79161f3731bd449f7a4598ee"
+    }
+  ],
+  "r": {
+    "version": "R version 4.6.1 (2026-06-24)",
+    "repos": "https://p3m.dev/cran/__linux__/noble/2026-10-28",
+    "image": "localhost/manuel-r:4.6.1",
+    "packages": {
+      "bit": "4.6.0",
+      "bit64": "4.8.6",
+      "cli": "3.6.6",
+      "compiler": "4.6.1",
+      "crayon": "1.5.3",
+      "dplyr": "1.2.1",
+      "farver": "2.1.2",
+      "generics": "0.1.4",
+      "ggplot2": "4.0.3",
+      "glue": "1.8.1",
+      "grid": "4.6.1",
+      "gtable": "0.3.6",
+      "hms": "1.1.4",
+      "lifecycle": "1.0.5",
+      "magrittr": "2.0.5",
+      "parallel": "4.6.1",
+      "pillar": "1.11.1",
+      "pkgconfig": "2.0.3",
+      "purrr": "1.2.2",
+      "R6": "2.6.1",
+      "RColorBrewer": "1.1-3",
+      "readr": "2.2.0",
+      "rlang": "1.3.0",
+      "S7": "0.2.2",
+      "scales": "1.4.0",
+      "stringi": "1.8.9",
+      "stringr": "1.6.0",
+      "svglite": "2.2.2",
+      "systemfonts": "1.3.2",
+      "textshaping": "1.0.5",
+      "tibble": "3.3.1",
+      "tidyr": "1.3.2",
+      "tidyselect": "1.2.1",
+      "tools": "4.6.1",
+      "tzdb": "0.5.0",
+      "vctrs": "0.7.3",
+      "vroom": "1.7.1",
+      "withr": "3.0.3"
+    }
+  },
+  "host": {
+    "kernel": "7.2.11-200.fc44.x86_64",
+    "machine": "x86_64"
+  }
+}

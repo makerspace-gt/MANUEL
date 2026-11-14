@@ -254,15 +254,14 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Zammad-Version auf helpdesk prüfen. Ollama-Anbieter, Ticket Categorizer, Ticket Text Extractor und Embeddings für die Wissensdatenbank müssen vorhanden sein, sonst vorher auf die passende Version aktualisieren. Die Testinstanz auf MANUEL läuft mit 7.2.2. Dort sind am 13.11.2026 der Anbieter Ollama, Ticket Categorizer und Ticket Text Extractor vorhanden, und Categorizer, Prompt-Vorlagen und Anbieter gleichen `quellen/zammad`
 - [ ] Im neuen Zammad die Kopie der ticket.rb durch den Initializer [keep_pending_time.rb](zammad/keep_pending_time.rb) ersetzen, damit der Termin in der Wartezeit bei einer Antwort erhalten bleibt, siehe [ADR 53](docs/adr/0053-termin-in-der-wartezeit-behalten.adoc). Der Kopie im Helpdesk aus Zammad 7.1 fehlen Teile von 7.2
 - [ ] Zammad-Benutzer für MANUEL mit API-Token anlegen, beschränkt auf die Gruppe des Repair Cafés
-- [ ] Neue Felder Alter in Jahren, Angabe zum Alter und Festgestellter Defekt nach [ADR 52](docs/adr/0052-erfasste-daten-festlegen.adoc) in der Testinstanz mit `zammad/setup.rb` anlegen, Defekt heißt dort künftig Defekt laut Anmeldung. Für Ware ohne Marke steht `Generic`
-- [ ] Felder in Zammad prüfen und anlegen, also Art des Geräts, Defekt, Stromversorgung, Marke, Bezeichnung, Baujahr, Lösung und Ergebnis mit festen Auswahlwerten, die zu den Laufzetteln von reparatur-initiativen.org passen
-- [ ] Auswahlwerte und IDs aus database.sql von mapped-repair-events übernehmen, die Kategorien als Baumauswahl, die Marke als Textfeld
+- [x] Neue Felder Alter in Jahren, Angabe zum Alter und Festgestellter Defekt nach [ADR 52](docs/adr/0052-erfasste-daten-festlegen.adoc) in der Testinstanz mit `zammad/setup.rb` anlegen, Defekt heißt dort künftig Defekt laut Anmeldung. Für Ware ohne Marke steht `Generic`
+- [ ] Im echten Zammad die Felder mit [zammad/setup.rb](zammad/README.md) anlegen, also Art des Geräts, Marke, Bezeichnung, Baujahr, Alter, Stromversorgung, Defekt laut Anmeldung, festgestellter Defekt, Lösung und Ergebnis. Die Art des Geräts kommt aus dem Katalog nach [ADR 13](docs/adr/0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc), die Marke ist ein Textfeld, und die Ergebnisse passen zu den Laufzetteln von reparatur-initiativen.org. In der Testinstanz läuft das seit dem 14.11.2026
 - [x] Felder, Auswahlwerte und Makros als Ruby-Dateien unter [zammad/](zammad/README.md) ablegen, damit sie sich in der Testinstanz und bei anderen Initiativen einspielen lassen. Am 13.11.2026 in der Testinstanz geprüft
 - [x] Einrichtung englisch mit deutscher Übersetzung, mit Gruppe Repairs und Untergruppe Requests und den Rollen Repair agents und Repair moderators, ohne den Namen Repair Café, mit Gast statt Kunde, nachnutzbar per docker compose ohne eigene Einstellungen, siehe [zammad/README.md](zammad/README.md). Am 14.11.2026 in der Testinstanz geprüft
 - [ ] Im echten Zammad die Gruppe Repairs anlegen, Repair Café Anfragen als Untergruppe Requests darunter verschieben, die Rollen in Repair agents und Repair moderators umbenennen und ihre Rechte mit dem Team abstimmen
-- [ ] Feld „VDE 0701/0702 geprüft“ von ja und nein auf leer, empfohlen, ja und nein umstellen. Es steht bisher per Standard auf nein, sein Wert belegt also keine Prüfung
-- [ ] Felder für Spenden und Bedarf im Statistik-Ticket jedes Termins anlegen
-- [ ] Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“ mit Tags anlegen, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
+- [ ] Im echten Zammad das Feld „VDE 0701/0702 geprüft“ von ja und nein auf leer, empfohlen, ja und nein umstellen. Es steht bisher per Standard auf nein, sein Wert belegt also keine Prüfung. In der Testinstanz legt `zammad/setup.rb` das Feld so an
+- [ ] Im echten Zammad die Felder für Spenden und Bedarf im Statistik-Ticket jedes Termins anlegen, in der Testinstanz mit `zammad/setup.rb` erledigt
+- [ ] Im echten Zammad die Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“ mit Tags anlegen, in der Testinstanz mit `zammad/setup.rb` erledigt, siehe [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
 - [ ] Für jeden Auswahlwert eine kurze Beschreibung hinterlegen, weil die Agenten sie als Kontext nutzen
 - [ ] Zusätzliche Felder aus der Datenpotenzialanalyse anlegen, also Dauer der Reparatur, wieder aufgenommen und Werbung durch. Wer repariert hat, steht im Owner
 - [ ] Mit der anstiftung klären, ob database.sql dem aktuellen Stand der Kategorien und Marken auf reparatur-initiativen.org entspricht
@@ -330,6 +329,8 @@ git push
 - [ ] Startreihenfolge in systemd festlegen, sodass NetBird vor Docker läuft
 - [ ] Zugriffsregeln in NetBird anlegen, sodass die Helpdesk-VM nur den Port von Ollama und Admins nur SSH erreichen
 - [ ] Toolbox `manuel-r` für die Auswertung mit R auch auf MANUEL anlegen, wie im Kopf von [eval/r/Containerfile](eval/r/Containerfile), siehe [ADR 49](docs/adr/0049-daten-mit-r-auswerten.adoc). Auf dem Laptop läuft sie seit 14.11.2026
+- [x] Image vom 14.11.2026 bereitgestellt und MANUEL neu gestartet, der Start nach Tailscale greift
+- [ ] Nächstes Image mit [keep_pending_time.rb](zammad/keep_pending_time.rb) bereitstellen und MANUEL nach Freigabe neu starten, danach einmal `zammad-compose up -d`. Bis dahin läuft die Testinstanz mit der Einrichtung aus `/var/home/core/manuel-test`
 
 ### Phase 2 Inferenz
 
@@ -404,6 +405,8 @@ git push
 - [x] Export als CSV mit den Spalten des Standards bauen, unabhängig vom Weg der Meldung, siehe [ords_export.R](eval/ora/ords_export.R). Muster mit 469 Reparaturversuchen von 2024 bis 2026 liegt lokal
 - [ ] Problem auf Deutsch aus Defekt laut Anmeldung, festgestelltem Defekt und Lösung zusammensetzen, lokal ins Englische übersetzen und den Link zum Artikel der Wissensdatenbank anhängen, nach [ADR 52](docs/adr/0052-erfasste-daten-festlegen.adoc)
 - [ ] Marken mit der Tabelle aus ords-extra korrigieren, mit einer eigenen Liste der Ausnahmen für Fehlgriffe wie Teufel zu Tefal, die Originalmarke bleibt erhalten, siehe ADR 52. Die Muster für Produkte aus ords-extra nutzt die Gruppe als Prüfung, wo sie nicht zur ORA-Gruppe im Katalog passen
+- [ ] Felder und Werte der Plattformen weiter nach Import, Tidy und Transform aufbereiten, siehe [docs/fields/README.md](docs/fields/README.md). Als Nächstes `eval/fields/tidy.R`, dann `transform.R` mit der Anwendung der Marken und ein Rezept `just fields`
+- [ ] Katalog durchsehen, zuerst die 11 offenen Einträge, bei denen Größe, Misc oder Hand tool für Restarters zu klären sind, dann die 221 häufigsten in Blöcken
 - [ ] Zustimmung des Teams einholen und im Repo [repair-cafe](repair-cafe) des Teams den Ordner `Statistik/ords` mit CSV, Manifest, `tableschema.json` und `LICENSE` mit CC BY-SA 4.0 anlegen und veröffentlichen, sobald das Feld problem anonymisiert gefüllt ist, siehe [ADR 51](docs/adr/0051-reparaturdaten-nach-ords-oeffentlich-bereitstellen.adoc). Klären, ob für 2024 nur das Feld Defekt anonymisiert wird
 - [ ] Nachmeldung der Geräte von 2024 bis 2026 an Restarters nach Freigabe der Vorschau senden, aber erst nach der Antwort der ORA, damit nichts doppelt gezählt wird, siehe [ADR 36](docs/adr/0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc)
 - [ ] SearXNG in it-infrastructure auf der Helpdesk-VM einrichten und den Workflow für die Suche nach Anleitungen bauen, siehe [ADR 35](docs/adr/0035-anleitungen-ueber-eine-eigene-suche-finden.adoc)
@@ -422,9 +425,9 @@ git push
 - [ ] Dokumentation in docs/ vervollständigen, sodass andere Reparaturinitiativen MANUEL nachbauen können
 - [ ] MANUEL als Fallstudie in [case-study](case-study/manuel.adoc) dokumentieren, mit Methodik, Benchmarks, Quellen und Ergebnissen nach dem Vorbild der [Datenpotenzialanalyse](https://codeberg.org/igami/datenpotenzialanalyse-repairc-cafe-gt/src/commit/cf02f276f6a473529921b643a62e77b6ec245550/README.md), siehe [ADR 30](docs/adr/0030-rahmen-der-fallstudie-festlegen.adoc). Sie entsteht vom Groben zum Feinen
   - [x] Stufe 1 im November 2026, Gliederung, Stichpunkte je Kapitel und Quellen. Die Durchsicht durch das Team steht aus
-  - [ ] Stufe 2 im November und Dezember 2026, Reihenfolge der Absätze, Abbildungen und fehlende Daten wie Läufe für das Beispiel k04 und die Strommessung
+  - [ ] Stufe 2 im November und Dezember 2026, Reihenfolge der Absätze, Abbildungen und fehlende Daten wie Läufe für das Beispiel k04. Erledigt sind die Abbildungen zu Strom, Sharecard, Alter, Abdeckung und Verfahren der Einordnung. Offen sind Benchmarks, das Schema der Filterkaffeemaschine, vertagte Geräte und die Meldelücke über Termine
   - [ ] Stufe 3 von Dezember 2026 bis Februar 2027, ausformulieren, zuerst die Kapitel 2, 5, 6 und 9, dann parallel zur Erprobung die Kapitel 7 bis 10
-  - [ ] Stufe 4 im März 2027, Zusammenfassung, Abstract auf Englisch, Gegenlesen durch das Team und Version 1.0 mit dem Sachbericht
+  - [ ] Stufe 4 im März 2027, Zusammenfassung, Abstract auf Englisch, Gegenlesen durch das Team und Version 1.0 mit dem Sachbericht. Dann zeigt `{repo}` in der Fallstudie auf das Tag der Version statt auf main, damit alle Links auf Code Permalinks werden
 - [ ] Eigenständige compose.yaml als Beispiel für Nachnutzende bereitstellen
 - [ ] Im Build-Workflow mit [syft](https://github.com/anchore/syft) eine SBOM des Images erzeugen und sie mit cosign als [Attestation](https://docs.sigstore.dev/cosign/verifying/attestation/) an das Image hängen, damit Nachnutzende Bibliotheken und Lizenzen prüfen können
 - [ ] Dateien nach [REUSE](https://reuse.software/) mit SPDX-Angaben zu Lizenz und Urheber kennzeichnen, weil das Repo CC0 und Apache 2.0 mischt
@@ -504,21 +507,30 @@ MANUEL/
 ├── LICENSE          CC0 1.0
 ├── LICENSES/        Apache 2.0 für die Dateien aus dem image-template
 ├── Containerfile    eigenes uCore-Image, gebaut von .github/workflows/build.yml
+├── Justfile         Befehle für den Build und für Prüfungen
 ├── build_files/     Skript für Pakete und Dienste im Image
 ├── system_files/    Dateien, die ins Image kopiert werden
 ├── butane/          Butane-Datei für die Installation und den Wechsel auf das Image
-├── compose.yaml     Beispiel-Stack für Nachnutzende
-├── docs/            Einrichtung, Betrieb, Datenschutz, Benchmarks
-├── prompts/         Kopien der Agenten-Konfiguration aus Zammad und Prompts für n8n
-├── eval/            Skripte zum Testen, ohne echte Ticketdaten
-├── zammad/          Felder und Makros für Zammad als Ruby-Dateien
-├── n8n-workflows/   exportierte n8n-Workflows
+├── disk_config/     Einstellungen für Disk-Images aus dem image-template
+├── docs/            Einrichtung, Betrieb, ADRs, Auswertungen, Grafiken und Recherchen
+├── case-study/      Fallstudie in AsciiDoc, literatur.bib aus der Zotero-Gruppe
+├── katalog/         Katalog der Gegenstände, CC BY-SA 4.0
+├── eval/            Skripte in Python und R für Tests und Auswertungen, ohne echte Ticketdaten
+├── zammad/          Einrichtung von Zammad als Ruby-Dateien mit compose.yml
+├── testumgebung/    Testinstanz von Zammad mit Mailpit und n8n auf MANUEL
+├── sharecard/       Resümee eines Termins als Bild
+├── hermes/          Versuch mit dem Agenten Hermes vom 09.11.2026
+├── quellen/         Quellen nach ADR 28, darunter Submodule wie zammad, restarters.net und ords-extra
+├── compose.yaml     Beispiel-Stack für Nachnutzende, entsteht noch
+├── prompts/         Kopien der Agenten-Konfiguration aus Zammad und Prompts für n8n, entsteht noch
+├── n8n-workflows/   exportierte n8n-Workflows, entsteht noch
+├── repair-cafe/     Submodul mit dem Repo des Teams, etwa für die Statistik
 ├── mapped-repair-events/  Submodul mit der Plattform der anstiftung, GPL-3.0
 ├── datenpotenzialanalyse-repairc-cafe-gt/  Submodul mit der Hausarbeit zu unseren Laufzetteln, CC BY 4.0
 ├── it-infrastructure/      Submodul mit der IT-Infrastruktur des Vereins als Code
 └── ollama/                Submodul mit dem Quellcode von Ollama, MIT
 ```
 
-Das Submodul von Ollama ist groß und deshalb in `.gitmodules` als shallow markiert. Die Quellen der übrigen Dienste liegen in it-infrastructure unter `upstream/`. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, getrennt vom Submodul `upstream/n8n` in it-infrastructure.
+Das Submodul von Ollama ist groß und deshalb in `.gitmodules` als shallow markiert. Quellen zu Zammad, zu den Daten der Open Repair Alliance, zu Restarters und zu ords-extra liegen unter `quellen/`, siehe [quellen/README.md](quellen/README.md). Die Quellen der übrigen Dienste liegen in it-infrastructure unter `upstream/`. Unsere eigenen exportierten Workflows liegen in `n8n-workflows/`, getrennt vom Submodul `upstream/n8n` in it-infrastructure.
 
 Geheimnisse wie API-Token gehören nicht hierher. Sie liegen verschlüsselt im Ansible Vault von it-infrastructure.

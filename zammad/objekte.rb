@@ -14,8 +14,11 @@ FIELDS = {
   marke:           'Marke',
   bezeichnung:     'Bezeichnung',
   baujahr:         'Baujahr',
+  alter:           'Alter in Jahren',
+  alter_angabe:    'Angabe zum Alter',
   stromversorgung: 'Stromversorgung',
-  defekt:          'Defekt',
+  defekt:          'Defekt laut Anmeldung',
+  defekt_festgestellt: 'Festgestellter Defekt',
   loesung:         'Lösung',
   ergebnis:        'Ergebnis',
   repariert_von:   'Repariert von',
@@ -72,12 +75,18 @@ else
   field(:geraeteart, 'select', select(rows.to_h { |row| [row['key'], row['name']] }), 1100)
 end
 
+# Generic for items without a brand, as the Open Repair Data Standard calls them, see docs/adr/0052
 field(:marke, 'input', { type: 'text', maxlength: 120, default: '' }, 1110)
 field(:bezeichnung, 'input', { type: 'text', maxlength: 120, default: '' }, 1120)
 field(:baujahr, 'integer', { min: 1900, max: 2100, default: nil }, 1130)
+# The uncertainty goes into alter_angabe, for example mindestens for "at least 12 years", see docs/adr/0052
+field(:alter, 'integer', { min: 0, max: 200, default: nil }, 1132)
+field(:alter_angabe, 'select', select(%w[genau etwa mindestens].to_h { |v| [v, v] }), 1134)
 field(:stromversorgung, 'select',
       select(['mit Netzteil', '230 V', 'Batterie', 'Akku', 'ohne Kabel (Mechanik)'].to_h { |v| [v, v] }), 1140)
+# Reported or suspected before the event, the defect found during the repair and the solution follow, see docs/adr/0052
 field(:defekt, 'textarea', { type: 'textarea', maxlength: 1000, rows: 3, default: '' }, 1150)
+field(:defekt_festgestellt, 'textarea', { type: 'textarea', maxlength: 1000, rows: 3, default: '' }, 1155)
 field(:loesung, 'textarea', { type: 'textarea', maxlength: 1000, rows: 3, default: '' }, 1160)
 field(:ergebnis, 'tree_select', {
         options:    RESULT_TREE.map do |name, children|

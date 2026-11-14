@@ -44,7 +44,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 * 1.089 Einträge mit Namen, Beschreibung und Synonymen auf Deutsch und Englisch, ORA-Gruppe, Stromversorgung und den Kategorien der anstiftung
 * Quellen sind das Formular der anstiftung mit 1.208 Kategorien und die Open Repair Data <<adr-0007>>, <<adr-0028>>
-* Lizenz CC BY-SA 4.0 <<adr-0009>>
+* Lizenz CC BY-SA 4.0 cite:[cc-by-sa-4-0], <<adr-0009>>
 
 === Schlüssel
 
@@ -57,7 +57,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 * Deutsche und englische Namen, der englische Name wird bei Restarters zum Gegenstand.
 * Synonyme ordnen Begriffe der richtigen Kategorie zu.
-* Keine abwertenden Begriffe, ein solcher wurde durch Radiorekorder ersetzt <<adr-0012>>.
+* Keine abwertenden Begriffe, ein solcher wurde durch Radiorekorder ersetzt cite:[wiki-radiorekorder], <<adr-0012>>.
 
 [[abdeckung]]
 === Wie viele Einträge gebraucht werden
@@ -66,10 +66,14 @@ Dieses Kapitel steht noch in Stichpunkten.
 * Die übrigen 11 sind unsere eigene Aufteilung der Kopfhörer und neun Kategorien, die erst nach dem Stand der Daten vom Juli 2026 in den Laufzettel kamen, etwa Campinglampe und Saunaofen.
 * Die meisten Einträge sind selten. 659 haben weniger als 10 Reparaturen, 217 genau eine, etwa Braukessel und Marderschreck.
 * 1 Prozent der Reparaturen sind rund 560 Geräte. Bis 95 Prozent kostet jedes weitere Prozent unter 40 Einträge, das letzte Prozent braucht 373.
+* Zum Vergleich deckt Restarters mit 25 seiner 47 Kategorien 90 Prozent seiner Einträge ab, die ORA mit 27 ihrer 46 Gruppen. Die feine Liste der anstiftung braucht für denselben Anteil zehnmal so viele Einträge, dafür ist jeder einzelne eindeutig, siehe <<vereinheitlichung>>.
 * Daraus folgt die Reihenfolge der Arbeit am Katalog. Zuerst werden die rund 220 häufigsten Einträge bestätigt, die übrigen bleiben Entwurf, bis einer davon in einem Ticket auftaucht.
 
 .Kategorien im Katalog nach dem Anteil der Reparaturen, den sie abdecken
 image::../../docs/grafiken/catalog-coverage-hell.svg[Wenige Kategorien decken fast alle Reparaturen ab,width=100%]
+
+.Kategorien von Restarters nach dem Anteil der Einträge, den sie abdecken
+image::../../docs/grafiken/ora-coverage-restarters-hell.svg[Bei Restarters decken 25 Kategorien 90 Prozent ab,width=100%]
 
 [[felder-plattformen]]
 === Felder und Werte der Plattformen
@@ -79,7 +83,7 @@ image::../../docs/grafiken/catalog-coverage-hell.svg[Wenige Kategorien decken fa
 ** *Import.* Jede Quelle wird möglichst unverändert eine Tabelle. Python liest die Quellen, die noch keine Tabellen sind, also den Standard, `database.sql` der anstiftung und die PHP-Dateien von Restarters. R liest die aggregierten Open Repair Data und schreibt je Partner die Kategorien mit ihrer ORA-Gruppe und die Schreibweisen der Marken.
 ** *Tidy.* Alle Tabellen kommen in dieselbe Form, eine Zeile je Feld, je Wert und je Zuordnung zur ORA. Steht noch aus.
 ** *Transform.* Daraus entstehen die Ansichten, also die Tabellen je Plattform, ein Vergleich der Ergebnisse und die Zuordnung der Kategorien. Steht noch aus.
-* Der Quellcode von Restarters ist dafür als Submodul eingebunden. Er enthält Übersetzungen in neun Sprachen. Alle 47 Kategorien und alle festen Werte haben eine deutsche Fassung, etwa Kaffeemaschine für Coffee maker und Mehr Zeit benötigt für More time needed.
+* Der Quellcode von Restarters ist dafür als Submodul eingebunden cite:[repo-restarters-net]. Er enthält Übersetzungen in neun Sprachen. Alle 47 Kategorien und alle festen Werte haben eine deutsche Fassung, etwa Kaffeemaschine für Coffee maker und Mehr Zeit benötigt für More time needed.
 * Beim Anlegen eines Geräts fragt Restarters zuerst, ob es elektrisch ist, und zeigt danach nur die passenden Kategorien. Misc gibt es deshalb zweimal.
 * Restarters exportiert seine Daten selbst im Format der ORA, die Zuordnung steht in https://github.com/TheRestartProject/restarters.net/blob/d46501cb20a0bda1216ffb2e48a19f074e86f776/config/ords.php[config/ords.php]. Die fünf Bildschirmgrößen werden zu Flat screen und die drei Laptopgrößen zu Laptop. Hand tool und Misc ohne Strom werden beide zu Unpowered - Other. Die offenen Fälle im Katalog zwischen diesen beiden betreffen also nur Restarters.
 * Auch die anstiftung ordnet ihre Kategorien in `database.sql` einer ORA-Gruppe zu, aber nur 114 der 1.208 Kategorien des Laufzettels. Der Dump ist älter als der Laufzettel und kennt etwa Fehler nicht gefunden noch nicht.
@@ -125,6 +129,6 @@ python3 katalog/entries.py quellen/anstiftung/kategorien.csv eintraege.json
 [NOTE]
 .Quellen und offene Punkte für dieses Kapitel
 ====
-* Noch zu suchen sind die Lizenz CC BY-SA 4.0 und die Einträge der Wikipedia zu Radiorekorder und Boombox.
+* Noch zu suchen ist der Eintrag der Wikipedia zu Boombox.
 * Offen ist, wie andere Initiativen eigene Aufteilungen ergänzen, ohne Schlüssel doppelt zu vergeben.
 ====

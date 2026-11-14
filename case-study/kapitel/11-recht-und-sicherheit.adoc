@@ -57,7 +57,7 @@ Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist kein
 * Hinweise zur Sicherheit bei Netzspannung, Akkus und Gas, im Zweifel an eine Fachperson verweisen
 * Prüfung nach einer Reparatur nach DIN EN 50678 (VDE 0701), die DIN VDE 0701-0702 ersetzt hat cite:[din-vde-0701-0702]
 * Anleitungen anderer werden verlinkt, nicht kopiert.
-* ords-extra steht unter CC BY-NC-ND 4.0 cite:[repo-ords-extra]. Wir wenden die Tabellen auf unsere eigenen Daten an, etwa die Tabelle der Marken. Weitergeben dürfen wir sie nur unverändert, und nach Abschnitt 4 der https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.de[Lizenz] wird eine Datenbank, die einen wesentlichen Teil davon übernimmt, selbst zu bearbeitetem Material. Wir veröffentlichen deshalb nur unsere korrigierten Daten und keine eigene Liste, die im Kern die Tabelle aus ords-extra ist <<adr-0052>>.
+* ords-extra steht unter CC BY-NC-ND 4.0 cite:[repo-ords-extra]. Wir wenden die Tabellen auf unsere eigenen Daten an, etwa die Tabelle der Marken. Weitergeben dürfen wir sie nur unverändert, und nach Abschnitt 4 der https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.de[Lizenz] cite:[cc-by-nc-nd-4-0] wird eine Datenbank, die einen wesentlichen Teil davon übernimmt, selbst zu bearbeitetem Material. Wir veröffentlichen deshalb nur unsere korrigierten Daten und keine eigene Liste, die im Kern die Tabelle aus ords-extra ist <<adr-0052>>.
 
 // Ergebnis folgt in Stufe 3, Antwort auf T9.
 

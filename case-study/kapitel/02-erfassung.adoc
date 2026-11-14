@@ -165,6 +165,19 @@ Die Matrix in <<anhang-kategorien>> stellt für jede ORA-Gruppe nebeneinander, m
 * *Grobe Listen brauchen den Freitext.* Restarters erfasst etwa Ladegeräte zu 70 Prozent unter Misc. Erst der Freitext im Feld für den Gegenstand erlaubt der Alliance die Zuordnung zu Battery/charger/adapter. Beim Repair Monitor verteilt sich fast jede dritte Unterkategorie auf mehrere Gruppen.
 * *Freitext allein ist schwer auszuwerten.* Bei Toronto und Fixit Clinic decken selbst die 60 häufigsten Werte nur 57 bzw. 29 Prozent der Einträge ab, Schreibfehler und Mehrzahl inklusive.
 
+Wie viele Kategorien ein Partner braucht, um den Großteil seiner Einträge abzudecken, zeigt das auch in Zahlen.
+
+* Restarters kommt mit 25 seiner 47 Kategorien auf 90 Prozent, Repair Cafe Wales mit 7 von 23.
+* Die anstiftung braucht dafür 279 ihrer 1.187 Kategorien aus Ober- und Unterkategorie, Repair Café International 469 von 4.321.
+* Bei Freitext sind es Tausende. Denmark braucht 12.800 verschiedene Werte für 90 Prozent, 15.102 Werte kommen nur einmal vor.
+* Über alle Partner hinweg decken 27 der 46 ORA-Gruppen 90 Prozent ab. Am häufigsten sind Textilien, Haushalt ohne Strom und Staubsauger.
+
+.Kategorien je Partner nach dem Anteil der Einträge, den sie abdecken
+image::../../docs/grafiken/ora-coverage-partners-hell.svg[Feste Listen brauchen wenige Kategorien, Freitext sehr viele,width=100%]
+
+.ORA-Gruppen nach dem Anteil aller Einträge, den sie abdecken
+image::../../docs/grafiken/ora-coverage-groups-hell.svg[Auch bei den ORA-Gruppen tragen wenige den Großteil,width=100%]
+
 MANUEL verbindet den zweiten Weg mit dem ersten. Der Katalog nutzt die feine Liste der anstiftung und trägt die ORA-Gruppe und die Kategorie bei Restarters schon im Schlüssel <<adr-0013>>. Die Zuordnung geschieht damit einmal im Katalog statt bei jeder Meldung. Der Wortlaut der Anfrage bleibt im Ticket erhalten, so wie es die Datenpotenzialanalyse für jeden Rohwert empfohlen hat cite:[prange-2022].
 
 [[datensatz]]

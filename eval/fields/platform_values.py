@@ -9,7 +9,10 @@ platforms that store numbers instead (anstiftung, ORDS codes) are listed in docs
 * docs/fields/ora.csv: columns of the aggregate files of the Open Repair Data, values from
   standard.rst, the unpowered groups from the non-eee file, which the standard does not list
 * docs/fields/anstiftung.csv: fields of the run sheet on reparatur-initiativen.org with the names of
-  the table info_sheets, values from the saved form in quellen/anstiftung
+  the table info_sheets, values from the saved form in quellen/anstiftung. Next to category and
+  result the values the anstiftung maps them to for ORDS, from database.sql of mapped-repair-events.
+  That dump is old and maps only a tenth of the categories, so ora_product_category adds the group the
+  Open Repair Alliance assigned in its data
 * docs/fields/restarters.csv: fields of a device in the API of Restarters.net, values from the
   OpenAPI description in the submodule quellen/restarters.net and the categories in
   quellen/restarters/kategorien.csv. Next to every column with fixed values stands its German
@@ -21,8 +24,10 @@ Run in the repository root:
 """
 
 import csv
+import html
 import json
 import re
+from collections import Counter
 from itertools import zip_longest
 from pathlib import Path
 
@@ -30,6 +35,7 @@ OUT = Path("docs/fields")
 ORA = Path("quellen/openrepair-data")
 STANDARD = Path("quellen/openrepair-datastandard/standard.rst")
 ANSTIFTUNG = Path("quellen/anstiftung")
+ANSTIFTUNG_SQL = Path("mapped-repair-events/config/sql/init/database.sql")
 RESTARTERS = Path("quellen/restarters")
 RESTARTERS_CODE = Path("quellen/restarters.net")
 RESTARTERS_SOURCE = RESTARTERS_CODE / "app/Http/Resources/Device.php"
@@ -71,31 +77,86 @@ def ora():
     write("ora.csv", columns)
 
 
+def sql_rows(sql, table):
+    """Rows of the INSERT of a table in a MySQL dump as dicts of text."""
+    match = re.search(r"INSERT INTO `%s` \(([^)]*)\) VALUES\n(.*?);\n" % table, sql, re.S)
+    names = [c.strip("` ") for c in match.group(1).split(",")]
+    lines = re.findall(r"^\((.*)\)[,;]?$", match.group(2), re.M)
+    return [dict(zip(names, next(csv.reader([line], quotechar="'", escapechar="\\", skipinitialspace=True))))
+            for line in lines]
+
+
 def anstiftung():
     form = list(csv.DictReader((ANSTIFTUNG / "felder.csv").open(encoding="utf-8")))
     categories = list(csv.DictReader((ANSTIFTUNG / "kategorien.csv").open(encoding="utf-8")))
     brands = list(csv.DictReader((ANSTIFTUNG / "marken.csv").open(encoding="utf-8")))
 
+    # The anstiftung maps to ORDS itself in database.sql of mapped-repair-events. categories.ords_category_id
+    # points to ords_categories, form_field_options_extra_infos gives status and barrier for an option.
+    # The dump is older than the form, categories and options missing there stay empty.
+    sql = ANSTIFTUNG_SQL.read_text(encoding="utf-8")
+    ords_names = {r["id"]: html.unescape(r["name"]) for r in sql_rows(sql, "ords_categories")}
+    ords_of_category = {r["id"]: ords_names.get(r["ords_category_id"], "") for r in sql_rows(sql, "categories")}
+    field_ids = {r["identifier"]: r["id"] for r in sql_rows(sql, "form_fields")}
+    option_ids = {(r["form_field_id"], r["value"]): r["id"] for r in sql_rows(sql, "form_field_options")}
+    extra = {r["form_field_options_id"]: r for r in sql_rows(sql, "form_field_options_extra_infos")}
+
+    # How the Open Repair Alliance assigned the categories of the anstiftung in its data, the most
+    # frequent group per category with its share. Keyed by top category and category, with the category
+    # alone as fallback, because top categories in the data partly carry older names.
+    assigned = {}
+    for name in ("OpenRepairData_v0.3_aggregate_202607_eee.csv", "OpenRepairData_v0.3_aggregate_202607_non-eee.csv"):
+        for row in csv.DictReader((ORA / name).open(encoding="utf-8")):
+            if row["data_provider"] != "anstiftung":
+                continue
+            top, _, category = (part.strip() for part in row["partner_product_category"].partition("~"))
+            for key in ((top, category), (None, category)):
+                assigned.setdefault(key, Counter())[row["product_category"]] += 1
+
+    def ora_group(row):
+        counts = assigned.get((row["top_category"], row["category"])) or assigned.get((None, row["category"]))
+        if not counts:
+            return "", ""
+        group, n = counts.most_common(1)[0]
+        return group, f"{round(100 * n / sum(counts.values()))} %"
+
+    groups = [ora_group(row) for row in categories]
+
     def options(field):
-        return unique(row["text"] for row in form if row["field"] == f"InfoSheets[{field}]")
+        return [row for row in form if row["field"] == f"InfoSheets[{field}]"]
+
+    def text(rows):
+        return unique(row["text"] for row in rows)
+
+    def ords(field, key):
+        values = []
+        for row in options(field):
+            info = extra.get(option_ids.get((field_ids.get(field), row["value"])), {})
+            values.append("" if info.get(key, "NULL") == "NULL" else info[key])
+        return values
 
     # Order of the run sheet, names of the table info_sheets in database.sql, the power supply is
     # stored in info_sheets_form_field_options, the top category in categories.parent_id
-    write("anstiftung.csv", {
+    columns = {
         # Category and top category stay in one row, some names like Sonstiges exist under several
         "parent_id": [row["top_category"] for row in categories],
         "category_id": [row["category"] for row in categories],
-        "brand_id": unique(row[next(iter(row))] for row in brands),
+        "ords_category_id": [ords_of_category.get(row["id"], "") for row in categories],
+        "ora_product_category": [g[0] for g in groups],
+        "ora_product_category_share": [g[1] for g in groups],
+        "brand_id": unique(html.unescape(row[next(iter(row))]) for row in brands),
         "device_name": [],
         "device_age": [],
-        "form_field_options": options("form_field_options][_ids]["),
+        "form_field_options": text(options("form_field_options][_ids][")),
         "defect_description": [],
-        "defect_found_reason": options("defect_found_reason"),
-        "repair_postponed_reason": options("repair_postponed_reason"),
-        "no_repair_reason": options("no_repair_reason"),
-        "no_repair_reason_text": [],
-        "device_must_not_be_used_anymore": options("device_must_not_be_used_anymore"),
-    })
+    }
+    for field in ("defect_found_reason", "repair_postponed_reason", "no_repair_reason"):
+        columns[field] = text(options(field))
+        columns[f"{field}_repair_status"] = ords(field, "repair_status")
+        columns[f"{field}_repair_barrier_if_end_of_life"] = ords(field, "repair_barrier_if_end_of_life")
+    columns["no_repair_reason_text"] = []
+    columns["device_must_not_be_used_anymore"] = text(options("device_must_not_be_used_anymore"))
+    write("anstiftung.csv", columns)
 
 
 def php_pairs(path):

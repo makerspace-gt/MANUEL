@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-08
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht, und 2026-11-14, Schlüssel im Format nach ADR 13
 
 == Kontext und Problem
 
@@ -24,7 +24,7 @@ Die Liste der anstiftung enthält den Eintrag Ghettoblaster. Der Begriff hat ein
 
 == Entscheidung
 
-Wir sagen Radiorekorder, englisch Boombox, wie die Wikipedia. Im Katalog ist Radiorekorder ein Synonym des Eintrags Musikanlage mit dem Schlüssel `12.881`. Der Formularname steht nur dort, wo Daten zugeordnet werden. Das sind `gleichwertig.tsv`, die Liste versteckter Namen in `katalog/entries.py` und die Auswertungen der Open Repair Data, die die Kategorien der Partner unverändert zeigen. Das Modell bekommt ihn nicht als Option angezeigt. Wir schlagen der anstiftung vor, den Eintrag umzubenennen.
+Wir sagen Radiorekorder, englisch Boombox. So steht es im Artikel der Wikipedia, der auch auf den englischen Artikel Boombox verweist. Im Katalog ist Radiorekorder ein Synonym des Eintrags Musikanlage mit dem Schlüssel `12.29.881`. Der Formularname steht nur dort, wo Daten zugeordnet werden. Das sind `gleichwertig.tsv`, die Liste versteckter Namen in `katalog/entries.py` und die Auswertungen der Open Repair Data, die die Kategorien der Partner unverändert zeigen. Das Modell bekommt ihn nicht als Option angezeigt. Wir schlagen der anstiftung vor, den Eintrag umzubenennen.
 
 Dasselbe gilt für künftige Fälle. Abwertende Begriffe aus fremden Listen übernehmen wir nicht in den Katalog.
 

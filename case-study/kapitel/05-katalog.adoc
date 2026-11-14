@@ -129,6 +129,5 @@ python3 katalog/entries.py quellen/anstiftung/kategorien.csv eintraege.json
 [NOTE]
 .Quellen und offene Punkte für dieses Kapitel
 ====
-* Noch zu suchen ist der Eintrag der Wikipedia zu Boombox.
 * Offen ist, wie andere Initiativen eigene Aufteilungen ergänzen, ohne Schlüssel doppelt zu vergeben.
 ====

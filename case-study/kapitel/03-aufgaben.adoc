@@ -58,16 +58,18 @@ Dieses Kapitel steht noch in Stichpunkten.
 === Zammad einrichten
 
 * Die Einrichtung ist Code. Ein Dienst `manuel-setup` in {repo}/zammad/compose.yml[zammad/compose.yml] läuft zusätzlich zu den Diensten von zammad-docker-compose. Er wartet, bis Zammad bereit ist, legt alles an und beendet sich. Jeder Lauf lässt sich wiederholen, vorhandene Einträge werden aktualisiert statt doppelt angelegt.
-* Angelegt werden die Gruppe Repairs mit der Untergruppe Requests für Anfragen ohne Termin, die Rollen Repair agents und Repair moderators, die Felder für die Reparatur, die beiden Makros für Kennzahl 3 und die Übersetzungen.
+* Angelegt werden die Gruppe Repairs mit der Untergruppe Requests für Anfragen ohne Termin, die Rollen Repair agents und Repair moderators, der Agent Gast, die Felder für die Reparatur, die beiden Makros für Kennzahl 3 und die Übersetzungen.
+* Wer repariert hat, ist der Owner des Tickets. Hat der Gast selbst repariert, wird der Agent Gast Owner. Ein eigenes Feld braucht es dafür nicht <<adr-0032>>.
+* Der Termin ist die Wartezeit mit Datum und Uhrzeit. Antwortet ein Gast, würde Zammad sie leeren. Eine kleine Datei überschreibt deshalb nur diese eine Methode, statt wie bisher im Helpdesk die ganze `ticket.rb` zu ersetzen <<adr-0053>>.
 * Andere Initiativen sollen das ohne eigene Einstellungen nachnutzen können. Deshalb steht nirgends Repair Café, denn so heißt nur ein Teil der Initiativen. Bei uns bleibt der Termin das Repair Café.
-* Namen, Werte und Bezeichnungen sind englisch, die Felder heißen wie im Open Repair Data Standard, etwa `brand` und `year_of_manufacture` <<adr-0052>>. Deutsch kommt als eigene Übersetzung in Zammad mit. Jeder sieht die Felder in der Sprache, die er eingestellt hat.
+* Namen, Werte und Bezeichnungen sind englisch, die Felder heißen wie im Open Repair Data Standard, etwa `brand` und `year_of_manufacture` <<adr-0052>>. Deutsch kommt als eigene Übersetzung in Zammad mit. Alle sehen die Felder in der Sprache, die sie eingestellt haben.
 * Zwischen der Initiative und den Menschen, die ihre Geräte bringen, gibt es kein Geschäft. Deshalb ändert die Einrichtung 52 Texte von Zammad, aus Customer wird Guest und aus Kunde Gast. Für Geld gibt es nur Spenden.
 * Beim Einrichten fiel einiges auf.
 ** Eine Übersetzung gilt in Zammad für jeden gleichen Text. Model übersetzt Zammad selbst mit Modell, das Feld heißt deshalb Model or type. Power supply ist im Katalog das Netzteil, das Feld heißt deshalb Power source.
 ** Namen von Gruppen übersetzt Zammad nicht, sie stehen für alle englisch da.
 ** Der Name `alter` für das Alter ist in Zammad verboten, das Feld heißt `product_age`.
 ** Nach jeder Änderung am Schema startet Zammad neu. Die Einrichtung ändert das Schema deshalb zuletzt.
-* In der Testinstanz lief die Einrichtung am 14.11.2026 mehrfach ohne Fehler, beim letzten Lauf änderte sich nichts mehr.
+* In der Testinstanz lief die Einrichtung am 14.11.2026 mehrfach ohne Fehler, beim letzten Lauf änderte sich nichts mehr. Ohne die Datei für die Wartezeit war der Termin nach einer Antwort per Mail weg, mit ihr blieb er erhalten.
 
 === Grundsätze
 

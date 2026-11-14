@@ -152,4 +152,5 @@ Einige Felder, die wir in Zammad erfassen, hat der Standard nicht.
 [horizontal]
 Stromversorgung:: Der Standard kennt kein Feld dafür. Er unterscheidet nur Elektrogeräte und Gegenstände ohne Strom, über die Produktkategorie und zwei getrennte Dateien. Die anstiftung fragt im Laufzettel nach mit Netzteil, 230 V, Batterie, Akku oder ohne Kabel, und Restarters kennt je Kategorie nur, ob sie Strom braucht. Bei uns bleibt das Feld trotzdem wichtig. Es entscheidet über Gefahren und die Prüfung nach VDE 0701/0702, siehe <<reparaturansaetze>>. Für die Meldung zählt nur, ob ein Gegenstand Strom braucht, und das folgt aus der Spalte `power` des Katalogs.
 Lösung:: Kein eigenes Feld. Sie wird bei der Meldung an das Problem angehängt.
-Repariert von, VDE-Prüfung, Spenden und Bedarf:: Nur für uns, für die Kennzahlen der Erprobung, die Sicherheit und die Statistik je Termin.
+VDE-Prüfung, Spenden und Bedarf:: Nur für uns, für die Sicherheit und die Statistik je Termin.
+Repariert von:: Kein eigenes Feld. Wer repariert hat, ist Owner des Tickets, bei Reparaturen durch den Gast selbst der Agent Gast. Das zählt für die Kennzahlen der Erprobung <<adr-0032>>.

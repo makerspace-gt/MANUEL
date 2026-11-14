@@ -8,7 +8,7 @@ Die Dateien entstehen mit [platform_values.py](../../eval/fields/platform_values
 |---|---|---|---|
 | [ora.csv](ora.csv) | Open Repair Data Standard | 14 Spalten der Open Repair Data | Werte für Status und Hindernis aus [standard.rst](../../quellen/openrepair-datastandard/standard.rst), Produktkategorien aus der Liste der Open Repair Data. Die sechs Gruppen ohne Strom nennt der Standard nicht, sie stammen aus den Daten und haben die Nummer 0 |
 | [anstiftung.csv](anstiftung.csv) | reparatur-initiativen.org | 12 Felder des Laufzettels mit den Namen der Tabelle `info_sheets` | Gespeicherter Laufzettel in [quellen/anstiftung](../../quellen/anstiftung). Die Oberkategorie heißt in der Datenbank `parent_id` der Tabelle `categories`, die Stromversorgung steht in `info_sheets_form_field_options` |
-| [restarters.csv](restarters.csv) | Restarters.net | 23 Felder eines Geräts in der API | Beschreibung der API in [Device.php](../../quellen/restarters/Device.php), Kategorien aus [kategorien.csv](../../quellen/restarters/kategorien.csv) |
+| [restarters.csv](restarters.csv) | Restarters.net | 23 Felder eines Geräts in der API | Beschreibung der API in [Device.php](../../quellen/restarters.net/app/Http/Resources/Device.php) im Submodul, Kategorien aus [kategorien.csv](../../quellen/restarters/kategorien.csv) |
 
 ## Hinweise
 

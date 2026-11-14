@@ -11,7 +11,8 @@ platforms that store numbers instead (anstiftung, ORDS codes) are listed in docs
 * docs/fields/anstiftung.csv: fields of the run sheet on reparatur-initiativen.org with the names of
   the table info_sheets, values from the saved form in quellen/anstiftung
 * docs/fields/restarters.csv: fields of a device in the API of Restarters.net, values from the
-  OpenAPI description in quellen/restarters/Device.php and the categories in kategorien.csv
+  OpenAPI description in the submodule quellen/restarters.net and the categories in
+  quellen/restarters/kategorien.csv
 
 Run in the repository root:
     python3 eval/fields/platform_values.py
@@ -27,6 +28,7 @@ ORA = Path("quellen/openrepair-data")
 STANDARD = Path("quellen/openrepair-datastandard/standard.rst")
 ANSTIFTUNG = Path("quellen/anstiftung")
 RESTARTERS = Path("quellen/restarters")
+RESTARTERS_SOURCE = Path("quellen/restarters.net/app/Http/Resources/Device.php")
 
 
 def unique(values):
@@ -93,7 +95,7 @@ def anstiftung():
 
 
 def restarters():
-    source = (RESTARTERS / "Device.php").read_text(encoding="utf-8")
+    source = RESTARTERS_SOURCE.read_text(encoding="utf-8")
     columns = {}
     for block in source.split("@OA\\Property(")[1:]:
         name = re.search(r'property="([^"]+)"', block).group(1)

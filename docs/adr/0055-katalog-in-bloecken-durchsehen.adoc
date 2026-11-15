@@ -62,4 +62,4 @@ Gewählt werden Blöcke nach Häufigkeit.
 == Quellen
 
 * {repo}/docs/einordnung.md[Einordnung], Schritt 17 mit dem Vorabtest
-* Entscheidungen von Michael Prange am 15.11.2026 zu den Blöcken 1 bis 3
+* Entscheidungen von Michael Prange am 15.11.2026 zu den Blöcken 1 bis 9. Danach hatten alle 347 Einträge der Klassen A und B eine Beschreibung, und der Katalog war durch 36 Zusammenfassungen von 1.089 auf 1.053 Einträge geschrumpft

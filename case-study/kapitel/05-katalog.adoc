@@ -12,7 +12,7 @@ _Teilfrage T4. Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Men
 * Der Katalog vereint die feine Liste der anstiftung mit den Gruppen der Open Repair Alliance.
 * Jeder Eintrag hat einen Schlüssel, der seine ORA-Gruppe schon enthält.
 * Der Katalog steht offen unter CC BY-SA 4.0 und lässt sich von anderen Initiativen nachnutzen.
-* Der Katalog hat nach der ersten Durchsicht 1.081 Einträge, 254 davon mit Beschreibung. Englische Namen fehlen noch bei 827.
+* Nach der ersten Durchsicht am 15.11.2026 hat der Katalog 1.053 Einträge. Alle 347 Einträge der Klassen A und B haben eine Beschreibung, insgesamt sind es 351. Englische Namen fehlen noch bei 702.
 * 221 Einträge decken 90 Prozent der deutschen Reparaturen ab, für das letzte Prozent braucht es 373 Einträge.
 * Felder und Werte von ORA, anstiftung und Restarters liegen als Tabellen vor und lassen sich mit jeder neuen Quelle neu erzeugen.
 
@@ -43,7 +43,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 === Aufbau und Quellen
 
-* 1.081 Einträge mit Namen, Beschreibung und Synonymen auf Deutsch und Englisch, ORA-Gruppe, Stromversorgung und den Kategorien der anstiftung
+* 1.053 Einträge mit Namen, Beschreibung und Synonymen auf Deutsch und Englisch, ORA-Gruppe, Stromversorgung und den Kategorien der anstiftung
 * Quellen sind das Formular der anstiftung mit 1.208 Kategorien und die Open Repair Data <<adr-0007>>, <<adr-0028>>
 * Lizenz CC BY-SA 4.0 cite:[cc-by-sa-4-0], <<adr-0009>>
 

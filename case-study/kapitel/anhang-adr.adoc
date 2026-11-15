@@ -117,5 +117,7 @@ include::../../docs/adr/0062-datums-tags-und-monatsuebersichten-automatisch-pfle
 include::../../docs/adr/0063-kontaktdaten-und-eingangswege-uebernehmen.adoc[]
 include::../../docs/adr/0064-voicemails-lokal-transkribieren.adoc[]
 
+include::../../docs/adr/0065-postfach-archivieren-und-aufbewahrung-begrenzen.adoc[]
+
 :leveloffset: -2
 :sectnums:

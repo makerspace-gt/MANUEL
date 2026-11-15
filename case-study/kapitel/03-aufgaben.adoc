@@ -58,7 +58,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 === Zammad einrichten
 
 * Die Einrichtung ist Code. Ein Dienst `manuel-setup` in {repo}/zammad/compose.yml[zammad/compose.yml] läuft zusätzlich zu den Diensten von zammad-docker-compose. Er wartet, bis Zammad bereit ist, legt alles an und beendet sich. Jeder Lauf lässt sich wiederholen, vorhandene Einträge werden aktualisiert statt doppelt angelegt.
-* Angelegt werden die Gruppe Repairs mit der Untergruppe Requests für Anfragen ohne Termin, die Rollen Repair Agent für die Reparierenden und Repair Coordinator für Empfang, Termine und Statistik, der Agent Gast, die Felder für die Reparatur, die beiden Makros für Kennzahl 3 und die Übersetzungen.
+* Angelegt werden die Gruppe Repairs mit den Untergruppen Requests für Anfragen ohne Termin und Events für die Statistik je Termin, die Gruppe Spam check, die Rollen Repair Agent für die Reparierenden und Repair Coordinator für Empfang, Termine und Statistik, der Agent Gast, die Felder für die Reparatur, die beiden Makros für Kennzahl 3 und die Übersetzungen.
 * Wer repariert hat, ist der Owner des Tickets. Hat der Gast selbst repariert, wird der Agent Gast Owner. Ein eigenes Feld braucht es dafür nicht <<adr-0032>>.
 * Der Termin ist die Wartezeit mit Datum und Uhrzeit. Antwortet ein Gast, würde Zammad sie leeren. Eine kleine Datei überschreibt deshalb nur diese eine Methode, statt wie bisher im Helpdesk die ganze `ticket.rb` zu ersetzen <<adr-0053>>.
 * Auch Anbieter, Agenten, Schreibassistent und Wissensdatenbank kommen als Code, so viel wie möglich. Im Dialog von Zammad wird nur ausprobiert <<adr-0054>>. Die Wissensdatenbank ist deutsch mit britischem Englisch, wie bei der Open Repair Alliance.

@@ -1,0 +1,67 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-src: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8
+[[adr-0065]]
+= 0065 Postfach archivieren und Aufbewahrung begrenzen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange, Einrichtung im echten Postfach durch das Team
+
+== Kontext und Problem
+
+Zammad holt die Mails des Repair Cafés per IMAP ab. Eine Regel beim Anbieter kopiert jede Mail in einen Ordner Archiv und legt Spam in einen Ordner Spam. Diesen Ordner sieht im Team niemand, echte Anfragen können dort liegen bleiben. Was Zammad verschickt, liegt nur in Zammad. Archiv und Spam wachsen ohne Ende, obwohl Tickets nach festen Fristen gelöscht werden. Wie bleiben Spam sichtbar und Postfach und Tickets bei denselben Fristen?
+
+== Entscheidungskriterien
+
+* Echte Anfragen im Spam fallen auf
+* Gesendete Mails liegen auch im Postfach, ohne dass Zammad sie wieder abholt
+* Mails liegen nicht länger als nötig, siehe Löschfristen in Kapitel 11
+* Andere Initiativen nutzen es bei jedem Anbieter
+
+== Betrachtete Optionen
+
+* Alles wie bisher, Ordner von Hand leeren
+* Funktionen eines bestimmten Anbieters
+* Sieve, BCC aus Zammad, ein zweiter Kanal für Spam und ein Skript mit IMAP
+
+== Entscheidung
+
+Gewählt wird die dritte Option.
+
+* *Gesendet.* Zammad hängt mit der Einstellung `system_bcc` an jede ausgehende Mail eine Kopie an das eigene Postfach ({zammad-src}/app/models/channel/driver/base_email_outbound.rb[base_email_outbound.rb]). Jede Mail von Zammad trägt `X-Mailer: Zammad Mail Service`. Die erste Regel in {repo}/mail/sieve/repair-cafe.sieve[repair-cafe.sieve] legt solche Mails nur in Gesendet ab und hält an, sonst landeten sie im Posteingang und würden neue Tickets.
+* *Spam check.* Ein zweiter Kanal holt den Ordner Spam ab, lässt die Mails auf dem Server und legt sie in die Gruppe Spam check. Nur Repair Coordinator sieht sie. Echte Anfragen werden nach Requests verschoben, der Rest mit dem Makro für Spam geschlossen. {repo}/zammad/inbound.rb[inbound.rb] legt den Kanal als Kopie des vorhandenen an, die Zugangsdaten bleiben in Zammad.
+* *Aufbewahrung.* {repo}/mail/imap_retention.py[imap_retention.py] löscht Mails nach {repo}/mail/retention.tsv[retention.tsv], Spam nach 30 Tagen, Archiv und Gesendet nach einem Jahr. Es braucht nur die Standardbibliothek von Python und läuft täglich auf der Helpdesk-VM.
+
+Am 15.11.2026 lief das Sieve-Skript in Dovecot mit `sieve-test` an erfundenen Mails, das Skript gegen ein lokales IMAP-Postfach und `inbound.rb` in der Testinstanz an einem inaktiven Kanal mit example.org. Ein zweiter Lauf legte keinen zweiten Kanal an.
+
+=== Konsequenzen
+
+* Gut, weil Spam in Zammad sichtbar ist und falsche Treffer auffallen.
+* Gut, weil das Postfach ein vollständiges Archiv für ein Jahr ist, auch wenn Zammad ausfällt.
+* Schlecht, weil Mails aus dem Archiv länger liegen als Anfragen ohne Termin, die nach drei Monaten aus Zammad verschwinden. Das Archiv dient der Ausfallsicherheit, die Frist von einem Jahr steht im Verzeichnis der Verarbeitungen.
+* Schlecht, weil Spam check zusätzliche Tickets bringt, die nach einem Monat gelöscht werden.
+* Die Domain in der Sieve-Regel und der Name des Ordners Gesendet hängen vom Anbieter ab.
+
+== Vor- und Nachteile der Optionen
+
+=== Wie bisher
+
+* Gut, weil nichts zu bauen ist.
+* Schlecht, weil Spam unbemerkt bleibt und nichts gelöscht wird.
+
+=== Funktionen eines Anbieters
+
+* Gut, weil kein eigener Rechner nötig ist.
+* Schlecht, weil andere Initiativen andere Anbieter haben.
+
+=== Sieve, BCC, Kanal und Skript
+
+* Gut, weil alles auf Standards beruht.
+* Schlecht, weil das Skript einen ständig laufenden Rechner braucht.
+
+== Quellen
+
+* https://www.rfc-editor.org/rfc/rfc5228[RFC 5228 Sieve], https://www.rfc-editor.org/rfc/rfc3894[RFC 3894 copy]
+* Vorhandene Sieve-Regeln des Postfachs, ohne Zugangsdaten, am 15.11.2026
+* Entscheidungen von Michael Prange am 15.11.2026

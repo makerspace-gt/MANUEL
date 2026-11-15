@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-09
 Beteiligte:: Michael Prange und das Team in der Planung vom 09.11.2026
-Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht von ADR 10
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht von ADR 10, und 2026-11-15, Abweichungen des Vorabtests
 
 == Kontext und Problem
 
@@ -36,6 +36,8 @@ Zum Start füllt der Ticket Categorizer von Zammad die Art des Geräts mit dem S
 * *Umstieg.* MANUEL wechselt auf n8n mit `d3:9b`, Sicherheit und Rückfrage, wenn der Vorabtest oder die ersten zwei Termine mehr als 5 Prozent falsche Einträge zeigen, gemessen an allen eingetragenen Kategorien, oder wenn das Team es für nötig hält.
 
 xref:0018-felder-mit-ki-agenten-von-zammad-fuellen.adoc[ADR 18] gilt damit weiter. ADR 3, 4 und 11 bleiben das Ziel für den Weg über n8n und sind für die Kategorie im Betrieb zunächst zurückgestellt.
+
+Nachtrag vom 15.11.2026. Der Vorabtest vom 13.11.2026 fragte in drei Punkten anders als Zammad 7.2.2. Er nutzte die deutschen Namen der Optionen, Zammad schickt die gespeicherten englischen. Er schickte keine Beschreibungen, Zammad nimmt sie aus der Einschränkung im Agenten. Er lief mit Temperatur 0, Zammad ruft Agenten fest mit 0,3 auf. Der Vorabtest wird nach der Durchsicht des Katalogs so wiederholt, wie Zammad fragt, mit und ohne Beschreibungen, xref:0055-katalog-in-bloecken-durchsehen.adoc[ADR 55].
 
 === Konsequenzen
 

@@ -102,7 +102,7 @@ image::../../docs/grafiken/ora-coverage-restarters-hell.svg[Bei Restarters decke
 
 === Durchsicht
 
-* Die Durchsicht folgt der Häufigkeit. Zuerst kommen die Einträge der Klassen A und B, denn nur sie stehen in der Liste des Categorizer <<einordnung>>. Die übrigen bleiben Entwurf, bis einer in einem Ticket auftaucht.
+* Die Durchsicht folgt der Häufigkeit <<adr-0055>>. Zuerst kommen die Einträge der Klassen A und B, denn nur sie stehen in der Liste des Categorizer <<einordnung>>. Die übrigen bleiben Entwurf, bis einer in einem Ticket auftaucht.
 * Gearbeitet wird in Blöcken von etwa 15 Einträgen. Claude schreibt je Eintrag Beschreibung und Synonyme auf Deutsch und Englisch und vergleicht ihn mit den übrigen Einträgen derselben ORA-Gruppe. Ein Mensch entscheidet jeden Block, Änderungswünsche gehen in den nächsten Entwurf.
 * Dabei fallen Doppelungen auf, etwa Smart-TV neben Fernseher, Steuergerät neben Controller oder Funkkopfhörer neben Kopfhörer. Zusammengefasste Einträge werden Synonyme, ihre IDs des Laufzettels gehen mit. Die Gründe stehen in {repo}/eval/decision/equivalents.tsv[equivalents.tsv] <<adr-0008>>.
 * Auch falsche ORA-Gruppen fallen auf. Der Vakuumierer stand bei den Staubsaugern, die Astschere bei den Elektrowerkzeugen. Mit der Gruppe ändert sich der Schlüssel, das geht nur bis zum Start in Zammad.

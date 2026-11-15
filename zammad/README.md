@@ -1,6 +1,6 @@
 # Zammad für eine Reparatur-Initiative einrichten
 
-Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet. Sie enthalten nichts, was nur für das Repair Café des Makerspace Gütersloh gilt, auch nicht den Namen Repair Café, den nur ein Netzwerk nutzt, und lassen sich mit docker compose bei jeder Initiative nachnutzen. Alle Läufe lassen sich wiederholen, vorhandene Einträge werden aktualisiert statt doppelt angelegt.
+Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie möglich als Code ([ADR 54](../docs/adr/0054-zammad-als-code-einrichten.adoc)). Sie enthalten nichts, was nur für das Repair Café des Makerspace Gütersloh gilt, auch nicht den Namen Repair Café, den nur ein Netzwerk nutzt, und lassen sich mit docker compose bei jeder Initiative nachnutzen. Alle Läufe lassen sich wiederholen, vorhandene Einträge werden aktualisiert statt doppelt angelegt.
 
 | Datei | Inhalt |
 |---|---|

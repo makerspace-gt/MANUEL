@@ -1,0 +1,69 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-src: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8
+[[adr-0054]]
+= 0054 Zammad als Code einrichten
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Felder, Gruppen, Rollen und Makros richtet {repo}/zammad/setup.rb[setup.rb] seit dem 14.11.2026 ein. Für die KI fehlen noch Anbieter, Agenten, Schreibassistent und Wissensdatenbank. Zammad bietet dafür Dialoge an. Was dort geklickt wird, lässt sich aber weder prüfen noch auf ein zweites Zammad oder zu einer anderen Initiative übertragen. Beim Categorizer müssten im Dialog über 700 Optionen von Hand entfernt werden. Wie richten wir den Teil für die KI ein?
+
+== Entscheidungskriterien
+
+* Andere Initiativen können alles mit einem Lauf übernehmen
+* Testinstanz und echtes Zammad bekommen dieselben Einstellungen
+* Prompts und Listen lassen sich lesen, vergleichen und mit dem Katalog erzeugen
+* Nichts, was nur für uns gilt, steht im Repo
+
+== Betrachtete Optionen
+
+* Einstellungen im Dialog von Zammad
+* Einstellungen als Ruby-Dateien, die `setup.rb` lädt
+* Einstellungen über die REST-API von Zammad mit einem eigenen Skript
+
+== Entscheidung
+
+Gewählt werden Ruby-Dateien unter {repo}/zammad[zammad/], so viel wie möglich. In Zammad 7.2.2 sind Anbieter, Agenten, Schreibassistent und Wissensdatenbank gewöhnliche Datensätze, siehe {zammad-src}/app/models/ai/provider_connection.rb[provider_connection.rb], {zammad-src}/app/models/ai/agent.rb[agent.rb] und {zammad-src}/app/models/ai/text_tool.rb[text_tool.rb].
+
+* Jede Datei legt ihre Datensätze an oder aktualisiert sie und läuft beliebig oft, wie die bisherigen Dateien.
+* Prompts liegen als Textdateien in `prompts/`, die Ruby-Dateien lesen sie ein.
+* Liste und Beschreibungen des Categorizer entstehen aus {repo}/katalog/kategorien.tsv[kategorien.tsv]. Das Feld behält alle Einträge, der Agent sieht nur die eingeschränkte Liste.
+* Die Adresse von Ollama kommt aus einer Umgebungsvariable.
+* Den Anfang macht {repo}/zammad/knowledge_base.rb[knowledge_base.rb]. Die Wissensdatenbank ist deutsch mit britischem Englisch als zweiter Sprache, wie bei der Open Repair Alliance und Restarters.net.
+
+Im Dialog wird nur ausprobiert. Was bleiben soll, kommt in eine Datei.
+
+=== Konsequenzen
+
+* Gut, weil andere Initiativen mit `zammad/compose.yml` alles in einem Lauf bekommen.
+* Gut, weil Änderungen an Prompts und Listen im Repo nachvollziehbar sind.
+* Gut, weil eine Änderung am Katalog nur einen neuen Lauf braucht.
+* Schlecht, weil die Dateien von den Modellen in Zammad abhängen und nach Updates zu prüfen sind.
+* Schlecht, weil Änderungen im Dialog beim nächsten Lauf überschrieben werden können. Das Team muss wissen, dass die Dateien gelten.
+* Schlecht, weil Zammad das Modell je Funktion wählt und nicht je Agent. Alle Agenten nutzen dasselbe Modell, siehe {zammad-src}/app/models/ai/feature_provider.rb[feature_provider.rb].
+
+== Vor- und Nachteile der Optionen
+
+=== Dialog
+
+* Gut, weil er ohne Programmieren geht.
+* Schlecht, weil nichts übertragbar oder prüfbar ist und lange Listen von Hand gepflegt werden müssen.
+
+=== Ruby-Dateien
+
+* Gut, weil sie wie `setup.rb` im selben Lauf mitkommen und alle Felder der Modelle erreichen.
+* Schlecht, weil sie Ruby und die Modelle von Zammad voraussetzen.
+
+=== REST-API
+
+* Gut, weil sie von außen läuft und stabiler gegenüber Updates sein kann.
+* Schlecht, weil sie ein Token braucht und nicht alle Einstellungen der KI über die API erreichbar sein müssen.
+
+== Quellen
+
+* {zammad-src}/app/services/service/ai/feature/prompts/system/ai_agent.txt.erb[Prompt der Agenten in Zammad], mit Optionen und Beschreibungen
+* Wunsch von Michael Prange am 14.11.2026, so viel wie möglich als Code für eine einfache Nachnutzung

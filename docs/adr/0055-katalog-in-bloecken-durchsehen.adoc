@@ -1,0 +1,65 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0055]]
+= 0055 Den Katalog in Blöcken durchsehen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Alle 1.089 Einträge des Katalogs waren Entwurf. Beschreibungen und Synonyme hatten nur die 226 häufigsten. Der Categorizer sieht die Einträge der Klassen A und B, von denen 142 ohne Beschreibung waren. Im Vorabtest lagen 64 von 114 Fehlern in derselben ORA-Gruppe, also zwischen ähnlichen Einträgen. Wie sehen wir den Katalog durch, ohne dass eine Person über tausend Einträge auf einmal prüfen muss?
+
+== Entscheidungskriterien
+
+* Zuerst das, was die Einordnung am meisten verbessert
+* Ein Mensch entscheidet jede Änderung
+* Jede Entscheidung bleibt nachvollziehbar
+* Synonyme sollen Wörter sein, die Gäste wirklich schreiben
+
+== Betrachtete Optionen
+
+* Alles auf einmal durch ein Sprachmodell
+* In Blöcken nach Häufigkeit mit Entwürfen von Claude und Entscheidung durch einen Menschen
+* Nur bei Bedarf, wenn ein Eintrag in einem Ticket auftaucht
+
+== Entscheidung
+
+Gewählt werden Blöcke nach Häufigkeit.
+
+* Zuerst die offenen Punkte für Restarters, dann die Einträge der Klassen A und B ohne Beschreibung, nach Zahl der Reparaturen. Die übrigen bleiben Entwurf, bis einer in einem Ticket auftaucht.
+* Ein Block hat etwa 15 Einträge. Claude schreibt Beschreibung und Synonyme auf Deutsch und Englisch und vergleicht mit den übrigen Einträgen der ORA-Gruppe. Doppelungen und falsche Gruppen schlägt Claude einzeln vor.
+* Michael Prange entscheidet jeden Block. Zusammenfassungen werden in {repo}/eval/decision/equivalents.tsv[equivalents.tsv] begründet, xref:0008-gleichwertige-kategorien-zusammenfassen.adoc[ADR 8].
+* Synonyme kommen aus dem Sprachgebrauch. {repo}/katalog/synonyms.py[synonyms.py] zählt sie in den deutschen Open Repair Data und in unseren Tickets, die Zahlen stehen in jedem Entwurf. Umschreibungen wie „Lampe für den Tisch“ sind keine Synonyme. Zusätze wie „Wasserkessel, elektrisch“ bleiben, wenn sie vom ähnlichen Gegenstand ohne Strom trennen.
+* Nach jedem Block läuft {repo}/katalog/check.py[check.py].
+
+=== Konsequenzen
+
+* Gut, weil die Einträge mit den meisten Reparaturen zuerst gut sind.
+* Gut, weil Doppelungen und falsche Gruppen auffallen, etwa der Vakuumierer bei den Staubsaugern.
+* Schlecht, weil Schlüssel sich ändern, wenn eine Gruppe falsch war. Das geht nur bis zum Start in Zammad, xref:0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[ADR 13].
+* Schlecht, weil die Klassen A und B nach Zusammenfassungen neu zu berechnen sind.
+* Schlecht, weil die Hälfte der Synonyme in den Daten nicht vorkommt. Am 15.11.2026 waren es 321 von 635.
+
+== Vor- und Nachteile der Optionen
+
+=== Sprachmodell
+
+* Gut, weil es schnell ist.
+* Schlecht, weil `qwen3.6:35b-a3b` Synonyme erfand, siehe {repo}/docs/einordnung.md[Einordnung], Schritt 14.
+
+=== Blöcke nach Häufigkeit
+
+* Gut, weil jede Entscheidung klein bleibt und ein Mensch sie trifft.
+* Schlecht, weil es viele Runden braucht.
+
+=== Nur bei Bedarf
+
+* Gut, weil keine Arbeit an seltenen Einträgen entsteht.
+* Schlecht, weil der Categorizer die häufigen Einträge vom ersten Tag an braucht.
+
+== Quellen
+
+* {repo}/docs/einordnung.md[Einordnung], Schritt 17 mit dem Vorabtest
+* Entscheidungen von Michael Prange am 15.11.2026 zu den Blöcken 1 bis 3

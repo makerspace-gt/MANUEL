@@ -1,10 +1,11 @@
 ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [[adr-0057]]
-= 0057 Lebenswichtige Geräte nicht reparieren
+= 0057 Lebenswichtige Geräte nur bei einfachen Fehlern reparieren
 
 [horizontal]
 Status:: vorgeschlagen
 Datum:: 2026-11-15
+Überarbeitet:: 2026-11-15, einfache Fehler wie ein Batteriewechsel bleiben erlaubt
 Beteiligte:: Michael Prange, Entscheidung durch das Team
 
 == Kontext und Problem
@@ -25,13 +26,14 @@ Gäste bringen auch medizinische Geräte wie Blutdruckmessgeräte, Fieberthermom
 
 == Entscheidung
 
-Vorgeschlagen wird, Geräte mit `life_critical` nicht zu reparieren. Erkennt MANUEL beim Empfang ein solches Gerät, schreibt es eine interne Notiz und einen Entwurf für eine freundliche Absage, die Engagierte prüfen und senden. Die Absage nennt den Grund und, wo möglich, den Hersteller oder ein Sanitätshaus. Ob auch äußere Schäden ausgeschlossen sind, entscheidet das Team.
+Vorgeschlagen wird, Geräte mit `life_critical` anzusehen, aber nur einfache Fehler zu beheben, die Messung und Schutzfunktion nicht berühren. Dazu gehören ein Batterie- oder Akkuwechsel, ein loser Batteriekontakt, ein Gehäuse oder ein Riemen. Was Sensor, Elektronik der Messung oder Bremswirkung betrifft, reparieren wir nicht. Erkennt MANUEL beim Empfang ein solches Gerät, schreibt es eine interne Notiz mit diesem Hinweis. Lässt sich der Fehler nicht einfach beheben, schreibt es einen Entwurf für eine freundliche Absage, die Engagierte prüfen und senden. Die Absage nennt den Grund und, wo möglich, den Hersteller oder ein Sanitätshaus.
 
 === Konsequenzen
 
 * Gut, weil niemand nach einer Reparatur einem falschen Messwert vertraut.
 * Gut, weil Engagierte sich auf eine Regel berufen können.
-* Schlecht, weil auch einfache Fehler wie ein loser Batteriekontakt abgelehnt werden.
+* Gut, weil einfache Fehler wie ein Batteriewechsel weiter möglich sind.
+* Schlecht, weil die Grenze zwischen einfachem Fehler und Eingriff in die Funktion am Termin gezogen werden muss.
 * Schlecht, weil die Liste der Geräte mit `life_critical` stimmen muss. Fehlt ein Gerät, greift die Regel nicht.
 
 == Vor- und Nachteile der Optionen
@@ -53,5 +55,5 @@ Vorgeschlagen wird, Geräte mit `life_critical` nicht zu reparieren. Erkennt MAN
 
 == Quellen
 
-* Hinweis von Michael Prange am 15.11.2026, dass falsche Messwerte nach einer Reparatur lebensgefährlich sein können
+* Hinweis von Michael Prange am 15.11.2026, dass falsche Messwerte nach einer Reparatur lebensgefährlich sein können, ein Akkutausch aber trotzdem gemacht wird
 * Rechtliche Hinweise von Zammad zur KI, nach denen Menschen Ergebnisse bei Gesundheit und Sicherheit prüfen müssen, https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/app/assets/javascripts/app/controllers/_ai/_feature_base.coffee[_feature_base.coffee]

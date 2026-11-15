@@ -15,6 +15,10 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 | [migrate_fields.rb](migrate_fields.rb) | Übernimmt die Werte älterer Felder in die neuen, stellt Regeln um und schaltet die alten Felder ab, erst als Probelauf |
 | [result_tree.rb](result_tree.rb) | Werte des Ergebnisses englisch und deutsch, für `objects.rb` und `migrate_fields.rb` |
 | [export_config.py](export_config.py) | Exportiert die Einstellungen eines bestehenden Zammad über die REST-API als JSON, nur lesend, die Dateien bleiben lokal |
+| [event_tags.rb](event_tags.rb) | Initializer mit `ManuelEventTags.run`, stündlich über den Scheduler: Datums-Tag nach dem Termin, `next-event` aufräumen, unbestätigte Vorschläge als No-show, Monatsübersichten und ungenutzte Tags, siehe [ADR 62](../docs/adr/0062-datums-tags-und-monatsuebersichten-automatisch-pflegen.adoc) |
+| [overviews.rb](overviews.rb) | Zwölf Übersichten je Monat, beim Anlegen aus |
+| [scheduler.rb](scheduler.rb) | Eintrag im Scheduler für jedes geladene Modul |
+| [migrate_tags.rb](migrate_tags.rb) und [legacy_tags.tsv](legacy_tags.tsv) | Gleicht alte Monats- und Sondertags an, erst als Probelauf |
 | [keep_pending_time.rb](keep_pending_time.rb) | Initializer, der die Wartezeit behält, wenn ein Ticket den Status warten verlässt, siehe [ADR 53](../docs/adr/0053-termin-in-der-wartezeit-behalten.adoc) |
 
 ## Start

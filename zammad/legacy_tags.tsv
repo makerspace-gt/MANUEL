@@ -1,0 +1,6 @@
+# Older tags that name no exact date, decided by hand, read by zammad/migrate_tags.rb.
+# Columns: tag, date of the event (YYYY-MM-DD) or empty while open, extra tag that is added, note.
+# A month tag with exactly one event in docs/ora/anstiftung/events.tsv needs no row, the script finds the date.
+tag	date	extra_tag	note
+2024-Klimawoche		klimawoche	open, candidates from events.tsv 2024-09-14 or 2024-09-07
+2024-RepairDay		repair-day	open, International Repair Day 2024 was 2024-10-19

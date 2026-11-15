@@ -6,8 +6,9 @@
 #
 # It copies a value only where the new field is still empty, so it can run again. Tickets are written
 # without callbacks, so no trigger fires and no guest gets an email. Triggers, scheduled jobs, macros,
-# overviews and core workflows that use an old field are switched to the new one. Last, the old fields
-# are deactivated, their values stay in the database.
+# overviews and core workflows that use an old field are switched to the new one. Rules that code in
+# zammad/ replaces, listed in REPLACED_RULES, are switched off. Last, the old fields are deactivated,
+# their values stay in the database.
 #
 # The mapping below is the one of the Repair Café of Makerspace Gütersloh. Other initiatives replace
 # OLD_FIELDS with their own names and values.
@@ -46,6 +47,20 @@ load File.join(__dir__, 'result_tree.rb') unless defined?(RESULT_TREE)
 FIELD_MAP = OLD_FIELDS.to_h do |old, (new, values)|
   [old, [new, old == 'ergebnis' ? result_map : values]]
 end.freeze
+
+# Rules of our Zammad that code in zammad/ replaces. They are switched off, not deleted.
+REPLACED_RULES = {
+  Macro => ['1. Tag Date', '2. Untag next-event'],
+}.freeze
+
+replaced = []
+REPLACED_RULES.each do |model, names|
+  model.where(name: names, active: true).find_each do |record|
+    replaced << "#{model.name} #{record.name}"
+    record.update!(active: false) if APPLY
+  end
+end
+puts "Ersetzte Regeln #{APPLY ? 'abgeschaltet' : 'würden abgeschaltet'}: #{replaced.join(', ').presence || 'keine'}"
 
 existing = OLD_FIELDS.keys.select { |name| Ticket.column_names.include?(name) }
 missing_new = OLD_FIELDS.values.map(&:first).reject { |name| Ticket.column_names.include?(name) }

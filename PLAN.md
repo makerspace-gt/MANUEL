@@ -330,7 +330,7 @@ git push
 - [ ] Zugriffsregeln in NetBird anlegen, sodass die Helpdesk-VM nur den Port von Ollama und Admins nur SSH erreichen
 - [ ] Toolbox `manuel-r` für die Auswertung mit R auch auf MANUEL anlegen, wie im Kopf von [eval/r/Containerfile](eval/r/Containerfile), siehe [ADR 49](docs/adr/0049-daten-mit-r-auswerten.adoc). Auf dem Laptop läuft sie seit 14.11.2026
 - [x] Image vom 14.11.2026 bereitgestellt und MANUEL neu gestartet, der Start nach Tailscale greift
-- [ ] Nächstes Image mit [keep_pending_time.rb](zammad/keep_pending_time.rb) bereitstellen und MANUEL nach Freigabe neu starten, danach einmal `zammad-compose up -d`. Bis dahin läuft die Testinstanz mit der Einrichtung aus `/var/home/core/manuel-test`
+- [ ] Nächstes Image mit [keep_pending_time.rb](zammad/keep_pending_time.rb) bereitstellen und MANUEL nach Freigabe neu starten, danach einmal `zammad-compose up -d`. Das Image bringt auch Elasticsearch für die Wissensdatenbank mit, siehe ADR 43. Bis dahin läuft die Testinstanz mit der Einrichtung aus `/var/home/core/manuel-test`
 
 ### Phase 2 Inferenz
 

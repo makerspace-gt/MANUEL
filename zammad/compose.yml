@@ -39,6 +39,7 @@ services:
       - ./zammad/voicemail.rb:/opt/zammad/config/initializers/zz_voicemail.rb:ro
       - ./zammad/tree_select_label.rb:/opt/zammad/config/initializers/zz_tree_select_label.rb:ro
       - ./zammad/category_check.rb:/opt/zammad/config/initializers/zz_category_check.rb:ro
+      - ./zammad/agent_note.rb:/opt/zammad/config/initializers/zz_agent_note.rb:ro
     # The files may lie on a read-only system path, for example /usr/share/manuel on MANUEL, where
     # SELinux labels cannot be changed with :z
     security_opt:
@@ -58,6 +59,7 @@ services:
       - ./zammad/voicemail.rb:/opt/zammad/config/initializers/zz_voicemail.rb:ro
       - ./zammad/tree_select_label.rb:/opt/zammad/config/initializers/zz_tree_select_label.rb:ro
       - ./zammad/category_check.rb:/opt/zammad/config/initializers/zz_category_check.rb:ro
+      - ./zammad/agent_note.rb:/opt/zammad/config/initializers/zz_agent_note.rb:ro
     security_opt:
       - label=disable
 
@@ -73,5 +75,6 @@ services:
       - ./zammad/voicemail.rb:/opt/zammad/config/initializers/zz_voicemail.rb:ro
       - ./zammad/tree_select_label.rb:/opt/zammad/config/initializers/zz_tree_select_label.rb:ro
       - ./zammad/category_check.rb:/opt/zammad/config/initializers/zz_category_check.rb:ro
+      - ./zammad/agent_note.rb:/opt/zammad/config/initializers/zz_agent_note.rb:ro
     security_opt:
       - label=disable

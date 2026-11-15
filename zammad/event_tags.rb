@@ -17,7 +17,7 @@ module ManuelEventTags
   NEXT_EVENT = 'next-event'.freeze
   DATE_TAG = %r{\A\d{4}-\d{2}-\d{2}\z}
   # Tags that stay selectable even without a ticket, in case tag_new is off
-  KEEP_TAGS = %w[highlight next-event asked-again contact-check transcribed category-checked category-differs retitle spam
+  KEEP_TAGS = %w[highlight next-event asked-again contact-check transcribed category-checked category-differs retitle solution-suggested spam
                  no-info info delete test obsolete no-show reminded statistics].freeze
   MONTHS = {
     'de' => %w[Januar Februar März April Mai Juni Juli August September Oktober November Dezember],

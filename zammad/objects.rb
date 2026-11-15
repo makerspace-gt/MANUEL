@@ -55,12 +55,17 @@ def result_tree
 end
 
 # Catalog key as value and English name as label, so the key stays in the ticket when a name changes,
-# see ADR 13. Entries without an English name show the German one.
+# see ADR 13. Entries without an English name show the German one. A flat tree_select instead of a
+# select, because only a tree can be searched in every interface of Zammad, see
+# docs/adr/0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc. Sorted by the German name.
 catalog_path = ENV.fetch('MANUEL_CATALOG', File.expand_path('../katalog/kategorien.tsv', __dir__))
 if File.exist?(catalog_path)
   rows = CSV.read(catalog_path, col_sep: "\t", headers: true, liberal_parsing: true, quote_char: "\x00")
-  options = rows.to_h { |row| [row['key'], [row['name_en'].presence || row['name'], row['name']]] }
-  field('device_type', tr('Device type', 'Art des Geräts'), 'select', choice(options), 1100)
+  items = rows.sort_by { |row| row['name'].downcase }.map do |row|
+    { 'name' => tr(row['name_en'].presence || row['name'], row['name']), 'value' => row['key'] }
+  end
+  field('device_type', tr('Device type', 'Art des Geräts'), 'tree_select',
+        { options: items, default: '', nulloption: true, multiple: false, translate: true, maxlength: 255 }, 1100)
 else
   puts "Kein Katalog unter #{catalog_path}, Feld device_type ausgelassen"
 end

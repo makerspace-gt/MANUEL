@@ -3,6 +3,7 @@
 
 SCHEDULES = {
   'ManuelEventTags.run' => ['Keep date tags, next-event and monthly overviews up to date', 1.hour],
+  'ManuelVoicemail.run'  => ['Transcribe voicemails locally', 5.minutes],
 }.freeze
 
 SCHEDULES.each do |method, (name, period)|

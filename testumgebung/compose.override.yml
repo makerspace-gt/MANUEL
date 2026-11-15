@@ -42,5 +42,30 @@ services:
     volumes:
       - n8n-data:/home/node/.n8n
 
+  # Transcribes voicemails locally instead of sipgate, see docs/adr/0064-voicemails-lokal-transkribieren.adoc.
+  # Only reachable inside the network of the stack, Zammad calls it as http://whisper:8080/inference.
+  whisper-model:
+    image: docker.io/curlimages/curl:8.11.1
+    user: "0"
+    command: ["sh", "-c", "test -s /models/ggml-large-v3-turbo.bin || curl -fL -o /models/ggml-large-v3-turbo.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo.bin"]
+    volumes:
+      - whisper-models:/models
+
+  whisper:
+    image: ghcr.io/ggml-org/whisper.cpp:main-vulkan-482279b8a18855ba741d7b88c30fcb3874691f59
+    restart: always
+    entrypoint: ["whisper-server"]
+    command: ["--model", "/models/ggml-large-v3-turbo.bin", "--host", "0.0.0.0", "--port", "8080", "--language", "de", "--convert"]
+    devices:
+      - /dev/dri:/dev/dri
+    security_opt:
+      - label=disable
+    volumes:
+      - whisper-models:/models:ro
+    depends_on:
+      whisper-model:
+        condition: service_completed_successfully
+
 volumes:
   n8n-data:
+  whisper-models:

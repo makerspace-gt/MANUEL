@@ -23,6 +23,7 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 | [article_types.rb](article_types.rb) und [inbound.rb](inbound.rb) | Typ `walk-in` für den Empfang, Initializer und Anlegen samt Registrierung des Filters |
 | [migrate_contacts.rb](migrate_contacts.rb) | Gleicht Nummern, Gäste von sipgate und Typen im Bestand an, erst als Probelauf |
 | [ui_wording.tsv](ui_wording.tsv) | Eigene Begriffe, etwa Termin für Pending till und Kontaktformular für den Typ web |
+| [voicemail.rb](voicemail.rb) | Initializer, schickt neue Voicemails an whisper.cpp unter `MANUEL_WHISPER_URL` und schreibt den Text als interne Notiz, siehe [ADR 64](../docs/adr/0064-voicemails-lokal-transkribieren.adoc) |
 | [keep_pending_time.rb](keep_pending_time.rb) | Initializer, der die Wartezeit behält, wenn ein Ticket den Status warten verlässt, siehe [ADR 53](../docs/adr/0053-termin-in-der-wartezeit-behalten.adoc) |
 
 ## Start

@@ -1,0 +1,5 @@
+# Folders of the mailbox and after how many days their mails are deleted, read by imap_retention.py
+folder	days
+Spam	30
+Archiv	365
+Sent	365

@@ -102,23 +102,37 @@ include::../../docs/adr/0046-literatur-in-einer-zotero-gruppe-pflegen.adoc[]
 include::../../docs/adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[]
 
 include::../../docs/adr/0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[]
+
 include::../../docs/adr/0049-daten-mit-r-auswerten.adoc[]
+
 include::../../docs/adr/0050-problem-loesung-und-befund-mit-drei-agenten-erfassen.adoc[]
+
 include::../../docs/adr/0051-reparaturdaten-nach-ords-oeffentlich-bereitstellen.adoc[]
+
 include::../../docs/adr/0052-erfasste-daten-festlegen.adoc[]
+
 include::../../docs/adr/0053-termin-in-der-wartezeit-behalten.adoc[]
+
 include::../../docs/adr/0054-zammad-als-code-einrichten.adoc[]
+
 include::../../docs/adr/0055-katalog-in-bloecken-durchsehen.adoc[]
+
 include::../../docs/adr/0056-gefahren-am-geraet-festhalten.adoc[]
+
 include::../../docs/adr/0057-lebenswichtige-geraete-nur-bei-einfachen-fehlern-reparieren.adoc[]
+
 include::../../docs/adr/0058-felder-des-bestehenden-zammad-uebernehmen.adoc[]
+
 include::../../docs/adr/0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc[]
+
 include::../../docs/adr/0060-ablaeufe-des-bestehenden-zammad-als-code-uebernehmen.adoc[]
 
 include::../../docs/adr/0061-loesungsansatz-eine-woche-vor-dem-termin-schreiben.adoc[]
 
 include::../../docs/adr/0062-datums-tags-und-monatsuebersichten-automatisch-pflegen.adoc[]
+
 include::../../docs/adr/0063-kontaktdaten-und-eingangswege-uebernehmen.adoc[]
+
 include::../../docs/adr/0064-voicemails-lokal-transkribieren.adoc[]
 
 include::../../docs/adr/0065-postfach-archivieren-und-aufbewahrung-begrenzen.adoc[]

@@ -2,8 +2,8 @@
 # docs/adr/0067-betreff-aus-marke-und-art-schreiben.adoc.
 #
 # The title agent is the built-in type Ticket Title Rewriter with our own instruction and context. Zammad
-# lays the definition of an agent over the defaults of its type (app/models/ai/agent.rb). It sees title,
-# brand, device type and the first article and writes "Miele Staubsauger", the brand only when known.
+# lays the definition of an agent over the defaults of its type (app/models/ai/agent.rb). It sees brand,
+# device type and the first article, not the current title and writes "Miele Staubsauger", the brand only when known.
 # A trigger runs it once a ticket is in Repairs, so the subject of the guest stays while it is a request,
 # and again when device type or brand change there. New rules are active only when an AI provider is
 # set, a later run never changes active.
@@ -19,13 +19,15 @@ title_agent.assign_attributes(
       Stick to the following principles:
 
       - Write the title as the brand followed by the kind of device in German, for example "Miele Staubsauger" or "Philips Wasserkocher".
-      - Take brand and device type from the ticket attributes when present, otherwise from the first article.
+      - The ticket attributes brand and device_type always win over the first article, which may name an older device.
+      - Take brand and device from the first article only when the attribute is empty.
       - Leave the brand out when it is unknown, never guess it. Then the title is only the kind of device, for example "Staubsauger".
       - No model numbers, no defect, no names of persons, at most 50 characters.
       - Never explain your given answer.
       - Only answer with the value in the "title" field inside the JSON structure.
     TEXT
-    'entity_context'   => { 'object_attributes' => %w[title brand device_type], 'articles' => 'first' },
+    # Without the current title, otherwise the model keeps the old device or brand when they change
+    'entity_context'   => { 'object_attributes' => %w[brand device_type], 'articles' => 'first' },
   },
   note:       'Title as brand and device for the Repair Café, ADR 67',
 )

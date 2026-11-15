@@ -33,6 +33,7 @@ Gewählt werden Blöcke nach Häufigkeit.
 * Michael Prange entscheidet jeden Block. Zusammenfassungen werden in {repo}/eval/decision/equivalents.tsv[equivalents.tsv] begründet, xref:0008-gleichwertige-kategorien-zusammenfassen.adoc[ADR 8].
 * Synonyme kommen aus dem Sprachgebrauch. {repo}/katalog/synonyms.py[synonyms.py] zählt sie in den deutschen Open Repair Data und in unseren Tickets, die Zahlen stehen in jedem Entwurf. Umschreibungen wie „Lampe für den Tisch“ sind keine Synonyme. Zusätze wie „Wasserkessel, elektrisch“ bleiben, wenn sie vom ähnlichen Gegenstand ohne Strom trennen.
 * Nach jedem Block läuft {repo}/katalog/check.py[check.py].
+* MANUEL wählt nur aus den Klassen A und B. C-Einträge bleiben im Feld von Hand wählbar. Nach etwa einem Jahr Echtbetrieb zeigen die Tickets, welche C-Einträge häufig gewählt wurden. Sie kommen dann in die Liste und werden ebenso durchgesehen.
 
 === Konsequenzen
 

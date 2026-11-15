@@ -102,7 +102,7 @@ image::../../docs/grafiken/ora-coverage-restarters-hell.svg[Bei Restarters decke
 
 === Durchsicht
 
-* Die Durchsicht folgt der Häufigkeit <<adr-0055>>. Zuerst kommen die Einträge der Klassen A und B, denn nur sie stehen in der Liste des Categorizer <<einordnung>>. Die übrigen bleiben Entwurf, bis einer in einem Ticket auftaucht.
+* Die Durchsicht folgt der Häufigkeit <<adr-0055>>. Die Einträge sind nach der Zahl der Reparaturen in A, B und C geteilt, A deckt 80 Prozent ab, B weitere 15 und C die übrigen 5. Zuerst kommen die Einträge der Klassen A und B, denn nur sie stehen in der Liste des Categorizer <<einordnung>>. Die übrigen bleiben Entwurf, bis einer in einem Ticket auftaucht.
 * Gearbeitet wird in Blöcken von etwa 15 Einträgen. Claude schreibt je Eintrag Beschreibung und Synonyme auf Deutsch und Englisch und vergleicht ihn mit den übrigen Einträgen derselben ORA-Gruppe. Ein Mensch entscheidet jeden Block, Änderungswünsche gehen in den nächsten Entwurf.
 * Dabei fallen Doppelungen auf, etwa Smart-TV neben Fernseher, Steuergerät neben Controller oder Funkkopfhörer neben Kopfhörer. Zusammengefasste Einträge werden Synonyme, ihre IDs des Laufzettels gehen mit. Die Gründe stehen in {repo}/eval/decision/equivalents.tsv[equivalents.tsv] <<adr-0008>>.
 * Auch falsche ORA-Gruppen fallen auf. Der Vakuumierer stand bei den Staubsaugern, die Astschere bei den Elektrowerkzeugen. Mit der Gruppe ändert sich der Schlüssel, das geht nur bis zum Start in Zammad.
@@ -111,6 +111,11 @@ image::../../docs/grafiken/ora-coverage-restarters-hell.svg[Bei Restarters decke
 * Neue Synonyme aus den Daten gibt es kaum. Die Freitexte der Open Repair Data beschreiben Fehler und Bauteile, nicht das Gerät, und die Betreffe unserer Tickets nennen das Gerät meist schon so wie der Katalog.
 * Bei der Durchsicht kam die Spalte `hazards` dazu. Sie gibt die Gefahren vor, die im Ticket erscheinen <<adr-0056>>.
 * {repo}/katalog/check.py[check.py] prüft nach jedem Block, dass kein Wort zu zwei Einträgen gehört und Schlüssel, Gruppen und Stromversorgung zusammenpassen.
+
+.Vom Laufzettel über die Klassen A, B und C zur Liste, aus der MANUEL wählt
+image::../../docs/grafiken/katalog-durchsicht.svg[Durchsicht des Katalogs,width=100%]
+
+* Nach etwa einem Jahr Echtbetrieb zeigen die Tickets, welche C-Einträge Engagierte von Hand gewählt haben. Häufige kommen dann in die Liste für MANUEL.
 
 === Beschreibungen
 

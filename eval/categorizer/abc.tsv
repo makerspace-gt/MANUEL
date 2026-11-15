@@ -234,7 +234,7 @@ key	name	class	repairs_deu
 18.46.882	Lawinenpipsgerät	C	1
 18.46.895	Zündschloss	C	1
 18.46.899	Poolfilter	C	3
-18.46.935	Teichpumpe	B	23
+24.41.935	Teichpumpe	B	23
 18.46.939	Rolladenmotor	B	13
 18.46.941	Garagenöffner	B	16
 18.46.943	Magnetfeldmatte	C	7
@@ -435,7 +435,7 @@ key	name	class	repairs_deu
 24.41.826	Motorsäge	B	22
 24.41.847	Elektrohobel	C	10
 24.41.853	Tauchsäge	C	2
-24.41.858	Astschere	B	25
+102.51.858	Astschere	B	25
 24.41.868	Tauchpumpe	B	44
 24.41.875	Vertikutierer	B	27
 24.41.898	Motorsense/Freischneider	B	16

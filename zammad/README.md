@@ -12,6 +12,7 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 | [knowledge_base.rb](knowledge_base.rb) | Wissensdatenbank mit Deutsch als Hauptsprache und britischem Englisch wie bei der Open Repair Alliance, Farben und Aufbau wie im Dialog von Zammad. Eine vorhandene behält ihre Einstellungen und bekommt nur fehlende Sprachen |
 | [translations.rb](translations.rb) | Deutsche Übersetzungen aller Bezeichnungen als eigene Übersetzungen in Zammad und die Wörter aus guest_wording.tsv |
 | [guest_wording.tsv](guest_wording.tsv) | Gast statt Kunde in 52 Texten von Zammad, englisch und deutsch |
+| [export_config.py](export_config.py) | Exportiert die Einstellungen eines bestehenden Zammad über die REST-API als JSON, nur lesend, die Dateien bleiben lokal |
 | [keep_pending_time.rb](keep_pending_time.rb) | Initializer, der die Wartezeit behält, wenn ein Ticket den Status warten verlässt, siehe [ADR 53](../docs/adr/0053-termin-in-der-wartezeit-behalten.adoc) |
 
 ## Start

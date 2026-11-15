@@ -33,7 +33,7 @@ Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist kein
 
 * Rechtsgrundlage für die Verarbeitung der Anfragen nach der DSGVO cite:[eu-2016-679]
 * Die Datenschutzkonferenz gibt eine Checkliste für Auswahl und Einsatz von KI cite:[dsk-2024].
-* Löschfristen, Tickets nach drei Jahren, Tickets mit dem Tag `abgelehnt` nach drei Monaten
+* Löschfristen, Tickets nach drei Jahren, Tickets mit dem Tag `obsolete`, bisher `abgelehnt`, nach drei Monaten
 * Auch das Postfach hat Fristen. Spam wird nach 30 Tagen gelöscht, Archiv und Gesendet nach einem Jahr, unabhängig vom Anbieter per IMAP. Spam landet zur Prüfung in einer eigenen Gruppe in Zammad <<adr-0065>>.
 * Verzeichnis von Verarbeitungstätigkeiten und Datenschutzhinweis, angelegt in it-infrastructure
 * Testdaten nur lokal <<adr-0002>>, Verschlüsselung des Mini-PCs vor dem Umzug in den Makerspace

@@ -50,6 +50,7 @@ Dieses Kapitel steht noch in Stichpunkten. Der Workflow dazu entsteht in Phase 5
 * Sieben Tage vor dem Termin bekommt jedes Gerät den Tag `next-event`. Nach dem Termin ersetzt ihn nachts der Datums-Tag `YYYY-MM-DD`. Bisher setzte das Team das Datum vor jedem Termin von Hand in einem Makro <<adr-0062>>.
 * Die Übersichten je Monat zeigen die Geräte der letzten 12 Monate und werden ebenfalls nachts gepflegt. Ungenutzte Tags werden gelöscht.
 * Ältere Tickets tragen nur den Monat oder Sondertags wie die Klimawoche. Ein Skript gleicht sie über die Termine der anstiftung an.
+* Erledigte Anfragen tragen den Tag `obsolete`, bisher `abgelehnt`. Damit sind alle Tags englisch <<adr-0062>>.
 
 === Spontane Gäste
 

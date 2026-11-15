@@ -29,7 +29,7 @@ Anonymisiert und veröffentlicht werden nur die Tickets, die 2025 und 2026 angel
 
 * Neue Tickets ab 2027 kommen nicht dazu.
 * Tickets von 2024 entfallen, sie werden 2027 nach drei Jahren gelöscht.
-* Tickets, die vorher gelöscht werden, etwa abgesagte mit dem Tag `abgelehnt`, entfallen ebenfalls.
+* Tickets, die vorher gelöscht werden, etwa abgesagte mit dem Tag `abgelehnt`, heute `obsolete`, entfallen ebenfalls.
 
 Die Frist aus ADR 38 richtet sich nun nach den Tickets von 2025. Die ersten davon werden 2028 gelöscht. Alles andere aus ADR 38 gilt weiter, also Anonymisierung von Hand, Prüfung jedes Tickets, CC BY 4.0 und die Ablage in `eval/decision/tickets-anonym/`.
 

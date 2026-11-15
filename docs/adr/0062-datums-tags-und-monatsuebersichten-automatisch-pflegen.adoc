@@ -35,6 +35,7 @@ Gewählt wird eine eigene Methode im Scheduler. Trigger können Tags nur als fes
 * Ein unbestätigter Vorschlag, dessen Termin vorbei ist, wird wie mit dem Makro „Nicht aufgetaucht“ zu No-show.
 * Die zwölf Monatsübersichten aus {repo}/zammad/overviews.rb[overviews.rb] bekommen die Datums-Tags ihres Monats aus den letzten 12 Monaten. Ohne Termin im Monat werden sie abgeschaltet.
 * Tags ohne Ticket werden gelöscht, außer sie stehen in Regeln oder in `KEEP_TAGS`. Ohne `MANUEL_TAG_CLEANUP=apply` steht das nur im Log.
+* Alle Tags sind englisch wie die übrigen Namen in Zammad. Der einzige deutsche Tag `abgelehnt` heißt künftig `obsolete`, also „Anfrage hat sich erledigt“. {repo}/zammad/migrate_fields.rb[migrate_fields.rb] benennt ihn um, auch in Makros, die `Tag::Item.rename` von Zammad auslässt.
 
 Ältere Tags gleicht {repo}/zammad/migrate_tags.rb[migrate_tags.rb] einmal an, zuerst als Probelauf. Ein Monat mit genau einem Termin in `docs/ora/anstiftung/events.tsv` wird zu dessen Datum. In Monaten mit zwei Terminen entscheidet die Wartezeit, sonst steht das Ticket in der Liste. Sondertags stehen in {repo}/zammad/legacy_tags.tsv[legacy_tags.tsv].
 

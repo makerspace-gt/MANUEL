@@ -1,0 +1,63 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-src: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8
+[[adr-0059]]
+= 0059 Art des Geräts als durchsuchbares Baum-Feld
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Die Art des Geräts hat 1.053 Einträge. Als Auswahlfeld (`select`) lässt sie sich in der klassischen Oberfläche von Zammad und in der mobilen Ansicht nicht durchsuchen, man kann nur Anfangsbuchstaben tippen. Nur die neue Oberfläche hat ein Suchfeld, siehe {zammad-src}/app/assets/javascripts/app/controllers/_ui_element/select.coffee[select.coffee]. Am Empfang und beim Repair Café arbeiten Engagierte auch auf Tablet und Handy. Wie wird die lange Liste durchsuchbar?
+
+== Entscheidungskriterien
+
+* Suchen in allen Oberflächen von Zammad, auch mobil
+* Im Ticket bleibt der Schlüssel des Katalogs nach xref:0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[ADR 13]
+* Vorhandene Tickets behalten ihren Wert
+* Der Categorizer bekommt weiter die Namen der Einträge
+
+== Betrachtete Optionen
+
+* Auswahlfeld lassen, MANUEL füllt vor, Menschen korrigieren
+* Flaches Baum-Feld (`tree_select`) ohne Ebenen
+* Baum-Feld mit den ORA-Gruppen als Ebene
+
+== Entscheidung
+
+Gewählt wird das flache Baum-Feld. Zammad zeigt es in allen Oberflächen als durchsuchbare Liste, etwa über {zammad-src}/app/assets/javascripts/app/controllers/_ui_element/_application_tree_select.coffee[_application_tree_select.coffee], und erlaubt den Wechsel von `select` zu `tree_select` ({zammad-src}/app/models/object_manager/attribute.rb[attribute.rb], `data_type_must_not_change`). {repo}/zammad/objects.rb[objects.rb] legt die Einträge als Liste mit Schlüssel als Wert und Namen als Bezeichnung an, sortiert nach dem deutschen Namen.
+
+Bei einer Liste setzt Zammad im Prompt der Agenten den Wert als Label ein, nicht den Namen, siehe {zammad-src}/app/services/service/ai/agent/run/context/instruction/object_attributes/options.rb[options.rb], `build_option_structure`. Der Name gehört deshalb in die Beschreibung jeder Option des Categorizer, als „Name. Beschreibung“.
+
+In der Testinstanz mit Zammad 7.2.2 war am 15.11.2026 das Feld nach `setup.rb` ein `tree_select` mit 1.053 Einträgen, ein Ticket behielt seinen Wert, und der zweite Lauf änderte nichts. Der vorbereitete Kontext des Categorizer zeigte den Schlüssel als Label und den Namen in der Beschreibung.
+
+=== Konsequenzen
+
+* Gut, weil Engagierte auf jedem Gerät nach „Kaffee“ suchen können.
+* Gut, weil Werte und Tickets unverändert bleiben.
+* Schlecht, weil der Categorizer die Namen nur über die Beschreibung sieht. Der neue Vorabtest muss genau so fragen.
+* Schlecht, weil es eine Abweichung von Zammad ist, die wir melden. Im Fazit steht sie bei den Hinweisen an die Zammad GmbH.
+
+== Vor- und Nachteile der Optionen
+
+=== Auswahlfeld lassen
+
+* Gut, weil der Categorizer die Namen als Label sieht.
+* Schlecht, weil die Liste am Tablet kaum zu bedienen ist.
+
+=== Flaches Baum-Feld
+
+* Gut, weil Suche überall geht und die Werte bleiben.
+* Schlecht, weil der Name im Prompt nur in der Beschreibung steht.
+
+=== Baum mit ORA-Gruppen
+
+* Gut, weil man auch blättern kann.
+* Schlecht, weil auch eine Gruppe allein wählbar wäre und als Wert im Ticket landete.
+
+== Quellen
+
+* Quellcode von Zammad wie oben verlinkt
+* Entscheidung von Michael Prange am 15.11.2026

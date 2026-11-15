@@ -112,6 +112,7 @@ include::../../docs/adr/0055-katalog-in-bloecken-durchsehen.adoc[]
 include::../../docs/adr/0056-gefahren-am-geraet-festhalten.adoc[]
 include::../../docs/adr/0057-lebenswichtige-geraete-nur-bei-einfachen-fehlern-reparieren.adoc[]
 include::../../docs/adr/0058-felder-des-bestehenden-zammad-uebernehmen.adoc[]
+include::../../docs/adr/0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc[]
 
 :leveloffset: -2
 :sectnums:

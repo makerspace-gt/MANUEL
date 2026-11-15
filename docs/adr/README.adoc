@@ -75,6 +75,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |56 |xref:0056-gefahren-am-geraet-festhalten.adoc[Gefahren am Gerät festhalten] |angenommen |2026-11-15
 |57 |xref:0057-lebenswichtige-geraete-nur-bei-einfachen-fehlern-reparieren.adoc[Lebenswichtige Geräte nur bei einfachen Fehlern reparieren] |vorgeschlagen |2026-11-15
 |58 |xref:0058-felder-des-bestehenden-zammad-uebernehmen.adoc[Felder des bestehenden Zammad übernehmen] |angenommen |2026-11-15
+|59 |xref:0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc[Art des Geräts als durchsuchbares Baum-Feld] |angenommen |2026-11-15
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

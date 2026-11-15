@@ -1,12 +1,14 @@
 # Template for guests who come without appointment, loaded by zammad/setup.rb, see
 # docs/adr/0063-kontaktdaten-und-eingangswege-uebernehmen.adoc. The text "am Empfang erfasst" lets
 # zammad/article_types.rb switch the first article to the type walk-in. The appointment is now, so the
-# ticket counts for today. A template of an older Zammad named "Repair Café spontan" is renamed.
+# ticket counts for today. The title Spontan fills the required field, zammad/agents.rb replaces it with
+# brand and device. A template of an older Zammad named "Repair Café spontan" is renamed.
 
 template = Template.find_by(name: 'Walk-in') || Template.find_by(name: 'Repair Café spontan') || Template.new(active: true)
 template.assign_attributes(
   name:    'Walk-in',
   options: {
+    'ticket.title'          => { 'value' => 'Spontan' },
     'article.body'          => { 'value' => 'am Empfang erfasst' },
     'ticket.group_id'       => { 'value' => Group.find_by!(name: 'Repairs').id.to_s },
     'ticket.state_id'       => { 'value' => Ticket::State.find_by!(name: 'pending reminder').id.to_s },

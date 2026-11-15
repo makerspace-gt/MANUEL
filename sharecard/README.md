@@ -21,7 +21,7 @@ python3 sharecard/sharecard.py Repair-Café-Statistik.ods --date 2026-11-07
 python3 sharecard/sharecard.py Repair-Café-Statistik.ods --date 2026-11-07 --highlight "Ein Radio von 1985 spielt wieder"
 ```
 
-Das Skript schreibt `sharecard/cards/JJJJ-MM-TT.svg`, `.png` und `.txt` mit dem Alternativtext. Für das PNG muss `rsvg-convert` installiert sein. Mit `--metric processed` zeigt die Verteilung bearbeitete statt angemeldeter Geräte, mit `--signup` lässt sich der Hinweis zur Anmeldung ändern, mit `--out` der Ordner.
+Das Skript schreibt `sharecard/cards/JJJJ-MM-TT.svg`, `.png` und `.txt` mit dem Alternativtext, dazu `.mastodon.txt` und `.instagram.txt` aus den Vorlagen in [templates/](templates/) mit denselben Zahlen, siehe [ADR 66](../docs/adr/0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc). Ohne Highlight oder nächsten Termin fällt die Zeile weg, ein Text für Mastodon über 500 Zeichen bricht ab. Für das PNG muss `rsvg-convert` installiert sein. Mit `--metric processed` zeigt die Verteilung bearbeitete statt angemeldeter Geräte, mit `--signup` lässt sich der Hinweis zur Anmeldung ändern, mit `--out` der Ordner.
 
 ## Daten und Datenschutz
 

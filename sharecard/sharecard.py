@@ -64,6 +64,11 @@ RESULTS = [
 ]
 
 
+TEMPLATES = Path(__file__).resolve().parent / "templates"
+# Mastodon allows 500 characters by default, a post above that would be cut by hand
+LIMITS = {"mastodon": 500, "instagram": 2200}
+
+
 class DataError(ValueError):
     """The statistics do not add up, the card is not created."""
 
@@ -219,6 +224,29 @@ def alt_text(s, highlight=None):
         parts.append(f"Nächster Termin {long_date(s['next'])}.")
     parts.append("Gefördert durch die Deutsche Stiftung für Engagement und Ehrenamt.")
     return " ".join(parts)
+
+
+def posts(s, highlight=None, templates=TEMPLATES):
+    """Texts for social media from the templates, with the same numbers as the card."""
+    results = ", ".join(f"{s['results'][field]} {label}" for field, label, *_ in RESULTS if s["results"][field])
+    values = {
+        "date": long_date(s["date"]),
+        "counts": counts_line(s),
+        "results": f"Ergebnisse {results}",
+        "donations": euro(s["donations"]),
+        "highlight": highlight.rstrip(".") + "." if highlight else "",
+        "next": f"Nächster Termin {long_date(s['next'])}." if s["next"] else "",
+    }
+    out = {}
+    for name, limit in LIMITS.items():
+        # A line that is empty only because its placeholder is empty, like a missing highlight, is dropped
+        template = (templates / f"{name}.txt").read_text(encoding="utf-8").splitlines()
+        lines = [(raw, raw.format(**values)) for raw in template]
+        content = "\n".join(line for raw, line in lines if line.strip() or not raw.strip()).strip()
+        if len(content) > limit:
+            raise DataError(f"Text für {name} hat {len(content)} Zeichen, erlaubt sind {limit}")
+        out[name] = content + "\n"
+    return out
 
 
 def text(x, y, content, size, ink="primary", weight=400, anchor="start", style=None):
@@ -403,6 +431,10 @@ def main():
     stem.with_suffix(".svg").write_text(svg, encoding="utf-8")
     stem.with_suffix(".txt").write_text(alt_text(summary, args.highlight) + "\n", encoding="utf-8")
     written = [stem.with_suffix(".svg"), stem.with_suffix(".txt")]
+    for name, content in posts(summary, args.highlight).items():
+        path = stem.with_suffix(f".{name}.txt")
+        path.write_text(content, encoding="utf-8")
+        written.append(path)
     if shutil.which("rsvg-convert"):
         subprocess.run(["rsvg-convert", "-w", str(SIZE), "-h", str(SIZE), "-o", str(stem.with_suffix(".png")),
                         str(stem.with_suffix(".svg"))], check=True)

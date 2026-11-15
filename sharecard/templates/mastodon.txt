@@ -1,0 +1,8 @@
+Repair Café Gütersloh am {date}
+
+{counts}. {results}.
+{highlight}
+Danke an alle Engagierten und für {donations} Spenden.
+{next}
+
+#RepairCafe #Gütersloh #reparieren #Makerspace

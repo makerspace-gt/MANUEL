@@ -125,5 +125,29 @@ class ShareCardTest(unittest.TestCase):
         self.assertIn("Nächster Termin Samstag, 5. Dezember 2026", alt)
 
 
+    def test_posts_use_the_numbers_of_the_card(self):
+        s = self.summary()
+        posts = sharecard.posts(s, "Ein Radio von 1985 spielt wieder")
+        self.assertEqual(set(posts), {"mastodon", "instagram"})
+        for content in posts.values():
+            self.assertIn("17 angemeldet, 16 bearbeitet, 1 nicht erschienen", content)
+            self.assertIn("Ein Radio von 1985 spielt wieder.", content)
+            self.assertIn("Nächster Termin Samstag, 5. Dezember 2026", content)
+            self.assertNotIn("Erika", content)
+            self.assertNotIn("{", content)
+        self.assertLessEqual(len(posts["mastodon"]), 500)
+
+    def test_posts_without_highlight_have_no_gap(self):
+        posts = sharecard.posts(self.summary())
+        self.assertIn("Ergebnisse 6 gelungen, 1 teilweise gelungen, 6 vertagt, 3 nicht erfolgt.\nDanke", posts["mastodon"])
+
+    def test_too_long_post_stops(self):
+        with tempfile.TemporaryDirectory() as folder:
+            for name in sharecard.LIMITS:
+                (Path(folder) / f"{name}.txt").write_text("{counts} " + "x" * 2300, encoding="utf-8")
+            with self.assertRaises(sharecard.DataError):
+                sharecard.posts(self.summary(), templates=Path(folder))
+
+
 if __name__ == "__main__":
     unittest.main()

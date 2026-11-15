@@ -59,7 +59,7 @@ Winkelschleifer	Flex	bestätigt	Flex ist eine Marke, wie Sodastream
 Laubbläser	Laubsauger	bestätigt	Laubbläser geht vor
 Schwibbogen	Lichterbogen	bestätigt	gleicher Gegenstand
 Schwibbogen	Schwippbogen	bestätigt	Schreibweise
-Türgong	Funkglocke /Funkklingel	bestätigt	gleicher Gegenstand
+Türklingel	Funkglocke /Funkklingel	bestätigt	gleicher Gegenstand, seit 15.11.2026 bei Türklingel
 Handy	Mobiltelefon	bestätigt	wie Smartphone
 Receiver (Sat, Kabel, Antenne, Audio)	Receiver	bestätigt	im Formular unter diesem Namen
 Radio	Transistorradio	bestätigt	gleicher Gegenstand
@@ -169,3 +169,10 @@ Werkzeug	Haushaltsgerät (Metallbearbeitung)	bestätigt	unklarer Name, allgemein
 Kanne	Thermoskanne / Thermosflasche	bestätigt	Kannen ohne Strom in einem Eintrag, Durchsicht 15.11.2026
 Kanne	Kaffeekanne	bestätigt	Kanne ohne Strom, nicht Teil der Kaffeemaschine, Durchsicht 15.11.2026
 Kanne	Teekanne	bestätigt	Kanne ohne Strom, Gruppe Unpowered - Household statt Kettle, Durchsicht 15.11.2026
+Möbelstück	Kleinmöbel	bestätigt	die Größe spielt beim Reparieren keine Rolle, Durchsicht 15.11.2026
+Trafo	Transformator	bestätigt	gleicher Gegenstand, Durchsicht 15.11.2026
+Maniküre/Pediküre-Set	Manikürgerät	bestätigt	ein Gerät mit Aufsätzen für Nägel und Füße, Durchsicht 15.11.2026
+Maniküre/Pediküre-Set	Nagelfräser	bestätigt	ein Gerät mit Aufsätzen für Nägel und Füße, Durchsicht 15.11.2026
+Türklingel	Türgong	bestätigt	Klingel mit Gong, Türsprechanlage bleibt eigen, Durchsicht 15.11.2026
+Lötkolben	Lötstation	bestätigt	gleiches Werkzeug, Gruppe Power tool, Durchsicht 15.11.2026
+Backofen	Ofen	bestätigt	Ofen allein meint meist den Backofen, Herd bleibt eigen, Durchsicht 15.11.2026

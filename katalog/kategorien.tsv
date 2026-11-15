@@ -18,11 +18,10 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 2.46.649	Labornetzgerät						Battery/charger/adapter	Misc				649	Entwurf
 2.46.673	Ladegerät	Ladegerät, das in keinen genaueren Eintrag passt, auch als E-Ladegerät bezeichnet. Ladegeräte für Akkus, E-Bikes, Autobatterien und USB sind eigene Einträge.	Lader | Ladeteil | E-Ladegerät | Elektro-Ladegerät	Charger	Charger that fits no more specific entry. Chargers for batteries, e-bikes, car batteries and USB are separate entries.	Charger (battery / power supply)	Battery/charger/adapter	Misc		230 V		673 | 1201	Entwurf
 2.46.689	Powerbank	Tragbarer Akku zum Laden von Handys und anderen Geräten.	Zusatzakku | externer Akku	Power bank	Portable battery for charging phones and other devices.	Power bank | Portable charger	Battery/charger/adapter	Misc		Akku	battery	689	Entwurf
-2.46.754	Transformator						Battery/charger/adapter	Misc				754	Entwurf
 2.46.806	Mehrfachsteckdose	Adapter, der eine Steckdose ohne Kabel auf mehrere verteilt.	Mehrfachstecker | Steckdosenadapter	Multi-plug adapter	Adapter that splits one socket into several, without cable.	Multi plug | Socket adapter	Battery/charger/adapter	Misc	Elektroinstallation, Kabel, Stecker	ohne Kabel (Mechanik)		806	Entwurf
 2.46.910	E-Bike-Akku	Akku eines E-Bikes oder E-Rollers.	Pedelec-Akku | Fahrradakku	E-bike battery	Battery of an e-bike or e-scooter.	E-bike battery	Battery/charger/adapter	Misc		Akku	battery	910	Entwurf
 2.46.926	Verlängerungskabel	Kabel mit Stecker und Kupplung zum Verlängern einer Stromleitung. Kabeltrommeln und Steckdosenleisten sind eigene Einträge.	Verlängerung | Verlängerungsschnur	Extension cord	Cable with plug and socket for extending a power line. Cable reels and power strips are separate entries.	Extension cord | Extension lead	Battery/charger/adapter	Misc	Elektroinstallation, Kabel, Stecker	ohne Kabel (Mechanik)		926	Entwurf
-2.46.949	Trafo						Battery/charger/adapter	Misc				949	Entwurf
+2.46.949	Trafo	Transformator, der Netzspannung in eine kleinere Wechselspannung umwandelt, etwa für Halogenlampen oder eine Modelleisenbahn. Netzteile mit Gleichspannung sind ein eigener Eintrag.	Transformator	Transformer	Transformer that converts mains voltage to a lower AC voltage, for example for halogen lamps or a model railway. DC power supplies are a separate entry.		Battery/charger/adapter	Misc		230 V		949 | 754	Entwurf
 2.46.952	Stecker						Battery/charger/adapter	Misc				952	Entwurf
 2.46.969	Akku	Akku, der in keinen genaueren Eintrag wie E-Bike-Akku passt, etwa für Werkzeug oder Geräte.	Akkupack | Werkzeugakku | wiederaufladbare Batterie | Akku, mechanisch	Battery	Rechargeable battery that fits no more specific entry such as e-bike battery, for example for tools or devices.	Battery pack | Rechargeable battery	Battery/charger/adapter	Misc		Akku	battery	969 | 500	Entwurf
 2.46.1072	Batterietester						Battery/charger/adapter	Misc				1072	Entwurf
@@ -59,7 +58,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 3.36.1850	Campinglampe						Decorative or safety lights	Decorative or safety lights	Taschenlampen und mobile Leuchten			1850	Entwurf
 4.11.405	Desktopcomputer	Computer mit getrenntem Bildschirm, als Tower oder Mini-PC. All-in-One-PCs und Laptops sind eigene Einträge.	PC | Rechner | Tower | Mini-PC	Desktop computer	Computer with separate screen, as tower or mini PC. All-in-one PCs and laptops are separate entries.	Computer | PC | Desktop PC	Desktop computer	Desktop computer		230 V		405 | 1614	Entwurf
 4.11.702	Single-Board-Computer	Kleiner Rechner auf einer Platine, etwa Raspberry Pi oder Arduino.	Raspberry Pi | Einplatinencomputer	Single-board computer	Small computer on one circuit board, for example a Raspberry Pi or Arduino.	Raspberry Pi	Desktop computer	Desktop computer		mit Netzteil		702	Entwurf
-4.11.1048	Schachcomputer						Desktop computer	Desktop computer				1048	Entwurf
+32.44.1048	Schachcomputer	Elektronisches Schachbrett oder Gerät, gegen das man Schach spielt, meist mit Batterie.	Schachbrett, elektronisch	Chess computer	Electronic chessboard or device to play chess against, usually battery powered.	Electronic chess	Toy	Toy		Batterie		1048	Entwurf
 4.11.1838	All-in-One-PC						Desktop computer	Desktop computer				1838	Entwurf
 5.21.419	Digitalkamera	Kleine digitale Kompaktkamera. Analoge Kameras, Spiegelreflex- und Videokameras sind eigene Einträge.	Kompaktkamera | Digicam	Digital compact camera	Small digital compact camera. Analogue cameras, SLR and video cameras are separate entries.	Compact camera | Photo camera	Digital compact camera	Digital compact camera		Akku | Batterie		419	Entwurf
 5.21.934	Fotoapparat	Kamera, bei der unklar ist, ob sie digital oder analog ist. MANUEL fragt dann nach.	Kamera | Fotokamera	Camera	Camera where it is unclear whether it is digital or analogue. MANUEL then asks.	Photo camera | Camera	Digital compact camera	Digital compact camera		Batterie | Akku | ohne Kabel (Mechanik)		934	Entwurf
@@ -84,11 +83,9 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 9.38.624	Haarschneidemaschine	Elektrischer Haarschneider für das Kopfhaar. Rasierer und Bartschneider sind ein eigener Eintrag.	Haarschneider | Haartrimmer	Hair clipper	Electric clipper for head hair. Shavers and beard trimmers are a separate entry.	Clipper / trimmer | Hair clippers	Hair & beauty item	Hair & beauty item		Akku | 230 V		624	Entwurf
 9.38.725	Kosmetikgerät	Nur zu verwenden, wenn das Gerät zur Körperpflege in keinen genaueren Eintrag passt.	Körperpflege	Personal care device	Use only when the personal care device fits no more specific entry.	Beauty device	Hair & beauty item	Hair & beauty item				725 | 538	Entwurf
 9.38.823	Hornhautentferner						Hair & beauty item	Hair & beauty item				823	Entwurf
-9.38.917	Manikürgerät						Hair & beauty item	Hair & beauty item				917	Entwurf
 9.38.1019	Zahnbürstenstation						Hair & beauty item	Hair & beauty item				1019	Entwurf
 9.38.1074	Elektrische Bürste						Hair & beauty item	Hair & beauty item				1074	Entwurf
-9.38.1095	Nagelfräser						Hair & beauty item	Hair & beauty item				1095	Entwurf
-9.38.1161	Pediküre-Set						Hair & beauty item	Hair & beauty item				1161	Entwurf
+9.38.1161	Maniküre/Pediküre-Set	Elektrisches Gerät mit Aufsätzen zur Pflege von Nägeln und Füßen. Hornhautentferner sind ein eigener Eintrag.	Pediküre-Set | Manikürgerät | Nagelfräser	Manicure and pedicure set	Electric device with attachments for nail and foot care. Callus removers are a separate entry.	Nail drill	Hair & beauty item	Hair & beauty item		Batterie		1161 | 917 | 1095	Entwurf
 9.38.1231	Epilierer						Hair & beauty item	Hair & beauty item				1231	Entwurf
 9.38.1268	Nasenhaartrimmer						Hair & beauty item	Hair & beauty item				1268	Entwurf
 9.38.1342	Mundspülgerät						Hair & beauty item	Hair & beauty item				1342	Entwurf
@@ -142,7 +139,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 15.40.539	LED-Licht/LED-Leuchte	Leuchte mit fest eingebauten LEDs, oft mit Netzteil, etwa Panel, Leiste oder Strahler.	LED-Leuchte | LED-Lampe | LED-Panel | LED-Streifen	LED light	Light with built-in LEDs, often with external power supply, such as panels, strips or spotlights.	LED lamp | LED strip | LED panel	Lamp	Lamp		mit Netzteil | 230 V		539	Entwurf
 15.40.827	Scheinwerfer	Mobiler, heller Strahler, etwa Baustrahler oder Bühnenscheinwerfer. Fest montierte Außenleuchten sind ein eigener Eintrag.	Baustrahler | Arbeitsscheinwerfer | Strahler	Floodlight	Portable bright light, for example a work light or stage light. Fixed outdoor lights are a separate entry.	Work light | Spotlight	Lamp	Lamp		230 V		827	Entwurf
 15.40.829	Deckenbeleuchtung / Deckenfluter	Leuchte an der Decke oder Fluter, der das Licht an die Decke wirft.	Deckenleuchte | Deckenlampe | Deckenfluter | Kronleuchter	Ceiling light	Light fitted to the ceiling or uplighter that throws light onto the ceiling.	Ceiling lamp | Uplighter | Chandelier	Lamp	Lamp		230 V		829	Entwurf
-15.40.872	Rotlichtlampe						Lamp	Lamp				872	Entwurf
+15.40.872	Wärmelampe	Wärmelampe mit rotem Infrarotlicht, etwa gegen Erkältung oder Verspannungen.	Rotlichtlampe | Infrarotlampe	Heat lamp	Lamp with red infrared light for warmth, for example for colds or tension.	Infrared lamp	Lamp	Lamp		230 V		872	Entwurf
 15.40.889	Tischlampe	Lampe, die auf Tisch oder Nachttisch steht. Schreibtischlampe und Nachttischlampe sind eigene Einträge.	Tischleuchte	Table lamp	Lamp standing on a table. Desk lamps and bedside lamps are separate entries.	Table light	Lamp	Lamp		230 V | mit Netzteil		889 | 1462	Entwurf
 15.40.1023	Glaskugel elektrisch						Lamp	Lamp				1023	Entwurf
 15.40.1088	Außenleuchte	Fest montierte Lampe für draußen, etwa an Hauswand oder Weg, oft mit Bewegungsmelder. Mobile Scheinwerfer sind ein eigener Eintrag.	Außenlampe | Außenstrahler	Outdoor light	Fixed lamp for outdoors, for example on a house wall or path, often with a motion detector. Portable floodlights are a separate entry.	Outdoor lamp | Wall light outdoor	Lamp	Lamp		230 V		1088	Entwurf
@@ -176,14 +173,13 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 17.46.642	Pelletofen						Large home electrical	Misc	Kochen und Backen groß			642	Entwurf
 17.46.710	E-Roller	Roller mit Elektromotor und Akku.	E-Scooter | Elektroroller | E-Tretroller	E-scooter	Scooter with electric motor and battery.	Electric scooter | E-scooter	Large home electrical	Misc		Akku	battery	710 | 1007	Entwurf
 17.46.729	Wäschetrockner	Gerät, das Wäsche mit warmer Luft trocknet, als Ablufttrockner, Kondenstrockner oder Wärmepumpentrockner. Wäscheschleuder und Wäscheständer sind eigene Einträge.	Trockner	Tumble dryer	Device that dries laundry with warm air, as a vented, condenser or heat pump dryer. Spin dryers and clothes airers are separate entries.	Dryer	Large home electrical	Misc	Waschen und Spülen	230 V		729	Entwurf
-17.46.736	Ofen						Large home electrical	Misc	Kochen und Backen groß			736	Entwurf
 17.46.748	Dunstabzugshaube	Haube über dem Herd, die Dunst absaugt oder filtert.	Abzugshaube | Dunstabzug	Cooker hood	Hood above the cooker that extracts or filters cooking fumes.	Extractor hood | Range hood	Large home electrical	Misc	Kochen und Backen groß	230 V		748	Entwurf
 17.46.766	Fitnesstrainer	Trainingsgerät mit Strom für zu Hause, etwa Crosstrainer oder Rudermaschine mit Anzeige. Laufband, Ergometer und Sportgeräte ohne Strom sind eigene Einträge.	Crosstrainer | Heimtrainer	Fitness machine	Powered exercise machine for home use, for example a cross trainer or rowing machine with a display. Treadmills, exercise bikes and unpowered sports equipment are separate entries.	Cross trainer | Home trainer	Large home electrical	Misc	Fitnessgeräte	230 V		766	Entwurf
 17.46.791	Induktionsgerät						Large home electrical	Misc	Kochen und Backen groß			791	Entwurf
 17.46.824	Gasofen						Large home electrical	Misc	Kochen und Backen groß		gas	824	Entwurf
 17.46.844	Laufband						Large home electrical	Misc	Fitnessgeräte			844	Entwurf
 17.46.996	Gefrierfach						Large home electrical	Misc	Kühlen und Gefrieren			996	Entwurf
-17.46.1061	Backofen						Large home electrical	Misc	Kochen und Backen groß			1061	Entwurf
+17.46.1061	Backofen	Backofen zum Einbauen oder freistehend. Herd mit Kochfeld, Minibackofen, Pizza-Ofen und Öfen zum Heizen sind eigene Einträge.	Ofen | Einbaubackofen	Oven	Built-in or free-standing oven. Cookers with a hob, mini ovens, pizza ovens and heating stoves are separate entries.	Built-in oven	Large home electrical	Misc	Kochen und Backen groß	230 V		1061 | 736	Entwurf
 17.46.1065	Durchlauferhitzer						Large home electrical	Misc	Großgeräte sonstiges			1065	Entwurf
 17.46.1252	Gaskocher						Large home electrical	Misc	Kochen und Backen groß		gas	1252	Entwurf
 17.46.1329	Sportgerät (mit Strom)						Large home electrical	Misc	Fitnessgeräte			1329	Entwurf
@@ -193,7 +189,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 17.46.1583	Wäscheschleuder						Large home electrical	Misc	Waschen und Spülen			1583	Entwurf
 17.46.1587	Pizza-Ofen						Large home electrical	Misc	Kochen und Backen groß			1587	Entwurf
 17.46.1615	Kochfeld						Large home electrical	Misc	Kochen und Backen groß			1615	Entwurf
-17.46.1727	Herd						Large home electrical	Misc	Kochen und Backen groß			1727	Entwurf
+17.46.1727	Herd	Herd mit Kochfeld und Backofen in einem Gerät. Einzelne Backöfen und Kochfelder sind eigene Einträge.	Elektroherd | Standherd	Cooker	Cooker with a hob and oven in one appliance. Separate ovens and hobs are separate entries.	Electric cooker | Range	Large home electrical	Misc	Kochen und Backen groß	230 V		1727	Entwurf
 17.46.1843	Lattenrost, elektrisch						Large home electrical	Misc	Großgeräte sonstiges			1843	Entwurf
 17.46.1849	Gefrierschrank						Large home electrical	Misc	Kühlen und Gefrieren			1849	Entwurf
 17.46.1856	Saunaofen						Large home electrical	Misc	Kochen und Backen groß			1856	Entwurf
@@ -212,7 +208,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 18.46.699	Katzenklappe						Misc	Misc	Motoren und Antriebe			699	Entwurf
 18.46.718	Sicherungskasten						Misc	Misc	Elektroinstallation, Kabel, Stecker			718	Entwurf
 18.46.728	Megafon						Misc	Misc	Elektro sonstiges			728	Entwurf
-18.46.730	E-Auto						Misc	Misc	Elektro sonstiges			730	Entwurf
+18.46.730	E-Auto	Elektroauto oder Teil davon, etwa Ladeklappe oder Fernbedienung. An Hochvoltteile gehen wir nicht.	Elektroauto	Electric car	Electric car or a part of it, for example the charging flap or remote. We do not touch high-voltage parts.	EV	Misc	Misc	Elektro sonstiges	Akku	high_voltage | battery	730	Entwurf
 18.46.778	Mikroskop	Optisches Gerät mit Beleuchtung zum Vergrößern kleiner Dinge.		Microscope	Optical device with lighting for magnifying small things.		Misc	Misc	Mess- und Prüfgeräte	230 V		778	Entwurf
 18.46.787	Tresor						Misc	Misc	Elektro sonstiges			787	Entwurf
 18.46.794	Marderschreck						Misc	Misc	Tierabwehr			794	Entwurf
@@ -228,7 +224,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 18.46.895	Zündschloss						Misc	Misc	Elektro sonstiges			895	Entwurf
 18.46.899	Poolfilter						Misc	Misc	Pumpen und Wasser			899	Entwurf
 24.41.935	Teichpumpe	Pumpe für Gartenteich oder Springbrunnen. Tauchpumpen sind ein eigener Eintrag.	Springbrunnenpumpe | Filterpumpe	Pond pump	Pump for a garden pond or fountain. Submersible pumps are a separate entry.	Fountain pump	Power tool	Power tool	Pumpen und Wasser	230 V		935	Entwurf
-18.46.939	Rolladenmotor						Misc	Misc	Motoren und Antriebe			939	Entwurf
+18.46.939	Rolladenmotor	Motor, der einen Rollladen oder eine Markise hebt und senkt, oft mit Schalter oder Funk.	Rollladenmotor | Rollladenantrieb	Roller shutter motor	Motor that raises and lowers a roller shutter or awning, often with a switch or remote.	Shutter motor	Misc	Misc	Motoren und Antriebe	230 V		939	Entwurf
 18.46.941	Garagenöffner	Motor, der ein Garagentor öffnet und schließt. Der Handsender gehört zur Funkfernbedienung.	Garagentorantrieb | Torantrieb | Garagentoröffner	Garage door opener	Motor that opens and closes a garage door. The hand-held transmitter belongs to the radio remote control.	Garage door operator	Misc	Misc	Motoren und Antriebe	230 V		941	Entwurf
 18.46.943	Magnetfeldmatte						Misc	Misc	Medizin, Pflege, Hilfsmittel			943	Entwurf
 18.46.947	Katzenfutterautomat						Misc	Misc	Elektro sonstiges			947	Entwurf
@@ -252,7 +248,6 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 18.46.1022	Teppichauffrischer						Misc	Misc	Elektro sonstiges			1022	Entwurf
 18.46.1027	Krankenbett-Schalttafel						Misc	Misc	Medizin, Pflege, Hilfsmittel			1027	Entwurf
 18.46.1032	Heiz-Socken						Misc	Misc	Heizen und Wärme			1032	Entwurf
-18.46.1036	Lötstation						Misc	Misc	Elektro sonstiges			1036	Entwurf
 18.46.1043	Frostwächter						Misc	Misc	Heizen und Wärme			1043	Entwurf
 18.46.1052	Solarpanel						Misc	Misc	Strom erzeugen und wandeln		high_voltage	1052	Entwurf
 18.46.1053	Mückenbrennstab						Misc	Misc	Tierabwehr			1053	Entwurf
@@ -369,14 +364,14 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 22.19.580	Festplatte	Festplatte oder SSD, eingebaut oder extern.	externe Festplatte | SSD | USB-Festplatte	Hard drive	Hard disk or SSD, internal or external.	Hard disk | External hard drive | SSD	PC accessory	PC accessory		mit Netzteil | ohne Kabel (Mechanik)		580	Entwurf
 22.19.631	Webcam						PC accessory	PC accessory				631	Entwurf
 22.19.639	USB-Hub						PC accessory	PC accessory				639	Entwurf
-22.19.654	USB-Stick						PC accessory	PC accessory				654	Entwurf
+22.19.654	USB-Stick	Kleiner Speicher mit USB-Stecker, etwa mit abgebrochenem Stecker oder für die Rettung von Daten. SD-Karten sind ein eigener Eintrag.	Speicherstick | USB-Speicher	USB stick	Small storage with a USB plug, for example with a broken plug or for data recovery. SD cards are a separate entry.	USB flash drive | Memory stick	PC accessory	PC accessory				654	Entwurf
 22.19.671	Router / Modem	Gerät für den Internetanschluss, etwa Fritzbox oder WLAN-Router.	Router | Modem | WLAN-Router | Fritzbox	Router	Device for the internet connection, for example a wireless router.	Router | Modem | Wifi router	PC accessory	PC accessory		mit Netzteil		671	Entwurf
 22.19.691	Diskettenlaufwerk						PC accessory	PC accessory				691	Entwurf
 22.19.743	USB-Soundkarte						PC accessory	PC accessory				743	Entwurf
 22.19.744	Mainboard						PC accessory	PC accessory				744	Entwurf
 22.19.862	Time Capsule						PC accessory	PC accessory				862	Entwurf
 22.19.1031	NAS / Netzwerkspeicher						PC accessory	PC accessory				1031	Entwurf
-22.19.1098	Grafiktablet / Maltablet / Zeichentablet						PC accessory	PC accessory				1098	Entwurf
+22.19.1098	Grafiktablet / Maltablet / Zeichentablet	Eingabegerät mit Stift zum Zeichnen am Computer. Tablets mit eigenem Bildschirm zum Surfen sind ein eigener Eintrag.	Grafiktablett | Zeichentablett	Graphics tablet	Input device with a pen for drawing on a computer. Tablets with their own screen for browsing are a separate entry.	Drawing tablet	PC accessory	PC accessory				1098	Entwurf
 22.19.1186	SD-Karte						PC accessory	PC accessory				1186	Entwurf
 22.19.1217	DVD Laufwerk						PC accessory	PC accessory				1217	Entwurf
 18.46.1238	Platine	Einzelne Platine, die ohne ihr Gerät gebracht wird.	Leiterplatte	Circuit board	Single circuit board brought without its device.	PCB	Misc	Misc				1238 | 696	Entwurf
@@ -430,7 +425,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 24.41.875	Vertikutierer	Gartengerät mit Motor, das Moos und Filz aus dem Rasen kratzt.	Rasenlüfter	Scarifier	Garden machine with a motor that rakes moss and thatch out of the lawn.	Lawn scarifier | Dethatcher	Power tool	Power tool	Gartengeräte mit Strom	230 V		875	Entwurf
 24.41.898	Motorsense/Freischneider	Gartengerät mit Motor und Faden oder Messer am langen Schaft für hohes Gras und Gestrüpp, mit Benzin, Kabel oder Akku. Rasentrimmer sind ein eigener Eintrag.	Motorsense | Freischneider	Brush cutter	Garden tool with a motor and line or blade on a long shaft for tall grass and scrub, petrol, corded or cordless. Grass trimmers are a separate entry.	Strimmer	Power tool	Power tool	Gartengeräte mit Strom	230 V		898	Entwurf
 24.41.900	Weidezaungerät						Power tool	Power tool	Gartengeräte mit Strom			900	Entwurf
-24.41.928	Lötkolben						Power tool	Power tool	Löten, Kleben, Schweißen			928	Entwurf
+24.41.928	Lötkolben	Werkzeug mit heißer Spitze zum Löten, auch als Lötstation.	Lötgerät | Lötstation	Soldering iron	Tool with a hot tip for soldering, also as a soldering station.	Soldering station	Power tool	Power tool	Löten, Kleben, Schweißen	230 V		928 | 1036	Entwurf
 24.41.944	Laubbläser	Gerät, das Laub wegbläst oder aufsaugt.	Laubsauger | Laubgebläse	Leaf blower	Device that blows away or sucks up leaves.	Leaf blower | Leaf vacuum	Power tool	Power tool	Gartengeräte mit Strom	230 V | Akku		944 | 821	Entwurf
 24.41.946	Handkreissäge	Handgeführte Säge mit Kreissägeblatt. Tisch- und Kappsägen sind eigene Einträge.	Akku-Handkreissäge | Tauchsäge	Circular saw	Handheld saw with circular blade. Table and mitre saws are separate entries.	Circular saw	Power tool	Power tool	Elektrowerkzeug	230 V | Akku		946 | 853	Entwurf
 24.41.948	Schwingschleifer	Schleifgerät mit rechteckiger Schleifplatte, die schwingt.	Rutscher | Schwingschleifmaschine	Orbital sander	Sander with rectangular plate that vibrates.	Orbital sander | Finishing sander	Power tool	Power tool	Elektrowerkzeug	230 V		948	Entwurf
@@ -505,13 +500,12 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 28.46.918	Anrufbeantworter						Small home electrical	Misc	Klingel, Sprechanlage, Melder			918	Entwurf
 28.46.978	Digitalthermometer						Small home electrical	Misc	Mess- und Prüfgeräte			978	Entwurf
 28.46.1011	Massageball						Small home electrical	Misc	Massage und Wellness			1011	Entwurf
-28.46.1041	Türgong						Small home electrical	Misc	Klingel, Sprechanlage, Melder			1041 | 1786	Entwurf
 28.46.1130	Funkfernbedienung	Fernbedienung per Funk, etwa für Garagentor, Markise, Funksteckdose oder Modellbau. Der Torantrieb selbst ist ein eigener Eintrag.	Handsender	Radio remote control	Radio remote control, for example for garage doors, awnings, wireless sockets or models.	Radio remote | Garage door remote	Small home electrical	Misc		Batterie		1130	Entwurf
 28.46.1134	Massagesessel						Small home electrical	Misc	Massage und Wellness			1134	Entwurf
 28.46.1150	Uhrenbeweger						Small home electrical	Misc	Haushalt klein sonstiges			1150	Entwurf
 28.46.1157	Zeitschaltuhr	Zwischenstecker oder Einbauteil, das Geräte zu festen Zeiten ein- und ausschaltet. Funksteckdosen sind ein eigener Eintrag.	Zeitschalter	Timer switch	Plug-in or built-in timer that switches devices on and off at set times. Remote-controlled sockets are a separate entry.	Plug-in timer	Small home electrical	Misc	Haushalt klein sonstiges	230 V		1157	Entwurf
 28.46.1267	Haushaltsgerät	Elektrisches Haushaltsgerät, das nicht genauer angegeben wurde.	Elektrogerät | Haushaltselektrogerät	Household appliance	Electric household appliance that was not specified.	Household appliances electric | Electrical Item	Small home electrical	Misc	Haushalt klein sonstiges	230 V		1267	Entwurf
-28.46.1286	Türklingel						Small home electrical	Misc	Klingel, Sprechanlage, Melder			1286	Entwurf
+28.46.1286	Türklingel	Klingel an der Wohnungs- oder Haustür mit Taster und Gong, mit Kabel oder Funk. Türsprechanlagen sind ein eigener Eintrag.	Funkklingel | Türgong	Doorbell	Bell at the flat or house door with a button and chime, wired or wireless. Door intercoms are a separate entry.	Door chime | Wireless doorbell	Small home electrical	Misc	Klingel, Sprechanlage, Melder	230 V		1286 | 1041 | 1786	Entwurf
 28.46.1316	Vibrationskissen						Small home electrical	Misc	Massage und Wellness			1316	Entwurf
 28.46.1333	Telefonregister						Small home electrical	Misc	Klingel, Sprechanlage, Melder			1333	Entwurf
 28.46.1365	Rauchmelder / Brandmelder						Small home electrical	Misc	Klingel, Sprechanlage, Melder		life_critical	1365 | 1748	Entwurf
@@ -894,9 +888,9 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 104.52.1377	Medaillon						Unpowered - Jewellery	Jewellery				1377	Entwurf
 104.52.1784	Modeschmuck						Unpowered - Jewellery	Jewellery				1784	Entwurf
 104.52.1812	Haarklammer						Unpowered - Jewellery	Jewellery				1812	Entwurf
-105.47.456	Möbelstück	Möbel, das in keinen genaueren Eintrag wie Stuhl oder Tisch passt.	Möbel | Kommode	Furniture	Furniture that fits no more specific entry such as chair or table.	Furniture	Unpowered - Furniture	Furniture		ohne Kabel (Mechanik)		456	Entwurf
+105.47.456	Möbelstück	Möbel, das in keinen genaueren Eintrag wie Stuhl oder Tisch passt.	Möbel | Kommode | Kleinmöbel	Furniture	Furniture that fits no more specific entry such as chair or table.	Furniture	Unpowered - Furniture	Furniture		ohne Kabel (Mechanik)		456 | 1542	Entwurf
 105.47.541	Stuhl	Stuhl zum Sitzen, Material nicht genauer angegeben. Holzstuhl und Bürostuhl sind eigene Einträge.	Sitz | Küchenstuhl	Chair	Chair, material not specified. Wooden chairs and office chairs are separate entries.	Chair	Unpowered - Furniture	Furniture		ohne Kabel (Mechanik)		541	Entwurf
-105.47.612	Vogelhäuschen						Unpowered - Furniture	Furniture				612	Entwurf
+105.47.612	Vogelhäuschen	Futterhaus oder Nistkasten für Vögel, etwa aus Holz.	Vogelhaus | Nistkasten | Futterhaus	Bird house	Bird feeder or nesting box, for example made of wood.	Bird feeder | Nest box	Unpowered - Furniture	Furniture		ohne Kabel (Mechanik)		612	Entwurf
 105.47.680	Regal						Unpowered - Furniture	Furniture				680	Entwurf
 105.47.740	Boot						Unpowered - Furniture	Furniture				740	Entwurf
 105.47.870	Servierwagen						Unpowered - Furniture	Furniture				870	Entwurf
@@ -926,7 +920,6 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 105.47.1434	Sitzbank						Unpowered - Furniture	Furniture				1434	Entwurf
 105.47.1452	Moderationstafel						Unpowered - Furniture	Furniture				1452	Entwurf
 105.47.1456	Bürostuhl						Unpowered - Furniture	Furniture				1456	Entwurf
-105.47.1542	Kleinmöbel						Unpowered - Furniture	Furniture				1542	Entwurf
 105.47.1551	Nähkasten						Unpowered - Furniture	Furniture				1551	Entwurf
 105.47.1557	Türgriff						Unpowered - Furniture	Furniture				1557	Entwurf
 105.47.1559	Sitzmöbel						Unpowered - Furniture	Furniture				1559	Entwurf

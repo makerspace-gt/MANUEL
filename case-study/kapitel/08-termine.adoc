@@ -51,6 +51,7 @@ Dieses Kapitel steht noch in Stichpunkten. Der Workflow dazu entsteht in Phase 5
 * Kurz vor dem Termin fragt Zammad nur nach. Kommt der Gast nicht, wird der Vorschlag nachts zu No-show.
 * Bestätigt der Gast, wird der Termin terminiert und das Ticket wandert von Requests nach Repairs. Liegt die Vereinbarung länger als 11 Tage zurück, kommt 3 Tage vorher eine Erinnerung.
 * Jede neue Anfrage per Mail oder Formular bekommt eine Eingangsbestätigung mit der Hausordnung.
+* Mit der Bestätigung schreibt MANUEL den Betreff aus Marke und Art des Geräts, etwa „Miele Staubsauger“. Bis dahin bleibt der Betreff des Gastes <<adr-0067>>.
 * Alle Mails an Gäste sind feste Texte ohne Modell. Nach einer neuen Einrichtung sind sie aus, bis das Team sie einschaltet.
 
 === Tags rund um den Termin

@@ -1,0 +1,62 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-src: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8
+[[adr-0067]]
+= 0067 Betreff aus Marke und Art des Geräts schreiben
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Am Empfang muss für Spontane ein Betreff eingetippt werden, obwohl die Art des Geräts ohnehin gewählt wird. Anfragen per Mail oder Formular tragen Betreffe wie „Hilfe“ oder „Nachricht über das Kontaktformular“. In Übersichten am Termin ist so nicht zu sehen, welches Gerät kommt. Ein eigener Reiter „Empfang“ beim Anlegen geht nicht, die Reiter sind in der Oberfläche fest verdrahtet ({zammad-src}/app/assets/javascripts/app/controllers/agent_ticket_create.coffee[agent_ticket_create.coffee]). Wie bekommen Tickets einen Betreff wie „Miele Staubsauger“?
+
+== Entscheidungskriterien
+
+* Der Betreff zeigt Marke und Gerät, die Marke nur, wenn sie bekannt ist
+* Solange eine Anfrage keinen Termin hat, bleibt der Betreff des Gastes
+* Keine eigene Oberfläche und kein eigenes Image von Zammad
+
+== Betrachtete Optionen
+
+* Trigger mit Platzhaltern
+* Regel in Ruby, die den Betreff schon im Formular setzt
+* KI-Agent vom Typ Ticket Title Rewriter mit eigener Anweisung
+
+== Entscheidung
+
+Gewählt wird der Agent. Ein Trigger mit Platzhaltern scheitert daran, dass Zammad bei Baum-Feldern den Schlüssel statt des Namens einsetzt und nicht übersetzt ({zammad-src}/lib/notification_factory/renderer.rb[renderer.rb]).
+
+{repo}/zammad/agents.rb[agents.rb] legt den Agenten an. Zammad legt seine Definition über die Vorgaben des Typs ({zammad-src}/app/models/ai/agent.rb[agent.rb]). Er sieht Betreff, Marke, Art und die erste Nachricht und schreibt „Marke Gerät“. Ein Trigger startet ihn in Repairs, wenn ein Ticket dort angelegt wird, wenn ein Termin bestätigt wird und wenn sich Art oder Marke ändern. Die Bestätigung erkennt er am Wechsel auf terminiert. Die Verschiebung nach Repairs macht ein anderer Trigger im selben Durchlauf, und `has changed` sieht nur die ursprüngliche Änderung. Die Vorlage „Walk-in“ füllt den Betreff mit „Spontan“, der Agent ersetzt ihn.
+
+Am 15.11.2026 in der Testinstanz geprüft. Mit Marke kam „Miele Staubsauger“ heraus. Eine Anfrage „Hilfe, mein Frühstück“ behielt den Betreff und hieß nach der Bestätigung „Toaster“.
+
+=== Konsequenzen
+
+* Gut, weil Übersichten am Termin die Geräte zeigen.
+* Gut, weil es in der Verwaltung von Zammad sichtbar und abschaltbar ist.
+* Schlecht, weil jede Änderung von Art oder Marke das Modell erneut fragt.
+* Schlecht, weil ein von Hand geänderter Betreff bei der nächsten Änderung von Art oder Marke überschrieben wird.
+* Der Trigger ist nur aktiv, wenn beim Anlegen ein Anbieter für KI eingetragen ist.
+
+== Vor- und Nachteile der Optionen
+
+=== Trigger mit Platzhaltern
+
+* Gut, weil kein Modell nötig ist.
+* Schlecht, weil der Platzhalter bei Baum-Feldern den Schlüssel liefert.
+
+=== Regel in Ruby
+
+* Gut, weil der Betreff sofort im Formular steht.
+* Schlecht, weil die Regel nur im Code sichtbar ist.
+
+=== KI-Agent
+
+* Gut, weil Zammad den Typ mitbringt und er auch aus der Nachricht ein Gerät erkennt.
+* Schlecht, weil er ein laufendes Modell braucht.
+
+== Quellen
+
+* Entscheidungen von Michael Prange am 15.11.2026

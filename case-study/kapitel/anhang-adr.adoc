@@ -139,5 +139,7 @@ include::../../docs/adr/0065-postfach-archivieren-und-aufbewahrung-begrenzen.ado
 
 include::../../docs/adr/0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc[]
 
+include::../../docs/adr/0067-betreff-aus-marke-und-art-schreiben.adoc[]
+
 :leveloffset: -2
 :sectnums:

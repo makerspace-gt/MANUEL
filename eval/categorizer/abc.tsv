@@ -75,11 +75,10 @@ key	name	class	repairs_deu
 7.37.1356	Konvektomat	C	1
 7.37.1609	Deckenlüfter	C	1
 7.37.1634	Ofen-Ventilator	C	3
-8.0.403	Fernseher	A	595
-8.0.590	Autodisplay	C	3
-8.0.965	Monitor	A	136
-8.0.1255	Anzeigetafel	C	5
-8.0.1502	Smart-TV	C	8
+8.28.403	Fernseher	A	603
+8.12.590	Autodisplay	C	3
+8.14.965	Monitor	A	136
+8.28.1255	Anzeigetafel	C	5
 9.38.412	Lockenstab	B	58
 9.38.417	Zahnbürste, elektrisch	A	249
 9.38.472	Glätteisen	B	37
@@ -173,7 +172,7 @@ key	name	class	repairs_deu
 15.40.1756	Leuchtstoffröhre	C	3
 15.40.1836	Lava Lampe	C	1
 15.40.1861	Tauchlampe	C	0
-16.0.406	Laptop / Notebook	A	1619
+16.16.406	Laptop / Notebook	A	1619
 17.46.491	Venenwalker	C	1
 17.46.528	Rasenmäher	A	234
 17.46.587	Kühltruhe	C	4

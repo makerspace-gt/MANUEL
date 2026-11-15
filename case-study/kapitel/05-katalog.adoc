@@ -51,7 +51,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 * Form `ORA.Restarters.anstiftung.eigene`, etwa 36.10.430 für die Kaffeemaschine. Jeder Gegenstand gehört damit eindeutig zu einer Gruppe der ORA, einer Kategorie bei Restarters und den Kategorien der anstiftung.
 * Eigene Aufteilungen bekommen eine vierte Stelle, etwa 11.24.459.1 und 11.24.459.2 für zwei Arten von Kopfhörern <<adr-0013>>
-* Bei Laptop und Flat screen steht für Restarters eine 0, dort entscheidet die Größe des Geräts.
+* Bei Laptop und Flat screen unterscheidet Restarters nach Größe. Jeder Eintrag bekommt eine feste Größe, etwa 32-37" für Fernseher, damit am Empfang kein Feld dazukommt.
 * Mit dem Start in Zammad werden die Schlüssel eingefroren.
 
 === Sprache

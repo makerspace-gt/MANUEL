@@ -75,11 +75,10 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 7.37.1356	Konvektomat						Fan	Fan			1356	Entwurf
 7.37.1609	Deckenlüfter						Fan	Fan			1609	Entwurf
 7.37.1634	Ofen-Ventilator						Fan	Fan			1634	Entwurf
-8.0.403	Fernseher	Fernsehgerät mit Flachbildschirm oder Röhre. Computermonitore sind ein eigener Eintrag.	Fernsehgerät | TV | Flachbildfernseher | Röhrenfernseher	Television	TV set with flat screen or tube. Computer monitors are a separate entry.	TV | Flat screen TV | CRT television	Flat screen			230 V	403 | 1661	Entwurf, Größe für Restarters klären
-8.0.590	Autodisplay						Flat screen				590	Entwurf, Größe für Restarters klären
-8.0.965	Monitor	Bildschirm für einen Computer. Fernseher sind ein eigener Eintrag.	Bildschirm | Computerbildschirm | PC-Monitor	Monitor	Screen for a computer. TVs are a separate entry.	Display / Monitor | Computer screen	Flat screen			230 V	487 | 965	Entwurf, Größe für Restarters klären
-8.0.1255	Anzeigetafel						Flat screen				1255	Entwurf, Größe für Restarters klären
-8.0.1502	Smart-TV						Flat screen				1502	Entwurf, Größe für Restarters klären
+8.28.403	Fernseher	Fernsehgerät mit Flachbildschirm oder Röhre. Computermonitore sind ein eigener Eintrag.	Fernsehgerät | TV | Flachbildfernseher | Röhrenfernseher | Smart-TV	Television	TV set with flat screen or tube. Computer monitors are a separate entry.	TV | Flat screen TV | CRT television | Smart TV	Flat screen	Flat screen 32-37"		230 V	403 | 1661 | 1502	Entwurf
+8.12.590	Autodisplay						Flat screen	Flat screen 15-17"			590	Entwurf
+8.14.965	Monitor	Bildschirm für einen Computer. Fernseher sind ein eigener Eintrag.	Bildschirm | Computerbildschirm | PC-Monitor	Monitor	Screen for a computer. TVs are a separate entry.	Display / Monitor | Computer screen	Flat screen	Flat screen 22-24"		230 V	487 | 965	Entwurf
+8.28.1255	Anzeigetafel						Flat screen	Flat screen 32-37"			1255	Entwurf
 9.38.412	Lockenstab	Beheizter Stab zum Locken der Haare.	Lockenwickler, elektrisch | Warmluftbürste	Curling iron	Heated rod for curling hair.	Curling tongs | Hot brush	Hair & beauty item	Hair & beauty item		230 V	412	Entwurf
 9.38.417	Zahnbürste, elektrisch	Elektrische Zahnbürste mit Akku oder Batterie, auch Schallzahnbürste.	elektrische Zahnbürste | Schallzahnbürste	Electric toothbrush	Electric toothbrush with rechargeable or replaceable battery, including sonic toothbrushes.	Sonic toothbrush	Hair & beauty item	Hair & beauty item		Akku | Batterie	417	Entwurf
 9.38.472	Glätteisen	Beheizte Zange zum Glätten der Haare.	Haarglätter | Glättbürste	Hair straightener	Heated tongs for straightening hair.	Hair straightener / Hot brush | Flat iron	Hair & beauty item	Hair & beauty item		230 V	472	Entwurf
@@ -173,7 +172,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 15.40.1756	Leuchtstoffröhre						Lamp	Lamp			1756	Entwurf
 15.40.1836	Lava Lampe						Lamp	Lamp			1836	Entwurf
 15.40.1861	Tauchlampe						Lamp	Lamp			1861	Entwurf
-16.0.406	Laptop / Notebook	Tragbarer Computer mit eingebautem Bildschirm und Tastatur. Tablets ohne feste Tastatur sind ein eigener Eintrag.	Laptop | Notebook | Netbook | Ultrabook | MacBook	Laptop	Portable computer with built-in screen and keyboard. Tablets without a fixed keyboard are a separate entry.	Notebook | Netbook | Chromebook	Laptop			Akku | mit Netzteil	406	Entwurf, Größe für Restarters klären
+16.16.406	Laptop / Notebook	Tragbarer Computer mit eingebautem Bildschirm und Tastatur. Tablets ohne feste Tastatur sind ein eigener Eintrag.	Laptop | Notebook | Netbook | Ultrabook | MacBook	Laptop	Portable computer with built-in screen and keyboard. Tablets without a fixed keyboard are a separate entry.	Notebook | Netbook | Chromebook	Laptop	Laptop medium		Akku | mit Netzteil	406	Entwurf
 17.46.491	Venenwalker						Large home electrical	Misc	Fitnessgeräte		491	Entwurf
 17.46.528	Rasenmäher	Rasenmäher mit Elektro- oder Benzinmotor. Mähroboter und Rasentrimmer sind eigene Einträge.	Mäher | Elektromäher | Benzinmäher	Lawn mower	Lawn mower with electric or petrol engine. Robotic mowers and grass trimmers are separate entries.	Lawn mower / lawn raker | Electric lawnmower	Large home electrical	Misc	Gartengeräte mit Strom	230 V | Akku	528	Entwurf
 17.46.587	Kühltruhe						Large home electrical	Misc	Kühlen und Gefrieren		587	Entwurf
@@ -810,24 +809,24 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 101.49.1822	Bademantel						Unpowered - Textile	Clothing/textile			1822	Entwurf
 101.49.1837	Imkeranzug						Unpowered - Textile	Clothing/textile			1674 | 1837	Entwurf
 101.49.1847	Warnweste						Unpowered - Textile	Clothing/textile			1847	Entwurf
-102.50.457	Spielzeug (Möbel/Holz)	Spielzeug aus Holz ohne Strom, etwa Bauklötze, Kaufladen oder Holzeisenbahn.	Holzspielzeug | Spielzeug aus Holz	Wooden toy	Wooden toy without power, such as building blocks, toy shop or wooden train.	Wooden toy	Unpowered - Household	Misc		ohne Kabel (Mechanik)	457	Entwurf, Misc oder Hand tool klären
+102.50.457	Spielzeug (Möbel/Holz)	Spielzeug aus Holz ohne Strom, etwa Bauklötze, Kaufladen oder Holzeisenbahn.	Holzspielzeug | Spielzeug aus Holz	Wooden toy	Wooden toy without power, such as building blocks, toy shop or wooden train.	Wooden toy	Unpowered - Household	Misc		ohne Kabel (Mechanik)	457	Entwurf
 102.50.529	Messer und Scheren schärfen/schleifen	Schärfen von Messern und Scheren an Schleifgeräten im Repair Café.	Messerschärfen | Scherenschleifen | Schleifen	Knife and scissor sharpening	Sharpening of knives and scissors using grinding equipment at the repair cafe.	Sharpening | Knife sharpening	Unpowered - Household	Misc	Küche und Haushalt ohne Strom	ohne Kabel (Mechanik)	529	Entwurf
 102.50.536	Teesieb						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		536	Entwurf
 102.51.537	Greifzange						Unpowered - Household	Hand tool	Werkzeug ohne Strom		537	Entwurf
-102.50.559	Dekoration	Dekorationsgegenstand für die Wohnung, ohne oder mit kleiner Beleuchtung, der nicht aus Holz ist.	Deko | Dekoartikel | Zierfigur	Home decor	Decorative item for the home, with or without small lighting, not made of wood.	Home Decor | Ornament	Unpowered - Household	Misc		ohne Kabel (Mechanik)	559	Entwurf, Misc oder Hand tool klären
+102.50.559	Dekoration	Dekorationsgegenstand für die Wohnung, ohne oder mit kleiner Beleuchtung, der nicht aus Holz ist.	Deko | Dekoartikel | Zierfigur	Home decor	Decorative item for the home, with or without small lighting, not made of wood.	Home Decor | Ornament	Unpowered - Household	Misc		ohne Kabel (Mechanik)	559	Entwurf
 102.51.563	Schraubstock						Unpowered - Household	Hand tool	Werkzeug ohne Strom		563	Entwurf
 102.50.566	Kerzenhalter						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		566	Entwurf
 102.50.579	Topf						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		579	Entwurf
 102.50.586	Geschirr						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		586	Entwurf
-102.50.602	Dekoration (Möbel/Holz)	Dekorationsgegenstand aus Holz ohne Strom.	Holzdeko | Deko aus Holz	Wooden decoration	Decorative item made of wood without power.	Wooden ornament	Unpowered - Household	Misc		ohne Kabel (Mechanik)	602	Entwurf, Misc oder Hand tool klären
-102.50.633	Kamera, analog	Fotokamera für Film, meist mechanisch.	Analogkamera | Filmkamera | Spiegelreflexkamera, analog	Analogue camera	Film camera, usually mechanical.	Film camera | Analogue camera	Unpowered - Household	Misc		ohne Kabel (Mechanik) | Batterie	633	Entwurf, Misc oder Hand tool klären
+102.50.602	Dekoration (Möbel/Holz)	Dekorationsgegenstand aus Holz ohne Strom.	Holzdeko | Deko aus Holz	Wooden decoration	Decorative item made of wood without power.	Wooden ornament	Unpowered - Household	Misc		ohne Kabel (Mechanik)	602	Entwurf
+102.50.633	Kamera, analog	Fotokamera für Film, meist mechanisch.	Analogkamera | Filmkamera | Spiegelreflexkamera, analog	Analogue camera	Film camera, usually mechanical.	Film camera | Analogue camera	Unpowered - Household	Misc		ohne Kabel (Mechanik) | Batterie	633	Entwurf
 102.50.643	Kinderwagen	Kinderwagen oder Buggy ohne Strom.	Buggy | Sportwagen | Kinderkarre	Pram	Pram or pushchair without power.	Pushchair | Stroller | Buggy	Unpowered - Household	Misc	Wagen, Camping, Outdoor	ohne Kabel (Mechanik)	643 | 1734	Entwurf
 102.50.676	Kleiderbügel						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		676	Entwurf
 102.50.681	Salatschleuder						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		681	Entwurf
 102.50.686	Tacker	Gerät ohne Strom zum Heften mit Klammern.	Handtacker | Hefter | Heftgerät	Staple gun	Non-electric device for fastening with staples.	Stapler | Staple gun	Unpowered - Household	Misc	Büro und Schreiben	ohne Kabel (Mechanik)	686	Entwurf
 102.51.705	Werkzeug - ohne Strom						Unpowered - Household	Hand tool	Werkzeug ohne Strom		705	Entwurf
 102.50.706	Besteck						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		706	Entwurf
-102.50.733	Modellauto	Modellauto zum Sammeln oder Bauen, ohne Strom.	Sammlerauto | Modellbauauto	Model car	Model car for collecting or building, without power.	Model car | Die cast car	Unpowered - Household	Misc		ohne Kabel (Mechanik)	733	Entwurf, Misc oder Hand tool klären
+102.50.733	Modellauto	Modellauto zum Sammeln oder Bauen, ohne Strom.	Sammlerauto | Modellbauauto	Model car	Model car for collecting or building, without power.	Model car | Die cast car	Unpowered - Household	Misc		ohne Kabel (Mechanik)	733	Entwurf
 102.50.738	Teigrolle						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		738	Entwurf
 102.50.782	Messer	Messer ohne Strom zum Reparieren, etwa mit losem Griff. Zum Schärfen gibt es einen eigenen Eintrag.	Küchenmesser | Taschenmesser | Brotmesser	Knife	Non-electric knife to be repaired, for example with a loose handle. Sharpening is a separate entry.	Knife / knives / scissors | Kitchen knife | Pocket knife	Unpowered - Household	Misc	Küche und Haushalt ohne Strom	ohne Kabel (Mechanik)	782	Entwurf
 102.50.837	Ordner						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		837	Entwurf

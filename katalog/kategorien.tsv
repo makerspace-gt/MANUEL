@@ -1,6 +1,6 @@
 key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	restarters_category	intermediate_category	power	form_ids	status
 1.35.601	Luftentfeuchter	Gerät, das der Raumluft Feuchtigkeit entzieht.	Entfeuchter | Raumentfeuchter	Dehumidifier	Appliance that removes moisture from room air.	Dehumidifier	Aircon/dehumidifier	Aircon/dehumidifier		230 V	601	Entwurf
-1.35.660	Luftbefeuchter /Diffuser						Aircon/dehumidifier	Aircon/dehumidifier			660	Entwurf
+1.35.660	Luftbefeuchter /Diffuser	Gerät, das die Raumluft befeuchtet, mit Verdunster, Ultraschall oder Dampf. Aroma-Diffuser und Luftentfeuchter sind eigene Einträge.	Luftbefeuchter | Raumluftbefeuchter	Humidifier	Device that adds moisture to room air by evaporation, ultrasound or steam. Aroma diffusers and dehumidifiers are separate entries.	Air humidifier	Aircon/dehumidifier	Aircon/dehumidifier		230 V	660	Entwurf
 1.35.777	Nebelmaschine						Aircon/dehumidifier	Aircon/dehumidifier			777	Entwurf
 1.35.780	Luftkühler						Aircon/dehumidifier	Aircon/dehumidifier			780	Entwurf
 1.35.896	Klimagerät						Aircon/dehumidifier	Aircon/dehumidifier			896	Entwurf
@@ -9,7 +9,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 1.35.1189	Zimmerbrunnen						Aircon/dehumidifier	Aircon/dehumidifier			1189	Entwurf
 1.35.1214	Aroma Diffuser						Aircon/dehumidifier	Aircon/dehumidifier			1214	Entwurf
 1.35.1218	Wasserionisierer						Aircon/dehumidifier	Aircon/dehumidifier			1218	Entwurf
-2.46.498	Autobatterie-Ladegerät						Battery/charger/adapter	Misc			498	Entwurf
+2.46.498	Autobatterie-Ladegerät	Ladegerät für Starterbatterien von Auto oder Motorrad. Andere Ladegeräte sind eigene Einträge.	Kfz-Ladegerät | Batterieladegerät	Car battery charger	Charger for starter batteries of cars or motorcycles. Other chargers are separate entries.	Battery charger	Battery/charger/adapter	Misc		230 V	498	Entwurf
 2.46.500	Akku, mechanisch						Battery/charger/adapter	Misc			500	Entwurf
 2.46.556	Kabeltrommel	Aufrollbares Verlängerungskabel auf einer Trommel.	Kabelrolle | Kabelaufroller	Cable reel	Extension cable wound on a reel.	Cable reel | Extension reel	Battery/charger/adapter	Misc	Elektroinstallation, Kabel, Stecker	ohne Kabel (Mechanik)	556	Entwurf
 2.46.565	Netzteil	Externes Netzteil für ein Gerät, das Netzspannung in Kleinspannung umwandelt. Ladegeräte für Akkus sind eigene Einträge.	Steckernetzteil	Power supply	External power supply that converts mains voltage to low voltage. Battery chargers are separate entries.	Power adapter | Power supply unit | AC adapter	Battery/charger/adapter	Misc		230 V	565 | 693	Entwurf
@@ -67,8 +67,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 6.22.482	Videokamera	Kamera für Videoaufnahmen, auch Camcorder.	Camcorder | Videocamcorder	Video camera	Camera for recording video, including camcorders.	Video camera | Camcorder	DSLR/video camera	DSLR/video camera		Akku	482	Entwurf
 6.22.1278	Überwachungskamera						DSLR/video camera	DSLR/video camera			1278	Entwurf
 7.37.473	Heizlüfter	Elektrische Heizung mit Lüfter, der warme Luft in den Raum bläst. Heizungen ohne Lüfter gehören zur Elektroheizung.	Heizgebläse | Schnellheizer | Keramikheizlüfter	Fan heater	Electric heater with a fan that blows warm air into the room. Heaters without fan belong to electric heater.	Fan heater | Ceramic fan heater	Fan	Fan	Heizen und Wärme	230 V	473	Entwurf
-7.37.549	Heizung						Fan	Fan			549	Entwurf
-7.37.611	Lüfter						Fan	Fan			611	Entwurf
+7.37.611	Lüfter	Lüfter zum Einbau, etwa im Bad oder im Computer. Ventilator und Heizlüfter sind eigene Einträge.	Badlüfter | Abluftventilator	Extractor fan	Built-in fan, for example in a bathroom or a computer. Free-standing fans and fan heaters are separate entries.	Exhaust fan | Bathroom fan	Fan	Fan		230 V	611	Entwurf
 7.37.713	Ventilator	Ventilator ohne Heizung, als Tisch-, Stand- oder Turmventilator. Der Heizlüfter ist ein eigener Eintrag.	Standventilator | Tischventilator | Turmventilator	Fan	Fan without heating, as table, pedestal or tower fan. Fan heaters are a separate entry.	Cooling fan | Desk fan | Tower fan	Fan	Fan		230 V | Akku	713 | 1845	Entwurf
 7.37.797	Standlüfter						Fan	Fan			797	Entwurf
 7.37.901	Fächer						Fan	Fan			901	Entwurf
@@ -106,11 +105,9 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 10.23.1060	MiniDisc-Player						Handheld entertainment device	Handheld entertainment device			1060	Entwurf
 10.23.1301	Sampler						Handheld entertainment device	Handheld entertainment device			1301	Entwurf
 10.23.1785	Musikstreamer						Handheld entertainment device	Handheld entertainment device			1785	Entwurf
-11.24.459	Kopfhörer						Headphones	Headphones			459	Entwurf
+11.24.459	Kopfhörer	Nur zu verwenden, wenn unklar ist, ob In-Ear oder On-/Over-Ear gemeint ist. MANUEL fragt dann nach.	Funkkopfhörer | Headset	Headphones	Use only when it is unclear whether in-ear or on-/over-ear is meant. MANUEL then asks.	Wireless headphones | Headset	Headphones	Headphones			459 | 887 | 646	Entwurf
 11.24.459.1	Kopfhörer, In-Ear	Kleine Ohrhörer, die im Ohr sitzen, mit Kabel oder kabellos, auch mit Mikrofon als Headset.	Ohrhörer | In-Ear-Kopfhörer | Earbuds | In-Ear-Headset	In-ear headphones	Small earphones that sit in the ear, wired or wireless, including with microphone as a headset.	Earphones | Earbuds | In-ear headset	Headphones	Headphones		Akku | ohne Kabel (Mechanik)	459 | 887 | 646	Entwurf
 11.24.459.2	Kopfhörer, On-/Over-Ear	Kopfhörer mit Bügel, die auf oder über dem Ohr sitzen, mit Kabel oder Funk, auch mit Mikrofon als Headset.	Bügelkopfhörer | Over-Ear-Kopfhörer | Gaming-Headset	On-/over-ear headphones	Headphones with headband that sit on or over the ear, wired or wireless, including with microphone as a headset.	Headphones | Wireless headphones | Headset	Headphones	Headphones		Akku | Batterie | ohne Kabel (Mechanik)	459 | 887 | 646	Entwurf
-11.24.646	Headset						Headphones	Headphones			646	Entwurf
-11.24.887	Funkkopfhörer						Headphones	Headphones			887	Entwurf
 11.24.908	Hörgerät						Headphones	Headphones			908	Entwurf
 12.29.444	Jukebox						Hi-Fi integrated	Hi-Fi integrated			444	Entwurf
 12.29.704	Multimedia-Center						Hi-Fi integrated	Hi-Fi integrated			704	Entwurf
@@ -158,7 +155,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 15.40.1153	Leuchter						Lamp	Lamp			1153	Entwurf
 15.40.1167	Nachtlicht						Lamp	Lamp			1167	Entwurf
 15.40.1172	Nachttischlampe	Kleine Lampe für den Nachttisch.	Nachttischleuchte | Bettlampe	Bedside lamp	Small lamp for the bedside table.	Bedside lamp | Night stand lamp	Lamp	Lamp		230 V	1172	Entwurf
-15.40.1178	Wandlampe						Lamp	Lamp			1178	Entwurf
+15.40.1178	Wandlampe	Lampe, die an der Wand hängt, auch mit Schwenkarm.	Wandleuchte	Wall lamp	Lamp mounted on the wall, also with a swing arm.	Wall light	Lamp	Lamp		230 V	1178	Entwurf
 15.40.1198	Stehlampe	Lampe mit hohem Fuß, die auf dem Boden steht, auch Deckenfluter.	Stehleuchte | Bodenlampe	Floor lamp	Lamp on a tall stand placed on the floor.	Floor lamp / Standard lamp | Standard lamp	Lamp	Lamp		230 V	1198 | 890	Entwurf
 15.40.1288	Hängeleuchte						Lamp	Lamp			1288	Entwurf
 15.40.1299	Leuchtreklame						Lamp	Lamp			1299	Entwurf
@@ -182,7 +179,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 17.46.632	Kühlschrank	Kühlschrank, auch mit Gefrierfach. Gefriertruhe und Kühlbox sind eigene Einträge.	Kühlgerät | Kühl-Gefrier-Kombination	Fridge	Refrigerator, including with freezer compartment. Chest freezers and cool boxes are separate entries.	Fridge | Refrigerator | Fridge freezer	Large home electrical	Misc	Kühlen und Gefrieren	230 V	632	Entwurf
 17.46.641	Kühlbox	Tragbare Kühlbox mit elektrischer Kühlung. Kühlschränke sind ein eigener Eintrag.	Kühltasche, elektrisch | Campingkühlbox	Cool box	Portable cool box with electric cooling. Fridges are a separate entry.	Electric cool box | Cooler	Large home electrical	Misc	Kühlen und Gefrieren	230 V | mit Netzteil	641	Entwurf
 17.46.642	Pelletofen						Large home electrical	Misc	Kochen und Backen groß		642	Entwurf
-17.46.710	E-Roller	Roller mit Elektromotor und Akku.	E-Scooter | Elektroroller | E-Tretroller	E-scooter	Scooter with electric motor and battery.	Electric scooter | E-scooter	Large home electrical	Misc		Akku	710	Entwurf
+17.46.710	E-Roller	Roller mit Elektromotor und Akku.	E-Scooter | Elektroroller | E-Tretroller	E-scooter	Scooter with electric motor and battery.	Electric scooter | E-scooter	Large home electrical	Misc		Akku	710 | 1007	Entwurf
 17.46.729	Wäschetrockner						Large home electrical	Misc	Waschen und Spülen		729	Entwurf
 17.46.736	Ofen						Large home electrical	Misc	Kochen und Backen groß		736	Entwurf
 17.46.748	Dunstabzugshaube						Large home electrical	Misc	Kochen und Backen groß		748	Entwurf
@@ -230,7 +227,6 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 18.46.801	Funksteckdose						Misc	Misc	Elektroinstallation, Kabel, Stecker		801	Entwurf
 18.46.811	Desinfektionsgerät						Misc	Misc	Medizin, Pflege, Hilfsmittel		811	Entwurf
 18.46.817	Bewegungsmelder						Misc	Misc	Klingel, Sprechanlage, Melder		817	Entwurf
-18.46.846	Folienschweißgerät						Misc	Misc	Elektro sonstiges		846	Entwurf
 18.46.848	Tischrechner						Misc	Misc	Elektro sonstiges		848	Entwurf
 18.46.856	Otoskop						Misc	Misc	Mess- und Prüfgeräte		856	Entwurf
 18.46.864	Heizstein						Misc	Misc	Heizen und Wärme		864	Entwurf
@@ -519,7 +515,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 28.46.701	Messgerät	Elektrisches Messgerät, das in keinen genaueren Eintrag passt.	Messinstrument | Prüfgerät	Measuring device	Electric measuring device that fits no more specific entry.	Measuring instrument | Meter	Small home electrical	Misc	Mess- und Prüfgeräte	Batterie	701	Entwurf
 28.46.750	Taschenrechner	Rechner für Hand oder Schreibtisch, mit Batterie oder Solarzelle. Druckende Tischrechner sind ein eigener Eintrag.	Schulrechner	Calculator	Pocket or desk calculator with battery or solar cell. Printing desktop calculators are a separate entry.	Calculator	Small home electrical	Misc	Büro und Schreiben	Batterie	750	Entwurf
 28.46.863	Alarmanlage						Small home electrical	Misc	Klingel, Sprechanlage, Melder		863	Entwurf
-28.46.877	Elektroheizung	Elektrische Heizung für einen Raum ohne Lüfter, etwa Heizstrahler, Ölradiator oder Infrarotheizung. Der Heizlüfter ist ein eigener Eintrag.	Heizstrahler | Ölradiator | Infrarotheizung | Radiator | Elektroheizkörper	Electric heater	Electric room heater without fan, such as radiant heaters, oil radiators or infrared panels. Fan heaters are a separate entry.	Electric heater / radiator | Heater | Oil filled radiator	Small home electrical	Misc	Heizen und Wärme	230 V	877 | 983 | 1506 | 1770	Entwurf
+28.46.877	Elektroheizung	Elektrische Heizung für einen Raum ohne Lüfter, etwa Heizstrahler, Ölradiator oder Infrarotheizung. Der Heizlüfter ist ein eigener Eintrag.	Heizstrahler | Ölradiator | Infrarotheizung | Radiator | Elektroheizkörper | Heizung	Electric heater	Electric room heater without fan, such as radiant heaters, oil radiators or infrared panels. Fan heaters are a separate entry.	Electric heater / radiator | Heater | Oil filled radiator	Small home electrical	Misc	Heizen und Wärme	230 V	877 | 983 | 1506 | 1770 | 549	Entwurf
 28.46.918	Anrufbeantworter						Small home electrical	Misc	Klingel, Sprechanlage, Melder		918	Entwurf
 28.46.978	Digitalthermometer						Small home electrical	Misc	Mess- und Prüfgeräte		978	Entwurf
 28.46.1011	Massageball						Small home electrical	Misc	Massage und Wellness		1011	Entwurf
@@ -594,7 +590,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 31.43.432	Toaster	Gerät zum Rösten von Brotscheiben. Sandwichmaker und Kontaktgrill sind eigene Einträge.	Brotröster | Langschlitztoaster	Toaster	Appliance for toasting slices of bread. Sandwich makers and contact grills are separate entries.	Bread toaster	Toaster	Toaster		230 V	432	Entwurf
 31.43.1141	Sandwichtoaster						Toaster	Toaster			1141	Entwurf
 32.44.421	Spielzeug	Spielzeug mit Strom aus Batterie, Akku oder Netz, das in keinen genaueren Eintrag passt. Spielzeug aus Holz ist ein eigener Eintrag.	elektrisches Spielzeug | Spielsachen	Toy	Electric or battery powered toy that fits no more specific entry. Wooden toys are a separate entry.	Electronic toy | Battery toy	Toy	Toy	Spielzeug mit Strom	Batterie | Akku	421	Entwurf
-32.44.623	Drohne						Toy	Toy	Modellbau und Fahrzeuge		623 | 809	Entwurf
+32.44.623	Drohne	Fluggerät mit Rotoren und Fernsteuerung, meist mit Kamera und Akku.	Quadrocopter | Multicopter	Drone	Aircraft with rotors and remote control, usually with camera and rechargeable battery.	Quadcopter | Multicopter	Toy	Toy	Modellbau und Fahrzeuge	Akku	623 | 809	Entwurf
 32.44.816	Ferngesteuertes Auto	Spielzeugauto mit Fernbedienung. Spielzeugautos ohne Fernbedienung sind ein eigener Eintrag.	RC-Auto | Funkauto | ferngesteuerter Wagen	Remote controlled car	Toy car with remote control. Toy cars without remote are a separate entry.	Remote controlled car | RC car	Toy	Toy	Modellbau und Fahrzeuge	Akku | Batterie	816	Entwurf
 32.44.840	Hoverboard						Toy	Toy	Modellbau und Fahrzeuge		840	Entwurf
 32.44.849	Lokomotive						Toy	Toy	Modellbau und Fahrzeuge		849	Entwurf
@@ -637,11 +633,10 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 33.34.435	DVD-/Blu-ray-Player	Abspielgerät für DVDs oder Blu-rays, auch tragbar. Rekorder mit Aufnahme sind eigene Einträge.	DVD-Player | Blu-ray-Player | DVD-Spieler	DVD / Blu-ray player	Player for DVDs or Blu-rays, including portable ones. Recorders are separate entries.	DVD player / recorder | Blu-ray player | Portable DVD player	TV and gaming-related accessories	TV and gaming-related accessories		230 V	435 | 833	Entwurf
 33.34.448	Fernbedienung	Infrarot-Fernbedienung für Fernseher, Anlage oder Receiver. Funkfernbedienungen etwa für Garagentore sind ein eigener Eintrag.	TV-Fernbedienung | Universalfernbedienung | IR-Fernbedienung	Remote control	Infrared remote control for TV, hi-fi or receiver. Radio remotes for garage doors are a separate entry.	Remote control | TV remote	TV and gaming-related accessories	TV and gaming-related accessories		Batterie	448	Entwurf
 33.34.484	Receiver (Sat, Kabel, Antenne, Audio)	Empfangsgerät für Fernsehen über Satellit, Kabel oder Antenne. AV-Receiver einer Surround-Anlage gehören zum Verstärker.	Receiver | Sat-Receiver | Set-Top-Box | DVB-T-Empfänger	TV receiver	Receiver for TV via satellite, cable or antenna. AV receivers of surround systems belong to amplifier.	Satellite receiver | Set-top box | Freeview box	TV and gaming-related accessories	TV and gaming-related accessories		230 V | mit Netzteil	484	Entwurf
-33.34.653	Steuergerät						TV and gaming-related accessories	TV and gaming-related accessories			653	Entwurf
 33.34.742	Heimkinosystem						TV and gaming-related accessories	TV and gaming-related accessories			742	Entwurf
 33.34.843	Festplattenrekorder	Gerät, das Fernsehsendungen auf eine Festplatte aufnimmt.	HDD-Rekorder | PVR	Hard disk recorder	Device that records TV programmes to a hard disk.	PVR | Hard disk recorder	TV and gaming-related accessories	TV and gaming-related accessories		230 V	843	Entwurf
 33.34.852	Soundbar	Längliche Lautsprecherbox für den Fernseher.	TV-Lautsprecher | Soundsystem für den Fernseher	Sound bar	Long speaker bar for the TV.	Sound bar | Soundbar	TV and gaming-related accessories	TV and gaming-related accessories		230 V	852	Entwurf
-33.34.927	Controller	Steuergerät für eine Spielkonsole oder einen Computer.	Gamepad | Joystick | Spielecontroller	Game controller	Controller for a games console or computer.	Game controller | Gamepad	TV and gaming-related accessories	TV and gaming-related accessories		Akku | Batterie	927	Entwurf
+33.34.927	Controller	Steuergerät für eine Spielkonsole oder einen Computer.	Gamepad | Joystick | Spielecontroller | Steuergerät	Game controller	Controller for a games console or computer.	Game controller | Gamepad	TV and gaming-related accessories	TV and gaming-related accessories		Akku | Batterie	927 | 653	Entwurf
 33.34.964	Multirekorder						TV and gaming-related accessories	TV and gaming-related accessories			964	Entwurf
 33.34.1026	DVD-Recorder	Gerät zum Aufnehmen auf DVD. Festplattenrekorder sind ein eigener Eintrag.	DVD-Rekorder | DVD-Brenner, Stand-Gerät	DVD recorder	Device for recording to DVD. Hard disk recorders are a separate entry.	DVD recorder	TV and gaming-related accessories	TV and gaming-related accessories		230 V	1026	Entwurf
 33.34.1097	Time Base Corrector						TV and gaming-related accessories	TV and gaming-related accessories			1097	Entwurf
@@ -657,7 +652,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 34.45.909	Bodenwischer						Vacuum	Vacuum			909	Entwurf
 34.45.1039	Bodenreiniger						Vacuum	Vacuum			1039	Entwurf
 34.45.1045	Handstaubsauger	Kleiner Staubsauger für die Hand, meist mit Akku, etwa für Krümel oder das Auto.	Akku-Handsauger | Tischsauger | Autosauger	Handheld vacuum cleaner	Small handheld vacuum cleaner, usually cordless, for crumbs or the car.	Handheld vacuum | Dustbuster	Vacuum	Vacuum		Akku	1045	Entwurf
-34.45.1125	Vakuumierer						Vacuum	Vacuum			661 | 1125	Entwurf
+29.42.1125	Vakuumierer	Gerät, das Lebensmittel in Beuteln vakuumiert und die Folie verschweißt. Staubsauger sind eigene Einträge.	Folienschweißgerät | Vakuumiergerät	Vacuum sealer	Device that vacuum-packs food in bags and seals the film. Vacuum cleaners are separate entries.	Heat sealer | Food vacuum sealer	Small kitchen item	Small kitchen item		230 V	661 | 1125 | 846	Entwurf
 34.45.1169	Wischroboter						Vacuum	Vacuum			1169	Entwurf
 34.45.1194	Elektrischer Handbesen						Vacuum	Vacuum			1194	Entwurf
 34.45.1232	Staubsauger (Metallbearbeitung)	Sauger für die Werkstatt, etwa Industrie- oder Nass-Trocken-Sauger.	Werkstattsauger | Industriesauger | Nass-Trockensauger	Workshop vacuum	Vacuum for the workshop, such as industrial or wet and dry vacuums.	Shop vac | Wet and dry vacuum	Vacuum	Vacuum		230 V	1232	Entwurf
@@ -702,7 +697,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 37.42.735	Mühle						Food processor	Small kitchen item			735	Entwurf
 37.42.916	Zerkleinerer	Kleines Gerät mit Messer zum Hacken von Zwiebeln, Kräutern oder Nüssen.	Multizerkleinerer | Hacker | Chopper	Food chopper	Small appliance with blade for chopping onions, herbs or nuts.	Mini chopper | Food chopper	Food processor	Small kitchen item		230 V	916 | 1121	Entwurf
 37.42.953	Tischschleuder						Food processor	Small kitchen item			953	Entwurf
-37.42.973	Getreidemühle						Food processor	Small kitchen item			973	Entwurf
+37.42.973	Getreidemühle	Mühle für Getreide, elektrisch oder von Hand. Kaffee- und Gewürzmühlen sind eigene Einträge.	Kornmühle | Mehlmühle	Grain mill	Mill for grain, electric or by hand. Coffee and spice mills are separate entries.	Flour mill	Food processor	Small kitchen item		230 V	973	Entwurf
 37.42.980	Nudelmaschine						Food processor	Small kitchen item			980	Entwurf
 37.42.1029	Fleischwolf						Food processor	Small kitchen item			1029	Entwurf
 37.42.1093	Kartenmischgerät						Food processor	Small kitchen item			1093 | 1376	Entwurf
@@ -816,7 +811,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 102.50.559	Dekoration	Dekorationsgegenstand für die Wohnung, ohne oder mit kleiner Beleuchtung, der nicht aus Holz ist.	Deko | Dekoartikel | Zierfigur	Home decor	Decorative item for the home, with or without small lighting, not made of wood.	Home Decor | Ornament	Unpowered - Household	Misc		ohne Kabel (Mechanik)	559	Entwurf
 102.51.563	Schraubstock						Unpowered - Household	Hand tool	Werkzeug ohne Strom		563	Entwurf
 102.50.566	Kerzenhalter						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		566	Entwurf
-102.50.579	Topf						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		579	Entwurf
+102.50.579	Topf	Kochtopf ohne Strom, etwa mit losem Griff. Schnellkochtopf und Elektrokochtopf sind eigene Einträge.	Kochtopf	Saucepan	Cooking pot without power, for example with a loose handle. Pressure cookers and electric cooking pots are separate entries.	Cooking pot | Pot	Unpowered - Household	Misc	Küche und Haushalt ohne Strom	ohne Kabel (Mechanik)	579	Entwurf
 102.50.586	Geschirr						Unpowered - Household	Misc	Küche und Haushalt ohne Strom		586	Entwurf
 102.50.602	Dekoration (Möbel/Holz)	Dekorationsgegenstand aus Holz ohne Strom.	Holzdeko | Deko aus Holz	Wooden decoration	Decorative item made of wood without power.	Wooden ornament	Unpowered - Household	Misc		ohne Kabel (Mechanik)	602	Entwurf
 102.50.633	Kamera, analog	Fotokamera für Film, meist mechanisch.	Analogkamera | Filmkamera | Spiegelreflexkamera, analog	Analogue camera	Film camera, usually mechanical.	Film camera | Analogue camera	Unpowered - Household	Misc		ohne Kabel (Mechanik) | Batterie	633	Entwurf
@@ -873,7 +868,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 103.48.460	Reifen						Unpowered - Bicycle	Bicycle			460	Entwurf
 103.48.462	Bremsen						Unpowered - Bicycle	Bicycle			462	Entwurf
 103.48.463	Rahmen						Unpowered - Bicycle	Bicycle			463	Entwurf
-103.48.464	Gangschaltung						Unpowered - Bicycle	Bicycle			464	Entwurf
+103.48.464	Gangschaltung	Schaltung eines Fahrrads, wenn nur sie repariert wird.	Schaltung | Kettenschaltung | Nabenschaltung	Bicycle gears	Gear system of a bicycle when only it is repaired.	Derailleur | Hub gear	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)	464	Entwurf
 103.48.465	Antrieb						Unpowered - Bicycle	Bicycle			465	Entwurf
 103.48.494	Sonstiges						Unpowered - Bicycle	Bicycle			494	Entwurf
 103.48.531	Herrenfahrrad	Fahrrad mit Oberrohr ohne Motor.	Herrenrad | Diamantrahmen	Men's bicycle	Bicycle with top tube, without motor.	Gents bike | Diamond frame bike	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)	531	Entwurf
@@ -890,7 +885,6 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 103.48.936	Lastenrad						Unpowered - Bicycle	Bicycle			936	Entwurf
 103.48.981	Roller (mechanisch)	Tretroller ohne Motor.	Tretroller | Cityroller | Scooter	Kick scooter	Kick scooter without motor.	Scooter | Kick scooter	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)	981	Entwurf
 103.48.1002	Fahrradanhänger						Unpowered - Bicycle	Bicycle			1002	Entwurf
-103.48.1007	Scooter / E-Scooter						Unpowered - Bicycle	Bicycle			1007	Entwurf
 103.48.1068	Fahrradkorb						Unpowered - Bicycle	Bicycle			1068	Entwurf
 103.48.1084	Rollator						Unpowered - Bicycle	Bicycle			1084	Entwurf
 103.48.1087	Fahrradsattel						Unpowered - Bicycle	Bicycle			1087	Entwurf

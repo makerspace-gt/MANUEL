@@ -54,6 +54,7 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 === Rückmeldungen zu den Vorschlägen
 
 * Zwei Makros, „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“, setzen mit einem Klick einen Tag, beim zweiten mit einer kurzen Notiz <<adr-0032>>.
+* Die Checkliste jeder Reparatur hat dafür einen eigenen Punkt, „Vorschläge von MANUEL geprüft und als hilfreich oder nicht hilfreich markiert“ <<adr-0060>>.
 * Die KI-Rückmeldung von Zammad reicht nicht. Nach dem Erzeugen eines Textes lässt er sich dort nicht mehr bewerten, nur noch per Notiz kommentieren cite:[zammad-feedback].
 * Stimmen und Beispiele aus den Notizen, ohne Personenbezug
 * Das Fehlerprotokoll zeigt, wie oft Anfragen ausgefallen sind.

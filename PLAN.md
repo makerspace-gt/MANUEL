@@ -271,7 +271,10 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] [Übersichten](https://admin-docs.zammad.org/en/latest/manage/overviews.html) für das Repair Café anlegen, etwa Termine des nächsten Repair Cafés und offene Reparaturen
 - [x] Löschfristen in Zammad, laut Export vom 15.11.2026 schon als geplante Aufgaben umgesetzt. Tickets des Repair Cafés nach 3 Jahren, Anfragen nach 3 Monaten, alte Gäste über die Datenschutz-Löschung
 - [ ] Hausordnung mit den Hinweisen der Partner abgleichen, Liste in [docs/house_rules_review.md](docs/house_rules_review.md). Gelesen ist die anstiftung, offen sind Repair Café International, Restart Project und Open Repair Alliance. Das Team entscheidet über Aushang, Haftungsbegrenzung und Versicherung
-- [ ] Kurzen Datenschutzhinweis für Gäste schreiben, der auch die Unterstützung durch ein lokales Sprachmodell nennt
+- [ ] Kurzen Datenschutzhinweis für Gäste schreiben, der auch die Unterstützung durch ein lokales Sprachmodell nennt. Zusammen mit der Hausordnung aus [zammad/texts/](zammad/texts/house_rules.de.md) prüfen und veröffentlichen
+- [ ] Gastfelder Hausordnung, Fördermitgliedschaft, Geburtsjahr, Newsletter und Werbung durch ins Verzeichnis von Verarbeitungstätigkeiten aufnehmen. Vorschlag für das Team, beim Einverständnis zur Hausordnung statt ja oder nein Datum und Art der Bestätigung zu speichern, also Empfang oder Mail mit Ticketnummer
+- [ ] Altlasten bei den Signaturen im echten Zammad aufräumen, die Demo-Signatur von Zammad und eine Kopie. Die Signatur des Repair Café liegt als [signature.de.html](zammad/texts/signature.de.html) im Repo
+- [ ] Texte der Checkliste in [zammad/texts/](zammad/texts/checklist.de.txt), die Eingangsbestätigung und die Nachfrage beim Terminvorschlag mit dem Team abstimmen, dann die Mails in Zammad einschalten, siehe [ADR 60](docs/adr/0060-ablaeufe-des-bestehenden-zammad-als-code-uebernehmen.adoc)
 - [ ] MANUEL in das Verzeichnis von Verarbeitungstätigkeiten aufnehmen, mit Zweck, verarbeiteten Feldern, lokaler Verarbeitung auf dem Mini-PC und Speicherdauer der Prompts in Ollama und Open WebUI
 - [ ] Standort, Stromversorgung und LAN-Anschluss im Makerspace klären
 - [ ] Namen in der Tabelle [Rollen](#rollen) eintragen
@@ -380,8 +383,8 @@ git push
 - [ ] Agenten Ticket Categorizer für die Art des Geräts mit der Liste aus dem Vorabtest und Ticket Text Extractor für die übrigen Felder anlegen
 - [ ] Nach den ersten zwei Terminen den Anteil falscher Kategorien zählen. Ab 5 Prozent oder auf Wunsch des Teams auf n8n mit `d3:9b` und Rückfrage umsteigen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)
 - [ ] Custom AI Agent für den Reparaturansatz und einen für erkannte Kontaktdaten anlegen, beide schreiben nur interne Notizen
-- [ ] Trigger anlegen, die die Agenten bei neuen Tickets der Gruppe Repairs auslösen
-- [ ] Prüfen, dass kein Agent und kein Trigger E-Mails oder SMS an Gäste verschickt
+- [ ] Trigger anlegen, die die Einordnung bei neuen Tickets auslösen und den Reparaturansatz, sobald ein Ticket `next-event` bekommt, ohne `spam`, `no-info`, `delete`, `obsolete` und `EUReCA`, siehe [ADR 61](docs/adr/0061-loesungsansatz-eine-woche-vor-dem-termin-schreiben.adoc)
+- [ ] Prüfen, dass kein Agent und kein Trigger von MANUEL E-Mails oder SMS an Gäste verschickt. Die Regeln aus [workflows.rb](zammad/workflows.rb) für Eingangsbestätigung, Nachfrage, Absage und Erinnerung schreiben Gästen, sie sind feste Texte ohne Modell und beim Anlegen aus, siehe [ADR 60](docs/adr/0060-ablaeufe-des-bestehenden-zammad-als-code-uebernehmen.adoc)
 - [ ] Gegen die Testinstanz auf der Test-VM testen
 - [ ] Ollama in Zammad auf der Helpdesk-VM als Anbieter eintragen und Agenten und Trigger ins Echtsystem übernehmen
 - [ ] Prüfen, dass Vorschläge von MANUEL im Ticket gut erkennbar sind und Engagierte sie mit wenigen Klicks übernehmen oder korrigieren können, auch auf Tablet und Smartphone
@@ -396,7 +399,7 @@ git push
 
 - [ ] Wissensdatenbank in Zammad für Reparaturanleitungen einrichten und aus erfolgreichen Reparaturen Artikel erzeugen, die Engagierte vor der Veröffentlichung prüfen. Weitere Artikel entstehen aus der Statistik der Open Repair Alliance, aus anderen Quellen und aus dem Wissen des Modells. Jeder nennt seine Quellen, und jede Änderung gibt ein Mensch frei. Erstdiagnose und Reparaturansatz speisen sich vorrangig aus diesen Artikeln, siehe [ADR 22](docs/adr/0022-reparaturanleitungen-in-der-wissensdatenbank-von-zammad-sammeln.adoc)
 - [ ] Rolle n8n in it-infrastructure für die Helpdesk-VM anlegen, siehe [n8n-Doku zum Selbsthosten](https://docs.n8n.io/hosting/), hinter Traefik mit Anmeldung und mit Sicherung per resticker
-- [ ] Workflow für Statistik bauen, der Ergebnisse zählt, Freitexte zu fehlendem Werkzeug zusammenfasst, Spenden und Bedarf aus dem Statistik-Ticket liest und die Reparierenden je Termin aus den Ownern in Zammad zählt, ohne den Agenten Gast, der die Reparaturen durch Gäste zählt
+- [ ] Workflow für Statistik bauen, der Ergebnisse zählt, Freitexte zu fehlendem Werkzeug zusammenfasst, Spenden und Bedarf aus dem Statistik-Ticket in `Repairs::Events` liest, die Geräte eines Termins über den Datums-Tag findet und die Reparierenden je Termin aus den Ownern in Zammad zählt, ohne den Agenten Gast, der die Reparaturen durch Gäste zählt
 - [ ] Workflows als JSON nach n8n-workflows/ exportieren
 - [ ] Mit der anstiftung per Issue in mapped-repair-events klären, ob sie schreibende Endpunkte für Laufzettel und Neuigkeiten annehmen würde. Dazu fragen, ob die API auch vergangene Termine einer Initiative mit Event-ID liefern kann, bisher gibt es nur kommende
 - [ ] Event-IDs der anstiftung vor jedem Termin mit [anstiftung_events.py](eval/ora/anstiftung_events.py) sichern, die Karte zeigt nur Termine ab dem laufenden Monat. Die IDs von 2019 bis Dezember 2026 sind am 14.11.2026 aus dem Webinterface übernommen

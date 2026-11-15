@@ -5,7 +5,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
-Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, 2026-11-13, Rückmeldungen über Makros, Reparierende aus Zammad, und 2026-11-14, Reparierende über den Owner und den Agenten Gast statt eines Felds
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, 2026-11-13, Rückmeldungen über Makros, Reparierende aus Zammad, 2026-11-14, Reparierende über den Owner und den Agenten Gast statt eines Felds, und 2026-11-15, Punkt der Checkliste als Erinnerung an die Makros
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
@@ -31,7 +31,7 @@ Die Erprobung läuft von Dezember 2026 bis Februar 2027. Der Projektzeitraum im 
 
 . *Reparaturquote* aus dem Feld Ergebnis. Vergleichswerte sind die Statistik seit 2019, `repair_status` der Open Repair Data und die Laufzettel von 2019 bis 2021.
 . *Reparaturen durch Gäste und neue Engagierte* über den Owner des Tickets. Wer repariert hat, ist in Zammad als Owner der Reparatur eingetragen und hat die Rolle Repair Agent. Hat der Gast selbst repariert, ist der Agent Gast Owner, den es dafür im Zammad schon gibt. Daraus folgen die Reparaturen durch Gäste, die Zahl der Reparierenden je Termin ohne den Agenten Gast und die Reparaturen je Person. Als neu gilt, wer seit dem 15.09.2026 dabei ist. Die genaue Abgrenzung stimmen wir mit dem Team ab.
-. *Rückmeldungen* über zwei Makros in Zammad. „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“ setzen mit einem Klick einen Tag, beim zweiten schreiben Engagierte eine kurze interne Notiz dazu. Gezählt werden die Tags je Termin. Die KI-Rückmeldung von Zammad reicht dafür nicht. Laut Doku gibt es sie nur bei KI-Funktionen wie dem Schreibassistenten, und nach einer Beobachtung aus dem Team lässt sich ein Text nach dem Erzeugen nicht mehr bewerten, nur noch per Notiz kommentieren. Rückmeldungen und Fehlerprotokoll unter KI, Feedback & Logs bleiben eine Ergänzung.
+. *Rückmeldungen* über zwei Makros in Zammad. „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“ setzen mit einem Klick einen Tag, beim zweiten schreiben Engagierte eine kurze interne Notiz dazu. Gezählt werden die Tags je Termin. Damit das nicht vergessen wird, hat die Checkliste jeder Reparatur seit dem 15.11.2026 den Punkt „Vorschläge von MANUEL geprüft und als hilfreich oder nicht hilfreich markiert“, siehe xref:0060-ablaeufe-des-bestehenden-zammad-als-code-uebernehmen.adoc[ADR 60]. Die KI-Rückmeldung von Zammad reicht dafür nicht. Laut Doku gibt es sie nur bei KI-Funktionen wie dem Schreibassistenten, und nach einer Beobachtung aus dem Team lässt sich ein Text nach dem Erzeugen nicht mehr bewerten, nur noch per Notiz kommentieren. Rückmeldungen und Fehlerprotokoll unter KI, Feedback & Logs bleiben eine Ergänzung.
 . *Gemeldete Reparaturen* als Anteil der an Restarters übertragenen Geräte an den bearbeiteten. Ausgangswert sind 30 von 1.485 Geräten, rund 2 Prozent. Die Nachmeldung nach xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[ADR 36] wird getrennt ausgewiesen.
 
 Die Exporte liegen nur lokal, in die Fallstudie kommen nur Summen. Eine Entlastung des Teams, etwa über die Zeit bis zur ersten Antwort, wird nicht gemessen.

@@ -24,6 +24,7 @@ Dieses Kapitel steht noch in Stichpunkten. Die Tabellen zu Fragen und Lesewegen 
 * Repair Cafés allgemein, Hilfe zur Selbsthilfe, nicht kommerziell, Gäste reparieren mit Unterstützung von Engagierten, nach Kapitel 1.1 von cite:[prange-2022]
 * Das Repair Café im Makerspace Gütersloh gibt es seit März 2019. Bis zum 7. November 2026 waren es 85 Termine mit 1.485 bearbeiteten Geräten.
 * Ablauf heute, Anmeldung per Mail, Telefon oder Formular oder spontan am Tag des Termins, Ticket in Zammad seit November 2022, Termin am ersten oder dritten Samstag, Slots von 11 bis 14 Uhr
+* Das Repair Café findet in der Stadtbibliothek Gütersloh statt.
 * Spontane Gäste bekommen seit jeher einen Laufzettel, heute ein Ticket.
 * Wer mitmacht, Empfang, Reparierende, Orga
 * Weltweit erhebt das Centre for Sustainable Design in Umfragen, wer Repair Cafés betreibt und wie sie arbeiten, zuerst 2014 und zuletzt 2026 cite:[charter-keiller-2014] cite:[quinton-counter-2026].

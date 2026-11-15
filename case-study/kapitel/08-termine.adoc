@@ -45,6 +45,14 @@ Dieses Kapitel steht noch in Stichpunkten. Der Workflow dazu entsteht in Phase 5
 * Die Reihenfolge der Regeln ist Wunschzeit des Gastes, ähnliche Geräte höchstens einen Slot auseinander, Verteilung über den Tag.
 * Vertagte Geräte behalten ohne neuen Wunsch ihre bisherige Uhrzeit, und bestätigte Termine bleiben beim Neuplanen unverändert.
 
+=== Vorschlag, Nachfrage und Absage
+
+* Ein Terminvorschlag steht in Zammad auf dem Status Vorschlag. Antwortet der Gast nicht, fragt Zammad nach 2 Tagen einmal nach und sagt nach 4 Tagen ab. Bisher kam die Absage ohne Nachfrage <<adr-0060>>.
+* Kurz vor dem Termin fragt Zammad nur nach. Kommt der Gast nicht, wird der Vorschlag nachts zu No-show.
+* Bestätigt der Gast, wird der Termin terminiert und das Ticket wandert von Requests nach Repairs. Liegt die Vereinbarung länger als 11 Tage zurück, kommt 3 Tage vorher eine Erinnerung.
+* Jede neue Anfrage per Mail oder Formular bekommt eine Eingangsbestätigung mit der Hausordnung.
+* Alle Mails an Gäste sind feste Texte ohne Modell. Nach einer neuen Einrichtung sind sie aus, bis das Team sie einschaltet.
+
 === Tags rund um den Termin
 
 * Sieben Tage vor dem Termin bekommt jedes Gerät den Tag `next-event`. Nach dem Termin ersetzt ihn nachts der Datums-Tag `YYYY-MM-DD`. Bisher setzte das Team das Datum vor jedem Termin von Hand in einem Makro <<adr-0062>>.

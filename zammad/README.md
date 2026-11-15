@@ -27,6 +27,7 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 | [texts/](texts/) | Texte für Mails an Gäste, Hausordnung, Pressemitteilung und Signatur |
 | [checklists.rb](checklists.rb), [text_modules.rb](text_modules.rb) und [templates.rb](templates.rb) | Checkliste „Repairs“ mit 9 Punkten aus `texts/checklist.<Sprache>.txt`, Textbausteine aus `texts/text_modules.de.tsv` und die Vorlage „Walk-in“ für Spontane. Alte Namen werden übernommen |
 | [tree_select_label.rb](tree_select_label.rb) | Initializer, gibt KI-Agenten bei Baum-Feldern den Namen der Option statt des Schlüssels, siehe [ADR 67](../docs/adr/0067-betreff-aus-marke-und-art-schreiben.adoc) |
+| [category_check.rb](category_check.rb) | Initializer, fragt alle fünf Minuten den Dienst in [category_check/](../category_check/README.md) nach der Art des Geräts und schreibt bei Abweichung eine Notiz, siehe [ADR 68](../docs/adr/0068-art-des-geraets-mit-d3-pruefen.adoc) |
 | [agents.rb](agents.rb) | Agent vom Typ Ticket Title Rewriter, schreibt in Repairs den Betreff als Marke und Gerät, etwa „Miele Staubsauger“, siehe [ADR 67](../docs/adr/0067-betreff-aus-marke-und-art-schreiben.adoc) |
 | [core_workflows.rb](core_workflows.rb) | Blendet die Felder aus `objects.rb` aus und zeigt sie je Gruppe, Gerätefelder in Repairs und Requests, Spenden und Bedarf in Events |
 | [ui_wording.tsv](ui_wording.tsv) | Eigene Begriffe, etwa Termin für Pending till und Kontaktformular für den Typ web |
@@ -44,6 +45,7 @@ Optionale Umgebungsvariablen für `manuel-setup` und den Scheduler in [compose.y
 | `MANUEL_EVENT_REMINDER_FROM` und `MANUEL_EVENT_REMINDER_SUBJECT` | Absender und Teil des Betreffs der Erinnerung vor dem Termin, Auslöser für Pressemitteilung und Notiz, siehe [ADR 66](../docs/adr/0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc) |
 | `MANUEL_STATISTICS_CUSTOMER`, `MANUEL_STATISTICS_SHEET_URL` und `MANUEL_FORUM_URL` | Gast des Statistik-Tickets als Login und die Links in dessen Notiz. Der Link zum Bearbeiten der Tabelle gehört nicht ins Repo |
 | `MANUEL_AUTO_REPLY_EXCEPT` | Adressen durch Komma getrennt, die nie eine Eingangsbestätigung bekommen, etwa sipgate. Von Hand eingetragene Ausnahmen bleiben |
+| `MANUEL_CATEGORY_CHECK_URL` | Adresse des Dienstes zur Prüfung der Art mit `d3:9b`, siehe [ADR 68](../docs/adr/0068-art-des-geraets-mit-d3-pruefen.adoc) |
 | `MANUEL_WHISPER_URL` | Adresse von whisper.cpp für Voicemails, siehe [ADR 64](../docs/adr/0064-voicemails-lokal-transkribieren.adoc) |
 
 ## Start

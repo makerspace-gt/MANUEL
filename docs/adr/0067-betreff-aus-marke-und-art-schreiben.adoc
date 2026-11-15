@@ -7,6 +7,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-15
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-15, Trigger mit Ergänzung statt KI-Agent, dazu ein Makro
 
 == Kontext und Problem
 
@@ -20,34 +21,35 @@ Am Empfang muss für Spontane ein Betreff eingetippt werden, obwohl die Art des 
 
 == Betrachtete Optionen
 
-* Trigger mit Platzhaltern
+* Trigger mit Platzhaltern und Ergänzung für Baum-Felder
 * Regel in Ruby, die den Betreff schon im Formular setzt
 * KI-Agent vom Typ Ticket Title Rewriter mit eigener Anweisung
 
 == Entscheidung
 
-Gewählt wird der Agent. Ein Trigger mit Platzhaltern scheitert daran, dass Zammad bei Baum-Feldern den Schlüssel statt des Namens einsetzt und nicht übersetzt ({zammad-src}/lib/notification_factory/renderer.rb[renderer.rb]).
+Gewählt wird ein Trigger mit einer kleinen Ergänzung, ohne KI. Zuerst lief ein Agent vom Typ Ticket Title Rewriter. Er übernahm die Marke, das Gerät aber nicht. Beide Probleme hatten dieselbe Ursache. Zammad erwartet bei Baum-Feldern als Wert einen Pfad aus Namen. Bei uns ist der Wert nach xref:0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[ADR 13] ein Schlüssel. Der Agent sah deshalb `21.18.593` statt Aktenvernichter ({zammad-src}/app/services/service/ai/agent/run/context/entity/object_attributes/options.rb[options.rb]). Der Platzhalter im Trigger lieferte ebenso den Schlüssel ({zammad-src}/lib/notification_factory/renderer.rb[renderer.rb]). Sind Marke und Art bekannt, braucht der Betreff kein Modell.
 
-{repo}/zammad/agents.rb[agents.rb] legt den Agenten an. Zammad legt seine Definition über die Vorgaben des Typs ({zammad-src}/app/models/ai/agent.rb[agent.rb]). Er sieht Marke, Art und die erste Nachricht und schreibt „Marke Gerät“. Den bisherigen Betreff sieht er nicht. Mit ihm im Kontext blieb beim Wechsel von Braun Kaffeemaschine auf Acer Beamer ohne Marke „Acer“ stehen, Felder gehen deshalb immer vor der Nachricht. Ein Trigger startet ihn in Repairs, wenn ein Ticket dort angelegt wird, wenn ein Termin bestätigt wird und wenn sich Art oder Marke ändern. Die Bestätigung erkennt er am Wechsel auf terminiert. Die Verschiebung nach Repairs macht ein anderer Trigger im selben Durchlauf, und `has changed` sieht nur die ursprüngliche Änderung. Die Vorlage „Walk-in“ füllt den Betreff mit „Spontan“, der Agent ersetzt ihn.
+* {repo}/zammad/tree_select_label.rb[tree_select_label.rb] setzt bei Baum-Feldern in Platzhaltern und im Kontext der Agenten den Namen der Option in der Sprache von Zammad ein. Bäume, deren Werte schon Namen sind, bleiben unverändert. Außerdem verliert der Betreff Leerzeichen am Rand, so wird ohne Marke aus „ Beamer“ „Beamer“.
+* Der Trigger „Repairs: Title from brand and device“ in {repo}/zammad/workflows.rb[workflows.rb] setzt `#{ticket.brand} #{ticket.device_type.value}` in Repairs, sobald eine Art gesetzt ist. Er greift beim Anlegen, bei der Bestätigung eines Termins und wenn sich Art oder Marke ändern. Die Bestätigung erkennt er am Wechsel auf terminiert. Die Verschiebung nach Repairs macht ein anderer Trigger im selben Durchlauf, und `has changed` sieht nur die ursprüngliche Änderung. Solange es eine Anfrage ist, bleibt der Betreff des Gastes.
+* Das Makro „Title from brand and device“ setzt den Betreff von Hand neu. Es setzt den Tag `retitle` und den festen Text „Betreff wird gesetzt“, den der Trigger sofort ersetzt. Die klassische Oberfläche wendet Makros im Browser an und setzt Tags über eine eigene Schnittstelle, ohne das Ticket zu ändern. Nur der feste Text löst die Trigger aus ({zammad-src}/app/controllers/tickets_controller.rb[tickets_controller.rb]). Der Trigger läuft deshalb im Modus `always`, sonst übersähe er den Tag.
+* Die Vorlage „Walk-in“ füllt den Betreff mit „Spontan“, der Trigger ersetzt ihn.
 
-Im ersten Betrieb übernahm der Agent die Marke, das Gerät aber nicht. Zammad gibt Agenten bei Baum-Feldern den Wert als Label, weil es dort Pfade aus Namen erwartet ({zammad-src}/app/services/service/ai/agent/run/context/entity/object_attributes/options.rb[options.rb]). Bei uns ist der Wert nach xref:0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[ADR 13] ein Schlüssel, der Agent sah also `21.18.593` statt Aktenvernichter und riet aus der Nachricht. {repo}/zammad/tree_select_label.rb[tree_select_label.rb] setzt im Kontext der Agenten den Namen der Option in der Sprache von Zammad ein, wenn er sich vom Wert unterscheidet. Das ist dieselbe Lücke wie beim Categorizer in xref:0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc[ADR 59] und gehört ins Issue an die Zammad GmbH.
-
-Am 15.11.2026 in der Testinstanz geprüft. Mit dem Namen im Kontext kamen „Hue Aktenvernichter“ und „Braun Kaffeemaschine“ heraus, vorher „Hue“ und „Braun Wasserkocher“. Eine Anfrage „Hilfe, mein Frühstück“ behielt den Betreff und hieß nach der Bestätigung „Toaster“. Ein Ticket „Braun Kaffeemaschine“ hieß nach dem Wechsel auf Acer und Beamer „Acer Beamer“, ohne Marke „Beamer“.
+Am 15.11.2026 in der Testinstanz geprüft, mit der Ergänzung von Hand geladen. Braun und Kaffeemaschine ergaben „Braun Kaffeemaschine“, nach dem Wechsel „Acer Beamer“, ohne Marke „Beamer“. Ein von Hand geschriebener Betreff blieb, bis jemand Art oder Marke änderte oder das Makro nutzte. Eine Anfrage „Hilfe, mein Frühstück“ hieß nach der Bestätigung „Philips Toaster“.
 
 === Konsequenzen
 
-* Gut, weil Übersichten am Termin die Geräte zeigen.
-* Gut, weil es in der Verwaltung von Zammad sichtbar und abschaltbar ist.
-* Schlecht, weil jede Änderung von Art oder Marke das Modell erneut fragt.
+* Gut, weil der Betreff immer zu den Feldern passt und kein Modell rechnet.
+* Gut, weil Trigger und Makro in der Verwaltung von Zammad sichtbar und abschaltbar sind.
+* Schlecht, weil der Betreff ohne gesetzte Art bleibt, wie er ist. Ein Gerät nur in der Nachricht erkennt die Regel nicht, dafür sind Categorizer und xref:0068-art-des-geraets-mit-d3-pruefen.adoc[ADR 68] da.
 * Schlecht, weil ein von Hand geänderter Betreff bei der nächsten Änderung von Art oder Marke überschrieben wird.
-* Der Trigger ist nur aktiv, wenn beim Anlegen ein Anbieter für KI eingetragen ist.
+* Die Lücke bei Baum-Feldern gehört ins Issue an die Zammad GmbH, zusammen mit xref:0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc[ADR 59].
 
 == Vor- und Nachteile der Optionen
 
-=== Trigger mit Platzhaltern
+=== Trigger mit Ergänzung
 
-* Gut, weil kein Modell nötig ist.
-* Schlecht, weil der Platzhalter bei Baum-Feldern den Schlüssel liefert.
+* Gut, weil kein Modell nötig ist und die Regel in Zammad sichtbar bleibt.
+* Schlecht, weil der Platzhalter ohne Ergänzung bei Baum-Feldern den Schlüssel liefert.
 
 === Regel in Ruby
 
@@ -57,7 +59,7 @@ Am 15.11.2026 in der Testinstanz geprüft. Mit dem Namen im Kontext kamen „Hue
 === KI-Agent
 
 * Gut, weil Zammad den Typ mitbringt und er auch aus der Nachricht ein Gerät erkennt.
-* Schlecht, weil er ein laufendes Modell braucht.
+* Schlecht, weil er ein laufendes Modell braucht und im Test den alten Betreff fortschrieb.
 
 == Quellen
 

@@ -26,6 +26,7 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 | [workflows.rb](workflows.rb) | Trigger und geplante Aufgaben, also `next-event`, Verschieben nach Repairs, Eingangsbestätigung mit Hausordnung, Nachfrage und Absage bei Terminvorschlägen, Erinnerung und Löschfristen. Regeln für Mails an Gäste und Löschungen sind beim Anlegen aus, ein späterer Lauf ändert `active` nie. Alte Namen übernimmt `LEGACY_NAMES` |
 | [texts/](texts/) | Texte für Mails an Gäste, Hausordnung, Pressemitteilung und Signatur |
 | [checklists.rb](checklists.rb), [text_modules.rb](text_modules.rb) und [templates.rb](templates.rb) | Checkliste „Repairs“ mit 9 Punkten aus `texts/checklist.<Sprache>.txt`, Textbausteine aus `texts/text_modules.de.tsv` und die Vorlage „Walk-in“ für Spontane. Alte Namen werden übernommen |
+| [tree_select_label.rb](tree_select_label.rb) | Initializer, gibt KI-Agenten bei Baum-Feldern den Namen der Option statt des Schlüssels, siehe [ADR 67](../docs/adr/0067-betreff-aus-marke-und-art-schreiben.adoc) |
 | [agents.rb](agents.rb) | Agent vom Typ Ticket Title Rewriter, schreibt in Repairs den Betreff als Marke und Gerät, etwa „Miele Staubsauger“, siehe [ADR 67](../docs/adr/0067-betreff-aus-marke-und-art-schreiben.adoc) |
 | [core_workflows.rb](core_workflows.rb) | Blendet die Felder aus `objects.rb` aus und zeigt sie je Gruppe, Gerätefelder in Repairs und Requests, Spenden und Bedarf in Events |
 | [ui_wording.tsv](ui_wording.tsv) | Eigene Begriffe, etwa Termin für Pending till und Kontaktformular für den Typ web |

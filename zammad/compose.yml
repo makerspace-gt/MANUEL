@@ -37,6 +37,7 @@ services:
       - ./zammad/contact_filter.rb:/opt/zammad/config/initializers/zz_contact_filter.rb:ro
       - ./zammad/article_types.rb:/opt/zammad/config/initializers/zz_article_types.rb:ro
       - ./zammad/voicemail.rb:/opt/zammad/config/initializers/zz_voicemail.rb:ro
+      - ./zammad/tree_select_label.rb:/opt/zammad/config/initializers/zz_tree_select_label.rb:ro
     # The files may lie on a read-only system path, for example /usr/share/manuel on MANUEL, where
     # SELinux labels cannot be changed with :z
     security_opt:
@@ -54,6 +55,7 @@ services:
       - ./zammad/contact_filter.rb:/opt/zammad/config/initializers/zz_contact_filter.rb:ro
       - ./zammad/article_types.rb:/opt/zammad/config/initializers/zz_article_types.rb:ro
       - ./zammad/voicemail.rb:/opt/zammad/config/initializers/zz_voicemail.rb:ro
+      - ./zammad/tree_select_label.rb:/opt/zammad/config/initializers/zz_tree_select_label.rb:ro
     security_opt:
       - label=disable
 
@@ -66,5 +68,6 @@ services:
       - ./zammad/contact_filter.rb:/opt/zammad/config/initializers/zz_contact_filter.rb:ro
       - ./zammad/article_types.rb:/opt/zammad/config/initializers/zz_article_types.rb:ro
       - ./zammad/voicemail.rb:/opt/zammad/config/initializers/zz_voicemail.rb:ro
+      - ./zammad/tree_select_label.rb:/opt/zammad/config/initializers/zz_tree_select_label.rb:ro
     security_opt:
       - label=disable

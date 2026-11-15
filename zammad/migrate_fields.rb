@@ -7,8 +7,8 @@
 # It copies a value only where the new field is still empty, so it can run again. Tickets are written
 # without callbacks, so no trigger fires and no guest gets an email. Triggers, scheduled jobs, macros,
 # overviews and core workflows that use an old field are switched to the new one. Rules that code in
-# zammad/ replaces, listed in REPLACED_RULES, are switched off. Last, the old fields are deactivated,
-# their values stay in the database.
+# zammad/ replaces, listed in REPLACED_RULES, are switched off. Press triggers and tags with older names
+# are renamed. Last, the old fields are deactivated, their values stay in the database.
 #
 # The mapping below is the one of the Repair Café of Makerspace Gütersloh. Other initiatives replace
 # OLD_FIELDS with their own names and values.
@@ -81,6 +81,27 @@ renamed = Trigger.where('name LIKE ?', 'Pressemitteilung %').map do |trigger|
 end
 puts "Pressemitteilungen #{APPLY ? 'übernommen' : 'würden übernommen'}: #{renamed.join(', ').presence || 'keine'}" \
      "#{press ? '' : ', Organisation Presse fehlt, erst zammad/setup.rb ausführen'}"
+
+# Tags are English like all names in Zammad. Tag::Item.rename also changes overviews, triggers, jobs and
+# postmaster filters, macros it leaves out. When the new tag exists already, rename merges and changes no
+# rule, so both steps run here for every model.
+RENAMED_TAGS = { 'abgelehnt' => 'obsolete' }.freeze
+
+RENAMED_TAGS.each do |old_name, new_name|
+  item = Tag::Item.find_by(name: old_name)
+  rules = (Tag::Item.all_objects + Macro.all).select do |record|
+    %i[condition perform].any? { |field| record.has_attribute?(field) && record[field].to_json.include?(%("#{old_name}")) }
+  end
+  puts "Tag #{old_name} #{APPLY ? 'heißt jetzt' : 'hieße'} #{new_name}, #{item ? Tag.where(tag_item_id: item.id).count : 0} Tickets, " \
+       "Regeln #{rules.map(&:name).join(', ').presence || 'keine'}"
+  next if !APPLY
+
+  Tag::Item.rename(id: item.id, name: new_name) if item
+  rules.each do |record|
+    changed = %i[condition perform].map { |field| record.has_attribute?(field) && Tag::Item.update_tag_values(record[field], old_name, new_name) }.any?
+    record.save! if changed
+  end
+end
 
 existing = OLD_FIELDS.keys.select { |name| Ticket.column_names.include?(name) }
 missing_new = OLD_FIELDS.values.map(&:first).reject { |name| Ticket.column_names.include?(name) }

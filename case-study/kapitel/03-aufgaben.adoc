@@ -70,6 +70,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 ** Ein Trigger legt vor jedem Termin das Statistik-Ticket an, und ein Tag `next-event` markiert die Geräte der nächsten sieben Tage.
 ** Löschfristen, ein Feld für den Newsletter am Gast und Übersichten je Monat gibt es schon.
 ** Die Felder heißen deutsch, etwa `marke` und `ergebnis`, und ein Feld für die Art des Geräts fehlt. Ein Skript übernimmt die alten Werte in die neuen Felder und stellt die Regeln um.
+* Kontaktformular und Anrufbeantworter liefern Name und Nummer nur im Text. Ein Filter beim Eingang übernimmt sie in den Gast, Nummern im Format +49 5241 1234567. Die erste Nachricht zeigt den Eingangsweg, also Kontaktformular, Anruf oder Empfang <<adr-0063>>.
 * Beim Einrichten fiel einiges auf.
 ** Eine Übersetzung gilt in Zammad für jeden gleichen Text. Model übersetzt Zammad selbst mit Modell, das Feld heißt deshalb Model or type. Power supply ist im Katalog das Netzteil, das Feld heißt deshalb Power source.
 ** Namen von Gruppen übersetzt Zammad nicht, sie stehen für alle englisch da.

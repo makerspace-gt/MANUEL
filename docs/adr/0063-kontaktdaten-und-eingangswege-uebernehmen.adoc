@@ -1,0 +1,67 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-src: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8
+[[adr-0063]]
+= 0063 Kontaktdaten und Eingangswege aus Kontaktformular, sipgate und Empfang übernehmen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Anfragen kommen per Mail, über das Kontaktformular der Website, als Voicemail von sipgate und spontan am Empfang. Beim Kontaktformular stehen Name und E-Mail-Adresse nur im Text, beim Anrufbeantworter ist der Gast immer sipgate und die Nummer steht im Text. Das Team trägt Namen und Nummern bisher von Hand nach, in wechselndem Format. Alle Wege außer dem Empfang erscheinen als Mail, der Empfang als Anruf. Wie kommen Kontaktdaten und Eingangsweg richtig ins Ticket?
+
+== Entscheidungskriterien
+
+* Nummern haben ein einheitliches Format, `+49 5241 1234567`, Handynummern im Feld Mobil
+* Vorhandene Angaben werden nie überschrieben, Abweichungen prüft ein Mensch
+* Der Eingangsweg ist an der ersten Nachricht erkennbar und auswertbar
+* Andere Initiativen passen nur Muster an
+
+== Betrachtete Optionen
+
+* Weiter von Hand
+* KI-Agent, der Kontaktdaten erkennt
+* Filter beim Eingang der Mail und eigene Typen für die erste Nachricht
+
+== Entscheidung
+
+Gewählt wird ein Filter beim Eingang. {repo}/zammad/contact_filter.rb[contact_filter.rb] wird als Initializer eingebunden und als Postmaster-Filter 6400 registriert, also bevor Zammad den Absender als Gast bestimmt ({zammad-src}/app/models/channel/filter/identify_sender.rb[identify_sender.rb]). Er nutzt `Cti::CallerId` von Zammad für Normalisierung und Suche ({zammad-src}/app/models/cti/caller_id.rb[caller_id.rb]) und die Bibliothek `telephone_number` für Format und Typ.
+
+* *Kontaktformular.* Name und E-Mail kommen aus dem Text, der Gast wird gefunden oder angelegt, eine Nummer im Freitext übernommen. Die erste Nachricht bekommt den Typ `web`, angezeigt als Kontaktformular.
+* *sipgate.* Die Nummer nach „Anruf von:“ findet den Gast über Telefon oder Mobil, sonst entsteht ein Gast nur mit Nummer. Die erste Nachricht wird ein Anruf.
+* *Empfang.* Der neue Typ `walk-in`, angezeigt als Empfang. Die Oberfläche bietet beim Anlegen nur Anruf und Mail ({zammad-src}/app/assets/javascripts/app/controllers/agent_ticket_create.coffee[agent_ticket_create.coffee]), {repo}/zammad/article_types.rb[article_types.rb] stellt die erste Nachricht aus der Vorlage für Spontane deshalb sofort um.
+* Abweichende Namen oder mehrdeutige Nummern setzen den Tag `contact-check`.
+
+Den Bestand gleicht {repo}/zammad/migrate_contacts.rb[migrate_contacts.rb] einmal an, zuerst als Probelauf. Am 15.11.2026 war in der Testinstanz alles mit erfundenen Daten geprüft, auch dass der zweite Lauf nichts mehr ändert.
+
+=== Konsequenzen
+
+* Gut, weil Gäste mit Anrufen und Mails unter einem Konto zusammenkommen.
+* Gut, weil sich Eingangswege zählen lassen, etwa wie viele Anfragen über das Formular kommen.
+* Schlecht, weil Muster wie „Dein Name:“ an der Website und an sipgate hängen und bei Änderungen dort angepasst werden müssen.
+* Schlecht, weil der Typ Empfang in der klassischen Oberfläche kein eigenes Symbol hat.
+* Namen aus dem gesprochenen Text der Voicemail erkennt der Filter nicht, das bleibt beim Agenten für erkannte Kontaktdaten als interne Notiz.
+
+== Vor- und Nachteile der Optionen
+
+=== Von Hand
+
+* Gut, weil nichts zu bauen ist.
+* Schlecht, weil es Zeit kostet und Formate auseinanderlaufen.
+
+=== KI-Agent
+
+* Gut, weil er auch Freitext versteht.
+* Schlecht, weil feste Felder eine sichere Regel brauchen und kein Modell.
+
+=== Filter und eigene Typen
+
+* Gut, weil er sofort beim Eingang greift.
+* Schlecht, weil er Muster pflegen muss.
+
+== Quellen
+
+* Struktur der lokalen Nachrichten, nur Bezeichnungen der Felder, am 15.11.2026
+* Entscheidungen von Michael Prange am 15.11.2026

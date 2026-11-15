@@ -12,7 +12,7 @@ _Teilfrage T4. Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Men
 * Der Katalog vereint die feine Liste der anstiftung mit den Gruppen der Open Repair Alliance.
 * Jeder Eintrag hat einen Schlüssel, der seine ORA-Gruppe schon enthält.
 * Der Katalog steht offen unter CC BY-SA 4.0 und lässt sich von anderen Initiativen nachnutzen.
-* Der Katalog hat 1.089 Einträge. Englische Namen fehlen noch bei 863 davon.
+* Der Katalog hat nach der ersten Durchsicht 1.081 Einträge, 254 davon mit Beschreibung. Englische Namen fehlen noch bei 827.
 * 221 Einträge decken 90 Prozent der deutschen Reparaturen ab, für das letzte Prozent braucht es 373 Einträge.
 * Felder und Werte von ORA, anstiftung und Restarters liegen als Tabellen vor und lassen sich mit jeder neuen Quelle neu erzeugen.
 
@@ -43,7 +43,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 
 === Aufbau und Quellen
 
-* 1.089 Einträge mit Namen, Beschreibung und Synonymen auf Deutsch und Englisch, ORA-Gruppe, Stromversorgung und den Kategorien der anstiftung
+* 1.081 Einträge mit Namen, Beschreibung und Synonymen auf Deutsch und Englisch, ORA-Gruppe, Stromversorgung und den Kategorien der anstiftung
 * Quellen sind das Formular der anstiftung mit 1.208 Kategorien und die Open Repair Data <<adr-0007>>, <<adr-0028>>
 * Lizenz CC BY-SA 4.0 cite:[cc-by-sa-4-0], <<adr-0009>>
 
@@ -63,7 +63,7 @@ Dieses Kapitel steht noch in Stichpunkten.
 [[abdeckung]]
 === Wie viele Einträge gebraucht werden
 
-* 1.078 der 1.089 Einträge kommen in den deutschen Reparaturen der Open Repair Data mindestens einmal vor. Gezählt sind die 55.926 Reparaturen der anstiftung, die sich eindeutig einem Eintrag zuordnen lassen.
+* Stand vor der Durchsicht am 14.11.2026. 1.078 der 1.089 Einträge kommen in den deutschen Reparaturen der Open Repair Data mindestens einmal vor. Gezählt sind die 55.926 Reparaturen der anstiftung, die sich eindeutig einem Eintrag zuordnen lassen.
 * Die übrigen 11 sind unsere eigene Aufteilung der Kopfhörer und neun Kategorien, die erst nach dem Stand der Daten vom Juli 2026 in den Laufzettel kamen, etwa Campinglampe und Saunaofen.
 * Die meisten Einträge sind selten. 659 haben weniger als 10 Reparaturen, 217 genau eine, etwa Braukessel und Marderschreck.
 * 1 Prozent der Reparaturen sind rund 560 Geräte. Bis 95 Prozent kostet jedes weitere Prozent unter 40 Einträge, das letzte Prozent braucht 373.
@@ -100,10 +100,22 @@ image::../../docs/grafiken/ora-coverage-restarters-hell.svg[Bei Restarters decke
 * Die Tabelle ordnet nach ähnlichen Buchstaben zu und macht dabei aus eigenen Marken andere, etwa aus Teufel Tefal, aus Canton Canon und aus Olympia Olympus. Solche Fehlgriffe kommen in eine eigene Liste der Ausnahmen. Schreibweisen, die zu mehr als einer Marke führen wie TechniSat, bleiben unangetastet.
 * Die englischen Namen der Gegenstände aus ords-extra dienen genauso als Vorschlag für die fehlenden englischen Namen im Katalog.
 
-=== Beschreibungen für Rückfragen
+=== Durchsicht
 
-* Beschreibungen sind für Menschen da, nicht für das Modell <<adr-0010>>.
+* Die Durchsicht folgt der Häufigkeit. Zuerst kommen die Einträge der Klassen A und B, denn nur sie stehen in der Liste des Categorizer <<einordnung>>. Die übrigen bleiben Entwurf, bis einer in einem Ticket auftaucht.
+* Gearbeitet wird in Blöcken von etwa 15 Einträgen. Claude schreibt je Eintrag Beschreibung und Synonyme auf Deutsch und Englisch und vergleicht ihn mit den übrigen Einträgen derselben ORA-Gruppe. Ein Mensch entscheidet jeden Block, Änderungswünsche gehen in den nächsten Entwurf.
+* Dabei fallen Doppelungen auf, etwa Smart-TV neben Fernseher, Steuergerät neben Controller oder Funkkopfhörer neben Kopfhörer. Zusammengefasste Einträge werden Synonyme, ihre IDs des Laufzettels gehen mit. Die Gründe stehen in {repo}/eval/decision/equivalents.tsv[equivalents.tsv] <<adr-0008>>.
+* Auch falsche ORA-Gruppen fallen auf. Der Vakuumierer stand bei den Staubsaugern, die Astschere bei den Elektrowerkzeugen. Mit der Gruppe ändert sich der Schlüssel, das geht nur bis zum Start in Zammad.
+* Wo Restarters keine passende Kategorie hat, gilt eine feste Vorgabe. Bildschirme und Laptops bekommen eine Größe, Gegenstände ohne Strom Misc oder Hand tool.
+* Die Synonyme stammen aus dem Sprachgebrauch, nicht aus den Daten. {repo}/katalog/synonyms.py[synonyms.py] zählt sie in den deutschen Open Repair Data und in unseren Tickets. Am 15.11.2026 kamen 321 von 635 Synonymen nirgends vor. Die meisten bleiben trotzdem, etwa Tretroller oder Musikdose. Gestrichen wurden 22 Umschreibungen wie „Lampe für den Tisch“. Zusätze wie „Wasserkessel, elektrisch“ bleiben, weil sie den Gegenstand vom ähnlichen ohne Strom trennen.
+* Neue Synonyme aus den Daten gibt es kaum. Die Freitexte der Open Repair Data beschreiben Fehler und Bauteile, nicht das Gerät, und die Betreffe unserer Tickets nennen das Gerät meist schon so wie der Katalog.
+* {repo}/katalog/check.py[check.py] prüft nach jedem Block, dass kein Wort zu zwei Einträgen gehört und Schlüssel, Gruppen und Stromversorgung zusammenpassen.
+
+=== Beschreibungen
+
+* Beschreibungen sind für Menschen da, nicht für das Modell <<adr-0010>>. Im Versuch mit dem Decision-Modell kosteten sie Treffer <<einordnung>>.
 * Sie helfen bei Rückfragen, etwa wenn Kopfhörer oder Grill gemeint sein kann.
+* Der Categorizer von Zammad nimmt zu jeder Option eine Beschreibung in den Prompt. Ob sie ihm helfen, zeigt der neue Vorabtest mit und ohne Beschreibungen.
 
 === Auszug
 

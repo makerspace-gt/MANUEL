@@ -109,6 +109,7 @@ image::../../docs/grafiken/ora-coverage-restarters-hell.svg[Bei Restarters decke
 * Wo Restarters keine passende Kategorie hat, gilt eine feste Vorgabe. Bildschirme und Laptops bekommen eine Größe, Gegenstände ohne Strom Misc oder Hand tool.
 * Die Synonyme stammen aus dem Sprachgebrauch, nicht aus den Daten. {repo}/katalog/synonyms.py[synonyms.py] zählt sie in den deutschen Open Repair Data und in unseren Tickets. Am 15.11.2026 kamen 321 von 635 Synonymen nirgends vor. Die meisten bleiben trotzdem, etwa Tretroller oder Musikdose. Gestrichen wurden 22 Umschreibungen wie „Lampe für den Tisch“. Zusätze wie „Wasserkessel, elektrisch“ bleiben, weil sie den Gegenstand vom ähnlichen ohne Strom trennen.
 * Neue Synonyme aus den Daten gibt es kaum. Die Freitexte der Open Repair Data beschreiben Fehler und Bauteile, nicht das Gerät, und die Betreffe unserer Tickets nennen das Gerät meist schon so wie der Katalog.
+* Bei der Durchsicht kam die Spalte `hazards` dazu. Sie gibt die Gefahren vor, die im Ticket erscheinen <<adr-0056>>.
 * {repo}/katalog/check.py[check.py] prüft nach jedem Block, dass kein Wort zu zwei Einträgen gehört und Schlüssel, Gruppen und Stromversorgung zusammenpassen.
 
 === Beschreibungen

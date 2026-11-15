@@ -1,0 +1,67 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0056]]
+= 0056 Gefahren am Gerät festhalten
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Bisher sagt `d3:9b` je Ticket nur ja oder nein zu sicherheitsrelevant, mit dem Kriterium „Netzspannung, Akkus, große Kondensatoren oder Gas“ (xref:0003-auswahlwerte-mit-decision-modell-bestimmen.adoc[ADR 3]). Ein Feld dafür gibt es in Zammad nicht. Netzspannung betrifft fast jedes Gerät im Repair Café, das Ja sagt deshalb wenig. Engagierte brauchen eher den Hinweis, welche Gefahr droht, etwa Hochspannung in einer Mikrowelle oder Lebensgefahr, wenn ein Blutdruckmessgerät nach der Reparatur falsch misst. Wie halten wir Gefahren so fest, dass sie beim Gerät sichtbar sind?
+
+== Entscheidungskriterien
+
+* Die Art der Gefahr ist erkennbar, nicht nur ein Ja
+* Häufige Fälle sind ohne Modell richtig markiert
+* Engagierte können die Markierung im Ticket ändern
+* Die Werte passen zu anderen Initiativen
+
+== Betrachtete Optionen
+
+* Ja oder nein vom Decision-Modell wie bisher
+* Feld mit Mehrfachauswahl im Ticket, Vorgabe aus einer Spalte im Katalog
+* Feld mit Mehrfachauswahl im Ticket, nur von Hand oder vom Modell gesetzt
+
+== Entscheidung
+
+Gewählt wird das Feld mit Vorgabe aus dem Katalog. Das Ticket bekommt das Feld `hazards` mit Mehrfachauswahl, angelegt von {repo}/zammad/objects.rb[objects.rb]. Der Katalog bekommt die Spalte `hazards` mit denselben Werten.
+
+* `high_voltage`, Hochspannung, etwa Mikrowelle, Blitzgerät oder Wechselrichter
+* `radiation`, Strahlung, etwa Mikrowelle, Laser oder UV-Lampe
+* `battery`, großer Akku mit Brandgefahr, etwa E-Bike-Akku, Powerbank oder Hoverboard
+* `gas`, Gas, etwa Gasofen oder Gasgrill
+* `hazardous_substance`, Gefahrstoff, etwa Quecksilber in Schaltern, Barometern oder Leuchtstoffröhren oder Asbest in alten Heizgeräten
+* `life_critical`, Lebensgefahr bei Fehlfunktion, etwa Blutdruckmessgerät, Rauchmelder, Fahrradbremsen oder Kindersitz
+
+Netzspannung allein ist kein Wert. Ist die Art des Geräts gesetzt, kommen ihre Gefahren als Vorschlag ins Ticket. Engagierte ergänzen oder entfernen Werte, etwa bei einem Röhrenradio, das im Katalog ein Synonym von Radio ist und deshalb keine Vorgabe hat.
+
+=== Konsequenzen
+
+* Gut, weil die Gefahr im Ticket steht, bevor jemand das Gerät öffnet.
+* Gut, weil häufige Fälle über den Katalog sicher markiert sind.
+* Schlecht, weil eine Gefahr, die nur eine Bauart betrifft, keine Vorgabe bekommt. Das Kriterium für `d3:9b` muss für solche Fälle zu den neuen Werten passen.
+* Schlecht, weil noch offen ist, wer den Vorschlag ins Ticket schreibt, ein Agent in Zammad oder ein Workflow.
+
+== Vor- und Nachteile der Optionen
+
+=== Ja oder nein vom Modell
+
+* Gut, weil es schon getestet ist.
+* Schlecht, weil es fast immer ja heißt und die Art der Gefahr fehlt.
+
+=== Vorgabe aus dem Katalog
+
+* Gut, weil eine feste Regel nicht vom Modell abhängt.
+* Schlecht, weil die Spalte gepflegt werden muss.
+
+=== Nur im Ticket
+
+* Gut, weil nichts am Katalog hängt.
+* Schlecht, weil bei jedem Ticket neu entschieden werden muss.
+
+== Quellen
+
+* Vorschlag von Michael Prange am 15.11.2026, ein Feld mit Mehrfachauswahl für Strahlung, Hochspannung und Lebensgefahr, ergänzt um Gefahrstoffe nach einem Schalter mit Quecksilber im Repair Café
+* {repo}/eval/decision/decision.py[decision.py] mit dem bisherigen Kriterium

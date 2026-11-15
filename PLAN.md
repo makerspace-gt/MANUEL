@@ -361,7 +361,8 @@ git push
 - [x] Decision-Modell d3 an deutschen Beispiel-Tickets prüfen, vor allem das Kriterium sicherheitsrelevant. Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt
 - [ ] Schnelles und großes Modell am Testsatz vergleichen und entscheiden, ob sich die Eskalation lohnt
 - [ ] Beim Repair Café im November Vorschläge live in Open WebUI unter http://manuel:3000 testen und Rückmeldungen sammeln, mit den anonymisierten Tickets nach [ADR 39](docs/adr/0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc) und nie mit Angaben von Gästen
-- [ ] Einordnung der Gefahren überarbeiten. Das Repair Café schaut sich alles an, was Gäste bringen. Die Markierung als sicherheitsrelevant ist ein Hinweis für die Engagierten und keine eigene Kategorie
+- [ ] Einordnung der Gefahren überarbeiten. Das Repair Café schaut sich alles an, was Gäste bringen. Seit dem 15.11.2026 hält das Feld `hazards` die Art der Gefahr fest, mit Vorgabe aus dem Katalog, siehe [ADR 56](docs/adr/0056-gefahren-am-geraet-festhalten.adoc). Offen ist, ob ein Agent oder ein Workflow die Vorgabe ins Ticket schreibt und wie das Kriterium für `d3:9b` dazu passt
+- [ ] Das Team entscheidet, ob Geräte mit Lebensgefahr bei Fehlfunktion abgelehnt werden, siehe [ADR 57](docs/adr/0057-lebenswichtige-geraete-nicht-reparieren.adoc)
 - [ ] Bildverständnis des Hauptmodells mit llama.cpp einrichten, dafür braucht es eine Projektor-Datei (mmproj), siehe [ADR 23](docs/adr/0023-qwen3-6-als-hauptmodell-nutzen.adoc)
 - [ ] Auslesen von Fotos vom Typenschild mit dem Hauptmodell an Beispielfotos testen, ein Mensch bestätigt die Felder, siehe [ADR 34](docs/adr/0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc)
 - [ ] Spalte „spontan“ im Blatt Eingabe der Statistik anlegen, damit die [Sharecard](sharecard/README.md) spontane Gäste zeigt

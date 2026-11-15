@@ -4,7 +4,8 @@
 A synonym must not be the name or a synonym of another entry. With --warnungen
 it also shows synonyms that contain the name of another entry as part of a word. Usually this is
 harmless, for example Lampe in Bettlampe, but it helps when reviewing. The power supply
-uses only the values of the form, the ORA group only groups from ora-gruppen.tsv.
+uses only the values of the form, hazards only the values of the ticket field, the ORA group only
+groups from ora-gruppen.tsv.
 
 The key has the form ORA.Restarters.anstiftung or ORA.Restarters.anstiftung.eigene. In front is
 the number of the ORA group, then the id of the category on Restarters.net, then the leading ID of the
@@ -30,6 +31,8 @@ EQUIVALENT = Path("eval/decision/equivalents.tsv")
 RESTARTERS = Path("quellen/restarters/kategorien.csv")
 KEY_PATTERN = re.compile(r"(\d+)\.(\d+)\.(\d+)(\.\d+)?")
 POWER = {"230 V", "mit Netzteil", "Batterie", "Akku", "ohne Kabel (Mechanik)"}
+# Values of the ticket field hazards in zammad/objects.rb, see docs/adr/0056-gefahren-am-geraet-festhalten.adoc
+HAZARDS = {"high_voltage", "radiation", "battery", "gas", "hazardous_substance", "life_critical"}
 
 
 def key(text):
@@ -88,6 +91,9 @@ def main():
         for value in [v for v in row["power"].split(" | ") if v]:
             if value not in POWER:
                 problems.append(f"{row['name']}: unbekannte Stromversorgung {value}")
+        for value in [v for v in row["hazards"].split(" | ") if v]:
+            if value not in HAZARDS:
+                problems.append(f"{row['name']}: unbekannte Gefahr {value}")
         for field in ("description", "description_en"):
             if re.search(r"[:;–]", row[field]):
                 problems.append(f"{row['name']}: Doppelpunkt, Semikolon oder Gedankenstrich in {field}")

@@ -1,0 +1,57 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0057]]
+= 0057 Lebenswichtige Geräte nicht reparieren
+
+[horizontal]
+Status:: vorgeschlagen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange, Entscheidung durch das Team
+
+== Kontext und Problem
+
+Gäste bringen auch medizinische Geräte wie Blutdruckmessgeräte, Fieberthermometer oder Inhalatoren. Misst ein solches Gerät nach einer Reparatur falsch, kann das lebensgefährlich werden, ohne dass es jemand bemerkt. Ähnliches gilt für Rauchmelder oder Kindersitze. Das Repair Café kann solche Geräte nicht prüfen oder kalibrieren. Sollen wir sie überhaupt reparieren?
+
+== Entscheidungskriterien
+
+* Niemand wird durch eine Reparatur gefährdet
+* Gäste verstehen, warum ein Gerät abgelehnt wird
+* Engagierte müssen nicht am Termin allein entscheiden
+
+== Betrachtete Optionen
+
+* Alles reparieren, Engagierte entscheiden am Termin
+* Geräte mit `life_critical` nach xref:0056-gefahren-am-geraet-festhalten.adoc[ADR 56] nicht reparieren und freundlich absagen
+* Nur äußere Schäden reparieren, etwa ein Gehäuse oder einen Riemen, aber nichts, was die Funktion betrifft
+
+== Entscheidung
+
+Vorgeschlagen wird, Geräte mit `life_critical` nicht zu reparieren. Erkennt MANUEL beim Empfang ein solches Gerät, schreibt es eine interne Notiz und einen Entwurf für eine freundliche Absage, die Engagierte prüfen und senden. Die Absage nennt den Grund und, wo möglich, den Hersteller oder ein Sanitätshaus. Ob auch äußere Schäden ausgeschlossen sind, entscheidet das Team.
+
+=== Konsequenzen
+
+* Gut, weil niemand nach einer Reparatur einem falschen Messwert vertraut.
+* Gut, weil Engagierte sich auf eine Regel berufen können.
+* Schlecht, weil auch einfache Fehler wie ein loser Batteriekontakt abgelehnt werden.
+* Schlecht, weil die Liste der Geräte mit `life_critical` stimmen muss. Fehlt ein Gerät, greift die Regel nicht.
+
+== Vor- und Nachteile der Optionen
+
+=== Alles reparieren
+
+* Gut, weil kein Gast abgewiesen wird.
+* Schlecht, weil die Verantwortung am Termin bei einzelnen Engagierten liegt.
+
+=== Nicht reparieren
+
+* Gut, weil die Regel klar ist.
+* Schlecht, weil manche Reparatur ungefährlich wäre.
+
+=== Nur äußere Schäden
+
+* Gut, weil einfache Fälle möglich bleiben.
+* Schlecht, weil die Grenze am Termin schwer zu ziehen ist.
+
+== Quellen
+
+* Hinweis von Michael Prange am 15.11.2026, dass falsche Messwerte nach einer Reparatur lebensgefährlich sein können
+* Rechtliche Hinweise von Zammad zur KI, nach denen Menschen Ergebnisse bei Gesundheit und Sicherheit prüfen müssen, https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/app/assets/javascripts/app/controllers/_ai/_feature_base.coffee[_feature_base.coffee]

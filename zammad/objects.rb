@@ -119,6 +119,15 @@ field('repair_result', tr('Result', 'Ergebnis'), 'tree_select',
 # The appointment is the pending time with date and time, kept by keep_pending_time.rb. Neither needs
 # a field, see docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc and
 # docs/adr/0053-termin-in-der-wartezeit-behalten.adoc.
+# Hazards of the repair, proposed from the column hazards of the catalog and editable in the ticket, see
+# docs/adr/0056-gefahren-am-geraet-festhalten.adoc
+field('hazards', tr('Hazards', 'Gefahren'), 'multiselect',
+      choice({ 'high_voltage'        => ['High voltage', 'Hochspannung'],
+               'radiation'           => %w[Radiation Strahlung],
+               'battery'             => ['Large battery', 'Großer Akku'],
+               'gas'                 => %w[Gas Gas],
+               'hazardous_substance' => ['Hazardous substance', 'Gefahrstoff'],
+               'life_critical'       => ['Life-critical if faulty', 'Lebensgefahr bei Fehlfunktion'] }, multiple: true), 1185)
 # Empty means not decided yet, recommended means a check is due, see case-study chapter 7
 field('safety_test', tr('Safety test VDE 0701/0702', 'VDE 0701/0702 geprüft'), 'select',
       choice({ 'recommended' => %w[Recommended empfohlen], 'yes' => %w[Yes Ja], 'no' => %w[No Nein] }), 1190)

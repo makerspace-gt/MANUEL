@@ -19,6 +19,7 @@ Die Spalten haben nach [ADR 29](../docs/adr/0029-zielgruppe-und-sprache-festlege
 | restarters_category | Kategorie auf Restarters.net, leer, wo die Größe entscheidet |
 | intermediate_category | eigene feinere Gruppe, wo die ORA-Gruppe zu grob ist |
 | power | übliche Stromversorgung mit den Werten des Laufzettels |
+| hazards | Gefahren bei der Reparatur als Vorschlag für das Ticket, `high_voltage` für Hochspannung, `radiation` für Strahlung, `battery` für große Akkus, `gas` für Gas, `hazardous_substance` für Gefahrstoffe wie Quecksilber oder Asbest und `life_critical` für Lebensgefahr bei Fehlfunktion, siehe [ADR 56](../docs/adr/0056-gefahren-am-geraet-festhalten.adoc) |
 | form_ids | IDs der Kategorien im Laufzettel auf reparatur-initiativen.org, die zu diesem Eintrag gehören |
 | status | Entwurf oder bestätigt |
 

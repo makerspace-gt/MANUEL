@@ -27,6 +27,9 @@ services:
       MANUEL_EVENT_REMINDER_FROM: ${MANUEL_EVENT_REMINDER_FROM:-}
       MANUEL_EVENT_REMINDER_SUBJECT: ${MANUEL_EVENT_REMINDER_SUBJECT:-}
       MANUEL_AUTO_REPLY_EXCEPT: ${MANUEL_AUTO_REPLY_EXCEPT:-}
+      MANUEL_STATISTICS_CUSTOMER: ${MANUEL_STATISTICS_CUSTOMER:-}
+      MANUEL_STATISTICS_SHEET_URL: ${MANUEL_STATISTICS_SHEET_URL:-}
+      MANUEL_FORUM_URL: ${MANUEL_FORUM_URL:-}
     volumes:
       - ./zammad:/opt/manuel/zammad:ro
       - ./katalog/kategorien.tsv:/opt/manuel/katalog/kategorien.tsv:ro

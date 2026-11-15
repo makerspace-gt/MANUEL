@@ -53,6 +53,8 @@ REPLACED_RULES = {
   Macro => ['1. Tag Date', '2. Untag next-event'],
   # The cancellation of zammad/workflows.rb asks first, a proposal left open after the date becomes no-show
   Job   => ['Automatisch am Vortag schließen, wenn keinen Terminbestätigung erfolgt'],
+  # Replaced by the core workflows of zammad/core_workflows.rb
+  CoreWorkflow => ['Show Ergebnis'],
 }.freeze
 
 replaced = []
@@ -83,6 +85,12 @@ renamed = Trigger.where('name LIKE ?', 'Pressemitteilung %').map do |trigger|
 end
 puts "Pressemitteilungen #{APPLY ? 'übernommen' : 'würden übernommen'}: #{renamed.join(', ').presence || 'keine'}" \
      "#{press ? '' : ', Organisation Presse fehlt, erst zammad/setup.rb ausführen'}"
+
+# Statistics tickets of earlier dates move to Repairs::Events, without callbacks, so no trigger fires
+events = Group.find_by(name: 'Repairs::Events')
+statistics = Ticket.where(title: %w[Statistik Statistics], group_id: Group.where(name: 'Repairs').select(:id))
+puts "Statistik-Tickets #{APPLY ? 'verschoben' : 'würden verschoben'}: #{statistics.count}#{events ? '' : ', Gruppe Repairs::Events fehlt'}"
+statistics.update_all(group_id: events.id) if APPLY && events # rubocop:disable Rails/SkipsModelValidations
 
 # Tags are English like all names in Zammad. Tag::Item.rename also changes overviews, triggers, jobs and
 # postmaster filters, macros it leaves out. When the new tag exists already, rename merges and changes no

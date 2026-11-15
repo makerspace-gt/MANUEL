@@ -21,6 +21,7 @@ end
 
 load File.join(__dir__, 'groups.rb')
 load File.join(__dir__, 'objects.rb')
+load File.join(__dir__, 'core_workflows.rb')
 load File.join(__dir__, 'macros.rb')
 load File.join(__dir__, 'knowledge_base.rb')
 load File.join(__dir__, 'overviews.rb')

@@ -22,6 +22,7 @@ LEGACY_NAMES = {
     'Verpasste Anrufe ignorieren'                                 => 'Repairs: Ignore missed calls',
     'Voicemail ohne Nachricht ignorieren'                         => 'Repairs: Ignore voicemail without message',
     'Automatische Antwort bei neuen Repair Café Tickets'          => 'Repairs: Auto reply',
+    'Statistik'                                                   => 'Repairs: Statistics ticket',
   },
   Job     => {
     'Tag Date'                                                                => 'Repairs: Tag next-event',
@@ -247,6 +248,31 @@ workflow_rule(Job, 'Repairs: Remind of appointment', 'Repairs: An Termin erinner
                            'ticket.tags' => { 'operator' => 'contains one not', 'value' => 'reminded' } }.merge(with_email),
               perform:   { 'notification.email' => workflow_mail('appointment_reminder.de.md'),
                            'ticket.tags' => { 'operator' => 'add', 'value' => 'reminded' } })
+
+# One ticket per Repair Café for the statistics, from the reminder mail of the event platform, like the
+# press release of zammad/press.rb. It lands in Repairs::Events, so next-event and the monthly overviews
+# leave it out. Without MANUEL_EVENT_REMINDER_FROM nothing is created.
+if ENV['MANUEL_EVENT_REMINDER_FROM'].present?
+  links = { ENV['MANUEL_STATISTICS_SHEET_URL'] => 'Tabelle der Statistik', ENV['MANUEL_FORUM_URL'] => 'Forum' }
+          .select { |url, _| url.present? }.map { |url, label| "<a href=\"#{CGI.escapeHTML(url)}\">#{label}</a>" }
+  perform = {
+    'ticket.title'        => { 'value' => Setting.get('locale_default').to_s.start_with?('de') ? 'Statistik' : 'Statistics' },
+    'ticket.group_id'     => { 'value' => workflow_group_ids('Repairs::Events').first },
+    'ticket.state_id'     => { 'value' => scheduled.first },
+    'ticket.pending_time' => { 'operator' => 'relative', 'value' => '7', 'range' => 'day' },
+    'article.note'        => { 'subject' => 'Statistik', 'internal' => 'true',
+                               'body' => workflow_html(File.read(File.join(WORKFLOW_TEXTS, 'statistics_note.de.md'), encoding: 'utf-8'),
+                                                       links: links.any? ? "<p>#{links.join('<br>')}</p>" : nil) },
+  }
+  customer = User.find_by(login: ENV['MANUEL_STATISTICS_CUSTOMER'].to_s.downcase) if ENV['MANUEL_STATISTICS_CUSTOMER'].present?
+  perform['ticket.customer_id'] = { 'pre_condition' => 'specific', 'value' => customer.id.to_s } if customer
+  workflow_rule(Trigger, 'Repairs: Statistics ticket', 'Repairs: Statistik-Ticket', active: false, **trigger_defaults,
+                condition: { 'ticket.action' => { 'operator' => 'is', 'value' => 'create' },
+                             'ticket.title' => { 'operator' => 'contains', 'value' => ENV['MANUEL_EVENT_REMINDER_SUBJECT'].presence || 'nächste Woche:' },
+                             'article.from' => { 'operator' => 'contains', 'value' => ENV['MANUEL_EVENT_REMINDER_FROM'] } },
+                perform:   perform,
+                note:      'Statistics ticket for one Repair Café in Repairs::Events, ADR 60')
+end
 
 # 3. Deletion periods, inactive until the team switches them on, see chapter 11 of the case study
 

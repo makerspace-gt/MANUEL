@@ -1,0 +1,71 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-src: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8
+[[adr-0060]]
+= 0060 Abläufe des bestehenden Zammad als Code übernehmen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Der Export vom 15.11.2026 zeigt, dass im echten Zammad über Jahre erprobte Abläufe stecken. Dazu gehören Eingangsbestätigung mit Hausordnung, Absage unbestätigter Terminvorschläge, Erinnerung, der Tag `next-event`, Löschfristen, Übersichten, Textbausteine und eine Checkliste. Nichts davon stand im PLAN oder in `zammad/`. Andere Initiativen könnten das nachnutzen, wenn es als Code vorliegt. Wie übernehmen wir die Abläufe, ohne im echten Zammad etwas doppelt anzulegen oder Mails ungewollt zu verschicken?
+
+== Entscheidungskriterien
+
+* Andere Initiativen bekommen die Abläufe mit der Einrichtung, siehe xref:0054-zammad-einstellungen-als-code-pflegen.adoc[ADR 54]
+* Nichts schreibt ungewollt an Gäste oder löscht Tickets
+* Im echten Zammad entsteht nichts doppelt, der Zustand aktiv oder aus bleibt
+* Persönliches und Fremdes bleibt draußen, etwa Rechnungen, PayPal, Vorstand, AG Cyber und EUReCa
+
+== Betrachtete Optionen
+
+* Abläufe nur beschreiben
+* Export als JSON einspielen
+* Allgemein nutzbare Abläufe als Code nach ADR 54, alte Namen übernehmen
+
+== Entscheidung
+
+Gewählt wird Code. Die Regeln haben englische Namen mit dem Präfix `Repairs:` und deutsche Übersetzungen.
+
+* {repo}/zammad/workflows.rb[workflows.rb] legt Trigger und geplante Aufgaben an. Regeln innerhalb von Zammad sind sofort aktiv, also `next-event`, Verschieben terminierter Anfragen nach Repairs und das Aufräumen von Tags. Mails an Gäste und Löschfristen entstehen aus. Ein späterer Lauf ändert `active` nie.
+* `LEGACY_NAMES` benennt Regeln des echten Zammad vor dem Anlegen um, etwa „tag date“ oder „Automatisch erinnern, …“. Aktive Regeln bleiben aktiv und bekommen Bedingung und Text aus dem Code.
+* Texte für Gäste liegen unter {repo}/zammad/texts/[texts/]. Die Eingangsbestätigung setzt die Hausordnung aus `house_rules.de.md` vollständig ein. Ist die Antwort in der Wissensdatenbank öffentlich, folgt ein Link auf beide Sprachen. Trigger-Mails tragen keine Signatur der Gruppe, deshalb liegt sie wörtlich in `signature.de.html`.
+* *Terminvorschlag.* Vor der Absage wird einmal nachgefragt. Nach 2 Tagen ohne Kontakt und bei einem Termin in höchstens 9 Tagen geht eine Nachfrage raus und das Ticket bekommt `asked-again`. Abgesagt wird wie bisher nach 4 Tagen, aber nur nach der Nachfrage. Die Absage setzt `obsolete`. Kurz vor dem Termin wird nur nachgefragt, ein Vorschlag ohne Antwort wird nach dem Termin nachts zu No-show. „Automatisch am Vortag schließen“ entfällt. Benachrichtigungen ändern den letzten Kontakt nicht ({zammad-src}/app/models/ticket/article/has_ticket_contact_attributes_impact.rb[has_ticket_contact_attributes_impact.rb]), die Fristen zählen also ab dem Vorschlag.
+* Die Nachfragen starten im Zustand der Absage. Ist die Absage aus dem echten Zammad aktiv, sind es auch die Nachfragen, sonst wartete die Absage auf eine Nachfrage, die nie kommt.
+* {repo}/zammad/core_workflows.rb[core_workflows.rb] blendet die Felder aus und zeigt sie je Gruppe. Repairs und Requests zeigen dieselben Gerätefelder, die neue Untergruppe `Repairs::Events` nur Spenden und Bedarf. Dort landet auch das Statistik-Ticket je Termin.
+* {repo}/zammad/groups.rb[groups.rb] setzt Zugriffe genau. Repair Agent sieht nur Repairs, Repair Coordinator Repairs, Requests, Events und Spam check. Gemeinsame Entwürfe sind an.
+* Übersichten Next event, My repairs, Open repairs und Spam check, Textbausteine, die Vorlage „Walk-in“ und die Checkliste „Repairs“ mit 9 Punkten. Neu ist der Punkt „Vorschläge von MANUEL geprüft und als hilfreich oder nicht hilfreich markiert“, er erinnert an die Makros für Kennzahl 3 aus xref:0032-kennzahlen-der-erprobung-erheben.adoc[ADR 32].
+
+Am 15.11.2026 lief alles in der Testinstanz mit example.org. Alte Namen wurden übernommen, ihr Zustand blieb, der zweite Lauf legte nichts doppelt an. Nachfrage, Absage und kurze Nachfrage gingen an Mailpit, eine Antwort entfernte `asked-again`. Dabei fiel auf, dass der Trigger für `next-event` nach dem zum Entfernen läuft, weil Zammad Trigger nach Namen ordnet. Er lässt Tickets mit `obsolete` deshalb selbst aus, das war im echten Zammad bisher ein Fehler.
+
+=== Konsequenzen
+
+* Gut, weil eine neue Initiative die erprobten Abläufe mit einem Befehl bekommt.
+* Gut, weil Gäste vor der Absage eine zweite Gelegenheit zur Antwort haben.
+* Schlecht, weil Texte im Code gepflegt werden und Änderungen in Zammad beim nächsten Lauf überschrieben werden.
+* Schlecht, weil Muster wie „Verpasster Anruf:“ an sipgate hängen.
+* Die Mails sind nach einem Neuaufbau aus, das Team schaltet sie bewusst ein.
+
+== Vor- und Nachteile der Optionen
+
+=== Nur beschreiben
+
+* Gut, weil nichts zu bauen ist.
+* Schlecht, weil jede Initiative alles von Hand nachbaut.
+
+=== Export einspielen
+
+* Gut, weil es schnell geht.
+* Schlecht, weil IDs, Namen und Adressen aus unserem Zammad mitkämen.
+
+=== Code mit alten Namen
+
+* Gut, weil Code, Texte und Doku im Repo zusammen bleiben.
+* Schlecht, weil `LEGACY_NAMES` für jedes ältere Zammad gepflegt werden muss.
+
+== Quellen
+
+* Export der Einstellungen des echten Zammad vom 15.11.2026, nur lokal
+* Entscheidungen von Michael Prange am 15.11.2026

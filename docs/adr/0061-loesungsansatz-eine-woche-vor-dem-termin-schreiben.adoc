@@ -1,0 +1,55 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0061]]
+= 0061 Lösungsansatz eine Woche vor dem Termin schreiben
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Bisher sollte der Agent für den Reparaturansatz bei jedem neuen Ticket laufen. Viele Anfragen bekommen aber nie einen Termin, sind Spam oder enthalten keine Nachricht. Bis zum Termin liegen oft Wochen, in denen Gäste noch Angaben nachreichen. Wann schreibt MANUEL den Lösungsansatz?
+
+== Entscheidungskriterien
+
+* Der Ansatz liegt vor, wenn sich jemand auf den Termin vorbereitet
+* Möglichst alle Angaben des Gastes sind schon im Ticket
+* Das Modell rechnet nicht für Tickets, die nie repariert werden
+
+== Betrachtete Optionen
+
+* Bei jedem neuen Ticket
+* Sobald das Ticket den Tag `next-event` bekommt, also 7 Tage vor dem Termin
+* Erst am Tag des Termins
+
+== Entscheidung
+
+Gewählt wird `next-event`. Ein Trigger löst den Agenten aus, sobald ein Ticket in Repairs oder Requests den Tag bekommt, siehe xref:0062-datums-tags-und-monatsuebersichten-automatisch-pflegen.adoc[ADR 62]. Ausgenommen sind Tickets mit `spam`, `no-info`, `delete`, `obsolete` oder `EUReCA`. Die Einordnung der Felder läuft weiter bei jeder neuen Anfrage, weil sie für Terminvergabe und Übersichten früh gebraucht wird.
+
+=== Konsequenzen
+
+* Gut, weil der Ansatz die Angaben bis eine Woche vor dem Termin nutzt.
+* Gut, weil das Modell nur für Geräte rechnet, die wirklich kommen.
+* Schlecht, weil Spontane ohne Termin keinen Ansatz vorab bekommen. Für sie kann ein Mensch den Agenten am Termin von Hand starten.
+
+== Vor- und Nachteile der Optionen
+
+=== Bei jedem neuen Ticket
+
+* Gut, weil der Ansatz sofort da ist.
+* Schlecht, weil viel umsonst gerechnet wird und spätere Angaben fehlen.
+
+=== Mit next-event
+
+* Gut, weil der Tag schon gepflegt wird und das Team ihn kennt.
+* Schlecht, weil ein verschobener Termin den Tag verliert und neu bekommt, dann entsteht ein zweiter Ansatz.
+
+=== Am Tag des Termins
+
+* Gut, weil alle Angaben da sind.
+* Schlecht, weil keine Zeit zur Vorbereitung bleibt.
+
+== Quellen
+
+* Entscheidung von Michael Prange am 15.11.2026

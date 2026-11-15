@@ -76,6 +76,8 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |57 |xref:0057-lebenswichtige-geraete-nur-bei-einfachen-fehlern-reparieren.adoc[Lebenswichtige Geräte nur bei einfachen Fehlern reparieren] |vorgeschlagen |2026-11-15
 |58 |xref:0058-felder-des-bestehenden-zammad-uebernehmen.adoc[Felder des bestehenden Zammad übernehmen] |angenommen |2026-11-15
 |59 |xref:0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc[Art des Geräts als durchsuchbares Baum-Feld] |angenommen |2026-11-15
+|60 |xref:0060-ablaeufe-des-bestehenden-zammad-als-code-uebernehmen.adoc[Abläufe des bestehenden Zammad als Code übernehmen] |angenommen |2026-11-15
+|61 |xref:0061-loesungsansatz-eine-woche-vor-dem-termin-schreiben.adoc[Lösungsansatz eine Woche vor dem Termin schreiben] |angenommen |2026-11-15
 |62 |xref:0062-datums-tags-und-monatsuebersichten-automatisch-pflegen.adoc[Datums-Tags und Monatsübersichten automatisch pflegen] |angenommen |2026-11-15
 |63 |xref:0063-kontaktdaten-und-eingangswege-uebernehmen.adoc[Kontaktdaten und Eingangswege aus Kontaktformular, sipgate und Empfang übernehmen] |angenommen |2026-11-15
 |64 |xref:0064-voicemails-lokal-transkribieren.adoc[Voicemails lokal transkribieren] |vorgeschlagen |2026-11-15

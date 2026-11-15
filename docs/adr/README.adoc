@@ -78,6 +78,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |59 |xref:0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc[Art des Geräts als durchsuchbares Baum-Feld] |angenommen |2026-11-15
 |62 |xref:0062-datums-tags-und-monatsuebersichten-automatisch-pflegen.adoc[Datums-Tags und Monatsübersichten automatisch pflegen] |angenommen |2026-11-15
 |63 |xref:0063-kontaktdaten-und-eingangswege-uebernehmen.adoc[Kontaktdaten und Eingangswege aus Kontaktformular, sipgate und Empfang übernehmen] |angenommen |2026-11-15
+|64 |xref:0064-voicemails-lokal-transkribieren.adoc[Voicemails lokal transkribieren] |vorgeschlagen |2026-11-15
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

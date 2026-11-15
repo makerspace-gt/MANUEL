@@ -115,6 +115,7 @@ include::../../docs/adr/0058-felder-des-bestehenden-zammad-uebernehmen.adoc[]
 include::../../docs/adr/0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc[]
 include::../../docs/adr/0062-datums-tags-und-monatsuebersichten-automatisch-pflegen.adoc[]
 include::../../docs/adr/0063-kontaktdaten-und-eingangswege-uebernehmen.adoc[]
+include::../../docs/adr/0064-voicemails-lokal-transkribieren.adoc[]
 
 :leveloffset: -2
 :sectnums:

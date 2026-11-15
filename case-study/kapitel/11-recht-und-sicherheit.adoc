@@ -36,6 +36,7 @@ Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist kein
 * Löschfristen, Tickets nach drei Jahren, Tickets mit dem Tag `abgelehnt` nach drei Monaten
 * Verzeichnis von Verarbeitungstätigkeiten und Datenschutzhinweis, angelegt in it-infrastructure
 * Testdaten nur lokal <<adr-0002>>, Verschlüsselung des Mini-PCs vor dem Umzug in den Makerspace
+* Voicemails kann MANUEL selbst mit Whisper in Text umwandeln, die Stimme verlässt den Verein dann nicht <<adr-0064>>.
 * Fotos vom Typenschild, nur das Typenschild, Ortsdaten in den Bildern werden nicht ausgewertet <<adr-0034>>
 
 === KI-Verordnung

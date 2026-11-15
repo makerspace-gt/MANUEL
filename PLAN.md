@@ -417,7 +417,8 @@ git push
 - [ ] Workflow für die Sharecard bauen, der die Zahlen aus Zammad holt, Highlights über den Tag `highlight` findet und die Karte als Entwurf ans Team schickt
 - [ ] Workflow für Terminvorschläge bauen, der Anmeldungen in Nuudel auswertet
 - [ ] Problem, Lösung und Befund nach [ADR 50](docs/adr/0050-problem-loesung-und-befund-mit-drei-agenten-erfassen.adoc) erfassen, sobald das Team den Vorschlag annimmt. Stufe 1, das Problem aus der Anmeldung, geht schon ohne n8n
-- [ ] Spracherkennung wie whisper.cpp auf MANUEL testen, Tempo und Speicher neben Sprach- und Embedding-Modell, Aufnahmen bleiben lokal und werden nach der Umwandlung gelöscht
+- [x] Spracherkennung mit whisper.cpp auf MANUEL getestet, `large-v3-turbo` über Vulkan, 18,7 Sekunden Sprache in 1,2 Sekunden, 1,6 GB, siehe [ADR 64](docs/adr/0064-voicemails-lokal-transkribieren.adoc)
+- [ ] Voicemails nur lokal mit dem Transkript von sipgate vergleichen, danach entscheidet das Team, ob sipgate nicht mehr transkribiert und der Trigger „Voicemail ohne Nachricht ignorieren“ aus geht
 - [ ] Workflow bauen, der eine Sprachnachricht der Engagierten in Text umwandelt und daraus die Lösung als Vorschlag schreibt, danach den Befund mit Einordnung der Schilderung und, wo es eine Liste gibt, der Fehlerart aus den Quests der Open Repair Data
 - [ ] Workflow für den Newsletter bauen, der nur Gäste anmeldet, für die Engagierte den Wunsch im Feld zur Einwilligung vermerkt haben. Die KI-Agenten dürfen dieses Feld nie setzen. Übermittelt wird nur die E-Mail-Adresse, der Endpunkt löst die Bestätigungsmail aus, jede Übermittlung erscheint einmalig als interne Notiz im Ticket und Fehler werden gemeldet
 

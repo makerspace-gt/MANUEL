@@ -1,0 +1,63 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0064]]
+= 0064 Voicemails lokal transkribieren
+
+[horizontal]
+Status:: vorgeschlagen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange, Entscheidung über das Abschalten bei sipgate durch das Team
+
+== Kontext und Problem
+
+Anrufe auf den Anrufbeantworter kommen als Mail von sipgate mit der Aufnahme im Anhang und einem Transkript von sipgate. Die Stimme ist personenbezogen und geht dafür an einen Dienst außerhalb des Vereins. Ein Trigger schließt heute Voicemails ohne Text von sipgate. Können wir die Aufnahmen auf MANUEL selbst in Text umwandeln?
+
+== Entscheidungskriterien
+
+* Aufnahmen verlassen den Verein nicht, siehe xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[ADR 48]
+* Der Text ist gut genug, um Gerät, Defekt und Rückrufnummer zu erkennen
+* Es bleibt neben Sprach- und Embedding-Modell genug Speicher
+* Andere Initiativen nutzen es ohne eigene Einstellung
+
+== Betrachtete Optionen
+
+* Transkript von sipgate wie bisher
+* whisper.cpp auf MANUEL, angesteuert vom Scheduler in Zammad
+* whisper.cpp auf MANUEL, angesteuert von n8n
+
+== Entscheidung
+
+Vorgeschlagen wird whisper.cpp auf MANUEL mit dem Modell `large-v3-turbo`, angesteuert vom Scheduler in Zammad. Der Dienst läuft im Netz der Testumgebung ohne eigenen Port, siehe {repo}/testumgebung/compose.override.yml[compose.override.yml]. Das Image ist auf einen Stand vom 30.10.2026 festgelegt.
+
+{repo}/zammad/voicemail.rb[voicemail.rb] wird als Initializer eingebunden und läuft alle fünf Minuten. Es schickt die Aufnahme einer neuen Voicemail an `MANUEL_WHISPER_URL` und schreibt den Text als interne Notiz. Ist der Text leer, bekommt das Ticket `no-info` und wird geschlossen. Das ersetzt den Trigger, der am Text von sipgate hängt.
+
+Am 15.11.2026 lief das auf MANUEL mit einer künstlich gesprochenen Nachricht von 18,7 Sekunden. Whisper nutzte die GPU über Vulkan, brauchte 1,2 Sekunden und belegte 1,6 GB. Gerät, Defekt und Nummer kamen richtig an, der künstlich gesprochene Name nicht. In der Testinstanz entstand genau eine Notiz, ein zweiter Lauf fügte keine hinzu.
+
+=== Konsequenzen
+
+* Gut, weil Aufnahmen auf MANUEL bleiben.
+* Gut, weil eine Minute Sprache nur wenige Sekunden dauert.
+* Schlecht, weil 1,6 GB Speicher neben den Modellen belegt sind.
+* Schlecht, weil der Test mit echten Voicemails noch aussteht. Dafür werden Aufnahmen nur lokal mit dem Transkript von sipgate verglichen, ins Repo kommen nur Zahlen.
+* Erst nach diesem Test schaltet das Team die Transkription bei sipgate ab und den alten Trigger aus.
+
+== Vor- und Nachteile der Optionen
+
+=== sipgate wie bisher
+
+* Gut, weil es schon läuft.
+* Schlecht, weil Stimmen an einen Dienst außerhalb gehen.
+
+=== Scheduler in Zammad
+
+* Gut, weil es mit der Einrichtung kommt und ohne n8n läuft.
+* Schlecht, weil es Ruby im Zammad braucht.
+
+=== n8n
+
+* Gut, weil es außerhalb von Zammad läuft.
+* Schlecht, weil n8n erst mit Stufe 2 des IT-Plans kommt.
+
+== Quellen
+
+* https://github.com/ggml-org/whisper.cpp[whisper.cpp], Image `ghcr.io/ggml-org/whisper.cpp:main-vulkan-482279b8a18855ba741d7b88c30fcb3874691f59`
+* Messung auf MANUEL am 15.11.2026

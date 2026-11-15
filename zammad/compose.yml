@@ -21,6 +21,11 @@ services:
       POSTGRESQL_OPTIONS: ${POSTGRESQL_OPTIONS:-?pool=50}
       REDIS_URL: ${REDIS_URL:-redis://zammad-redis:6379}
       TZ: ${TZ:-Europe/Berlin}
+      # Optional settings of MANUEL, empty leaves the part out, see zammad/README.md
+      MANUEL_SENT_BCC: ${MANUEL_SENT_BCC:-}
+      MANUEL_SPAM_FOLDER: ${MANUEL_SPAM_FOLDER:-}
+      MANUEL_EVENT_REMINDER_FROM: ${MANUEL_EVENT_REMINDER_FROM:-}
+      MANUEL_EVENT_REMINDER_SUBJECT: ${MANUEL_EVENT_REMINDER_SUBJECT:-}
     volumes:
       - ./zammad:/opt/manuel/zammad:ro
       - ./katalog/kategorien.tsv:/opt/manuel/katalog/kategorien.tsv:ro

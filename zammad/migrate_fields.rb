@@ -62,6 +62,26 @@ REPLACED_RULES.each do |model, names|
 end
 puts "Ersetzte Regeln #{APPLY ? 'abgeschaltet' : 'würden abgeschaltet'}: #{replaced.join(', ').presence || 'keine'}"
 
+# Press triggers named "Pressemitteilung <medium>" get the name zammad/press.rb looks for, their recipient
+# joins the organization Presse. active stays as it is, the next run of setup.rb takes the text from
+# zammad/texts/press_release.de.html, see docs/adr/0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc.
+press = Organization.find_by(name: 'Presse')
+renamed = Trigger.where('name LIKE ?', 'Pressemitteilung %').map do |trigger|
+  medium = trigger.name.delete_prefix('Pressemitteilung ')
+  users = User.where(id: Array(trigger.perform.dig('notification.email', 'recipient')).filter_map { |r| r[%r{\Auserid_(\d+)\z}, 1] })
+  if APPLY
+    trigger.update!(name: "Press release: #{medium}", updated_by_id: 1)
+    users.each do |user|
+      next if press.nil? || user.all_organization_ids.include?(press.id)
+
+      user.organization_id.nil? ? user.update!(organization_id: press.id) : user.update!(organization_ids: user.organization_ids | [press.id])
+    end
+  end
+  "#{medium} (#{users.size} Empfänger)"
+end
+puts "Pressemitteilungen #{APPLY ? 'übernommen' : 'würden übernommen'}: #{renamed.join(', ').presence || 'keine'}" \
+     "#{press ? '' : ', Organisation Presse fehlt, erst zammad/setup.rb ausführen'}"
+
 existing = OLD_FIELDS.keys.select { |name| Ticket.column_names.include?(name) }
 missing_new = OLD_FIELDS.values.map(&:first).reject { |name| Ticket.column_names.include?(name) }
 abort "Neue Felder fehlen: #{missing_new.join(', ')}. Erst zammad/setup.rb ausführen." if missing_new.any?

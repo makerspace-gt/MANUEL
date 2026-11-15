@@ -1,0 +1,7 @@
+# Text modules of zammad/text_modules.rb. Name English, German name as keyword, groups as names, text German.
+name	legacy	keywords	groups	content
+Appointment	Termin	passt Termin	Repairs,Repairs::Requests	passt es dir am #{ticket.pending_time} Uhr?
+Fully booked	leider	leider ausgebucht	Repairs,Repairs::Requests	Leider sind wir am kommenden Termin schon komplett ausgebucht.
+Guess	Vermutung	hast Vermutung	Repairs,Repairs::Requests	Hast du schon eine Vermutung, was genau defekt ist?
+One item only	nur ein Gegenstand	Gegenstand einer	Repairs,Repairs::Requests	Da wir immer recht gut besucht sind, nehmen wir in der Regel nur einen Gegenstand pro Person und Termin an. Du kannst dir aussuchen, welches Gerät du zuerst mitbringst. Wir können dann auch im Vorfeld schon weitere Termine vereinbaren, immer am ersten und dritten Samstag im Monat.
+Statistics	Statistik	Statistik	Repairs::Events	Hallo #{ticket.customer.firstname},<br><br>beim Repair Café hatten wir diesmal XX Geräte.

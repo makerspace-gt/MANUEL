@@ -47,7 +47,8 @@ ENDPOINTS = {
     "ticket_priorities": "ticket_priorities",
     "ai_agents": "ai_agents",
     "ai_text_tools": "ai_text_tools",
-    "checklist_templates": "checklist_templates",
+    # full=true brings the items of each template
+    "checklist_templates": "checklist_templates?full=true",
     "translations_customized": "translations/customized",
 }
 PER_PAGE = 500
@@ -70,7 +71,7 @@ def get(url, token):
 
 def fetch(base, path, token):
     """All records of an endpoint, page by page where the endpoint pages."""
-    if "/" in path or path == "tag_list":
+    if "/" in path or path == "tag_list" or "?" in path:
         return get(f"{base}/api/v1/{path}", token)
     records, page = [], 1
     while True:

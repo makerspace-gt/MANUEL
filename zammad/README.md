@@ -16,7 +16,7 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 | [result_tree.rb](result_tree.rb) | Werte des Ergebnisses englisch und deutsch, für `objects.rb` und `migrate_fields.rb` |
 | [export_config.py](export_config.py) | Exportiert die Einstellungen eines bestehenden Zammad über die REST-API als JSON, nur lesend, die Dateien bleiben lokal |
 | [event_tags.rb](event_tags.rb) | Initializer mit `ManuelEventTags.run`, stündlich über den Scheduler: Datums-Tag nach dem Termin, `next-event` aufräumen, unbestätigte Vorschläge als No-show, Monatsübersichten und ungenutzte Tags, siehe [ADR 62](../docs/adr/0062-datums-tags-und-monatsuebersichten-automatisch-pflegen.adoc) |
-| [overviews.rb](overviews.rb) | Zwölf Übersichten je Monat, beim Anlegen aus |
+| [overviews.rb](overviews.rb) | Zwölf Übersichten je Monat, beim Anlegen aus, dazu Next event, My repairs, Open repairs und Spam check |
 | [scheduler.rb](scheduler.rb) | Eintrag im Scheduler für jedes geladene Modul |
 | [migrate_tags.rb](migrate_tags.rb) und [legacy_tags.tsv](legacy_tags.tsv) | Gleicht alte Monats- und Sondertags an, erst als Probelauf |
 | [contact_filter.rb](contact_filter.rb) | Initializer und Postmaster-Filter 6400, übernimmt Kontaktdaten aus Kontaktformular und sipgate und setzt den Typ der ersten Nachricht, siehe [ADR 63](../docs/adr/0063-kontaktdaten-und-eingangswege-uebernehmen.adoc) |
@@ -25,6 +25,7 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 | [press.rb](press.rb) | Organisation Presse, ein Trigger mit der Pressemitteilung je Redaktion, beim Anlegen aus, und eine Notiz für soziale Medien, beides auf die Erinnerung vor dem Termin, siehe [ADR 66](../docs/adr/0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc) |
 | [workflows.rb](workflows.rb) | Trigger und geplante Aufgaben, also `next-event`, Verschieben nach Repairs, Eingangsbestätigung mit Hausordnung, Nachfrage und Absage bei Terminvorschlägen, Erinnerung und Löschfristen. Regeln für Mails an Gäste und Löschungen sind beim Anlegen aus, ein späterer Lauf ändert `active` nie. Alte Namen übernimmt `LEGACY_NAMES` |
 | [texts/](texts/) | Texte für Mails an Gäste, Hausordnung, Pressemitteilung und Signatur |
+| [checklists.rb](checklists.rb), [text_modules.rb](text_modules.rb) und [templates.rb](templates.rb) | Checkliste „Repairs“ mit 9 Punkten aus `texts/checklist.<Sprache>.txt`, Textbausteine aus `texts/text_modules.de.tsv` und die Vorlage „Walk-in“ für Spontane. Alte Namen werden übernommen |
 | [core_workflows.rb](core_workflows.rb) | Blendet die Felder aus `objects.rb` aus und zeigt sie je Gruppe, Gerätefelder in Repairs und Requests, Spenden und Bedarf in Events |
 | [ui_wording.tsv](ui_wording.tsv) | Eigene Begriffe, etwa Termin für Pending till und Kontaktformular für den Typ web |
 | [voicemail.rb](voicemail.rb) | Initializer, schickt neue Voicemails an whisper.cpp unter `MANUEL_WHISPER_URL` und schreibt den Text als interne Notiz, siehe [ADR 64](../docs/adr/0064-voicemails-lokal-transkribieren.adoc) |

@@ -32,3 +32,11 @@ changed = wording.sum do |row|
   %w[en-us de-de].count { |locale| save_translation(locale, row['source'], row[locale], override: true) }
 end
 puts "Gast statt Kunde: #{wording.size} Texte, davon neu oder geändert #{changed}"
+
+# Wording of our Zammad, for example Termin for the pending time and Kontaktformular for the article type web,
+# see zammad/README.md
+ui = CSV.read(File.join(__dir__, 'ui_wording.tsv'), col_sep: "\t", headers: true, quote_char: "\x00")
+changed = ui.sum do |row|
+  %w[en-us de-de].count { |locale| save_translation(locale, row['source'], row[locale], override: true) }
+end
+puts "Eigene Begriffe: #{ui.size} Texte, davon neu oder geändert #{changed}"

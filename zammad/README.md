@@ -19,6 +19,10 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 | [overviews.rb](overviews.rb) | Zwölf Übersichten je Monat, beim Anlegen aus |
 | [scheduler.rb](scheduler.rb) | Eintrag im Scheduler für jedes geladene Modul |
 | [migrate_tags.rb](migrate_tags.rb) und [legacy_tags.tsv](legacy_tags.tsv) | Gleicht alte Monats- und Sondertags an, erst als Probelauf |
+| [contact_filter.rb](contact_filter.rb) | Initializer und Postmaster-Filter 6400, übernimmt Kontaktdaten aus Kontaktformular und sipgate und setzt den Typ der ersten Nachricht, siehe [ADR 63](../docs/adr/0063-kontaktdaten-und-eingangswege-uebernehmen.adoc) |
+| [article_types.rb](article_types.rb) und [inbound.rb](inbound.rb) | Typ `walk-in` für den Empfang, Initializer und Anlegen samt Registrierung des Filters |
+| [migrate_contacts.rb](migrate_contacts.rb) | Gleicht Nummern, Gäste von sipgate und Typen im Bestand an, erst als Probelauf |
+| [ui_wording.tsv](ui_wording.tsv) | Eigene Begriffe, etwa Termin für Pending till und Kontaktformular für den Typ web |
 | [keep_pending_time.rb](keep_pending_time.rb) | Initializer, der die Wartezeit behält, wenn ein Ticket den Status warten verlässt, siehe [ADR 53](../docs/adr/0053-termin-in-der-wartezeit-behalten.adoc) |
 
 ## Start

@@ -25,6 +25,7 @@ load File.join(__dir__, 'macros.rb')
 load File.join(__dir__, 'knowledge_base.rb')
 load File.join(__dir__, 'overviews.rb')
 load File.join(__dir__, 'scheduler.rb')
+load File.join(__dir__, 'inbound.rb')
 load File.join(__dir__, 'translations.rb')
 
 ticket = ObjectLookup.by_name('Ticket')

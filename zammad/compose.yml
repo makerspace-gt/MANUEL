@@ -25,6 +25,8 @@ services:
       - ./zammad:/opt/manuel/zammad:ro
       - ./katalog/kategorien.tsv:/opt/manuel/katalog/kategorien.tsv:ro
       - ./zammad/event_tags.rb:/opt/zammad/config/initializers/zz_event_tags.rb:ro
+      - ./zammad/contact_filter.rb:/opt/zammad/config/initializers/zz_contact_filter.rb:ro
+      - ./zammad/article_types.rb:/opt/zammad/config/initializers/zz_article_types.rb:ro
     # The files may lie on a read-only system path, for example /usr/share/manuel on MANUEL, where
     # SELinux labels cannot be changed with :z
     security_opt:
@@ -39,6 +41,8 @@ services:
     volumes:
       - ./zammad/keep_pending_time.rb:/opt/zammad/config/initializers/zz_keep_pending_time.rb:ro
       - ./zammad/event_tags.rb:/opt/zammad/config/initializers/zz_event_tags.rb:ro
+      - ./zammad/contact_filter.rb:/opt/zammad/config/initializers/zz_contact_filter.rb:ro
+      - ./zammad/article_types.rb:/opt/zammad/config/initializers/zz_article_types.rb:ro
     security_opt:
       - label=disable
 
@@ -46,5 +50,7 @@ services:
     volumes:
       - ./zammad/keep_pending_time.rb:/opt/zammad/config/initializers/zz_keep_pending_time.rb:ro
       - ./zammad/event_tags.rb:/opt/zammad/config/initializers/zz_event_tags.rb:ro
+      - ./zammad/contact_filter.rb:/opt/zammad/config/initializers/zz_contact_filter.rb:ro
+      - ./zammad/article_types.rb:/opt/zammad/config/initializers/zz_article_types.rb:ro
     security_opt:
       - label=disable

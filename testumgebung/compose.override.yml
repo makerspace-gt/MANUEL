@@ -10,12 +10,6 @@ services:
     ports: !override
       - "${MANUEL_BIND_IP:-127.0.0.1}:8080:8080"
 
-  # Not needed for the test environment, saves memory for the models.
-  # Zammad itself is told by ELASTICSEARCH_ENABLED=false in zammad.env.
-  zammad-elasticsearch:
-    profiles:
-      - do-not-start
-
   # Catches every mail of the test instance, nothing reaches real guests. Inside the network of the
   # stack Mailpit also answers as mail.lima-city.de, with SMTP over TLS on port 465 and any login,
   # so Zammad sends to Mailpit even with the real settings of lima-city. Fetching by IMAP from

@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-10
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-11, Compose im Image, ohne Elasticsearch und TLS, erst ein frisches Zammad, Ports für Tailscale offen, und 2026-11-13, Zugang zu den Diensten nach ADR 47
+Überarbeitet:: 2026-11-11, Compose im Image, ohne Elasticsearch und TLS, erst ein frisches Zammad, Ports für Tailscale offen, 2026-11-13, Zugang zu den Diensten nach ADR 47, und 2026-11-15, Elasticsearch für die Wissensdatenbank
 
 == Kontext und Problem
 
@@ -29,7 +29,7 @@ Vor dem Start am 05.12.2026 sind Fragen offen, die sich nur in einem laufenden Z
 
 Auf MANUEL läuft eine Testumgebung mit Zammad aus `zammad-docker-compose`, n8n, Mailpit und Open WebUI. Der Echtbetrieb bleibt auf der Helpdesk-VM, xref:0019-n8n-auf-der-helpdesk-vm-betreiben.adoc[ADR 19] gilt für ihn weiter. Die Compose-Datei von Zammad liegt als Submodul unter `quellen/zammad-docker-compose`, auf demselben Commit wie im IT-Plan. Zusammen mit den Ergänzungen aus `testumgebung/` kommt sie ins Image, der Befehl `zammad-compose` startet alles damit.
 
-* Elasticsearch läuft nicht. Das spart Speicher für die Modelle, und Zammad sucht nur in der Datenbank. Für die Ähnlichkeitssuche der Wissensdatenbank bräuchte es Elasticsearch später doch.
+* Elasticsearch läuft mit 1 GB Heap wie in `zammad-docker-compose`. Die Wissensdatenbank legt dort die Vektoren für Antwortvorschläge ab, siehe https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/lib/ai/vectordb.rb[vectordb.rb von Zammad]. Anfangs lief es nicht, um Speicher für die Modelle zu sparen. Neben `qwen3.6:35b-a3b` mit 22 GB und bge-m3 mit 1,2 GB bleibt auf den 46 GB von MANUEL aber genug frei.
 * Es gibt kein TLS und keinen Reverse Proxy wie Traefik, weil die Testumgebung nur lokal genutzt wird.
 * Im Netz des Stapels gibt sich Mailpit als `mail.lima-city.de` aus, mit SMTP über SSL und jeder Anmeldung. So landet auch eine Mail, für die Zammad die echten Einstellungen von lima-city nutzt, in Mailpit. Das schützt nur vor lima-city, andere Mailserver fängt es nicht ab. Der Abruf per IMAP von lima-city geht dann nur über die IP-Adresse.
 * Zammad nutzt unser Ollama mit GPU. Der Container hängt dafür zusätzlich im Netz des Stapels und heißt dort `ollama`. Das Szenario `add-ollama.yml` von Zammad entfällt, weil es eine zweite Ollama ohne GPU startet.
@@ -45,7 +45,7 @@ Echte Tickets auf MANUEL sind nach xref:0002-echte-ticketdaten-nur-lokal-auswert
 
 * Gut, weil Version, Agenten und Rückmeldung von Zammad vor dem Start geprüft werden können.
 * Gut, weil der Vorabtest auch den echten Ticket Categorizer nutzen kann.
-* Schlecht, weil ohne Elasticsearch die Suche langsamer ist und passende Artikel der Wissensdatenbank fehlen.
+* Schlecht, weil Elasticsearch Speicher braucht, der den Modellen fehlt.
 * Schlecht, weil echte Daten auf einem zweiten System liegen. Nach dem Test wird die Instanz gelöscht.
 
 == Vor- und Nachteile der Optionen

@@ -253,7 +253,7 @@ Ollama bleibt an `127.0.0.1` gebunden und ist über Tailscale nicht erreichbar. 
 
 Die Entscheidung steht in [ADR 43](adr/0043-eine-testumgebung-auf-manuel-betreiben.adoc). Das Image bringt die Compose-Datei von Zammad aus dem Submodul `quellen/zammad-docker-compose` und die Ergänzungen aus `testumgebung/` unter `/usr/share/manuel` mit. Der Befehl `zammad-compose` startet alles damit.
 
-- Elasticsearch läuft nicht, das spart Speicher für die Modelle. Zammad sucht dann nur in der Datenbank.
+- Elasticsearch läuft mit 1 GB Heap wie in `zammad-docker-compose`, weil die Wissensdatenbank ihre Vektoren dort ablegt. Bis zum 15.11.2026 lief es nicht, um Speicher für die Modelle zu sparen. Der Speicher reicht aber, MANUEL hat 46 GB, `qwen3.6:35b-a3b` braucht 22 GB und bge-m3 1,2 GB.
 - Alle Dienste hören nur auf der Adresse von Tailscale, ohne TLS und ohne Reverse Proxy, siehe [ADR 47](adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc). `zammad-compose` setzt dafür `MANUEL_BIND_IP` aus `tailscale ip -4`. Aus dem lokalen Netz ist nichts erreichbar.
 
 | Dienst | Adresse |

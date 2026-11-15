@@ -84,6 +84,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |65 |xref:0065-postfach-archivieren-und-aufbewahrung-begrenzen.adoc[Postfach archivieren und Aufbewahrung begrenzen] |angenommen |2026-11-15
 |66 |xref:0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc[Pressemitteilung und Beiträge für soziale Medien aus Vorlagen] |angenommen |2026-11-15
 |67 |xref:0067-betreff-aus-marke-und-art-schreiben.adoc[Betreff aus Marke und Art des Geräts schreiben] |angenommen |2026-11-15
+|68 |xref:0068-art-des-geraets-mit-d3-pruefen.adoc[Art des Geräts zusätzlich mit d3:9b prüfen] |angenommen |2026-11-15
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

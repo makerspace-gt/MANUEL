@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-09
 Beteiligte:: Michael Prange und das Team in der Planung vom 09.11.2026
-Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht von ADR 10, und 2026-11-15, Abweichungen des Vorabtests
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht von ADR 10, 2026-11-15, Abweichungen des Vorabtests, und 2026-11-15, Prüfung durch d3:9b nach ADR 68
 
 == Kontext und Problem
 
@@ -44,6 +44,7 @@ Nachtrag vom 15.11.2026. Der Vorabtest vom 13.11.2026 fragte in drei Punkten and
 * Gut, weil der Start ohne zusätzlichen Dienst auskommt und nur Einstellungen in Zammad braucht.
 * Gut, weil der Vorabtest zeigt, wie viele falsche Einträge zu erwarten sind, bevor Gäste betroffen sind.
 * Schlecht, weil ohne Sicherheit auch unsichere Fälle eingetragen werden. Die gemessenen 98,7 Prozent ohne Fehler gelten für diesen Weg nicht.
+* Seit dem 15.11.2026 prüft `d3:9b` jede Art, die der Categorizer setzt, und fragt bei Abweichung per Notiz nach, siehe xref:0068-art-des-geraets-mit-d3-pruefen.adoc[ADR 68]. Die Tags `category-differs` zählen die Abweichungen als zweite Grundlage für den Umstieg.
 * Schlecht, weil ein Umstieg während der Erprobung die Zahlen davor und danach schwerer vergleichbar macht. Die Fallstudie weist beide Zeiträume getrennt aus.
 
 == Vor- und Nachteile der Optionen

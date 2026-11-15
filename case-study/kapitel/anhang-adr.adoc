@@ -141,5 +141,7 @@ include::../../docs/adr/0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc[]
 
 include::../../docs/adr/0067-betreff-aus-marke-und-art-schreiben.adoc[]
 
+include::../../docs/adr/0068-art-des-geraets-mit-d3-pruefen.adoc[]
+
 :leveloffset: -2
 :sectnums:

@@ -380,6 +380,7 @@ git push
 - [ ] Prüfen, dass der Status des Anbieters nach der ersten Anfrage grün ist
 - [ ] bge-m3 als Embedding-Modell beim Anbieter eintragen
 - [ ] Speicherverbrauch von Elasticsearch in Beszel beobachten, weil dort auch die Vektoren der semantischen Suche liegen. Die Zammad-Rolle erlaubt bisher 4 GB
+- [ ] Dienst aus [category_check/](category_check/README.md) im Betrieb auf MANUEL starten, nur auf der Tailnet-Adresse, und `MANUEL_CATEGORY_CHECK_URL` im echten Zammad setzen. Nach den ersten Terminen die Tags `category-differs` zählen, siehe [ADR 68](docs/adr/0068-art-des-geraets-mit-d3-pruefen.adoc)
 - [ ] Agenten Ticket Categorizer für die Art des Geräts mit der Liste aus dem Vorabtest und Ticket Text Extractor für die übrigen Felder anlegen
 - [ ] Nach den ersten zwei Terminen den Anteil falscher Kategorien zählen. Ab 5 Prozent oder auf Wunsch des Teams auf n8n mit `d3:9b` und Rückfrage umsteigen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)
 - [ ] Custom AI Agent für den Reparaturansatz und einen für erkannte Kontaktdaten anlegen, beide schreiben nur interne Notizen
@@ -528,6 +529,7 @@ MANUEL/
 ├── docs/            Einrichtung, Betrieb, ADRs, Auswertungen, Grafiken und Recherchen
 ├── case-study/      Fallstudie in AsciiDoc, literatur.bib aus der Zotero-Gruppe
 ├── katalog/         Katalog der Gegenstände, CC BY-SA 4.0
+├── category_check/  Dienst, der die Art des Geräts mit d3:9b prüft
 ├── eval/            Skripte in Python und R für Tests und Auswertungen, ohne echte Ticketdaten
 ├── zammad/          Einrichtung von Zammad als Ruby-Dateien mit compose.yml
 ├── testumgebung/    Testinstanz von Zammad mit Mailpit und n8n auf MANUEL

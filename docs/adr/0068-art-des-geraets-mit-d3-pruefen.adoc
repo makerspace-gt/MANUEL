@@ -1,0 +1,67 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-src: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8
+[[adr-0068]]
+= 0068 Art des Geräts zusätzlich mit d3:9b prüfen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Zum Start ordnet der Ticket Categorizer von Zammad die Art des Geräts ein, ohne Sicherheit und mit 17,5 Prozent falschen Einträgen im Vorabtest, siehe xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40]. Von der Art hängen jetzt auch der Betreff aus xref:0067-betreff-aus-marke-und-art-schreiben.adoc[ADR 67] und der Lösungsansatz ab. Der gemessene Weg mit `d3:9b` aus xref:0010-mit-vertreter-namen-einordnen.adoc[ADR 10] und xref:0011-bei-unsicherheit-nachfragen.adoc[ADR 11] kennt seine Sicherheit, sollte aber erst mit n8n kommen. Lässt sich `d3:9b` schon jetzt als zweiter Agent einbinden?
+
+== Entscheidungskriterien
+
+* Falsche Arten fallen auf, bevor jemand mit ihnen arbeitet
+* Ein Mensch entscheidet, siehe xref:0017-einen-menschen-entscheiden-lassen.adoc[ADR 17]
+* Es entstehen Zahlen für die Entscheidung nach ADR 40
+* Nichts verlässt MANUEL, siehe xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[ADR 48]
+
+== Betrachtete Optionen
+
+* `d3:9b` prüft den Categorizer und fragt bei Abweichung nach
+* `d3:9b` ersetzt den Categorizer
+* `d3:9b` springt nur ein, wenn die Art leer ist
+
+== Entscheidung
+
+Gewählt wird die Prüfung. Als Agent in Zammad geht `d3:9b` nicht. Zammad 7.2 fragt alle Agenten über eine Verbindung für Chats ({zammad-src}/app/services/service/ai/feature.rb[feature.rb]), `d3:9b` antwortet nur über `/v1/systemone` mit Wahrscheinlichkeiten.
+
+* {repo}/category_check/server.py[category_check/server.py] ist ein kleiner Dienst auf MANUEL mit der Kette aus ADR 10 und 11. `bge-m3` sucht die 25 ähnlichsten Einträge unter ihrem besten Namen, `d3:9b` wählt einen davon, und die Regeln aus {repo}/eval/decision/follow_up.py[follow_up.py] sagen, ob MANUEL nachfragen würde. Er nutzt dieselben Dateien wie die Auswertungen und speichert keine Texte.
+* {repo}/zammad/category_check.rb[category_check.rb] fragt ihn alle fünf Minuten für Tickets in Repairs und Requests, die eine Art haben. Gesendet werden der Betreff des Gastes und der Defekt oder die erste Nachricht, nie der Betreff von MANUEL, weil der aus der Art entsteht.
+* Wählt `d3:9b` einen anderen Eintrag, ist es unter 70 Prozent sicher oder greift eine Regel aus ADR 11, schreibt MANUEL eine interne Notiz. Die Felder ändert es nicht.
+* Jedes geprüfte Ticket bekommt `category-checked`, eine Abweichung zusätzlich `category-differs`. Eine neue Art entfernt beide, dann wird neu geprüft.
+
+Am 15.11.2026 lokal und in der Testinstanz geprüft. Bei „Toaster defekt“ mit der Art Kaffeemaschine schrieb MANUEL „d3:9b wählt Toaster mit 86 Prozent Sicherheit“, mit der Art Toaster kam keine Notiz. Ein zweiter Lauf schrieb nichts doppelt, nach dem Ändern der Art wurde neu geprüft.
+
+=== Konsequenzen
+
+* Gut, weil Fehler des Categorizer auffallen, ohne dass ein Modell Felder überschreibt.
+* Gut, weil die Tags zählen, wie oft beide abweichen. Das ist eine zweite Grundlage für ADR 40.
+* Schlecht, weil `d3:9b` neben dem Sprachmodell etwa 10 GB Speicher braucht.
+* Schlecht, weil ein weiterer Dienst laufen muss. Im Betrieb erreicht ihn Zammad wie Ollama nur über das Tailnet, siehe xref:0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[ADR 47].
+* Bei bestätigten Abweichungen kann das Team später entscheiden, dass `d3:9b` die Art selbst setzt.
+
+== Vor- und Nachteile der Optionen
+
+=== Prüfen
+
+* Gut, weil der Mensch entscheidet und Zahlen entstehen.
+* Schlecht, weil Notizen zusätzliche Arbeit sind.
+
+=== Ersetzen
+
+* Gut, weil der gemessene Weg sofort gilt.
+* Schlecht, weil es ADR 40 vorgreift, bevor die ersten Termine Zahlen liefern.
+
+=== Nur bei leerer Art
+
+* Gut, weil es wenig Notizen gibt.
+* Schlecht, weil falsche Arten des Categorizer unbemerkt bleiben.
+
+== Quellen
+
+* Messungen der Kette in xref:0010-mit-vertreter-namen-einordnen.adoc[ADR 10] und xref:0011-bei-unsicherheit-nachfragen.adoc[ADR 11]
+* Entscheidungen von Michael Prange am 15.11.2026

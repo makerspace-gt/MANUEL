@@ -19,6 +19,9 @@ def tr(english, german)
   english
 end
 
+# Records created on the way, like the items of a checklist, take their author from here
+UserInfo.current_user_id = 1
+
 load File.join(__dir__, 'groups.rb')
 load File.join(__dir__, 'objects.rb')
 load File.join(__dir__, 'core_workflows.rb')

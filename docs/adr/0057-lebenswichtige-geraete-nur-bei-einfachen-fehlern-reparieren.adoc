@@ -57,3 +57,4 @@ Vorgeschlagen wird, Geräte mit `life_critical` anzusehen, aber nur einfache Feh
 
 * Hinweis von Michael Prange am 15.11.2026, dass falsche Messwerte nach einer Reparatur lebensgefährlich sein können, ein Akkutausch aber trotzdem gemacht wird
 * Rechtliche Hinweise von Zammad zur KI, nach denen Menschen Ergebnisse bei Gesundheit und Sicherheit prüfen müssen, https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8/app/assets/javascripts/app/controllers/_ai/_feature_base.coffee[_feature_base.coffee]
+* Hausordnung des Repair Cafés, nach der wir uns vorbehalten, bestimmte Gegenstände nicht zu reparieren, {repo}/zammad/texts/house_rules.de.md[house_rules.de.md]

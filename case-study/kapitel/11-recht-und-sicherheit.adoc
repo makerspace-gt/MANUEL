@@ -55,6 +55,7 @@ Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist kein
 
 === Haftung und Urheberrecht
 
+* Die Hausordnung regelt Haftung und Pflichten. Hilfe zur Selbsthilfe, Haftung nur bei Vorsatz oder grober Fahrlässigkeit, kein Anspruch auf Reparatur, ein Gegenstand je Termin und keine Garantie. Gäste bekommen sie mit der Eingangsbestätigung, in der Wissensdatenbank steht sie auf Deutsch und Englisch, siehe {repo}/zammad/texts/house_rules.de.md[house_rules.de.md].
 * Hinweise zur Sicherheit bei Netzspannung, Akkus und Gas, im Zweifel an eine Fachperson verweisen
 * Das Ticket hält fest, welche Gefahr droht, also Hochspannung, Strahlung, großer Akku, Gas, Gefahrstoff oder Lebensgefahr bei Fehlfunktion. Gefahrstoff kam dazu, weil im Repair Café schon ein Schalter mit Quecksilber auftauchte. Die Vorgabe kommt aus dem Katalog, Engagierte können sie ändern <<adr-0056>>.
 * Medizinische Geräte, Rauchmelder oder Kindersitze, die nach einer Reparatur unbemerkt versagen könnten, schauen wir uns an. Einfache Fehler wie ein Akkuwechsel beheben wir, an Messung und Schutzfunktion greifen wir nicht ein. Darüber entscheidet das Team <<adr-0057>>.

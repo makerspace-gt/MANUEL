@@ -54,3 +54,4 @@ Wir bearbeiten je Gast und Repair Café ein Gerät. Nennt eine Anfrage mehrere G
 
 * xref:0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[ADR 34] und xref:0006-gegenstaende-erst-herausziehen.adoc[ADR 6]
 * Planung mit fünf Engagierten am 09.11.2026
+* Hausordnung des Repair Cafés, nach der Gäste je Termin nur einen Gegenstand mitbringen, {repo}/zammad/texts/house_rules.de.md[house_rules.de.md]

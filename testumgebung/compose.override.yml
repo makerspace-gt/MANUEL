@@ -66,6 +66,25 @@ services:
       whisper-model:
         condition: service_completed_successfully
 
+  # Checks the device type with d3:9b in Ollama, see docs/adr/0068-art-des-geraets-mit-d3-pruefen.adoc.
+  # Only reachable inside the network of the stack, Zammad calls it as http://category-check:8090/check.
+  category-check:
+    image: docker.io/library/python:3.13.7-slim
+    restart: always
+    command: ["python3", "-I", "/opt/manuel/category_check/server.py"]
+    environment:
+      OLLAMA_URL: http://${MANUEL_BIND_IP:-127.0.0.1}:11434
+      CACHE: /cache/vectors.json
+    security_opt:
+      - label=disable
+    volumes:
+      - ./category_check:/opt/manuel/category_check:ro
+      - ./katalog:/opt/manuel/katalog:ro
+      - ./quellen/anstiftung/kategorien.csv:/opt/manuel/quellen/anstiftung/kategorien.csv:ro
+      - ./eval/decision:/opt/manuel/eval/decision:ro
+      - category-check-cache:/cache
+
 volumes:
   n8n-data:
   whisper-models:
+  category-check-cache:

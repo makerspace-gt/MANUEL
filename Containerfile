@@ -8,6 +8,11 @@ COPY testumgebung /testumgebung
 # Setup of fields, group, roles and macros for Zammad, see zammad/README.md
 COPY zammad /zammad
 COPY katalog/kategorien.tsv /katalog/kategorien.tsv
+# Check of the device type with d3:9b, see docs/adr/0068
+COPY category_check /category_check
+COPY katalog/entries.py /katalog/entries.py
+COPY quellen/anstiftung/kategorien.csv /quellen/anstiftung/kategorien.csv
+COPY eval/decision/decision.py eval/decision/real2.py eval/decision/follow_up.py /eval/decision/
 # Public signing key, so the image can verify its own updates
 COPY cosign.pub /system_files/etc/pki/containers/makerspace-gt.pub
 

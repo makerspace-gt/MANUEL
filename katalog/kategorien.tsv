@@ -179,7 +179,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 17.46.641	Kühlbox	Tragbare Kühlbox mit elektrischer Kühlung. Kühlschränke sind ein eigener Eintrag.	Kühltasche, elektrisch | Campingkühlbox	Cool box	Portable cool box with electric cooling. Fridges are a separate entry.	Electric cool box | Cooler	Large home electrical	Misc	Kühlen und Gefrieren	230 V | mit Netzteil		641	Entwurf
 17.46.642	Pelletofen						Large home electrical	Misc	Kochen und Backen groß			642	Entwurf
 17.46.710	E-Roller	Roller mit Elektromotor und Akku.	E-Scooter | Elektroroller | E-Tretroller	E-scooter	Scooter with electric motor and battery.	Electric scooter | E-scooter	Large home electrical	Misc		Akku	battery	710 | 1007	Entwurf
-17.46.729	Wäschetrockner						Large home electrical	Misc	Waschen und Spülen			729	Entwurf
+17.46.729	Wäschetrockner	Gerät, das Wäsche mit warmer Luft trocknet, als Ablufttrockner, Kondenstrockner oder Wärmepumpentrockner. Wäscheschleuder und Wäscheständer sind eigene Einträge.	Trockner	Tumble dryer	Device that dries laundry with warm air, as a vented, condenser or heat pump dryer. Spin dryers and clothes airers are separate entries.	Dryer	Large home electrical	Misc	Waschen und Spülen	230 V		729	Entwurf
 17.46.736	Ofen						Large home electrical	Misc	Kochen und Backen groß			736	Entwurf
 17.46.748	Dunstabzugshaube	Haube über dem Herd, die Dunst absaugt oder filtert.	Abzugshaube | Dunstabzug	Cooker hood	Hood above the cooker that extracts or filters cooking fumes.	Extractor hood | Range hood	Large home electrical	Misc	Kochen und Backen groß	230 V		748	Entwurf
 17.46.766	Fitnesstrainer						Large home electrical	Misc	Fitnessgeräte			766	Entwurf
@@ -218,7 +218,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 18.46.718	Sicherungskasten						Misc	Misc	Elektroinstallation, Kabel, Stecker			718	Entwurf
 18.46.728	Megafon						Misc	Misc	Elektro sonstiges			728	Entwurf
 18.46.730	E-Auto						Misc	Misc	Elektro sonstiges			730	Entwurf
-18.46.778	Mikroskop						Misc	Misc	Mess- und Prüfgeräte			778	Entwurf
+18.46.778	Mikroskop	Optisches Gerät mit Beleuchtung zum Vergrößern kleiner Dinge.		Microscope	Optical device with lighting for magnifying small things.		Misc	Misc	Mess- und Prüfgeräte	230 V		778	Entwurf
 18.46.787	Tresor						Misc	Misc	Elektro sonstiges			787	Entwurf
 18.46.794	Marderschreck						Misc	Misc	Tierabwehr			794	Entwurf
 18.46.800	Bootsmotor						Misc	Misc	Motoren und Antriebe			800	Entwurf
@@ -412,15 +412,15 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 24.41.640	Heißklebepistole						Power tool	Power tool	Löten, Kleben, Schweißen			640	Entwurf
 24.41.651	Graviergerät						Power tool	Power tool	Löten, Kleben, Schweißen			651	Entwurf
 24.41.662	Schwertsäge						Power tool	Power tool	Gartengeräte mit Strom			662	Entwurf
-24.41.692	Dremel						Power tool	Power tool	Elektrowerkzeug			692	Entwurf
+24.41.692	Dremel	Kleines Werkzeug mit schnell drehendem Kopf zum Schleifen, Trennen und Gravieren.	Rotationswerkzeug | Feinbohrschleifer	Rotary tool	Small tool with a fast-spinning head for grinding, cutting and engraving.	Dremel	Power tool	Power tool	Elektrowerkzeug	230 V		692	Entwurf
 24.41.697	Fensterreiniger	Akkugerät, das Wasser von Fenstern absaugt, etwa Fenstersauger.	Fenstersauger | Akku-Fensterreiniger | Fensterwischer	Window vacuum	Cordless device that sucks water off windows.	Window vac | Window cleaner	Power tool	Power tool		Akku		697	Entwurf
 24.41.698	Betonmischer						Power tool	Power tool	Elektrowerkzeug			698	Entwurf
 24.41.715	Hochdruckreiniger	Gerät, das mit Wasser unter hohem Druck reinigt, etwa Terrasse oder Auto.	Kärcher | Hochdruckgerät	Pressure washer	Device that cleans with high pressure water, for example patios or cars.	Pressure washer / High-pressure cleaner / Jet washer	Power tool	Power tool	Elektrowerkzeug	230 V		715 | 790	Entwurf
 24.41.722	Bohrhammer	Schwere Bohrmaschine mit Schlagwerk für Beton und Stein, auch zum Meißeln.	Kombihammer	Hammer drill	Heavy drill with hammer mechanism for concrete and stone, also for chiselling.	Hammer drill | Rotary hammer	Power tool	Power tool	Elektrowerkzeug	230 V | Akku		722	Entwurf
 24.41.761	Fusselfräse						Power tool	Power tool	Elektrowerkzeug			761	Entwurf
 24.41.772	Bandsäge						Power tool	Power tool	Elektrowerkzeug			772	Entwurf
-24.41.776	Kappsäge						Power tool	Power tool	Elektrowerkzeug			776	Entwurf
-24.41.784	Multifunktionswerkzeug						Power tool	Power tool	Elektrowerkzeug			784	Entwurf
+24.41.776	Kappsäge	Säge mit Kreissägeblatt an einem Arm, der von oben ins Werkstück schwenkt, für gerade und schräge Schnitte. Kreissäge und Handkreissäge sind eigene Einträge.	Gehrungssäge	Mitre saw	Saw with a circular blade on an arm that swings down into the workpiece, for straight and angled cuts. Table saws and hand-held circular saws are separate entries.	Chop saw	Power tool	Power tool	Elektrowerkzeug	230 V		776	Entwurf
+24.41.784	Multifunktionswerkzeug	Elektrowerkzeug mit schwingendem Kopf zum Sägen, Schleifen und Schaben. Der Dremel mit drehendem Kopf ist ein eigener Eintrag.	Multitool | Multimaster | Multicutter	Oscillating multi-tool	Power tool with an oscillating head for sawing, sanding and scraping. Rotary tools are a separate entry.	Multi-tool | Oscillating tool	Power tool	Power tool	Elektrowerkzeug	230 V		784	Entwurf
 24.41.789	Kreissäge	Kreissäge zum Aufstellen, etwa Tisch- oder Formatkreissäge. Handkreissäge und Kappsäge sind eigene Einträge.	Tischkreissäge	Table saw	Circular saw to set up, for example a table or panel saw. Hand-held circular saws and mitre saws are separate entries.	Circular saw bench	Power tool	Power tool	Elektrowerkzeug	230 V		789	Entwurf
 24.41.798	Deltaschleifer						Power tool	Power tool	Elektrowerkzeug			798	Entwurf
 24.41.805	Trennschleifer						Power tool	Power tool	Elektrowerkzeug			805	Entwurf
@@ -431,7 +431,6 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 24.41.822	Holzspalter						Power tool	Power tool	Gartengeräte mit Strom			822	Entwurf
 24.41.825	Motor	Einzelner Elektromotor, der ohne sein Gerät gebracht wird.	Elektromotor	Electric motor	Single electric motor brought without its device.		Power tool	Power tool	Elektrowerkzeug	230 V		825	Entwurf
 24.41.847	Elektrohobel						Power tool	Power tool	Elektrowerkzeug			847	Entwurf
-24.41.853	Tauchsäge						Power tool	Power tool	Elektrowerkzeug			853	Entwurf
 102.51.858	Astschere	Schere mit langen Griffen für dickere Äste, mit beiden Händen bedient, ohne Strom. Gartenscheren für eine Hand und elektrische Heckenscheren sind eigene Einträge.		Loppers	Shears with long handles for thicker branches, used with both hands, without power. One-handed secateurs and electric hedge trimmers are separate entries.	Branch loppers	Unpowered - Household	Hand tool	Gartengeräte mit Strom	ohne Kabel (Mechanik)		858	Entwurf
 24.41.868	Tauchpumpe	Pumpe, die im Wasser liegt, etwa für Keller oder Regentonne. Teichpumpen sind ein eigener Eintrag.	Schmutzwasserpumpe | Kellerpumpe | Regentonnenpumpe	Submersible pump	Pump placed in the water, for example for cellars or rain barrels. Pond pumps are a separate entry.	Submersible pump | Sump pump	Power tool	Power tool	Pumpen und Wasser	230 V		868	Entwurf
 24.41.875	Vertikutierer	Gartengerät mit Motor, das Moos und Filz aus dem Rasen kratzt.	Rasenlüfter	Scarifier	Garden machine with a motor that rakes moss and thatch out of the lawn.	Lawn scarifier | Dethatcher	Power tool	Power tool	Gartengeräte mit Strom	230 V		875	Entwurf
@@ -439,7 +438,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 24.41.900	Weidezaungerät						Power tool	Power tool	Gartengeräte mit Strom			900	Entwurf
 24.41.928	Lötkolben						Power tool	Power tool	Löten, Kleben, Schweißen			928	Entwurf
 24.41.944	Laubbläser	Gerät, das Laub wegbläst oder aufsaugt.	Laubsauger | Laubgebläse	Leaf blower	Device that blows away or sucks up leaves.	Leaf blower | Leaf vacuum	Power tool	Power tool	Gartengeräte mit Strom	230 V | Akku		944 | 821	Entwurf
-24.41.946	Handkreissäge	Handgeführte Säge mit Kreissägeblatt. Tisch- und Kappsägen sind eigene Einträge.	Akku-Handkreissäge	Circular saw	Handheld saw with circular blade. Table and mitre saws are separate entries.	Circular saw	Power tool	Power tool	Elektrowerkzeug	230 V | Akku		946	Entwurf
+24.41.946	Handkreissäge	Handgeführte Säge mit Kreissägeblatt. Tisch- und Kappsägen sind eigene Einträge.	Akku-Handkreissäge | Tauchsäge	Circular saw	Handheld saw with circular blade. Table and mitre saws are separate entries.	Circular saw	Power tool	Power tool	Elektrowerkzeug	230 V | Akku		946 | 853	Entwurf
 24.41.948	Schwingschleifer	Schleifgerät mit rechteckiger Schleifplatte, die schwingt.	Rutscher | Schwingschleifmaschine	Orbital sander	Sander with rectangular plate that vibrates.	Orbital sander | Finishing sander	Power tool	Power tool	Elektrowerkzeug	230 V		948	Entwurf
 24.41.956	Schleifmaus						Power tool	Power tool	Elektrowerkzeug			956	Entwurf
 24.41.959	Bandschleifer	Schleifgerät mit umlaufendem Schleifband.	Bandschleifmaschine	Belt sander	Sander with running abrasive belt.	Belt sander	Power tool	Power tool	Elektrowerkzeug	230 V		959	Entwurf
@@ -455,8 +454,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 24.41.1179	Dreieckschleifer						Power tool	Power tool	Elektrowerkzeug			1179	Entwurf
 24.41.1247	Schweißgerät						Power tool	Power tool	Löten, Kleben, Schweißen			1247	Entwurf
 24.41.1259	Haushaltsgerät (Metallbearbeitung)						Power tool	Power tool	Elektrowerkzeug			1259	Entwurf
-24.41.1320	Gartenpumpe						Power tool	Power tool	Gartengeräte mit Strom			1320	Entwurf
-24.41.1326	Bewässerungspumpe						Power tool	Power tool	Elektrowerkzeug			1326	Entwurf
+24.41.1326	Bewässerungspumpe	Brunnenpumpe, die Wasser zum Gießen oder Bewässern fördert. Tauch- und Teichpumpen sind eigene Einträge.	Brunnenpumpe | Gartenpumpe	Well pump	Well pump that delivers water for watering the garden. Submersible and pond pumps are separate entries.	Garden pump | Irrigation pump	Power tool	Power tool	Elektrowerkzeug	230 V		1326 | 1320	Entwurf
 24.41.1351	Unkrautjäter						Power tool	Power tool	Gartengeräte mit Strom			1351	Entwurf
 24.41.1360	Einhandsäge						Power tool	Power tool	Elektrowerkzeug			1360	Entwurf
 24.41.1393	Glasschleifer						Power tool	Power tool	Elektrowerkzeug			1393	Entwurf
@@ -501,9 +499,8 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 28.46.495	Wetterstation	Gerät, das Temperatur, Luftfeuchte oder Luftdruck anzeigt, oft mit Außensensor.	Funkwetterstation | Thermometer mit Funk	Weather station	Device that shows temperature, humidity or air pressure, often with outdoor sensor.	Weather station	Small home electrical	Misc	Mess- und Prüfgeräte	Batterie		495	Entwurf
 28.46.496	Blutdruckmessgerät	Gerät zum Messen des Blutdrucks am Oberarm oder Handgelenk.	Blutdruckmesser | Blutdruckmanschette	Blood pressure monitor	Device for measuring blood pressure on the upper arm or wrist.	Blood pressure monitor	Small home electrical	Misc	Mess- und Prüfgeräte	Batterie	life_critical	496	Entwurf
 28.46.527	Massagegerät	Elektrisches Gerät zur Massage, etwa Massagepistole oder Nackenmassage.	Massagepistole | Nackenmassagegerät | Massagestab	Massager	Electric massage device, such as massage gun or neck massager.	Massage equipment / Massager | Massage gun	Small home electrical	Misc	Massage und Wellness	230 V | Akku		527	Entwurf
-28.46.547	Multimeter						Small home electrical	Misc	Mess- und Prüfgeräte			547	Entwurf
+28.46.547	Multimeter	Messgerät für Spannung, Strom und Widerstand.	Vielfachmessgerät | Spannungsmesser	Multimeter	Meter for voltage, current and resistance.	Voltmeter	Small home electrical	Misc	Mess- und Prüfgeräte	Batterie		547 | 560	Entwurf
 28.46.558	Babyphone	Gerät zum Abhören oder Beobachten eines schlafenden Kindes.	Babyfon | Babymonitor	Baby monitor	Device for listening to or watching a sleeping child.	Baby monitor	Small home electrical	Misc	Klingel, Sprechanlage, Melder	Akku | mit Netzteil		558	Entwurf
-28.46.560	Spannungsmesser						Small home electrical	Misc	Mess- und Prüfgeräte			560	Entwurf
 28.46.594	Schreibmaschine	Mechanische oder elektrische Schreibmaschine.	Reiseschreibmaschine | elektrische Schreibmaschine	Typewriter	Mechanical or electric typewriter.	Typewriter	Small home electrical	Misc	Büro und Schreiben	ohne Kabel (Mechanik) | 230 V		594	Entwurf
 28.46.636	Ultraschallreiniger	Gerät, das kleine Gegenstände wie Brillen oder Schmuck mit Ultraschall im Wasserbad reinigt.	Ultraschallbad | Ultraschallreinigungsgerät	Ultrasonic cleaner	Device that cleans small items such as glasses or jewellery with ultrasound in a water bath.	Ultrasonic cleaner	Small home electrical	Misc		230 V		636	Entwurf
 28.46.687	Laminiergerät	Gerät, das Papier zwischen Folien einschweißt.	Laminator | Laminiermaschine	Laminator	Machine that seals paper between plastic sheets.	Laminator	Small home electrical	Misc	Büro und Schreiben	230 V		687	Entwurf
@@ -519,7 +516,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 28.46.1130	Funkfernbedienung	Fernbedienung per Funk, etwa für Garagentor, Markise, Funksteckdose oder Modellbau.	Handsender | Garagentoröffner, Handsender	Radio remote control	Radio remote control, for example for garage doors, awnings, wireless sockets or models.	Radio remote | Garage door remote	Small home electrical	Misc		Batterie		1130	Entwurf
 28.46.1134	Massagesessel						Small home electrical	Misc	Massage und Wellness			1134	Entwurf
 28.46.1150	Uhrenbeweger						Small home electrical	Misc	Haushalt klein sonstiges			1150	Entwurf
-28.46.1157	Zeitschaltuhr						Small home electrical	Misc	Haushalt klein sonstiges			1157	Entwurf
+28.46.1157	Zeitschaltuhr	Zwischenstecker oder Einbauteil, das Geräte zu festen Zeiten ein- und ausschaltet. Funksteckdosen sind ein eigener Eintrag.	Zeitschalter	Timer switch	Plug-in or built-in timer that switches devices on and off at set times. Remote-controlled sockets are a separate entry.	Plug-in timer	Small home electrical	Misc	Haushalt klein sonstiges	230 V		1157	Entwurf
 28.46.1267	Haushaltsgerät	Elektrisches Haushaltsgerät, das nicht genauer angegeben wurde.	Elektrogerät | Haushaltselektrogerät	Household appliance	Electric household appliance that was not specified.	Household appliances electric | Electrical Item	Small home electrical	Misc	Haushalt klein sonstiges	230 V		1267	Entwurf
 28.46.1286	Türklingel						Small home electrical	Misc	Klingel, Sprechanlage, Melder			1286	Entwurf
 28.46.1316	Vibrationskissen						Small home electrical	Misc	Massage und Wellness			1316	Entwurf
@@ -538,7 +535,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 29.42.471	Eierkocher	Gerät zum Kochen von Eiern mit Wasserdampf.	Eierkochgerät	Egg cooker	Appliance for cooking eggs with steam.	Egg boiler | Egg cooker	Small kitchen item	Small kitchen item		230 V		471	Entwurf
 29.42.489	Mikrowelle	Mikrowellengerät, auch mit Grill oder Heißluft.	Mikrowellenherd | Mikrowellengerät	Microwave	Microwave oven, including combination models with grill or convection.	Microwave oven	Small kitchen item	Small kitchen item		230 V	high_voltage | radiation	489	Entwurf
 29.42.502	Minibackofen	Kleiner Backofen zum Aufstellen.	Tischbackofen | Miniofen	Mini oven	Small countertop oven.	Toaster oven | Mini oven	Small kitchen item	Small kitchen item		230 V		502	Entwurf
-29.42.520	Dampfgarer						Small kitchen item	Small kitchen item				520	Entwurf
+29.42.520	Dampfgarer	Gerät, das Speisen mit Wasserdampf gart.		Food steamer	Device that cooks food with steam.	Steam cooker	Small kitchen item	Small kitchen item		230 V		520	Entwurf
 29.42.525	Einweckkocher						Small kitchen item	Small kitchen item				525	Entwurf
 29.42.526	Kochthermometer						Small kitchen item	Small kitchen item				526	Entwurf
 29.42.534	Induktionsplatte	Einzelne Kochplatte zum Aufstellen, die mit Induktion heizt.	Induktionskochplatte | mobile Induktionsplatte	Induction hob	Single portable hob that heats by induction.	Induction hob | Portable induction cooker	Small kitchen item	Small kitchen item		230 V		534	Entwurf
@@ -552,7 +549,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 29.42.727	Kochplatte	Einzelne oder doppelte Kochplatte zum Aufstellen, nicht die Induktionsplatte. Fest eingebaute Kochfelder sind ein eigener Eintrag.	Herdplatte | Heizplatte | Elektrokochplatte | Campingkocher, elektrisch	Hot plate	Single or double portable hot plate, not induction. Built-in hobs are a separate entry.	Hob | Hot plate	Small kitchen item	Small kitchen item		230 V		727 | 865 | 1346	Entwurf
 29.42.807	Reiskocher	Gerät, das Reis kocht und danach warm hält.		Rice cooker	Device that cooks rice and keeps it warm.		Small kitchen item	Small kitchen item		230 V		807	Entwurf
 29.42.841	Crepesgerät						Small kitchen item	Small kitchen item				841	Entwurf
-29.42.913	Eismaschine						Small kitchen item	Small kitchen item				913	Entwurf
+29.42.913	Eismaschine	Gerät, das Speiseeis rührt und kühlt.	Eiscrememaschine	Ice cream maker	Device that churns and freezes ice cream.	Ice cream machine	Small kitchen item	Small kitchen item		230 V		913	Entwurf
 29.42.923	Küchenwaage	Waage für Lebensmittel in der Küche, digital oder mechanisch.	Haushaltswaage	Kitchen scales	Scales for weighing food in the kitchen, digital or mechanical.	Kitchen scales | Kitchen scale	Small kitchen item	Small kitchen item		Batterie | ohne Kabel (Mechanik)		923	Entwurf
 29.42.938	Grillofen						Small kitchen item	Small kitchen item				938	Entwurf
 29.42.1013	Joghurtbereiter						Small kitchen item	Small kitchen item				1013	Entwurf
@@ -588,7 +585,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 32.44.421	Spielzeug	Spielzeug mit Strom aus Batterie, Akku oder Netz, das in keinen genaueren Eintrag passt. Spielzeug aus Holz ist ein eigener Eintrag.	elektrisches Spielzeug | Spielsachen	Toy	Electric or battery powered toy that fits no more specific entry. Wooden toys are a separate entry.	Electronic toy | Battery toy	Toy	Toy	Spielzeug mit Strom	Batterie | Akku		421	Entwurf
 32.44.623	Drohne	Fluggerät mit Rotoren und Fernsteuerung, meist mit Kamera und Akku.	Quadrocopter | Multicopter	Drone	Aircraft with rotors and remote control, usually with camera and rechargeable battery.	Quadcopter | Multicopter	Toy	Toy	Modellbau und Fahrzeuge	Akku		623 | 809	Entwurf
 32.44.816	Ferngesteuertes Auto	Spielzeugauto mit Fernbedienung. Spielzeugautos ohne Fernbedienung sind ein eigener Eintrag.	RC-Auto | Funkauto | ferngesteuerter Wagen	Remote controlled car	Toy car with remote control. Toy cars without remote are a separate entry.	Remote controlled car | RC car	Toy	Toy	Modellbau und Fahrzeuge	Akku | Batterie		816	Entwurf
-32.44.840	Hoverboard						Toy	Toy	Modellbau und Fahrzeuge		battery	840	Entwurf
+32.44.840	Hoverboard	Selbstbalancierendes Brett mit zwei Rädern, Motor und großem Akku.		Hoverboard	Self-balancing board with two wheels, a motor and a large battery.		Toy	Toy	Modellbau und Fahrzeuge	Akku	battery	840	Entwurf
 32.44.849	Lokomotive						Toy	Toy	Modellbau und Fahrzeuge			849	Entwurf
 32.44.854	Playmobil Eisenbahn						Toy	Toy	Modellbau und Fahrzeuge			854	Entwurf
 32.44.866	Puppenstube						Toy	Toy	Spielzeug mit Strom			866	Entwurf
@@ -646,7 +643,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 34.45.786	Saugroboter	Staubsauger, der selbstständig durch die Wohnung fährt. Wischroboter sind ein eigener Eintrag.	Staubsaugerroboter | Robotersauger	Robotic vacuum cleaner	Vacuum cleaner that moves through the home on its own. Mopping robots are a separate entry.	Robot vacuum | Robotic vacuum cleaner	Vacuum	Vacuum		Akku		786 | 803	Entwurf
 34.45.904	Nass-Sauger / Saug-Wischer /Waschsauger	Gerät, das Böden nass reinigt und Schmutzwasser aufsaugt.	Saugwischer | Waschsauger | Nasssauger	Wet floor cleaner	Appliance that cleans floors wet and sucks up dirty water.	Wet vacuum | Floor washer	Vacuum	Vacuum		230 V | Akku		904	Entwurf
 34.45.909	Bodenwischer						Vacuum	Vacuum				909	Entwurf
-34.45.1039	Bodenreiniger						Vacuum	Vacuum				1039	Entwurf
+34.45.1039	Bodenreiniger	Elektrisches Gerät, das Böden schrubbt oder poliert. Nass-Sauger und Bodenwischer sind eigene Einträge.	Bohnermaschine	Floor cleaner	Electric device that scrubs or polishes floors. Wet vacuums and floor mops are separate entries.	Floor polisher | Floor scrubber	Vacuum	Vacuum		230 V		1039	Entwurf
 34.45.1045	Handstaubsauger	Kleiner Staubsauger für die Hand, meist mit Akku, etwa für Krümel oder das Auto.	Akku-Handsauger | Tischsauger | Autosauger	Handheld vacuum cleaner	Small handheld vacuum cleaner, usually cordless, for crumbs or the car.	Handheld vacuum | Dustbuster	Vacuum	Vacuum		Akku		1045	Entwurf
 29.42.1125	Vakuumierer	Gerät, das Lebensmittel in Beuteln vakuumiert und die Folie verschweißt. Staubsauger sind eigene Einträge.	Folienschweißgerät | Vakuumiergerät	Vacuum sealer	Device that vacuum-packs food in bags and seals the film. Vacuum cleaners are separate entries.	Heat sealer | Food vacuum sealer	Small kitchen item	Small kitchen item		230 V		661 | 1125 | 846	Entwurf
 34.45.1169	Wischroboter						Vacuum	Vacuum				1169	Entwurf
@@ -731,7 +728,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 101.49.1078	Pullover	Pullover aus Wolle oder Stoff. Strickjacken sind ein eigener Eintrag.	Strickpullover | Sweatshirt | Pulli	Sweater	Sweater made of wool or fabric. Cardigans are a separate entry.	Sweater / Pullover / Jumper | Jumper	Unpowered - Textile	Clothing/textile		ohne Kabel (Mechanik)		1078	Entwurf
 101.49.1091	Handtuch	Handtuch oder Badetuch.	Badetuch | Duschtuch	Towel	Hand or bath towel.	Towel	Unpowered - Textile	Clothing/textile		ohne Kabel (Mechanik)		1091	Entwurf
 101.49.1099	Tarp / Zeltplane						Unpowered - Textile	Clothing/textile				1099	Entwurf
-101.49.1119	Geldbörse						Unpowered - Textile	Clothing/textile				1119	Entwurf
+101.49.1119	Portemonnaie	Börse für Geld und Karten, etwa mit kaputtem Reißverschluss oder Druckknopf.	Geldbörse | Geldbeutel	Wallet	Purse for money and cards, for example with a broken zip or press stud.	Purse	Unpowered - Textile	Clothing/textile		ohne Kabel (Mechanik)		1119	Entwurf
 101.49.1123	Beutel	Einfacher Beutel aus Stoff mit Kordel oder Henkeln. Taschen, Rucksäcke und Trolleys sind eigene Einträge.	Stoffbeutel | Turnbeutel	Cloth bag	Simple cloth bag with a drawstring or handles. Bags, rucksacks and trolleys are separate entries.	Tote bag | Drawstring bag	Unpowered - Textile	Clothing/textile		ohne Kabel (Mechanik)		1123	Entwurf
 101.49.1162	Fahrradtasche (Textilien)						Unpowered - Textile	Clothing/textile				1162	Entwurf
 101.49.1164	Spannbetttuch						Unpowered - Textile	Clothing/textile				1164	Entwurf
@@ -805,7 +802,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 102.51.537	Greifzange						Unpowered - Household	Hand tool	Werkzeug ohne Strom			537	Entwurf
 102.50.559	Dekoration	Dekorationsgegenstand für die Wohnung, ohne oder mit kleiner Beleuchtung, der nicht aus Holz ist.	Deko | Dekoartikel | Zierfigur	Home decor	Decorative item for the home, with or without small lighting, not made of wood.	Home Decor | Ornament	Unpowered - Household	Misc		ohne Kabel (Mechanik)		559	Entwurf
 102.51.563	Schraubstock						Unpowered - Household	Hand tool	Werkzeug ohne Strom			563	Entwurf
-102.50.566	Kerzenhalter						Unpowered - Household	Misc	Küche und Haushalt ohne Strom			566	Entwurf
+102.50.566	Kerzenhalter	Halter für Kerzen ohne Strom, etwa aus Metall oder Glas. Elektrische Kerzen sind ein eigener Eintrag.	Kerzenständer	Candle holder	Holder for candles without power, for example made of metal or glass. Electric candles are a separate entry.	Candlestick	Unpowered - Household	Misc	Küche und Haushalt ohne Strom	ohne Kabel (Mechanik)		566	Entwurf
 102.50.579	Topf	Kochtopf ohne Strom, etwa mit losem Griff. Schnellkochtopf und Elektrokochtopf sind eigene Einträge.	Kochtopf	Saucepan	Cooking pot without power, for example with a loose handle. Pressure cookers and electric cooking pots are separate entries.	Cooking pot | Pot	Unpowered - Household	Misc	Küche und Haushalt ohne Strom	ohne Kabel (Mechanik)		579	Entwurf
 102.50.586	Geschirr	Teller, Schüsseln oder Kannen, etwa mit Sprung oder abgebrochenem Griff. Tassen und Besteck sind eigene Einträge.		Crockery	Plates, bowls or jugs, for example with a crack or broken handle. Cups and cutlery are separate entries.	Dishes	Unpowered - Household	Misc	Küche und Haushalt ohne Strom	ohne Kabel (Mechanik)		586	Entwurf
 102.50.602	Dekoration (Möbel/Holz)	Dekorationsgegenstand aus Holz ohne Strom.	Holzdeko	Wooden decoration	Decorative item made of wood without power.	Wooden ornament	Unpowered - Household	Misc		ohne Kabel (Mechanik)		602	Entwurf
@@ -814,7 +811,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 102.50.676	Kleiderbügel						Unpowered - Household	Misc	Küche und Haushalt ohne Strom			676	Entwurf
 102.50.681	Salatschleuder						Unpowered - Household	Misc	Küche und Haushalt ohne Strom			681	Entwurf
 102.50.686	Tacker	Gerät ohne Strom zum Heften mit Klammern.	Handtacker | Hefter | Heftgerät	Staple gun	Non-electric device for fastening with staples.	Stapler | Staple gun	Unpowered - Household	Misc	Büro und Schreiben	ohne Kabel (Mechanik)		686	Entwurf
-102.51.705	Werkzeug - ohne Strom						Unpowered - Household	Hand tool	Werkzeug ohne Strom			705	Entwurf
+102.51.705	Werkzeug - ohne Strom	Handwerkzeug ohne Strom, das in keinen genaueren Eintrag passt, etwa Zange oder Hammer.	Handwerkzeug	Hand tool	Hand tool without power that fits no more specific entry, for example pliers or a hammer.		Unpowered - Household	Hand tool	Werkzeug ohne Strom	ohne Kabel (Mechanik)		705	Entwurf
 102.50.706	Besteck						Unpowered - Household	Misc	Küche und Haushalt ohne Strom			706	Entwurf
 102.50.733	Modellauto	Modellauto zum Sammeln oder Bauen, ohne Strom.	Sammlerauto | Modellbauauto	Model car	Model car for collecting or building, without power.	Model car | Die cast car	Unpowered - Household	Misc		ohne Kabel (Mechanik)		733	Entwurf
 102.50.738	Teigrolle						Unpowered - Household	Misc	Küche und Haushalt ohne Strom			738	Entwurf
@@ -872,7 +869,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 103.48.716	Kinderfahrrad	Fahrrad für Kinder, auch Laufrad.	Kinderrad | Jugendfahrrad	Children's bicycle	Bicycle for children.	Children's bicycle / Kid's bike | Kids bike	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)		716	Entwurf
 103.48.724	Luftpumpe	Pumpe für Reifen von Fahrrad oder Ball, von Hand oder mit Fuß. Elektrische Kompressoren sind ein eigener Eintrag.	Fahrradpumpe | Standpumpe	Bicycle pump	Pump for bicycle tyres or balls, by hand or foot. Electric compressors are a separate entry.	Floor pump | Hand pump	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)		724	Entwurf
 103.48.741	Schloss						Unpowered - Bicycle	Bicycle				741	Entwurf
-103.48.779	Fahrradcomputer						Unpowered - Bicycle	Bicycle				779	Entwurf
+103.48.779	Fahrradcomputer	Kleines Gerät am Lenker, das Geschwindigkeit und Strecke anzeigt, meist mit Batterie, auch Display und Bedieneinheit eines E-Bikes.	Tacho | E-Bike-Display	Bike computer	Small device on the handlebar that shows speed and distance, usually with a battery, also the display and control unit of an e-bike.	Cycle computer | E-bike display	Unpowered - Bicycle	Bicycle		Batterie		779	Entwurf
 103.48.835	Skateboardachse						Unpowered - Bicycle	Bicycle				835	Entwurf
 103.48.839	Gokart						Unpowered - Bicycle	Bicycle				839	Entwurf
 103.48.869	Fahrradklingel						Unpowered - Bicycle	Bicycle				869	Entwurf

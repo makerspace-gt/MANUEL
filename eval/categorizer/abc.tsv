@@ -431,7 +431,6 @@ key	name	class	repairs_deu
 24.41.822	Holzspalter	C	7
 24.41.825	Motor	B	22
 24.41.847	Elektrohobel	C	10
-24.41.853	Tauchsäge	C	2
 102.51.858	Astschere	B	25
 24.41.868	Tauchpumpe	B	44
 24.41.875	Vertikutierer	B	27
@@ -439,7 +438,7 @@ key	name	class	repairs_deu
 24.41.900	Weidezaungerät	C	9
 24.41.928	Lötkolben	B	13
 24.41.944	Laubbläser	B	53
-24.41.946	Handkreissäge	B	52
+24.41.946	Handkreissäge	B	54
 24.41.948	Schwingschleifer	B	47
 24.41.956	Schleifmaus	C	5
 24.41.959	Bandschleifer	B	35
@@ -455,8 +454,7 @@ key	name	class	repairs_deu
 24.41.1179	Dreieckschleifer	C	12
 24.41.1247	Schweißgerät	C	6
 24.41.1259	Haushaltsgerät (Metallbearbeitung)	B	14
-24.41.1320	Gartenpumpe	C	10
-24.41.1326	Bewässerungspumpe	B	18
+24.41.1326	Bewässerungspumpe	B	28
 24.41.1351	Unkrautjäter	C	1
 24.41.1360	Einhandsäge	C	1
 24.41.1393	Glasschleifer	C	1
@@ -501,9 +499,8 @@ key	name	class	repairs_deu
 28.46.495	Wetterstation	B	46
 28.46.496	Blutdruckmessgerät	B	59
 28.46.527	Massagegerät	A	91
-28.46.547	Multimeter	B	18
+28.46.547	Multimeter	B	21
 28.46.558	Babyphone	B	35
-28.46.560	Spannungsmesser	C	3
 28.46.594	Schreibmaschine	A	108
 28.46.636	Ultraschallreiniger	B	36
 28.46.687	Laminiergerät	B	47
@@ -731,7 +728,7 @@ key	name	class	repairs_deu
 101.49.1078	Pullover	A	159
 101.49.1091	Handtuch	B	36
 101.49.1099	Tarp / Zeltplane	C	9
-101.49.1119	Geldbörse	B	17
+101.49.1119	Portemonnaie	B	17
 101.49.1123	Beutel	B	21
 101.49.1162	Fahrradtasche (Textilien)	C	9
 101.49.1164	Spannbetttuch	C	3

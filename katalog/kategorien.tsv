@@ -4,7 +4,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 1.35.777	Nebelmaschine						Aircon/dehumidifier	Aircon/dehumidifier			777	Entwurf
 1.35.780	Luftkühler						Aircon/dehumidifier	Aircon/dehumidifier			780	Entwurf
 1.35.896	Klimagerät						Aircon/dehumidifier	Aircon/dehumidifier			896	Entwurf
-1.35.994	Luftreiniger						Aircon/dehumidifier	Aircon/dehumidifier			994	Entwurf
+1.35.994	Luftreiniger	Gerät, das die Raumluft durch Filter reinigt. Luftbefeuchter und Luftentfeuchter sind eigene Einträge.	Luftfilter	Air purifier	Device that cleans room air through filters. Humidifiers and dehumidifiers are separate entries.	Air cleaner	Aircon/dehumidifier	Aircon/dehumidifier		230 V	994	Entwurf
 1.35.1104	Verdampfer						Aircon/dehumidifier	Aircon/dehumidifier			1104	Entwurf
 1.35.1189	Zimmerbrunnen						Aircon/dehumidifier	Aircon/dehumidifier			1189	Entwurf
 1.35.1214	Aroma Diffuser						Aircon/dehumidifier	Aircon/dehumidifier			1214	Entwurf
@@ -97,7 +97,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 9.38.1426	IPL Laserhaarentferner						Hair & beauty item	Hair & beauty item			1426	Entwurf
 9.38.1737	Munddusche	Gerät zur Zahnzwischenraumreinigung mit Wasserstrahl.	Wasserflosser	Oral irrigator	Device for cleaning between teeth with a jet of water.	Water flosser | Oral irrigator	Hair & beauty item	Hair & beauty item		230 V | Akku	1737 | 720	Entwurf
 10.23.438	Walkman	Kleiner tragbarer Kassettenspieler mit Kopfhörer.	tragbarer Kassettenspieler | Kassetten-Walkman	Walkman	Small portable cassette player with headphones.	Walkman | Personal cassette player	Handheld entertainment device	Handheld entertainment device		Batterie	438	Entwurf
-10.23.439	Discman						Handheld entertainment device	Handheld entertainment device			439	Entwurf
+10.23.439	Discman	Tragbarer CD-Spieler mit Kopfhörer. Walkman und MiniDisc-Player sind eigene Einträge.	tragbarer CD-Player	Portable CD player	Portable CD player with headphones. Cassette walkmans and MiniDisc players are separate entries.	Discman	Handheld entertainment device	Handheld entertainment device		Batterie	439	Entwurf
 10.23.440	MP3-Player	Kleines Abspielgerät für digitale Musik, etwa iPod.	iPod | Musikplayer	MP3 player	Small player for digital music, for example iPod.	Audio player | iPod	Handheld entertainment device	Handheld entertainment device		Akku	440 | 1139	Entwurf
 10.23.648	Gameboy	Tragbare Spielkonsole wie Gameboy, Nintendo DS oder Switch Lite.	Nintendo DS | Handheld-Konsole | tragbare Spielkonsole	Handheld game console	Portable game console such as Gameboy, Nintendo DS or Switch Lite.	Handheld console | Gameboy	Handheld entertainment device	Handheld entertainment device		Batterie | Akku	648	Entwurf
 10.23.690	Audiorecorder						Handheld entertainment device	Handheld entertainment device			690	Entwurf
@@ -125,7 +125,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 13.30.573	Spulentonbandgerät	Tonbandgerät für offene Spulen.	Tonbandgerät | Bandmaschine | Spulentonband	Reel-to-reel tape recorder	Tape recorder for open reels.	Reel to reel | Tape recorder	Hi-Fi separates	Hi-Fi separates		230 V	573	Entwurf
 13.30.714	Mischpult	Gerät, das mehrere Tonquellen zusammenführt und regelt, etwa für DJ oder Band.	Mixer (Audio) | DJ-Mixer	Mixing desk	Device that combines and controls several audio sources, for example for a DJ or a band.	Audio mixer | DJ mixer | Mixing console	Hi-Fi separates	Hi-Fi separates		230 V	714	Entwurf
 13.30.781	Kassette						Hi-Fi separates	Hi-Fi separates			781	Entwurf
-13.30.804	Bluetooth Musikbox	Tragbarer Lautsprecher mit Akku, der Musik über Bluetooth vom Handy abspielt.	Bluetooth-Box | Musikbox | tragbarer Lautsprecher	Bluetooth speaker	Portable speaker with rechargeable battery that plays music from a phone via Bluetooth.	Bluetooth speaker | Portable speaker	Hi-Fi separates	Hi-Fi separates		Akku	804	Entwurf
+13.30.804	Bluetooth Musikbox	Tragbarer Lautsprecher mit Akku, der Musik über Bluetooth vom Handy abspielt.	Bluetooth-Box | Musikbox | tragbarer Lautsprecher | Bluetooth-Lautsprecher	Bluetooth speaker	Portable speaker with rechargeable battery that plays music from a phone via Bluetooth.	Bluetooth speaker | Portable speaker	Hi-Fi separates	Hi-Fi separates		Akku	804 | 1728	Entwurf
 13.30.894	Kassetten Tape Deck	Kassettendeck als Baustein einer HiFi-Anlage.	Tapedeck | Kassettendeck | Doppelkassettendeck	Cassette deck	Cassette deck as a component of a hi-fi system.	Cassette deck | Tape deck	Hi-Fi separates	Hi-Fi separates		230 V	894	Entwurf
 13.30.931	CD Wechsler	CD-Player für mehrere CDs, die automatisch gewechselt werden.	CD-Wechsler | CD-Changer	CD changer	CD player for several discs that are changed automatically.	CD changer | Multi disc player	Hi-Fi separates	Hi-Fi separates		230 V	931	Entwurf
 13.30.957	Soundschaltung						Hi-Fi separates	Hi-Fi separates			957	Entwurf
@@ -136,7 +136,6 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 13.30.1369	Subwoofer	Lautsprecher für tiefe Töne, oft mit eigenem Verstärker.	Basslautsprecher | Bassbox	Subwoofer	Loudspeaker for low frequencies, often with its own amplifier.	Bass speaker	Hi-Fi separates	Hi-Fi separates		230 V	1369	Entwurf
 13.30.1629	Audiointerface						Hi-Fi separates	Hi-Fi separates			1629	Entwurf
 13.30.1717	Frequenzweiche						Hi-Fi separates	Hi-Fi separates			1717	Entwurf
-13.30.1728	Bluetooth-Lautsprecher						Hi-Fi separates	Hi-Fi separates			1728	Entwurf
 14.39.401	Wasserkocher	Elektrischer Kocher zum Erhitzen von Wasser.	Wasserkessel, elektrisch	Electric kettle	Electric appliance for boiling water.	Kettle | Electric jug	Kettle	Kettle		230 V	401	Entwurf
 14.39.845	Teekanne						Kettle	Kettle			845	Entwurf
 14.39.1055	Teekocher						Kettle	Kettle			1055	Entwurf
@@ -162,7 +161,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 15.40.1307	Leselampe	Lampe mit gerichtetem Licht zum Lesen, oft mit Klemme oder Schwanenhals.	Lesesleuchte | Klemmleuchte	Reading lamp	Lamp with directed light for reading, often clip on or with gooseneck.	Reading light	Lamp	Lamp		230 V | Batterie | Akku	1307	Entwurf
 15.40.1314	Ringlicht						Lamp	Lamp			1314	Entwurf
 15.40.1422	UV Lampe						Lamp	Lamp			1422	Entwurf
-15.40.1509	Schreibtischlampe						Lamp	Lamp			1509	Entwurf
+15.40.1509	Schreibtischlampe	Lampe für den Schreibtisch mit gerichtetem Licht, oft mit Gelenkarm. Tischlampe und Leselampe sind eigene Einträge.	Arbeitsplatzleuchte | Architektenlampe	Desk lamp	Lamp for the desk with directed light, often with an articulated arm. Table lamps and reading lamps are separate entries.	Architect lamp	Lamp	Lamp		230 V	1509	Entwurf
 15.40.1521	USB Klemmlampe						Lamp	Lamp			1521	Entwurf
 15.40.1584	Kerze, elektrisch						Lamp	Lamp			1584	Entwurf
 15.40.1599	Gartenlampe						Lamp	Lamp			1599	Entwurf
@@ -175,7 +174,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 17.46.587	Kühltruhe						Large home electrical	Misc	Kühlen und Gefrieren		587	Entwurf
 17.46.588	E-Fahrrad / E-Bike	Fahrrad mit elektrischem Hilfsmotor und Akku. Akku und Ladegerät des E-Bikes sind eigene Einträge.	E-Bike | Pedelec | Elektrofahrrad	E-bike	Bicycle with electric assist motor and battery. E-bike batteries and chargers are separate entries.	E-bike | Electric bicycle | Pedelec	Large home electrical	Misc		Akku	588	Entwurf
 17.46.599	Waschmaschine	Waschmaschine für Wäsche. Wäschetrockner und Spülmaschine sind eigene Einträge.	Waschautomat | Toplader | Frontlader	Washing machine	Washing machine for laundry. Tumble dryers and dishwashers are separate entries.	Washing machine | Washer	Large home electrical	Misc	Waschen und Spülen	230 V	599	Entwurf
-17.46.605	Spülmaschine						Large home electrical	Misc	Waschen und Spülen		605	Entwurf
+17.46.605	Spülmaschine	Geschirrspüler für die Küche, eingebaut oder freistehend.	Geschirrspüler | Geschirrspülmaschine	Dishwasher	Dishwasher for the kitchen, built-in or free-standing.		Large home electrical	Misc	Waschen und Spülen	230 V	605 | 1441	Entwurf
 17.46.632	Kühlschrank	Kühlschrank, auch mit Gefrierfach. Gefriertruhe und Kühlbox sind eigene Einträge.	Kühlgerät | Kühl-Gefrier-Kombination	Fridge	Refrigerator, including with freezer compartment. Chest freezers and cool boxes are separate entries.	Fridge | Refrigerator | Fridge freezer	Large home electrical	Misc	Kühlen und Gefrieren	230 V	632	Entwurf
 17.46.641	Kühlbox	Tragbare Kühlbox mit elektrischer Kühlung. Kühlschränke sind ein eigener Eintrag.	Kühltasche, elektrisch | Campingkühlbox	Cool box	Portable cool box with electric cooling. Fridges are a separate entry.	Electric cool box | Cooler	Large home electrical	Misc	Kühlen und Gefrieren	230 V | mit Netzteil	641	Entwurf
 17.46.642	Pelletofen						Large home electrical	Misc	Kochen und Backen groß		642	Entwurf
@@ -194,7 +193,6 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 17.46.1329	Sportgerät (mit Strom)						Large home electrical	Misc	Fitnessgeräte		1329	Entwurf
 17.46.1335	Ceranfeld						Large home electrical	Misc	Kochen und Backen groß		1335	Entwurf
 17.46.1404	Ergometer						Large home electrical	Misc	Fitnessgeräte		1404	Entwurf
-17.46.1441	Geschirrspüler						Large home electrical	Misc	Waschen und Spülen		1441	Entwurf
 17.46.1495	Brutschrank						Large home electrical	Misc	Großgeräte sonstiges		1495	Entwurf
 17.46.1583	Wäscheschleuder						Large home electrical	Misc	Waschen und Spülen		1583	Entwurf
 17.46.1587	Pizza-Ofen						Large home electrical	Misc	Kochen und Backen groß		1587	Entwurf
@@ -205,10 +203,10 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 17.46.1856	Saunaofen						Large home electrical	Misc	Kochen und Backen groß		1856	Entwurf
 18.46.521	Wechselrichter						Misc	Misc	Strom erzeugen und wandeln		521	Entwurf
 18.46.555	Scheibenwischer						Misc	Misc	Motoren und Antriebe		555	Entwurf
-18.46.562	Schalter						Misc	Misc	Elektroinstallation, Kabel, Stecker		562	Entwurf
+18.46.562	Schalter	Schalter für Licht oder Geräte, etwa Lichtschalter oder Fußschalter. Funksteckdosen sind ein eigener Eintrag.	Lichtschalter | Kippschalter	Switch	Switch for lights or devices, for example a light switch or foot switch. Remote-controlled sockets are a separate entry.	Light switch	Misc	Misc	Elektroinstallation, Kabel, Stecker	230 V	562	Entwurf
 18.46.569	Seifenspender						Misc	Misc	Elektro sonstiges		569	Entwurf
 18.46.575	Metronom						Misc	Misc	Elektro sonstiges		575	Entwurf
-18.46.607	Diktiergerät						Misc	Misc	Elektro sonstiges		607	Entwurf
+18.46.607	Diktiergerät	Kleines Gerät zum Aufnehmen von Sprache, mit Kassette oder digital. Der Audiorecorder ist ein eigener Eintrag.	Diktafon	Dictaphone	Small device for recording speech, on cassette or digital. Audio recorders are a separate entry.	Voice recorder	Misc	Misc	Elektro sonstiges	Batterie	607	Entwurf
 18.46.625	Blitzgerät						Misc	Misc	Elektro sonstiges		625	Entwurf
 18.46.644	Thermostat						Misc	Misc	Heizen und Wärme		644	Entwurf
 18.46.655	Frequenzumrichter						Misc	Misc	Strom erzeugen und wandeln		655	Entwurf
@@ -224,7 +222,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 18.46.787	Tresor						Misc	Misc	Elektro sonstiges		787	Entwurf
 18.46.794	Marderschreck						Misc	Misc	Tierabwehr		794	Entwurf
 18.46.800	Bootsmotor						Misc	Misc	Motoren und Antriebe		800	Entwurf
-18.46.801	Funksteckdose						Misc	Misc	Elektroinstallation, Kabel, Stecker		801	Entwurf
+18.46.801	Funksteckdose	Zwischenstecker, der Geräte per Fernbedienung, App oder Zeitschaltung ein- und ausschaltet.	Funkschalter | WLAN-Steckdose	Remote-controlled socket	Plug-in adapter that switches devices on and off by remote control, app or timer.	Smart plug | Remote socket	Misc	Misc	Elektroinstallation, Kabel, Stecker	230 V	801	Entwurf
 18.46.811	Desinfektionsgerät						Misc	Misc	Medizin, Pflege, Hilfsmittel		811	Entwurf
 18.46.817	Bewegungsmelder						Misc	Misc	Klingel, Sprechanlage, Melder		817	Entwurf
 18.46.848	Tischrechner						Misc	Misc	Elektro sonstiges		848	Entwurf
@@ -407,7 +405,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 24.41.546	Schleifgerät / Schleifer	Elektrisches Schleifgerät, das in keinen genaueren Eintrag wie Schwing- oder Bandschleifer passt.	Schleifer | Exzenterschleifer	Sander	Electric sander that fits no more specific entry such as orbital or belt sander.	Sander | Random orbit sander	Power tool	Power tool	Elektrowerkzeug	230 V | Akku	546	Entwurf
 24.41.554	Werkzeug	Elektrowerkzeug, das nicht genauer angegeben wurde.	Elektrowerkzeug | Maschine	Power tool	Power tool that was not specified.	Power Tool e.g. DIY tool	Power tool	Power tool	Elektrowerkzeug	230 V | Akku	554	Entwurf
 24.41.571	Stichsäge	Säge mit auf und ab laufendem Sägeblatt für Kurven in Holz und Kunststoff.	Pendelstichsäge | Akku-Stichsäge	Jigsaw	Saw with up and down blade for curves in wood and plastic.	Jigsaw tool | Jigsaw	Power tool	Power tool	Elektrowerkzeug	230 V | Akku	571	Entwurf
-24.41.577	Kettensäge	Säge mit umlaufender Kette für Holz, mit Kabel, Akku oder Benzinmotor.	Motorsäge, elektrisch | Elektrokettensäge | Akku-Kettensäge	Chainsaw	Saw with running chain for wood, corded, cordless or petrol.	Chainsaw	Power tool	Power tool	Gartengeräte mit Strom	230 V | Akku	577	Entwurf
+24.41.577	Kettensäge	Säge mit umlaufender Kette für Holz, mit Kabel, Akku oder Benzinmotor.	Elektrokettensäge | Akku-Kettensäge | Motorsäge	Chainsaw	Saw with running chain for wood, corded, cordless or petrol.	Chainsaw	Power tool	Power tool	Gartengeräte mit Strom	230 V | Akku	577 | 826	Entwurf
 24.41.608	Wasserpumpe	Pumpe für Wasser, die in keinen genaueren Eintrag wie Tauch-, Teich- oder Gartenpumpe passt.	Hauswasserwerk	Water pump	Water pump that fits no more specific entry such as submersible, pond or garden pump.	Water pump | Pump	Power tool	Power tool	Pumpen und Wasser	230 V	608	Entwurf
 24.41.620	Dampfreiniger	Gerät, das mit heißem Dampf Böden, Fliesen oder Fenster reinigt.	Dampfbesen | Dampfmopp | Dampfstrahler	Steam cleaner	Device that cleans floors, tiles or windows with hot steam.	Steam cleaner | Steam mop	Power tool	Power tool		230 V	620	Entwurf
 24.41.637	Heißluftpistole						Power tool	Power tool	Elektrowerkzeug		637	Entwurf
@@ -431,8 +429,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 24.41.819	Kompressor	Gerät, das Druckluft erzeugt, etwa für Reifen oder Druckluftwerkzeug.	Luftkompressor | Druckluftkompressor	Air compressor	Machine that produces compressed air, for example for tyres or air tools.	Air compressor | Compressor	Power tool	Power tool		230 V	819	Entwurf
 24.41.820	Rasentrimmer	Gerät zum Schneiden von Rasenkanten und Gras an schwer erreichbaren Stellen, mit Faden oder Messer, auch als Rasenschere.	Rasenkantenschneider | Rasenkantenschere | Fadentrimmer | Akku-Rasenschere	Grass trimmer	Tool for cutting lawn edges and grass in hard to reach places, with line or blade, including grass shears.	Grass trimmer | Strimmer | Line trimmer | Grass shears	Power tool	Power tool	Gartengeräte mit Strom	230 V | Akku	820 | 897 | 1344 | 1515	Entwurf
 24.41.822	Holzspalter						Power tool	Power tool	Gartengeräte mit Strom		822	Entwurf
-24.41.825	Motor						Power tool	Power tool	Elektrowerkzeug		825	Entwurf
-24.41.826	Motorsäge						Power tool	Power tool	Gartengeräte mit Strom		826	Entwurf
+24.41.825	Motor	Einzelner Elektromotor, der ohne sein Gerät gebracht wird.	Elektromotor	Electric motor	Single electric motor brought without its device.		Power tool	Power tool	Elektrowerkzeug	230 V	825	Entwurf
 24.41.847	Elektrohobel						Power tool	Power tool	Elektrowerkzeug		847	Entwurf
 24.41.853	Tauchsäge						Power tool	Power tool	Elektrowerkzeug		853	Entwurf
 102.51.858	Astschere	Schere mit langen Griffen für dickere Äste, mit beiden Händen bedient, ohne Strom. Gartenscheren für eine Hand und elektrische Heckenscheren sind eigene Einträge.		Loppers	Shears with long handles for thicker branches, used with both hands, without power. One-handed secateurs and electric hedge trimmers are separate entries.	Branch loppers	Unpowered - Household	Hand tool	Gartengeräte mit Strom	ohne Kabel (Mechanik)	858	Entwurf
@@ -554,7 +551,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 29.42.679	Reibe, elektrisch	Elektrisches Gerät, das Gemüse, Kartoffeln oder Käse reibt oder raspelt, meist mit Trommel oder Scheibe. Die Reibe ohne Strom und die Kartoffelschälmaschine sind eigene Einträge.	Kartoffelraspel | Kartoffelreibe, elektrisch | Elektroreibe | Raspelmaschine	Electric grater	Electric device that grates or shreds vegetables, potatoes or cheese, usually with a drum or disc. Manual graters and potato peelers are separate entries.	Electric grater | Electric shredder	Small kitchen item	Small kitchen item		230 V	679	Entwurf
 29.42.703	Allesschneider	Schneidemaschine mit Kreismesser für Wurst, Käse und Brot.	Aufschnittmaschine | Wurstschneidemaschine	Meat slicer	Slicing machine with circular blade for meat, cheese and bread.	Food slicer | Meat slicer	Small kitchen item	Small kitchen item		230 V	703	Entwurf
 29.42.727	Kochplatte	Einzelne oder doppelte Kochplatte zum Aufstellen, nicht die Induktionsplatte. Fest eingebaute Kochfelder sind ein eigener Eintrag.	Herdplatte | Heizplatte | Elektrokochplatte | Campingkocher, elektrisch	Hot plate	Single or double portable hot plate, not induction. Built-in hobs are a separate entry.	Hob | Hot plate	Small kitchen item	Small kitchen item		230 V	727 | 865 | 1346	Entwurf
-29.42.807	Reiskocher						Small kitchen item	Small kitchen item			807	Entwurf
+29.42.807	Reiskocher	Gerät, das Reis kocht und danach warm hält.		Rice cooker	Device that cooks rice and keeps it warm.		Small kitchen item	Small kitchen item		230 V	807	Entwurf
 29.42.841	Crepesgerät						Small kitchen item	Small kitchen item			841	Entwurf
 29.42.913	Eismaschine						Small kitchen item	Small kitchen item			913	Entwurf
 29.42.923	Küchenwaage	Waage für Lebensmittel in der Küche, digital oder mechanisch.	Haushaltswaage	Kitchen scales	Scales for weighing food in the kitchen, digital or mechanical.	Kitchen scales | Kitchen scale	Small kitchen item	Small kitchen item		Batterie | ohne Kabel (Mechanik)	923	Entwurf
@@ -570,7 +567,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 29.42.1223	Heißluftfritteuse	Gerät, das Speisen mit heißer Luft gart.	Airfryer | Heißluftgarer	Air fryer	Appliance that cooks food with hot air.	Air fryer	Small kitchen item	Small kitchen item		230 V	1223	Entwurf
 29.42.1226	Warmhalteplatte / Wärmplatte						Small kitchen item	Small kitchen item			1226	Entwurf
 29.42.1227	Wärmeschublade						Small kitchen item	Small kitchen item			1227	Entwurf
-29.42.1242	Küchengerät						Small kitchen item	Small kitchen item			1242	Entwurf
+29.42.1242	Küchengerät	Nur zu verwenden, wenn das Küchengerät in keinen genaueren Eintrag passt.		Kitchen appliance	Use only when the kitchen appliance fits no more specific entry.		Small kitchen item	Small kitchen item			1242	Entwurf
 29.42.1306	Kontaktgrill	Grill mit zwei glatten oder gerillten Platten, die das Grillgut von beiden Seiten erhitzen, etwa für Fleisch, Gemüse oder Panini. Sandwichtoaster und Elektrogrill sind eigene Einträge.	Paninigrill	Contact grill	Grill with two flat or ribbed plates that heat the food from both sides, for example meat, vegetables or panini. Sandwich toasters and electric grills are separate entries.	Panini press	Small kitchen item	Small kitchen item		230 V	1306	Entwurf
 29.42.1332	Wasserdestilierer						Small kitchen item	Small kitchen item			1332	Entwurf
 29.42.1372	Eispotionierer						Small kitchen item	Small kitchen item			1372	Entwurf
@@ -714,7 +711,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 40.9.466	Bügeleisen	Bügeleisen mit oder ohne Dampf. Bügelstation mit getrenntem Wassertank und Steamer sind eigene Einträge.	Dampfbügeleisen | Reisebügeleisen	Iron	Clothes iron with or without steam. Steam generator irons and garment steamers are separate entries.	Steam iron | Clothes iron	Iron	Iron		230 V	466 | 891	Entwurf
 40.9.501	Bügelstation	Bügeleisen mit getrenntem Wassertank und Dampferzeuger.	Dampfbügelstation | Dampfstation | Dampfgenerator	Steam generator iron	Iron with separate water tank and steam generator.	Steam iron / Steam ironing station | Steam station	Iron	Iron		230 V	501 | 1453	Entwurf
 40.9.785	Wäschemangel						Iron	Iron			785	Entwurf
-40.9.879	Steamer						Iron	Iron			879 | 1313	Entwurf
+40.9.879	Steamer	Handgerät, das Kleidung mit Dampf glättet, ohne Bügelbrett. Bügeleisen und Bügelstation sind eigene Einträge.	Dampfglätter | Kleiderdampfer	Garment steamer	Hand-held device that smooths clothes with steam, without an ironing board. Irons and steam generator irons are separate entries.	Clothes steamer	Iron	Iron		230 V	879 | 1313	Entwurf
 40.9.903	Bügelbrett						Iron	Iron			903	Entwurf
 40.9.1222	Hemdenbügler						Iron	Iron			1222	Entwurf
 40.9.1380	Bügelpresse						Iron	Iron			1380	Entwurf
@@ -920,14 +917,14 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 105.47.680	Regal						Unpowered - Furniture	Furniture			680	Entwurf
 105.47.740	Boot						Unpowered - Furniture	Furniture			740	Entwurf
 105.47.870	Servierwagen						Unpowered - Furniture	Furniture			870	Entwurf
-105.47.876	Bilderrahmen						Unpowered - Furniture	Furniture			876	Entwurf
+105.47.876	Bilderrahmen	Rahmen für Bilder oder Fotos, etwa mit gebrochener Ecke oder fehlendem Aufsteller.	Fotorahmen	Picture frame	Frame for pictures or photos, for example with a broken corner or missing stand.	Photo frame	Unpowered - Furniture	Furniture		ohne Kabel (Mechanik)	876	Entwurf
 105.47.977	Liegestuhl						Unpowered - Furniture	Furniture			977	Entwurf
 105.47.997	Holzuntersetzer						Unpowered - Furniture	Furniture			997	Entwurf
 105.47.998	Holzbrett						Unpowered - Furniture	Furniture			998	Entwurf
 105.47.1000	Campingtisch						Unpowered - Furniture	Furniture			1000	Entwurf
 105.47.1067	Schublade						Unpowered - Furniture	Furniture			1067	Entwurf
 105.47.1069	Blumentopfständer						Unpowered - Furniture	Furniture			1069	Entwurf
-105.47.1071	Tisch						Unpowered - Furniture	Furniture			1071	Entwurf
+105.47.1071	Tisch	Tisch ohne Strom, etwa Esstisch, Couchtisch oder Schreibtisch. Campingtisch und Spieltisch sind eigene Einträge.	Esstisch | Couchtisch	Table	Table without power, for example a dining, coffee or writing table. Camping and games tables are separate entries.	Dining table | Coffee table	Unpowered - Furniture	Furniture		ohne Kabel (Mechanik)	1071	Entwurf
 105.47.1079	Campinghocker						Unpowered - Furniture	Furniture			1079	Entwurf
 105.47.1080	Kiste / Kasten						Unpowered - Furniture	Furniture			1080	Entwurf
 105.47.1102	Bierbank						Unpowered - Furniture	Furniture			1102	Entwurf
@@ -995,7 +992,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 106.50.874	Spiegel						Unpowered - Other	Misc	Sonstiges ohne Strom		874	Entwurf
 106.50.888	Mülleimer						Unpowered - Other	Misc	Sonstiges ohne Strom		888	Entwurf
 106.50.912	Thermoskanne / Thermosflasche						Unpowered - Other	Misc	Sonstiges ohne Strom		912	Entwurf
-106.50.921	Trolley						Unpowered - Other	Misc	Wagen, Camping, Outdoor		921	Entwurf
+106.50.921	Trolley	Tasche auf Rollen mit Zuggriff, etwa für den Einkauf. Bollerwagen und Sackkarre gehören zum Transportwagen.	Einkaufstrolley	Shopping trolley	Bag on wheels with a pull handle, for example for shopping. Handcarts and sack trucks belong to the transport cart.	Trolley bag	Unpowered - Other	Misc	Wagen, Camping, Outdoor	ohne Kabel (Mechanik)	921	Entwurf
 106.50.932	Teppichbürste						Unpowered - Other	Misc	Sonstiges ohne Strom		932	Entwurf
 106.50.933	Metalldose						Unpowered - Other	Misc	Sonstiges ohne Strom		933	Entwurf
 106.50.937	Kugelschreiber						Unpowered - Other	Misc	Büro und Schreiben		937	Entwurf

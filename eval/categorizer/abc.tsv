@@ -125,7 +125,7 @@ key	name	class	repairs_deu
 13.30.573	Spulentonbandgerät	A	110
 13.30.714	Mischpult	B	26
 13.30.781	Kassette	C	3
-13.30.804	Bluetooth Musikbox	A	149
+13.30.804	Bluetooth Musikbox	A	170
 13.30.894	Kassetten Tape Deck	A	110
 13.30.931	CD Wechsler	B	34
 13.30.957	Soundschaltung	C	3
@@ -136,7 +136,6 @@ key	name	class	repairs_deu
 13.30.1369	Subwoofer	B	24
 13.30.1629	Audiointerface	C	2
 13.30.1717	Frequenzweiche	C	1
-13.30.1728	Bluetooth-Lautsprecher	B	21
 14.39.401	Wasserkocher	A	966
 14.39.845	Teekanne	C	7
 14.39.1055	Teekocher	C	8
@@ -175,7 +174,7 @@ key	name	class	repairs_deu
 17.46.587	Kühltruhe	C	4
 17.46.588	E-Fahrrad / E-Bike	A	134
 17.46.599	Waschmaschine	B	53
-17.46.605	Spülmaschine	B	22
+17.46.605	Spülmaschine	B	29
 17.46.632	Kühlschrank	B	40
 17.46.641	Kühlbox	B	64
 17.46.642	Pelletofen	C	2
@@ -194,7 +193,6 @@ key	name	class	repairs_deu
 17.46.1329	Sportgerät (mit Strom)	C	3
 17.46.1335	Ceranfeld	C	3
 17.46.1404	Ergometer	C	1
-17.46.1441	Geschirrspüler	C	7
 17.46.1495	Brutschrank	C	1
 17.46.1583	Wäscheschleuder	C	1
 17.46.1587	Pizza-Ofen	C	5
@@ -407,7 +405,7 @@ key	name	class	repairs_deu
 24.41.546	Schleifgerät / Schleifer	B	71
 24.41.554	Werkzeug	B	48
 24.41.571	Stichsäge	B	74
-24.41.577	Kettensäge	A	92
+24.41.577	Kettensäge	A	114
 24.41.608	Wasserpumpe	B	63
 24.41.620	Dampfreiniger	B	81
 24.41.637	Heißluftpistole	B	15
@@ -432,7 +430,6 @@ key	name	class	repairs_deu
 24.41.820	Rasentrimmer	A	105
 24.41.822	Holzspalter	C	7
 24.41.825	Motor	B	22
-24.41.826	Motorsäge	B	22
 24.41.847	Elektrohobel	C	10
 24.41.853	Tauchsäge	C	2
 102.51.858	Astschere	B	25

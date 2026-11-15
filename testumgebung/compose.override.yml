@@ -12,8 +12,9 @@ services:
 
   # Catches every mail of the test instance, nothing reaches real guests. Inside the network of the
   # stack Mailpit also answers as mail.lima-city.de, with SMTP over TLS on port 465 and any login,
-  # so Zammad sends to Mailpit even with the real settings of lima-city. Fetching by IMAP from
-  # mail.lima-city.de does not work then, use the IP address of lima-city for that.
+  # so Zammad sends to Mailpit even with the real settings of lima-city. Its certificate is self-signed,
+  # a new email account checks it and fails, so run redirect_outbound.rb after adding one. Fetching by
+  # IMAP from mail.lima-city.de does not work then, use the IP address of lima-city without SSL check.
   mailpit:
     image: docker.io/axllent/mailpit:v1.33.1
     restart: always

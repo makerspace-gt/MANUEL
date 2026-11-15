@@ -1,0 +1,68 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0058]]
+= 0058 Felder des bestehenden Zammad übernehmen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Ein Export der Einstellungen unseres Zammad vom 15.11.2026 mit {repo}/zammad/export_config.py[export_config.py] zeigt, dass es dort schon deutsche Felder gibt. Sie heißen `marke`, `bezeichnung`, `baujahr`, `notiz` mit der Anzeige Defekt, `hack`, `stromversorgung`, `vde_0701_0702_geprueft` als Ja oder Nein und `ergebnis` mit deutschen Werten. Ein Feld für die Art des Geräts fehlt. {repo}/zammad/setup.rb[setup.rb] legt die Felder nach xref:0052-erfasste-daten-festlegen.adoc[ADR 52] englisch an, also daneben. Ein Trigger, ein Core Workflow und ein Makro nutzen das alte Feld `ergebnis`. Wie kommen die alten Werte in die neuen Felder, ohne dass Daten verloren gehen oder Gäste Mails bekommen?
+
+== Entscheidungskriterien
+
+* Kein Wert geht verloren
+* Kein Trigger feuert, keine Mail geht an Gäste
+* Regeln, die ein altes Feld nutzen, arbeiten danach mit dem neuen
+* Der Ablauf lässt sich in der Testinstanz proben und wiederholen
+
+== Betrachtete Optionen
+
+* Alte Felder behalten und nur die Art des Geräts ergänzen
+* Felder von Hand umbenennen und Werte von Hand anpassen
+* Übernahme als Code mit {repo}/zammad/migrate_fields.rb[migrate_fields.rb]
+
+== Entscheidung
+
+Gewählt wird die Übernahme als Code nach xref:0054-zammad-als-code-einrichten.adoc[ADR 54]. Das Skript läuft nach `setup.rb`, ohne Umgebungsvariable nur als Probelauf.
+
+* Werte werden kopiert, wo das neue Feld noch leer ist, ohne Callbacks, also ohne Trigger und Mails.
+* `notiz` kommt nach `problem_reported`, `hack` nach `solution`.
+* Stromversorgung und Ergebnis werden auf die englischen Werte abgebildet, das Ergebnis über {repo}/zammad/result_tree.rb[result_tree.rb].
+* Ein Ja der VDE-Prüfung bleibt ja. Ein Nein wird leer, weil es nur der Standard war und keine Prüfung belegt.
+* Trigger, geplante Aufgaben, Makros, Übersichten und Core Workflows mit einem alten Feld werden umgestellt.
+* Die alten Felder werden abgeschaltet, ihre Werte bleiben in der Datenbank.
+
+In der Testinstanz lief das am 15.11.2026 mit den Felddefinitionen und drei Regeln aus dem Export und drei Beispiel-Tickets. Alle Werte kamen an, ein schon gesetzter Wert blieb, und der zweite Lauf änderte nichts.
+
+=== Konsequenzen
+
+* Gut, weil die Tickets seit 2019 mit den neuen Feldern auswertbar bleiben.
+* Gut, weil die Regeln des Teams weiter funktionieren.
+* Schlecht, weil die Werte ohne Callbacks keine Einträge in der Historie der Tickets bekommen.
+* Schlecht, weil die Zuordnung in `OLD_FIELDS` für unser Zammad gilt. Andere Initiativen passen sie an.
+* Schlecht, weil der Lauf im echten Zammad erst nach einem Test mit dem Backup in der Testinstanz erfolgen sollte.
+
+== Vor- und Nachteile der Optionen
+
+=== Alte Felder behalten
+
+* Gut, weil nichts umgebaut wird.
+* Schlecht, weil die Namen von ADR 52 und vom Open Repair Data Standard abweichen und andere Initiativen andere Namen hätten.
+
+=== Von Hand
+
+* Gut, weil kein Skript nötig ist.
+* Schlecht, weil Tausende Tickets betroffen sind und Fehler nicht wiederholbar zu beheben wären.
+
+=== Übernahme als Code
+
+* Gut, weil Probelauf und Wiederholung möglich sind.
+* Schlecht, weil das Skript die Modelle von Zammad kennen muss.
+
+== Quellen
+
+* Export der Einstellungen vom 15.11.2026, lokal unter `~/bench/zammad-export/`, nicht im Repo
+* Festlegung von Michael Prange am 15.11.2026, Defekt nach `problem_reported`, Hack nach `solution`, Nein der VDE-Prüfung wird leer

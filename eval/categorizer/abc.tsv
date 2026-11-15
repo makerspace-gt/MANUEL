@@ -482,8 +482,7 @@ key	name	class	repairs_deu
 25.20.1330	Schneideplotter	C	1
 25.20.1678	Flachbettscanner	C	2
 26.33.497	Diabetrachter	B	24
-26.33.570	Beamer	B	82
-26.33.647	Projektor	B	20
+26.33.570	Beamer	B	102
 26.33.902	Diaprojektor	A	86
 26.33.924	Filmprojektor	B	35
 26.33.1300	Vergrößerungsgerät	C	2
@@ -824,7 +823,6 @@ key	name	class	repairs_deu
 102.50.860	Tasse	C	10
 102.51.861	Stemmhammer	C	4
 102.50.886	Standuhr/Regulator	B	40
-102.50.922	Brotzeitbrett	C	1
 102.50.925	Personenwaage	A	104
 102.51.930	Hebelschere	C	3
 102.50.940	Eierschalensollbruchverursacher	C	1
@@ -920,7 +918,7 @@ key	name	class	repairs_deu
 105.47.876	Bilderrahmen	B	22
 105.47.977	Liegestuhl	C	9
 105.47.997	Holzuntersetzer	C	2
-105.47.998	Holzbrett	B	19
+105.47.998	Holzbrett	B	22
 105.47.1000	Campingtisch	C	1
 105.47.1067	Schublade	B	17
 105.47.1069	Blumentopfständer	C	1
@@ -947,7 +945,6 @@ key	name	class	repairs_deu
 105.47.1551	Nähkasten	C	3
 105.47.1557	Türgriff	C	1
 105.47.1559	Sitzmöbel	C	4
-105.47.1560	Schneidebrett	C	2
 105.47.1565	Küchenvitrine	C	2
 105.47.1635	Drehstuhl	C	1
 105.47.1669	Hunde-Transport-Brett	C	1

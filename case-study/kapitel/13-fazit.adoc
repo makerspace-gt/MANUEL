@@ -47,6 +47,16 @@ Dieses Kapitel entsteht zum Schluss aus den Ergebnissen der Kapitel.
 * Sharecard für das Resümee eines Termins
 * Was andere anpassen müssen, etwa Kategorien, Termine und Zammad
 
+=== Wen wir worüber informieren
+
+* Open Repair Alliance per E-Mail an openrepair@therestartproject.org. Ob wir als eigener Datenpartner im Format von ORDS liefern können, in welchem Takt und wie sich das mit Restarters.net verträgt. Dazu die Meldelücke, bisher sind 30 von 1.485 Geräten übertragen <<reparaturdaten>>.
+* Restart Project für Restarters.net. Wir melden Reparaturen über die API <<adr-0014>>, die Nachmeldung ab 2024 erst nach der Antwort der Alliance <<adr-0036>>. Sieben ORA-Gruppen haben dort keine eigene Kategorie, Bildschirme und Laptops nur Größen. Das teilen wir als Hinweis mit.
+* anstiftung per Issue in mapped-repair-events und per E-Mail. Ob database.sql dem Stand der Kategorien entspricht, ob sie schreibende Endpunkte und vergangene Termine in der API annehmen würde und der Vorschlag, die Kategorie mit dem abwertenden Namen in Radiorekorder umzubenennen <<adr-0012>>.
+* Zammad GmbH per Issue, wenn sich das bestätigt. Eine Antwort leert die Wartezeit, auch wenn sie ein Termin ist <<adr-0053>>.
+* IT-Team des Makerspace. Die Kopie der ticket.rb im Helpdesk ist veraltet, der Initializer ersetzt sie.
+* Andere Initiativen im Netzwerk Reparatur-Initiativen der anstiftung, auf unserer Website und in sozialen Medien, mit Katalog, Image und Fallstudie.
+* DSEE mit dem Sachbericht im Verwendungsnachweis bis 31.03.2027.
+
 === Ausblick
 
 * Betrieb im Makerspace, Reparaturansätze und Anleitungen, Statistik für die Open Repair Alliance

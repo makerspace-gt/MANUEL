@@ -30,7 +30,9 @@ Gewählt wird der Agent. Ein Trigger mit Platzhaltern scheitert daran, dass Zamm
 
 {repo}/zammad/agents.rb[agents.rb] legt den Agenten an. Zammad legt seine Definition über die Vorgaben des Typs ({zammad-src}/app/models/ai/agent.rb[agent.rb]). Er sieht Betreff, Marke, Art und die erste Nachricht und schreibt „Marke Gerät“. Ein Trigger startet ihn in Repairs, wenn ein Ticket dort angelegt wird, wenn ein Termin bestätigt wird und wenn sich Art oder Marke ändern. Die Bestätigung erkennt er am Wechsel auf terminiert. Die Verschiebung nach Repairs macht ein anderer Trigger im selben Durchlauf, und `has changed` sieht nur die ursprüngliche Änderung. Die Vorlage „Walk-in“ füllt den Betreff mit „Spontan“, der Agent ersetzt ihn.
 
-Am 15.11.2026 in der Testinstanz geprüft. Mit Marke kam „Miele Staubsauger“ heraus. Eine Anfrage „Hilfe, mein Frühstück“ behielt den Betreff und hieß nach der Bestätigung „Toaster“.
+Im ersten Betrieb übernahm der Agent die Marke, das Gerät aber nicht. Zammad gibt Agenten bei Baum-Feldern den Wert als Label, weil es dort Pfade aus Namen erwartet ({zammad-src}/app/services/service/ai/agent/run/context/entity/object_attributes/options.rb[options.rb]). Bei uns ist der Wert nach xref:0013-eintraege-mit-hierarchischem-schluessel-kennzeichnen.adoc[ADR 13] ein Schlüssel, der Agent sah also `21.18.593` statt Aktenvernichter und riet aus der Nachricht. {repo}/zammad/tree_select_label.rb[tree_select_label.rb] setzt im Kontext der Agenten den Namen der Option in der Sprache von Zammad ein, wenn er sich vom Wert unterscheidet. Das ist dieselbe Lücke wie beim Categorizer in xref:0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc[ADR 59] und gehört ins Issue an die Zammad GmbH.
+
+Am 15.11.2026 in der Testinstanz geprüft. Mit dem Namen im Kontext kamen „Hue Aktenvernichter“ und „Braun Kaffeemaschine“ heraus, vorher „Hue“ und „Braun Wasserkocher“. Eine Anfrage „Hilfe, mein Frühstück“ behielt den Betreff und hieß nach der Bestätigung „Toaster“.
 
 === Konsequenzen
 

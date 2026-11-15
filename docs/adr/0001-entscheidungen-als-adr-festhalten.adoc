@@ -10,7 +10,7 @@ Beteiligte:: Michael Prange
 
 == Kontext und Problem
 
-MANUEL ist über Wochen in kleinen Schritten entstanden. Entscheidungen stehen bisher verstreut im PLAN, in der Doku zur Einordnung, in Kommentaren von `gleichwertig.tsv` und in Commit-Nachrichten. Später, etwa beim Umzug in den Makerspace oder bei einem Wechsel im Team, lässt sich kaum noch nachvollziehen, warum etwas so ist. Auch die Fallstudie braucht eine Stelle, an der jede Entscheidung mit Begründung steht. Auf Architectural Decision Records (ADR) aufmerksam wurde Michael Prange durch die Folge 311 des Podcasts Freak Show.
+MANUEL ist über Wochen in kleinen Schritten entstanden. Entscheidungen stehen bisher verstreut im PLAN, in der Doku zur Einordnung, in Kommentaren von `equivalents.tsv` und in Commit-Nachrichten. Später, etwa beim Umzug in den Makerspace oder bei einem Wechsel im Team, lässt sich kaum noch nachvollziehen, warum etwas so ist. Auch die Fallstudie braucht eine Stelle, an der jede Entscheidung mit Begründung steht. Auf Architectural Decision Records (ADR) aufmerksam wurde Michael Prange durch die Folge 311 des Podcasts Freak Show.
 
 == Entscheidungskriterien
 

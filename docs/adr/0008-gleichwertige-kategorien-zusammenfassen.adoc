@@ -28,7 +28,7 @@ Die Liste des Laufzettels enthält Dopplungen. Marken stehen neben Gattungen wie
 
 Das Team entscheidet für jedes Paar, ob es gleichwertig ist. Grundlage sind eine Recherche im Internet und die Marken je Kategorie in den Open Repair Data. Die Gattung geht vor der Marke. Getrennt bleibt, was eine andere Reparatur verlangt, etwa Kaffeevollautomat und Kapselmaschine oder Bohrmaschine und Schlagbohrmaschine. Wo die Bauart offen ist, wie bei Mixer oder Kopfhörer, stellt MANUEL eine Rückfrage an das Team nach xref:0011-bei-unsicherheit-nachfragen.adoc[ADR 11]. Fehlt die Angabe, folgt eine Nachfrage beim Gast. Nach allen Zusammenfassungen bleiben 1.089 Einträge.
 
-Welche Kategorien des Laufzettels zu einem Eintrag gehören, legt die Spalte `form_ids` im Katalog fest. Die Begründungen stehen in `gleichwertig.tsv`. Die Liste besprechen wir mit der anstiftung, weil ihr die Kategorien gehören.
+Welche Kategorien des Laufzettels zu einem Eintrag gehören, legt die Spalte `form_ids` im Katalog fest. Die Begründungen stehen in `equivalents.tsv`. Die Liste besprechen wir mit der anstiftung, weil ihr die Kategorien gehören.
 
 === Konsequenzen
 
@@ -55,6 +55,6 @@ Welche Kategorien des Laufzettels zu einem Eintrag gehören, legt die Spalte `fo
 
 == Quellen
 
-* {repo}/eval/decision/gleichwertig.tsv[gleichwertig.tsv]
+* {repo}/eval/decision/equivalents.tsv[equivalents.tsv]
 * {repo}/docs/einordnung.md[Einordnung von Tickets], Schritt 12
 * https://openrepair.org/open-data/downloads/[Open Repair Data], Version 0.3 vom Juli 2026

@@ -21,7 +21,7 @@ from pathlib import Path
 
 CATALOG = Path("katalog/kategorien.tsv")
 
-# Names of the form that MANUEL does not show, see gleichwertig.tsv
+# Names of the form that MANUEL does not show, see equivalents.tsv
 HIDDEN = {"Ghettoblaster"}
 
 

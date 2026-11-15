@@ -12,7 +12,7 @@ import re
 
 THRESHOLD = 0.7
 
-# R1, entries and names for which the team wants to ask back, see gleichwertig.tsv
+# R1, entries and names for which the team wants to ask back, see equivalents.tsv
 COLLECTIVE_ENTRIES = {
     "Kaffeemaschine", "Mixer", "Ladegerät", "Lautsprecher(boxen)", "Fotoapparat", "Projektor",
     "Grill", "Heizung", "Kopfhörer", "Funkkopfhörer", "Headset",

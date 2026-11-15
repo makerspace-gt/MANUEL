@@ -12,7 +12,7 @@ form, at the end our own distinction where we split a category of anstiftung. Th
 means that the size of the device decides, as for laptops and flat screens. The column
 restarters_category must be the name of that id, and the id must have power exactly when the ORA
 group has. Each ID of the form belongs to exactly one entry without its own distinction. The
-preferred names in gleichwertig.tsv must be entries in the catalog. A confirmed entry needs
+preferred names in equivalents.tsv must be entries in the catalog. A confirmed entry needs
 name_en, ora_group, restarters_category and power.
 
 Run in the repository root:
@@ -26,7 +26,7 @@ from pathlib import Path
 
 CATALOG = Path("katalog/kategorien.tsv")
 ORA_GROUPS = Path("eval/decision/ora-gruppen.tsv")
-EQUIVALENT = Path("eval/decision/gleichwertig.tsv")
+EQUIVALENT = Path("eval/decision/equivalents.tsv")
 RESTARTERS = Path("quellen/restarters/kategorien.csv")
 KEY_PATTERN = re.compile(r"(\d+)\.(\d+)\.(\d+)(\.\d+)?")
 POWER = {"230 V", "mit Netzteil", "Batterie", "Akku", "ohne Kabel (Mechanik)"}
@@ -77,7 +77,7 @@ def main():
     names_all = {row["name"] for row in rows}
     for line in EQUIVALENT.read_text(encoding="utf-8").splitlines():
         if line and not line.startswith("#") and line.split("\t")[0] not in names_all:
-            problems.append(f"gleichwertig.tsv: {line.split(chr(9))[0]} ist kein Eintrag im Katalog")
+            problems.append(f"equivalents.tsv: {line.split(chr(9))[0]} ist kein Eintrag im Katalog")
     for row in rows:
         if row["status"].startswith("bestätigt"):
             missing = [f for f in ("name_en", "ora_group", "restarters_category", "power") if not row[f].strip()]

@@ -63,4 +63,4 @@ Der Katalog steht unter [CC BY-SA 4.0](../LICENSES/CC-BY-SA-4.0.txt). Ein Teil d
 
 ## Stand
 
-Der Katalog enthält alle 1.089 Einträge, die nach den Zusammenfassungen übrig bleiben. Die 226 häufigsten haben Beschreibung und Synonyme auf Deutsch und Englisch, sie decken 90 Prozent der deutschen Reparaturen in den Open Repair Data ab. Bei den übrigen stehen bisher nur Name, ORA-Gruppe aus einem Entwurf und die IDs des Laufzettels. Warum Einträge zusammengefasst oder getrennt sind, steht in [gleichwertig.tsv](../eval/decision/gleichwertig.tsv).
+Der Katalog enthält alle 1.089 Einträge, die nach den Zusammenfassungen übrig bleiben. Die 226 häufigsten haben Beschreibung und Synonyme auf Deutsch und Englisch, sie decken 90 Prozent der deutschen Reparaturen in den Open Repair Data ab. Bei den übrigen stehen bisher nur Name, ORA-Gruppe aus einem Entwurf und die IDs des Laufzettels. Warum Einträge zusammengefasst oder getrennt sind, steht in [equivalents.tsv](../eval/decision/equivalents.tsv).

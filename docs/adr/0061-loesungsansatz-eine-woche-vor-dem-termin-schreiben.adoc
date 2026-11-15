@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-15
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-15, Agent, Trigger und Makro umgesetzt
 
 == Kontext und Problem
 
@@ -26,6 +27,14 @@ Bisher sollte der Agent für den Reparaturansatz bei jedem neuen Ticket laufen. 
 == Entscheidung
 
 Gewählt wird `next-event`. Ein Trigger löst den Agenten aus, sobald ein Ticket in Repairs oder Requests den Tag bekommt, siehe xref:0062-datums-tags-und-monatsuebersichten-automatisch-pflegen.adoc[ADR 62]. Ausgenommen sind Tickets mit `spam`, `no-info`, `delete`, `obsolete` oder `EUReCA`. Die Einordnung der Felder läuft weiter bei jeder neuen Anfrage, weil sie für Terminvergabe und Übersichten früh gebraucht wird.
+
+=== Umsetzung
+
+{repo}/zammad/agents.rb[agents.rb] legt einen Custom AI Agent an. Rolle und Anweisung stehen als Text in {repo}/zammad/prompts/[prompts/]. Er sieht die Gerätefelder und alle Nachrichten und schreibt eine interne Notiz. Ist das Ticket konkret genug, enthält sie Ursachen als Vermutung, Schritte, Werkzeug, Ersatzteile und Sicherheit. Sonst stehen darin bis zu drei Nachfragen an den Gast, die das Team stellen kann. Der Trigger „Repairs: Write solution approach“ startet ihn bei `next-event` und setzt `solution-suggested`, damit er je Ticket einmal läuft. Das Makro „Lösungsansatz von MANUEL“ startet ihn von Hand.
+
+Zammad 7.2.2 konnte aus einem Agenten keine Notiz anlegen. Die Aktion liest den Betreff mit einem Symbol, ein Agent liefert aber Text als Schlüssel, und Zammad suchte dann eine Vorlagendatei. {repo}/zammad/agent_note.rb[agent_note.rb] macht die Daten für beide Schlüssel lesbar. Das gehört ins Issue an die Zammad GmbH.
+
+Am 15.11.2026 schrieb der Agent für eine Nähmaschine von Brother mit dem Defekt „näht dicke Stofflagen nicht, klock klock, Nadel geht nicht durch“ in 15 Sekunden eine Notiz mit Nadel, Fadenspannung und Greifer als Vermutungen, Schritten, Werkzeug und dem Hinweis auf Netzspannung und die Prüfung nach DIN EN 50678.
 
 === Konsequenzen
 

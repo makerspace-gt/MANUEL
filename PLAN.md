@@ -383,7 +383,8 @@ git push
 - [ ] Dienst aus [category_check/](category_check/README.md) im Betrieb auf MANUEL starten, nur auf der Tailnet-Adresse, und `MANUEL_CATEGORY_CHECK_URL` im echten Zammad setzen. Nach den ersten Terminen die Tags `category-differs` zählen, siehe [ADR 68](docs/adr/0068-art-des-geraets-mit-d3-pruefen.adoc)
 - [ ] Agenten Ticket Categorizer für die Art des Geräts mit der Liste aus dem Vorabtest und Ticket Text Extractor für die übrigen Felder anlegen
 - [ ] Nach den ersten zwei Terminen den Anteil falscher Kategorien zählen. Ab 5 Prozent oder auf Wunsch des Teams auf n8n mit `d3:9b` und Rückfrage umsteigen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)
-- [ ] Custom AI Agent für den Reparaturansatz und einen für erkannte Kontaktdaten anlegen, beide schreiben nur interne Notizen
+- [x] Custom AI Agent für den Reparaturansatz mit Nachfragen bei zu wenig Angaben, als Code in [agents.rb](zammad/agents.rb), am 15.11.2026 an einer Nähmaschine getestet, siehe [ADR 61](docs/adr/0061-loesungsansatz-eine-woche-vor-dem-termin-schreiben.adoc)
+- [ ] Custom AI Agent für erkannte Kontaktdaten anlegen, er schreibt nur interne Notizen
 - [ ] Trigger anlegen, die die Einordnung bei neuen Tickets auslösen und den Reparaturansatz, sobald ein Ticket `next-event` bekommt, ohne `spam`, `no-info`, `delete`, `obsolete` und `EUReCA`, siehe [ADR 61](docs/adr/0061-loesungsansatz-eine-woche-vor-dem-termin-schreiben.adoc)
 - [ ] Prüfen, dass kein Agent und kein Trigger von MANUEL E-Mails oder SMS an Gäste verschickt. Die Regeln aus [workflows.rb](zammad/workflows.rb) für Eingangsbestätigung, Nachfrage, Absage und Erinnerung schreiben Gästen, sie sind feste Texte ohne Modell und beim Anlegen aus, siehe [ADR 60](docs/adr/0060-ablaeufe-des-bestehenden-zammad-als-code-uebernehmen.adoc)
 - [ ] Gegen die Testinstanz auf der Test-VM testen

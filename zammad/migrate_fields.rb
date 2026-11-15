@@ -51,6 +51,8 @@ end.freeze
 # Rules of our Zammad that code in zammad/ replaces. They are switched off, not deleted.
 REPLACED_RULES = {
   Macro => ['1. Tag Date', '2. Untag next-event'],
+  # The cancellation of zammad/workflows.rb asks first, a proposal left open after the date becomes no-show
+  Job   => ['Automatisch am Vortag schließen, wenn keinen Terminbestätigung erfolgt'],
 }.freeze
 
 replaced = []

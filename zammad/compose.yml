@@ -26,6 +26,7 @@ services:
       MANUEL_SPAM_FOLDER: ${MANUEL_SPAM_FOLDER:-}
       MANUEL_EVENT_REMINDER_FROM: ${MANUEL_EVENT_REMINDER_FROM:-}
       MANUEL_EVENT_REMINDER_SUBJECT: ${MANUEL_EVENT_REMINDER_SUBJECT:-}
+      MANUEL_AUTO_REPLY_EXCEPT: ${MANUEL_AUTO_REPLY_EXCEPT:-}
     volumes:
       - ./zammad:/opt/manuel/zammad:ro
       - ./katalog/kategorien.tsv:/opt/manuel/katalog/kategorien.tsv:ro

@@ -23,6 +23,8 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 | [article_types.rb](article_types.rb) und [inbound.rb](inbound.rb) | Typ `walk-in` für den Empfang, Initializer und Anlegen samt Registrierung des Filters. `inbound.rb` setzt außerdem `system_bcc` aus `MANUEL_SENT_BCC` und legt mit `MANUEL_SPAM_FOLDER` einen Kanal für Spam check an, siehe [ADR 65](../docs/adr/0065-postfach-archivieren-und-aufbewahrung-begrenzen.adoc) |
 | [migrate_contacts.rb](migrate_contacts.rb) | Gleicht Nummern, Gäste von sipgate und Typen im Bestand an, erst als Probelauf |
 | [press.rb](press.rb) | Organisation Presse, ein Trigger mit der Pressemitteilung je Redaktion, beim Anlegen aus, und eine Notiz für soziale Medien, beides auf die Erinnerung vor dem Termin, siehe [ADR 66](../docs/adr/0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc) |
+| [workflows.rb](workflows.rb) | Trigger und geplante Aufgaben, also `next-event`, Verschieben nach Repairs, Eingangsbestätigung mit Hausordnung, Nachfrage und Absage bei Terminvorschlägen, Erinnerung und Löschfristen. Regeln für Mails an Gäste und Löschungen sind beim Anlegen aus, ein späterer Lauf ändert `active` nie. Alte Namen übernimmt `LEGACY_NAMES` |
+| [texts/](texts/) | Texte für Mails an Gäste, Hausordnung, Pressemitteilung und Signatur |
 | [ui_wording.tsv](ui_wording.tsv) | Eigene Begriffe, etwa Termin für Pending till und Kontaktformular für den Typ web |
 | [voicemail.rb](voicemail.rb) | Initializer, schickt neue Voicemails an whisper.cpp unter `MANUEL_WHISPER_URL` und schreibt den Text als interne Notiz, siehe [ADR 64](../docs/adr/0064-voicemails-lokal-transkribieren.adoc) |
 | [keep_pending_time.rb](keep_pending_time.rb) | Initializer, der die Wartezeit behält, wenn ein Ticket den Status warten verlässt, siehe [ADR 53](../docs/adr/0053-termin-in-der-wartezeit-behalten.adoc) |
@@ -36,6 +38,7 @@ Optionale Umgebungsvariablen für `manuel-setup` und den Scheduler in [compose.y
 | `MANUEL_SENT_BCC` | Adresse für Kopien gesendeter Mails, wird `system_bcc`, siehe [ADR 65](../docs/adr/0065-postfach-archivieren-und-aufbewahrung-begrenzen.adoc) |
 | `MANUEL_SPAM_FOLDER` | Ordner, den ein zweiter Kanal in die Gruppe Spam check holt, etwa `Spam` |
 | `MANUEL_EVENT_REMINDER_FROM` und `MANUEL_EVENT_REMINDER_SUBJECT` | Absender und Teil des Betreffs der Erinnerung vor dem Termin, Auslöser für Pressemitteilung und Notiz, siehe [ADR 66](../docs/adr/0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc) |
+| `MANUEL_AUTO_REPLY_EXCEPT` | Adressen durch Komma getrennt, die nie eine Eingangsbestätigung bekommen, etwa sipgate. Von Hand eingetragene Ausnahmen bleiben |
 | `MANUEL_WHISPER_URL` | Adresse von whisper.cpp für Voicemails, siehe [ADR 64](../docs/adr/0064-voicemails-lokal-transkribieren.adoc) |
 
 ## Start

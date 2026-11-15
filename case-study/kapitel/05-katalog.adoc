@@ -115,6 +115,9 @@ image::../../docs/grafiken/ora-coverage-restarters-hell.svg[Bei Restarters decke
 .Vom Laufzettel über die Klassen A, B und C zur Liste, aus der MANUEL wählt
 image::../../docs/grafiken/katalog-durchsicht.svg[Durchsicht des Katalogs,width=100%]
 
+.Zahl der Einträge auf dem Weg vom Laufzettel zur Liste von MANUEL
+image::../../docs/grafiken/katalog-fluss-hell.svg[Aus 1.208 Kategorien werden 347 für MANUEL,width=100%]
+
 * Nach etwa einem Jahr Echtbetrieb zeigen die Tickets, welche C-Einträge Engagierte von Hand gewählt haben. Häufige kommen dann in die Liste für MANUEL.
 
 === Beschreibungen
@@ -140,6 +143,7 @@ image::../../docs/grafiken/katalog-durchsicht.svg[Durchsicht des Katalogs,width=
 python3 katalog/check.py
 python3 katalog/entries.py quellen/anstiftung/kategorien.csv eintraege.json
 ----
+* Flussdiagramm der Einträge mit {repo}/eval/categorizer/catalog_flow.R[catalog_flow.R], Ablauf der Durchsicht mit {repo}/docs/grafiken/catalog_review.py[catalog_review.py]
 * Abdeckung mit {repo}/eval/categorizer/coverage.R[coverage.R], Zahlen in {repo}/docs/ora/catalog/coverage.tsv[coverage.tsv]
 * Felder und Werte der Plattformen in {repo}/docs/fields/README.md[docs/fields], Import mit {repo}/eval/fields/import_sources.py[import_sources.py] und {repo}/eval/fields/import_partners.R[import_partners.R]
 * Entscheidungen <<adr-0007>> bis <<adr-0013>> und <<adr-0052>>

@@ -1,0 +1,11 @@
+- Entry, repair, help and the use of tools are free of charge. Even so, we are not a free repair service. We help you to help yourself and can only accept liability for intent or gross negligence.
+- You offer broken items for repair at your own risk.
+- We reserve the right not to repair certain items.
+- As far as possible, you carry out repairs yourself.
+- As we are always quite busy, you may bring only one item per appointment.
+- Spare parts and consumables are not free and must be paid for separately.
+- We give no guarantee on the repair and are not liable if items do not work at home.
+- We are not obliged to reassemble items that have been taken apart.
+- You are responsible for disposing of your broken items properly.
+- A donation is much appreciated.
+- You MUST leave the event if you do not agree with the house rules.

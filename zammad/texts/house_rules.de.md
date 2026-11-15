@@ -1,0 +1,11 @@
+- Eintritt, Reparatur, Hilfestellung und Gebrauch der Werkzeuge sind kostenlos. Dennoch sind wir kein kostenloser Reparaturdienstleister, sondern leisten Hilfe zur Selbsthilfe und können nur bei Vorsatz oder grober Fahrlässigkeit Haftung übernehmen.
+- Das Anbieten von kaputten Gegenständen zur Reparatur geschieht auf eigenes Risiko.
+- Wir behalten uns das Recht vor, bestimmte Gegenstände nicht zu reparieren.
+- Reparaturen sollen, so weit wie möglich, von Dir selbst durchgeführt werden.
+- Da wir immer recht gut besucht sind, darfst Du pro Termin nur einen Gegenstand mitbringen.
+- Ersatzteile und Verbrauchsmaterialien sind nicht kostenlos und müssen gesondert bezahlt werden.
+- Wir geben keine Garantie auf die Reparatur und sind nicht dafür haftbar, wenn Gegenstände zu Hause nicht funktionieren.
+- Wir sind nicht dazu verpflichtet, demontierte Gegenstände wieder zusammenzusetzen.
+- Du bist selbst für die ordnungsgemäße Entsorgung Deiner defekten Gegenstände verantwortlich.
+- Eine Spende wird sehr geschätzt.
+- Du MUSST die Veranstaltung verlassen, wenn Du nicht mit der Hausordnung einverstanden bist.

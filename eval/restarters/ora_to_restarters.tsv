@@ -3,7 +3,7 @@
 # This table filled the column restarters_category and the second part of the key in katalog/kategorien.tsv on 13.11.2026.
 ora_group	restarters_id	restarters_category	note
 Aircon/dehumidifier	35	Aircon/dehumidifier
-Battery/charger/adapter	46	Misc
+Battery/charger/adapter	46	Misc	keine eigene Kategorie bei Restarters
 Coffee maker	10	Coffee maker
 Decorative or safety lights	36	Decorative or safety lights
 Desktop computer	11	Desktop computer
@@ -11,10 +11,10 @@ Digital compact camera	21	Digital compact camera
 DSLR/video camera	22	DSLR/video camera
 Fan	37	Fan
 Flat screen			Größe in Zoll klären
-Food processor	42	Small kitchen item
+Food processor	42	Small kitchen item	keine eigene Kategorie bei Restarters
 Games console	6	Games console
 Hair & beauty item	38	Hair & beauty item
-Hair dryer	38	Hair & beauty item
+Hair dryer	38	Hair & beauty item	keine eigene Kategorie bei Restarters
 Handheld entertainment device	23	Handheld entertainment device
 Headphones	24	Headphones
 Hi-Fi integrated	29	Hi-Fi integrated
@@ -23,7 +23,7 @@ Iron	9	Iron
 Kettle	39	Kettle
 Lamp	40	Lamp
 Laptop			Größe klären
-Large home electrical	46	Misc
+Large home electrical	46	Misc	keine eigene Kategorie bei Restarters
 Misc	46	Misc
 Mobile	25	Mobile
 Musical instrument	31	Musical instrument
@@ -34,7 +34,7 @@ Power tool	41	Power tool
 Printer/scanner	20	Printer/scanner
 Projector	33	Projector
 Sewing machine	8	Sewing machine
-Small home electrical	46	Misc
+Small home electrical	46	Misc	keine eigene Kategorie bei Restarters
 Small kitchen item	42	Small kitchen item
 Tablet	26	Tablet
 Toaster	43	Toaster
@@ -44,7 +44,7 @@ Vacuum	45	Vacuum
 Watch/clock	7	Watch/clock
 Unpowered - Bicycle	48	Bicycle
 Unpowered - Furniture	47	Furniture
-Unpowered - Household	50	Misc	oder Hand tool
+Unpowered - Household	50	Misc	keine eigene Kategorie bei Restarters, oder Hand tool
 Unpowered - Jewellery	52	Jewellery
-Unpowered - Other	50	Misc
+Unpowered - Other	50	Misc	keine eigene Kategorie bei Restarters
 Unpowered - Textile	49	Clothing/textile

@@ -3,7 +3,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 1.35.660	Luftbefeuchter /Diffuser	Gerät, das die Raumluft befeuchtet, mit Verdunster, Ultraschall oder Dampf. Aroma-Diffuser und Luftentfeuchter sind eigene Einträge.	Luftbefeuchter | Raumluftbefeuchter	Humidifier	Device that adds moisture to room air by evaporation, ultrasound or steam. Aroma diffusers and dehumidifiers are separate entries.	Air humidifier	Aircon/dehumidifier	Aircon/dehumidifier		230 V		660	Entwurf
 1.35.777	Nebelmaschine						Aircon/dehumidifier	Aircon/dehumidifier				777	Entwurf
 1.35.780	Luftkühler						Aircon/dehumidifier	Aircon/dehumidifier				780	Entwurf
-1.35.896	Klimagerät						Aircon/dehumidifier	Aircon/dehumidifier				896	Entwurf
+1.35.896	Klimagerät	Gerät, das Raumluft mit Kältemittel kühlt, mobil mit Abluftschlauch oder als Split-Gerät. Luftkühler mit Wasser sind ein eigener Eintrag.	Klimaanlage | mobile Klimaanlage	Air conditioner	Device that cools room air with refrigerant, portable with an exhaust hose or as a split unit. Evaporative air coolers are a separate entry.	Portable air conditioner	Aircon/dehumidifier	Aircon/dehumidifier		230 V		896	Entwurf
 1.35.994	Luftreiniger	Gerät, das die Raumluft durch Filter reinigt. Luftbefeuchter und Luftentfeuchter sind eigene Einträge.	Luftfilter	Air purifier	Device that cleans room air through filters. Humidifiers and dehumidifiers are separate entries.	Air cleaner	Aircon/dehumidifier	Aircon/dehumidifier		230 V		994	Entwurf
 1.35.1104	Verdampfer						Aircon/dehumidifier	Aircon/dehumidifier				1104	Entwurf
 1.35.1189	Zimmerbrunnen						Aircon/dehumidifier	Aircon/dehumidifier				1189	Entwurf
@@ -43,7 +43,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 3.36.712	Fahrradlicht	Licht am Fahrrad, vorne oder hinten, mit Dynamo, Batterie oder Akku.	Fahrradlampe | Fahrradscheinwerfer | Rücklicht | Dynamolicht	Bicycle light	Light on a bicycle, front or rear, powered by dynamo, battery or rechargeable battery.	Bike light | Bicycle lamp	Decorative or safety lights	Decorative or safety lights	Fahrradbeleuchtung	Batterie | Akku | ohne Kabel (Mechanik)		712 | 1649	Entwurf
 3.36.831	Schwibbogen	Beleuchteter Bogen mit Kerzen, meist aus Holz, als Weihnachtsschmuck aus dem Erzgebirge.	Lichterbogen | Schwippbogen | Leuchterbogen	Candle arch	Lit arch with candles, usually wooden, as Christmas decoration from the Ore Mountains.	Christmas candle arch | Window candle bridge	Decorative or safety lights	Decorative or safety lights	Deko- und Weihnachtsbeleuchtung	230 V | Batterie		831 | 1349 | 1602	Entwurf
 3.36.859	Outdoor						Decorative or safety lights	Decorative or safety lights	Deko- und Weihnachtsbeleuchtung			859	Entwurf
-3.36.892	Holzfigur beleuchtet						Decorative or safety lights	Decorative or safety lights	Deko- und Weihnachtsbeleuchtung			892	Entwurf
+3.36.892	Holzfigur beleuchtet	Figur aus Holz mit Licht, etwa Engel oder Räuchermann mit Kerzen oder LEDs. Schwibbogen und Weihnachtspyramide sind eigene Einträge.		Illuminated wooden figure	Wooden figure with lights, for example an angel or incense smoker with candles or LEDs. Candle arches and Christmas pyramids are separate entries.		Decorative or safety lights	Decorative or safety lights	Deko- und Weihnachtsbeleuchtung			892	Entwurf
 3.36.1058	Stirnlampe	Lampe mit Band, die am Kopf getragen wird.	Kopflampe | Stirnleuchte	Head torch	Lamp with strap worn on the head.	Headlamp | Head torch	Decorative or safety lights	Decorative or safety lights	Taschenlampen und mobile Leuchten	Batterie | Akku		1058	Entwurf
 3.36.1089	Solarleuchte	Leuchte mit Solarzelle und Akku, meist für Garten oder Balkon.	Solarlampe | Solarlicht | Solargartenleuchte	Solar light	Light with solar cell and rechargeable battery, usually for garden or balcony.	Solar lamp | Solar garden light	Decorative or safety lights	Decorative or safety lights		Akku		1089	Entwurf
 3.36.1143	Weihnachtsbaum aus Kunststoff mit Motoren						Decorative or safety lights	Decorative or safety lights	Deko- und Weihnachtsbeleuchtung			1143	Entwurf
@@ -182,7 +182,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 17.46.729	Wäschetrockner	Gerät, das Wäsche mit warmer Luft trocknet, als Ablufttrockner, Kondenstrockner oder Wärmepumpentrockner. Wäscheschleuder und Wäscheständer sind eigene Einträge.	Trockner	Tumble dryer	Device that dries laundry with warm air, as a vented, condenser or heat pump dryer. Spin dryers and clothes airers are separate entries.	Dryer	Large home electrical	Misc	Waschen und Spülen	230 V		729	Entwurf
 17.46.736	Ofen						Large home electrical	Misc	Kochen und Backen groß			736	Entwurf
 17.46.748	Dunstabzugshaube	Haube über dem Herd, die Dunst absaugt oder filtert.	Abzugshaube | Dunstabzug	Cooker hood	Hood above the cooker that extracts or filters cooking fumes.	Extractor hood | Range hood	Large home electrical	Misc	Kochen und Backen groß	230 V		748	Entwurf
-17.46.766	Fitnesstrainer						Large home electrical	Misc	Fitnessgeräte			766	Entwurf
+17.46.766	Fitnesstrainer	Trainingsgerät mit Strom für zu Hause, etwa Crosstrainer oder Rudermaschine mit Anzeige. Laufband, Ergometer und Sportgeräte ohne Strom sind eigene Einträge.	Crosstrainer | Heimtrainer	Fitness machine	Powered exercise machine for home use, for example a cross trainer or rowing machine with a display. Treadmills, exercise bikes and unpowered sports equipment are separate entries.	Cross trainer | Home trainer	Large home electrical	Misc	Fitnessgeräte	230 V		766	Entwurf
 17.46.791	Induktionsgerät						Large home electrical	Misc	Kochen und Backen groß			791	Entwurf
 17.46.824	Gasofen						Large home electrical	Misc	Kochen und Backen groß		gas	824	Entwurf
 17.46.844	Laufband						Large home electrical	Misc	Fitnessgeräte			844	Entwurf
@@ -213,7 +213,6 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 18.46.666	Münzzählautomat						Misc	Misc	Elektro sonstiges			666	Entwurf
 18.46.677	Inhalator	Gerät, das Medikamente oder Salzlösung zum Einatmen vernebelt, etwa mit Kompressor oder Ultraschall.	Vernebler | Inhaliergerät	Nebuliser	Device that turns medicine or saline into a mist for inhaling, for example with a compressor or ultrasound.	Inhaler	Misc	Misc	Medizin, Pflege, Hilfsmittel	230 V	life_critical	677	Entwurf
 18.46.678	Messerschärfer						Misc	Misc	Mess- und Prüfgeräte			678	Entwurf
-18.46.696	Leiterplatte						Misc	Misc	Elektro sonstiges			696	Entwurf
 18.46.699	Katzenklappe						Misc	Misc	Motoren und Antriebe			699	Entwurf
 18.46.718	Sicherungskasten						Misc	Misc	Elektroinstallation, Kabel, Stecker			718	Entwurf
 18.46.728	Megafon						Misc	Misc	Elektro sonstiges			728	Entwurf
@@ -275,7 +274,6 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 18.46.1183	Spiegelschrank						Misc	Misc	Elektro sonstiges			1183	Entwurf
 18.46.1206	Hupe						Misc	Misc	Elektro sonstiges			1206	Entwurf
 18.46.1207	Fledermausdetektor						Misc	Misc	Mess- und Prüfgeräte			1207	Entwurf
-18.46.1210	Stoffschere						Misc	Misc	Elektro sonstiges			1210	Entwurf
 18.46.1213	Servomotor						Misc	Misc	Motoren und Antriebe			1213	Entwurf
 18.46.1219	Stromverteiler Zigarettenanzünder						Misc	Misc	Elektroinstallation, Kabel, Stecker			1219	Entwurf
 18.46.1245	Labortechnikgerät						Misc	Misc	Mess- und Prüfgeräte			1245	Entwurf
@@ -354,7 +352,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 20.31.543	Keyboard	Elektronisches Tasteninstrument mit leichten Tasten und eingebauten Klängen. E-Piano und Synthesizer sind eigene Einträge.		Keyboard	Electronic keyboard instrument with light keys and built-in sounds. Digital pianos and synthesizers are separate entries.	Keyboard (musical instrument) | Electronic keyboard	Musical instrument	Musical instrument		230 V | mit Netzteil		543	Entwurf
 20.31.595	Gitarre						Musical instrument	Musical instrument				595	Entwurf
 20.31.830	DJ Controller	Bedienpult mit Jogwheels und Reglern für DJ-Software am Computer, ohne Computer meist ohne Funktion. Mischpulte, die den Ton selbst mischen, sind ein eigener Eintrag.	DJ-Controller	DJ controller	Control surface with jog wheels and faders for DJ software on a computer, usually without function on its own. Mixers that mix the sound themselves are a separate entry.	DJ controller	Musical instrument	Musical instrument		mit Netzteil		830	Entwurf
-20.31.929	E-Piano						Musical instrument	Musical instrument				929	Entwurf
+20.31.929	E-Piano	Elektronisches Klavier mit gewichteter Tastatur und Klavierklängen, oft als Möbel. Keyboard und Synthesizer sind eigene Einträge.	Digitalpiano | Stagepiano	Digital piano	Electronic piano with weighted keys and piano sounds, often as furniture. Keyboards and synthesizers are separate entries.	Stage piano	Musical instrument	Musical instrument		230 V		929	Entwurf
 20.31.979	Rollpiano						Musical instrument	Musical instrument				979	Entwurf
 20.31.991	Drumcomputer						Musical instrument	Musical instrument				991	Entwurf
 20.31.1028	Loop Station						Musical instrument	Musical instrument				1028	Entwurf
@@ -385,7 +383,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 22.19.1098	Grafiktablet / Maltablet / Zeichentablet						PC accessory	PC accessory				1098	Entwurf
 22.19.1186	SD-Karte						PC accessory	PC accessory				1186	Entwurf
 22.19.1217	DVD Laufwerk						PC accessory	PC accessory				1217	Entwurf
-22.19.1238	Platine						PC accessory	PC accessory				1238	Entwurf
+18.46.1238	Platine	Einzelne Platine, die ohne ihr Gerät gebracht wird.	Leiterplatte	Circuit board	Single circuit board brought without its device.	PCB	Misc	Misc				1238 | 696	Entwurf
 22.19.1263	WLAN Verstärker						PC accessory	PC accessory				1263	Entwurf
 22.19.1391	Software						PC accessory	PC accessory				1391	Entwurf
 22.19.1604	Trackball						PC accessory	PC accessory				1604	Entwurf
@@ -408,7 +406,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 24.41.577	Kettensäge	Säge mit umlaufender Kette für Holz, mit Kabel, Akku oder Benzinmotor.	Elektrokettensäge | Akku-Kettensäge | Motorsäge	Chainsaw	Saw with running chain for wood, corded, cordless or petrol.	Chainsaw	Power tool	Power tool	Gartengeräte mit Strom	230 V | Akku		577 | 826	Entwurf
 24.41.608	Wasserpumpe	Pumpe für Wasser, die in keinen genaueren Eintrag wie Tauch-, Teich- oder Gartenpumpe passt.	Hauswasserwerk	Water pump	Water pump that fits no more specific entry such as submersible, pond or garden pump.	Water pump | Pump	Power tool	Power tool	Pumpen und Wasser	230 V		608	Entwurf
 24.41.620	Dampfreiniger	Gerät, das mit heißem Dampf Böden, Fliesen oder Fenster reinigt.	Dampfbesen | Dampfmopp | Dampfstrahler	Steam cleaner	Device that cleans floors, tiles or windows with hot steam.	Steam cleaner | Steam mop	Power tool	Power tool		230 V		620	Entwurf
-24.41.637	Heißluftpistole						Power tool	Power tool	Elektrowerkzeug			637	Entwurf
+24.41.637	Heißluftpistole	Handgerät, das sehr heiße Luft bläst, etwa zum Entfernen von Lack oder Schrumpfen von Schläuchen. Heißklebepistolen sind ein eigener Eintrag.	Heißluftföhn | Heißluftgebläse	Heat gun	Hand-held device that blows very hot air, for example to strip paint or shrink tubing. Hot glue guns are a separate entry.	Hot air gun	Power tool	Power tool	Elektrowerkzeug	230 V		637	Entwurf
 24.41.640	Heißklebepistole						Power tool	Power tool	Löten, Kleben, Schweißen			640	Entwurf
 24.41.651	Graviergerät						Power tool	Power tool	Löten, Kleben, Schweißen			651	Entwurf
 24.41.662	Schwertsäge						Power tool	Power tool	Gartengeräte mit Strom			662	Entwurf
@@ -417,7 +415,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 24.41.698	Betonmischer						Power tool	Power tool	Elektrowerkzeug			698	Entwurf
 24.41.715	Hochdruckreiniger	Gerät, das mit Wasser unter hohem Druck reinigt, etwa Terrasse oder Auto.	Kärcher | Hochdruckgerät	Pressure washer	Device that cleans with high pressure water, for example patios or cars.	Pressure washer / High-pressure cleaner / Jet washer	Power tool	Power tool	Elektrowerkzeug	230 V		715 | 790	Entwurf
 24.41.722	Bohrhammer	Schwere Bohrmaschine mit Schlagwerk für Beton und Stein, auch zum Meißeln.	Kombihammer	Hammer drill	Heavy drill with hammer mechanism for concrete and stone, also for chiselling.	Hammer drill | Rotary hammer	Power tool	Power tool	Elektrowerkzeug	230 V | Akku		722	Entwurf
-24.41.761	Fusselfräse						Power tool	Power tool	Elektrowerkzeug			761	Entwurf
+28.46.761	Fusselrasierer	Kleines Gerät mit rotierenden Klingen, das Fusseln und Knötchen von Kleidung entfernt.	Fusselfräse | Fusselentferner	Lint remover	Small device with rotating blades that removes lint and bobbles from clothes.	Fabric shaver | Lint shaver	Small home electrical	Misc	Elektrowerkzeug	Batterie		761	Entwurf
 24.41.772	Bandsäge						Power tool	Power tool	Elektrowerkzeug			772	Entwurf
 24.41.776	Kappsäge	Säge mit Kreissägeblatt an einem Arm, der von oben ins Werkstück schwenkt, für gerade und schräge Schnitte. Kreissäge und Handkreissäge sind eigene Einträge.	Gehrungssäge	Mitre saw	Saw with a circular blade on an arm that swings down into the workpiece, for straight and angled cuts. Table saws and hand-held circular saws are separate entries.	Chop saw	Power tool	Power tool	Elektrowerkzeug	230 V		776	Entwurf
 24.41.784	Multifunktionswerkzeug	Elektrowerkzeug mit schwingendem Kopf zum Sägen, Schleifen und Schaben. Der Dremel mit drehendem Kopf ist ein eigener Eintrag.	Multitool | Multimaster | Multicutter	Oscillating multi-tool	Power tool with an oscillating head for sawing, sanding and scraping. Rotary tools are a separate entry.	Multi-tool | Oscillating tool	Power tool	Power tool	Elektrowerkzeug	230 V		784	Entwurf
@@ -553,10 +551,9 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 29.42.938	Grillofen						Small kitchen item	Small kitchen item				938	Entwurf
 29.42.1013	Joghurtbereiter						Small kitchen item	Small kitchen item				1013	Entwurf
 29.42.1018	Brotbackautomat	Gerät, das Teig knetet und Brot oder Kuchen backt.	Backautomat | Brotbackmaschine	Bread maker	Appliance that kneads dough and bakes bread or cake.	Bread maker | Bread machine	Small kitchen item	Small kitchen item		230 V		1018 | 682 | 1564	Entwurf
-29.42.1020	Einkochautomat	Topf mit Heizung und Thermostat zum Einkochen von Gläsern.	Einweckkocher	Preserving cooker	Pot with heating and thermostat for preserving jars.	Canner	Small kitchen item	Small kitchen item		230 V		1020 | 525	Entwurf
+29.42.1020	Einkochautomat	Großer Topf mit Heizung und Thermostat zum Einkochen von Gläsern oder Warmhalten, etwa von Glühwein.	Einweckkocher | Elektrokochtopf | Glühweintopf | Glühweinerhitzer | Glühweinzapfanlage	Preserving cooker	Large pot with heating and thermostat for preserving jars or keeping drinks warm, for example mulled wine.	Canner	Small kitchen item	Small kitchen item		230 V		1020 | 525 | 1100 | 1729	Entwurf
 29.42.1030	Popcornmaschine						Small kitchen item	Small kitchen item				1030	Entwurf
 29.42.1070	Silikonpresse						Small kitchen item	Small kitchen item				1070	Entwurf
-29.42.1100	Elektrokochtopf						Small kitchen item	Small kitchen item				1100	Entwurf
 29.42.1181	Elektromesser	Messer mit zwei gegenläufigen Sägeklingen und Motor, etwa für Braten oder Brot. Allesschneider sind ein eigener Eintrag.	elektrisches Messer	Electric knife	Knife with two reciprocating serrated blades and a motor, for example for roasts or bread. Food slicers are a separate entry.	Electric carving knife	Small kitchen item	Small kitchen item		230 V		1181	Entwurf
 29.42.1209	Elektrogrill	Elektrischer Grill mit Platte oder Rost, für Tisch, Balkon oder Garten. Kontaktgrill, Grillofen und Gasgrill sind eigene Einträge.	E-Grill | Tischgrill | Partygrill | Elektro-Tischgrill | Plattengrill | Balkongrill, elektrisch | Elektro-Standgrill	Electric barbecue	Electric grill with plate or grid, for table, balcony or garden. Contact grills, grill ovens and gas grills are separate entries.	Electric barbecue | Electric BBQ | Table grill	Small kitchen item	Small kitchen item		230 V		1209 | 1163 | 1276	Entwurf
 29.42.1223	Heißluftfritteuse	Gerät, das Speisen mit heißer Luft gart.	Airfryer | Heißluftgarer	Air fryer	Appliance that cooks food with hot air.	Air fryer	Small kitchen item	Small kitchen item		230 V		1223	Entwurf
@@ -570,7 +567,6 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 29.42.1417	Haferflockenspender						Small kitchen item	Small kitchen item				1417	Entwurf
 29.42.1517	Slusheismaschine						Small kitchen item	Small kitchen item				1517	Entwurf
 29.42.1586	Gasgrill						Small kitchen item	Small kitchen item			gas	1586	Entwurf
-29.42.1729	Glühweinerhitzer / Glühweinzapfanlage						Small kitchen item	Small kitchen item				1729	Entwurf
 29.42.1740	Zuckerwattenmaschine						Small kitchen item	Small kitchen item				1740	Entwurf
 29.42.1768	Flaschenwärmer						Small kitchen item	Small kitchen item				1768	Entwurf
 29.42.1826	Eiswürfelmaschine						Small kitchen item	Small kitchen item				1826	Entwurf
@@ -585,7 +581,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 32.44.623	Drohne	Fluggerät mit Rotoren und Fernsteuerung, meist mit Kamera und Akku.	Quadrocopter | Multicopter	Drone	Aircraft with rotors and remote control, usually with camera and rechargeable battery.	Quadcopter | Multicopter	Toy	Toy	Modellbau und Fahrzeuge	Akku		623 | 809	Entwurf
 32.44.816	Ferngesteuertes Auto	Spielzeugauto mit Fernbedienung. Spielzeugautos ohne Fernbedienung sind ein eigener Eintrag.	RC-Auto | Funkauto | ferngesteuerter Wagen	Remote controlled car	Toy car with remote control. Toy cars without remote are a separate entry.	Remote controlled car | RC car	Toy	Toy	Modellbau und Fahrzeuge	Akku | Batterie		816	Entwurf
 32.44.840	Hoverboard	Selbstbalancierendes Brett mit zwei Rädern, Motor und großem Akku.		Hoverboard	Self-balancing board with two wheels, a motor and a large battery.		Toy	Toy	Modellbau und Fahrzeuge	Akku	battery	840	Entwurf
-32.44.849	Lokomotive						Toy	Toy	Modellbau und Fahrzeuge			849	Entwurf
+32.44.849	Lokomotive	Spielzeuglok mit Motor oder Batterie, etwa von Duplo oder Brio, die nicht zu einer Modelleisenbahn in Spur H0 oder 1 gehört.	Lok | Spielzeuglok	Toy locomotive	Toy locomotive with a motor or battery, for example from Duplo or Brio, that is not part of a scale model railway such as H0 or gauge 1.	Toy train	Toy	Toy	Modellbau und Fahrzeuge	Batterie		849	Entwurf
 32.44.854	Playmobil Eisenbahn						Toy	Toy	Modellbau und Fahrzeuge			854	Entwurf
 32.44.866	Puppenstube						Toy	Toy	Spielzeug mit Strom			866	Entwurf
 32.44.1050	TV Simulator						Toy	Toy	Spielzeug mit Strom			1050	Entwurf
@@ -597,7 +593,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 32.44.1240	Kinderklavier						Toy	Toy	Spielzeug mit Strom			1240	Entwurf
 32.44.1325	Carrerabahn						Toy	Toy	Modellbau und Fahrzeuge			1325	Entwurf
 32.44.1345	Weihnachtsfigur, musikalisch						Toy	Toy	Spielzeug mit Strom			1345	Entwurf
-32.44.1357	Modelleisenbahn	Elektrische Modelleisenbahn mit Lok, Wagen, Trafo oder Gleisen.	Märklin | Spielzeugeisenbahn, elektrisch | Lok	Model railway	Electric model railway with locomotive, carriages, transformer or tracks.	Model train | Train (toy)	Toy	Toy	Modellbau und Fahrzeuge	mit Netzteil		1357	Entwurf
+32.44.1357	Modelleisenbahn	Elektrische Modelleisenbahn in einer Spur wie H0, N oder 1, mit Lok, Wagen, Trafo oder Gleisen. Spielzeugloks etwa von Duplo sind ein eigener Eintrag.	Märklin | Spielzeugeisenbahn, elektrisch	Model railway	Electric model railway with locomotive, carriages, transformer or tracks.	Model train | Train (toy)	Toy	Toy	Modellbau und Fahrzeuge	mit Netzteil		1357	Entwurf
 32.44.1389	elektronischer Schweif						Toy	Toy	Spielzeug mit Strom			1389	Entwurf
 32.44.1390	Pinnenpilot						Toy	Toy	Spielzeug mit Strom			1390	Entwurf
 32.44.1460	VW-Bus						Toy	Toy	Spielzeug mit Strom			1460	Entwurf
@@ -735,7 +731,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 101.49.1177	Rucksack	Rucksack aus Stoff oder Leder.	Tagesrucksack | Wanderrucksack | Schulranzen	Backpack	Backpack made of fabric or leather.	Backpack / Rucksack | Rucksack	Unpowered - Textile	Clothing/textile		ohne Kabel (Mechanik)		1177	Entwurf
 101.49.1180	T-Shirt	T-Shirt oder Top aus Stoff.	Shirt | Top | Tanktop	T-shirt	T-shirt or top made of fabric.	T-shirt / Shirt | Top	Unpowered - Textile	Clothing/textile		ohne Kabel (Mechanik)		1180	Entwurf
 101.49.1235	Hundeleine						Unpowered - Textile	Clothing/textile				1235	Entwurf
-101.49.1239	Halstuch						Unpowered - Textile	Clothing/textile				1239	Entwurf
+101.49.1239	Schal	Schal oder Tuch für den Hals, auch Schlauchschal, etwa mit Loch oder offener Naht.	Halstuch | Schlauchschal	Scarf	Scarf or neckerchief, also a snood, for example with a hole or open seam.	Neckerchief | Snood	Unpowered - Textile	Clothing/textile		ohne Kabel (Mechanik)		1239	Entwurf
 101.49.1244	Unterwäsche						Unpowered - Textile	Clothing/textile				1244	Entwurf
 101.49.1260	Reißverschluss						Unpowered - Textile	Clothing/textile				1260	Entwurf
 101.49.1279	Aktenkoffer						Unpowered - Textile	Clothing/textile				1279	Entwurf
@@ -771,7 +767,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 101.49.1620	Schlappen						Unpowered - Textile	Clothing/textile				1620	Entwurf
 101.49.1621	Mütze						Unpowered - Textile	Clothing/textile				1621	Entwurf
 101.49.1623	Oberteil						Unpowered - Textile	Clothing/textile				1623	Entwurf
-101.49.1633	Kissenbezug / Kissenhülle						Unpowered - Textile	Clothing/textile				1633	Entwurf
+101.49.1633	Kissenbezug / Kissenhülle	Bezug für ein Kissen, etwa mit kaputtem Reißverschluss. Das Kissen selbst ist ein eigener Eintrag.		Pillow case	Cover for a cushion or pillow, for example with a broken zip. The cushion itself is a separate entry.	Cushion cover	Unpowered - Textile	Clothing/textile		ohne Kabel (Mechanik)		1633	Entwurf
 101.49.1648	Lederhose						Unpowered - Textile	Clothing/textile				1648	Entwurf
 101.49.1651	Anzug						Unpowered - Textile	Clothing/textile				1651	Entwurf
 101.49.1657	Fahrradhelm						Unpowered - Textile	Clothing/textile				1657	Entwurf
@@ -828,7 +824,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 102.50.1035	Pizzastein						Unpowered - Household	Misc	Küche und Haushalt ohne Strom			1035	Entwurf
 102.51.1106	Schraubendreher						Unpowered - Household	Hand tool	Werkzeug ohne Strom			1106	Entwurf
 102.50.1114	Kuckucksuhr						Unpowered - Household	Misc	Mechanische Uhren			1114	Entwurf
-102.50.1135	Haushaltsschere	Schere ohne Strom für Haushalt, Papier oder Stoff.	Schere | Papierschere | Küchenschere	Scissors	Non-electric scissors for household, paper or fabric.	Scissors	Unpowered - Household	Misc	Küche und Haushalt ohne Strom	ohne Kabel (Mechanik)		1135	Entwurf
+102.50.1135	Schere	Schere ohne Strom für Haushalt, Papier oder Stoff.	Papierschere | Küchenschere | Haushaltsschere | Stoffschere	Scissors	Non-electric scissors for household, paper or fabric.	Scissors	Unpowered - Household	Misc	Küche und Haushalt ohne Strom	ohne Kabel (Mechanik)		1135 | 1210	Entwurf
 102.50.1145	Mehlsieb						Unpowered - Household	Misc	Küche und Haushalt ohne Strom			1145	Entwurf
 102.51.1184	Wagenheber, hydraulisch						Unpowered - Household	Hand tool	Werkzeug ohne Strom			1184	Entwurf
 102.51.1187	Gartenschere	Kleine Schere ohne Strom für Zweige und Blumen, mit einer Hand bedient. Astscheren mit langen Griffen und elektrische Heckenscheren sind eigene Einträge.	Rosenschere | Baumschere	Secateurs	Small non-electric one handed shears for twigs and flowers. Long handled loppers and electric hedge trimmers are separate entries.	Pruning shears / Garden shears / Secateurs	Unpowered - Household	Hand tool	Garten ohne Strom	ohne Kabel (Mechanik)		1187	Entwurf
@@ -855,7 +851,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 102.50.1819	Dosenöffner						Unpowered - Household	Misc	Küche und Haushalt ohne Strom			1819	Entwurf
 102.50.1874	Buttonpresse, mechanisch						Unpowered - Household	Misc	Küche und Haushalt ohne Strom			1874	Entwurf
 103.48.460	Reifen	Reifen eines Fahrrads, wenn nur er repariert wird, etwa bei einem Platten. Der Schlauch ist ein eigener Eintrag.	Platten | Fahrradreifen	Tyre	Bicycle tyre when only it is repaired, for example a puncture. Inner tubes are a separate entry.	Bicycle tyre | Puncture	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)		460	Entwurf
-103.48.462	Bremsen						Unpowered - Bicycle	Bicycle			life_critical	462	Entwurf
+103.48.462	Bremsen	Bremsen eines Fahrrads oder eines anderen Fahrzeugs ohne Motor wie Rollator oder Kettcar, wenn nur sie repariert werden, etwa Felgen-, Scheiben- oder Rücktrittbremse.	Fahrradbremse | Bremse	Brakes	Brakes of a bicycle or another vehicle without a motor such as a rollator or go-kart, when only they are repaired, for example rim, disc or coaster brakes.	Bike brakes	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)	life_critical	462	Entwurf
 103.48.463	Rahmen						Unpowered - Bicycle	Bicycle				463	Entwurf
 103.48.464	Gangschaltung	Schaltung eines Fahrrads, wenn nur sie repariert wird.	Schaltung | Kettenschaltung | Nabenschaltung	Bicycle gears	Gear system of a bicycle when only it is repaired.	Derailleur | Hub gear	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)		464	Entwurf
 103.48.465	Antrieb						Unpowered - Bicycle	Bicycle				465	Entwurf
@@ -866,7 +862,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 103.48.708	Kindersitz						Unpowered - Bicycle	Bicycle			life_critical	708	Entwurf
 103.48.716	Kinderfahrrad	Fahrrad für Kinder, auch Laufrad.	Kinderrad | Jugendfahrrad	Children's bicycle	Bicycle for children.	Children's bicycle / Kid's bike | Kids bike	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)		716	Entwurf
 103.48.724	Luftpumpe	Pumpe für Reifen von Fahrrad oder Ball, von Hand oder mit Fuß. Elektrische Kompressoren sind ein eigener Eintrag.	Fahrradpumpe | Standpumpe	Bicycle pump	Pump for bicycle tyres or balls, by hand or foot. Electric compressors are a separate entry.	Floor pump | Hand pump	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)		724	Entwurf
-103.48.741	Schloss						Unpowered - Bicycle	Bicycle				741	Entwurf
+103.48.741	Schloss	Schloss für ein Fahrrad oder als Vorhängeschloss, etwa klemmend oder ohne Schlüssel. Türschlösser und Zahlenschlösser sind eigene Einträge.	Fahrradschloss | Bügelschloss | Vorhängeschloss	Lock	Bicycle lock or padlock, for example jammed or without a key. Door locks and combination locks are separate entries.	Bike lock | Padlock	Unpowered - Bicycle	Bicycle		ohne Kabel (Mechanik)		741	Entwurf
 103.48.779	Fahrradcomputer	Kleines Gerät am Lenker, das Geschwindigkeit und Strecke anzeigt, meist mit Batterie, auch Display und Bedieneinheit eines E-Bikes.	Tacho | E-Bike-Display	Bike computer	Small device on the handlebar that shows speed and distance, usually with a battery, also the display and control unit of an e-bike.	Cycle computer | E-bike display	Unpowered - Bicycle	Bicycle		Batterie		779	Entwurf
 103.48.835	Skateboardachse						Unpowered - Bicycle	Bicycle				835	Entwurf
 103.48.839	Gokart						Unpowered - Bicycle	Bicycle				839	Entwurf
@@ -955,7 +951,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 105.47.1801	Wohnzimmerstuhl						Unpowered - Furniture	Furniture				1801	Entwurf
 105.47.1858	Deckchair						Unpowered - Furniture	Furniture				1858	Entwurf
 106.50.540	Wanderstöcke						Unpowered - Other	Misc	Wagen, Camping, Outdoor			540	Entwurf
-106.50.568	Feuerzeug						Unpowered - Other	Misc	Sonstiges ohne Strom			568	Entwurf
+106.50.568	Feuerzeug	Feuerzeug mit Gas oder Benzin oder als elektrisches Lichtbogenfeuerzeug mit Akku, etwa zum Nachfüllen oder mit defektem Zündstein.	Sturmfeuerzeug | Stabfeuerzeug | Lichtbogenfeuerzeug	Lighter	Lighter with gas or petrol or an electric arc lighter with a battery, for example for refilling or with a worn flint.	Arc lighter	Unpowered - Other	Misc	Sonstiges ohne Strom			568	Entwurf
 106.50.581	Töpferscheibe						Unpowered - Other	Misc	Sonstiges ohne Strom			581	Entwurf
 106.50.582	Sprühflasche						Unpowered - Other	Misc	Sonstiges ohne Strom			582	Entwurf
 106.50.592	Wäscheständer	Gestell zum Trocknen von Wäsche, zum Aufstellen oder als Wäschespinne.	Wäschespinne	Clothes airer	Rack for drying laundry, free-standing or as a rotary dryer.	Drying rack | Rotary airer	Unpowered - Other	Misc	Sonstiges ohne Strom	ohne Kabel (Mechanik)		592	Entwurf
@@ -983,7 +979,7 @@ key	name	description	synonyms	name_en	description_en	synonyms_en	ora_group	resta
 106.50.857	Gymnastikball						Unpowered - Other	Misc	Sonstiges ohne Strom			857	Entwurf
 106.50.874	Spiegel						Unpowered - Other	Misc	Sonstiges ohne Strom			874	Entwurf
 106.50.888	Mülleimer	Behälter für Abfall, etwa mit defektem Deckel oder Pedal.	Treteimer | Abfalleimer	Bin	Container for waste, for example with a broken lid or pedal.	Waste bin | Pedal bin	Unpowered - Other	Misc	Sonstiges ohne Strom	ohne Kabel (Mechanik)		888	Entwurf
-106.50.912	Thermoskanne / Thermosflasche						Unpowered - Other	Misc	Sonstiges ohne Strom			912	Entwurf
+106.50.912	Thermoskanne / Thermosflasche	Isoliergefäß ohne Strom, das Getränke warm oder kalt hält, etwa mit undichtem Deckel. Trinkflaschen sind ein eigener Eintrag.	Isolierkanne	Vacuum flask	Insulated container without power that keeps drinks hot or cold, for example with a leaking lid. Drinking bottles are a separate entry.	Thermos	Unpowered - Other	Misc	Sonstiges ohne Strom	ohne Kabel (Mechanik)		912	Entwurf
 106.50.921	Trolley	Tasche auf Rollen mit Zuggriff, etwa für den Einkauf. Bollerwagen und Sackkarre gehören zum Transportwagen.	Einkaufstrolley	Shopping trolley	Bag on wheels with a pull handle, for example for shopping. Handcarts and sack trucks belong to the transport cart.	Trolley bag	Unpowered - Other	Misc	Wagen, Camping, Outdoor	ohne Kabel (Mechanik)		921	Entwurf
 106.50.932	Teppichbürste						Unpowered - Other	Misc	Sonstiges ohne Strom			932	Entwurf
 106.50.933	Metalldose						Unpowered - Other	Misc	Sonstiges ohne Strom			933	Entwurf

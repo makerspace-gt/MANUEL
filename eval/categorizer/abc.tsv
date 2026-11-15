@@ -213,7 +213,6 @@ key	name	class	repairs_deu
 18.46.666	Münzzählautomat	C	6
 18.46.677	Inhalator	B	16
 18.46.678	Messerschärfer	C	7
-18.46.696	Leiterplatte	C	8
 18.46.699	Katzenklappe	C	4
 18.46.718	Sicherungskasten	C	2
 18.46.728	Megafon	C	7
@@ -275,7 +274,6 @@ key	name	class	repairs_deu
 18.46.1183	Spiegelschrank	C	6
 18.46.1206	Hupe	C	3
 18.46.1207	Fledermausdetektor	C	2
-18.46.1210	Stoffschere	B	15
 18.46.1213	Servomotor	C	1
 18.46.1219	Stromverteiler Zigarettenanzünder	C	1
 18.46.1245	Labortechnikgerät	C	1
@@ -385,7 +383,7 @@ key	name	class	repairs_deu
 22.19.1098	Grafiktablet / Maltablet / Zeichentablet	B	13
 22.19.1186	SD-Karte	C	3
 22.19.1217	DVD Laufwerk	C	12
-22.19.1238	Platine	B	15
+18.46.1238	Platine	B	23
 22.19.1263	WLAN Verstärker	C	3
 22.19.1391	Software	C	5
 22.19.1604	Trackball	C	1
@@ -417,7 +415,7 @@ key	name	class	repairs_deu
 24.41.698	Betonmischer	C	4
 24.41.715	Hochdruckreiniger	A	126
 24.41.722	Bohrhammer	B	59
-24.41.761	Fusselfräse	B	15
+28.46.761	Fusselrasierer	B	15
 24.41.772	Bandsäge	C	4
 24.41.776	Kappsäge	B	17
 24.41.784	Multifunktionswerkzeug	B	18
@@ -553,10 +551,9 @@ key	name	class	repairs_deu
 29.42.938	Grillofen	C	9
 29.42.1013	Joghurtbereiter	C	10
 29.42.1018	Brotbackautomat	B	61
-29.42.1020	Einkochautomat	B	26
+29.42.1020	Einkochautomat	B	46
 29.42.1030	Popcornmaschine	C	11
 29.42.1070	Silikonpresse	C	2
-29.42.1100	Elektrokochtopf	B	15
 29.42.1181	Elektromesser	B	16
 29.42.1209	Elektrogrill	A	97
 29.42.1223	Heißluftfritteuse	B	62
@@ -570,7 +567,6 @@ key	name	class	repairs_deu
 29.42.1417	Haferflockenspender	C	2
 29.42.1517	Slusheismaschine	C	2
 29.42.1586	Gasgrill	C	2
-29.42.1729	Glühweinerhitzer / Glühweinzapfanlage	C	5
 29.42.1740	Zuckerwattenmaschine	C	1
 29.42.1768	Flaschenwärmer	C	3
 29.42.1826	Eiswürfelmaschine	C	3
@@ -735,7 +731,7 @@ key	name	class	repairs_deu
 101.49.1177	Rucksack	A	115
 101.49.1180	T-Shirt	A	86
 101.49.1235	Hundeleine	C	2
-101.49.1239	Halstuch	B	16
+101.49.1239	Schal	B	16
 101.49.1244	Unterwäsche	C	9
 101.49.1260	Reißverschluss	C	10
 101.49.1279	Aktenkoffer	C	6
@@ -828,7 +824,7 @@ key	name	class	repairs_deu
 102.50.1035	Pizzastein	C	2
 102.51.1106	Schraubendreher	C	4
 102.50.1114	Kuckucksuhr	B	14
-102.50.1135	Haushaltsschere	B	50
+102.50.1135	Schere	B	65
 102.50.1145	Mehlsieb	C	7
 102.51.1184	Wagenheber, hydraulisch	C	1
 102.51.1187	Gartenschere	B	73

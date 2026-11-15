@@ -49,7 +49,7 @@ Stand 13.11.2026, als Vorlage für die Gruppe, die den Katalog für die Meldung 
 
 ## Für MANUEL
 
-[entries.py](entries.py) baut aus dem Katalog die Optionen für die Einordnung. Dafür braucht es die Liste der Kategorien des Laufzettels, die nicht in diesem Repo liegt. [check.py](check.py) prüft Schlüssel, Synonyme, ORA-Gruppen und die Stromversorgung.
+[entries.py](entries.py) baut aus dem Katalog die Optionen für die Einordnung. Dafür braucht es die Liste der Kategorien des Laufzettels, die nicht in diesem Repo liegt. [synonyms.py](synonyms.py) zählt Namen und Synonyme in den deutschen Open Repair Data und auf Wunsch in unseren Tickets und schlägt aus den Betreffen der Tickets neue Synonyme vor. Tickets und Vorschläge bleiben auf dem Rechner. [check.py](check.py) prüft Schlüssel, Synonyme, ORA-Gruppen und die Stromversorgung.
 
 ## Quellen
 

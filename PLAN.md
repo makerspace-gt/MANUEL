@@ -270,6 +270,7 @@ Die Hausarbeit [Datenpotenzialanalyse des Repair Café Gütersloh](https://codeb
 - [ ] Über [Core Workflows](https://admin-docs.zammad.org/en/latest/system/core-workflows.html) nur die Felder zeigen, die beim Repair Café gerade gebraucht werden, zum Beispiel Lösung und Ergebnis erst nach der Reparatur. Das Muster gibt es schon, ein Workflow blendet die Felder aus und einer zeigt sie in den Gruppen des Repair Cafés
 - [ ] [Übersichten](https://admin-docs.zammad.org/en/latest/manage/overviews.html) für das Repair Café anlegen, etwa Termine des nächsten Repair Cafés und offene Reparaturen
 - [x] Löschfristen in Zammad, laut Export vom 15.11.2026 schon als geplante Aufgaben umgesetzt. Tickets des Repair Cafés nach 3 Jahren, Anfragen nach 3 Monaten, alte Gäste über die Datenschutz-Löschung
+- [ ] Hausordnung mit den Hinweisen der Partner abgleichen, Liste in [docs/house_rules_review.md](docs/house_rules_review.md). Gelesen ist die anstiftung, offen sind Repair Café International, Restart Project und Open Repair Alliance. Das Team entscheidet über Aushang, Haftungsbegrenzung und Versicherung
 - [ ] Kurzen Datenschutzhinweis für Gäste schreiben, der auch die Unterstützung durch ein lokales Sprachmodell nennt
 - [ ] MANUEL in das Verzeichnis von Verarbeitungstätigkeiten aufnehmen, mit Zweck, verarbeiteten Feldern, lokaler Verarbeitung auf dem Mini-PC und Speicherdauer der Prompts in Ollama und Open WebUI
 - [ ] Standort, Stromversorgung und LAN-Anschluss im Makerspace klären

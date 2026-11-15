@@ -9,7 +9,7 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet. Sie enthalten n
 | [groups.rb](groups.rb) | Gruppe Repairs mit der Untergruppe Requests, die Rollen Repair Agent und Repair Coordinator und der Agent Gast |
 | [objects.rb](objects.rb) | Felder im Ticket, also Art des Geräts aus dem [Katalog](../katalog/), Marke, Bezeichnung, Baujahr, Alter und Angabe zum Alter, Stromversorgung, Defekt laut Anmeldung, festgestellter Defekt, Lösung, Ergebnis als Baum, VDE-Prüfung sowie Spenden und Bedarf für das Statistik-Ticket |
 | [macros.rb](macros.rb) | Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“, die je einen Tag setzen, siehe [ADR 32](../docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc) |
-| [knowledge_base.rb](knowledge_base.rb) | Wissensdatenbank mit Deutsch als Hauptsprache und Englisch, Farben und Aufbau wie im Dialog von Zammad. Eine vorhandene behält ihre Einstellungen und bekommt nur fehlende Sprachen |
+| [knowledge_base.rb](knowledge_base.rb) | Wissensdatenbank mit Deutsch als Hauptsprache und britischem Englisch wie bei der Open Repair Alliance, Farben und Aufbau wie im Dialog von Zammad. Eine vorhandene behält ihre Einstellungen und bekommt nur fehlende Sprachen |
 | [translations.rb](translations.rb) | Deutsche Übersetzungen aller Bezeichnungen als eigene Übersetzungen in Zammad und die Wörter aus guest_wording.tsv |
 | [guest_wording.tsv](guest_wording.tsv) | Gast statt Kunde in 52 Texten von Zammad, englisch und deutsch |
 | [keep_pending_time.rb](keep_pending_time.rb) | Initializer, der die Wartezeit behält, wenn ein Ticket den Status warten verlässt, siehe [ADR 53](../docs/adr/0053-termin-in-der-wartezeit-behalten.adoc) |

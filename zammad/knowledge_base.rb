@@ -1,10 +1,10 @@
 # Knowledge base for repair guides, loaded by zammad/setup.rb. German is the primary language, because
-# guests and helpers write German, English is the second one for the answers MANUEL takes from the Open
-# Repair Data. Colours and layout are the defaults of the dialog in Zammad
+# guests and helpers write German. British English is the second one for answers taken from the Open
+# Repair Data, as the Open Repair Alliance and Restarters.net write it. Colours and layout are the defaults of the dialog in Zammad
 # (app/assets/javascripts/app/controllers/knowledge_base/new_controller.coffee).
 # An existing knowledge base keeps its settings and only gets missing languages. Zammad allows only one.
 
-KB_LOCALES = %w[de-de en-us].freeze
+KB_LOCALES = %w[de-de en-gb].freeze
 
 Setting.set('kb_multi_lingual_support', true) if KB_LOCALES.many? && !Setting.get('kb_multi_lingual_support')
 

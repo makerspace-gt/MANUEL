@@ -5,7 +5,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
-Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, und 2026-11-13, Verweis auf ADR 48
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, 2026-11-13, Verweis auf ADR 48, und 2026-11-15, Abnutzung zu groß als End of life ohne Hindernis
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
@@ -56,7 +56,7 @@ Die Ergebnisse werden so zugeordnet:
 |No-Show oder leer 2+|nicht melden
 |===
 
-Der Standard kennt sechs Hindernisse, die API von Restarters nimmt aber nur fünf an. „Item too worn out“ fehlt. Wie wir Geräte mit „Abnutzung zu groß“ melden, erarbeiten wir noch.
+Der Standard kennt sechs Hindernisse, die API von Restarters nimmt aber nur fünf an. „Item too worn out“ fehlt. Geräte mit „Abnutzung zu groß“ melden wir deshalb als End of life ohne Hindernis, so macht es {repo}/eval/restarters/backfill.py[backfill.py]. In den Open Repair Data vom Juli 2026 hat kein Gerät von The Restart Project dieses Hindernis, bei der anstiftung sind es 899 Geräte.
 
 === Konsequenzen
 

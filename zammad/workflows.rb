@@ -158,6 +158,44 @@ workflow_rule(Job, 'Repairs: Remove reminded', 'Repairs: reminded entfernen', ac
               ] },
               perform:   { 'ticket.tags' => { 'operator' => 'remove', 'value' => 'reminded' } })
 
+# Title from brand and device once a ticket is in Repairs, see docs/adr/0067-betreff-aus-marke-und-art-schreiben.adoc.
+# zammad/tree_select_label.rb makes the placeholder give the German name instead of the key. Confirming
+# moves a request to Repairs in another trigger of the same run, has changed only sees the state. The
+# macro sets the tag retitle, so the title can be rebuilt by hand. The title itself comes from the trigger on
+# the server, the classic interface would fill a macro title in the browser, where the names are missing.
+# always, because a new tag is no changed attribute and selective would ignore the macro
+workflow_rule(Trigger, 'Repairs: Title from brand and device', 'Repairs: Betreff aus Marke und Gerät', active: true, **trigger_defaults,
+              execution_condition_mode: 'always',
+              condition: { 'operator' => 'AND', 'conditions' => [
+                { 'name' => 'ticket.group_id', 'operator' => 'is', 'value' => workflow_group_ids('Repairs') },
+                { 'name' => 'ticket.device_type', 'operator' => 'matches regex', 'value' => '.' },
+                { 'name' => 'ticket.tags', 'operator' => 'contains one not', 'value' => 'spam, no-info, obsolete, delete' },
+                { 'operator' => 'OR', 'conditions' => [
+                  { 'name' => 'ticket.action', 'operator' => 'is', 'value' => 'create' },
+                  { 'operator' => 'AND', 'conditions' => [
+                    { 'name' => 'ticket.state_id', 'operator' => 'has changed', 'value' => [] },
+                    { 'name' => 'ticket.state_id', 'operator' => 'is', 'value' => scheduled },
+                  ] },
+                  { 'name' => 'ticket.device_type', 'operator' => 'has changed', 'value' => [] },
+                  { 'name' => 'ticket.brand', 'operator' => 'has changed', 'value' => [] },
+                  { 'name' => 'ticket.tags', 'operator' => 'contains one', 'value' => 'retitle' },
+                ] },
+              ] },
+              perform:   { 'ticket.title' => { 'value' => '#{ticket.brand} #{ticket.device_type.value}' }, # rubocop:disable Lint/InterpolationCheck
+                           'ticket.tags' => { 'operator' => 'remove', 'value' => 'retitle' } },
+              note:      'Title as brand and device, ADR 67')
+
+macro = Macro.find_or_initialize_by(name: tr('Title from brand and device', 'Betreff aus Marke und Gerät'))
+# The classic interface adds tags through their own API without changing the ticket, so the macro also sets
+# a plain title. That change starts the triggers, the placeholder title is replaced right away.
+macro.assign_attributes(perform: { 'ticket.tags' => { 'operator' => 'add', 'value' => 'retitle' },
+                                   'ticket.title' => { 'value' => 'Betreff wird gesetzt' } }, ux_flow_next_up: 'none',
+                        note: 'Rebuilds the title through the trigger Repairs: Title from brand and device, ADR 67')
+macro.active = true if macro.new_record?
+macro.created_by_id ||= 1
+macro.updated_by_id = 1
+macro.save! if macro.new_record? || macro.changed?
+
 # Calls without message, from sipgate. Voicemails get a transcript from zammad/voicemail.rb, ADR 64
 workflow_rule(Trigger, 'Repairs: Ignore missed calls', 'Repairs: Verpasste Anrufe ignorieren', active: true, **trigger_defaults,
               condition: { 'ticket.title' => { 'operator' => 'contains', 'value' => 'Verpasster Anruf:' },

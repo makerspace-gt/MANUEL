@@ -1,0 +1,70 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-src: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8
+[[adr-0062]]
+= 0062 Datums-Tags und Monatsübersichten automatisch pflegen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Jedes Gerät bekommt den Tag des Termins im Format `YYYY-MM-DD`, siehe xref:0034-jedes-geraet-mit-ticket-und-typenschild-erfassen.adoc[ADR 34]. Im echten Zammad setzt ihn ein Makro, dessen Datum vor jedem Termin von Hand geändert wird. Ein zweites Makro entfernt den Tag `next-event`, den ein Trigger 7 Tage vor dem Termin setzt. Die Übersichten „Gegenstände <Monat>“ werden ebenfalls von Hand auf die Daten gesetzt. Ältere Tickets tragen nur den Monat, etwa `2024-03`, oder Sondertags wie `2024-Klimawoche`. Unbenutzte Tags sammeln sich an. Wie pflegen wir das ohne Handarbeit?
+
+== Entscheidungskriterien
+
+* Kein Datum mehr von Hand
+* Das Format `YYYY-MM-DD` bleibt, weil `eval/restarters/backfill.py` und `eval/ora/anstiftung_events.py` es lesen
+* Die Übersichten zeigen die letzten 12 Monate
+* Andere Initiativen bekommen das ohne eigene Einstellung
+
+== Betrachtete Optionen
+
+* Trigger mit Platzhalter für das Datum
+* Eigene Methode im Scheduler von Zammad
+* Workflow in n8n
+
+== Entscheidung
+
+Gewählt wird eine eigene Methode im Scheduler. Trigger können Tags nur als festen Text setzen, `tags()` in {zammad-src}/app/models/concerns/perform_changes/action/attribute_updates.rb[attribute_updates.rb] rendert keine Platzhalter. Der Scheduler führt dagegen beliebige Methoden aus ({zammad-src}/lib/background_services/service/process_scheduled_jobs/job_executor.rb[job_executor.rb]).
+
+{repo}/zammad/event_tags.rb[event_tags.rb] ist ein Initializer wie {repo}/zammad/keep_pending_time.rb[keep_pending_time.rb]. Stündlich, aber erst nach dem Termin wirksam, macht `ManuelEventTags.run` dies:
+
+* Ein Gerät mit `next-event`, dessen Termin vor heute lag, bekommt den Datums-Tag, `next-event` fällt weg. Liegt der Termin mehr als 7 Tage entfernt, fällt `next-event` ebenfalls weg.
+* Ein unbestätigter Vorschlag, dessen Termin vorbei ist, wird wie mit dem Makro „Nicht aufgetaucht“ zu No-show.
+* Die zwölf Monatsübersichten aus {repo}/zammad/overviews.rb[overviews.rb] bekommen die Datums-Tags ihres Monats aus den letzten 12 Monaten. Ohne Termin im Monat werden sie abgeschaltet.
+* Tags ohne Ticket werden gelöscht, außer sie stehen in Regeln oder in `KEEP_TAGS`. Ohne `MANUEL_TAG_CLEANUP=apply` steht das nur im Log.
+
+Ältere Tags gleicht {repo}/zammad/migrate_tags.rb[migrate_tags.rb] einmal an, zuerst als Probelauf. Ein Monat mit genau einem Termin in `docs/ora/anstiftung/events.tsv` wird zu dessen Datum. In Monaten mit zwei Terminen entscheidet die Wartezeit, sonst steht das Ticket in der Liste. Sondertags stehen in {repo}/zammad/legacy_tags.tsv[legacy_tags.tsv].
+
+In der Testinstanz lief das am 15.11.2026 mit Beispiel-Tickets. Datums-Tag, Entfernen von `next-event`, No-show, Monatsübersicht und Löschen eines ungenutzten Tags griffen, ein Tag aus einer Übersicht blieb, und der zweite Lauf änderte nichts. Der Probelauf von `migrate_tags.rb` ordnete `2024-03` und ein Ticket aus `2024-09` richtig zu und listete die offenen Fälle.
+
+=== Konsequenzen
+
+* Gut, weil die Makros mit Datum und die Pflege der Übersichten entfallen. `migrate_fields.rb` schaltet die beiden Makros ab.
+* Gut, weil alle Tickets dasselbe Datumsformat haben.
+* Schlecht, weil die Methode vom Scheduler und von Modellen in Zammad abhängt und nach Updates zu prüfen ist.
+* Schlecht, weil die Daten für die Klimawoche 2024 und den Repair Day 2024 noch zu entscheiden sind.
+
+== Vor- und Nachteile der Optionen
+
+=== Trigger mit Platzhalter
+
+* Gut, weil es ohne Code ginge.
+* Schlecht, weil Zammad das nicht kann.
+
+=== Methode im Scheduler
+
+* Gut, weil sie im selben Lauf wie die Einrichtung mitkommt.
+* Schlecht, weil sie Ruby voraussetzt.
+
+=== n8n
+
+* Gut, weil es außerhalb von Zammad läuft.
+* Schlecht, weil n8n erst mit Stufe 2 des IT-Plans kommt.
+
+== Quellen
+
+* Export der Einstellungen vom 15.11.2026, lokal
+* Entscheidungen von Michael Prange am 15.11.2026

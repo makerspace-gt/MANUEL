@@ -63,6 +63,7 @@ Dieser Abschnitt wird noch ausformuliert, sobald die erste Karte erzeugt ist.
 image::sharecard/2026-11-07.png["Sharecard des Repair Café Gütersloh vom Samstag, 7. November 2026. 17 angemeldet, 16 bearbeitet, 1 nicht erschienen. Ergebnisse 6 gelungen, 1 teilweise gelungen, 6 vertagt, 3 nicht erfolgt. 31 Prozent der 48 Termine der letzten drei Jahre hatten höchstens 17 angemeldete Geräte. Spenden 100,46 €, 6,28 € je Gerät. Nächster Termin Samstag, 21. November 2026. Gefördert durch die Deutsche Stiftung für Engagement und Ehrenamt.",width=60%]
 
 * Die Verteilung zeigt ein Punktdiagramm, denn Lagen auf einer gemeinsamen Achse lassen sich genauer vergleichen als Flächen oder Winkel.
+* Zur Karte schreibt das Skript Texte für Mastodon und Instagram mit denselben Zahlen. Vor dem Termin legt Zammad eine Notiz mit Texten für die Ankündigung ins Ticket der Erinnerung und schickt die Pressemitteilung an jede Redaktion der Organisation Presse. Gepostet wird von Hand <<adr-0066>>.
 * Die Idee stammt aus der Datenpotenzialanalyse, die ein teilbares Bild mit den Infos zum nächsten Termin vorgeschlagen hat cite:[prange-2022].
 
 [[restarters]]

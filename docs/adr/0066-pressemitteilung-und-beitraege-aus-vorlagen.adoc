@@ -1,0 +1,69 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-src: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8
+[[adr-0066]]
+= 0066 Pressemitteilung und Beiträge für soziale Medien aus Vorlagen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-15
+Beteiligte:: Michael Prange, Pflege der Redaktionen durch das Team
+
+== Kontext und Problem
+
+Eine Woche vor jedem Repair Café schickt reparatur-initiativen.org eine Erinnerung „nächste Woche: …“ an das Postfach. Im echten Zammad reagieren darauf fünf Trigger, je Redaktion einer, und schicken dieselbe Pressemitteilung mit eigener Anrede. Eine neue Redaktion heißt einen Trigger von Hand kopieren. Beiträge für soziale Medien entstehen jedes Mal neu. Wie lassen sich Pressemitteilung und Beiträge als Vorlage pflegen, ohne Adressen ins Repo zu bringen?
+
+== Entscheidungskriterien
+
+* Das Team pflegt Redaktionen in Zammad, nicht im Code
+* Der Text liegt einmal im Repo und gilt für alle
+* Keine Adressen von Redaktionen im öffentlichen Repo
+* Ein Mensch prüft jeden Beitrag vor dem Posten, siehe xref:0033-resuemee-als-sharecard-teilen.adoc[ADR 33]
+
+== Betrachtete Optionen
+
+* Trigger wie bisher von Hand
+* Ein Trigger mit allen Redaktionen als Empfänger
+* Organisation Presse und ein Trigger je Mitglied aus Code, Vorlagen für Beiträge
+
+== Entscheidung
+
+Gewählt wird die dritte Option.
+
+* *Redaktionen.* {repo}/zammad/press.rb[press.rb] legt die Organisation Presse an. Für jede aktive Person darin entsteht ein Trigger „Press release: <Medium>“. Zammad schickt Trigger-Mails nur an Nutzer, mehrere Empfänger eines Triggers bekämen eine gemeinsame Mail ({zammad-src}/app/models/ticket/perform_changes/action/notification_email.rb[notification_email.rb]). Neue Trigger sind aus, ein späterer Lauf ändert `active` nie. Verlässt jemand die Organisation, wird der Trigger abgeschaltet.
+* *Text.* Er steht wörtlich in {repo}/zammad/texts/press_release.de.html[press_release.de.html], nur der Name des Mediums wird eingesetzt. Er bleibt HTML, weil die Signatur mit Anschrift dazugehört.
+* *Auslöser.* Absender und Betreff der Erinnerung kommen aus `MANUEL_EVENT_REMINDER_FROM` und `MANUEL_EVENT_REMINDER_SUBJECT`. Ohne Absender entsteht nichts.
+* *Vor dem Termin.* Ein weiterer Trigger auf dieselbe Mail schreibt eine interne Notiz mit Texten für Mastodon und Instagram aus {repo}/zammad/texts/social_announcement.de.md[social_announcement.de.md]. Er ist aktiv, weil er nur eine Notiz schreibt. Gepostet wird von Hand.
+* *Nach dem Termin.* {repo}/sharecard/sharecard.py[sharecard.py] schreibt neben Karte und Alternativtext auch `.mastodon.txt` und `.instagram.txt` aus {repo}/sharecard/templates/[Vorlagen], mit denselben Zahlen wie die Karte. Ein Text für Mastodon über 500 Zeichen bricht ab.
+* *Bestand.* {repo}/zammad/migrate_fields.rb[migrate_fields.rb] benennt Trigger „Pressemitteilung <Medium>“ um und nimmt ihre Empfänger in die Organisation auf, `active` bleibt.
+
+Am 15.11.2026 in der Testinstanz mit example.org geprüft. Ein neuer Trigger war aus, ein umbenannter blieb an, der zweite Lauf legte nichts doppelt an. Eingeschaltet kam die Pressemitteilung in Mailpit an und die Notiz im Ticket.
+
+=== Konsequenzen
+
+* Gut, weil eine neue Redaktion nur ein Gast in der Organisation Presse ist.
+* Gut, weil Pressemitteilung und Beiträge zu den Zahlen der Sharecard passen.
+* Schlecht, weil die Erinnerung keine Zahlen liefert, die Ankündigung bleibt allgemein.
+* Schlecht, weil eine Mail an eine Redaktion nur rausgeht, wenn die Gruppe eine Absenderadresse mit aktivem Kanal hat.
+* Automatisch posten könnte später n8n nach Freigabe, das steht als Idee im PLAN.
+
+== Vor- und Nachteile der Optionen
+
+=== Von Hand
+
+* Gut, weil es schon läuft.
+* Schlecht, weil fünf Kopien desselben Textes auseinanderlaufen.
+
+=== Ein Trigger für alle
+
+* Gut, weil es nur eine Regel ist.
+* Schlecht, weil alle Redaktionen dieselbe Mail sehen und die Anrede nicht passt.
+
+=== Organisation und Vorlagen
+
+* Gut, weil der Text einmal im Repo liegt.
+* Schlecht, weil es Code braucht, der Trigger anlegt.
+
+== Quellen
+
+* Trigger des echten Zammad aus dem Export vom 15.11.2026, ohne Adressen
+* Entscheidungen von Michael Prange am 15.11.2026

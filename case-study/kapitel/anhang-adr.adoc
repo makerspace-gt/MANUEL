@@ -119,5 +119,7 @@ include::../../docs/adr/0064-voicemails-lokal-transkribieren.adoc[]
 
 include::../../docs/adr/0065-postfach-archivieren-und-aufbewahrung-begrenzen.adoc[]
 
+include::../../docs/adr/0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc[]
+
 :leveloffset: -2
 :sectnums:

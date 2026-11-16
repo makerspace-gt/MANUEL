@@ -14,9 +14,14 @@ if [[ -z "$bind_ip" ]]; then
     echo "Tailscale hat keine Adresse, die Ports der Testumgebung hören deshalb nur auf 127.0.0.1." >&2
     bind_ip=127.0.0.1
 fi
+# Private settings like the password of the first admin, only on this computer, see zammad/system.rb
+private_env=()
+if sudo test -f /etc/manuel/zammad.env; then
+    private_env=(--env-file /etc/manuel/zammad.env)
+fi
 exec sudo DOCKER_HOST=unix:///run/podman/podman.sock MANUEL_BIND_IP="$bind_ip" docker-compose -p zammad \
     --project-directory "$base" \
-    --env-file "$base/testumgebung/zammad.env" \
+    --env-file "$base/testumgebung/zammad.env" "${private_env[@]}" \
     -f "$base/zammad-docker-compose/docker-compose.yml" \
     -f "$base/zammad/compose.yml" \
     -f "$base/testumgebung/compose.override.yml" "$@"

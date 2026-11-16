@@ -24,6 +24,9 @@ UserInfo.current_user_id = 1
 
 load File.join(__dir__, 'groups.rb')
 load File.join(__dir__, 'objects.rb')
+# Create the columns right away, Zammad checks conditions of triggers and core workflows against the
+# database. It reloads the columns here and only asks the other processes to restart.
+ObjectManager::Attribute.migration_execute if ObjectManager::Attribute.migrations.any?
 load File.join(__dir__, 'core_workflows.rb')
 load File.join(__dir__, 'macros.rb')
 load File.join(__dir__, 'knowledge_base.rb')
@@ -41,5 +44,6 @@ load File.join(__dir__, 'translations.rb')
 ticket = ObjectLookup.by_name('Ticket')
 puts "Felder: #{ObjectManager::Attribute.where(object_lookup_id: ticket, position: 1100..1299).order(:position).pluck(:name).join(', ')}"
 
-# Last, because Zammad restarts its processes after changing the database schema
+# Again at the end for fields changed by the files above. Zammad restarts its other processes after a
+# change of the database schema.
 ObjectManager::Attribute.migration_execute

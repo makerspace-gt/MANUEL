@@ -86,6 +86,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |67 |xref:0067-betreff-aus-marke-und-art-schreiben.adoc[Betreff aus Marke und Art des Geräts schreiben] |angenommen |2026-11-15
 |68 |xref:0068-art-des-geraets-mit-d3-pruefen.adoc[Art des Geräts zusätzlich mit d3:9b prüfen] |angenommen |2026-11-15
 |69 |xref:0069-nur-tickets-des-repair-cafe-in-die-testinstanz-uebernehmen.adoc[Nur Tickets des Repair Café in die Testinstanz übernehmen] |angenommen |2026-11-16
+|70 |xref:0070-aufwertung-des-datensatzes-je-modell-messen.adoc[Aufwertung des Datensatzes je Modell messen] |angenommen |2026-11-16
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

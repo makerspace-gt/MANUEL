@@ -1,0 +1,66 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0070]]
+= 0070 Aufwertung des Datensatzes je Modell messen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-16
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+MANUEL soll die Felder der Tickets füllen, damit mehr und bessere Daten bei der Open Repair Alliance ankommen. Bisher ist nur gezählt, wie viele Felder Menschen gepflegt haben. Offen ist, wie viele Lücken ein Modell aus den Nachrichten schließen kann, ob die Werte dann stimmen und welches Modell das am besten kann. Seit dem Export nach xref:0069-nur-tickets-des-repair-cafe-in-die-testinstanz-uebernehmen.adoc[ADR 69] liegen 896 Tickets der Gruppe Repair Café lokal vor.
+
+== Entscheidungskriterien
+
+* Vergleichbar zwischen Modellen, also gleiche Tickets, gleicher Prompt und gleiches Schema
+* Aussage über Menge und Richtigkeit, nicht nur über die Menge
+* Wiederholbar nach xref:0027-laeufe-reproduzierbar-festhalten.adoc[ADR 27], echte Inhalte bleiben lokal nach xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2]
+* Zammad bleibt unberührt
+
+== Betrachtete Optionen
+
+* *Messung:* nur Füllgrad, Füllgrad mit einer von Hand bewerteten Stichprobe, oder Füllgrad und Treffer an den gepflegten Werten
+* *Ort:* offline aus dem Export, in der Testinstanz mit den Agenten von Zammad, oder beides
+
+== Entscheidung
+
+Gemessen werden Füllgrad und Treffer, offline aus dem Export.
+
+* {repo}/eval/enrich/enrich.py[enrich.py] gibt einem Modell je Geräte-Ticket alle Nachrichten von Gast und Team, ohne die automatischen von Zammad, und lässt es Marke, Bezeichnung, Baujahr, Stromversorgung, Defekt, Lösung und Ergebnis füllen. Die gepflegten Werte sieht das Modell nicht. Prompt in {repo}/eval/enrich/prompt.de.md[prompt.de.md], Stromversorgung und Ergebnis als feste Auswahl im Schema.
+* Statistik-Tickets und Tickets mit `abgelehnt`, `obsolete` oder `EUReCA` zählen nicht, es bleiben 813 Geräte-Tickets.
+* {repo}/eval/enrich/score.py[score.py] vergleicht je Ticket und Feld. Marke und Bezeichnung treffen, wenn sie ohne Groß- und Kleinschreibung und Satzzeichen gleich sind oder eine die andere enthält. Baujahr, Stromversorgung und Ergebnis müssen gleich sein, beim Ergebnis zählt zusätzlich die erste Ebene. Defekt und Lösung sind freier Text, dafür steht die Ähnlichkeit beider Texte mit bge-m3.
+* {repo}/eval/enrich/summary.R[summary.R] zählt je Modell und Feld gefüllt durch Menschen, gefüllt durch das Modell, gewonnen, also gefüllt wo Menschen nichts eingetragen haben, und den Anteil der Treffer mit 95-Prozent-Intervall nach Wilson.
+* Antworten und Zeilen je Ticket bleiben unter `~/bench/manuel-enrich/`. Ins Repo kommen nur die Zahlen unter {repo}/eval/results/enrich/[eval/results/enrich/] mit `lauf.json`. Dort steht der Heimordner seit diesem Lauf als `~`, weil der volle Pfad den Benutzer nennt.
+
+Die Art des Geräts misst schon der Vorabtest des Categorizer nach xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40], sie fehlt hier deshalb.
+
+=== Konsequenzen
+
+* Gut, weil jedes Modell an denselben Tickets mit demselben Prompt läuft und ein Lauf mit gleichem Seed dieselbe Stichprobe zieht.
+* Gut, weil der Gewinn und die Treffer getrennt sichtbar sind. Ein Modell, das viel füllt und oft danebenliegt, fällt auf.
+* Schlecht, weil die gepflegten Werte selbst Fehler haben. Ein Treffer heißt nur, dass Modell und Mensch übereinstimmen.
+* Schlecht, weil gewonnene Werte keine Referenz haben. Ob sie stimmen, zeigt erst eine Stichprobe von Hand.
+* Schlecht, weil die Ähnlichkeit bei Defekt und Lösung kein Urteil über die Richtigkeit ist.
+* Der Probelauf zeigt, dass Lösung und Ergebnis meist nur im Feld stehen und nicht in den Nachrichten. Dort kann ein Modell wenig gewinnen, solange das Team sie nicht als Notiz schreibt.
+
+== Vor- und Nachteile der Optionen
+
+=== Nur Füllgrad
+
+* Gut, weil schnell und ohne Referenz
+* Schlecht, weil ein Modell, das rät, am besten abschneidet
+
+=== Füllgrad mit Stichprobe
+
+* Gut, weil auch gewonnene Werte bewertet werden
+* Schlecht, weil die Bewertung von Hand je Modell wiederholt werden müsste
+
+=== In der Testinstanz
+
+* Gut, weil es der echte Weg über die Agenten ist
+* Schlecht, weil alle Agenten in Zammad dasselbe Modell nutzen. Je Modell müssten Anbieter umgestellt und Tickets neu eingespielt werden
+
+== Quellen
+
+* Ausgangslage vom 16.11.2026 in {repo}/eval/results/enrich/baseline-2026-11-16/summary.csv[summary.csv]

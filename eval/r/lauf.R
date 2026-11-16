@@ -7,7 +7,7 @@
 
 write_run <- function(target, inputs = character(), outputs = character(), extra = list()) {
   git <- function(...) tryCatch(system2("git", c(...), stdout = TRUE, stderr = FALSE), error = function(e) "")
-  files <- function(paths) lapply(paths, function(p) list(path = p, sha256 = unname(digest_file(p))))
+  files <- function(paths) lapply(paths, function(p) list(path = sub(paste0("^", path.expand("~"), "(/|$)"), "~\\1", p), sha256 = unname(digest_file(p))))
   info <- sessionInfo()
   pkgs <- c(info$otherPkgs, info$loadedOnly)
   run <- c(list(

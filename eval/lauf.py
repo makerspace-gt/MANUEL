@@ -35,6 +35,12 @@ def sha256(path):
     return digest.hexdigest()
 
 
+def shown(path):
+    """The path as written to lauf.json, with ~ for the home folder, which would name the user."""
+    text, home = str(path), str(Path.home())
+    return "~" + text[len(home):] if text == home or text.startswith(home + "/") else text
+
+
 def git(*args, cwd=ROOT):
     try:
         return subprocess.run(["git", *args], cwd=cwd, capture_output=True, text=True, check=True).stdout.strip()
@@ -79,12 +85,12 @@ def write_run(target, inputs=(), outputs=(), models=(), ollama_url=None, llama_c
         "command": " ".join([Path(sys.argv[0]).name] + sys.argv[1:]),
         "commit": git("rev-parse", "HEAD"),
         "dirty": bool(git("status", "--porcelain", "--untracked-files=no")),
-        "inputs": [{"path": str(p), "sha256": sha256(p)} for p in map(Path, inputs)],
-        "outputs": [{"path": str(p), "sha256": sha256(p)} for p in map(Path, outputs) if p.exists()],
+        "inputs": [{"path": shown(p), "sha256": sha256(p)} for p in map(Path, inputs)],
+        "outputs": [{"path": shown(p), "sha256": sha256(p)} for p in map(Path, outputs) if p.exists()],
         "models": [{"name": m, "digest": tags.get(m, tags.get(f"{m}:latest", ""))} for m in models],
         "ollama": {"url": ollama_url, "version": ollama(ollama_url, "/api/version").get("version")} if ollama_url else None,
         "llama_cpp": {"version": llama_cpp_version, "args": llama_cpp_args,
-                      "gguf": [{"path": str(p), "sha256": sha256(p)} for p in map(Path, gguf_files)]}
+                      "gguf": [{"path": shown(p), "sha256": sha256(p)} for p in map(Path, gguf_files)]}
         if llama_cpp_version or gguf_files else None,
         "host": {"name": platform.node(), "kernel": platform.release(), **memory()},
         "zammad_commit": git("rev-parse", "HEAD", cwd=ROOT / "quellen" / "zammad") if zammad else None,

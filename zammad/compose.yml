@@ -30,6 +30,13 @@ services:
       MANUEL_STATISTICS_CUSTOMER: ${MANUEL_STATISTICS_CUSTOMER:-}
       MANUEL_STATISTICS_SHEET_URL: ${MANUEL_STATISTICS_SHEET_URL:-}
       MANUEL_FORUM_URL: ${MANUEL_FORUM_URL:-}
+      # First admin instead of the wizard in the browser, see zammad/system.rb
+      MANUEL_URL: ${MANUEL_URL:-}
+      MANUEL_ORGANIZATION: ${MANUEL_ORGANIZATION:-}
+      MANUEL_LOCALE: ${MANUEL_LOCALE:-}
+      MANUEL_ADMIN_EMAIL: ${MANUEL_ADMIN_EMAIL:-}
+      MANUEL_ADMIN_PASSWORD: ${MANUEL_ADMIN_PASSWORD:-}
+      MANUEL_ADMIN_NAME: ${MANUEL_ADMIN_NAME:-}
     volumes:
       - ./zammad:/opt/manuel/zammad:ro
       - ./katalog/kategorien.tsv:/opt/manuel/katalog/kategorien.tsv:ro

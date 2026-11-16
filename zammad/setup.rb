@@ -19,6 +19,14 @@ def tr(english, german)
   english
 end
 
+# Wait for the getting started wizard. Zammad offers it only while there are at most two users
+# (setup_done? in app/controllers/getting_started_controller.rb), and groups.rb adds the guest agent.
+until Setting.get('system_init_done')
+  puts 'Warte auf den Einrichtungsassistenten von Zammad'
+  sleep 30
+  Setting.reload
+end
+
 # Records created on the way, like the items of a checklist, take their author from here
 UserInfo.current_user_id = 1
 

@@ -14,6 +14,7 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 | [guest_wording.tsv](guest_wording.tsv) | Gast statt Kunde in 52 Texten von Zammad, englisch und deutsch |
 | [migrate_fields.rb](migrate_fields.rb) | Übernimmt die Werte älterer Felder in die neuen, stellt Regeln um und schaltet die alten Felder ab, erst als Probelauf |
 | [result_tree.rb](result_tree.rb) | Werte des Ergebnisses englisch und deutsch, für `objects.rb` und `migrate_fields.rb` |
+| [export_tickets.py](export_tickets.py) und [import_tickets.rb](import_tickets.rb) | Liest nur die Tickets gewählter Gruppen über die API aus und spielt sie in eine frische Testinstanz ein, mit den alten Feldern für die Probe von `migrate_fields.rb`, siehe [ADR 69](../docs/adr/0069-nur-tickets-des-repair-cafe-in-die-testinstanz-uebernehmen.adoc) |
 | [export_config.py](export_config.py) | Exportiert die Einstellungen eines bestehenden Zammad über die REST-API als JSON, nur lesend, die Dateien bleiben lokal |
 | [event_tags.rb](event_tags.rb) | Initializer mit `ManuelEventTags.run`, stündlich über den Scheduler: Datums-Tag nach dem Termin, `next-event` aufräumen, unbestätigte Vorschläge als No-show, Monatsübersichten und ungenutzte Tags, siehe [ADR 62](../docs/adr/0062-datums-tags-und-monatsuebersichten-automatisch-pflegen.adoc) |
 | [overviews.rb](overviews.rb) | Zwölf Übersichten je Monat, beim Anlegen aus, dazu Next event, My repairs, Open repairs und Spam check |

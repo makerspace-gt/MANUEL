@@ -326,9 +326,39 @@ zammad "$(cat /usr/share/manuel/testumgebung/redirect_outbound.rb)"
 zammad-compose run --rm manuel-setup
 ```
 
-### 7.2 Backup einspielen
+### 7.2 Tickets des Repair Café übernehmen
 
-Erst wenn 7.1 funktioniert und die Ports wieder auf `127.0.0.1` beschränkt sind. Die beiden Dateien `*_zammad_db.psql.gz` und `*_zammad_files.tar.gz` liefert ein Admin aus der Sicherung. Niemand greift dafür auf das laufende Zammad zu.
+Statt des ganzen Backups kommen nur die Tickets der Gruppe Repair Café auf MANUEL, siehe [ADR 69](adr/0069-nur-tickets-des-repair-cafe-in-die-testinstanz-uebernehmen.adoc). Ein Admin legt im echten Zammad einen Token mit `ticket.agent` an, dessen Nutzer die Gruppe lesen darf, und trägt ihn in `~/.config/manuel/zammad.env` ein. Nach dem Export wird der Token gelöscht.
+
+1. Auf dem eigenen Rechner im Repo exportieren. Die Einstellungen kommen aus `export_config.py`, daraus braucht der Import die Felder.
+
+```bash
+python3 zammad/export_tickets.py --group "Repair Café"
+cp ~/bench/zammad-export/<Datum>/object_manager_attributes.json ~/bench/zammad-tickets/<Datum>/
+scp -r ~/bench/zammad-tickets/<Datum> core@manuel:/var/home/core/zammad-tickets
+```
+
+2. Auf MANUEL eine frische Instanz starten wie in 7.1, dann die Daten in den Container kopieren und in zwei Schritten einspielen. Der erste Schritt startet Zammad neu.
+
+```bash
+sudo podman cp ~/zammad-tickets zammad-zammad-railsserver-1:/tmp/zammad-tickets
+sudo podman cp /usr/share/manuel/zammad zammad-zammad-railsserver-1:/tmp/manuel-zammad
+zammad-compose exec zammad-railsserver bundle exec rails runner /tmp/manuel-zammad/import_tickets.rb fields /tmp/zammad-tickets
+zammad-compose exec zammad-railsserver bundle exec rails runner /tmp/manuel-zammad/import_tickets.rb data /tmp/zammad-tickets
+```
+
+3. Die Übernahme der alten Felder, Tags und Kontakte erst als Probelauf ansehen, dann den Suchindex neu bauen.
+
+```bash
+zammad-compose exec zammad-railsserver bundle exec rails runner /tmp/manuel-zammad/migrate_fields.rb
+zammad-compose exec zammad-railsserver bundle exec rails runner /tmp/manuel-zammad/migrate_tags.rb
+zammad-compose exec zammad-railsserver bundle exec rails runner /tmp/manuel-zammad/migrate_contacts.rb
+zammad-compose exec zammad-railsserver bundle exec rake zammad:searchindex:rebuild
+```
+
+### 7.2a Ganzes Backup einspielen, nicht mehr vorgesehen
+
+Der frühere Weg, gilt seit ADR 69 nicht mehr. Erst wenn 7.1 funktioniert und die Ports wieder auf `127.0.0.1` beschränkt sind. Die beiden Dateien `*_zammad_db.psql.gz` und `*_zammad_files.tar.gz` liefert ein Admin aus der Sicherung. Niemand greift dafür auf das laufende Zammad zu.
 
 1. Die frische Instanz löschen und das Backup bereitlegen.
 

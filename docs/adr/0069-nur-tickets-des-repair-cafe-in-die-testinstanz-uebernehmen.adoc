@@ -1,0 +1,64 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-src: https://github.com/zammad/zammad/blob/3b0c2ed25738922dd1651c81cd9bee815b4cd6e8
+[[adr-0069]]
+= 0069 Nur Tickets des Repair Café in die Testinstanz übernehmen
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-16
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Die Testinstanz auf MANUEL soll mit echten Daten proben, wie sich Felder, Tags und Kontakte nach den ADRs 58, 62 und 63 übernehmen lassen. Bisher war dafür das ganze Backup vorgesehen, siehe xref:0043-eine-testumgebung-auf-manuel-betreiben.adoc[ADR 43]. Zammad sichert aber immer die ganze Datenbank, mit Vorstand, AG Cyber, Rechnungen und anderen Gruppen, die mit dem Repair Café nichts zu tun haben. Wie kommen nur die Daten des Repair Café auf MANUEL?
+
+== Entscheidungskriterien
+
+* Daten anderer Gruppen erreichen MANUEL nie, siehe xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2] und xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[ADR 48]
+* Am echten Zammad wird nichts geändert
+* Die Übernahme alter Felder lässt sich an echten Werten proben
+* Beim Einspielen geht keine Mail hinaus
+
+== Betrachtete Optionen
+
+* Ganzes Backup einspielen
+* Ganzes Backup einspielen und danach andere Gruppen löschen
+* Export über die API nur für die Gruppe Repair Café und Import in eine frische Instanz
+
+== Entscheidung
+
+Gewählt wird der Export über die API für die Gruppe Repair Café.
+
+* {repo}/zammad/export_tickets.py[export_tickets.py] fragt die Suche von Zammad mit einer Bedingung auf die Gruppe ab, Tickets anderer Gruppen kommen so gar nicht erst an. Dazu kommen Nachrichten, Anhänge, Tags und die genannten Nutzer. Es liest nur und braucht einen Token mit `ticket.agent`, der danach gelöscht wird. Die Dateien bleiben auf dem eigenen Rechner und auf MANUEL.
+* {repo}/zammad/import_tickets.rb[import_tickets.rb] legt zuerst die Felder des alten Zammad an, damit `migrate_fields.rb` an den echten Werten geprobt werden kann. Danach folgen Nutzer, Tickets, Nachrichten, Anhänge und Tags, mit Nummer, Zeiten, Status, Owner und Autor. Repair Café wird zu Repairs. Der Import-Modus von Zammad schaltet dabei Trigger, Benachrichtigungen und Versand ab ({zammad-src}/lib/transaction_dispatcher.rb[transaction_dispatcher.rb]). Ein zweiter Lauf überspringt vorhandene Tickets.
+
+Am 16.11.2026 lief der Import mit einem erfundenen Export in der Testinstanz. Gruppe, Status, Termin, Owner, Autor der Notiz, Zeitstempel, Tags und Anhang kamen an, ein Gast ohne E-Mail bekam einen eigenen Login, und es entstand keine Mail. Der zweite Lauf legte nichts doppelt an.
+
+=== Konsequenzen
+
+* Gut, weil nur Daten auf MANUEL liegen, die MANUEL braucht.
+* Gut, weil die Übernahme der Felder vor dem Echtbetrieb an echten Werten geprobt wird.
+* Schlecht, weil die Historie der Tickets, Organisationen und Anfragen ohne Termin fehlen.
+* Schlecht, weil Einstellungen nicht mitkommen. Sie entstehen aus dem Code in `zammad/` und dem Export der Einstellungen nach xref:0058-felder-des-bestehenden-zammad-uebernehmen.adoc[ADR 58].
+* ADR 43 bleibt für die übrige Testumgebung gültig, das ganze Backup wird nicht mehr eingespielt.
+
+== Vor- und Nachteile der Optionen
+
+=== Ganzes Backup
+
+* Gut, weil es alles enthält, auch die Historie.
+* Schlecht, weil alle Gruppen auf MANUEL landen.
+
+=== Backup und danach löschen
+
+* Gut, weil es schnell geht.
+* Schlecht, weil alle Daten zeitweise auf MANUEL liegen, auch in den Dateien des Backups.
+
+=== Export über die API
+
+* Gut, weil andere Gruppen nie ankommen.
+* Schlecht, weil es zwei eigene Skripte braucht.
+
+== Quellen
+
+* Entscheidungen von Michael Prange am 15.11. und 16.11.2026

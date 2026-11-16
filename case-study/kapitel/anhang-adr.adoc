@@ -143,5 +143,7 @@ include::../../docs/adr/0067-betreff-aus-marke-und-art-schreiben.adoc[]
 
 include::../../docs/adr/0068-art-des-geraets-mit-d3-pruefen.adoc[]
 
+include::../../docs/adr/0069-nur-tickets-des-repair-cafe-in-die-testinstanz-uebernehmen.adoc[]
+
 :leveloffset: -2
 :sectnums:

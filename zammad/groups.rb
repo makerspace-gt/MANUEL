@@ -53,4 +53,12 @@ guest.created_by_id ||= 1
 guest.role_ids = guest.role_ids | [Role.find_by!(name: 'Repair Agent').id]
 guest.save! if guest.changed? || guest.new_record?
 
+# The admin from zammad/system.rb also coordinates, unless someone gave them another repair role
+admin = User.find_by(email: ENV['MANUEL_ADMIN_EMAIL'].to_s.strip.downcase) if ENV['MANUEL_ADMIN_EMAIL'].present?
+repair_role_ids = Role.where(name: ROLES.keys).pluck(:id)
+if admin && !admin.role_ids.intersect?(repair_role_ids)
+  admin.update!(role_ids: admin.role_ids | [Role.find_by!(name: 'Repair Coordinator').id], updated_by_id: 1)
+end
+
 puts "Gruppen #{Group.where(name: GROUPS).pluck(:name).join(', ')}, Rollen #{Role.where(name: ROLES.keys).pluck(:name).join(', ')}, Agent für Gäste #{guest.fullname}"
+puts "Admin #{admin.login} mit #{admin.roles.pluck(:name).sort.join(', ')}" if admin

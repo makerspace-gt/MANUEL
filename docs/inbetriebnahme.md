@@ -318,7 +318,7 @@ zammad "$(cat /usr/share/manuel/testumgebung/redirect_outbound.rb)"
 ```
 
    Danach die Gegenprobe für den Fall mit Backup. Mit einer Mail „Test 1“ prüfen, dass Zammad abruft. Dann `disable_outbound.rb` ausführen, eine Mail „Test 2“ schicken und einige Minuten warten. „Test 2“ muss im Postfach bleiben, und eine Antwort im Ticket „Test 1“ darf außen nicht ankommen.
-6. Im Browser über Tailscale arbeiten. Zammad liegt unter http://manuel:8080, Mailpit unter http://manuel:8025 und n8n unter http://manuel:5678. Beim ersten Aufruf richtet Zammad ein Admin-Konto ein. Als Adresse des Systems dort `http://manuel:8080` angeben, sonst lehnt Zammad die Verbindung für Live-Updates ab.
+6. Im Browser über Tailscale arbeiten. Zammad liegt unter http://manuel:8080, Mailpit unter http://manuel:8025 und n8n unter http://manuel:5678. Das Admin-Konto legt `manuel-setup` selbst an, wenn auf MANUEL die Datei `/etc/manuel/zammad.env` mit `MANUEL_ADMIN_EMAIL`, `MANUEL_ADMIN_PASSWORD` und optional `MANUEL_ADMIN_NAME` liegt, nur für root lesbar. Adresse und Organisation stehen in `testumgebung/zammad.env`, siehe [zammad/system.rb](../zammad/system.rb). Ohne die Datei richtet man das Konto beim ersten Aufruf im Assistenten ein, `manuel-setup` wartet so lange. Als Adresse des Systems dort `http://manuel:8080` angeben, sonst lehnt Zammad die Verbindung für Live-Updates ab.
 
 7. Gruppe, Rollen, Felder, Makros und Übersetzungen für MANUEL legt der Dienst `manuel-setup` beim Start selbst an, siehe [zammad/README.md](../zammad/README.md). Nach Änderungen am Katalog läuft er erneut.
 

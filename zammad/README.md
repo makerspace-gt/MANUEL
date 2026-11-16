@@ -6,6 +6,7 @@ Diese Dateien richten ein Zammad so ein, wie MANUEL es erwartet, so viel wie mö
 |---|---|
 | [compose.yml](compose.yml) | Dienst `manuel-setup` zusätzlich zu `docker-compose.yml` aus [zammad-docker-compose](../quellen/zammad-docker-compose). Er wartet auf `zammad-init`, führt `setup.rb` aus und beendet sich. Außerdem bindet die Datei `keep_pending_time.rb` in railsserver und scheduler ein |
 | [setup.rb](setup.rb) | Lädt die folgenden Dateien in dieser Reihenfolge und ändert zuletzt das Schema der Datenbank, weil Zammad danach neu startet |
+| [system.rb](system.rb) | Macht auf einer frischen Instanz, was der Assistent von Zammad macht, also Adresse, Organisation, Sprache, Zeitzone und das erste Admin-Konto. Nur mit Adresse und Passwort des Admins aus der Umgebung, sonst wartet `setup.rb` auf den Assistenten im Browser |
 | [groups.rb](groups.rb) | Gruppe Repairs mit den Untergruppen Requests und Events, die Gruppe Spam check, die Rollen Repair Agent und Repair Coordinator und der Agent Gast |
 | [objects.rb](objects.rb) | Felder im Ticket, also Art des Geräts aus dem [Katalog](../katalog/) als durchsuchbares Baum-Feld ([ADR 59](../docs/adr/0059-art-des-geraets-als-durchsuchbares-baum-feld.adoc)), Marke, Bezeichnung, Baujahr, Alter und Angabe zum Alter, Stromversorgung, Defekt laut Anmeldung, festgestellter Defekt, Lösung, Ergebnis als Baum, Gefahren mit Mehrfachauswahl, VDE-Prüfung sowie Spenden und Bedarf für das Statistik-Ticket |
 | [macros.rb](macros.rb) | Makros „Vorschlag hilfreich“ und „Vorschlag nicht hilfreich“, die je einen Tag setzen, siehe [ADR 32](../docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc) |
@@ -46,6 +47,7 @@ Optionale Umgebungsvariablen für `manuel-setup` und den Scheduler in [compose.y
 | `MANUEL_SPAM_FOLDER` | Ordner, den ein zweiter Kanal in die Gruppe Spam check holt, etwa `Spam` |
 | `MANUEL_EVENT_REMINDER_FROM` und `MANUEL_EVENT_REMINDER_SUBJECT` | Absender und Teil des Betreffs der Erinnerung vor dem Termin, Auslöser für Pressemitteilung und Notiz, siehe [ADR 66](../docs/adr/0066-pressemitteilung-und-beitraege-aus-vorlagen.adoc) |
 | `MANUEL_STATISTICS_CUSTOMER`, `MANUEL_STATISTICS_SHEET_URL` und `MANUEL_FORUM_URL` | Gast des Statistik-Tickets als Login und die Links in dessen Notiz. Der Link zum Bearbeiten der Tabelle gehört nicht ins Repo |
+| `MANUEL_URL`, `MANUEL_ORGANIZATION`, `MANUEL_LOCALE`, `MANUEL_ADMIN_EMAIL`, `MANUEL_ADMIN_PASSWORD` und `MANUEL_ADMIN_NAME` | Einrichtung einer frischen Instanz ohne den Assistenten im Browser, siehe [system.rb](system.rb). Ohne Adresse und Passwort des Admins wartet `setup.rb` auf den Assistenten. Das Passwort gehört nicht ins Repo |
 | `MANUEL_AUTO_REPLY_EXCEPT` | Adressen durch Komma getrennt, die nie eine Eingangsbestätigung bekommen, etwa sipgate. Von Hand eingetragene Ausnahmen bleiben |
 | `MANUEL_CATEGORY_CHECK_URL` | Adresse des Dienstes zur Prüfung der Art mit `d3:9b`, siehe [ADR 68](../docs/adr/0068-art-des-geraets-mit-d3-pruefen.adoc) |
 | `MANUEL_WHISPER_URL` | Adresse von whisper.cpp für Voicemails, siehe [ADR 64](../docs/adr/0064-voicemails-lokal-transkribieren.adoc) |

@@ -82,6 +82,8 @@ Wie vollständig die Tickets sind, zeigt eine Zählung der Exporte. Gezählt wur
 * Das Ergebnis trägt oft einen Grund, etwa „nicht erfolgt::Ersatzteil zu teuer“. Sechs dieser Gründe entsprechen genau den sechs Hindernissen des Standards.
 * Marke, Bezeichnung, Stromversorgung und Baujahr fehlen meist. Daraus folgen die Verbesserungen in <<adr-0034>>.
 
+Wie viele dieser Lücken ein Modell aus den Nachrichten schließen kann und ob die Werte dann stimmen, misst <<adr-0070>> je Modell. Ausgangslage sind 813 Tickets zu Geräten aus dem Export vom 16.11.2026. Von ihnen haben 774 ein Ergebnis, 675 einen Defekt, 314 eine Lösung, 223 eine Marke, 112 eine Bezeichnung, 58 eine Stromversorgung und 9 ein Baujahr.
+
 [[ora]]
 === Open Repair Alliance und der Standard
 

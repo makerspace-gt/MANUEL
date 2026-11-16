@@ -1,0 +1,8 @@
+run,field,tickets,errors,filled_human,filled_model,gained,filled_after,compared,hits,hit_rate,hit_lower,hit_upper,top_hits,similarity
+baseline,brand,813,0,223,0,0,223,0,0,,,,,
+baseline,device_model,813,0,112,0,0,112,0,0,,,,,
+baseline,power_supply,813,0,58,0,0,58,0,0,,,,,
+baseline,problem_reported,813,0,675,0,0,675,0,0,,,,,
+baseline,repair_result,813,0,774,0,0,774,0,0,,,,,
+baseline,solution,813,0,314,0,0,314,0,0,,,,,
+baseline,year_of_manufacture,813,0,9,0,0,9,0,0,,,,,

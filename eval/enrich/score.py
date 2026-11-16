@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
-"""Compares the answers of enrich.py with the values volunteers kept, one row per ticket and field, see
+"""Compares the answers of enrich.py with the reference of each task, one row per ticket and field, see
 docs/adr/0070-aufwertung-des-datensatzes-je-modell-messen.adoc.
 
-For every field the row says whether volunteers filled it, whether the model filled it and, where both
-did, whether the model hit the value:
-    name     brand and model, equal after lower case without spaces and punctuation, or one contains the other
-    exact    year and power supply, equal
-    result   result of the repair, equal, and in top_hit equal on the first level
-    text     defect and solution, no hit, but the cosine similarity of both texts with bge-m3
-The rows hold no content and go to score/scores.tsv in the folder of the run, summary.R counts them.
-A folder without answers.jsonl gets the starting point, what volunteers kept in all device tickets.
+    category, category-d3  device_type against the target of the team. hit is the same entry of the
+                           catalog, top_hit the same ORA group
+    device                 brand and device_model against the old fields marke and bezeichnung. hit if
+                           equal in lower case without spaces and punctuation, or one contains the other
+    problem                problem_reported against the old field notiz, cosine similarity with bge-m3
+    solution               the verdict of judge.py against the old field hack. hit is yes, top_hit yes
+                           or partly, unclear counts as not compared
+    baseline               a folder without answers.jsonl, what volunteers kept in all device tickets
+
+human says whether a reference exists, model whether the model answered. The rows hold no content and go
+to score/scores.tsv in the folder of the run, summary.R counts them.
 
 Run in the repository root, Ollama from OLLAMA_URL (default http://manuel:11434):
-    python3 -I eval/enrich/score.py EXPORT_DIR RUN_DIR [RUN_DIR ...]
+    python3 -I eval/enrich/score.py EXPORT_DIR RUN_DIR [RUN_DIR ...] [--targets ~/bench/vorabtest/soll.tsv]
 """
 
+import argparse
 import csv
 import json
 import math
@@ -25,14 +29,17 @@ import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
 
 import tickets as source  # noqa: E402
 from lauf import write_run  # noqa: E402
 
-URL = os.environ.get("OLLAMA_URL", "http://manuel:11434")
+URL = os.environ.get("OLLAMA_URL", "http://manuel:11434").rstrip("/")
 EMBED = "bge-m3"
+BASELINE = {"marke": "brand", "bezeichnung": "device_model", "baujahr": "year_of_manufacture",
+            "stromversorgung": "power_supply", "notiz": "problem_reported", "hack": "solution", "ergebnis": "repair_result"}
 
 
 def embed(texts):
@@ -50,50 +57,85 @@ def norm(value):
     return re.sub(r"[\W_]+", "", str(value).lower())
 
 
-def compare(kind, human, model):
-    """Returns hit and top_hit as 1, 0 or empty."""
-    if kind == "name":
-        a, b = norm(human), norm(model)
-        return int(bool(a and b) and (a == b or (min(len(a), len(b)) >= 2 and (a in b or b in a)))), ""
-    if kind == "exact":
-        return int(str(human).strip() == str(model).strip()), ""
-    if kind == "result":
-        return int(human == model), int(human.split("::")[0] == model.split("::")[0])
-    return "", ""
+def same_name(human, model):
+    a, b = norm(human), norm(model)
+    return int(bool(a and b) and (a == b or (min(len(a), len(b)) >= 2 and (a in b or b in a))))
+
+
+def row(ticket, task, field, human, model, hit="", top_hit="", error=False):
+    return {"ticket": ticket["id"], "year": ticket["created_at"][:4], "task": task, "field": field,
+            "human": int(human), "model": int(model), "error": int(error), "hit": hit, "top_hit": top_hit, "similarity": ""}
+
+
+def score(task, answers, by_id, targets, catalog, judged):
+    rows, pairs = [], []
+    for answer in answers:
+        ticket = by_id.get(answer["ticket"])
+        if ticket is None:
+            continue
+        fields, error = answer.get("fields") or {}, bool(answer.get("error"))
+        if task in ("category", "category-d3"):
+            target, value = targets.get(str(ticket["number"])), (fields.get("device_type") or "").strip()
+            hit = top = ""
+            if target and value:
+                hit = int(value == target)
+                top = int(hit or (value in catalog and catalog[value]["ora_group"] == catalog.get(target, {}).get("ora_group")))
+            rows.append(row(ticket, task, "device_type", bool(target), bool(value), hit, top, error))
+        elif task == "device":
+            for old, new in (("marke", "brand"), ("bezeichnung", "device_model")):
+                human, value = source.human(ticket, old), (fields.get(new) or "").strip()
+                hit = same_name(human, value) if human and value else ""
+                rows.append(row(ticket, task, new, bool(human), bool(value), hit, "", error))
+        elif task == "problem":
+            human, value = source.human(ticket, "notiz"), (fields.get("problem") or "").strip()
+            r = row(ticket, task, "problem_reported", bool(human), bool(value), "", "", error)
+            if human and value:
+                pairs.append((r, str(human), value))
+            rows.append(r)
+        elif task == "solution":
+            human, value = source.human(ticket, "hack"), (fields.get("note") or "").strip()
+            verdict = judged.get(ticket["id"], "")
+            hit = top = ""
+            if human and value and verdict in ("yes", "partly", "no"):
+                hit, top = int(verdict == "yes"), int(verdict in ("yes", "partly"))
+            rows.append(row(ticket, task, "solution", bool(human), bool(value), hit, top, error))
+    for start in range(0, len(pairs), 32):
+        chunk = pairs[start:start + 32]
+        vectors = embed([h for _, h, _ in chunk] + [m for _, _, m in chunk])
+        for i, (r, _, _) in enumerate(chunk):
+            r["similarity"] = round(cosine(vectors[i], vectors[len(chunk) + i]), 4)
+    return rows
 
 
 def main():
-    export, runs = Path(sys.argv[1]), [Path(p).expanduser() for p in sys.argv[2:]]
-    tickets_file, tickets = source.load(export)
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("export", type=Path)
+    parser.add_argument("runs", type=Path, nargs="+")
+    parser.add_argument("--targets", type=Path, default=Path("~/bench/vorabtest/soll.tsv").expanduser())
+    args = parser.parse_args()
+
+    tickets_file, tickets = source.load(args.export)
     by_id = {t["id"]: t for t in tickets}
-    for run in runs:
+    targets = {}
+    if args.targets.exists():
+        targets = {r["ticket"]: r["key"] for r in csv.DictReader(args.targets.open(encoding="utf-8"), delimiter="\t")}
+    catalog = {r["key"]: r for r in csv.DictReader((ROOT / "katalog/kategorien.tsv").open(encoding="utf-8"), delimiter="\t")}
+
+    for run in (r.expanduser() for r in args.runs):
         answers_file = run / "answers.jsonl"
+        inputs = [tickets_file, HERE / "score.py", HERE / "tickets.py"]
         if answers_file.exists():
             answers = [json.loads(line) for line in answers_file.read_text(encoding="utf-8").splitlines() if line.strip()]
+            task = answers[0]["task"] if answers else run.parent.name
+            judge_file = run / "judge" / "answers.jsonl"
+            judged = {}
+            if judge_file.exists():
+                judged = {json.loads(l)["ticket"]: json.loads(l)["verdict"] for l in judge_file.read_text(encoding="utf-8").splitlines() if l.strip()}
+                inputs.append(judge_file)
+            rows = score(task, answers, by_id, targets, catalog, judged)
+            inputs += [answers_file] + ([args.targets] if task.startswith("category") else [])
         else:
-            # Without answers the folder holds the starting point, what volunteers kept in all tickets
-            answers_file = None
-            answers = [{"ticket": t["id"], "fields": {}} for t in tickets]
-        rows, pairs = [], []
-        for answer in answers:
-            ticket = by_id.get(answer["ticket"])
-            if ticket is None:
-                continue
-            for old, (new, kind) in source.FIELDS.items():
-                human = source.human(ticket, old)
-                model = (answer["fields"].get(old) or "").strip() or None
-                hit, top_hit = compare(kind, human, model) if human is not None and model is not None else ("", "")
-                row = {"ticket": ticket["id"], "year": ticket["created_at"][:4], "field": new,
-                       "human": int(human is not None), "model": int(model is not None),
-                       "error": int(bool(answer.get("error"))), "hit": hit, "top_hit": top_hit, "similarity": ""}
-                if kind == "text" and human is not None and model is not None:
-                    pairs.append((row, str(human), model))
-                rows.append(row)
-        for start in range(0, len(pairs), 32):
-            chunk = pairs[start:start + 32]
-            vectors = embed([h for _, h, _ in chunk] + [m for _, _, m in chunk])
-            for i, (row, _, _) in enumerate(chunk):
-                row["similarity"] = round(cosine(vectors[i], vectors[len(chunk) + i]), 4)
+            rows = [row(t, "baseline", new, source.human(t, old) is not None, False) for t in tickets for old, new in BASELINE.items()]
         folder = run / "score"
         folder.mkdir(parents=True, exist_ok=True)
         output = folder / "scores.tsv"
@@ -101,9 +143,8 @@ def main():
             writer = csv.DictWriter(handle, fieldnames=list(rows[0]), delimiter="\t")
             writer.writeheader()
             writer.writerows(rows)
-        write_run(folder, inputs=[p for p in (tickets_file, answers_file, HERE / "score.py", HERE / "tickets.py") if p], outputs=[output],
-                  models=[EMBED], ollama_url=URL, extra={"step": "score"})
-        print(f"{run.name}: {len(answers)} Tickets, {len(rows)} Zeilen in {output}")
+        write_run(folder, inputs=inputs, outputs=[output], models=[EMBED], ollama_url=URL, extra={"step": "score"})
+        print(f"{run.parent.name}/{run.name}: {len(rows)} Zeilen in {output}")
 
 
 if __name__ == "__main__":

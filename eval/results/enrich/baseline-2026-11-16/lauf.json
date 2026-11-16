@@ -1,22 +1,22 @@
 {
-  "date": "2026-11-16T07:43:46+0100",
-  "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/enrich/summary.R --args eval/results/enrich/baseline-2026-11-16 /var/home/igami/bench/manuel-enrich/2026-11-16/baseline",
-  "commit": "4084ab05e5e0793735a7fdfe46c7e9b4c0fd3782",
+  "date": "2026-11-16T08:16:58+0100",
+  "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/enrich/summary.R --args eval/results/enrich/baseline-2026-11-16 /var/home/igami/bench/manuel-enrich/2026-11-16/baseline/all",
+  "commit": "10027283b8498c11d943d16125b0e9bedee2fd5d",
   "dirty": true,
   "inputs": [
     {
-      "path": "~/bench/manuel-enrich/2026-11-16/baseline/score/scores.tsv",
-      "sha256": "52f33e7bb343355b5ef47ba15239f92c9da32bcbaa69ad98251587143d75d91b"
+      "path": "~/bench/manuel-enrich/2026-11-16/baseline/all/score/scores.tsv",
+      "sha256": "35dbd51bb759eb4d407410a0862ae66c120b71b6165cfd674e7b61167e2920a4"
     },
     {
       "path": "eval/enrich/summary.R",
-      "sha256": "7dc6f1526be2d1acd7f45de9f279007e42deb855a334effb2b4e428ee3cab7f5"
+      "sha256": "11eae2d046ac957ed56eca9c7fd9dabe343e28f4fb9abe061f54af89c6e1372e"
     }
   ],
   "outputs": [
     {
       "path": "eval/results/enrich/baseline-2026-11-16/summary.csv",
-      "sha256": "176785a55bd7e35d233f8c0b86978bf20a0142c27cee4093cf88b3c63658a530"
+      "sha256": "56f753c5073815c638b58ff8215b7e24a12f295f257ae174b5a2c08506058215"
     }
   ],
   "r": {

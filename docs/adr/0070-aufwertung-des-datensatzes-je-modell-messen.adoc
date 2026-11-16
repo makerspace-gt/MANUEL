@@ -11,38 +11,39 @@ Beteiligte:: Michael Prange
 
 MANUEL soll die Felder der Tickets füllen, damit mehr und bessere Daten bei der Open Repair Alliance ankommen. Bisher ist nur gezählt, wie viele Felder Menschen gepflegt haben. Offen ist, wie viele Lücken ein Modell aus den Nachrichten schließen kann, ob die Werte dann stimmen und welches Modell das am besten kann. Seit dem Export nach xref:0069-nur-tickets-des-repair-cafe-in-die-testinstanz-uebernehmen.adoc[ADR 69] liegen 896 Tickets der Gruppe Repair Café lokal vor.
 
-== Entscheidungskriterien
-
-* Vergleichbar zwischen Modellen, also gleiche Tickets, gleicher Prompt und gleiches Schema
-* Aussage über Menge und Richtigkeit, nicht nur über die Menge
-* Wiederholbar nach xref:0027-laeufe-reproduzierbar-festhalten.adoc[ADR 27], echte Inhalte bleiben lokal nach xref:0002-echte-ticketdaten-nur-lokal-auswerten.adoc[ADR 2]
-* Zammad bleibt unberührt
-
-== Betrachtete Optionen
-
-* *Messung:* nur Füllgrad, Füllgrad mit einer von Hand bewerteten Stichprobe, oder Füllgrad und Treffer an den gepflegten Werten
-* *Ort:* offline aus dem Export, in der Testinstanz mit den Agenten von Zammad, oder beides
-
 == Entscheidung
 
-Gemessen werden Füllgrad und Treffer, offline aus dem Export.
+Gemessen werden Füllgrad und Treffer, offline aus dem Export, je Aufgabe mit eigenem Prompt. Jede Aufgabe bekommt nur, was MANUEL in dem Moment wüsste, und nie die gepflegten Werte. Die Prompts baut {repo}/eval/enrich/enrich.py[enrich.py] so zusammen wie Zammad die seiner KI-Agenten, damit die Ergebnisse auch für die Agenten in Zammad gelten.
 
-* {repo}/eval/enrich/enrich.py[enrich.py] gibt einem Modell je Geräte-Ticket alle Nachrichten von Gast und Team, ohne die automatischen von Zammad, und lässt es Marke, Bezeichnung, Baujahr, Stromversorgung, Defekt, Lösung und Ergebnis füllen. Die gepflegten Werte sieht das Modell nicht. Prompt in {repo}/eval/enrich/prompt.de.md[prompt.de.md], Stromversorgung und Ergebnis als feste Auswahl im Schema.
-* Statistik-Tickets und Tickets mit `abgelehnt`, `obsolete` oder `EUReCA` zählen nicht, es bleiben 813 Geräte-Tickets.
-* {repo}/eval/enrich/score.py[score.py] vergleicht je Ticket und Feld. Marke und Bezeichnung treffen, wenn sie ohne Groß- und Kleinschreibung und Satzzeichen gleich sind oder eine die andere enthält. Baujahr, Stromversorgung und Ergebnis müssen gleich sein, beim Ergebnis zählt zusätzlich die erste Ebene. Defekt und Lösung sind freier Text, dafür steht die Ähnlichkeit beider Texte mit bge-m3.
-* {repo}/eval/enrich/summary.R[summary.R] zählt je Modell und Feld gefüllt durch Menschen, gefüllt durch das Modell, gewonnen, also gefüllt wo Menschen nichts eingetragen haben, und den Anteil der Treffer mit 95-Prozent-Intervall nach Wilson.
-* Antworten und Zeilen je Ticket bleiben unter `~/bench/manuel-enrich/`. Ins Repo kommen nur die Zahlen unter {repo}/eval/results/enrich/[eval/results/enrich/] mit `lauf.json`. Dort steht der Heimordner seit diesem Lauf als `~`, weil der volle Pfad den Benutzer nennt.
+[cols="2,3,3,3",options="header"]
+|===
+|Aufgabe |Prompt |Eingabe |verglichen mit
+|Kategorie |Ticket Categorizer von Zammad mit den A- und B-Einträgen wie im Vorabtest nach xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40] |Betreff und erste Nachricht |Soll des Teams, Treffer ist derselbe Eintrag, zusätzlich zählt dieselbe ORA-Gruppe
+|Kategorie mit d3 |Prüfung nach xref:0068-art-des-geraets-mit-d3-pruefen.adoc[ADR 68], bge-m3 und Decision-Modell |Betreff und erste Nachricht |wie oben
+|Marke und Bezeichnung |{repo}/eval/enrich/prompts/[prompts/device.*] |Nachrichten vor dem Termin |alte Felder Marke und Bezeichnung, gleich ohne Groß- und Kleinschreibung und Satzzeichen oder eines enthält das andere
+|Defekt |{repo}/eval/enrich/prompts/[prompts/problem.*] |Nachrichten vor dem Termin |altes Feld Notiz, Ähnlichkeit mit bge-m3
+|Lösungsansatz |der Agent aus {repo}/zammad/prompts/[zammad/prompts/solution_approach.*] |Nachrichten vor dem Termin, Art des Geräts laut Team, Marke und Bezeichnung |altes Feld Hack über ein Richtermodell
+|===
 
-Die Art des Geräts misst schon der Vorabtest des Categorizer nach xref:0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc[ADR 40], sie fehlt hier deshalb.
+* Vor dem Termin heißt vor dem Tag des ersten Termins aus den Datums-Tags, sonst dem Monats-Tag oder der Wartezeit. Gibt es keine Nachricht davor, etwa bei spontanen Gästen, zählt die erste.
+* Statistik-Tickets und Tickets mit `abgelehnt`, `obsolete` oder `EUReCA` zählen nicht, es bleiben 813 Geräte-Tickets. Die Kategorie läuft nur über die 736 Tickets mit Soll des Teams.
+* Den Lösungsansatz bewertet ein festes Richtermodell mit {repo}/eval/enrich/judge.py[judge.py] als ja, teilweise, nein oder unklar, je nachdem ob er die tatsächlich gefundene Ursache oder Reparatur nennt. Eine Stichprobe bewertet das Team von Hand, um den Richter zu prüfen.
+* {repo}/eval/enrich/score.py[score.py] schreibt je Ticket und Feld, ob Mensch und Modell es gefüllt haben und ob es trifft. {repo}/eval/enrich/summary.R[summary.R] zählt je Aufgabe und Modell gefüllt, gewonnen und Treffer mit 95-Prozent-Intervall nach Wilson.
+* Während eines Laufs zeichnet {repo}/eval/strom/sample.py[sample.py] auf MANUEL jede Sekunde die Leistung an der Steckdose und an der GPU auf. {repo}/eval/strom/energy.py[energy.py] ordnet sie den Antworten zu, summary.R gibt Sekunden, Wattstunden je Ticket und den Leerlauf je Lauf aus. Der Logger aus Schritt 8 der Inbetriebnahme schreibt nur einmal je Minute.
+* Antworten, Urteile und Zeilen je Ticket bleiben unter `~/bench/manuel-enrich/`. Ins Repo kommen nur die Zahlen unter {repo}/eval/results/enrich/[eval/results/enrich/] mit `lauf.json`. Dort steht der Heimordner seit diesem Lauf als `~`, weil der volle Pfad den Benutzer nennt.
+
+Ein erster Lauf mit einem Prompt für alle Felder und allen Nachrichten wurde am 16.11.2026 abgebrochen. Er sah die Notizen des Teams nach dem Termin und hätte Defekt und Lösung nur abgeschrieben.
 
 === Konsequenzen
 
-* Gut, weil jedes Modell an denselben Tickets mit demselben Prompt läuft und ein Lauf mit gleichem Seed dieselbe Stichprobe zieht.
+* Gut, weil jedes Modell an denselben Tickets mit denselben Prompts läuft und ein Lauf mit gleichem Seed dieselbe Stichprobe zieht.
+* Gut, weil Kategorie und Lösungsansatz mit den Prompts laufen, die MANUEL in Zammad nutzt.
+* Gut, weil neben der Qualität auch Zeit und Energie je Ticket für jedes Modell vorliegen.
 * Gut, weil der Gewinn und die Treffer getrennt sichtbar sind. Ein Modell, das viel füllt und oft danebenliegt, fällt auf.
 * Schlecht, weil die gepflegten Werte selbst Fehler haben. Ein Treffer heißt nur, dass Modell und Mensch übereinstimmen.
 * Schlecht, weil gewonnene Werte keine Referenz haben. Ob sie stimmen, zeigt erst eine Stichprobe von Hand.
-* Schlecht, weil die Ähnlichkeit bei Defekt und Lösung kein Urteil über die Richtigkeit ist.
-* Der Probelauf zeigt, dass Lösung und Ergebnis meist nur im Feld stehen und nicht in den Nachrichten. Dort kann ein Modell wenig gewinnen, solange das Team sie nicht als Notiz schreibt.
+* Schlecht, weil die Ähnlichkeit beim Defekt kein Urteil über die Richtigkeit ist.
+* Schlecht, weil der Richter selbst ein Modell ist und irren kann. Die Stichprobe von Hand zeigt, wie oft.
 
 == Vor- und Nachteile der Optionen
 

@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-15
+Überarbeitet:: 2026-11-16, auch der Einrichtungsassistent als Code
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
@@ -36,6 +37,8 @@ Gewählt werden Ruby-Dateien unter {repo}/zammad[zammad/], so viel wie möglich.
 * Den Anfang macht {repo}/zammad/knowledge_base.rb[knowledge_base.rb]. Die Wissensdatenbank ist deutsch mit britischem Englisch als zweiter Sprache, wie bei der Open Repair Alliance und Restarters.net.
 
 Im Dialog wird nur ausprobiert. Was bleiben soll, kommt in eine Datei.
+
+Seit dem 16.11.2026 gilt das auch für den Einrichtungsassistenten. {repo}/zammad/system.rb[system.rb] setzt auf einer frischen Instanz Adresse, Organisation, Sprache und Zeitzone und legt das erste Admin-Konto an, wie es {zammad-src}/app/services/service/user/add_first_admin.rb[add_first_admin.rb] tut. Adresse und Passwort des Admins kommen aus einer privaten Datei auf dem Rechner und nie ins Repo. Fehlen sie, wartet `setup.rb` auf den Assistenten im Browser. Vorher lief `setup.rb` vor dem Assistenten und sperrte ihn, weil Zammad ihn nur bei höchstens zwei Nutzern zeigt und der Agent für Gäste der dritte war.
 
 === Konsequenzen
 

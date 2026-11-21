@@ -12,7 +12,7 @@ _Teilfrage T4. Wie zuverlässig ordnet MANUEL Anfragen ein und wann muss ein Men
 * Am Ende sind 98,7 Prozent der 745 Tickets richtig eingeordnet oder führen zu einer Rückfrage, nur 10 sind sicher falsch.
 * Die meisten Fehler lagen nicht am Modell, sondern an der Liste der Kategorien.
 * Eine Rückfrage ist besser als ein Fehler, deshalb fragt MANUEL bei Sammelbegriffen und Unsicherheit nach.
-* Zum Start am 05.12.2026 sollte der Ticket Categorizer von Zammad ohne Sicherheit einordnen. Im Vorabtest wären mit der besten Liste 17,5 Prozent der Einträge falsch, die Grenze für den Umstieg liegt bei 5 Prozent <<adr-0040>>.
+* Zum Start am 05.12.2026 sollte der Ticket Categorizer von Zammad ohne Sicherheit einordnen. Im Vorabtest wären mit der besten Liste 17,5 Prozent der Einträge falsch, die Grenze für den Umstieg liegt bei 5 Prozent <<adr-0040>>. Das Team startet trotzdem mit dem Categorizer, weil am Termin ein Mensch jede Art prüft und `d3:9b` Abweichungen markiert <<adr-0068>>. Nach zwei Terminen wird neu entschieden.
 
 *Wichtigste Befehle.*
 

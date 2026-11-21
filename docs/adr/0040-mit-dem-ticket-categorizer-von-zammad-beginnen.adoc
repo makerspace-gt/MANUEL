@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-09
 Beteiligte:: Michael Prange und das Team in der Planung vom 09.11.2026
-Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht von ADR 10, 2026-11-15, Abweichungen des Vorabtests, und 2026-11-15, Prüfung durch d3:9b nach ADR 68
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht von ADR 10, 2026-11-15, Abweichungen des Vorabtests, und 2026-11-15, Prüfung durch d3:9b nach ADR 68, und 2026-11-21, Start trotz Vorabtest
 
 == Kontext und Problem
 
@@ -38,6 +38,8 @@ Zum Start füllt der Ticket Categorizer von Zammad die Art des Geräts mit dem S
 xref:0018-felder-mit-ki-agenten-von-zammad-fuellen.adoc[ADR 18] gilt damit weiter. ADR 3, 4 und 11 bleiben das Ziel für den Weg über n8n und sind für die Kategorie im Betrieb zunächst zurückgestellt.
 
 Nachtrag vom 15.11.2026. Der Vorabtest vom 13.11.2026 fragte in drei Punkten anders als Zammad 7.2.2. Er nutzte die deutschen Namen der Optionen, Zammad schickt die gespeicherten englischen. Er schickte keine Beschreibungen, Zammad nimmt sie aus der Einschränkung im Agenten. Er lief mit Temperatur 0, Zammad ruft Agenten fest mit 0,3 auf. Der Vorabtest wird nach der Durchsicht des Katalogs so wiederholt, wie Zammad fragt, mit und ohne Beschreibungen, xref:0055-katalog-in-bloecken-durchsehen.adoc[ADR 55].
+
+Nachtrag vom 21.11.2026. Der Vorabtest lag mit 17,5 Prozent falscher Einträge über der Grenze von 5 Prozent. Das Team entschied trotzdem, am 05.12. mit dem Categorizer und den A- und B-Einträgen zu starten. Am Termin prüft ein Mensch jede Art, und `d3:9b` prüft nach xref:0068-art-des-geraets-mit-d3-pruefen.adoc[ADR 68] jede gesetzte Art und setzt bei Abweichung den Tag `category-differs`. n8n steht vor Januar nicht bereit. Die Zählung nach den ersten zwei Terminen bleibt, danach entscheidet das Team erneut über den Umstieg.
 
 === Konsequenzen
 

@@ -67,6 +67,16 @@ Dieses Kapitel steht noch in Stichpunkten.
 === Mini-PC und Betriebssystem
 
 * MINISFORUM AI X1 Pro-370 mit AMD Ryzen AI 9 HX 370, Radeon 890M, 64 GB DDR5 und 1 TB SSD
+* Der Speicher steckt als zwei Riegel mit je 32 GB DDR5-5600 im SO-DIMM-Format. Mehr Speicher ginge nur durch Tausch beider Riegel. Von den drei Steckplätzen für M.2-SSDs ist einer belegt, zwei sind frei. Mehr Platz für Modelle oder Sicherungen lässt sich also leicht nachrüsten.
+
+.Unter der Abdeckung, links der Lautsprecher, rechts die beiden Lüfter
+image::hardware/inside-cover.jpg[Mini-PC geöffnet mit Abdeckung,width=50%]
+
+.Unten links die beiden Riegel mit je 32 GB, rechts oben die belegte SSD unter dem Kühlkörper und die freien Steckplätze SSD1 und SSD2
+image::hardware/board-ram-ssd-slots.jpg[Platine mit Arbeitsspeicher und Steckplätzen für SSDs,width=100%]
+
+.Typenschild auf der Unterseite
+image::hardware/bottom-label.jpg[Unterseite mit Typenschild,width=100%]
 * Eigenes Image auf Basis von uCore, täglich neu gebaut, Wechsel per `bootc switch` <<adr-0016>>
 * Inbetriebnahme nach {repo}/docs/inbetriebnahme.md[docs/inbetriebnahme.md]
 

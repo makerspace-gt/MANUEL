@@ -320,7 +320,7 @@ git push
 - [x] Image so erweitern, dass es unserem cosign-Schlüssel vertraut und signierte Updates prüft
 - [ ] Öffentliche SSH-Schlüssel der Admins in butane/manuel.bu eintragen
 - [ ] Fedora CoreOS mit der daraus erzeugten Ignition-Datei installieren, siehe butane/README.md
-- [ ] Mit rpm-ostree status prüfen, dass das System auf dem signierten Image läuft
+- [x] Mit rpm-ostree status prüfen, dass das System auf dem signierten Image läuft, am 21.11.2026 `ostree-image-signed:docker://ghcr.io/makerspace-gt/manuel:latest`
 - [ ] SSD verschlüsseln, weil der Mini-PC in der offenen Werkstatt steht. Fedora CoreOS kann das bei der Installation über die Butane-Datei mit LUKS und dem Schlüssel im TPM einrichten, siehe [Fedora-CoreOS-Doku zu Storage](https://docs.fedoraproject.org/en-US/fedora-coreos/storage/). Testen, ob das mit dem Wechsel auf unser Image zusammenspielt
 - [ ] Automatische Updates und Neustartfenster festlegen, zum Beispiel nachts um 02:00 wie bei unseren anderen Servern
 - [x] Prüfen, ob Python für Ansible vorhanden ist, und es sonst per rpm-ostree nachinstallieren
@@ -338,15 +338,15 @@ git push
 
 ### Phase 2 Inferenz
 
-- [ ] GPU-Stack prüfen mit vulkaninfo und Zugriff auf /dev/dri im Container
+- [x] GPU-Stack prüfen mit vulkaninfo und Zugriff auf /dev/dri im Container, Ollama und llama.cpp laufen mit Vulkan und `--device /dev/dri`, siehe [Inbetriebnahme](docs/inbetriebnahme.md) Schritt 4 und [Benchmarks](docs/benchmarks.md)
 - [x] Speicherzuteilung für die GPU über UMA und GTT-Limit testen und dokumentieren, Ergebnis 16 GiB UMA ohne Kernel-Parameter, siehe docs/benchmarks.md
 - [ ] Rolle ollama in it-infrastructure anlegen und den Port nur an die NetBird-Adresse binden, weil Ollama keine Anmeldung kennt und Docker die Firewall des Hosts umgeht
 - [ ] Prüfen, dass Ollama aus dem LAN und dem Gäste-WLAN des Makerspace nicht erreichbar ist
-- [ ] Kontrollieren, dass Modelle wirklich auf der GPU laufen und nicht auf der CPU, zum Beispiel an der GPU-Auslastung in Beszel
+- [x] Kontrollieren, dass Modelle wirklich auf der GPU laufen und nicht auf der CPU, `ollama ps` zeigt `100% GPU`, siehe [Inbetriebnahme](docs/inbetriebnahme.md) Schritt 4. Der Alarm in Beszel folgt mit dem Agenten
 - [ ] Leistungsprofil und TDP im BIOS auf Dauerbetrieb einstellen und den Einfluss auf die Geschwindigkeit messen
 - [ ] Vulkan und ROCm mit llama-bench vergleichen. Die [Ollama-Doku zu GPUs](https://github.com/ollama/ollama/blob/main/docs/gpu.mdx) führt gfx1150 für ROCm v7, ältere [Erfahrungen im Framework-Forum](https://community.frame.work/t/amd-rocm-does-not-support-the-amd-ryzen-ai-300-series-gpus/68767) waren gemischt. Für Vulkan braucht der Container die Gruppe render und für Angaben zum Grafikspeicher die Capability cap_perfmon
-- [ ] `OLLAMA_IGPU_ENABLE=1` setzen. Ollama verwirft integrierte AMD-GPUs standardmäßig und lässt nur gfx1151 zu, siehe [discover/runner.go](https://github.com/ollama/ollama/blob/main/discover/runner.go). Ohne die Variable läuft auf dem HX 370 mit gfx1150 alles unbemerkt auf der CPU
-- [ ] `OLLAMA_CONTEXT_LENGTH` fest auf etwa 32768 setzen. Zammad schickt keine Kontextlänge mit, und Ollama wählt sonst je nach erkanntem Grafikspeicher 4K, 32K oder 256K, siehe [envconfig/config.go](https://github.com/ollama/ollama/blob/main/envconfig/config.go). Bei 4K würden lange Prompts wie der des Ticket Categorizer still abgeschnitten
+- [x] `OLLAMA_IGPU_ENABLE=1` setzen, im Container gesetzt seit Schritt 4 der [Inbetriebnahme](docs/inbetriebnahme.md). Ollama verwirft integrierte AMD-GPUs standardmäßig und lässt nur gfx1151 zu, siehe [discover/runner.go](https://github.com/ollama/ollama/blob/main/discover/runner.go). Ohne die Variable läuft auf dem HX 370 mit gfx1150 alles unbemerkt auf der CPU
+- [x] `OLLAMA_CONTEXT_LENGTH` fest auf etwa 32768 setzen, im Container auf 32768 gesetzt. Zammad schickt keine Kontextlänge mit, und Ollama wählt sonst je nach erkanntem Grafikspeicher 4K, 32K oder 256K, siehe [envconfig/config.go](https://github.com/ollama/ollama/blob/main/envconfig/config.go). Bei 4K würden lange Prompts wie der des Ticket Categorizer still abgeschnitten
 - [ ] `OLLAMA_KEEP_ALIVE` hoch setzen, damit das Modell beim Repair Café nicht nach 5 Minuten Pause entladen wird, und `OLLAMA_MAX_LOADED_MODELS` so wählen, dass Sprach- und Embedding-Modell gleichzeitig geladen bleiben
 - [x] Startmodell [qwen3.6:35b-a3b](https://ollama.com/library/qwen3.6:35b-a3b) laden
 - [x] UMA und GTT-Limit so einstellen, dass die GPU deutlich mehr als 24 GB nutzen darf
@@ -364,8 +364,9 @@ git push
 - [ ] Bewertungskriterien festlegen, zum Beispiel richtige Kategorie und Nützlichkeit des Vorschlags aus Sicht der Engagierten
 - [x] Decision-Modell d3 an deutschen Beispiel-Tickets prüfen, vor allem das Kriterium sicherheitsrelevant. Übersehene Fälle wie Mikrowelle, Akku, Netzspannung und Gas zählen schwerer als Fehlalarme, die Schwelle wird danach gewählt
 - [ ] Schnelles und großes Modell am Testsatz vergleichen und entscheiden, ob sich die Eskalation lohnt
-- [ ] Aufwertung des Datensatzes je Modell messen, also Füllgrad und Treffer an den gepflegten Feldern mit [eval/enrich](eval/enrich/enrich.py), siehe [ADR 70](docs/adr/0070-aufwertung-des-datensatzes-je-modell-messen.adoc). Ausgangslage vom 16.11.2026 liegt vor, danach je Modell ein Lauf und eine Stichprobe der gewonnenen Werte von Hand
+- [ ] Aufwertung des Datensatzes je Modell messen, also Füllgrad und Treffer an den gepflegten Feldern mit [eval/enrich](eval/enrich/enrich.py), siehe [ADR 70](docs/adr/0070-aufwertung-des-datensatzes-je-modell-messen.adoc). Ausgangslage vom 16.11.2026 und Probelauf mit 8 Tickets vom 20. und 21.11.2026 liegen vor, `qwen3.6:35b-a3b` bleibt das Hauptmodell. Volle Läufe und die Stichprobe von Hand sind Kür und folgen nach dem Start des Echtbetriebs
 - [ ] Beim Repair Café im November Vorschläge live in Open WebUI unter http://manuel:3000 testen und Rückmeldungen sammeln, mit den anonymisierten Tickets nach [ADR 39](docs/adr/0039-nur-tickets-von-2025-und-2026-anonymisieren.adoc) und nie mit Angaben von Gästen
+- [ ] Etherpad nach der Runde mit Anmerkungen zur Fallstudie abschalten, also Funnel aus, Container und Daten löschen, siehe [ADR 71](docs/adr/0071-etherpad-voruebergehend-fuer-anmerkungen-des-teams.adoc). Vorher die Anmerkungen über die API lesen und zum Prüfen zusammenstellen
 - [ ] Einordnung der Gefahren überarbeiten. Das Repair Café schaut sich alles an, was Gäste bringen. Seit dem 15.11.2026 hält das Feld `hazards` die Art der Gefahr fest, mit Vorgabe aus dem Katalog, siehe [ADR 56](docs/adr/0056-gefahren-am-geraet-festhalten.adoc). Offen ist, ob ein Agent oder ein Workflow die Vorgabe ins Ticket schreibt und wie das Kriterium für `d3:9b` dazu passt
 - [ ] Das Team entscheidet, ob wir bei Geräten mit Lebensgefahr bei Fehlfunktion nur einfache Fehler wie einen Akkuwechsel beheben, siehe [ADR 57](docs/adr/0057-lebenswichtige-geraete-nur-bei-einfachen-fehlern-reparieren.adoc)
 - [ ] Bildverständnis des Hauptmodells mit llama.cpp einrichten, dafür braucht es eine Projektor-Datei (mmproj), siehe [ADR 23](docs/adr/0023-qwen3-6-als-hauptmodell-nutzen.adoc)
@@ -373,7 +374,7 @@ git push
 - [ ] Spalte „spontan“ im Blatt Eingabe der Statistik anlegen, damit die [Sharecard](sharecard/README.md) spontane Gäste zeigt
 - [x] Gemeinsame Hilfsfunktion für `lauf.json` schreiben, bevor der Vorabtest läuft, siehe [ADR 27](docs/adr/0027-laeufe-reproduzierbar-festhalten.adoc) und [eval/lauf.py](eval/lauf.py)
 - [x] Vorabtest des Ticket Categorizer. Seinen Prompt aus `quellen/zammad` lokal an den geprüften Tickets nachstellen und kürzere Listen vergleichen, etwa A-Einträge, A- und B-Einträge und ORA-Gruppen, siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc). Ergebnis vom 13.11.2026 in Schritt 17 von [docs/einordnung.md](docs/einordnung.md), mit der besten Liste A und B sind 17,5 Prozent der Einträge falsch
-- [ ] Das Team entscheidet über den Umstieg nach ADR 40, weil der Vorabtest über der Grenze von 5 Prozent liegt. Dazu gehört, ob die Einordnung am 05.12. schon über n8n mit `d3:9b` und Rückfrage läuft, ob der Categorizer mit A und B trotzdem startet, weil am Termin jemand jede Art prüft, oder ob die Art bis dahin von Hand eingetragen wird
+- [x] Das Team entscheidet über den Umstieg nach ADR 40, weil der Vorabtest über der Grenze von 5 Prozent liegt. Dazu gehört, ob die Einordnung am 05.12. schon über n8n mit `d3:9b` und Rückfrage läuft, ob der Categorizer mit A und B trotzdem startet, weil am Termin jemand jede Art prüft, oder ob die Art bis dahin von Hand eingetragen wird. Am 21.11.2026 entschied das Team, mit dem Categorizer und A und B zu starten. Am Termin prüft jemand jede Art, dazu kommt die Prüfung mit `d3:9b` nach [ADR 68](docs/adr/0068-art-des-geraets-mit-d3-pruefen.adoc), siehe [ADR 40](docs/adr/0040-mit-dem-ticket-categorizer-von-zammad-beginnen.adoc)
 
 ### Phase 4 Anbindung an Zammad
 
@@ -453,6 +454,15 @@ git push
 - [ ] Belege der Veröffentlichung für den Sachbericht sammeln, für die Vorstellung beim FSuB e.V. etwa Einladung, Tagesordnung oder Protokoll
 - [ ] Verwendungsnachweis bis 31.03.2027 im Förderportal einreichen
 
+## Nebenwege, geparkt bis nach dem Start
+
+Diese Punkte sind angefangen oder nützlich, aber Kür. Sie warten, bis der Echtbetrieb am 05.12.2026 läuft, damit sie keine Zeit vom kritischen Weg nehmen.
+
+- Volle Läufe aller 813 Tickets nach [ADR 70](docs/adr/0070-aufwertung-des-datensatzes-je-modell-messen.adoc) mit Strom und eine Stichprobe von Hand, um den Richter zu prüfen
+- Weitere Modelle außerhalb von Ollama. Qwen3.8-Flash-Next und LFM2.5-24B-A2B sind im Probelauf getestet und kommen für den Betrieb nicht in Frage. Die Dateien liegen noch auf MANUEL unter `/var/lib/manuel/models/` und können weg
+- Test mit 32 GB und ein höheres GTT-Limit, siehe Ausblick
+- Stufe 2 der Fallstudie, Nachmeldung an Restarters, Workflow für die Sharecard
+
 ## Ausblick
 
 - **Zuschuss für Ersatzteile.** Ein Reparaturbonus für Ersatzteile aus dem Repair Café gilt für Gäste aus Gütersloh derzeit nicht, die Lage fasst [kaputt.de](https://blog.kaputt.de/reparaturbonus-2026-alle-bundeslaender-staedte-antraege-im-check/) zusammen. Eine Vorlage braucht es noch nicht. Kommt ein passendes Programm, kann MANUEL die Bestätigung des Repair Café aus dem Ticket vorbereiten. Für das Repair Café selbst läuft der Antrag „GehT Weiter!“ im Bundesprogramm „Reparieren statt Wegwerfen“.
@@ -486,7 +496,7 @@ Stand der Planung mit fünf Engagierten am 09.11.2026. Der Echtbetrieb und damit
 
 | Datum | Ziel |
 |---|---|
-| bis 21.11.2026 | Helpdesk-VM mit Zammad und NetBird aus Stufe 1 des IT-Plans steht, die Version von Zammad ist geprüft |
+| bis 21.11.2026 | Helpdesk-VM mit Zammad und NetBird aus Stufe 1 des IT-Plans steht, die Version von Zammad ist geprüft. Stand 21.11.: in Arbeit |
 | 21.11.2026 | Repair Café, Vorschläge in Open WebUI unter http://manuel:3000 im Tailnet zeigen, mit anonymisierten Tickets |
 | bis 28.11.2026 | Felder in Zammad, Entscheidung über den Umstieg nach dem Vorabtest, Datenschutzhinweis, Löschfristen und SSD-Verschlüsselung |
 | 05.12.2026 | Start des Echtbetriebs und der Erprobung |

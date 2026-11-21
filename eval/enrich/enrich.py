@@ -19,7 +19,8 @@ The answers hold real ticket content and stay local, by default in
 ~/bench/manuel-enrich/<date>/<task>/<model>/answers.jsonl next to lauf.json after
 docs/adr/0027-laeufe-reproduzierbar-festhalten.adoc. A second run continues where the first stopped.
 
-Run in the repository root, Ollama from OLLAMA_URL (default http://manuel:11434):
+Run in the repository root, Ollama from OLLAMA_URL (default http://manuel:11434). With LLAMA_URL, for
+example http://manuel:8081, the language model runs on a llama-server instead, see eval/bench.sh:
     python3 -I eval/enrich/enrich.py TASK EXPORT_DIR MODEL [--limit N] [--seed 1] [--think no]
         [--targets ~/bench/vorabtest/soll.tsv] [--out DIR]
 --limit takes a fixed random sample, the same for every model and task with the same seed.
@@ -48,6 +49,8 @@ import tickets as source  # noqa: E402
 from lauf import write_run  # noqa: E402
 
 URL = os.environ.get("OLLAMA_URL", "http://manuel:11434").rstrip("/")
+# A llama-server instead of Ollama, for models Ollama cannot run yet. It speaks the OpenAI API.
+LLAMA_URL = os.environ.get("LLAMA_URL", "").rstrip("/")
 TASKS = ["category", "category-d3", "device", "problem", "solution"]
 SOLUTION_PROMPTS = ROOT / "zammad" / "prompts"
 
@@ -57,6 +60,8 @@ def prompt(name):
 
 
 def chat(model, system, user, think):
+    if LLAMA_URL:
+        return chat_llama(model, system, user, think)
     body = {"model": model, "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
             "format": "json", "stream": False, "options": {"temperature": 0, "seed": 1}, "keep_alive": 600}
     if think is not None:
@@ -65,6 +70,21 @@ def chat(model, system, user, think):
     with urllib.request.urlopen(request, timeout=900) as response:
         answer = json.load(response)
     return json.loads(answer["message"]["content"] or "{}"), answer
+
+
+def chat_llama(model, system, user, think):
+    """The same call against llama-server, answer and token counts mapped to the fields of Ollama."""
+    body = {"model": model, "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
+            "response_format": {"type": "json_object"}, "stream": False, "temperature": 0, "seed": 1}
+    if think is not None:
+        body["chat_template_kwargs"] = {"enable_thinking": think}
+    request = urllib.request.Request(f"{LLAMA_URL}/v1/chat/completions", json.dumps(body).encode(),
+                                     {"Content-Type": "application/json"})
+    with urllib.request.urlopen(request, timeout=1800) as response:
+        answer = json.load(response)
+    usage = answer.get("usage") or {}
+    answer.update(eval_count=usage.get("completion_tokens"), prompt_eval_count=usage.get("prompt_tokens"))
+    return json.loads(answer["choices"][0]["message"]["content"] or "{}"), answer
 
 
 class Task:
@@ -122,6 +142,17 @@ class Task:
         return chat(self.model, self.system, user, self.think)
 
 
+def server_info():
+    """Model file and settings the llama-server reports, for lauf.json."""
+    try:
+        with urllib.request.urlopen(f"{LLAMA_URL}/props", timeout=20) as response:
+            props = json.load(response)
+    except OSError:
+        return {}
+    settings = props.get("default_generation_settings") or {}
+    return {"model_path": props.get("model_path"), "build": props.get("build_info"), "n_ctx": settings.get("n_ctx")}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("task", choices=TASKS)
@@ -175,9 +206,11 @@ def main():
     inputs = [tickets_file, HERE / "tickets.py", HERE / "enrich.py", *task.inputs]
     if args.task in ("category", "category-d3", "solution") and args.targets.exists():
         inputs.append(args.targets)
-    write_run(output, inputs=inputs, outputs=[output], models=[args.model], ollama_url=URL,
-              zammad=args.task != "category-d3",
-              extra={"task": args.task, "limit": args.limit, "seed": args.seed, "think": args.think, "tickets": len(tickets)})
+    extra = {"task": args.task, "limit": args.limit, "seed": args.seed, "think": args.think, "tickets": len(tickets)}
+    if LLAMA_URL:
+        extra["llama_server"] = server_info()
+    write_run(output, inputs=inputs, outputs=[output], models=[] if LLAMA_URL else [args.model], ollama_url=None if LLAMA_URL else URL,
+              zammad=args.task != "category-d3", extra=extra)
     print(f"{args.task}: {len(tickets)} Tickets mit {args.model} in {output}")
 
 

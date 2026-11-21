@@ -1,0 +1,53 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0072]]
+= 0072 Firmware für das Funkmodul ins Image
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-21
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Das Image von MANUEL baut auf `ghcr.io/ublue-os/ucore-minimal:stable` auf, siehe xref:0016-eigenes-image-auf-basis-von-ucore-bauen.adoc[ADR 16]. Am 20.11.2026 wechselte diese Basis auf Fedora 45, der Kernel wurde `7.2.11-300.fc45`. MANUEL übernahm das Image automatisch und lief nach dem Neustart am 21.11.2026 damit.
+
+Dem neuen Image fehlt die Firmware für das Funkmodul MediaTek MT7925, das Bluetooth und WLAN liefert. Der Treiber `btusb` fand `mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin` nicht, setzte das USB-Gerät zurück und versuchte es erneut, mehrmals pro Sekunde. In gut einer Stunde kamen rund 10.600 Fehlversuche und etwa 1.700 Zeilen Log je Minute zusammen. Im Boot davor mit Fedora 44 trat der Fehler nicht auf.
+
+MANUEL hängt am LAN und braucht Bluetooth und WLAN im Betrieb nicht.
+
+== Betrachtete Optionen
+
+* Firmware `mt7xxx-firmware` ins Image aufnehmen
+* Bluetooth und WLAN per `modprobe.d` sperren
+* Nur bis zum nächsten Neustart `btusb` entladen
+
+== Entscheidung
+
+`build_files/build.sh` installiert `mt7xxx-firmware` aus den Quellen von Fedora. Bluetooth und WLAN funktionieren damit wieder, etwa für Fehlersuche ohne Kabel oder ein Gerät mit Bluetooth am Mini-PC.
+
+Bis das neue Image läuft, ist `btusb` am 21.11.2026 von Hand entladen. Das hielt die Schleife sofort an, ohne Neustart.
+
+=== Konsequenzen
+
+* Gut, weil das Modul wieder wie vor dem Wechsel auf Fedora 45 arbeitet und das Log nicht mehr volläuft.
+* Schlecht, weil das Image etwas größer wird.
+* Schlecht, weil Bluetooth und WLAN eingeschaltet bleiben, obwohl der Betrieb sie nicht braucht. Wer sie abschalten will, kann es später im BIOS tun.
+* Offen ist, was der Wechsel auf Fedora 45 sonst geändert hat. Nach dem nächsten Image prüfen, ob Ollama, llama.cpp und Zammad wie vorher laufen.
+
+== Vor- und Nachteile der Optionen
+
+=== Sperren per modprobe.d
+
+* Gut, weil weniger Treiber laufen und die Angriffsfläche in der offenen Werkstatt kleiner wird
+* Schlecht, weil Bluetooth und WLAN dann auch zur Fehlersuche fehlen
+
+=== Nur entladen
+
+* Gut, weil sofort ohne Änderung am Image
+* Schlecht, weil die Schleife nach dem nächsten Neustart zurückkommt
+
+== Quellen
+
+* `dmesg` und `journalctl` auf MANUEL vom 21.11.2026
+* `rpm-ostree status` mit den Images vom 16.11. und 20.11.2026
+* `dnf repoquery --whatprovides` im Image `ucore-minimal:stable`, Paket `mt7xxx-firmware-20261019-1.fc45`

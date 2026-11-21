@@ -14,6 +14,9 @@ cp -avf "/ctx/system_files"/. /
 
 # this installs a package from fedora repos
 dnf5 install -y tmux
+# Firmware of the MediaTek MT7925 for Bluetooth and WLAN. ucore-minimal on Fedora 45 lacks it, and btusb
+# then resets the device several times a second, see docs/adr/0072-firmware-fuer-das-funkmodul-ins-image.adoc
+dnf5 install -y mt7xxx-firmware
 
 # Use a COPR Example:
 #

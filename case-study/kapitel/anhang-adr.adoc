@@ -149,5 +149,7 @@ include::../../docs/adr/0070-aufwertung-des-datensatzes-je-modell-messen.adoc[]
 
 include::../../docs/adr/0071-etherpad-voruebergehend-fuer-anmerkungen-des-teams.adoc[]
 
+include::../../docs/adr/0072-firmware-fuer-das-funkmodul-ins-image.adoc[]
+
 :leveloffset: -2
 :sectnums:

@@ -88,6 +88,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |69 |xref:0069-nur-tickets-des-repair-cafe-in-die-testinstanz-uebernehmen.adoc[Nur Tickets des Repair Café in die Testinstanz übernehmen] |angenommen |2026-11-16
 |70 |xref:0070-aufwertung-des-datensatzes-je-modell-messen.adoc[Aufwertung des Datensatzes je Modell messen] |angenommen |2026-11-16
 |71 |xref:0071-etherpad-voruebergehend-fuer-anmerkungen-des-teams.adoc[Etherpad vorübergehend für Anmerkungen des Teams] |angenommen |2026-11-21
+|72 |xref:0072-firmware-fuer-das-funkmodul-ins-image.adoc[Firmware für das Funkmodul ins Image] |angenommen |2026-11-21
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

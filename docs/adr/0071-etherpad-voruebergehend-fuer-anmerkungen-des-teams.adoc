@@ -31,26 +31,29 @@ Das Team soll Texte wie die Fallstudie oder einzelne ADRs einfach kommentieren k
 Ein Etherpad läuft vorübergehend auf MANUEL. Es ist ein einzelner Container mit `podman run`, nicht Teil des Images und nicht in `zammad/compose.yml`.
 
 * Image `docker.io/etherpad/etherpad:3.3.15` mit fester Version. Neuere Versionen kamen fast täglich, gewählt ist die neueste, die mindestens zwei Wochen alt war.
-* Der Container hört nur auf `127.0.0.1:9001`. `tailscale serve` stellt ihn mit HTTPS unter `https://manuel.zebra-alewife.ts.net/` bereit, nur im Tailnet wie in xref:0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[ADR 47]. Funnel ist aus.
+* Der Container hört nur auf `127.0.0.1:9001`. `tailscale funnel` stellt ihn mit HTTPS unter `https://manuel.zebra-alewife.ts.net/` im Internet bereit, ohne Passwort. Das ist eine Ausnahme von xref:0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[ADR 47], damit auch Engagierte ohne Zugang zum Tailnet mitschreiben können. Alle anderen Dienste auf MANUEL bleiben im Tailnet.
+* `EDIT_ONLY=true`, so lassen sich vorhandene Pads bearbeiten, aber über die Oberfläche keine neuen anlegen.
 * Daten in SQLite unter `/var/lib/manuel/etherpad`, kein Konto für Admins.
+* Das Pad `fallstudie` enthält die ganze Fallstudie mit Anhang als lesbaren Text, gerendert mit demselben Image wie in der CI. Überschriften sind fett, Tabellen stehen Zeile für Zeile, Bilder als Beschreibung, umgewandelt mit {repo}/case-study/etherpad_html.py[etherpad_html.py]. Anmerkungen aus dem Pad prüft ein Mensch, bevor sie in die Fallstudie kommen.
 * `AUTHENTICATION_METHOD=apikey` schaltet die alte Schnittstelle mit Schlüssel ein. Der Schlüssel liegt in `APIKEY.txt` im Container, wird nur auf MANUEL gelesen und nie ausgegeben. Er wechselt, wenn der Container neu entsteht.
 * Jedes Pad beginnt mit dem Hinweis, keine Namen, Adressen oder anderen Angaben zu Gästen einzutragen.
 
 Zum Entfernen:
 
 ----
-sudo tailscale serve --https=443 off
+sudo tailscale funnel --https=443 off
 sudo podman rm -f etherpad
 sudo rm -rf /var/lib/manuel/etherpad
 ----
 
 === Konsequenzen
 
-* Gut, weil alle im Tailnet ohne Konto mitschreiben können und die Texte auf MANUEL bleiben.
+* Gut, weil alle ohne Konto und ohne Tailnet mitschreiben können und die Texte auf MANUEL bleiben.
 * Gut, weil Claude Code Texte über die Schnittstelle einstellen und Anmerkungen lesen kann.
-* Schlecht, weil nur Personen im Tailnet das Pad erreichen.
+* Schlecht, weil jeder mit der Adresse alles lesen und ändern kann, auch Bots. Die Fallstudie ist ohnehin öffentlich, Änderungen lassen sich über den Verlauf des Pads zurückholen.
+* Schlecht, weil MANUEL mit den echten Tickets damit aus dem Internet erreichbar ist. Eine Lücke in Etherpad wäre ein Weg dorthin. Das Pad läuft deshalb nur so lange wie nötig.
 * Schlecht, weil es keine Sicherung und keine Updates gibt. Das passt nur, solange es vorübergehend ist.
-* Schlecht, weil jeder im Tailnet alles ändern kann und Etherpad Namen nur freiwillig zeigt. Wer was schrieb, zeigen nur die Farben der Autoren.
+* Schlecht, weil Etherpad Namen nur freiwillig zeigt. Wer was schrieb, zeigen nur die Farben der Autoren.
 
 == Vor- und Nachteile der Optionen
 

@@ -1,0 +1,163 @@
+{
+  "date": "2026-11-21T09:12:00+0100",
+  "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/enrich/summary.R --args eval/results/enrich/probe-2026-11-20 ~/bench/manuel-enrich/2026-11-20/probe/category-d3/d3-9b ~/bench/manuel-enrich/2026-11-20/probe/category/lfm2.5-24b-a2b-qad-q4_0 ~/bench/manuel-enrich/2026-11-20/probe/category/qwen3.6-35b-a3b-64k ~/bench/manuel-enrich/2026-11-20/probe/category/qwen3.8-flash-next-ud-iq2_xs ~/bench/manuel-enrich/2026-11-20/probe/device/lfm2.5-24b-a2b-qad-q4_0 ~/bench/manuel-enrich/2026-11-20/probe/device/qwen3.6-35b-a3b-64k ~/bench/manuel-enrich/2026-11-20/probe/device/qwen3.8-flash-next-ud-iq2_xs ~/bench/manuel-enrich/2026-11-20/probe/problem/lfm2.5-24b-a2b-qad-q4_0 ~/bench/manuel-enrich/2026-11-20/probe/problem/qwen3.6-35b-a3b-64k ~/bench/manuel-enrich/2026-11-20/probe/problem/qwen3.8-flash-next-ud-iq2_xs ~/bench/manuel-enrich/2026-11-20/probe/solution/lfm2.5-24b-a2b-qad-q4_0 ~/bench/manuel-enrich/2026-11-20/probe/solution/qwen3.6-35b-a3b-64k ~/bench/manuel-enrich/2026-11-20/probe/solution/qwen3.8-flash-next-ud-iq2_xs",
+  "commit": "94d5fdc8e929424e9023bfef107049c8c10b546f",
+  "dirty": true,
+  "inputs": [
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/category-d3/d3-9b/score/scores.tsv",
+      "sha256": "2b40ee73d3fb08ae906f80de14bcd117a33b8726d066353daa1e7865ac8ab939"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/category/lfm2.5-24b-a2b-qad-q4_0/score/scores.tsv",
+      "sha256": "d3e0b8fe9079bb805cd176d7fb3ccf19d9a6523ef0194fbf09f0bd6d882139ed"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/category/qwen3.6-35b-a3b-64k/score/scores.tsv",
+      "sha256": "ad680c29e6ca67e89ba00e3902b3b1a0b448f55b5f600093565020ae213ddcd9"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/category/qwen3.8-flash-next-ud-iq2_xs/score/scores.tsv",
+      "sha256": "85470d4065705817cf71b4d913b962aa7403f0aa66c5c5f77f2dc0bf1363d6d2"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/device/lfm2.5-24b-a2b-qad-q4_0/score/scores.tsv",
+      "sha256": "c48bc157f8c74de31fb3c589c7f857538a50de8bfc2106aba560aec0b216ce2a"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/device/qwen3.6-35b-a3b-64k/score/scores.tsv",
+      "sha256": "ecaa151c021a82b8025d72ac15eed42645d54910e327b35d6c0f2bd214aa3bdf"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/device/qwen3.8-flash-next-ud-iq2_xs/score/scores.tsv",
+      "sha256": "ecaa151c021a82b8025d72ac15eed42645d54910e327b35d6c0f2bd214aa3bdf"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/problem/lfm2.5-24b-a2b-qad-q4_0/score/scores.tsv",
+      "sha256": "6fb1bc5b253a816109492fb2e09de854eeba1ecb49ab81567a6021ba0bd0614f"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/problem/qwen3.6-35b-a3b-64k/score/scores.tsv",
+      "sha256": "bd9bb76bb86aab41bbbb604f1e26505887724a4574a10b314f85e069789f4882"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/problem/qwen3.8-flash-next-ud-iq2_xs/score/scores.tsv",
+      "sha256": "d610128e459b5aec10f9d59e4723eb0ef6bbcb0a37b6d480b31472ba2875c9df"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/solution/lfm2.5-24b-a2b-qad-q4_0/score/scores.tsv",
+      "sha256": "b982d191221790fde000046eed862a39f8a9cfdc3b3218026f5559e3ab699a73"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/solution/qwen3.6-35b-a3b-64k/score/scores.tsv",
+      "sha256": "5f7e46a9ea21c1d93d5fd24ad6178f4fa40899a17af40166aa159ae75addaa1c"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/solution/qwen3.8-flash-next-ud-iq2_xs/score/scores.tsv",
+      "sha256": "27fbf0e20b345d5be0af0e3f87702df70ce2e208c54c333684222cdc1b8de281"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/category-d3/d3-9b/energy/energy.tsv",
+      "sha256": "92e54aa823d3216e0f2db9a2a95993cc6eee2162abbe2f4b502493838d51060e"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/category/lfm2.5-24b-a2b-qad-q4_0/energy/energy.tsv",
+      "sha256": "d247e48169ace977c64c6224b7d78d01a83ae7a4ea5241d155eac770420b8b86"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/category/qwen3.6-35b-a3b-64k/energy/energy.tsv",
+      "sha256": "0d561e728f448a42ae8dee80f96cdf4d36c532efe13d233cf19e5e3c17ff2482"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/category/qwen3.8-flash-next-ud-iq2_xs/energy/energy.tsv",
+      "sha256": "17a2c3f90d4956385c09e43d10e79b8c702f6ca82cc403425bbbee56a63ba622"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/device/lfm2.5-24b-a2b-qad-q4_0/energy/energy.tsv",
+      "sha256": "a2268ae25ed52cb6e54d969ae2799b34fc964ae47b8d51e7682edc4df43873c3"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/device/qwen3.6-35b-a3b-64k/energy/energy.tsv",
+      "sha256": "efc9601ffa10b8e4d0ec0e01b86520bdf471ca9b9e947f645f33ecefe48a16db"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/device/qwen3.8-flash-next-ud-iq2_xs/energy/energy.tsv",
+      "sha256": "132e40a24c81f6c6afb78e2811c09062e9c831fbefd2f15e07fdcae1640e2fc8"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/problem/lfm2.5-24b-a2b-qad-q4_0/energy/energy.tsv",
+      "sha256": "6339630ef93bffc070e94479ab0ae0bbf500436f6467285bb26d067eb7c8819c"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/problem/qwen3.6-35b-a3b-64k/energy/energy.tsv",
+      "sha256": "af1967ccfdd790f6455b0f42903c440f77a08a51ee063ba33a26af91c43be15b"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/problem/qwen3.8-flash-next-ud-iq2_xs/energy/energy.tsv",
+      "sha256": "00be8b6dd5e8fd00efb0a53a8f8934f9777728d3ff210ffafc12d119023943b9"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/solution/lfm2.5-24b-a2b-qad-q4_0/energy/energy.tsv",
+      "sha256": "1cc1c69b5ac1c11bd17a87cc3eacb53195a4adfb50357463b92e4e769ca84f72"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/solution/qwen3.6-35b-a3b-64k/energy/energy.tsv",
+      "sha256": "1720d2daa2ae7f585515c35028baa6a314601f97babc1a6f4128c9c96d717c9a"
+    },
+    {
+      "path": "~/bench/manuel-enrich/2026-11-20/probe/solution/qwen3.8-flash-next-ud-iq2_xs/energy/energy.tsv",
+      "sha256": "83f5d46e45759d286168a2906728422244bf64144e00d8dcd7584f74c29cbc72"
+    },
+    {
+      "path": "eval/enrich/summary.R",
+      "sha256": "11eae2d046ac957ed56eca9c7fd9dabe343e28f4fb9abe061f54af89c6e1372e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "eval/results/enrich/probe-2026-11-20/summary.csv",
+      "sha256": "9033a594dc9f1fa1b4175bf4d4fed62faa9e5f1b853b821ae37c437c21ae8edc"
+    },
+    {
+      "path": "eval/results/enrich/probe-2026-11-20/energy.csv",
+      "sha256": "6a7ec8a87fa2c9e63633836fddd72b5584edf2d4f86e5eaa6da24e4384024141"
+    }
+  ],
+  "r": {
+    "version": "R version 4.6.1 (2026-06-24)",
+    "repos": "https://p3m.dev/cran/__linux__/noble/2026-10-28",
+    "image": "localhost/manuel-r:4.6.1",
+    "packages": {
+      "binom": "1.1-2",
+      "bit": "4.6.0",
+      "bit64": "4.8.6",
+      "cli": "3.6.6",
+      "compiler": "4.6.1",
+      "crayon": "1.5.3",
+      "dplyr": "1.2.1",
+      "generics": "0.1.4",
+      "glue": "1.8.1",
+      "grid": "4.6.1",
+      "hms": "1.1.4",
+      "lifecycle": "1.0.5",
+      "magrittr": "2.0.5",
+      "parallel": "4.6.1",
+      "pillar": "1.11.1",
+      "pkgconfig": "2.0.3",
+      "R6": "2.6.1",
+      "readr": "2.2.0",
+      "rlang": "1.3.0",
+      "tibble": "3.3.1",
+      "tidyselect": "1.2.1",
+      "tools": "4.6.1",
+      "tzdb": "0.5.0",
+      "vctrs": "0.7.3",
+      "vroom": "1.7.1",
+      "withr": "3.0.3"
+    }
+  },
+  "host": {
+    "kernel": "7.2.11-200.fc44.x86_64",
+    "machine": "x86_64"
+  }
+}

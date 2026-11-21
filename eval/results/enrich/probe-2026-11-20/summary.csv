@@ -1,0 +1,17 @@
+task,run,field,tickets,errors,filled_human,filled_model,gained,filled_after,compared,hits,hit_rate,hit_lower,hit_upper,top_hits,similarity
+category,lfm2.5-24b-a2b-qad-q4_0,device_type,7,0,7,6,0,7,6,2,0.333,0.097,0.7,4,
+category,qwen3.6-35b-a3b-64k,device_type,7,0,7,6,0,7,6,5,0.833,0.436,0.97,5,
+category,qwen3.8-flash-next-ud-iq2_xs,device_type,7,0,7,7,0,7,7,5,0.714,0.359,0.918,5,
+category-d3,d3-9b,device_type,7,0,7,7,0,7,7,4,0.571,0.25,0.842,6,
+device,lfm2.5-24b-a2b-qad-q4_0,brand,8,0,4,6,3,7,3,3,1,0.439,1,,
+device,lfm2.5-24b-a2b-qad-q4_0,device_model,8,0,3,5,3,6,2,2,1,0.342,1,,
+device,qwen3.6-35b-a3b-64k,brand,8,0,4,6,3,7,3,3,1,0.439,1,,
+device,qwen3.6-35b-a3b-64k,device_model,8,0,3,2,0,3,2,2,1,0.342,1,,
+device,qwen3.8-flash-next-ud-iq2_xs,brand,8,0,4,6,3,7,3,3,1,0.439,1,,
+device,qwen3.8-flash-next-ud-iq2_xs,device_model,8,0,3,2,0,3,2,2,1,0.342,1,,
+problem,lfm2.5-24b-a2b-qad-q4_0,problem_reported,8,0,6,6,1,7,0,0,,,,,0.748
+problem,qwen3.6-35b-a3b-64k,problem_reported,8,0,6,6,1,7,0,0,,,,,0.888
+problem,qwen3.8-flash-next-ud-iq2_xs,problem_reported,8,0,6,7,1,7,0,0,,,,,0.765
+solution,lfm2.5-24b-a2b-qad-q4_0,solution,8,0,2,8,6,8,2,1,0.5,0.095,0.905,1,
+solution,qwen3.6-35b-a3b-64k,solution,8,0,2,8,6,8,2,1,0.5,0.095,0.905,2,
+solution,qwen3.8-flash-next-ud-iq2_xs,solution,8,0,2,8,6,8,2,1,0.5,0.095,0.905,1,

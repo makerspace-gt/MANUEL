@@ -46,6 +46,16 @@ Am 20.11.2026 liefen so Qwen3.8-Flash-Next in UD-IQ2_XS mit 70,4 GB und LFM2.5-2
 
 Damit bleiben nur etwa 6 GB RAM frei. Lädt Ollama in der Zeit ein Modell, scheitert eine der beiden Seiten. Flash-Next läuft deshalb nur, wenn sonst niemand MANUEL nutzt, und kommt für den Betrieb neben Zammad nicht in Frage. LFM2.5 liegt ganz in der GPU, denkt aber vor jeder Antwort, auch mit `enable_thinking` aus.
 
+Ein Probelauf mit 8 Tickets je Aufgabe vom 20. und 21.11.2026 verglich beide mit `qwen3.6:35b-a3b-64k`. Die Zahlen stehen in {repo}/eval/results/enrich/probe-2026-11-20/summary.csv[summary.csv] und {repo}/eval/results/enrich/probe-2026-11-20/energy.csv[energy.csv].
+
+* Bei der Kategorie traf qwen3.6 5 von 6, Flash-Next 5 von 7 und LFM2.5 2 von 6. Die Prüfung mit `d3:9b` traf 4 von 7, lag aber 6 mal in derselben ORA-Gruppe.
+* Marke und Bezeichnung trafen bei allen drei, wo das Team sie gepflegt hatte. LFM2.5 ergänzte als einziges 3 Bezeichnungen.
+* Beim Defekt lag die Ähnlichkeit im Median bei 0,89 für qwen3.6, 0,77 für Flash-Next und 0,75 für LFM2.5.
+* Den Lösungsansatz bewertete der Richter nur an den 2 Tickets mit gepflegter Lösung, jedes Modell traf einen davon.
+* qwen3.6 war je Ticket am schnellsten, 3 bis 15 Sekunden. Flash-Next brauchte etwa das Dreifache. LFM2.5 brauchte durch das Denken bis zu 3.500 Tokens und beim Lösungsansatz 106 Sekunden.
+
+8 Tickets reichen nicht für ein Urteil, die Intervalle überlappen sich überall. Die Wattstunden enthalten außerdem Last aus Tests des Teams, die am 20.11. zur gleichen Zeit liefen. Für volle Läufe kommen daher nur Modelle in Frage, die neben Zammad in Ollama laufen.
+
 === Konsequenzen
 
 * Gut, weil jedes Modell an denselben Tickets mit denselben Prompts läuft und ein Lauf mit gleichem Seed dieselbe Stichprobe zieht.
@@ -77,3 +87,4 @@ Damit bleiben nur etwa 6 GB RAM frei. Lädt Ollama in der Zeit ein Modell, schei
 == Quellen
 
 * Ausgangslage vom 16.11.2026 in {repo}/eval/results/enrich/baseline-2026-11-16/summary.csv[summary.csv]
+* Probelauf vom 20. und 21.11.2026 in {repo}/eval/results/enrich/probe-2026-11-20/[eval/results/enrich/probe-2026-11-20]

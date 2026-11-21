@@ -1,0 +1,14 @@
+task,run,tickets,seconds_median,plug_mwh_per_ticket,extra_mwh_per_ticket,gpu_mwh_per_ticket,idle_w,tokens_per_ticket,plug_wh_total
+category,lfm2.5-24b-a2b-qad-q4_0,7,38.4,1230.4,92.2,633,56.7,2020,8.61
+category,qwen3.6-35b-a3b-64k,7,8.6,238.4,-38.6,128,56.7,23,1.67
+category,qwen3.8-flash-next-ud-iq2_xs,7,6.6,459.7,-87.8,241.2,56.8,25,3.22
+category-d3,d3-9b,7,1.6,38.3,-20.5,18.9,56.7,,0.27
+device,lfm2.5-24b-a2b-qad-q4_0,8,20.9,523,8.6,261.5,56.7,1246,4.18
+device,qwen3.6-35b-a3b-64k,8,3.2,58.3,3.5,31.6,56.7,21,0.47
+device,qwen3.8-flash-next-ud-iq2_xs,8,11.3,176.9,1,92.7,56.7,21,1.41
+problem,lfm2.5-24b-a2b-qad-q4_0,8,29.6,532.9,14,264.1,56.7,1258,4.26
+problem,qwen3.6-35b-a3b-64k,8,3.2,58.5,3.2,31.9,56.7,21,0.47
+problem,qwen3.8-flash-next-ud-iq2_xs,8,10.4,180.5,4.6,96.2,56.7,25,1.44
+solution,lfm2.5-24b-a2b-qad-q4_0,8,106.2,1937.4,215.4,979.6,56.1,3540,15.5
+solution,qwen3.6-35b-a3b-64k,8,14.6,266.7,28,140.9,56.5,299,2.13
+solution,qwen3.8-flash-next-ud-iq2_xs,8,52.8,769.5,-23.5,393,56.7,338,6.16

@@ -125,6 +125,6 @@ parser.flush()
 note = ("Anmerkungen zur Fallstudie MANUEL. Bitte schreibt Anmerkungen direkt in den Text, am besten mit eurem Namen in "
         "der Leiste oben rechts. Bitte keine Namen, Adressen oder andere Angaben zu Gästen eintragen. Jede Anmerkung "
         "wird geprüft, bevor sie in die Fallstudie kommt.")
-items = [("b", 0, None, note)] + parser.out
+items = [("b", 0, None, note), ("p", 0, None, "Link zur Fallstudie https://makerspace-gt.github.io/MANUEL/")] + parser.out
 open(sys.argv[2], "w", encoding="utf-8").write(render(items))
 print(len(items), "Zeilen,", sum(len(t) for *_, t in items), "Zeichen")

@@ -19,6 +19,16 @@ def tr(english, german)
   english
 end
 
+# Saves an AI agent, trigger or macro of MANUEL. active is set only on creation, a later run keeps what
+# admins chose.
+def agent_save(record, active)
+  record.active = active if record.new_record?
+  record.created_by_id ||= 1
+  record.updated_by_id = 1
+  record.save! if record.new_record? || record.changed?
+  record
+end
+
 # Set up the system as the getting started wizard does when the admin is given, else wait for the wizard.
 # Zammad offers it only while there are at most two users (setup_done? in
 # app/controllers/getting_started_controller.rb), and groups.rb adds the guest agent.
@@ -45,6 +55,7 @@ load File.join(__dir__, 'scheduler.rb')
 load File.join(__dir__, 'inbound.rb')
 load File.join(__dir__, 'press.rb')
 load File.join(__dir__, 'workflows.rb')
+load File.join(__dir__, 'ai.rb')
 load File.join(__dir__, 'agents.rb')
 load File.join(__dir__, 'checklists.rb')
 load File.join(__dir__, 'text_modules.rb')

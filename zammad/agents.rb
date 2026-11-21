@@ -16,14 +16,6 @@ def agent_prompt(name)
   File.read(File.join(PROMPTS, name), encoding: 'utf-8').strip
 end
 
-def agent_save(record, active)
-  record.active = active if record.new_record?
-  record.created_by_id ||= 1
-  record.updated_by_id = 1
-  record.save! if record.new_record? || record.changed?
-  record
-end
-
 provider = Setting.get('ai_provider').present?
 
 agent = AI::Agent.find_or_initialize_by(name: SOLUTION_AGENT)

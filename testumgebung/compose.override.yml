@@ -15,6 +15,11 @@ services:
   # so Zammad sends to Mailpit even with the real settings of lima-city. Its certificate is self-signed,
   # a new email account checks it and fails, so run redirect_outbound.rb after adding one. Fetching by
   # IMAP from mail.lima-city.de does not work then, use the IP address of lima-city without SSL check.
+  # Ollama on the same host as AI provider of the test instance, see zammad/ai.rb
+  manuel-setup:
+    environment:
+      MANUEL_OLLAMA_URL: http://${MANUEL_BIND_IP:-127.0.0.1}:11434
+
   mailpit:
     image: docker.io/axllent/mailpit:v1.33.1
     restart: always

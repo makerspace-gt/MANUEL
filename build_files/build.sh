@@ -36,6 +36,7 @@ cp -a /ctx/testumgebung/. /usr/share/manuel/testumgebung/
 install -d /usr/share/manuel/zammad /usr/share/manuel/katalog
 cp -a /ctx/zammad/. /usr/share/manuel/zammad/
 cp -a /ctx/katalog/kategorien.tsv /usr/share/manuel/katalog/
+install -D -m 644 /ctx/eval/categorizer/abc.tsv /usr/share/manuel/eval/categorizer/abc.tsv
 # Check of the device type with d3:9b, with the same paths as in the repository
 install -d /usr/share/manuel/category_check /usr/share/manuel/quellen/anstiftung /usr/share/manuel/eval/decision
 cp -a /ctx/category_check/. /usr/share/manuel/category_check/

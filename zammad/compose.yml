@@ -30,6 +30,10 @@ services:
       MANUEL_STATISTICS_CUSTOMER: ${MANUEL_STATISTICS_CUSTOMER:-}
       MANUEL_STATISTICS_SHEET_URL: ${MANUEL_STATISTICS_SHEET_URL:-}
       MANUEL_FORUM_URL: ${MANUEL_FORUM_URL:-}
+      # Ollama as AI provider and the list of the categorizer, see zammad/ai.rb
+      MANUEL_OLLAMA_URL: ${MANUEL_OLLAMA_URL:-}
+      MANUEL_OLLAMA_MODEL: ${MANUEL_OLLAMA_MODEL:-qwen3.6:35b-a3b}
+      MANUEL_OLLAMA_EMBEDDING_MODEL: ${MANUEL_OLLAMA_EMBEDDING_MODEL:-bge-m3}
       # First admin instead of the wizard in the browser, see zammad/system.rb
       MANUEL_URL: ${MANUEL_URL:-}
       MANUEL_ORGANIZATION: ${MANUEL_ORGANIZATION:-}
@@ -40,6 +44,7 @@ services:
     volumes:
       - ./zammad:/opt/manuel/zammad:ro
       - ./katalog/kategorien.tsv:/opt/manuel/katalog/kategorien.tsv:ro
+      - ./eval/categorizer/abc.tsv:/opt/manuel/eval/categorizer/abc.tsv:ro
       - ./zammad/event_tags.rb:/opt/zammad/config/initializers/zz_event_tags.rb:ro
       - ./zammad/contact_filter.rb:/opt/zammad/config/initializers/zz_contact_filter.rb:ro
       - ./zammad/article_types.rb:/opt/zammad/config/initializers/zz_article_types.rb:ro

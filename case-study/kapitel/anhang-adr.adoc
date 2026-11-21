@@ -147,5 +147,7 @@ include::../../docs/adr/0069-nur-tickets-des-repair-cafe-in-die-testinstanz-uebe
 
 include::../../docs/adr/0070-aufwertung-des-datensatzes-je-modell-messen.adoc[]
 
+include::../../docs/adr/0071-etherpad-voruebergehend-fuer-anmerkungen-des-teams.adoc[]
+
 :leveloffset: -2
 :sectnums:

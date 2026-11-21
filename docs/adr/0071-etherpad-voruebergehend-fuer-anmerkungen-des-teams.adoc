@@ -1,0 +1,80 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0071]]
+= 0071 Etherpad vorübergehend für Anmerkungen des Teams
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-21
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Das Team soll Texte wie die Fallstudie oder einzelne ADRs einfach kommentieren können, ohne Konto bei GitHub oder claude.ai. Claude Code soll die Anmerkungen lesen und Texte zum Kommentieren hineinschreiben können. Die Nextcloud des Vereins zieht erst mit dem Neuaufbau der IT um. Die Kommentare zur Fallstudie mit Isso aus {repo}/docs/recherche/kommentarsystem.md[kommentarsystem.md] brauchen eine VM des Vereins.
+
+== Entscheidungskriterien
+
+* Ohne Konto nutzbar
+* Lesen und Schreiben über eine Schnittstelle
+* Keine Daten bei fremden Anbietern
+* Schnell aufgebaut und wieder entfernt
+
+== Betrachtete Optionen
+
+* Etherpad auf MANUEL im Tailnet
+* Nextcloud des Vereins mit der App Text
+* Claude Docs
+* Kommentare auf GitHub
+* Öffentliche Pads wie CryptPad oder HedgeDoc
+
+== Entscheidung
+
+Ein Etherpad läuft vorübergehend auf MANUEL. Es ist ein einzelner Container mit `podman run`, nicht Teil des Images und nicht in `zammad/compose.yml`.
+
+* Image `docker.io/etherpad/etherpad:3.3.15` mit fester Version. Neuere Versionen kamen fast täglich, gewählt ist die neueste, die mindestens zwei Wochen alt war.
+* Der Container hört nur auf `127.0.0.1:9001`. `tailscale serve` stellt ihn mit HTTPS unter `https://manuel.zebra-alewife.ts.net/` bereit, nur im Tailnet wie in xref:0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[ADR 47]. Funnel ist aus.
+* Daten in SQLite unter `/var/lib/manuel/etherpad`, kein Konto für Admins.
+* `AUTHENTICATION_METHOD=apikey` schaltet die alte Schnittstelle mit Schlüssel ein. Der Schlüssel liegt in `APIKEY.txt` im Container, wird nur auf MANUEL gelesen und nie ausgegeben. Er wechselt, wenn der Container neu entsteht.
+* Jedes Pad beginnt mit dem Hinweis, keine Namen, Adressen oder anderen Angaben zu Gästen einzutragen.
+
+Zum Entfernen:
+
+----
+sudo tailscale serve --https=443 off
+sudo podman rm -f etherpad
+sudo rm -rf /var/lib/manuel/etherpad
+----
+
+=== Konsequenzen
+
+* Gut, weil alle im Tailnet ohne Konto mitschreiben können und die Texte auf MANUEL bleiben.
+* Gut, weil Claude Code Texte über die Schnittstelle einstellen und Anmerkungen lesen kann.
+* Schlecht, weil nur Personen im Tailnet das Pad erreichen.
+* Schlecht, weil es keine Sicherung und keine Updates gibt. Das passt nur, solange es vorübergehend ist.
+* Schlecht, weil jeder im Tailnet alles ändern kann und Etherpad Namen nur freiwillig zeigt. Wer was schrieb, zeigen nur die Farben der Autoren.
+
+== Vor- und Nachteile der Optionen
+
+=== Nextcloud des Vereins
+
+* Gut, weil Freigaben ohne Anmeldung möglich sind und die Dateien beim Verein bleiben
+* Schlecht, weil die Nextcloud erst mit dem Neuaufbau der IT umzieht
+
+=== Claude Docs
+
+* Gut, weil Claude direkt schreiben kann
+* Schlecht, weil alle Zugriff auf claude.ai brauchen und die Texte bei Anthropic liegen
+
+=== Kommentare auf GitHub
+
+* Gut, weil die Anmerkungen direkt an den Zeilen im Repo stehen
+* Schlecht, weil alle ein Konto bei GitHub brauchen
+
+=== Öffentliche Pads
+
+* Schlecht, weil CryptPad keine Schnittstelle hat, HedgeDoc 1 vorhandene Notizen nicht über eine Schnittstelle ändern kann und öffentliche Etherpads keinen Schlüssel für die Schnittstelle herausgeben
+
+== Quellen
+
+* `settings.json` im Image 3.3.15, `authenticationMethod` steht dort standardmäßig auf `sso`
+* Versionen und Datum der Tags von `etherpad/etherpad` auf Docker Hub, abgerufen am 21.11.2026
+* Ausgabe von `tailscale serve status` auf MANUEL, „tailnet only“

@@ -82,7 +82,7 @@ def write_run(target, inputs=(), outputs=(), models=(), ollama_url=None, llama_c
     tags = {m["name"]: m["digest"] for m in ollama(ollama_url, "/api/tags").get("models", [])} if ollama_url else {}
     run = {
         "date": dt.datetime.now().astimezone().isoformat(timespec="seconds"),
-        "command": " ".join([Path(sys.argv[0]).name] + sys.argv[1:]),
+        "command": " ".join([Path(sys.argv[0]).name] + [shown(arg) for arg in sys.argv[1:]]),
         "commit": git("rev-parse", "HEAD"),
         "dirty": bool(git("status", "--porcelain", "--untracked-files=no")),
         "inputs": [{"path": shown(p), "sha256": sha256(p)} for p in map(Path, inputs)],

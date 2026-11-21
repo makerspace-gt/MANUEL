@@ -7,12 +7,13 @@
 
 write_run <- function(target, inputs = character(), outputs = character(), extra = list()) {
   git <- function(...) tryCatch(system2("git", c(...), stdout = TRUE, stderr = FALSE), error = function(e) "")
-  files <- function(paths) lapply(paths, function(p) list(path = sub(paste0("^", path.expand("~"), "(/|$)"), "~\\1", p), sha256 = unname(digest_file(p))))
+  shown <- function(p) sub(paste0("^", path.expand("~"), "(/|$)"), "~\\1", p)
+  files <- function(paths) lapply(paths, function(p) list(path = shown(p), sha256 = unname(digest_file(p))))
   info <- sessionInfo()
   pkgs <- c(info$otherPkgs, info$loadedOnly)
   run <- c(list(
     date = format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z", tz = "Europe/Berlin"),
-    command = paste(commandArgs(), collapse = " "),
+    command = paste(vapply(commandArgs(), shown, ""), collapse = " "),
     commit = paste(git("rev-parse", "HEAD"), collapse = ""),
     dirty = length(git("status", "--porcelain", "--untracked-files=no")) > 0,
     inputs = files(inputs),

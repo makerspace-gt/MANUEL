@@ -1,6 +1,6 @@
 {
   "date": "2026-11-16T08:16:58+0100",
-  "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/enrich/summary.R --args eval/results/enrich/baseline-2026-11-16 /var/home/igami/bench/manuel-enrich/2026-11-16/baseline/all",
+  "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/enrich/summary.R --args eval/results/enrich/baseline-2026-11-16 ~/bench/manuel-enrich/2026-11-16/baseline/all",
   "commit": "10027283b8498c11d943d16125b0e9bedee2fd5d",
   "dirty": true,
   "inputs": [

@@ -87,6 +87,24 @@ Namen, Werte und Bezeichnungen sind englisch. Deutsch kommt als eigene Übersetz
 - Die VDE-Prüfung kennt leer, empfohlen, ja und nein. Leer heißt, es ist noch nicht entschieden.
 - Wer repariert hat, ist der Owner des Tickets. Hat der Gast selbst repariert, wird der Agent Gast Owner, siehe [ADR 32](../docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc). Er hat den Login `guest`, kein Passwort und keine E-Mail-Adresse und kann sich nicht anmelden. Ein vorhandener Agent für Gäste bekommt vorher den Login `guest`, sonst entsteht ein zweiter.
 - Der Termin ist die Wartezeit mit Datum und Uhrzeit. Antwortet ein Gast, würde Zammad sie leeren. `keep_pending_time.rb` überschreibt dafür nur die Methode `reset_pending_time` statt die ganze `ticket.rb` zu ersetzen. Nach jedem Update von Zammad prüfen, ob es die Methode noch gibt, sonst steht ein Fehler im Log.
-- Welche Felder wann sichtbar sind, etwa Spenden nur im Statistik-Ticket, regeln Core Workflows. Die fehlen hier noch.
+- Welche Felder wann sichtbar sind, etwa Spenden nur im Statistik-Ticket, regeln die Core Workflows aus [core_workflows.rb](core_workflows.rb).
 
 Am 14.11.2026 lief `setup.rb` neunmal in der Testinstanz mit Zammad 7.2.2. Fehler und doppelte Einträge gab es nicht, beim letzten Lauf änderte sich nichts mehr. Danach lief der Dienst `manuel-setup` zweimal auf MANUEL, beim zweiten Mal ohne Änderung. Eine Antwort per Mail auf ein Ticket mit Wartezeit ließ diese ohne `keep_pending_time.rb` leer, mit der Datei blieb sie erhalten, und die Erinnerung zur Wartezeit kam weiterhin.
+
+
+## Übernahme ins bestehende Zammad
+
+Reihenfolge für das Zammad auf der neuen Helpdesk-VM. Vorher ein Backup. Jedes Skript mit Probelauf läuft zuerst ohne `MANUEL_MIGRATE=apply`, die Ausgabe sieht sich ein Mensch an.
+
+1. **Version prüfen.** Zammad 7.2.2 oder neuer, mit Anbietern unter KI, Ticket Categorizer und Custom AI Agent. Nach jedem Update prüfen, ob es `reset_pending_time` noch gibt, siehe Hinweise oben.
+2. **Dateien einbinden** wie in [compose.yml](compose.yml), also die Initializer `keep_pending_time.rb`, `event_tags.rb`, `contact_filter.rb`, `article_types.rb`, `voicemail.rb`, `tree_select_label.rb`, `category_check.rb` und `agent_note.rb`, dazu `zammad/`, den Katalog und `eval/categorizer/abc.tsv` unter `/opt/manuel`. Das ersetzt die Kopie der `ticket.rb` im alten Zammad.
+3. **Umbenennen**, damit nichts doppelt entsteht. Gruppe Repair Café wird Repairs, Repair Café Anfragen wird deren Untergruppe Requests, die Rollen heißen Repair Agent und Repair Coordinator, der vorhandene Agent Gast bekommt den Login `guest`.
+4. **Umgebung setzen** nach der Tabelle oben. `MANUEL_OLLAMA_URL` und `MANUEL_CATEGORY_CHECK_URL` zeigen auf MANUEL über NetBird, dazu `MANUEL_WHISPER_URL`, `MANUEL_EVENT_REMINDER_FROM`, `MANUEL_AUTO_REPLY_EXCEPT`, `MANUEL_SENT_BCC` und `MANUEL_SPAM_FOLDER`. Die Variablen für den ersten Admin bleiben leer, sie gelten nur für eine frische Instanz.
+5. **`setup.rb`** laufen lassen, ein zweiter Lauf ändert nichts. Neue Regeln, die Gästen schreiben, sind aus. Trigger der KI sind an, weil der Anbieter jetzt gesetzt ist.
+6. **`migrate_fields.rb`** übernimmt die alten Felder, schaltet ersetzte Regeln ab, benennt `abgelehnt` in `obsolete` um und nimmt die Empfänger der Pressemitteilung in die Organisation Presse auf, siehe [ADR 58](../docs/adr/0058-felder-des-bestehenden-zammad-uebernehmen.adoc).
+7. **`migrate_tags.rb`** gleicht die Tags der Termine an. Vor dem echten Lauf in [legacy_tags.tsv](legacy_tags.tsv) die Daten für Klimawoche und Repair Day 2024 eintragen, siehe [ADR 62](../docs/adr/0062-datums-tags-und-monatsuebersichten-automatisch-pflegen.adoc).
+8. **`migrate_contacts.rb`** bringt Nummern ins Format und ordnet Anrufe zu. Die Liste unklarer Nummern sieht ein Mensch durch, siehe [ADR 63](../docs/adr/0063-kontaktdaten-und-eingangswege-uebernehmen.adoc).
+9. **`setup.rb` noch einmal**, damit die Trigger der Pressemitteilung zu den übernommenen Empfängern passen.
+10. **Prüfen** mit einem Ticket von einer Adresse unter example.org in Requests. Es bekommt eine Art, bei Abweichung den Tag `category-differs`, mit Termin in fünf Tagen `next-event` und danach den Lösungsansatz als interne Notiz. Der Anbieter steht unter KI auf grün, kein Gast bekommt eine Mail von MANUEL, Repair Agent sieht Requests nicht. Danach das Ticket löschen.
+
+Die Mails an Gäste schaltet das Team erst ein, wenn es die Texte freigegeben hat, siehe [ADR 60](../docs/adr/0060-ablaeufe-des-bestehenden-zammad-als-code-uebernehmen.adoc).

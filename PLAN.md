@@ -390,7 +390,7 @@ git push
 - [ ] Trigger anlegen, die die Einordnung bei neuen Tickets auslösen und den Reparaturansatz, sobald ein Ticket `next-event` bekommt, ohne `spam`, `no-info`, `delete`, `obsolete` und `EUReCA`, siehe [ADR 61](docs/adr/0061-loesungsansatz-eine-woche-vor-dem-termin-schreiben.adoc)
 - [ ] Prüfen, dass kein Agent und kein Trigger von MANUEL E-Mails oder SMS an Gäste verschickt. Die Regeln aus [workflows.rb](zammad/workflows.rb) für Eingangsbestätigung, Nachfrage, Absage und Erinnerung schreiben Gästen, sie sind feste Texte ohne Modell und beim Anlegen aus, siehe [ADR 60](docs/adr/0060-ablaeufe-des-bestehenden-zammad-als-code-uebernehmen.adoc)
 - [ ] Gegen die Testinstanz auf der Test-VM testen
-- [ ] Ollama in Zammad auf der Helpdesk-VM als Anbieter eintragen und Agenten und Trigger ins Echtsystem übernehmen
+- [ ] Ollama in Zammad auf der Helpdesk-VM als Anbieter eintragen und Agenten und Trigger ins Echtsystem übernehmen, in der Reihenfolge unter [Übernahme ins bestehende Zammad](zammad/README.md#übernahme-ins-bestehende-zammad). Anbieter und Categorizer legt [ai.rb](zammad/ai.rb) an
 - [ ] Prüfen, dass Vorschläge von MANUEL im Ticket gut erkennbar sind und Engagierte sie mit wenigen Klicks übernehmen oder korrigieren können, auch auf Tablet und Smartphone
 - [ ] Beim Repair Café im Dezember im Echtbetrieb einsetzen und Rückmeldungen zu den Notizen sammeln
 - [ ] Falls sich die Eskalation lohnt, Auslöser in Zammad anlegen und Anfragen in n8n in eine Warteschlange stellen, weil immer nur eine Anfrage gleichzeitig läuft

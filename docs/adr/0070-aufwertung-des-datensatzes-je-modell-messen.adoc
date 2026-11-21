@@ -34,6 +34,18 @@ Gemessen werden Füllgrad und Treffer, offline aus dem Export, je Aufgabe mit ei
 
 Ein erster Lauf mit einem Prompt für alle Felder und allen Nachrichten wurde am 16.11.2026 abgebrochen. Er sah die Notizen des Teams nach dem Termin und hätte Defekt und Lösung nur abgeschrieben.
 
+=== Modelle außerhalb von Ollama
+
+Modelle, die Ollama noch nicht kann, laufen über einen llama-server wie in {repo}/eval/bench.sh[bench.sh]. Mit `LLAMA_URL` schickt enrich.py dieselben Prompts an dessen OpenAI-Schnittstelle, `lauf.json` hält Modelldatei und Build fest. Der Server lauscht nach xref:0047-dienste-zum-testen-im-tailnet-oeffnen.adoc[ADR 47] nur auf der Tailscale-Adresse und an Port 8081, weil 8080 Zammad gehört. Die Prüfung mit d3 läuft so nicht, ihr Decision-Modell kommt immer aus Ollama.
+
+Am 20.11.2026 liefen so Qwen3.8-Flash-Next in UD-IQ2_XS mit 70,4 GB und LFM2.5-24B-A2B in QAD-Q4_0 mit 13,6 GB. MANUEL hat 64 GB Speicher für CPU und GPU zusammen. Flash-Next passt nur mit diesen Optionen hinein:
+
+* `--n-cpu-moe 16` legt die Experten von 32 der 48 Schichten auf die GPU, verteilt auf VRAM und GTT. Mit 12 Schichten war der Prompt viermal langsamer.
+* `--no-host --load-mode mmap --no-repack` lässt die übrigen Experten und die N-Gramm-Tabelle als Datei im Seitencache. Ohne `--no-host` wollte llama.cpp 40 GB festgepinnten Speicher und die GPU stieg aus. Ohne mmap kopierte es alles in den RAM und wurde vom Kernel beendet.
+* `--cache-ram 0` schaltet den Prompt-Cache im RAM ab, der sonst bis zu 8 GB wächst.
+
+Damit bleiben nur etwa 6 GB RAM frei. Lädt Ollama in der Zeit ein Modell, scheitert eine der beiden Seiten. Flash-Next läuft deshalb nur, wenn sonst niemand MANUEL nutzt, und kommt für den Betrieb neben Zammad nicht in Frage. LFM2.5 liegt ganz in der GPU, denkt aber vor jeder Antwort, auch mit `enable_thinking` aus.
+
 === Konsequenzen
 
 * Gut, weil jedes Modell an denselben Tickets mit denselben Prompts läuft und ein Lauf mit gleichem Seed dieselbe Stichprobe zieht.

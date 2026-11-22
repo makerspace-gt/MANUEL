@@ -108,3 +108,16 @@ Reihenfolge für das Zammad auf der neuen Helpdesk-VM. Vorher ein Backup. Jedes 
 10. **Prüfen** mit einem Ticket von einer Adresse unter example.org in Requests. Es bekommt eine Art, bei Abweichung den Tag `category-differs`, mit Termin in fünf Tagen `next-event` und danach den Lösungsansatz als interne Notiz. Der Anbieter steht unter KI auf grün, kein Gast bekommt eine Mail von MANUEL, Repair Agent sieht Requests nicht. Danach das Ticket löschen.
 
 Die Mails an Gäste schaltet das Team erst ein, wenn es die Texte freigegeben hat, siehe [ADR 60](../docs/adr/0060-ablaeufe-des-bestehenden-zammad-als-code-uebernehmen.adoc).
+
+### Plan B, das alte Zammad
+
+Steht die neue Helpdesk-VM am 01.12.2026 nicht, startet MANUEL am 05.12. am alten Zammad. Es läuft über die Rolle `zammad` im Repo [docker-compose-server](https://github.com/makerspace-gt/docker-compose-server) mit `VERSION=7.2`, also dem neuesten 7.2.x wie die Testinstanz. Die Routen für KI-Agenten und Anbieter gibt es dort, am 22.11.2026 ohne Anmeldung mit 403 statt 404 geprüft. Die genaue Version steht unter Admin, System, Info.
+
+Was das Team in der Rolle ändert, die Schritte oben gelten danach genauso:
+
+1. Dieses Repo auf dem Server ablegen, etwa unter `/opt/containers/manuel`, auf einem festen Commit.
+2. In `compose.override.yaml.j2` für `zammad-railsserver` und `zammad-scheduler` die Initializer und `/opt/manuel` einbinden wie in [compose.yml](compose.yml). `keep_pending_time.rb` ersetzt dabei die Kopie `files/app/models/ticket.rb` der Rolle, beide gleichzeitig nicht.
+3. Den Dienst `manuel-setup` aus [compose.yml](compose.yml) übernehmen, mit den Umgebungsvariablen aus der Tabelle oben. `MANUEL_OLLAMA_URL` und `MANUEL_CATEGORY_CHECK_URL` zeigen auf MANUEL. Bis NetBird läuft, braucht der Server dafür Zugang zum Tailnet, siehe [ADR 47](../docs/adr/0047-dienste-zum-testen-im-tailnet-oeffnen.adoc).
+4. Vor dem ersten Lauf ein frisches Backup über resticker, danach weiter mit Schritt 3 oben.
+
+Beim Umzug auf die Helpdesk-VM kommt alles mit dem Backup mit, `setup.rb` läuft dort nur noch einmal ohne Änderung.

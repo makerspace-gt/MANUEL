@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-22T09:01:57+0100",
+  "date": "2026-11-22T09:03:12+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/indicators/baseline.R --args eval/results/indicators/baseline-2026-11-22",
-  "commit": "ea95694df8ffb474767bc96acbdbebb6c67c5533",
+  "commit": "7b500dbbae305e4bb26fba01fd31178d800bcc6d",
   "dirty": true,
   "inputs": [
     {
@@ -14,11 +14,11 @@
     },
     {
       "path": "eval/results/indicators/baseline-2026-11-22/statistics_events.tsv",
-      "sha256": "020bed7cc6afd654f8fa4383ec99cf99b22670a9fcad8372028ff4d2d7932d30"
+      "sha256": "ca17e8c0f79791e94ecc3a6a736ced6284c11f5e184e38f75b337549d398ee74"
     },
     {
       "path": "eval/indicators/baseline.R",
-      "sha256": "b1ec3cfea915b220ddb96cd77cfcced93ec49c245f9306dfcd93af8f05a9534c"
+      "sha256": "5ceb33dd079ed016c194af7e770c8164c1e6adfca6972416139aaaef689e61ae"
     }
   ],
   "outputs": [
@@ -28,27 +28,27 @@
     },
     {
       "path": "docs/grafiken/indikatoren-reparaturquote.svg",
-      "sha256": "bd341bc33ba57762d2d2d6864422f387c7bc6e47fd61fc02ab397d0241e9fb50"
+      "sha256": "04aa6a985a3ac0003ea4a15faa6ebb997dc7a304888ccf23552c3dd01967cf95"
     },
     {
       "path": "docs/grafiken/indikatoren-reparaturquote-hell.svg",
-      "sha256": "5cceea3c75f6f8667b9fee87e323c0a1b73bf70bd48fe494c70cf45a22669c3a"
+      "sha256": "06f7f59dbe7437bc8775d01286baf05e82a9e4723d13a40f5c4cc7cb1efc2770"
     },
     {
       "path": "docs/grafiken/indikatoren-geraete.svg",
-      "sha256": "75933e70c088b46dc67b3902b47087115828c235cfc1e6b3670b6e0d7837a96c"
+      "sha256": "17a2e6340be6a126080289f89deeefcc72371feb791c0ad3badab3906099163c"
     },
     {
       "path": "docs/grafiken/indikatoren-geraete-hell.svg",
-      "sha256": "cba94c1947dda69f0323bf89f48347697881c9b00639be2a9328a6c084a285f1"
+      "sha256": "e759d7d05897f13ba76772bbc2a9b243797ec5c0af45e9cb8cea90dc8c31fa80"
     },
     {
       "path": "docs/grafiken/indikatoren-reparierende.svg",
-      "sha256": "bafbd9529df38100f59ce07f92266da7e3474dcd6dabccf80d6bac2f348235c7"
+      "sha256": "55d5ecaabdd95db3d3b4b9dd704cd23b4250f177785cc7da1a33202028ddcfdb"
     },
     {
       "path": "docs/grafiken/indikatoren-reparierende-hell.svg",
-      "sha256": "604e2fab37ceaca847ff901c742c7c380f962e0c88492e1b57dd05f36dfb8a53"
+      "sha256": "4766804860f6b349951a320040e8111ccdfe1d0dd4bd260d461e633c3bc6fcb5"
     }
   ],
   "r": {

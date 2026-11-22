@@ -26,7 +26,7 @@ sys.path.insert(0, str(ROOT / "eval"))
 import sharecard  # noqa: E402
 from lauf import write_run  # noqa: E402
 
-EVENT_COLUMNS = ["date", "fixed", "partly", "postponed", "not_repaired", "unknown"]
+EVENT_COLUMNS = ["date", "fixed", "partly", "postponed", "failed", "aborted", "unknown"]
 COLUMNS = ["month", "events", "processed", "fixed", "partly", "postponed", "not_repaired", "unknown", "no_show"]
 
 
@@ -50,7 +50,7 @@ def main():
         row["no_show"] += sharecard.number(event, "no_show")
         events.append({"date": event["date"].isoformat(), "fixed": sharecard.number(event, "fixed"),
                        "partly": sharecard.number(event, "partly"), "postponed": sharecard.number(event, "postponed"),
-                       "not_repaired": sharecard.number(event, "failed") + sharecard.number(event, "aborted"),
+                       "failed": sharecard.number(event, "failed"), "aborted": sharecard.number(event, "aborted"),
                        "unknown": sharecard.number(event, "unknown")})
     target.parent.mkdir(parents=True, exist_ok=True)
     with target.open("w", encoding="utf-8", newline="") as handle:

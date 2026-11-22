@@ -77,7 +77,7 @@ rolling <- stats |>
 p1 <- ggplot(rolling, aes(date)) +
   geom_point(aes(y = month_rate, colour = "je Monat"), size = 1.6) +
   geom_line(aes(y = year_rate, colour = "über 12 Monate", group = segment), linewidth = 0.9) +
-  scale_colour_manual(values = c("je Monat" = light[["s0"]], "über 12 Monate" = light[["s1"]])) +
+  scale_colour_manual(values = c("je Monat" = "#732982", "über 12 Monate" = "#004CFF")) +
   scale_y_continuous(labels = \(x) paste0(round(100 * x), " %"), limits = c(0, 1), expand = c(0, 0)) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   labs(title = "Reparaturquote vor MANUEL",
@@ -86,14 +86,16 @@ p1 <- ggplot(rolling, aes(date)) +
   theme_manuel()
 
 # Devices per appointment stacked by result, behind them the running total since 2019 stacked the same way
-# on a second axis. Colours as on the sharecard (sharecard/sharecard.py).
-results <- c(fixed = "gelungen", partly = "teilweise gelungen", postponed = "vertagt",
-             not_repaired = "nicht erfolgt", unknown = "keine Information")
-result_colours <- c("gelungen" = "#008300", "teilweise gelungen" = "#eda100", "vertagt" = "#2a78d6",
-                    "nicht erfolgt" = "#e34948", "keine Information" = "#9a9992")
+# on a second axis. The six results take the colours of the pride flag in its order from top to bottom,
+# red for not repaired and green for fixed.
+pride <- c(red = "#E40303", orange = "#FF8C00", yellow = "#FFED00", green = "#008026", blue = "#004CFF",
+           violet = "#732982")
+results <- c(failed = "nicht erfolgt", aborted = "abgebrochen", partly = "teilweise gelungen", fixed = "gelungen",
+             postponed = "vertagt", unknown = "keine Information")
+result_colours <- setNames(unname(pride), results)
 events <- read_tsv(events_file, col_types = cols(date = "D", .default = "i")) |>
   pivot_longer(-date, names_to = "result", values_to = "n") |>
-  mutate(result = factor(results[result], levels = rev(results)))
+  mutate(result = factor(unname(results[result]), levels = unname(results)))
 running <- events |>
   arrange(date) |>
   group_by(result) |>
@@ -108,6 +110,7 @@ p2 <- ggplot() +
             outline.type = "upper", colour = NA) +
   geom_col(data = events, aes(date, n, fill = result), width = 6, position = "stack") +
   scale_fill_manual(values = result_colours, breaks = unname(results)) +
+  guides(fill = guide_legend(nrow = 1)) +
   scale_y_continuous(name = "Geräte je Termin", expand = expansion(mult = c(0, 0.04)),
                      sec.axis = sec_axis(~ . / k, name = "Geräte seit 2019, Fläche im Hintergrund",
                                          labels = \(x) format(x, big.mark = ".", decimal.mark = ","))) +
@@ -125,7 +128,7 @@ people <- owners |>
   mutate(who = factor(who, levels = c("zum ersten Mal", "bekannt")))
 p3 <- ggplot(people, aes(date, n, fill = who)) +
   geom_col(width = 24, colour = light[["bg"]], linewidth = 0.4) +
-  scale_fill_manual(values = c("bekannt" = light[["s0"]], "zum ersten Mal" = light[["s1"]])) +
+  scale_fill_manual(values = c("bekannt" = "#004CFF", "zum ersten Mal" = "#FF8C00")) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
   scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
   labs(title = "Reparierende je Monat",

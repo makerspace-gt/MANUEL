@@ -66,7 +66,7 @@ Reparierende gibt es erst seit 2025, als Owner der Tickets. Der Owner ist die Pe
 
 image::../../docs/grafiken/indikatoren-reparaturquote-hell.svg[Reparaturquote je Monat und über 12 Monate seit 2019,width=100%]
 
-image::../../docs/grafiken/indikatoren-geraete-hell.svg[Bearbeitete Geräte je Monat seit 2019,width=100%]
+image::../../docs/grafiken/indikatoren-geraete-hell.svg[Bearbeitete Geräte je Termin nach Ergebnis und Summe seit 2019,width=100%]
 
 === Reparaturen durch Gäste und neue Engagierte
 

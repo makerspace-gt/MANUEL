@@ -24,8 +24,14 @@ of zammad/objects.rb both work. The output holds sums only and may go into the r
 
 Indicator 4, devices reported to Restarters, comes from the reporting workflow and is not counted here.
 
+With --monthly a second table counts per month the devices with a result, the distinct owners who closed
+a repair and among them the new ones, whose first closed repair in the export falls into that month.
+Months before --warm-up only seed the known owners, because the export starts in 2024. The owner is the
+person who closed the repair, not necessarily everyone who helped.
+
 Run in the repository root:
     python3 -I eval/indicators/indicators.py EXPORT_DIR [--since 2026-12-05] [--out FILE.tsv]
+        [--monthly FILE.tsv] [--warm-up 2025-01]
 """
 
 import argparse
@@ -68,6 +74,8 @@ def main():
     parser.add_argument("--guest-login", default="guest", help="login of the agent Gast")
     parser.add_argument("--new-since", type=date.fromisoformat, default=date(2026, 9, 15))
     parser.add_argument("--out", type=Path)
+    parser.add_argument("--monthly", type=Path)
+    parser.add_argument("--warm-up", default="2025-01", help="first month to report in --monthly")
     args = parser.parse_args()
 
     tickets_file, tickets = source.load(args.export)
@@ -97,6 +105,9 @@ def main():
         row["differs"] += "category-differs" in tags
         row["typed"] += bool(ticket.get("device_type"))
 
+    if args.monthly:
+        write_monthly(tickets, args)
+
     out = []
     for day in sorted(rows):
         row = rows[day]
@@ -115,6 +126,37 @@ def main():
         write_run(args.out, inputs=[tickets_file, HERE / "indicators.py", HERE.parent / "enrich" / "tickets.py"],
                   outputs=[args.out], extra={"since": args.since and args.since.isoformat(),
                                              "guest_login": args.guest_login, "new_since": args.new_since.isoformat()})
+
+
+MONTHLY = ["month", "with_result", "by_guest", "repairers", "new_repairers"]
+
+
+def write_monthly(tickets, args):
+    """Owners per month and the first month each one closed a repair, sums only."""
+    months = defaultdict(lambda: {"with_result": 0, "by_guest": 0, "owners": set()})
+    first = {}
+    for ticket in sorted(tickets, key=lambda t: (source.appointment(t) or date.max)):
+        day = source.appointment(ticket)
+        if day is None or outcome(ticket) in ("open", "no_show", "other"):
+            continue
+        month = day.strftime("%Y-%m")
+        row = months[month]
+        row["with_result"] += 1
+        owner = ticket.get("owner") or "-"
+        if owner == args.guest_login:
+            row["by_guest"] += 1
+        elif owner != "-":
+            row["owners"].add(owner)
+            first.setdefault(owner, month)
+    rows = [{"month": m, "with_result": r["with_result"], "by_guest": r["by_guest"], "repairers": len(r["owners"]),
+             "new_repairers": sum(1 for o in r["owners"] if first[o] == m)}
+            for m, r in sorted(months.items()) if m >= args.warm_up]
+    with args.monthly.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, MONTHLY, delimiter="\t", lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+    write_run(args.monthly, inputs=[args.export.expanduser() / "tickets.json", HERE / "indicators.py"],
+              outputs=[args.monthly], extra={"warm_up": args.warm_up, "guest_login": args.guest_login})
 
 
 if __name__ == "__main__":

@@ -1,0 +1,4 @@
+window,from,months,events,devices,devices_per_event,repair_rate,partly_share,no_show_share,owner_months,repairers_per_month,new_repairers_per_month,by_guest,reported_share,wrong_device_type_pretest,feedback_tags
+all,2019-03,68,85,1485,17.5,0.538,0.097,0.065,23,9.5,0.9,0,0.02,0.175,0
+36 months,2023-12,36,49,961,19.6,0.546,0.09,0.069,23,9.5,0.9,0,0.02,0.175,0
+12 months,2025-12,12,20,379,19,0.565,0.071,0.073,12,9.8,1.2,0,0.02,0.175,0

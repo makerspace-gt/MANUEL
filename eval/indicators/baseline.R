@@ -103,13 +103,13 @@ p1 <- ggplot(rolling, aes(date)) +
   theme_manuel()
 
 # Devices per appointment, their running total since 2019 and the share per year, each stacked by result in
-# a chart of its own. The six results take the colours of the pride flag in its order from top to bottom,
-# red for not repaired and green for fixed.
+# a chart of its own. The six results take the colours of the pride flag by meaning, green for fixed and red
+# for not repaired. Fixed comes first in the legend and lies on the baseline of every stack.
 pride <- c(red = "#E40303", orange = "#FF8C00", yellow = "#FFED00", green = "#008026", blue = "#004CFF",
            violet = "#732982")
-results <- c(failed = "nicht erfolgt", aborted = "abgebrochen", partly = "teilweise gelungen", fixed = "gelungen",
-             postponed = "vertagt", unknown = "keine Information")
-result_colours <- setNames(unname(pride), results)
+results <- c(fixed = "gelungen", partly = "teilweise gelungen", postponed = "vertagt", failed = "nicht erfolgt",
+             aborted = "abgebrochen", unknown = "keine Information")
+result_colours <- setNames(unname(pride[c("green", "yellow", "blue", "red", "orange", "violet")]), results)
 events <- read_tsv(events_file, col_types = cols(date = "D", .default = "i")) |>
   pivot_longer(-date, names_to = "result", values_to = "n") |>
   mutate(result = factor(unname(results[result]), levels = unname(results)))
@@ -127,7 +127,7 @@ gaps <- events |> distinct(date) |> arrange(date) |>
                                     as.numeric(lead(date, default = date[n()] + 40) - date))))
 bars <- events |>
   left_join(gaps, by = "date") |>
-  arrange(date, desc(as.integer(result))) |>
+  arrange(date, as.integer(result)) |>
   group_by(date) |>
   mutate(ymax = cumsum(n), ymin = ymax - n) |>
   ungroup()
@@ -149,7 +149,7 @@ p2 <- ggplot() +
 
 p2b <- ggplot(running, aes(date, total, fill = result)) +
   marks(total_max * 1.08) +
-  geom_area(position = "stack", outline.type = "upper", colour = NA) +
+  geom_area(position = position_stack(reverse = TRUE), outline.type = "upper", colour = NA) +
   result_scale +
   scale_y_continuous(labels = thousands, expand = expansion(mult = c(0, 0.02))) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
@@ -167,7 +167,7 @@ yearly <- events |>
   ungroup()
 year_labels <- yearly |> distinct(year, devices) |> mutate(label = paste0(year, "\n", thousands(devices), " Geräte"))
 p2c <- ggplot(yearly, aes(year, share, fill = result)) +
-  geom_col(width = 0.7, colour = light[["bg"]], linewidth = 0.3) +
+  geom_col(width = 0.7, colour = light[["bg"]], linewidth = 0.3, position = position_stack(reverse = TRUE)) +
   result_scale +
   scale_x_discrete(labels = setNames(year_labels$label, year_labels$year)) +
   scale_y_continuous(labels = \(x) paste0(round(100 * x), " %"), expand = c(0, 0)) +

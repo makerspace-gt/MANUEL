@@ -5,7 +5,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 [horizontal]
 Status:: angenommen
 Datum:: 2026-11-08
-Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, 2026-11-13, Rückmeldungen über Makros, Reparierende aus Zammad, 2026-11-14, Reparierende über den Owner und den Agenten Gast statt eines Felds, und 2026-11-15, Punkt der Checkliste als Erinnerung an die Makros
+Überarbeitet:: 2026-11-08, Klarstellung bei der Durchsicht, 2026-11-13, Rückmeldungen über Makros, Reparierende aus Zammad, 2026-11-14, Reparierende über den Owner und den Agenten Gast statt eines Felds, 2026-11-15, Punkt der Checkliste als Erinnerung an die Makros, und 2026-11-22, Stand vor MANUEL
 Beteiligte:: Michael Prange
 
 == Kontext und Problem
@@ -35,6 +35,8 @@ Die Erprobung läuft von Dezember 2026 bis Februar 2027. Der Projektzeitraum im 
 . *Gemeldete Reparaturen* als Anteil der an Restarters übertragenen Geräte an den bearbeiteten. Ausgangswert sind 30 von 1.485 Geräten, rund 2 Prozent. Die Nachmeldung nach xref:0036-reparaturen-ab-2024-an-restarters-nachmelden.adoc[ADR 36] wird getrennt ausgewiesen.
 
 Die Exporte liegen nur lokal, in die Fallstudie kommen nur Summen. Eine Entlastung des Teams, etwa über die Zeit bis zur ersten Antwort, wird nicht gemessen.
+
+Nachtrag vom 22.11.2026, Stand vor MANUEL. Statt eines einzelnen Werts gilt der Stand für drei Zeiträume bis zum 07.11.2026, seit 2019, 36 Monate und 12 Monate, dazu Verläufe je Monat. Teilweise gelungen zählt wie in den Open Repair Data als gelungen. Die Quote nimmt alle Geräte mit Ergebnis, also ohne nicht erschienene Gäste und ohne „keine Information“. Der Owner ist die Person, die die Reparatur abgeschlossen hat. Neu ist, wer in einem Monat zum ersten Mal eine Reparatur abschließt, ein Stichtag entfällt. {repo}/eval/indicators/statistics.py[statistics.py] liest die Statistik des Teams, {repo}/eval/indicators/indicators.py[indicators.py] den Export aus Zammad und {repo}/eval/indicators/baseline.R[baseline.R] rechnet die Werte und zeichnet die Verläufe. Die Werte stehen in {repo}/eval/results/indicators/baseline-2026-11-22/baseline.csv[baseline.csv], die Reparaturquote liegt bei 53,8 Prozent seit 2019 und 56,5 Prozent in den letzten 12 Monaten.
 
 === Konsequenzen
 

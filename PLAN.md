@@ -436,7 +436,7 @@ git push
 ### Phase 6 Abschluss und Veröffentlichung
 
 - [ ] Nach etwa einem Jahr Echtbetrieb auswerten, welche C-Einträge Engagierte von Hand gewählt haben, und häufige in die Liste für MANUEL aufnehmen, siehe [ADR 55](docs/adr/0055-katalog-in-bloecken-durchsehen.adoc)
-- [ ] Kennzahlen aus dem Antrag erheben, also Reparaturquote, Reparaturen durch Gäste und neue Engagierte, Rückmeldungen zu Vorschlägen und gemeldete Reparaturen. Nach jedem Termin mit [eval/indicators/indicators.py](eval/indicators/indicators.py) aus einem Export zählen, Vergleich vor MANUEL in [eval/results/indicators/](eval/results/indicators/baseline-2026-11-16/indicators.tsv)
+- [ ] Kennzahlen aus dem Antrag erheben, also Reparaturquote, Reparaturen durch Gäste und neue Engagierte, Rückmeldungen zu Vorschlägen und gemeldete Reparaturen. Nach jedem Termin mit [eval/indicators/indicators.py](eval/indicators/indicators.py) aus einem Export zählen, Stand vor MANUEL in [baseline.csv](eval/results/indicators/baseline-2026-11-22/baseline.csv) nach [ADR 32](docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc)
 - [ ] Weitere Zahlen über die Zeit erheben, also Geräte je reparierender Person und Termin sowie Geräte je Gast, und vertagte Geräte über die Tags der Termine verfolgen, also wie viele wiederkommen, nach wie vielen Terminen und mit welchem Ergebnis
 - [ ] Alle paar Monate die Läufe mit neuen Modellen wiederholen und mit den Messungen von [Artificial Analysis](https://artificialanalysis.ai/) einordnen, damit MANUEL laufend besser wird
 - [ ] Dokumentation in docs/ vervollständigen, sodass andere Reparaturinitiativen MANUEL nachbauen können

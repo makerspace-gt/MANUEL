@@ -45,11 +45,36 @@ Dieses Kapitel entsteht während der Erprobung von Dezember 2026 bis Februar 202
 
 * Weitere Vergleiche sind `repair_status` der Open Repair Data und das Ergebnis der Laufzettel von 2019 bis 2021.
 
+==== Stand vor MANUEL
+
+Festgelegt am 22.11.2026 für drei Zeiträume bis zum 07.11.2026, den letzten Termin vor dem Start. Die Quote zählt gelungen und teilweise gelungen unter allen Geräten mit Ergebnis, also ohne nicht erschienene Gäste und ohne „keine Information“. Teilweise gelungen zählt wie in den Open Repair Data als gelungen.
+
+[cols="2,1,1,1",options="header"]
+|===
+| |seit 2019 |36 Monate |12 Monate
+|Termine |85 |49 |20
+|bearbeitete Geräte |1.485 |961 |379
+|Geräte je Termin |17,5 |19,6 |19,0
+|Reparaturquote |53,8 % |54,6 % |56,5 %
+|davon teilweise gelungen |9,7 % |9,0 % |7,1 %
+|nicht erschienen |6,5 % |6,9 % |7,3 %
+|Reparierende je Monat |9,5 |9,5 |9,8
+|davon zum ersten Mal |0,9 |0,9 |1,2
+|===
+
+Reparierende gibt es erst seit 2025, als Owner der Tickets. Der Owner ist die Person, die die Reparatur abgeschlossen hat, nicht jede, die mitgeholfen hat. Für 36 Monate und seit 2019 stehen dort deshalb nur die 23 Monate ab Januar 2025. Reparaturen durch Gäste und Rückmeldungen zu Vorschlägen gibt es vor MANUEL nicht, ihr Stand ist 0. Gemeldet sind 2 Prozent, falsche Arten im Vorabtest 17,5 Prozent <<adr-0040>>. Die Zahlen stehen in {repo}/eval/results/indicators/baseline-2026-11-22/baseline.csv[baseline.csv].
+
+image::../../docs/grafiken/indikatoren-reparaturquote-hell.svg[Reparaturquote je Monat und über 12 Monate seit 2019,width=100%]
+
+image::../../docs/grafiken/indikatoren-geraete-hell.svg[Bearbeitete Geräte je Monat seit 2019,width=100%]
+
 === Reparaturen durch Gäste und neue Engagierte
 
 * Wer repariert hat, ist in Zammad Owner der Reparatur und hat die Rolle Repair Agent.
 * Hat der Gast selbst repariert, ist der Agent Gast Owner. Er zählt nicht als reparierende Person. Eine Reparatur mit Hilfe ist nicht eigens erkennbar.
-* Als neu gilt, wer seit dem 15.09.2026 dabei ist. Die Abgrenzung stimmt das Team ab.
+* Neu ist, wer in einem Monat zum ersten Mal eine Reparatur abschließt. Statt eines Stichtags zeigt das Diagramm die Entwicklung je Monat.
+
+image::../../docs/grafiken/indikatoren-reparierende-hell.svg[Reparierende je Monat seit 2025 und wer davon zum ersten Mal,width=100%]
 
 === Rückmeldungen zu den Vorschlägen
 

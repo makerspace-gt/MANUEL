@@ -74,7 +74,23 @@ rolling <- stats |>
     segment = cumsum(c(TRUE, diff(date) > 100))
   )
 
+# Milestones of the Repair Café, marked in the charts since 2019
+milestones <- tibble(date = as.Date(c("2019-03-01", "2022-11-01", "2024-09-01")),
+                     label = c("Start", "Zammad", "zwei Termine im Monat"))
+corona <- c(as.Date("2020-04-01"), as.Date("2022-11-01"))
+marks <- function(top) {
+  list(
+    annotate("rect", xmin = corona[1], xmax = corona[2], ymin = -Inf, ymax = Inf, fill = light[["grid"]], alpha = 0.6),
+    annotate("text", x = corona[1] + (corona[2] - corona[1]) / 2, y = top, label = "Coronapause",
+             colour = light[["secondary"]], size = 3.3, vjust = 1),
+    geom_vline(data = milestones, aes(xintercept = date), colour = light[["axis"]], linetype = "dashed", linewidth = 0.4),
+    geom_label(data = milestones, aes(x = date, y = top, label = label), colour = light[["secondary"]],
+               fill = light[["bg"]], size = 3.3, hjust = 0, vjust = 1, linewidth = 0, label.padding = unit(2, "pt"))
+  )
+}
+
 p1 <- ggplot(rolling, aes(date)) +
+  marks(0.99) +
   geom_point(aes(y = month_rate, colour = "je Monat"), size = 1.6) +
   geom_line(aes(y = year_rate, colour = "über 12 Monate", group = segment), linewidth = 0.9) +
   scale_colour_manual(values = c("je Monat" = "#732982", "über 12 Monate" = "#004CFF")) +
@@ -105,13 +121,25 @@ per_event_max <- events |> group_by(date) |> summarise(n = sum(n)) |> pull(n) |>
 total_max <- running |> group_by(date) |> summarise(total = sum(total)) |> pull(total) |> max()
 k <- per_event_max / total_max
 
+# Bars as rectangles, each as wide as the gap to its neighbours allows, at most 16 days
+gaps <- events |> distinct(date) |> arrange(date) |>
+  mutate(half = pmin(8, 0.42 * pmin(as.numeric(date - lag(date, default = date[1] - 40)),
+                                    as.numeric(lead(date, default = date[n()] + 40) - date))))
+bars <- events |>
+  left_join(gaps, by = "date") |>
+  arrange(date, desc(as.integer(result))) |>
+  group_by(date) |>
+  mutate(ymax = cumsum(n), ymin = ymax - n) |>
+  ungroup()
+
 p2 <- ggplot() +
+  marks(per_event_max * 1.12) +
   geom_area(data = running, aes(date, total * k, fill = result), alpha = 0.22, position = "stack",
             outline.type = "upper", colour = NA) +
-  geom_col(data = events, aes(date, n, fill = result), width = 6, position = "stack") +
+  geom_rect(data = bars, aes(xmin = date - half, xmax = date + half, ymin = ymin, ymax = ymax, fill = result)) +
   scale_fill_manual(values = result_colours, breaks = unname(results)) +
   guides(fill = guide_legend(nrow = 1)) +
-  scale_y_continuous(name = "Geräte je Termin", expand = expansion(mult = c(0, 0.04)),
+  scale_y_continuous(name = "Geräte je Termin", expand = expansion(mult = c(0, 0.02)),
                      sec.axis = sec_axis(~ . / k, name = "Geräte seit 2019, Fläche im Hintergrund",
                                          labels = \(x) format(x, big.mark = ".", decimal.mark = ","))) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +

@@ -8,6 +8,8 @@ COPY testumgebung /testumgebung
 # Setup of fields, group, roles and macros for Zammad, see zammad/README.md
 COPY zammad /zammad
 COPY katalog/kategorien.tsv /katalog/kategorien.tsv
+# A and B entries for the Ticket Categorizer, see zammad/ai.rb
+COPY eval/categorizer/abc.tsv /eval/categorizer/abc.tsv
 # Check of the device type with d3:9b, see docs/adr/0068
 COPY category_check /category_check
 COPY katalog/entries.py /katalog/entries.py

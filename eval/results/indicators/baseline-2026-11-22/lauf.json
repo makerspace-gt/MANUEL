@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-22T08:51:01+0100",
+  "date": "2026-11-22T09:01:57+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/indicators/baseline.R --args eval/results/indicators/baseline-2026-11-22",
-  "commit": "5bdc9bcebaf56ba1ea84c704fc2ba888d8d4074c",
+  "commit": "ea95694df8ffb474767bc96acbdbebb6c67c5533",
   "dirty": true,
   "inputs": [
     {
@@ -13,8 +13,12 @@
       "sha256": "55c2c9610b97aebaa992e23a5fdd3d7ad7cf386665513dc4f94d77a6e51e5d03"
     },
     {
+      "path": "eval/results/indicators/baseline-2026-11-22/statistics_events.tsv",
+      "sha256": "020bed7cc6afd654f8fa4383ec99cf99b22670a9fcad8372028ff4d2d7932d30"
+    },
+    {
       "path": "eval/indicators/baseline.R",
-      "sha256": "da28af6a449c050e6dd15f6ebc399471f0871046c0f260da981ee20749f68890"
+      "sha256": "b1ec3cfea915b220ddb96cd77cfcced93ec49c245f9306dfcd93af8f05a9534c"
     }
   ],
   "outputs": [
@@ -32,11 +36,11 @@
     },
     {
       "path": "docs/grafiken/indikatoren-geraete.svg",
-      "sha256": "ce6bc3a0ab9b2b9cf4fd12c85cf8e0068394882363205a21cc651cab47e425f8"
+      "sha256": "75933e70c088b46dc67b3902b47087115828c235cfc1e6b3670b6e0d7837a96c"
     },
     {
       "path": "docs/grafiken/indikatoren-geraete-hell.svg",
-      "sha256": "92ec37acf449885a26d0ae9096f3a273ed8cf21deb315ca9b89ee23c6a107090"
+      "sha256": "cba94c1947dda69f0323bf89f48347697881c9b00639be2a9328a6c084a285f1"
     },
     {
       "path": "docs/grafiken/indikatoren-reparierende.svg",

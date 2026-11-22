@@ -3,7 +3,7 @@
 # Reads the monthly sums of eval/indicators/statistics.py (statistics of the team since 2019) and
 # eval/indicators/indicators.py --monthly (owners from the Zammad export since 2025) and writes
 #   baseline.csv                       each indicator for three windows: all months, 36 and 12 months
-#   docs/grafiken/indikatoren-*.svg    repair rate, devices and repairers per month
+#   docs/grafiken/indikatoren-*.svg    repair rate per month, devices per appointment, repairers per month
 # The repair rate is fixed, including partly fixed, among fixed, postponed and not repaired.
 #
 # Run in the repository root, see docs/adr/0049-daten-mit-r-auswerten.adoc:
@@ -20,6 +20,7 @@ source("eval/r/theme.R")
 dir <- commandArgs(trailingOnly = TRUE)[1]
 stats_file <- file.path(dir, "statistics_monthly.tsv")
 owners_file <- file.path(dir, "repairers_monthly.tsv")
+events_file <- file.path(dir, "statistics_events.tsv")
 stats <- read_tsv(stats_file, col_types = cols(month = "c", .default = "i")) |>
   mutate(date = as.Date(paste0(month, "-01")))
 owners <- read_tsv(owners_file, col_types = cols(month = "c", .default = "i")) |>
@@ -84,13 +85,39 @@ p1 <- ggplot(rolling, aes(date)) +
        x = NULL, y = NULL, caption = "Quelle Statistik des Repair Café Gütersloh, ohne nicht erschienene Gäste") +
   theme_manuel()
 
-p2 <- ggplot(stats, aes(date, processed)) +
-  geom_col(fill = light[["s1"]], width = 24) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+# Devices per appointment stacked by result, behind them the running total since 2019 stacked the same way
+# on a second axis. Colours as on the sharecard (sharecard/sharecard.py).
+results <- c(fixed = "gelungen", partly = "teilweise gelungen", postponed = "vertagt",
+             not_repaired = "nicht erfolgt", unknown = "keine Information")
+result_colours <- c("gelungen" = "#008300", "teilweise gelungen" = "#eda100", "vertagt" = "#2a78d6",
+                    "nicht erfolgt" = "#e34948", "keine Information" = "#9a9992")
+events <- read_tsv(events_file, col_types = cols(date = "D", .default = "i")) |>
+  pivot_longer(-date, names_to = "result", values_to = "n") |>
+  mutate(result = factor(results[result], levels = rev(results)))
+running <- events |>
+  arrange(date) |>
+  group_by(result) |>
+  mutate(total = cumsum(n)) |>
+  ungroup()
+per_event_max <- events |> group_by(date) |> summarise(n = sum(n)) |> pull(n) |> max()
+total_max <- running |> group_by(date) |> summarise(total = sum(total)) |> pull(total) |> max()
+k <- per_event_max / total_max
+
+p2 <- ggplot() +
+  geom_area(data = running, aes(date, total * k, fill = result), alpha = 0.22, position = "stack",
+            outline.type = "upper", colour = NA) +
+  geom_col(data = events, aes(date, n, fill = result), width = 6, position = "stack") +
+  scale_fill_manual(values = result_colours, breaks = unname(results)) +
+  scale_y_continuous(name = "Geräte je Termin", expand = expansion(mult = c(0, 0.04)),
+                     sec.axis = sec_axis(~ . / k, name = "Geräte seit 2019, Fläche im Hintergrund",
+                                         labels = \(x) format(x, big.mark = ".", decimal.mark = ","))) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
-  labs(title = "Bearbeitete Geräte je Monat", subtitle = "Ein oder zwei Termine im Monat, Monate ohne Termin ohne Balken",
-       x = NULL, y = NULL, caption = "Quelle Statistik des Repair Café Gütersloh") +
-  theme_manuel()
+  labs(title = "Bearbeitete Geräte je Termin",
+       subtitle = "Balken je Termin nach Ergebnis, dahinter die Summe seit März 2019",
+       x = NULL, caption = "Quelle Statistik des Repair Café Gütersloh, ohne nicht erschienene Gäste") +
+  theme_manuel() +
+  theme(axis.title.y.left = element_text(margin = margin(r = 8)),
+        axis.title.y.right = element_text(margin = margin(l = 8)))
 
 people <- owners |>
   transmute(date, `bekannt` = repairers - new_repairers, `zum ersten Mal` = new_repairers) |>
@@ -108,4 +135,4 @@ p3 <- ggplot(people, aes(date, n, fill = who)) +
 
 charts <- c(save_chart(p1, "indikatoren-reparaturquote"), save_chart(p2, "indikatoren-geraete"),
             save_chart(p3, "indikatoren-reparierende"))
-write_run(target, inputs = c(stats_file, owners_file, "eval/indicators/baseline.R"), outputs = c(target, charts))
+write_run(target, inputs = c(stats_file, owners_file, events_file, "eval/indicators/baseline.R"), outputs = c(target, charts))

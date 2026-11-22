@@ -5,9 +5,11 @@ docs/adr/0032-kennzahlen-der-erprobung-erheben.adoc.
 Reads only the sheet "Eingabe" with the reader of sharecard/sharecard.py and keeps appointments that took
 place, so planned and cancelled dates drop out. Partly fixed counts as fixed, as in the Open Repair Data
 (eval/ora/result_mapping.tsv), aborted counts as not repaired. The output holds sums per month only.
+With a third argument it also writes one row per appointment with the results, for the chart of
+eval/indicators/baseline.R.
 
 Run in the repository root:
-    python3 -I eval/indicators/statistics.py Repair-Café-Statistik.ods OUT.tsv
+    python3 -I eval/indicators/statistics.py Repair-Café-Statistik.ods MONTHS.tsv [EVENTS.tsv]
 """
 
 import csv
@@ -24,11 +26,14 @@ sys.path.insert(0, str(ROOT / "eval"))
 import sharecard  # noqa: E402
 from lauf import write_run  # noqa: E402
 
+EVENT_COLUMNS = ["date", "fixed", "partly", "postponed", "not_repaired", "unknown"]
 COLUMNS = ["month", "events", "processed", "fixed", "partly", "postponed", "not_repaired", "unknown", "no_show"]
 
 
 def main():
     source, target = Path(sys.argv[1]), Path(sys.argv[2])
+    events_target = Path(sys.argv[3]) if len(sys.argv) > 3 else None
+    events = []
     months = defaultdict(lambda: dict.fromkeys(COLUMNS[1:], 0))
     for event in sharecard.read_events(source):
         processed = sharecard.number(event, "processed")
@@ -43,12 +48,23 @@ def main():
         row["not_repaired"] += sharecard.number(event, "failed") + sharecard.number(event, "aborted")
         row["unknown"] += sharecard.number(event, "unknown")
         row["no_show"] += sharecard.number(event, "no_show")
+        events.append({"date": event["date"].isoformat(), "fixed": sharecard.number(event, "fixed"),
+                       "partly": sharecard.number(event, "partly"), "postponed": sharecard.number(event, "postponed"),
+                       "not_repaired": sharecard.number(event, "failed") + sharecard.number(event, "aborted"),
+                       "unknown": sharecard.number(event, "unknown")})
     target.parent.mkdir(parents=True, exist_ok=True)
     with target.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, COLUMNS, delimiter="\t", lineterminator="\n")
         writer.writeheader()
         writer.writerows({"month": month, **months[month]} for month in sorted(months))
-    write_run(target, inputs=[source, HERE / "statistics.py", ROOT / "sharecard" / "sharecard.py"], outputs=[target])
+    outputs = [target]
+    if events_target:
+        with events_target.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, EVENT_COLUMNS, delimiter="\t", lineterminator="\n")
+            writer.writeheader()
+            writer.writerows(events)
+        outputs.append(events_target)
+    write_run(target, inputs=[source, HERE / "statistics.py", ROOT / "sharecard" / "sharecard.py"], outputs=outputs)
     print(f"{len(months)} Monate in {target}")
 
 

@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-22T09:23:40+0100",
+  "date": "2026-11-22T09:24:56+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/indicators/baseline.R --args eval/results/indicators/baseline-2026-11-22",
-  "commit": "007baf026d164fd5cf424f4416f1c8f5be33ef82",
+  "commit": "ff3ec028300e99a11d54a09554910a353c773ef8",
   "dirty": true,
   "inputs": [
     {
@@ -18,7 +18,7 @@
     },
     {
       "path": "eval/indicators/baseline.R",
-      "sha256": "ad72636b4b68cf947ce3895aa124d103b159cfd9cce0363520d06d264d297b8b"
+      "sha256": "0c91bf1b95ea9c20c93727771cdb1ef026d1654b94ead2863357c113fe73eb09"
     }
   ],
   "outputs": [
@@ -36,27 +36,27 @@
     },
     {
       "path": "docs/grafiken/indikatoren-geraete.svg",
-      "sha256": "2146a2fad47a11ed8ec63d5606f82b01616da31db05d2a3a1ae82e2e5daae4f3"
+      "sha256": "9a452a55586306e39f6637753938f03a5cc23c7468a2b37a253b18e1d1638f4d"
     },
     {
       "path": "docs/grafiken/indikatoren-geraete-hell.svg",
-      "sha256": "da6d473cf381cf368de01796c7052768c26b537f3812521c6c9f42bca9887a2b"
+      "sha256": "36515a71335db17d449c3761f864df05c800d052e3e77decc2ac97d50f396ee2"
     },
     {
       "path": "docs/grafiken/indikatoren-geraete-summe.svg",
-      "sha256": "e9481dc642583daa34b0f41b6563263081508d72b4e5543af2fab8f8f6d17b59"
+      "sha256": "86cd2763e7f91a34f7d2e3191e9b2a1a45236f4b1c2baf07c93a13980b2c1887"
     },
     {
       "path": "docs/grafiken/indikatoren-geraete-summe-hell.svg",
-      "sha256": "1247bcb8f2eada517abcd79b632794ac67b884698612b6ccc399416d0d819ef8"
+      "sha256": "74eb486ae40c9c4d78037bc50fe3ff0b40fd7f825630cc790de9791a330fac40"
     },
     {
       "path": "docs/grafiken/indikatoren-ergebnisse-jahr.svg",
-      "sha256": "f033af4554026a4a820f0a6df40f5d96e0ff013592ac9de81d02199bbbebb218"
+      "sha256": "8bdea00903a7fa632f2cd39b8479ca7c72d227f698cfcf6eb030fd2bd6380f9e"
     },
     {
       "path": "docs/grafiken/indikatoren-ergebnisse-jahr-hell.svg",
-      "sha256": "c3168c8c5f76a5b3400d4f92a36b9e243ff0b5747e92fdafe8c464d1a3e92655"
+      "sha256": "e30dbf0b68efd5a0ad55f1826e3e57eb59bb54bf9265cc0c0b8a87ba2c6823a7"
     },
     {
       "path": "docs/grafiken/indikatoren-reparierende.svg",

@@ -104,13 +104,13 @@ p1 <- ggplot(rolling, aes(date)) +
 
 # Devices per appointment, their running total since 2019 and the share per year, each stacked by result in
 # a chart of its own. Fixed comes first in the legend and lies on the baseline of every stack. The six results
-# take the colours of the pride flag from the bottom up, violet for fixed to red for no information, so a
-# stack read from the top looks like the flag.
+# take the colours of the pride flag, green for fixed, blue for partly fixed, yellow for postponed, orange for
+# not repaired, red for aborted and violet for no information.
 pride <- c(red = "#E40303", orange = "#FF8C00", yellow = "#FFED00", green = "#008026", blue = "#004CFF",
            violet = "#732982")
 results <- c(fixed = "gelungen", partly = "teilweise gelungen", postponed = "vertagt", failed = "nicht erfolgt",
              aborted = "abgebrochen", unknown = "keine Information")
-result_colours <- setNames(unname(pride[c("violet", "blue", "green", "yellow", "orange", "red")]), results)
+result_colours <- setNames(unname(pride[c("green", "blue", "yellow", "orange", "red", "violet")]), results)
 events <- read_tsv(events_file, col_types = cols(date = "D", .default = "i")) |>
   pivot_longer(-date, names_to = "result", values_to = "n") |>
   mutate(result = factor(unname(results[result]), levels = unname(results)))

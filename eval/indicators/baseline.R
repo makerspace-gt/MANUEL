@@ -131,7 +131,9 @@ bars <- events |>
   arrange(date, as.integer(result)) |>
   group_by(date) |>
   mutate(ymax = cumsum(n), ymin = ymax - n) |>
-  ungroup()
+  ungroup() |>
+  # Without empty parts, asciidoctor-pdf rejects rectangles without height
+  filter(n > 0)
 
 result_scale <- list(scale_fill_manual(values = result_colours, breaks = unname(results)),
                      guides(fill = guide_legend(nrow = 1)))
@@ -167,7 +169,7 @@ yearly <- events |>
   mutate(share = n / sum(n), devices = sum(n)) |>
   ungroup()
 year_labels <- yearly |> distinct(year, devices) |> mutate(label = paste0(year, "\n", thousands(devices), " Geräte"))
-p2c <- ggplot(yearly, aes(year, share, fill = result)) +
+p2c <- ggplot(filter(yearly, n > 0), aes(year, share, fill = result)) +
   geom_col(width = 0.7, colour = light[["bg"]], linewidth = 0.3, position = position_stack(reverse = TRUE)) +
   result_scale +
   scale_x_discrete(labels = setNames(year_labels$label, year_labels$year)) +
@@ -180,7 +182,7 @@ people <- owners |>
   transmute(date, `bekannt` = repairers - new_repairers, `zum ersten Mal` = new_repairers) |>
   pivot_longer(-date, names_to = "who", values_to = "n") |>
   mutate(who = factor(who, levels = c("zum ersten Mal", "bekannt")))
-p3 <- ggplot(people, aes(date, n, fill = who)) +
+p3 <- ggplot(filter(people, n > 0), aes(date, n, fill = who)) +
   geom_col(width = 24, colour = light[["bg"]], linewidth = 0.4) +
   scale_fill_manual(values = c("bekannt" = "#004CFF", "zum ersten Mal" = "#FF8C00")) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +

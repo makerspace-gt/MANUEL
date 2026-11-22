@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-22T08:38:39+01:00",
+  "command": "indicators.py ~/bench/zammad-tickets/2026-11-16 --out eval/results/indicators/baseline-2026-11-16/indicators.tsv",
+  "commit": "3bb4b38dbf1468a3359ddfc977502da21704e164",
+  "dirty": true,
+  "inputs": [
+    {
+      "path": "~/bench/zammad-tickets/2026-11-16/tickets.json",
+      "sha256": "ad5aff83ee771d8b33060d491f33983f39c796c31ad45f4cdc9034724c1a5f04"
+    },
+    {
+      "path": "~/Projekte/makerspace/MANUEL-Fund/MANUEL/eval/indicators/indicators.py",
+      "sha256": "c35cf3b54af939abc79e8d326314deb9b36a467e385ae89ecb94c64d177aa1b3"
+    },
+    {
+      "path": "~/Projekte/makerspace/MANUEL-Fund/MANUEL/eval/enrich/tickets.py",
+      "sha256": "2a976744e9819ee83dde7c8eba5f7ec7d5deb44a4dcb293ad1d3b6ced7e793b6"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "eval/results/indicators/baseline-2026-11-16/indicators.tsv",
+      "sha256": "a62780af121ba4bd3e4d73b42f5e0f4fd29a7562576182123f95205a5e858fe2"
+    }
+  ],
+  "models": [],
+  "host": {
+    "name": "bluefin",
+    "kernel": "7.2.11-200.fc44.x86_64",
+    "mem_total_gib": 31.1
+  },
+  "guest_login": "guest",
+  "new_since": "2026-09-15"
+}

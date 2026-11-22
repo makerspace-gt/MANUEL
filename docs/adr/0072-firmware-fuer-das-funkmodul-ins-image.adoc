@@ -27,6 +27,8 @@ MANUEL hängt am LAN und braucht Bluetooth und WLAN im Betrieb nicht.
 
 Bis das neue Image läuft, ist `btusb` am 21.11.2026 von Hand entladen. Das hielt die Schleife sofort an, ohne Neustart.
 
+Das Journal war bis dahin auf 4,1 GB gewachsen. Seit dem 22.11.2026 begrenzt `system_files/etc/systemd/journald.conf.d/manuel.conf` es auf 1 GB, damit eine solche Schleife `/var` nicht füllt.
+
 === Konsequenzen
 
 * Gut, weil das Modul wieder wie vor dem Wechsel auf Fedora 45 arbeitet und das Log nicht mehr volläuft.

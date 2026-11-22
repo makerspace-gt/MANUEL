@@ -433,6 +433,8 @@ zammad-compose down -v
 
 Entwurf vom 10.11.2026. Am 11.11.2026 lief der Logger einmal von Hand auf MANUEL und lieferte alle Werte außer denen der Steckdose. Das Image bringt den Logger `/usr/libexec/manuel/metrics_log.py` und den Timer `manuel-metrics.timer` mit. Er schreibt jede Minute eine Zeile mit Auslastung, Speicher, GPU, Temperaturen und Strom nach `/var/log/manuel/metrics-JJJJ-MM.csv`.
 
+Das Journal von systemd ist auf 1 GB begrenzt, siehe [ADR 72](adr/0072-firmware-fuer-das-funkmodul-ins-image.adoc).
+
 1. Die Steckdose NOUS A1T einrichten. Sie kommt mit Tasmota.
    1. Die Steckdose einstecken und mit dem WLAN `tasmota-…` verbinden, das sie aufspannt. Unter http://192.168.4.1 das WLAN des Makerspace eintragen.
    2. Unter Configuration, Other das Template eintragen und Activate anhaken. Quelle ist https://templates.blakadder.com/nous_A1T.html.

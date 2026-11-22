@@ -75,7 +75,7 @@ rolling <- stats |>
   )
 
 # Milestones of the Repair Café, marked in the charts since 2019
-milestones <- tibble(date = as.Date(c("2019-03-01", "2022-11-01", "2024-09-01")),
+milestones <- tibble(date = as.Date(c("2019-03-01", "2022-11-01", "2025-08-01")),
                      label = c("Start", "Zammad", "zwei Termine im Monat"))
 corona <- c(as.Date("2020-04-01"), as.Date("2022-11-01"))
 marks <- function(top) {

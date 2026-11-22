@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-22T09:08:29+0100",
+  "date": "2026-11-22T09:11:10+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/indicators/baseline.R --args eval/results/indicators/baseline-2026-11-22",
-  "commit": "bcb4bd3d23c54bda4975fcb6d9f727ebe957fb36",
+  "commit": "155860dbb03bb120b2b72a28efceb30bbe1cbce5",
   "dirty": true,
   "inputs": [
     {
@@ -18,7 +18,7 @@
     },
     {
       "path": "eval/indicators/baseline.R",
-      "sha256": "8b9adeeccfe75ed7fa78b35b76c1477c52b06cf2df4bba2889d3a7541f83f9c8"
+      "sha256": "a3f578668f1385b22a69e96c03045934041373ac8110fcc2a799cf4d6511d4d0"
     }
   ],
   "outputs": [
@@ -28,19 +28,19 @@
     },
     {
       "path": "docs/grafiken/indikatoren-reparaturquote.svg",
-      "sha256": "2e89d446758c954a8d5b58628b5ac49ac091717e552f99b419f446e753185ef4"
+      "sha256": "e0c1f365b98e341e48dc9f48d58f2c8c6852057c5b696cdf46ab27f35a45fd37"
     },
     {
       "path": "docs/grafiken/indikatoren-reparaturquote-hell.svg",
-      "sha256": "1a6cd675d3cf0f24b5bd7c51c03ffe9d3f5f71b0dac8e60d521f3426def738ce"
+      "sha256": "5cb5eb01a06f7d7b7892579addffca672476fdeaf87bfd7a419a24aeb6a8c070"
     },
     {
       "path": "docs/grafiken/indikatoren-geraete.svg",
-      "sha256": "7d0966f69b13fed50279d1930086294cbb03994c63d431d7785804f4d31f90ef"
+      "sha256": "e34532e67f947df9e673946b1d3e760ea7ea2ff8712e544200efff3a388976c4"
     },
     {
       "path": "docs/grafiken/indikatoren-geraete-hell.svg",
-      "sha256": "ecf17241226970c2566146ac16cf6867132ed8049b5631aa00e618a27137e96c"
+      "sha256": "40d0f712e7f9c293d39c7c26750122431910fe15a030925a65059f9e35ba9811"
     },
     {
       "path": "docs/grafiken/indikatoren-reparierende.svg",

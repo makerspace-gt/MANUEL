@@ -3,7 +3,8 @@
 # Reads the monthly sums of eval/indicators/statistics.py (statistics of the team since 2019) and
 # eval/indicators/indicators.py --monthly (owners from the Zammad export since 2025) and writes
 #   baseline.csv                       each indicator for three windows: all months, 36 and 12 months
-#   docs/grafiken/indikatoren-*.svg    repair rate per month, devices per appointment, repairers per month
+#   docs/grafiken/indikatoren-*.svg    repair rate per month, devices per appointment, running total of
+#                                      devices, results per year, repairers per month
 # The repair rate is fixed, including partly fixed, among fixed, postponed and not repaired.
 #
 # Run in the repository root, see docs/adr/0049-daten-mit-r-auswerten.adoc:
@@ -101,8 +102,8 @@ p1 <- ggplot(rolling, aes(date)) +
        x = NULL, y = NULL, caption = "Quelle Statistik des Repair Café Gütersloh, ohne nicht erschienene Gäste") +
   theme_manuel()
 
-# Devices per appointment stacked by result, behind them the running total since 2019 stacked the same way
-# on a second axis. The six results take the colours of the pride flag in its order from top to bottom,
+# Devices per appointment, their running total since 2019 and the share per year, each stacked by result in
+# a chart of its own. The six results take the colours of the pride flag in its order from top to bottom,
 # red for not repaired and green for fixed.
 pride <- c(red = "#E40303", orange = "#FF8C00", yellow = "#FFED00", green = "#008026", blue = "#004CFF",
            violet = "#732982")
@@ -119,7 +120,6 @@ running <- events |>
   ungroup()
 per_event_max <- events |> group_by(date) |> summarise(n = sum(n)) |> pull(n) |> max()
 total_max <- running |> group_by(date) |> summarise(total = sum(total)) |> pull(total) |> max()
-k <- per_event_max / total_max
 
 # Bars as rectangles, each as wide as the gap to its neighbours allows, at most 16 days
 gaps <- events |> distinct(date) |> arrange(date) |>
@@ -132,23 +132,48 @@ bars <- events |>
   mutate(ymax = cumsum(n), ymin = ymax - n) |>
   ungroup()
 
+result_scale <- list(scale_fill_manual(values = result_colours, breaks = unname(results)),
+                     guides(fill = guide_legend(nrow = 1)))
+source_note <- "Quelle Statistik des Repair Café Gütersloh, ohne nicht erschienene Gäste"
+thousands <- \(x) format(x, big.mark = ".", decimal.mark = ",", trim = TRUE)
+
 p2 <- ggplot() +
   marks(per_event_max * 1.12) +
-  geom_area(data = running, aes(date, total * k, fill = result), alpha = 0.22, position = "stack",
-            outline.type = "upper", colour = NA) +
   geom_rect(data = bars, aes(xmin = date - half, xmax = date + half, ymin = ymin, ymax = ymax, fill = result)) +
-  scale_fill_manual(values = result_colours, breaks = unname(results)) +
-  guides(fill = guide_legend(nrow = 1)) +
-  scale_y_continuous(name = "Geräte je Termin", expand = expansion(mult = c(0, 0.02)),
-                     sec.axis = sec_axis(~ . / k, name = "Geräte seit 2019, Fläche im Hintergrund",
-                                         labels = \(x) format(x, big.mark = ".", decimal.mark = ","))) +
+  result_scale +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.02))) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
-  labs(title = "Bearbeitete Geräte je Termin",
-       subtitle = "Balken je Termin nach Ergebnis, dahinter die Summe seit März 2019",
-       x = NULL, caption = "Quelle Statistik des Repair Café Gütersloh, ohne nicht erschienene Gäste") +
-  theme_manuel() +
-  theme(axis.title.y.left = element_text(margin = margin(r = 8)),
-        axis.title.y.right = element_text(margin = margin(l = 8)))
+  labs(title = "Bearbeitete Geräte je Termin", subtitle = "Gestapelt nach Ergebnis",
+       x = NULL, y = NULL, caption = source_note) +
+  theme_manuel()
+
+p2b <- ggplot(running, aes(date, total, fill = result)) +
+  marks(total_max * 1.08) +
+  geom_area(position = "stack", outline.type = "upper", colour = NA) +
+  result_scale +
+  scale_y_continuous(labels = thousands, expand = expansion(mult = c(0, 0.02))) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  labs(title = "Bearbeitete Geräte seit 2019", subtitle = "Summe seit März 2019, gestapelt nach Ergebnis",
+       x = NULL, y = NULL, caption = source_note) +
+  theme_manuel()
+
+# Share of the results per year, 2026 until the last appointment before MANUEL
+yearly <- events |>
+  mutate(year = format(date, "%Y")) |>
+  group_by(year, result) |>
+  summarise(n = sum(n), .groups = "drop") |>
+  group_by(year) |>
+  mutate(share = n / sum(n), devices = sum(n)) |>
+  ungroup()
+year_labels <- yearly |> distinct(year, devices) |> mutate(label = paste0(year, "\n", thousands(devices), " Geräte"))
+p2c <- ggplot(yearly, aes(year, share, fill = result)) +
+  geom_col(width = 0.7, colour = light[["bg"]], linewidth = 0.3) +
+  result_scale +
+  scale_x_discrete(labels = setNames(year_labels$label, year_labels$year)) +
+  scale_y_continuous(labels = \(x) paste0(round(100 * x), " %"), expand = c(0, 0)) +
+  labs(title = "Ergebnisse je Jahr", subtitle = "Anteil an allen bearbeiteten Geräten, 2026 bis zum 07.11.",
+       x = NULL, y = NULL, caption = source_note) +
+  theme_manuel()
 
 people <- owners |>
   transmute(date, `bekannt` = repairers - new_repairers, `zum ersten Mal` = new_repairers) |>
@@ -165,5 +190,6 @@ p3 <- ggplot(people, aes(date, n, fill = who)) +
   theme_manuel()
 
 charts <- c(save_chart(p1, "indikatoren-reparaturquote"), save_chart(p2, "indikatoren-geraete"),
+            save_chart(p2b, "indikatoren-geraete-summe"), save_chart(p2c, "indikatoren-ergebnisse-jahr"),
             save_chart(p3, "indikatoren-reparierende"))
 write_run(target, inputs = c(stats_file, owners_file, events_file, "eval/indicators/baseline.R"), outputs = c(target, charts))

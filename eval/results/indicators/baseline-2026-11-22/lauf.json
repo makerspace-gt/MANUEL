@@ -1,7 +1,7 @@
 {
-  "date": "2026-11-22T09:11:10+0100",
+  "date": "2026-11-22T09:13:41+0100",
   "command": "/usr/local/lib/R/bin/exec/R --no-save --no-restore --no-echo --no-restore --file=eval/indicators/baseline.R --args eval/results/indicators/baseline-2026-11-22",
-  "commit": "155860dbb03bb120b2b72a28efceb30bbe1cbce5",
+  "commit": "830fae9fe899232cefc637383dde3e92c38ce2af",
   "dirty": true,
   "inputs": [
     {
@@ -18,7 +18,7 @@
     },
     {
       "path": "eval/indicators/baseline.R",
-      "sha256": "a3f578668f1385b22a69e96c03045934041373ac8110fcc2a799cf4d6511d4d0"
+      "sha256": "56c85461b101b83bf5ff6151f9553290c9426bb53ad9213e8ca39aed029db553"
     }
   ],
   "outputs": [
@@ -36,11 +36,27 @@
     },
     {
       "path": "docs/grafiken/indikatoren-geraete.svg",
-      "sha256": "e34532e67f947df9e673946b1d3e760ea7ea2ff8712e544200efff3a388976c4"
+      "sha256": "cfbfc012a1b38a8d879fcb56050ab7768275414d7880bf1291d8061525229f4b"
     },
     {
       "path": "docs/grafiken/indikatoren-geraete-hell.svg",
-      "sha256": "40d0f712e7f9c293d39c7c26750122431910fe15a030925a65059f9e35ba9811"
+      "sha256": "d78f1e5b2308e31923350b9cded73202ba220393b4292c51221d9681c4cc347a"
+    },
+    {
+      "path": "docs/grafiken/indikatoren-geraete-summe.svg",
+      "sha256": "3ff2355093026693d66c8ed0ba30deb9926d72aa965f24ffe02e80a33eab2d8e"
+    },
+    {
+      "path": "docs/grafiken/indikatoren-geraete-summe-hell.svg",
+      "sha256": "320203a74d466c01e277f8ccc8fff8112a6eb1988789a9eda5cb7d6c32b8623e"
+    },
+    {
+      "path": "docs/grafiken/indikatoren-ergebnisse-jahr.svg",
+      "sha256": "331568ae0800725cf7155835f77298d90a42872e59517afc1697a8b519bb29bd"
+    },
+    {
+      "path": "docs/grafiken/indikatoren-ergebnisse-jahr-hell.svg",
+      "sha256": "cb6c9e01cf90304c69af23ee9b3cee84c068cec75691024247871e9bb73c20a1"
     },
     {
       "path": "docs/grafiken/indikatoren-reparierende.svg",

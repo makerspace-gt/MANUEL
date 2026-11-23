@@ -1,4 +1,4 @@
-# Ticket fields MANUEL needs, loaded by zammad/setup.rb, see PLAN.md, section "Stammdaten für die
+# Ticket and guest fields MANUEL needs, loaded by zammad/setup.rb, see PLAN.md, section "Stammdaten für die
 # Felder im Ticket", and docs/adr/0052-erfasste-daten-festlegen.adoc.
 #
 # Names follow the Open Repair Data Standard where it has a field, for example brand and
@@ -15,15 +15,22 @@ AGENT_SCREENS = {
   edit:          { 'ticket.agent' => { shown: true, required: false } },
 }.freeze
 
-def field(name, display, data_type, data_option, position)
+# Guest fields as in our Zammad of 15.11.2026, shown when agents create, view or edit a user
+USER_SCREENS = {
+  create: { 'ticket.agent' => { shown: true, required: false }, 'admin.user' => { shown: true, required: false } },
+  view:   { 'ticket.agent' => { shown: true }, 'admin.user' => { shown: true } },
+  edit:   { 'ticket.agent' => { shown: true, required: false }, 'admin.user' => { shown: true, required: false } },
+}.freeze
+
+def field(name, display, data_type, data_option, position, object: 'Ticket')
   ObjectManager::Attribute.add(
-    object:        'Ticket',
+    object:        object,
     name:          name,
     display:       display,
     data_type:     data_type,
     data_option:   { null: true, **data_option },
     active:        true,
-    screens:       AGENT_SCREENS,
+    screens:       object == 'User' ? USER_SCREENS : AGENT_SCREENS,
     position:      position,
     created_by_id: 1,
     updated_by_id: 1,
@@ -111,3 +118,14 @@ field('safety_test', tr('Safety test VDE 0701/0702', 'VDE 0701/0702 geprüft'), 
 # Only filled in the statistics ticket of each date, see PLAN.md, phase 0
 field('donations', tr('Donations in euros', 'Spenden in Euro'), 'integer', { min: 0, max: 100_000, default: nil }, 1210)
 field('needs', tr('Needs of the repair group', 'Bedarf der Initiative'), 'textarea', text(maxlength: 2000), 1220)
+
+# Guest fields, see docs/adr/0058-felder-des-bestehenden-zammad-uebernehmen.adoc. Agents set them, the AI
+# agents never do. zammad/migrate_guest_fields.rb takes over the values of the older German fields.
+def yes_no
+  { options: { true => tr('yes', 'ja'), false => tr('no', 'nein') }, default: false, translate: true }
+end
+
+field('house_rules_consent', tr('House rules consent', 'Einverständnis Hausordnung'), 'boolean', yes_no, 810, object: 'User')
+field('supporting_member', tr('Supporting member', 'Fördermitgliedschaft'), 'boolean', yes_no, 820, object: 'User')
+field('newsletter_repair_events', tr('Newsletter repair events', 'Newsletter Repair Café'), 'boolean', yes_no, 855, object: 'User')
+field('newsletter_processed', tr('Newsletter processed', 'Newsletter bearbeitet'), 'boolean', yes_no, 857, object: 'User')

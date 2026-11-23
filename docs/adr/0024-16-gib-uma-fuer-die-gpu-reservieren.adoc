@@ -7,7 +7,7 @@ Status:: angenommen
 Datum:: 2026-11-06
 Nachgetragen:: 2026-11-08
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht
+Überarbeitet:: 2026-11-09, Klarstellung bei der Durchsicht, und 2026-11-23, vorerst 48 GiB UMA für Tests
 
 == Kontext und Problem
 
@@ -41,6 +41,12 @@ Der Mini-PC läuft mit 16 GiB UMA. Damit stehen der GPU 39,3 statt 32,2 GiB zur 
 * Gut, weil der Wechsel zwischen den Modellen entfällt, wenn sie geladen bleiben.
 * Schlecht, weil das System nur noch 46 statt 60 GiB hat.
 * Offen ist, ob alle Modelle im Betrieb dauerhaft geladen bleiben.
+
+=== Nachtrag vom 23.11.2026
+
+Für Tests mit großen Modellen steht UMA vorerst auf 48 GiB, dem größten Wert im BIOS. Nach dem Neustart sieht die GPU 48 GiB VRAM und 7 GiB GTT, dem System bleiben 15 GiB. Zammad mit Elasticsearch, Open WebUI, n8n, Etherpad und die Testinstanz liefen damit an, frei waren beim Start 8 GiB.
+
+Zugleich lädt Ollama seit dem 22.11.2026 nur noch ein Modell (`OLLAMA_MAX_LOADED_MODELS=1`). Das widerspricht dem Ziel dieser Entscheidung, Sprachmodell, `d3:9b` und `bge-m3` gemeinsam geladen zu halten. Welcher Wert für den Echtbetrieb gilt, klären wir mit dem Team, bevor MANUEL ans echte Zammad geht. Bis dahin gilt diese Entscheidung mit 16 GiB als Ziel.
 
 == Vor- und Nachteile der Optionen
 

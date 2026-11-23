@@ -45,9 +45,9 @@ Im BIOS haben wir diese Werte eingestellt oder als Ausgangswert notiert:
 | Leistungsprofil | `Advanced` → `PowerLimit Setting` | `Performance Mode` | Gilt für alle Messungen im Benchmark |
 | Lüfter | `Advanced` → `Hardware Monitor` → Fan Mode | Performance-Modus | Lautstärke im Dauerbetrieb prüfen wir später |
 | iGPU Configuration | `Advanced` → `AMD CBS` → `NBIO Common Options` → `GFX Configuration` | `UMA_Specified` | Ausgangswert, nicht geändert |
-| UMA Frame Buffer Size | wie iGPU Configuration | `16G` | Ausgangswert war `2G`, Begründung siehe [Benchmarks](benchmarks.md) |
+| UMA Frame Buffer Size | wie iGPU Configuration | `48G` | Ausgangswert war `2G`, nach den Benchmarks `16G`, siehe [Benchmarks](benchmarks.md). Seit 23.11.2026 vorerst `48G` für Tests, siehe [ADR 24](adr/0024-16-gib-uma-fuer-die-gpu-reservieren.adoc) |
 | SmartShift Control | `Advanced` → `AMD CBS` → `SMU Common Options` | `Auto` | Nicht geändert |
-| Neustart nach Stromausfall | noch nicht gefunden | `Power On` oder `Always On` | Offen seit 11.11.2026. Wahrscheinliche Stellen sind `Advanced` → `Onboard Devices setting` oder `Advanced` → `AMD CBS` → `FCH Common Options` → `Ac Power Loss Options`. Bis dahin nach einem Stromausfall den Einschaltknopf drücken |
+| Neustart nach Stromausfall | Power-Loss-Option im BIOS | `Always On` | Gesetzt am 23.11.2026. MANUEL startet nach einem Stromausfall von selbst |
 
 Die Pfade können je nach BIOS-Version abweichen. Eine offizielle Beschreibung des BIOS von Minisforum haben wir nicht gefunden. Einen Rundgang durch die Menüs mit Bildern bietet der Artikel [Minisforum AI X1 Pro running Linux: BIOS](https://www.linuxlinks.com/minisforum-ai-x1-pro-running-linux-bios/) von LinuxLinks. Das Gerät ist im [Shop von Minisforum](https://store.minisforum.com/products/minisforum-ai-x1-pro) beschrieben.
 

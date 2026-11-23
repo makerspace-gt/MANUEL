@@ -34,7 +34,7 @@ Das Journal war bis dahin auf 4,1 GB gewachsen. Seit dem 22.11.2026 begrenzt `sy
 * Gut, weil das Modul wieder wie vor dem Wechsel auf Fedora 45 arbeitet und das Log nicht mehr volläuft.
 * Schlecht, weil das Image etwas größer wird.
 * Schlecht, weil Bluetooth und WLAN eingeschaltet bleiben, obwohl der Betrieb sie nicht braucht. Wer sie abschalten will, kann es später im BIOS tun.
-* Offen ist, was der Wechsel auf Fedora 45 sonst geändert hat. Nach dem nächsten Image prüfen, ob Ollama, llama.cpp und Zammad wie vorher laufen.
+* Offen war, was der Wechsel auf Fedora 45 sonst geändert hat. Mit dem Image vom 22.11.2026 startete MANUEL am 23.11. ohne Meldungen zu Bluetooth, Ollama lud das Hauptmodell auf die GPU, und Zammad samt Einrichtung lief durch. llama.cpp ist noch nicht wieder geprüft.
 
 == Vor- und Nachteile der Optionen
 

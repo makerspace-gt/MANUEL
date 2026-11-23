@@ -7,6 +7,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-15
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-23, Nummern auch beim Speichern von Hand formatieren
 
 == Kontext und Problem
 
@@ -35,6 +36,8 @@ Gewählt wird ein Filter beim Eingang. {repo}/zammad/contact_filter.rb[contact_f
 * Abweichende Namen oder mehrdeutige Nummern setzen den Tag `contact-check`.
 
 Den Bestand gleicht {repo}/zammad/migrate_contacts.rb[migrate_contacts.rb] einmal an, zuerst als Probelauf. Am 15.11.2026 war in der Testinstanz alles mit erfundenen Daten geprüft, auch dass der zweite Lauf nichts mehr ändert.
+
+Nachtrag vom 23.11.2026. Zammad selbst ändert eingetragene Nummern nicht, `Cti::CallerId` merkt sich nur eine Fassung aus Ziffern für die Suche. Ein Trigger kann Werte nicht umrechnen und arbeitet nur an Tickets. Deshalb formatiert `ManuelPhoneFormat` in {repo}/zammad/contact_filter.rb[contact_filter.rb] Telefon und Mobil jedes Kontakts vor dem Speichern, also auch, was am Empfang von Hand eingetragen wird. Eine Handynummer im Feld Telefon wandert nach Mobil, wenn das leer ist. Was die Bibliothek nicht als Nummer erkennt, bleibt, wie es getippt wurde. In der Testinstanz wurden am 23.11.2026 `05241/1234567`, `0170 1234567`, `0170-123 45 67` und `0049 5241 123456` richtig umgewandelt, ein Text blieb unverändert. Nummern mit 0151 gruppiert die Bibliothek als `+49 1511 2345678`, die Ziffern stimmen.
 
 === Konsequenzen
 

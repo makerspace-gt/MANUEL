@@ -10,6 +10,8 @@
 # several guests, adds the tag contact-check, a human decides. Follow-ups to existing tickets are skipped.
 #
 # Numbers get the international format +49 5241 1234567, mobile numbers go to mobile, others to phone.
+# Every guest saved by hand gets the same, see ManuelPhoneFormat below. A mobile number typed into phone
+# moves to mobile when that is empty. Numbers the library does not recognise stay as they were typed.
 # Other initiatives adapt the constants below.
 
 module ManuelContact
@@ -111,6 +113,39 @@ module ManuelContact
   rescue => e
     Rails.logger.error "ManuelContact: #{e.class} #{e.message}"
   end
+end
+
+# Formats phone and mobile of every user before saving, also for numbers typed in by hand
+module ManuelPhoneFormat
+  extend ActiveSupport::Concern
+
+  included do
+    before_save :manuel_format_phone
+  end
+
+  private
+
+  def manuel_format_phone
+    %w[phone mobile].each do |field|
+      next if !will_save_change_to_attribute?(field) || self[field].blank?
+
+      number, mobile = ManuelContact.format(self[field])
+      next if number.nil?
+
+      if field == 'phone' && mobile && mobile().blank?
+        self.mobile = number
+        self.phone = ''
+      else
+        self[field] = number
+      end
+    end
+  rescue => e
+    Rails.logger.error "ManuelPhoneFormat: #{e.class} #{e.message}"
+  end
+end
+
+Rails.application.config.to_prepare do
+  User.include(ManuelPhoneFormat) if User.ancestors.exclude?(ManuelPhoneFormat)
 end
 
 # Zammad loads pre filters by class name from the setting. A top-level class, because an initializer must

@@ -26,7 +26,7 @@ Die Testinstanz auf MANUEL bekommt das ganze Backup des echten Zammad. Darauf l�
 
 Daten bleiben lokal auf MANUEL, auch die Gruppen außerhalb des Repair Café. Sie werden nicht gelöscht, aber weder exportiert noch ausgewertet. Die TSV-Dateien liegen unter `~/bench` und in einem lokalen git-Repository, damit Änderungen zwischen den Läufen als Diff sichtbar sind. Nichts davon kommt in ein öffentliches Repo. Ins Repo kommen nur Summen mit `lauf.json` nach xref:0027-laeufe-reproduzierbar-festhalten.adoc[ADR 27].
 
-Am 23.11.2026 bekam der Lösungsansatz zugleich einen neuen Ton. Er schreibt locker und knapp, höchstens etwa 120 statt 200 Wörter, und jeder Schritt sagt, was zu tun ist und warum. Ein kurzes Beispiel zum Toaster zeigt den Ton. Die Probe prüft auch, ob das Modell Inhalte daraus in fremde Tickets übernimmt.
+Am 23.11.2026 bekam der Lösungsansatz zugleich einen neuen Ton. Er schreibt locker und knapp, höchstens etwa 120 statt 200 Wörter, und jeder Schritt sagt, was zu tun ist und warum. Was mitzubringen ist, richtet sich an den Gast, etwa Netzteil, Kabel, Papier, Patronen, die Anleitung oder Brotteig, um eine Küchenmaschine unter Last zu testen. Werkzeug hat das Repair Café selbst. Ein kurzes Beispiel zum Toaster zeigt den Ton. Die Probe prüft auch, ob das Modell Inhalte daraus in fremde Tickets übernimmt.
 
 === Konsequenzen
 

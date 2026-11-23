@@ -419,7 +419,7 @@ git push
 - [ ] Generalprobe nach [ADR 73](docs/adr/0073-generalprobe-mit-dem-ganzen-backup.adoc) in der Testinstanz:
   - [ ] Rollen `resticker` und `zammad` mit Wiederherstellung in it-infrastructure, Zugangsdaten des alten Backups im Vault
   - [ ] Backup einspielen, Wege nach außen aus
-  - [ ] Felder anpassen mit `setup.rb` und den drei Migrationsskripten
+  - [ ] Felder anpassen mit `setup.rb` und den vier Migrationsskripten
   - [ ] Felder exportieren, vorher
   - [ ] Categorizer und Agenten über alle Tickets der Gruppen des Repair Café
   - [ ] Felder exportieren, nachher

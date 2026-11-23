@@ -6,6 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-15
 Beteiligte:: Michael Prange
+Überarbeitet:: 2026-11-23, Felder am Gast
 
 == Kontext und Problem
 
@@ -36,6 +37,19 @@ Gewählt wird die Übernahme als Code nach xref:0054-zammad-als-code-einrichten.
 * Die alten Felder werden abgeschaltet, ihre Werte bleiben in der Datenbank.
 
 In der Testinstanz lief das am 15.11.2026 mit den Felddefinitionen und drei Regeln aus dem Export und drei Beispiel-Tickets. Alle Werte kamen an, ein schon gesetzter Wert blieb, und der zweite Lauf änderte nichts.
+
+Nachtrag vom 23.11.2026, Felder am Gast. Am Gast gibt es im echten Zammad vier aktive Felder, die MANUEL bisher nicht anlegte. Sie kommen jetzt mit englischen Namen aus {repo}/zammad/objects.rb[objects.rb], mit „repair events“ statt „repair café“ im Namen, damit andere Initiativen sie ohne Umbenennen nutzen können.
+
+[cols="1,1,1",options="header"]
+|===
+|bisher |neu |Beschriftung
+|`einverstaendnis_hausordnung` |`house_rules_consent` |Einverständnis Hausordnung
+|`foerdermitgliedschaft` |`supporting_member` |Fördermitgliedschaft
+|`newsletter_repair_cafe` |`newsletter_repair_events` |Newsletter Repair Café
+|`newsletter_bearbeitet` |`newsletter_processed` |Newsletter bearbeitet
+|===
+
+{repo}/zammad/migrate_guest_fields.rb[migrate_guest_fields.rb] übernimmt die Werte, stellt Regeln um und schaltet die alten Felder ab, wie `migrate_fields.rb` bei den Tickets. Die abgeschalteten Felder Geburtsjahr, Werbung durch, Werbung sonstiges und Newsletter Makerspace bleiben aus. Am 23.11.2026 lief das in der Testinstanz mit nachgestellten alten Feldern, einem Gast und einer Übersicht als Probelauf, mit `apply` und ein zweites Mal ohne Änderung.
 
 === Konsequenzen
 

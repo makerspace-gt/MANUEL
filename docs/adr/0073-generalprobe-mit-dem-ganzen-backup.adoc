@@ -16,7 +16,7 @@ Vor dem Echtbetrieb soll MANUEL einmal an allen vorhandenen Tickets zeigen, was 
 Die Testinstanz auf MANUEL bekommt das ganze Backup des echten Zammad. Darauf läuft in festen Schritten die Probe.
 
 . *Backup einspielen.* Die Rolle `zammad` in it-infrastructure holt den Snapshot mit resticker aus dem alten restic-Repository und spielt ihn in die Testinstanz ein. Vorher und danach sind alle Wege nach außen aus, siehe `testumgebung/disable_outbound.rb`. Das ist zugleich die Probe für Schritt 6 im Plan von it-infrastructure.
-. *Felder anpassen* mit `setup.rb` und den Skripten `migrate_fields.rb`, `migrate_tags.rb` und `migrate_contacts.rb`, erst als Probelauf, dann mit `MANUEL_MIGRATE=apply`. Das ist die Reihenfolge aus {repo}/zammad/README.md[zammad/README.md] für das echte Zammad.
+. *Felder anpassen* mit `setup.rb` und den Skripten `migrate_fields.rb`, `migrate_guest_fields.rb`, `migrate_tags.rb` und `migrate_contacts.rb`, erst als Probelauf, dann mit `MANUEL_MIGRATE=apply`. Das ist die Reihenfolge aus {repo}/zammad/README.md[zammad/README.md] für das echte Zammad.
 . *Felder exportieren*, Stand vor MANUEL. Je Ticket und Feld eine Zeile in einer TSV-Datei.
 . *Categorizer und Agenten laufen lassen* über alle Tickets der Gruppen des Repair Café, per Skript statt über Trigger, weil eingespielte Tickets keine Trigger auslösen.
 . *Felder exportieren*, Stand nach MANUEL, im selben Format.

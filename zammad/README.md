@@ -128,7 +128,8 @@ Die Rolle kann das seit dem Branch `manuel-anbindung` von docker-compose-server,
 
    Die Rolle holt dieses Repo dann nach `/opt/containers/zammad/manuel`, bindet die Initializer statt `files/app/models/ticket.rb` ein und legt den Dienst `manuel-setup` im Profil `manuel` an.
 3. **Backup** über resticker, dann die Rolle ausrollen.
-4. **Skripte** mit dem Tag `manuel-run`, erst `setup.rb`, dann die Migrationen als Probelauf und mit `MANUEL_MIGRATE=apply`:
+4. **Umbenennen** wie in Schritt 3 oben, vor dem ersten `setup.rb`.
+5. **Skripte** mit dem Tag `manuel-run`, erst `setup.rb`, dann die Migrationen wie in Schritt 6 bis 8 oben als Probelauf und mit `MANUEL_MIGRATE=apply`:
 
    ```bash
    ansible-playbook ... --tags manuel-run
@@ -136,6 +137,6 @@ Die Rolle kann das seit dem Branch `manuel-anbindung` von docker-compose-server,
    ansible-playbook ... --tags manuel-run -e zammad_manuel_run_script=migrate_fields.rb -e '{"zammad_manuel_run_env": {"MANUEL_MIGRATE": "apply"}}'
    ```
 
-Danach weiter mit Schritt 7 oben.
+Danach weiter mit Schritt 9 und 10 oben.
 
 Beim Umzug auf die Helpdesk-VM kommt alles mit dem Backup mit, `setup.rb` läuft dort nur noch einmal ohne Änderung.

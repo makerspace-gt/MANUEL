@@ -4,8 +4,9 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 = 0069 Nur Tickets des Repair Café in die Testinstanz übernehmen
 
 [horizontal]
-Status:: angenommen
+Status:: abgelöst durch xref:0073-generalprobe-mit-dem-ganzen-backup.adoc[ADR 73]
 Datum:: 2026-11-16
+Überarbeitet:: 2026-11-23, abgelöst
 Beteiligte:: Michael Prange
 
 == Kontext und Problem

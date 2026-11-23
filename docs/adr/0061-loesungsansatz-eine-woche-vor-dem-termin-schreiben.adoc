@@ -6,7 +6,7 @@ ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
 Status:: angenommen
 Datum:: 2026-11-15
 Beteiligte:: Michael Prange
-Überarbeitet:: 2026-11-15, Agent, Trigger und Makro umgesetzt
+Überarbeitet:: 2026-11-15, Agent, Trigger und Makro umgesetzt, und 2026-11-23, lockerer und knapper Ton mit Begründung je Schritt nach xref:0073-generalprobe-mit-dem-ganzen-backup.adoc[ADR 73]
 
 == Kontext und Problem
 

@@ -1,0 +1,53 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+[[adr-0073]]
+= 0073 Generalprobe mit dem ganzen Backup
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-23
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Vor dem Echtbetrieb soll MANUEL einmal an allen vorhandenen Tickets zeigen, was es in die Felder schreibt, und jeder Wert soll von Menschen geprüft sein. Der Export über die API nach xref:0069-nur-tickets-des-repair-cafe-in-die-testinstanz-uebernehmen.adoc[ADR 69] bringt nur die Tickets, nicht die Einstellungen, Trigger und Versionen des echten Zammad. Die Übernahme der Felder ließe sich damit nur halb proben. Zugleich braucht der Neuaufbau der IT eine Wiederherstellung von Zammad aus dem Backup.
+
+== Entscheidung
+
+Die Testinstanz auf MANUEL bekommt das ganze Backup des echten Zammad. Darauf läuft in festen Schritten die Probe.
+
+. *Backup einspielen.* Die Rolle `zammad` in it-infrastructure holt den Snapshot mit resticker aus dem alten restic-Repository und spielt ihn in die Testinstanz ein. Vorher und danach sind alle Wege nach außen aus, siehe `testumgebung/disable_outbound.rb`. Das ist zugleich die Probe für Schritt 6 im Plan von it-infrastructure.
+. *Felder anpassen* mit `setup.rb` und den Skripten `migrate_fields.rb`, `migrate_tags.rb` und `migrate_contacts.rb`, erst als Probelauf, dann mit `MANUEL_MIGRATE=apply`. Das ist die Reihenfolge aus {repo}/zammad/README.md[zammad/README.md] für das echte Zammad.
+. *Felder exportieren*, Stand vor MANUEL. Je Ticket und Feld eine Zeile in einer TSV-Datei.
+. *Categorizer und Agenten laufen lassen* über alle Tickets der Gruppen des Repair Café, per Skript statt über Trigger, weil eingespielte Tickets keine Trigger auslösen.
+. *Felder exportieren*, Stand nach MANUEL, im selben Format.
+. *Der Richter prüft die Werte* wie in xref:0070-aufwertung-des-datensatzes-je-modell-messen.adoc[ADR 70] und schreibt sein Urteil in eine Spalte.
+. *Ein Mensch prüft alle Werte* in derselben TSV-Datei, mit einer Spalte für das eigene Urteil.
+. *Bei Auffälligkeiten* läuft derselbe Ablauf mit anderen Prompts oder Modellen, und die Dateien zeigen den Unterschied.
+
+Daten bleiben lokal auf MANUEL, auch die Gruppen außerhalb des Repair Café. Sie werden nicht gelöscht, aber weder exportiert noch ausgewertet. Die TSV-Dateien liegen unter `~/bench` und in einem lokalen git-Repository, damit Änderungen zwischen den Läufen als Diff sichtbar sind. Nichts davon kommt in ein öffentliches Repo. Ins Repo kommen nur Summen mit `lauf.json` nach xref:0027-laeufe-reproduzierbar-festhalten.adoc[ADR 27].
+
+Am 23.11.2026 bekam der Lösungsansatz zugleich einen neuen Ton. Er schreibt locker und knapp, höchstens etwa 120 statt 200 Wörter, und jeder Schritt sagt, was zu tun ist und warum. Ein kurzes Beispiel zum Toaster zeigt den Ton. Die Probe prüft auch, ob das Modell Inhalte daraus in fremde Tickets übernimmt.
+
+=== Konsequenzen
+
+* Gut, weil die Übernahme ins echte Zammad mit dessen Einstellungen, Triggern und Daten geprobt wird.
+* Gut, weil jeder Wert, den MANUEL schreibt, einmal von einem Menschen gesehen wird, bevor Gäste davon betroffen sind.
+* Gut, weil die Wiederherstellung über Ansible zugleich für die neue Helpdesk-VM gebraucht wird.
+* Schlecht, weil Daten aller Gruppen auf MANUEL liegen, auch von Vorstand und Rechnungen. MANUEL steht privat, das Etherpad im Internet läuft daneben nur vorübergehend nach xref:0071-etherpad-voruebergehend-fuer-anmerkungen-des-teams.adoc[ADR 71].
+* Schlecht, weil die Prüfung aller Werte von Hand viel Zeit kostet. Etwa 800 Geräte-Tickets mit fünf Feldern ergeben rund 4.000 Werte.
+
+== Vor- und Nachteile der Optionen
+
+=== Export über die API nach ADR 69
+
+* Gut, weil nur Tickets des Repair Café ankommen
+* Schlecht, weil Einstellungen, Trigger und Versionen fehlen und die Übernahme nur halb geprobt wird
+
+=== Backup einspielen und andere Gruppen löschen
+
+* Gut, weil danach nur Daten des Repair Café auf MANUEL liegen
+* Schlecht, weil das Löschen selbst Trigger und Löschaufträge auslösen kann und die Probe verfälscht
+
+== Quellen
+
+* Entscheidung vom 23.11.2026 im Gespräch mit Claude Code

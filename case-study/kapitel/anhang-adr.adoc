@@ -151,5 +151,7 @@ include::../../docs/adr/0071-etherpad-voruebergehend-fuer-anmerkungen-des-teams.
 
 include::../../docs/adr/0072-firmware-fuer-das-funkmodul-ins-image.adoc[]
 
+include::../../docs/adr/0073-generalprobe-mit-dem-ganzen-backup.adoc[]
+
 :leveloffset: -2
 :sectnums:

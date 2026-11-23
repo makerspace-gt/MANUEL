@@ -315,7 +315,7 @@ git push
 
 - [ ] Gerät inventarisieren, Rechnung und Fotos für den Verwendungsnachweis ablegen
 - [ ] Aufkleber mit DSEE-Logo und »Gefördert durch« anbringen
-- [ ] BIOS aktualisieren, Neustart nach Stromausfall aktivieren, UMA-Speicher für die GPU einstellen. UMA steht auf 16 GiB, die Option für den Neustart nach Stromausfall ist noch nicht gefunden, siehe Tabelle in [docs/inbetriebnahme.md](docs/inbetriebnahme.md). Am 23.11.2026 Neustart nach Stromausfall auf `Always On` und UMA vorerst auf 48 GiB, offen ist nur das Update des BIOS
+- [ ] BIOS aktualisieren, Neustart nach Stromausfall aktivieren, UMA-Speicher für die GPU einstellen. Am 23.11.2026 Neustart nach Stromausfall auf `Always On` und UMA vorerst auf 48 GiB, siehe Tabelle in [docs/inbetriebnahme.md](docs/inbetriebnahme.md). Offen ist nur das Update des BIOS
 - [x] Butane-Datei mit Hostname, Zeitzone und automatischem Wechsel auf unser Image in butane/manuel.bu ablegen
 - [x] Image so erweitern, dass es unserem cosign-Schlüssel vertraut und signierte Updates prüft
 - [ ] Öffentliche SSH-Schlüssel der Admins in butane/manuel.bu eintragen

@@ -10,7 +10,7 @@
 # several guests, adds the tag contact-check, a human decides. Follow-ups to existing tickets are skipped.
 #
 # Numbers get the international format +49 5241 1234567, mobile numbers go to mobile, others to phone.
-# Every guest saved by hand gets the same, see ManuelPhoneFormat below. A mobile number typed into phone
+# Every user gets the same whenever it is saved, see ManuelPhoneFormat below. A mobile number typed into phone
 # moves to mobile when that is empty. Numbers the library does not recognise stay as they were typed.
 # Other initiatives adapt the constants below.
 
@@ -32,13 +32,16 @@ module ManuelContact
     CGI.unescapeHTML(body)
   end
 
-  # International format and whether it is a mobile number, nil for anything that is no valid number
+  # International format and whether it is a mobile number, nil for anything that is no valid number.
+  # A German number must keep its digits: 017612345 is too short for a mobile, but the library reads it as
+  # the landline 0491 7612345, so such a number stays as it was typed.
   def format(raw)
     digits = Cti::CallerId.normalize_number(raw.to_s)
     return if digits.blank?
 
     number = TelephoneNumber.parse("+#{digits}", COUNTRY)
     return if !number.valid?
+    return if digits.start_with?('49') && number.national_number.gsub(%r{\D}, '') != "0#{digits.delete_prefix('49')}"
 
     [number.international_number, number.valid_types.include?(:mobile)]
   end
@@ -127,7 +130,7 @@ module ManuelPhoneFormat
 
   def manuel_format_phone
     %w[phone mobile].each do |field|
-      next if !will_save_change_to_attribute?(field) || self[field].blank?
+      next if self[field].blank?
 
       number, mobile = ManuelContact.format(self[field])
       next if number.nil?

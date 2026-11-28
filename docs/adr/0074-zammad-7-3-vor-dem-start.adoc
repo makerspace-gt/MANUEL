@@ -1,0 +1,54 @@
+ifndef::repo[:repo: https://github.com/makerspace-gt/MANUEL/blob/main]
+:zammad-73: https://github.com/zammad/zammad/blob/7.3.0
+[[adr-0074]]
+= 0074 Zammad 7.3 vor dem Start
+
+[horizontal]
+Status:: angenommen
+Datum:: 2026-11-28
+Beteiligte:: Michael Prange
+
+== Kontext und Problem
+
+Zammad 7.3.0 erschien am 26.11.2026, das Image `7.3.0-0001` von zammad-docker-compose kurz danach. Das echte Zammad läuft mit 7.2, die Testinstanz mit 7.2.2. MANUEL hängt sich an mehreren Stellen in Zammad ein, als Initializer, über eigene Agenten und Trigger und über Skripte. Soll der Echtbetrieb am 05.12.2026 auf 7.2 oder 7.3 starten?
+
+== Entscheidung
+
+Der Echtbetrieb startet auf 7.3. Erst läuft die Generalprobe nach xref:0073-generalprobe-mit-dem-ganzen-backup.adoc[ADR 73] in der Testinstanz auf 7.3, dann wird das echte Zammad vor dem 05.12. aktualisiert. Die Regel, neue Versionen erst nach zwei Wochen zu nehmen, gilt hier ausnahmsweise nicht, damit der Echtbetrieb nicht kurz nach dem Start ein großes Update braucht. Vor dem Update im echten Zammad holen wir den neuesten Patch von 7.3.
+
+`quellen/zammad` steht dafür auf dem Tag `7.3.0`, `quellen/zammad-docker-compose` auf dem Stand mit 7.3.0-0001 als Standard.
+
+Gelesen wurden die Änderungen von 7.2.2 bis 7.3.0 an allen Stellen, an denen MANUEL andockt. Es sind 748 Commits.
+
+[cols="2,3,2",options="header"]
+|===
+|Datei von MANUEL |Änderung in 7.3 |Folge
+|`keep_pending_time.rb` |`Ticket#reset_pending_time` unverändert ({zammad-73}/app/models/ticket.rb[ticket.rb]) |keine
+|`tree_select_label.rb` |Neue Schicht `Service::EntityAttribute::Type`. Baum-Felder geben als Beschriftung weiter den Wert zurück ({zammad-73}/app/services/service/entity_attribute/type/tree_select.rb[tree_select.rb]). Der Kontext der Agenten prüft Werte jetzt gegen `historical_options`, die unser Feld als Hash mit 1.053 Einträgen hat |Nachbau bleibt nötig und greift weiter, in der Probe prüfen
+|`ai.rb`, Categorizer |Baum-Felder kommen weiter mit dem Wert als Beschriftung und unserer Beschreibung in den Prompt, jetzt in der Reihenfolge des Felds ({zammad-73}/app/services/service/ai/agent/run/context/instruction/object_attributes/options.rb[options.rb]) |keine, die Reihenfolge ist nach deutschem Namen sortiert
+|`contact_filter.rb` |Mail-Eingang überarbeitet, `process` ohne dritten Parameter. Die Kopfzeilen `x-zammad-ticket-customer_id`, `x-zammad-article-type` und `x-zammad-ticket-tags` werden weiter ausgewertet ({zammad-73}/app/models/channel/filter/identify_sender.rb[identify_sender.rb]) |keine, in der Probe mit einer Mail prüfen
+|`contact_filter.rb`, Nummern |`Cti::CallerId.normalize_number` unverändert, Kontakte merken Änderungen an Telefon und Mobil jetzt nach dem Speichern |keine
+|`event_tags.rb`, `migrate_*.rb` |`Tag::Item.rename`, `remove`, `all_objects` und `update_tag_values` unverändert, Namen von Tags jetzt eindeutig |keine
+|`objects.rb`, `core_workflows.rb` |Einstellungen von Feldern und Core Workflows als JSON statt YAML. Zammad zieht vorhandene Daten beim Update um, Schlüssel werden Text |keine, in der Probe prüfen, ob `setup.rb` danach nichts ändert
+|alle |Rails 8.0 wird 8.1 |in der Probe auf Fehler im Log achten
+|Übernahme ins echte Zammad |Nach dem Update muss der Suchindex neu gebaut werden, wegen der Wissensdatenbank ({zammad-73}/BREAKING_CHANGES.md[BREAKING_CHANGES.md]) |`zammad:searchindex:rebuild` als fester Schritt nach dem Update
+|`import_tickets.rb` |Der Import-Modus schaltet jetzt auch den Wartungsmodus ein |keine, das Skript schaltet ihn in `ensure` wieder aus, auch wenn es abbricht
+|`inbound.rb`, Spam check |Mails, die Zammad nicht verarbeiten kann, werden zu Tickets mit dem Titel „Unprocessable email“ statt zu Einträgen im Health-Check |In der Gruppe des Postfachs auf solche Tickets achten
+|===
+
+Neu in 7.3 ist eine Übersetzung von Nachrichten über einen externen Dienst. Sie ist ab Werk aus und bleibt aus, weil Text dabei das Haus verlassen würde, siehe xref:0048-keine-personenbezogenen-daten-nach-aussen-geben.adoc[ADR 48].
+
+=== Konsequenzen
+
+* Gut, weil der Echtbetrieb auf der aktuellen Version beginnt und Anpassungen nur einmal geprüft werden müssen.
+* Gut, weil die Links im Code auf die eingesetzte Version zeigen.
+* Schlecht, weil 7.3.0 erst wenige Tage alt ist und noch kaum Patches hat.
+* Schlecht, weil die Generalprobe zugleich Update und Einrichtung von MANUEL prüft. Läuft etwas schief, ist die Ursache schwerer zu finden.
+
+== Quellen
+
+* Git-Verlauf von Zammad zwischen den Tags `7.2.2` und `7.3.0`, gelesen am 28.11.2026
+* Zammad, Release Notes 7.3 vom 25.11.2026, https://zammad.com/en/releases/7-3
+* {zammad-73}/BREAKING_CHANGES.md[BREAKING_CHANGES.md] am Tag 7.3.0, Abschnitt 7.3
+* Tags des Images `zammad/zammad` auf Docker Hub, abgerufen am 28.11.2026
+* {zammad-73}/db/seeds/settings.rb[settings.rb] in 7.3.0, Einstellungen `content_translation_*`

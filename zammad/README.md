@@ -97,7 +97,7 @@ Am 14.11.2026 lief `setup.rb` neunmal in der Testinstanz mit Zammad 7.2.2. Fehle
 
 Reihenfolge für das Zammad auf der neuen Helpdesk-VM. Vorher ein Backup. Jedes Skript mit Probelauf läuft zuerst ohne `MANUEL_MIGRATE=apply`, die Ausgabe sieht sich ein Mensch an.
 
-1. **Version prüfen.** Zammad 7.2.2 oder neuer, mit Anbietern unter KI, Ticket Categorizer und Custom AI Agent. Nach jedem Update prüfen, ob es `reset_pending_time` noch gibt, siehe Hinweise oben.
+1. **Version prüfen.** Zammad 7.3 oder neuer, mit Anbietern unter KI, Ticket Categorizer und Custom AI Agent. Nach jedem Update von Zammad den Suchindex mit `zammad:searchindex:rebuild` neu bauen und prüfen, ob es `reset_pending_time` noch gibt, siehe Hinweise oben und [ADR 74](../docs/adr/0074-zammad-7-3-vor-dem-start.adoc).
 2. **Dateien einbinden** wie in [compose.yml](compose.yml), also die Initializer `keep_pending_time.rb`, `event_tags.rb`, `contact_filter.rb`, `article_types.rb`, `voicemail.rb`, `tree_select_label.rb`, `category_check.rb` und `agent_note.rb`, dazu `zammad/`, den Katalog und `eval/categorizer/abc.tsv` unter `/opt/manuel`. Das ersetzt die Kopie der `ticket.rb` im alten Zammad.
 3. **Umbenennen**, damit nichts doppelt entsteht. Gruppe Repair Café wird Repairs, Repair Café Anfragen wird deren Untergruppe Requests, die Rollen heißen Repair Agent und Repair Coordinator, der vorhandene Agent Gast bekommt den Login `guest`.
 4. **Umgebung setzen** nach der Tabelle oben. `MANUEL_OLLAMA_URL` und `MANUEL_CATEGORY_CHECK_URL` zeigen auf MANUEL über NetBird, dazu `MANUEL_WHISPER_URL`, `MANUEL_EVENT_REMINDER_FROM`, `MANUEL_AUTO_REPLY_EXCEPT`, `MANUEL_SENT_BCC` und `MANUEL_SPAM_FOLDER`. Die Variablen für den ersten Admin bleiben leer, sie gelten nur für eine frische Instanz.

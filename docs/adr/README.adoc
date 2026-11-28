@@ -90,6 +90,7 @@ Hier halten wir jede wichtige Entscheidung zu MANUEL als Architecture Decision R
 |71 |xref:0071-etherpad-voruebergehend-fuer-anmerkungen-des-teams.adoc[Etherpad vorübergehend für Anmerkungen des Teams] |angenommen |2026-11-21
 |72 |xref:0072-firmware-fuer-das-funkmodul-ins-image.adoc[Firmware für das Funkmodul ins Image] |angenommen |2026-11-21
 |73 |xref:0073-generalprobe-mit-dem-ganzen-backup.adoc[Generalprobe mit dem ganzen Backup] |angenommen |2026-11-23
+|74 |xref:0074-zammad-7-3-vor-dem-start.adoc[Zammad 7.3 vor dem Start] |angenommen |2026-11-28
 |===
 
 Die ADRs 16 bis 26 halten Entscheidungen fest, die vorher im PLAN standen. Sie wurden am 08.11.2026 nachgetragen und tragen das Datum, an dem die Entscheidung ins Repo kam.

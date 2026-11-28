@@ -153,5 +153,7 @@ include::../../docs/adr/0072-firmware-fuer-das-funkmodul-ins-image.adoc[]
 
 include::../../docs/adr/0073-generalprobe-mit-dem-ganzen-backup.adoc[]
 
+include::../../docs/adr/0074-zammad-7-3-vor-dem-start.adoc[]
+
 :leveloffset: -2
 :sectnums:

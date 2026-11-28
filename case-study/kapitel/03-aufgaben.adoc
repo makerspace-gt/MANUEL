@@ -71,12 +71,17 @@ Dieses Kapitel steht noch in Stichpunkten.
 ** Löschfristen, ein Feld für den Newsletter am Gast und Übersichten je Monat gibt es schon.
 ** Die Felder heißen deutsch, etwa `marke` und `ergebnis`, und ein Feld für die Art des Geräts fehlt. Ein Skript übernimmt die alten Werte in die neuen Felder und stellt die Regeln um.
 * Kontaktformular und Anrufbeantworter liefern Name und Nummer nur im Text. Ein Filter beim Eingang übernimmt sie in den Gast, Nummern im Format +49 5241 1234567. Die erste Nachricht zeigt den Eingangsweg, also Kontaktformular, Anruf oder Empfang <<adr-0063>>.
+* Zammad selbst ändert eingetragene Nummern nicht, und ein Trigger kann Werte nicht umrechnen. Seit dem 23.11.2026 bringt deshalb ein kleiner Zusatz jede Nummer beim Speichern eines Kontakts ins selbe Format, auch was am Empfang von Hand eingetragen wird. Eine Nummer behält dabei ihre Ziffern. `017612345` ist zu kurz für ein Handy und bleibt, wie sie getippt wurde, statt zu einer Festnetznummer mit falscher Vorwahl zu werden <<adr-0063>>.
+* Am Gast gibt es vier Felder, Einverständnis zur Hausordnung, Fördermitgliedschaft, Newsletter und ob der Newsletter bearbeitet ist. Sie heißen englisch, etwa `house_rules_consent` und `newsletter_repair_events`, und ein Skript übernimmt die Werte der deutschen Felder unseres Zammad <<adr-0058>>.
 * Beim Einrichten fiel einiges auf.
 ** Eine Übersetzung gilt in Zammad für jeden gleichen Text. Model übersetzt Zammad selbst mit Modell, das Feld heißt deshalb Model or type. Power supply ist im Katalog das Netzteil, das Feld heißt deshalb Power source.
 ** Namen von Gruppen übersetzt Zammad nicht, sie stehen für alle englisch da.
 ** Der Name `alter` für das Alter ist in Zammad verboten, das Feld heißt `product_age`.
 ** Nach jeder Änderung am Schema startet Zammad neu. Die Einrichtung ändert das Schema deshalb zuletzt.
 * In der Testinstanz lief die Einrichtung am 14.11.2026 mehrfach ohne Fehler, beim letzten Lauf änderte sich nichts mehr. Ohne die Datei für die Wartezeit war der Termin nach einer Antwort per Mail weg, mit ihr blieb er erhalten.
+* Seit dem 21.11.2026 legt die Einrichtung auch Ollama als Anbieter und den Ticket Categorizer mit den A- und B-Einträgen an. Weil Zammad bei Baum-Feldern den Schlüssel als Bezeichnung schickt, beginnt jede Beschreibung mit dem deutschen Namen <<adr-0040>>.
+* Der Echtbetrieb startet auf Zammad 7.3. Die Änderungen seit 7.2.2 wurden an allen Stellen gelesen, an denen MANUEL andockt. Keine davon verlangt eine Anpassung, nach dem Update muss nur der Suchindex neu gebaut werden <<adr-0074>>.
+* Vor dem Start läuft eine Generalprobe mit dem ganzen Backup des echten Zammad in der Testinstanz. Erst werden die Felder übernommen, dann schreibt MANUEL in alle Tickets der Gruppen des Repair Café, ein Richter und ein Mensch prüfen jeden Wert <<adr-0073>>.
 
 === Grundsätze
 

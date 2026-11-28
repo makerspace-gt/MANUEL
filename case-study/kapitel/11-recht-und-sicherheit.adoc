@@ -37,6 +37,9 @@ Dieses Kapitel steht noch in Stichpunkten. Es gibt einen Überblick und ist kein
 * Auch das Postfach hat Fristen. Spam wird nach 30 Tagen gelöscht, Archiv und Gesendet nach einem Jahr, unabhängig vom Anbieter per IMAP. Spam landet zur Prüfung in einer eigenen Gruppe in Zammad <<adr-0065>>.
 * Verzeichnis von Verarbeitungstätigkeiten und Datenschutzhinweis, angelegt in it-infrastructure
 * Testdaten nur lokal <<adr-0002>>, Verschlüsselung des Mini-PCs vor dem Umzug in den Makerspace
+* Für die Generalprobe liegt das ganze Backup des echten Zammad auf MANUEL, auch mit Daten von Vorstand und Rechnungen. Ausgewertet werden nur die Gruppen des Repair Café, gelöscht wird nichts <<adr-0073>>.
+* Für Anmerkungen zur Fallstudie lief vorübergehend ein Etherpad auf MANUEL, öffentlich über Tailscale Funnel. Es enthält keine Daten von Gästen und wird nach der Runde abgeschaltet <<adr-0071>>.
+* Zammad 7.3 bringt eine Übersetzung von Nachrichten über externe Dienste. Sie bleibt aus, weil Text dabei das Haus verlassen würde <<adr-0074>>.
 * Voicemails kann MANUEL selbst mit Whisper in Text umwandeln, die Stimme verlässt den Verein dann nicht <<adr-0064>>.
 * Fotos vom Typenschild, nur das Typenschild, Ortsdaten in den Bildern werden nicht ausgewertet <<adr-0034>>
 

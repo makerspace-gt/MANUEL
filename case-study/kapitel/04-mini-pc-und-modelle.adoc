@@ -78,6 +78,7 @@ image::hardware/board-ram-ssd-slots.jpg[Platine mit Arbeitsspeicher und Steckpl�
 .Typenschild auf der Unterseite
 image::hardware/bottom-label.jpg[Unterseite mit Typenschild,width=100%]
 * Eigenes Image auf Basis von uCore, täglich neu gebaut, Wechsel per `bootc switch` <<adr-0016>>
+* Am 20.11.2026 wechselte uCore auf Fedora 45. Dem neuen Image fehlte die Firmware für das Funkmodul, und der Treiber für Bluetooth setzte das Gerät mehrmals pro Sekunde zurück. Die Firmware kommt seitdem mit ins Image, das Journal ist auf 1 GB begrenzt <<adr-0072>>. Das zeigt den Preis täglicher Images, eine Änderung an der Basis kommt ungefragt an.
 * Inbetriebnahme nach {repo}/docs/inbetriebnahme.md[docs/inbetriebnahme.md]
 
 === Messmethodik
@@ -131,6 +132,7 @@ sudo podman run -d --name llamacpp-vulkan --security-opt label=disable \
 === Speicher
 
 * 16 GiB UMA geben der GPU 39,3 statt 32,2 GiB, alle drei Modelle passen zusammen auf die GPU <<adr-0024>>.
+* Für Tests mit großen Modellen steht UMA seit dem 23.11.2026 vorerst auf 48 GiB. Dem System bleiben dann 15 GiB. Zugleich lädt Ollama seit dem 22.11.2026 nur ein Modell auf einmal. Welche Werte im Echtbetrieb gelten, klärt das Team vor dem Start <<adr-0024>>.
 * Nach einem Wechsel des Modells dauert die erste Antwort 26 statt 0,27 Sekunden.
 
 === Decision-Modelle
